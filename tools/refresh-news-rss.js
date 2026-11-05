@@ -466,9 +466,8 @@ function page(i){
   const kw=esc(i.seo.keywords.join(', '));
   const publishedLabel=new Date(i.published_at).toLocaleDateString('en-US',{dateStyle:'long'});
   const publishedTitle=i.category==='sports'&&i.timestamp_kind!=='published'?'First indexed by news discovery':'Original publication';
-  const imageMeta=i.image
-    ? `<meta property="og:image" content="${esc(i.image)}"><meta name="twitter:image" content="${esc(i.image)}"><meta name="twitter:card" content="summary_large_image">`
-    : '<meta name="twitter:card" content="summary">';
+  // Publisher image URLs are provenance, not a commercial republication grant.
+  const imageMeta=`<meta property="og:image" content="${SITE}/og-image.jpg?v=20260928-brand-preview1"><meta name="twitter:image" content="${SITE}/og-image.jpg?v=20260928-brand-preview1"><meta name="twitter:card" content="summary_large_image">`;
 
   const schema={
     '@context':'https://schema.org',
@@ -541,7 +540,7 @@ ${imageMeta}
 <link rel="stylesheet" href="/brand-headline.css?v=20261019-newsui1">
 <link rel="stylesheet" href="/news-ui.css?v=20261101-images1">
 <link rel="stylesheet" href="/news-images.css?v=20261101-1" data-news-image-styles>
-<script defer src="/news-images.js?v=20261101-1"></script>
+<script defer src="/news-images.js?v=20261101-1&amp;rights=20261105-1"></script>
 <script defer src="/news-ui.js?v=20261019-newsui1"></script>
 ${newsCommerce.eligibleArticle(i)?NEWS_COMMERCE_ASSETS:''}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&amp;resize=20261022-1&amp;corner=20261020-1&amp;stellar=20261020-1&amp;headerface=20261020-1&amp;ui=20261024-1&amp;repair=20261023-1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&dock=20261020-1"></script>
@@ -667,7 +666,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="/brand-headline.css?v=20261019-newsui1">
 <link rel="stylesheet" href="/news-ui.css?v=20261101-images1">
 <link rel="stylesheet" href="/news-images.css?v=20261101-1" data-news-image-styles>
-<script defer src="/news-images.js?v=20261101-1"></script>
+<script defer src="/news-images.js?v=20261101-1&amp;rights=20261105-1"></script>
 <script defer src="/news-ui.js?v=20261019-newsui1"></script>
 ${options||items.slice(0,24).some(newsCommerce.eligibleArticle)?NEWS_COMMERCE_ASSETS:''}${NEWS_NATIVE_ASSETS}<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&amp;resize=20261022-1&amp;corner=20261020-1&amp;stellar=20261020-1&amp;headerface=20261020-1&amp;ui=20261024-1&amp;repair=20261023-1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&dock=20261020-1"></script>

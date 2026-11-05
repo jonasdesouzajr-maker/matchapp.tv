@@ -1,5 +1,6 @@
-/* Shared news artwork presentation. Source images stay source images; missing
-   artwork uses an original, explicitly labelled topic illustration. */
+/* Browser news uses MatchApp-owned topic illustrations, not unlicensed publisher
+   photographs. Publisher links and frozen source records remain unchanged. The
+   existing native presentation is isolated from this browser-only remediation. */
 (function(root,factory){
   'use strict';
   const api=factory();
@@ -26,9 +27,10 @@
     }
     return null;
   }
-  function markup(item={},lang='en'){
-    const original=source(item),replacement=fallback(item),text=label(lang);
-    return '<figure class="ma-news-media" data-news-media data-news-image-kind="'+(original?'source':'illustration')+'"><img src="'+esc(original||replacement)+'" data-news-image-fallback="'+replacement+'" width="640" height="360" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="'+esc(original?'':text)+'"><figcaption data-news-illustration-label'+(original?' hidden':'')+'>'+esc(text)+'</figcaption></figure>';
+  function nativeSurface(win){return !!win&&(!!win.MATCHAPP_ANDROID||!!win.MatchAppNativeStartup||/MatchAppTVAndroid|MatchAppAiAndroid|MatchAppAiKidsAndroid/i.test(win.navigator?.userAgent||'')||win.document?.documentElement.classList.contains('matchapp-android'));}
+  function markup(item={},lang='en',options={}){
+    const original=options.native===true?source(item):null,replacement=fallback(item),text=label(lang),reference=source(item);
+    return '<figure class="ma-news-media" data-news-media'+(reference?' data-news-source-image="'+esc(reference)+'"':'')+' data-news-image-kind="'+(original?'source':'illustration')+'"><img src="'+esc(original||replacement)+'" data-news-image-fallback="'+replacement+'" width="640" height="360" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="'+esc(original?'':text)+'"><figcaption data-news-illustration-label'+(original?' hidden':'')+'>'+esc(text)+'</figcaption></figure>';
   }
   function selected(win){let saved='';try{saved=win.localStorage.getItem('match_lang')||'';}catch(_){}return language(win.MATCH_LANG||saved||win.document.documentElement.lang);}
   function protect(img,win){
@@ -45,6 +47,16 @@
       if(img.getAttribute('src')!==value)img.setAttribute('src',value);
     }
     img.addEventListener('error',illustrate);
+    if(nativeSurface(win)){
+      const original=source({image:figure.dataset.newsSourceImage});
+      if(original&&figure.dataset.newsImageKind==='illustration'){
+        figure.dataset.newsImageKind='source';img.alt='';if(caption)caption.hidden=true;img.setAttribute('src',original);
+      }
+    }else{
+      // This also repairs old cached source-image markup. New static markup
+      // already contains only the owned asset before the browser parses it.
+      illustrate();return;
+    }
     if(figure.dataset.newsImageKind==='illustration'||!img.getAttribute('src')||(img.complete&&img.naturalWidth===0))illustrate();
   }
   function scan(win,scope=win.document){scope.querySelectorAll?.('img[data-news-image-fallback]').forEach(img=>protect(img,win));}
@@ -53,7 +65,7 @@
     win.document.querySelectorAll('[data-news-image-kind="illustration"] img').forEach(img=>{img.alt=label(selected(win));});
   }
   function create(win,item){
-    const host=win.document.createElement('div');host.innerHTML=markup(item,selected(win));
+    const host=win.document.createElement('div');host.innerHTML=markup(item,selected(win),{native:nativeSurface(win)});
     const figure=host.firstElementChild;scan(win,figure);return figure;
   }
   function init(win){
