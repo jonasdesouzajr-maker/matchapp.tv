@@ -32,25 +32,46 @@ is explicitly marked `lang="en"` and `translate="no"`.
 
 The compact preview cards render the badges proportionally at 40px tall, with
 10px of clear space and an accessible 44px-or-larger link. The exact-title text
-link stays visible if Apple cannot deliver the image. Service/availability claims
+link stays visible if a badge image fails to load. Service/availability claims
 are not inferred from a preview, and item URLs are never rewritten.
 
-## Remaining iTunes-only badge limitation
+## Original iTunes Store SVG
 
 The official iTunes guideline links to these approved archives:
 
 - https://www.apple.com/105/media/us/ipoditunes/itunes/2018/3a5387c5_1ebd_4993_9633_ff7264dc27bf/itunes-store-badges/us_uk.zip
 - https://www.apple.com/105/media/us/ipoditunes/itunes/2018/3a5387c5_1ebd_4993_9633_ff7264dc27bf/itunes-store-badges/all.zip
 
-An approved directly hosted iTunes badge was not verified or integrated in this revision.
+The `us_uk.zip` archive was retrieved directly from Apple's documented URL with
+HTTP 200 through the authorized Windows device on November 5, 2026. The original
+SVG was extracted without conversion or alteration and visually inspected: it
+reads “Get it on iTunes Store.” The archive and extracted SVG hashes matched the
+earlier read-only verification. Temporary download files were removed.
 
-Accordingly, itunes.apple.com item links and music.apple.com links with
-`app=itunes` receive the accurate courtesy credit and unchanged exact-item text
-link, **without substituting an Apple Music subscription badge**. Podcast/TV
-destinations likewise receive only the correct service text when no corresponding
-approved badge was verified. This improves attribution but does not close every
-Apple promotional-badge condition. It must not be reported as complete media
-licensing clearance or AdSense approval.
+- Archive SHA-256: `51328e60d9082fbb3a1c7797c17c539fbbec709c2da8e25513f3a91851628e04`.
+- Archive entry: `US_UK/iTunes_Store_Badge/Get_it_on/SVG/US_UK_iTunes_Store_Get_Badge_RGB_012618.svg`.
+- Bundled original: `assets/apple-promotional/itunes-store-get-en-us.svg`.
+- SVG size: 17,387 bytes; viewBox `0 0 139.86 41`.
+- SVG SHA-256: `1509ad061e178ab3acb8095ef5488cdc02f8a3b8c196b6e44b661051ae8bbd4f`.
+
+The current iTunes badge guidance explicitly covers music promotion. This badge
+is therefore limited to exact `itunes.apple.com` album, song and music-video
+destinations, and exact `music.apple.com` album/song destinations carrying
+`app=itunes`. Existing item/edition validation remains authoritative; the helper
+does not infer availability, search for a substitute or rewrite any item URL.
+The original English Apple artwork is preserved; adjacent visible and accessible
+link text uses the existing 15-locale copy. No Apple Music subscription badge is
+substituted for a purchase link.
+
+Legacy iTunes book, audiobook, podcast, movie and TV routes retain their existing
+exact-item text links pending service-specific badge evidence. Apple Podcasts
+and Apple TV destinations also remain text-only. This repair does not close
+every Apple promotional condition or establish content licensing clearance,
+commercial-use permission or AdSense approval.
+
+The distribution-only `sourcecredit=20261105-2` release marker refreshes the
+helper imports and their existing caller/loader chains, including the copyright
+page. The source callers, native fixtures and excluded products are unchanged.
 
 ## Scope and verification
 
@@ -62,6 +83,7 @@ licensing clearance or AdSense approval.
   repaint only source text, leaving media identity and playback state intact.
 - Focused DOM tests cover exact URLs, service separation, source validation,
   failed images, locale changes, stale elements, duplicate calls, native/Kids
-  isolation and open-license links.
+  isolation and open-license links. The local iTunes SVG's exact original hash
+  and the distribution marker's idempotence, parameters and exclusions are tested.
 - Account approval, publisher review, regional CMP transactions and commercial
   content-license evidence remain separate verification tasks.

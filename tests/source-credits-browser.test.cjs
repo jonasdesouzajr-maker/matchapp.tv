@@ -3,6 +3,7 @@ const assert=require('node:assert/strict');
 const path=require('node:path');
 const fs=require('node:fs');
 const vm=require('node:vm');
+const {createHash}=require('node:crypto');
 const {pathToFileURL}=require('node:url');
 const {JSDOM}=require('jsdom');
 const root=path.join(__dirname,'..');
@@ -10,6 +11,8 @@ const moduleReady=import(pathToFileURL(path.join(root,'source-credits-browser.mj
 const copyReady=import(pathToFileURL(path.join(root,'source-credits-copy.mjs')).href);
 const audioUrl='https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview/test.m4a';
 const bookUrl='https://books.apple.com/us/audiobook/verified-edition/id123456789?uo=4';
+const itunesUrl='https://itunes.apple.com/us/album/example/id123456?i=987654&uo=4';
+const itunesBadge='/assets/apple-promotional/itunes-store-get-en-us.svg';
 function page(url='https://matchapp.tv/ebooks/'){
   const dom=new JSDOM('<!doctype html><html lang="en"><head></head><body><section id="preview"><audio controls preload="none"></audio></section><section data-source-rights hidden></section></body></html>',{url});
   dom.window.document.querySelector('audio').src=audioUrl;
@@ -41,15 +44,39 @@ test('verified Books presentation preserves the exact item and active player on 
   dom.window.close();
 });
 
-test('iTunes purchase links never acquire an Apple Music subscription badge',async()=>{
+test('the local iTunes badge retains the exact original Apple archive bytes',()=>{
+  const asset=fs.readFileSync(path.join(root,itunesBadge));
+  assert.equal(asset.length,17387);
+  assert.equal(createHash('sha256').update(asset).digest('hex'),'1509ad061e178ab3acb8095ef5488cdc02f8a3b8c196b6e44b661051ae8bbd4f');
+  assert.match(asset.toString('utf8'),/viewBox="0 0 139\.86 41"/);
+});
+
+test('exact iTunes music purchase links use the original Store badge and preserve playback identity',async()=>{
   const {mountApplePreview}=await moduleReady;
-  for(const url of ['https://itunes.apple.com/us/album/example/id123456?i=987654&uo=4','https://music.apple.com/us/album/example/123456?i=987654&app=itunes']){
-    const dom=page(),doc=dom.window.document,node=mountApplePreview(doc.querySelector('audio'),{url,title:'Exact track'});
+  for(const url of [itunesUrl,'https://itunes.apple.com/us/song/example/id987654','https://itunes.apple.com/us/music-video/example/id987654','https://music.apple.com/us/album/example/123456?i=987654&app=itunes','https://music.apple.com/us/song/example/987654?app=itunes&uo=4']){
+    const dom=page(),doc=dom.window.document,player=doc.querySelector('audio');
+    player.currentTime=12;
+    const before=player.outerHTML,node=mountApplePreview(player,{url,title:'Exact track'});
     assert.ok(node);
-    assert.equal(node.querySelector('img'),null);
+    assert.equal(node.querySelector('img').getAttribute('src'),itunesBadge);
     assert.equal(node.querySelector('a').getAttribute('href'),url);
     assert.match(node.textContent,/iTunes Store/);
     assert.doesNotMatch(node.textContent,/Apple Music/);
+    assert.equal(player.outerHTML,before);
+    assert.equal(player.currentTime,12);
+    dom.window.close();
+  }
+});
+
+test('the iTunes music badge is not assigned to other Apple services or legacy nonmusic routes',async()=>{
+  const {mountApplePreview}=await moduleReady;
+  const urls=['audiobook','book','movie','tv-season','tv-episode','podcast'].map(type=>'https://itunes.apple.com/us/'+type+'/exact-title/id123456');
+  urls.push('https://podcasts.apple.com/us/podcast/exact-title/id123456','https://tv.apple.com/us/movie/exact-title/umc.cmc.123456');
+  for(const url of urls){
+    const dom=page(),doc=dom.window.document,node=mountApplePreview(doc.querySelector('audio'),{url,title:'Exact title'});
+    assert.ok(node);
+    assert.equal(node.querySelector('img'),null);
+    assert.equal(node.querySelector('a').getAttribute('href'),url);
     dom.window.close();
   }
 });
@@ -113,6 +140,7 @@ test('native indicators and Kids leave both preview and copyright DOM unchanged'
   for(const prepare of cases){
     const dom=page();prepare(dom);const doc=dom.window.document,before=doc.documentElement.outerHTML;
     assert.equal(mountApplePreview(doc.querySelector('audio'),{url:bookUrl,title:'A title'}),null);
+    assert.equal(mountApplePreview(doc.querySelector('audio'),{url:itunesUrl,title:'Exact track'}),null);
     assert.equal(mountSourceRights(doc.querySelector('[data-source-rights]')),null);
     assert.equal(doc.documentElement.outerHTML,before);
     dom.window.close();

@@ -63,6 +63,7 @@ function signal(item,copy,lang) {
 function render(lang,inputs=loadInputs()) {
   const {data,copies}=inputs,copy=copies[lang],url=ORIGIN+route(lang),title=copy.seoTitle+' | MatchApp Ai';
   const image=ORIGIN+'/assets/brand/matchapp-official-icon-512.webp';
+  const organizationLogo={'@type':'ImageObject',url:image,width:512,height:512};
   const button=(href,label)=>'<a class="channel-button ust-button" href="'+escape(href)+'">'+escape(label)+'</a>';
   const links={movies:['/discover.html',copy.watchLink],tv:['/discover.html',copy.watchLink],music:['/music.html',copy.musicLink],podcasts:['/catalog-trails/'+(lang==='en'?'':lang.toLowerCase()+'/'),copy.podcastLink],books:['/ebooks/',copy.booksLink],audiobooks:['/ebooks/',copy.booksLink]};
   function card(item) {
@@ -71,7 +72,7 @@ function render(lang,inputs=loadInputs()) {
   }
   const schema={'@context':'https://schema.org','@graph':[
     {'@type':'CollectionPage','@id':url+'#page',url,name:copy.heading,description:copy.description,inLanguage:languageTag(lang),datePublished:EDITION,dateModified:EDITION,spatialCoverage:{'@type':'Country',name:'United States'},isPartOf:{'@type':'WebSite',name:'MatchApp Ai',url:ORIGIN+'/'},mainEntity:{'@id':url+'#discoveries'}},
-    {'@type':'Article','@id':url+'#article',mainEntityOfPage:{'@id':url+'#page'},headline:copy.heading,description:copy.description,inLanguage:languageTag(lang),datePublished:EDITION,dateModified:EDITION,author:{'@type':'Organization',name:'MatchApp Ai',url:ORIGIN+'/about.html'},publisher:{'@type':'Organization',name:'MatchApp Ai',url:ORIGIN+'/'},image:[image],citation:Object.values(data.sources).map(s=>s.url)},
+    {'@type':'Article','@id':url+'#article',mainEntityOfPage:{'@id':url+'#page'},headline:copy.heading,description:copy.description,inLanguage:languageTag(lang),datePublished:EDITION,dateModified:EDITION,author:{'@type':'Organization',name:'MatchApp Ai',url:ORIGIN+'/about.html',logo:organizationLogo},publisher:{'@type':'Organization',name:'MatchApp Ai',url:ORIGIN+'/',logo:organizationLogo},image:[image],citation:Object.values(data.sources).map(s=>s.url)},
     {'@type':'ItemList','@id':url+'#discoveries',name:copy.heading,itemListOrder:'https://schema.org/ItemListUnordered',numberOfItems:data.items.length,itemListElement:data.items.map((item,index)=>({'@type':'ListItem',position:index+1,url:url+'#'+item.id,name:item.title+(item.creator?' — '+item.creator:''),description:copy.notes[item.id]}))},
     {'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'MatchApp Ai',item:ORIGIN+'/'},{'@type':'ListItem',position:2,name:copy.heading,item:url}]}
   ]};

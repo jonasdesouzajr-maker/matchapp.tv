@@ -94,11 +94,11 @@ function stampLocaleHtml(html,file='index.html') {
   return stampLocaleRuntime(stamped,file);
 }
 
-// The browser source-credit repair changes three runtimes and two lazy-loader
+// Refresh the browser source-credit helper, its callers and both lazy-loader
 // chains. A fixed locale71 marker cannot refresh this later release.
-const sourceCreditRevision='20261105-1';
+const sourceCreditRevision='20261105-2';
 const sourceCreditAssets=new Set(['catalog-media.js','discover.js','ebooks/ebook-matcher.js',
-  'ebooks/reading-ai.js','final-wiring.js','build-meta.js']);
+  'ebooks/reading-ai.js','final-wiring.js','build-meta.js','source-credits-browser.mjs']);
 const sourceCreditAncestorPages=new Set(['index.html','discover.html','together.html']);
 function stampSourceCreditUrl(raw,file,html=false) {
   const decoded=raw.replace(/&amp;/g,'&');
