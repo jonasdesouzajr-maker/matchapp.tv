@@ -34,11 +34,10 @@ test('one top-box trigger replaces duplicate Explore shortcut and leaves Kids li
   assert.equal((home.match(/class="ma-luxe-shortcut ma-discovery-cta"/g)||[]).length,0);
   assert.match(home, /href="\/kids\/" class="ma-luxe-shortcut ma-browser-kids"/);
 });
-test('all eleven Worlds routes resolve to the existing site files', ()=>{
+test('Worlds retains all original routes and adds the browser U.S. trends guide', ()=>{
   const dom = setup();
   const links=[...dom.window.document.querySelectorAll('.ma-world-card')];
-  assert.equal(links.length,11);
-  for (const route of ['/tech/','/catalog-trails/']) assert.ok(links.some(a=>a.getAttribute('href')===route),route);
+  assert.deepEqual(links.map(a=>a.getAttribute('href')),['/cooking/','/tech/','/trending/us/2026-11-05/','/catalog-trails/','/music.html','/ebooks/#ebook-matcher-root','/news/','/events-archive.html','/together.html','/awareness/breast-cancer-awareness-month-2026/','/friends.html','/guides/worldwide-entertainment-discovery/']);
   for(const anchor of links){
     const u=new URL(anchor.href);
     const p=decodeURIComponent(u.pathname);
