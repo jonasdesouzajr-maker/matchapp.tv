@@ -47,7 +47,7 @@ test('home keeps existing Google AdSense authorization and its own app service w
   const sellers = fs.readFileSync(path.join(root, 'ads.txt'), 'utf8');
   const worker = fs.readFileSync(path.join(root, 'sw.js'), 'utf8');
   assert.match(html, /ca-pub-9541435081010948/);
-  assert.match(sellers, /ca-pub-9541435081010948/);
+  assert.match(sellers, /google\.com,\s*pub-9541435081010948,\s*DIRECT/);
   assert.match(worker, /MatchApp/);
   assert.match(html, /pauseAdRequests/);
 });
