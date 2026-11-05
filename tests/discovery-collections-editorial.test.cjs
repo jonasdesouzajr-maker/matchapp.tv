@@ -13,7 +13,8 @@ test('editorial discovery links preserve exact identities without asserting popu
   assert.doesNotMatch(s.textContent,/trending|worldwide|streaming now|season\s*2|#\d|2026/i);
   assert.equal(s.querySelectorAll('img,iframe,video').length,0);
   assert.ok(d.querySelector('[data-october-guide-link] a[href$="#october-30-book-screen"]'));
-  assert.equal(JSON.parse(read('data/trending-week.json')).updated,'2026-10-30T11:00:20.841Z');
+  const feedDate=JSON.parse(read('data/trending-week.json')).updated.slice(0,10);
+  assert.ok(d.querySelector('.intro').textContent.includes(feedDate),'visible timestamp must retain the actual feed date');
   const generator=read('tools/refresh-trending.mjs');
   assert.equal((generator.match(/id="discovery-collections"/g)||[]).length,1);
   assert.ok(generator.includes(s.outerHTML),'daily publisher retains the same editorial section');
