@@ -173,8 +173,9 @@ async function aiQuestion(page,question,expected,label){
       const primary=['/ebooks/#ebook-matcher-root','/cooking/','/news/','/events-archive.html','/music.html#swifties-spotify','/discover.html'];
       const secondary=['/music.html','/together.html','/friends.html','/awareness/breast-cancer-awareness-month-2026/','/guides/worldwide-entertainment-discovery/','/how-it-works.html'];
       record('Signature Explore navigation opens all approved topics '+device.name,
-        destinations.visible&&destinations.primary.length===primary.length&&destinations.secondary.length===secondary.length+3&&
+        destinations.visible&&destinations.primary.length===primary.length&&destinations.secondary.length===secondary.length+4&&
         primary.every(href=>destinations.primary.includes(href))&&secondary.every(href=>destinations.secondary.includes(href))&&
+        destinations.secondary.some(href=>/^\/trending\/us\/2026-11-05\/(?:(?:pt-br|es|fr|de|it|tr|ru|ar|hi|id|ja|ko|zh|zh-tw)\/)?$/.test(href))&&
         ['lumina-match','tech','catalog-trails'].every(section=>destinations.secondary.some(href=>
           new RegExp('^/'+section+'/(?:(?:pt-br|es|fr|de|it|tr|ru|ar|hi|id|ja|ko|zh)/)?$').test(href))),
         JSON.stringify({...destinations,path:new URL(page.url()).pathname}));
@@ -415,6 +416,40 @@ async function aiQuestion(page,question,expected,label){
      record('device '+device.name,false,String(error.stack||error).slice(0,500));
      await shot(page,device.name+'-failure');
    }finally{await context.close();}
+  }
+  // Exercise the new static guide in the same single release smoke, including
+  // 320px touch layout, RTL and Traditional Chinese. Isolated contexts keep
+  // editorial language checks out of the existing matching/account flows.
+  for(const device of cases){
+   for(const lang of ['en','ar','zh-TW']){
+    const guideContext=await browser.newContext({viewport:{width:device.width,height:device.height},
+      isMobile:device.isMobile,hasTouch:device.hasTouch,deviceScaleFactor:1,locale:'en-US'});
+    const guidePage=await guideContext.newPage();
+    const route='/trending/us/2026-11-05/'+(lang==='en'?'':lang.toLowerCase()+'/');
+    try{
+      await observed(guidePage,route);
+      await guidePage.locator('h1').waitFor({state:'visible',timeout:15000});
+      const state=await guidePage.evaluate(()=>({
+        lang:document.documentElement.lang,dir:document.documentElement.dir,
+        canonical:document.querySelector('link[rel="canonical"]')?.href,
+        cards:document.querySelectorAll('[data-trend-id]').length,
+        sources:document.querySelectorAll('.ust-method li').length,
+        overflow:document.documentElement.scrollWidth>document.documentElement.clientWidth+1,
+        emptyCards:[...document.querySelectorAll('[data-trend-id]')].some(el=>el.getBoundingClientRect().width<1),
+        title:document.querySelector('h1')?.textContent.trim()
+      }));
+      await guidePage.locator('.channel-header summary').click();
+      const languages=await guidePage.locator('.channel-language-list a').evaluateAll(links=>
+        links.length===15&&links.every(link=>link.getClientRects().length>0&&link.textContent.trim()));
+      await guidePage.locator('.channel-header summary').click();
+      record('U.S. trends authored locale and responsive layout '+lang+' '+device.name,
+        state.lang===(lang==='en'?'en-US':lang)&&state.dir===(lang==='ar'?'rtl':'ltr')&&
+        state.canonical==='https://matchapp.tv'+route&&state.cards===30&&state.sources===11&&
+        !state.overflow&&!state.emptyCards&&!!state.title&&languages,JSON.stringify({...state,languages}));
+      await shot(guidePage,device.name+'-us-trends-'+lang.toLowerCase());
+    }catch(error){record('U.S. trends '+lang+' '+device.name,false,String(error.message||error).slice(0,300));}
+    finally{await guideContext.close();}
+   }
   }
   // One legitimate live match, separate from scripted stub tests. It consumes
   // one guest allowance and must reveal a non-placeholder title and poster.

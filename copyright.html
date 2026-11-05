@@ -82,10 +82,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2>Notice and takedown</h2>
 <p>Rights holders: email <a href="mailto:support@matchapp.tv">support@matchapp.tv</a> with the URL, the work claimed, and your contact details. We will review and remove or correct material that we control.</p>
 <p>Do not scrape MatchApp, copy the prompt layer, or republish our original event artwork without written permission.</p>
+<section data-source-rights hidden></section>
 <p><a href="/terms.html">Terms of Service</a> govern use of the product.</p>
 </article>
 </main>
 <script src="/settings.js?v=20260924-runtime1&amp;posters=20261020-1&amp;dialogs=20261020-1&amp;accountphoto=20261020-1&amp;brandlocale=20261020-1&amp;androidqa=20261021-1&amp;perf=20261027-1&amp;errors=20261027-2"></script>
+<script>
+if(!window.MATCHAPP_ANDROID&&!window.MatchAppNativeStartup&&!window.MatchAppNativeAuth&&
+  !window.MatchAppNativeExperience&&!window.MatchAppNativePageState&&
+  !/MatchAppTVAndroid|MatchAppAiAndroid|MatchAppAiKidsAndroid/i.test(navigator.userAgent||'')&&
+  !document.documentElement.classList.contains('matchapp-android')&&
+  new URLSearchParams(location.search||'').get('utm_source')!=='android_app'){
+  import('/source-credits-browser.mjs?v=20261105-1')
+    .then(module=>module.mountSourceRights(document.querySelector('[data-source-rights]'))).catch(()=>{});
+}
+</script>
 <script defer src="/poster-wall.js?v=20260922-global1&amp;posters=20261020-1&ui=20261024-1&amp;masthead=20261025-1" data-page-shell="wall"></script>
 <script defer src="/page-shell.js?v=20261011-brandlock1&amp;approvedlogo=20261014" data-page-shell="1"></script>
 <script defer src="/brand-lock-20261011.js?v=20261011-a1"></script>

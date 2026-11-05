@@ -94,6 +94,56 @@ function stampLocaleHtml(html,file='index.html') {
   return stampLocaleRuntime(stamped,file);
 }
 
+// The browser source-credit repair changes three runtimes and two lazy-loader
+// chains. A fixed locale71 marker cannot refresh this later release.
+const sourceCreditRevision='20261105-1';
+const sourceCreditAssets=new Set(['catalog-media.js','discover.js','ebooks/ebook-matcher.js',
+  'ebooks/reading-ai.js','final-wiring.js','build-meta.js']);
+const sourceCreditAncestorPages=new Set(['index.html','discover.html','together.html']);
+function stampSourceCreditUrl(raw,file,html=false) {
+  const decoded=raw.replace(/&amp;/g,'&');
+  let url;try{url=new URL(decoded,'https://matchapp.tv/'+file);}catch(_){return raw;}
+  if(!['matchapp.tv','www.matchapp.tv'].includes(url.hostname)||!sourceCreditAssets.has(url.pathname.slice(1)))return raw;
+  // Only these pages activate final-wiring's catalog fallback. Other build-meta
+  // consumers do not need a new ancestor URL for this repair.
+  if(url.pathname==='/build-meta.js'&&!sourceCreditAncestorPages.has(file))return raw;
+  const hashAt=decoded.indexOf('#'),fragment=hashAt<0?'':decoded.slice(hashAt);
+  const body=hashAt<0?decoded:decoded.slice(0,hashAt),queryAt=body.indexOf('?');
+  const pathname=queryAt<0?body:body.slice(0,queryAt);
+  const params=queryAt<0?[]:body.slice(queryAt+1).split('&').filter(part=>!/^sourcecredit(?:=|$)/.test(part));
+  // Keep the marker before a possibly concatenated '?v='+version value.
+  const stamped=pathname+'?sourcecredit='+sourceCreditRevision+(params.length?'&'+params.join('&'):'')+fragment;
+  return html?stamped.replace(/&/g,'&amp;'):stamped;
+}
+function stampSourceCreditRuntime(source,file) {
+  if(!localePublicFile(file))return source;
+  source=source.replace(/(\b[\w$.]+\.src\s*=\s*)(["'\x60])([^"'\x60\r\n]+)\2/g,
+    (match,prefix,quote,url)=>prefix+quote+stampSourceCreditUrl(url,file)+quote);
+  source=source.replace(/(\b(?:import\s*\(\s*|(?:import|from)\s+))(["'\x60])([^"'\x60\r\n]+)\2/g,
+    (match,prefix,quote,url)=>prefix+quote+stampSourceCreditUrl(url,file)+quote);
+  if(file==='final-wiring.js'){
+    const marker='/* sourcecredit-loader */',end='/* /sourcecredit-loader */';
+    const addition=marker+'if(src==="/catalog-media.js")s.setAttribute("src",s.getAttribute("src")+"&sourcecredit='+sourceCreditRevision+'");'+end;
+    if(source.includes(marker)){
+      source=source.replace(/\/\* sourcecredit-loader \*\/[\s\S]*?\/\* \/sourcecredit-loader \*\//,addition);
+    }else{
+      const loader=/(function js\(src\)\{[\s\S]*?)(document\.head\.appendChild\(s\))/;
+      if(!loader.test(source))throw new Error('Source-credit loader contract changed: '+file);
+      source=source.replace(loader,(match,prefix,append)=>prefix+addition+append);
+    }
+  }
+  return source;
+}
+function stampSourceCreditHtml(html,file='index.html') {
+  if(!localePublicFile(file))return html;
+  const stamped=html.replace(/<(script|link)\b[^<>]*>/gi,(tag,kind)=>{
+    if(kind.toLowerCase()==='link'&&!/\brel\s*=\s*(["'])(?:preload|modulepreload)\1/i.test(tag))return tag;
+    const attribute=kind.toLowerCase()==='script'?/(\ssrc\s*=\s*)(["'])([^"']+)\2/i:/(\shref\s*=\s*)(["'])([^"']+)\2/i;
+    return tag.replace(attribute,(match,prefix,quote,url)=>prefix+quote+stampSourceCreditUrl(url,file,true)+quote);
+  });
+  return stampSourceCreditRuntime(stamped,file);
+}
+
 // This is a distribution step. Leave source fixtures, native bundles and separate products alone.
 const excluded=new Set(['android-studio','artifacts','kids','lumina-match','node_modules','oauth','private-voice','reelforge','reports','tests','tools']);
 function stampPublicHtml(dir=root,top=true,base=dir) {
@@ -105,16 +155,16 @@ function stampPublicHtml(dir=root,top=true,base=dir) {
     const relative=path.relative(base,file).split(path.sep).join('/');
     if(item.isFile() && (brandRuntime.has(relative) || relative==='patches/jonas-adult-page.js' || localeAssets.has(relative))) {
       const source=fs.readFileSync(file,'utf8');
-      const stamped=stampLocaleRuntime(stampControlFlow(stampBrandReferences(source)),relative);
+      const stamped=stampSourceCreditRuntime(stampLocaleRuntime(stampControlFlow(stampBrandReferences(source)),relative),relative);
       if(stamped!==source) { fs.writeFileSync(file,stamped); changed++; }
       continue;
     }
     if(!item.isFile() || !/\.html$/i.test(item.name) || /^(?:callback|confirm)\.html$/i.test(item.name)) continue;
     const html=fs.readFileSync(file,'utf8');
-    const stamped=stampLocaleHtml(stampControlFlow(stampBrandReferences(stampDiscoveryAssets(html),true),true),relative);
+    const stamped=stampSourceCreditHtml(stampLocaleHtml(stampControlFlow(stampBrandReferences(stampDiscoveryAssets(html),true),true),relative),relative);
     if(stamped!==html) { fs.writeFileSync(file,stamped); changed++; }
   }
   return changed;
 }
-module.exports={stampDiscoveryAssets,stampBrandReferences,stampControlFlow,stampLocaleHtml,stampLocaleRuntime,stampPublicHtml};
+module.exports={stampDiscoveryAssets,stampBrandReferences,stampControlFlow,stampLocaleHtml,stampLocaleRuntime,stampSourceCreditHtml,stampSourceCreditRuntime,stampPublicHtml};
 if(require.main===module)console.log('Updated discovery and native feedback script URLs in '+stampPublicHtml()+' published pages.');
