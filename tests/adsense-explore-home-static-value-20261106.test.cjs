@@ -29,7 +29,7 @@ test('Home keeps a crawlable static intro and noscript fallback without touching
   const dom = new JSDOM(html);
   const intro = dom.window.document.getElementById('ma-home-static-intro');
   assert.ok(intro);
-  assert.deepEqual([...intro.querySelectorAll('a')].map(a => a.getAttribute('href')), ['/explore.html', '/how-it-works.html', '/guides/choose-what-to-watch/']);
+  assert.deepEqual([...intro.querySelectorAll('a')].map(a => a.getAttribute('href')), ['/explore.html', '/how-it-works.html', '/guides/choose-what-to-watch/', '/guides/what-to-watch-when-you-disagree/']);
   const fallback = dom.window.document.querySelector('noscript .ma-home-static-fallback');
   assert.ok(fallback);
   assert.ok(fallback.querySelector('a[href="/how-it-works.html"]'));

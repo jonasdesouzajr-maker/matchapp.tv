@@ -23,6 +23,7 @@ const CORE = [
     { loc: `${SITE}/sponsor/`, freq: "monthly", pri: "0.5" },
     { loc: `${SITE}/streaming/`, freq: "monthly", pri: "0.7" },
     { loc: `${SITE}/guides/choose-what-to-watch/`, freq: 'monthly', pri: '0.8' },
+    { loc: `${SITE}/guides/what-to-watch-when-you-disagree/`, freq: 'monthly', pri: '0.8' },
     { loc: `${SITE}/watch-night/`, freq: 'monthly', pri: '0.8' },
     { loc: `${SITE}/pt-br/noite-de-filme/`, freq: 'monthly', pri: '0.8' },
     { loc: `${SITE}/pt-br/ccxp-2026/`, freq: 'weekly', pri: '0.7' },
