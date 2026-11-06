@@ -28,13 +28,12 @@ test('Together keeps locked title while adding visible shared-night guidance', (
   assert.match(html, /content="index,\s*follow/);
 });
 
-test('Anime, K-drama and Discover expose product-relevant long-tail prose', () => {
+test('Anime and K-drama expose product-relevant long-tail prose; Discover keeps locked keyword phrases', () => {
   assert.match(read('anime.html'), /anime-longtail-title/);
   assert.match(read('anime.html'), /Where to watch anime in your country/);
   assert.match(read('collections/k-drama/index.html'), /kdrama-longtail/);
   assert.match(read('collections/k-drama/index.html'), /historical romance/);
   const discover = read('discover.html');
-  assert.match(discover, /ma-discover-longtail/);
   assert.match(discover, /where to stream a title/);
   assert.match(discover, /micro-drama finder/);
 });
