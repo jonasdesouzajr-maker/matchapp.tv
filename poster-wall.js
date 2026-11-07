@@ -1,4 +1,6 @@
-/* Decorative real-art collage: never shown in the child-safe Kids area.
+/* Browser collage uses existing original MatchApp illustrations (2026-11-05).
+   Native source-art behavior remains unchanged; never shown in Kids.
+   Historical source-art implementation notes follow:
    The wall is a dense, tilted key-art grid that fills the viewport. It needs
    far more tiles than the original sixteen, so every reviewed poster the site
    already ships is pooled: the wall list, the identity list, the verified
@@ -46,17 +48,22 @@
   void root;void body;return false;
  }
  async function load(url){try{const r=await fetch(url,{cache:'force-cache'});return r.ok?await r.json():null;}catch(_){return null;}}
+ const OWNED_ART=Object.freeze(['ask-this-old-house','die-hart','honest-renovations','martha-cooks','side-hustlers','the-great-american-baking-show','this-old-house','weird-the-al-yankovic-story'].map(name=>'/covers/'+name+'.svg'));
+ function nativeSurface(){return !!window.MATCHAPP_ANDROID||!!window.MatchAppNativeStartup||/MatchAppTVAndroid|MatchAppAiAndroid|MatchAppAiKidsAndroid/i.test(navigator.userAgent||'')||document.documentElement.classList.contains('matchapp-android');}
  async function boot(){
   // Home uses the same wall as the rest of the site: real title posters, one
   // node each, with all motion disabled by poster-wall.css.
   if(kids()||document.querySelector('.poster-wall'))return;
   if(themeHidesWall())return;
   try{
-   const [wallList,identities,watchIds]=await Promise.all([
+   const native=nativeSurface();
+   // Decorative reuse of third-party posters is not covered by attribution.
+   // Browsers retain the same grid using existing original MatchApp covers.
+   const [wallList,identities,watchIds]=native?await Promise.all([
     load('/data/poster-wall.json'),
     load('/data/poster-identities.json'),
     load('/data/watch-poster-identities.json')
-   ]);
+   ]):[[],[],null];
    const seen=new Set(),files=[];
    const add=value=>{
     if(typeof value!=='string'||!SAFE.test(value))return;
@@ -67,8 +74,9 @@
    (Array.isArray(wallList)?wallList:[]).forEach(entry=>{if(entry)add(entry.poster);});
    (Array.isArray(identities)?identities:[]).forEach(entry=>{if(entry&&entry.adult!==true)add(entry.poster);});
    ((watchIds&&Array.isArray(watchIds.entries))?watchIds.entries:[]).forEach(entry=>{if(entry&&entry.adult!==true)add(entry.poster);});
-   try{if(typeof VERIFIED_POSTERS==='object'&&VERIFIED_POSTERS)Object.keys(VERIFIED_POSTERS).forEach(k=>add(VERIFIED_POSTERS[k]));}catch(_){}
-   document.querySelectorAll('#trending-rail .marquee-item img[src]').forEach(img=>add(img.getAttribute('src')));
+   try{if(native&&typeof VERIFIED_POSTERS==='object'&&VERIFIED_POSTERS)Object.keys(VERIFIED_POSTERS).forEach(k=>add(VERIFIED_POSTERS[k]));}catch(_){}
+   if(native)document.querySelectorAll('#trending-rail .marquee-item img[src]').forEach(img=>add(img.getAttribute('src')));
+   else files.push(...OWNED_ART);
    if(!files.length||themeHidesWall())return;
    // Enough tiles to fill the tilted grid at every breakpoint. With the pooled
    // catalogue this is reached without repeating; the modulo only matters if a
@@ -98,9 +106,9 @@
      const base='https://image.tmdb.org/t/p/';
      // Background renditions only. The tiles sit at ~100-170px behind a scrim,
      // so w185 is the largest rendition worth fetching even on retina.
-     img.src=base+'w154/'+posters[i];
+     img.src=native?base+'w154/'+posters[i]:posters[i];
      // Small tiles, but sharp on 2x/3x screens: w342 covers 100px at 3x.
-     img.srcset=base+'w154/'+posters[i]+' 154w, '+base+'w185/'+posters[i]+' 185w, '+base+'w342/'+posters[i]+' 342w';
+     if(native)img.srcset=base+'w154/'+posters[i]+' 154w, '+base+'w185/'+posters[i]+' 185w, '+base+'w342/'+posters[i]+' 342w';
      img.sizes='(max-width:700px) 66px, (max-width:1099px) 88px, 100px';
      img.alt='';img.loading='eager';img.decoding='async';img.fetchPriority='low';
      img.onerror=()=>{tile.hidden=true;};

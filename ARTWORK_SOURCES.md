@@ -30,3 +30,12 @@ The adult About page uses the unmodified **Alt short (blue)** SVG from [TMDB’s
 ### Tokyo International Film Festival guide
 
 `assets/events/tokyo-film-festival-2026.svg` is an original MatchApp Ai typographic cover with a fictional skyline and abstract projector beams. The browser card, guide and link previews use its 1024 × 1536 JPEG export. The festival name, dates and city identify the event and come from the [festival’s outline](https://2026.tiff-jp.net/en/tiff/outline.html). The artwork was drawn specifically for this guide, independently of the organizer’s poster, logos and photographs.
+
+
+## Browser rights remediation — 2026-11-05
+
+The owner authorized replacing unverified third-party material. Browser news now renders the five original `assets/news/topics/*.svg` topic illustrations with localized Illustration labels instead of publisher photographs. Source URLs, frozen records and publication dates remain unchanged. Publisher photo URLs retained in passive data attributes are used only by the existing native presentation; they are not browser image sources. Archived news social previews use the owned MatchApp Ai preview, not publisher images. Future news templates enforce the same policy without running the paused refresh.
+
+Browser decorative walls now use the eight existing original `covers/*.svg` designs documented above. Their dimensions, chunking, scroll behavior, Kids exclusion and share guard are preserved. Native wall source-art behavior is unchanged. This supersedes the earlier decorative-wall paragraph for web browsers only.
+
+This remediation is NOT a site-wide commercial-license grant: matching still uses TMDB-derived metadata and selected title artwork; its separate commercial licensing remains unresolved. Do not claim that removing decorative and news imagery clears TMDB API usage, all title art, or every third-party media permission. Keep the publisher review hold in place.
