@@ -19,6 +19,10 @@ const ROOT = path.join(__dirname, '..');
 const SITE = 'https://matchapp.tv';
 
 const CORE = [
+    { loc: `${SITE}/guides/where-to-watch-motor-city-2026/`, freq: 'monthly', pri: '0.8' },
+    { loc: `${SITE}/pt-br/guias/motor-city-2026-onde-assistir/`, freq: 'monthly', pri: '0.8' },
+    { loc: `${SITE}/guides/streaming-music-november-8-2026/`, freq: 'monthly', pri: '0.8' },
+    { loc: `${SITE}/pt-br/guias/streaming-musica-8-novembro-2026/`, freq: 'monthly', pri: '0.8' },
     { loc: `${SITE}/founder/`, freq: 'monthly', pri: '0.6' },
     { loc: `${SITE}/sponsor/`, freq: "monthly", pri: "0.5" },
     { loc: `${SITE}/streaming/`, freq: "monthly", pri: "0.7" },
