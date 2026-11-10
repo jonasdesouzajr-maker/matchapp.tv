@@ -85,7 +85,9 @@ for density, size in (("mdpi", 48), ("hdpi", 72), ("xhdpi", 96), ("xxhdpi", 144)
     for name in ("ic_launcher", "ic_launcher_round"):
         rows = rgba_png(RES / f"mipmap-{density}/{name}.png", (size, size))
         assert rows[0][3] == rows[-1][-1] == 0, f"Unmasked legacy icon: {density}/{name}"
-        assert rows[size // 2][(size // 2) * 4 + 3] == 255
+        # The approved logo has intentional partial alpha, including its gold center.
+        assert rows[size // 2][(size // 2) * 4 + 3] >= 240, f"Missing legacy logo center: {density}/{name}"
+        assert sum(a > 8 for row in rows for a in row[3::4]) > size * size / 4, f"Empty legacy logo: {density}/{name}"
 rgba_png(RES / "drawable/ic_launcher_foreground.png", (512, 512))
 
 android = "{http://schemas.android.com/apk/res/android}"
