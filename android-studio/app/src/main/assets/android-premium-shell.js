@@ -419,7 +419,7 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
       if(!phone){const old=phoneGeometry.get(el)?.get(k);if(old)el.style.setProperty(k,old[0],old[1]);return}
       if(!phoneGeometry.has(el))phoneGeometry.set(el,new Map());
       if(!phoneGeometry.get(el).has(k))phoneGeometry.get(el).set(k,[el.style.getPropertyValue(k),el.style.getPropertyPriority(k)]);
-      el.dataset.maAndroidPhoneGeom='1';
+      if(el.dataset.maAndroidPhoneGeom!=='1')el.dataset.maAndroidPhoneGeom='1';
       if(el.style.getPropertyValue(k)!==v||el.style.getPropertyPriority(k)!=='important')el.style.setProperty(k,v,'important');
     }));
     set('#ma-reference-header',{padding:'8px 14px 10px','min-height':'0px'});
@@ -452,12 +452,12 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
     if(!phone){qsa('[data-ma-android-phone-geom="1"]').forEach(el=>delete el.dataset.maAndroidPhoneGeom);phoneGeometry.clear()}
   }
   function polishCinemaPosters(){
-    const width=window.innerWidth<=620?112:148;
+    const width=window.matchMedia('(max-width:620px)').matches?112:148;
     qsa('#trending-rail .marquee-item').forEach(el=>{
       const set=(node,k,v)=>{if(node&&node.style.getPropertyValue(k)!==v)node.style.setProperty(k,v,'important')};
       set(el,'width',width+'px');set(el,'min-width',width+'px');set(el,'max-width',width+'px');set(el,'height',(width*1.5+38)+'px');set(el,'flex','0 0 '+width+'px');set(el,'border-radius','14px');set(el,'margin','0px');
       const poster=el.querySelector(':scope>img');
-      if(poster){set(poster,'width',width+'px');set(poster,'height',(width*1.5)+'px');poster.sizes=width+'px'}
+      if(poster){set(poster,'width',width+'px');set(poster,'height',(width*1.5)+'px');if(poster.sizes!==width+'px')poster.sizes=width+'px'}
     });
   }
 
@@ -505,6 +505,12 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
   }
 
   let refreshQueued=false;
+  function refreshForStructuralChanges(records){
+    // Countdown, quota and caption text updates already inherit their styles.
+    // Repainting the entire native shell for each text tick forces layout work
+    // while the user scrolls. New or replaced elements still get the finish.
+    if(records.some(record=>Array.from(record.addedNodes).concat(Array.from(record.removedNodes)).some(node=>node.nodeType===1)))schedulePremiumRefresh();
+  }
   function schedulePremiumRefresh(){
     if(refreshQueued)return;
     refreshQueued=true;
@@ -803,7 +809,7 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
     document.addEventListener('toggle',event=>{if(event.target.matches?.('.ma-cinema-tools,.ref-explore-tools,.ma-reference-header-tools'))schedulePremiumRefresh()},true);
     new MutationObserver(schedulePremiumRefresh).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
     window.addEventListener('storage',e=>{if(e.key==='match_lang')setTimeout(schedulePremiumRefresh,0)});
-    new MutationObserver(schedulePremiumRefresh).observe(document.documentElement,{childList:true,subtree:true});
+    new MutationObserver(refreshForStructuralChanges).observe(document.documentElement,{childList:true,subtree:true});
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
