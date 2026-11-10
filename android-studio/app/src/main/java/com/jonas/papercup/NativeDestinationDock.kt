@@ -3,6 +3,8 @@ package com.jonas.papercup
 import android.animation.AnimatorInflater
 import android.animation.ValueAnimator
 import android.app.Activity
+import android.content.Context
+import android.content.ContextWrapper
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
@@ -194,6 +196,12 @@ class NativeDestinationDock(
         }
     }
 
+    private fun activityContext(context: Context): Activity? = when (context) {
+        is Activity -> context
+        is ContextWrapper -> if (context.baseContext !== context) activityContext(context.baseContext) else null
+        else -> null
+    }
+
     private fun applyAppearance(light: Boolean) {
         if (lightAppearance == light) return
         lightAppearance = light
@@ -213,7 +221,7 @@ class NativeDestinationDock(
         (web.parent as? View)?.setBackgroundColor(page)
         bar.rootView.findViewById<View>(R.id.root)?.setBackgroundColor(page)
         bar.rootView.findViewById<View>(R.id.ad_shell)?.setBackgroundColor(page)
-        (bar.context as? Activity)?.window?.let { window ->
+        activityContext(web.context)?.window?.let { window ->
             window.decorView.setBackgroundColor(page)
             WindowInsetsControllerCompat(window,window.decorView).apply {
                 isAppearanceLightStatusBars = light

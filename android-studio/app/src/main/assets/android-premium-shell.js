@@ -226,6 +226,9 @@
       @media(max-width:700px){html.matchapp-ai-android :is(main,.main-layout,.container,.wrap){padding-inline:12px!important}.mao-card{height:min(90vh,820px);height:min(90dvh,820px);border-radius:24px}.mao-head{padding:12px}.mao-head p{font-size:11px}}
       @media(prefers-reduced-motion:reduce){html.matchapp-ai-android *,html.matchapp-ai-android *:before,html.matchapp-ai-android *:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
+@layer ma-reference.refinement {
+html.matchapp-ai-android #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header #ma-donate-shortcut#ma-donate-shortcut::after {display:none!important}
+}
 @layer matchappAndroidCinema {
 
 html.matchapp-ai-android #ref-explore-header .ref-explore-tools>summary {display:grid!important;place-items:center!important;width:44px!important;height:44px!important;box-sizing:border-box!important;padding:10px!important;margin:0!important;background:#ffffff08!important;border:1px solid #ffffff0c!important;border-radius:16px!important}
@@ -341,7 +344,7 @@ html.matchapp-ai-android .ma-cinema-tools-content :is(button,a) svg {width:20px!
 html.matchapp-ai-android :is(.ja-bubble,.jh-bubble) {border:0!important;border-radius:50%!important;box-shadow:none!important;background:transparent!important}
 html.matchapp-ai-android :is(.ja-premium-face,.jh-portrait) {border-radius:50%!important}
 html.matchapp-ai-android #matchapp-viewer-country {border-radius:999px!important;border:1px solid var(--ma-native-line)!important;color:var(--ma-native-text)!important;background:var(--ma-native-field)!important;font:500 12px/1.3 system-ui!important}
-html.matchapp-ai-android #ma-reference-header-slot .ma-reference-jonas-caption {color:var(--ma-native-text)!important}
+html.matchapp-ai-android #ma-reference-header-slot .ma-reference-jonas-caption,html.matchapp-ai-android #ma-reference-header-slot .ma-reference-jonas-caption :is(strong,span) {color:var(--ma-native-text)!important}
 html.matchapp-ai-android .ma-android-appearance {display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;padding:0!important;margin:0 0 12px!important;border:0!important;min-width:0!important}
 html.matchapp-ai-android .ma-android-appearance>legend {float:left!important;grid-column:1/-1!important;width:100%!important;padding:0 4px 4px!important;margin:0!important;color:var(--ma-native-muted)!important;font:600 12px/1.4 system-ui!important}
 html.matchapp-ai-android .ma-android-appearance>button {display:flex!important;min-height:44px!important;border-radius:999px!important;gap:8px!important;align-items:center!important;justify-content:center!important}
@@ -358,6 +361,8 @@ html.matchapp-ai-android .ma-cinema-section-heading a {white-space:nowrap!import
 html.matchapp-ai-android #ma-android-match-launch {margin:12px 14px!important;padding:16px!important;border-radius:20px!important;gap:10px!important;background:var(--ma-native-surface)!important;border-color:var(--ma-native-line)!important}
 html.matchapp-ai-android #ma-android-match-launch h2 {font:700 20px/1.2 system-ui!important;color:var(--ma-native-text)!important;margin:4px 0 6px!important}
 html.matchapp-ai-android #ma-android-match-launch :is(p,small) {color:var(--ma-native-muted)!important}
+html.matchapp-ai-android #ma-android-match-launch :is(h2,h3) {color:var(--ma-native-text)!important}
+html.matchapp-ai-android #ma-android-match-launch p {color:var(--ma-native-muted)!important}
 html.matchapp-ai-android #ma-android-match-launch .mam-open {min-height:44px!important;border-radius:999px!important;background:var(--ma-native-accent)!important;color:var(--ma-native-ink)!important}
 html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal>.premium-card,#main-auth-modal>.auth-box,.profile-hub-row,.ref-explore-hero,.ref-editorial-banner,.ref-topic-caption) {background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
 html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal,.profile-hub-row,.ref-explore-hero,.ref-editorial-banner,.ref-topic-caption) :is(h2,h3,strong,label) {color:var(--ma-native-text)!important}
@@ -366,6 +371,7 @@ html.matchapp-ai-android :is(.mam-card,#main-auth-modal) :is(input,select,textar
 html.matchapp-ai-android :is(.mam-x,.mao-x,.ma-android-auth-x,#ma-ambient-panel .ja-close) {background:var(--ma-native-close)!important;color:var(--ma-native-close-text)!important;border-color:var(--ma-native-line)!important}
 html.matchapp-ai-android #ma-ambient-panel {background:var(--ma-native-bg)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
 html.matchapp-ai-android #ma-ambient-panel :is(.ja-panel-head,.ja-hello,.ma-guide-pills) {background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important}
+html.matchapp-ai-android #ma-ambient-panel .ma-guide-pills :is(a,button) {background:var(--ma-native-field)!important;color:var(--ma-native-text)!important;border:1px solid var(--ma-native-line)!important;box-shadow:none!important;min-height:44px!important}
 html.matchapp-ai-android #ma-ambient-panel :is(.ja-head-text strong,.ja-head-text span) {color:var(--ma-native-text)!important}
 html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marquee-title) {background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important}
 @media(max-width:620px){html.matchapp-ai-android #ma-reference-header .ma-masthead-intro {display:none!important}}
@@ -424,8 +430,8 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
     if(!phone){qsa('[data-ma-android-phone-geom="1"]').forEach(el=>delete el.dataset.maAndroidPhoneGeom);phoneGeometry.clear()}
   }
   function polishCinemaPosters(){
+    const width=window.innerWidth<=620?112:148;
     qsa('#trending-rail .marquee-item').forEach(el=>{
-      const width=window.innerWidth<=620?112:148;
       const set=(node,k,v)=>{if(node&&node.style.getPropertyValue(k)!==v)node.style.setProperty(k,v,'important')};
       set(el,'width',width+'px');set(el,'min-width',width+'px');set(el,'max-width',width+'px');set(el,'height',(width*1.5+38)+'px');set(el,'flex','0 0 '+width+'px');set(el,'border-radius','14px');set(el,'margin','0px');
       const poster=el.querySelector(':scope>img');
