@@ -1,0 +1,1 @@
+Yalnızca logoyu içeren yeni uygulama simgesi. İyileştirilmiş gezinme ve ortalanmış giriş ve profil panelleri. Gizlilik seçenekleriyle daha iyi sayfa yükleme ve reklam başlatma.
