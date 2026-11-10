@@ -364,6 +364,7 @@ html.matchapp-ai-android #ma-android-match-launch :is(p,small) {color:var(--ma-n
 html.matchapp-ai-android #ma-android-match-launch :is(h2,h3) {color:var(--ma-native-text)!important}
 html.matchapp-ai-android #ma-android-match-launch p {color:var(--ma-native-muted)!important}
 html.matchapp-ai-android #ma-android-match-launch .mam-open {min-height:44px!important;border-radius:999px!important;background:var(--ma-native-accent)!important;color:var(--ma-native-ink)!important}
+html.matchapp-ai-android .ma-auth-offer-fold {background:var(--ma-native-field)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
 html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal>.premium-card,#main-auth-modal>.auth-box,.profile-hub-row,.ref-explore-hero,.ref-editorial-banner,.ref-topic-caption) {background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
 html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal,.profile-hub-row,.ref-explore-hero,.ref-editorial-banner,.ref-topic-caption) :is(h2,h3,strong,label) {color:var(--ma-native-text)!important}
 html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal,.profile-hub-row,.ref-explore-hero,.ref-editorial-banner,.ref-topic-caption) :is(p,small) {color:var(--ma-native-muted)!important}
@@ -596,8 +597,8 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
     }
     const set=(el,props)=>Object.entries(props).forEach(([k,v])=>{if(el.style.getPropertyValue(k)!==v||el.style.getPropertyPriority(k)!=='important')el.style.setProperty(k,v,'important')});
     set(modal,{'z-index':'2147483550','box-sizing':'border-box',padding:'16px','align-items':'center','justify-content':'center'});
-    set(box,{position:'relative',width:'100%','max-width':'520px','max-height':'calc(100dvh - 32px)','box-sizing':'border-box','overflow-y':'auto',margin:'0px',padding:'20px','border-radius':'24px',background:'rgb(25, 19, 35)'});
-    set(x,{position:'sticky',float:'inline-end',margin:'0px 0px 8px 12px',right:'0px',top:'0px','z-index':'4',width:'44px',height:'44px','min-height':'44px','border-radius':'50%',background:'rgb(113, 44, 64)',color:'rgb(255, 207, 218)',border:'1px solid rgba(243, 140, 157, 0.25)'});
+    set(box,{position:'relative',width:'100%','max-width':'520px','max-height':'calc(100dvh - 32px)','box-sizing':'border-box','overflow-y':'auto',margin:'0px',padding:'20px','border-radius':'24px',background:'var(--ma-native-surface)'});
+    set(x,{position:'sticky',float:'inline-end',margin:'0px 0px 8px 12px',right:'0px',top:'0px','z-index':'4',width:'44px',height:'44px','min-height':'44px','border-radius':'50%',background:'var(--ma-native-close)',color:'var(--ma-native-close-text)',border:'1px solid rgba(243, 140, 157, 0.25)'});
   }
 
   function paintMatchOverlay(){
@@ -614,6 +615,18 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
       if(h&&h.textContent!==c.modal)h.textContent=c.modal;
       if(x&&x.getAttribute('aria-label')!==close)x.setAttribute('aria-label',close);
     }
+  }
+  function watchMatchPresentation(host,onReveal){
+    let submitted=false,finished=false;const beforeSubmit=new Map();
+    const visible=node=>node&&!node.hidden&&getComputedStyle(node).display!=='none'&&getComputedStyle(node).visibility!=='hidden';
+    const check=()=>{if(submitted&&!finished&&[qs('#loading-box'),qs('#result-box')].some(node=>visible(node)&&!beforeSubmit.get(node))){finished=true;onReveal()}};
+    const submit=event=>{if(event.target.closest('.gold-btn.ma-primary')){[qs('#loading-box'),qs('#result-box')].filter(Boolean).forEach(node=>beforeSubmit.set(node,visible(node)));submitted=true;queueMicrotask(check)}};
+    const observer=new MutationObserver(check);
+    [qs('#loading-box'),qs('#result-box')].filter(Boolean).forEach(node=>observer.observe(node,{attributes:true,attributeFilter:['style','hidden','class']}));
+    host.addEventListener('click',submit,true);
+    const matched=()=>{if(submitted&&!finished){finished=true;onReveal()}};
+    document.addEventListener('matchapp:newmatch',matched);
+    return()=>{finished=true;observer.disconnect();host.removeEventListener('click',submit,true);document.removeEventListener('matchapp:newmatch',matched)};
   }
   function installMatchOverlay(){
     if(qs('#ma-android-match-launch')||!qs('#questionnaire-box'))return;
@@ -635,7 +648,9 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
       const body=host.querySelector('.mam-body');
       box.hidden=false;box.style.removeProperty('display');body.appendChild(box);
       const previousFocus=document.activeElement,previousOverflow=document.body.style.overflow;document.body.style.overflow='hidden';
-      const close=()=>{document.body.style.overflow=previousOverflow;previousFocus?.focus?.();box.hidden=true;box.style.setProperty('display','none','important');marker.parentNode.insertBefore(box,marker.nextSibling);host.remove()};
+      let closed=false,stopWatching=()=>{};
+      const close=(revealing=false)=>{if(closed)return;closed=true;stopWatching();document.body.style.overflow=previousOverflow;if(revealing!==true)previousFocus?.focus?.({preventScroll:true});box.hidden=true;box.style.setProperty('display','none','important');marker.parentNode.insertBefore(box,marker.nextSibling);host.remove()};
+      stopWatching=watchMatchPresentation(host,()=>close(true));
       host.querySelector('.mam-x').onclick=close;
       host.addEventListener('click',e=>{if(e.target===host)close()});
       document.body.appendChild(host);
