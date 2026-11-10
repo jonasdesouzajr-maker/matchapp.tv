@@ -12,6 +12,7 @@ import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.RequestConfiguration
 import com.google.android.material.button.MaterialButton
 import com.google.android.ump.ConsentInformation
 import com.google.android.ump.ConsentRequestParameters
@@ -36,6 +37,7 @@ class AdMobController(
     private var adsInitializationCompleted = false
     private var consentFlowStarted = false
     private var entitlementAdFree = true
+    private var entitlementPending = true
     private var bannerRequestStarted = false
     private var bannerLoaded = false
     private var destroyed = false
@@ -62,10 +64,34 @@ class AdMobController(
         }
     }
 
+    /**
+     * MatchApp Ai never requests Google's MA-rated ad inventory. Preserve any
+     * other app-level request settings, but cap this adult Android app at T so
+     * sexual/explicit MA creative is excluded before any banner/reward request.
+     * If the SDK cannot accept the policy, ads fail closed.
+     */
+    private fun applySafeAdContentPolicy(): Boolean {
+        return try {
+            val safe = MobileAds.getRequestConfiguration()
+                .toBuilder()
+                .setMaxAdContentRating(RequestConfiguration.MAX_AD_CONTENT_RATING_T)
+                .build()
+            MobileAds.setRequestConfiguration(safe)
+            true
+        } catch (error: RuntimeException) {
+            suppressAds(error)
+            false
+        } catch (error: LinkageError) {
+            suppressAds(error)
+            false
+        }
+    }
+
     fun start() {
         shell.visibility = View.GONE
         privacyButton.visibility = View.GONE
         if (!BuildConfig.ADMOB_ENABLED || BuildConfig.ADMOB_BANNER_ID.isBlank()) return
+        if (!applySafeAdContentPolicy()) return
 
         privacyButton.setOnClickListener {
             if (entitlementAdFree || !isConsentUiAvailable()) return@setOnClickListener
@@ -102,6 +128,7 @@ class AdMobController(
             withLiveActivity { setAdFree(adFree) }
             return
         }
+        entitlementPending = false
         entitlementAdFree = adFree
         if (adFree) {
             privacyButton.visibility = View.GONE
@@ -116,6 +143,23 @@ class AdMobController(
             if (adsInitialized && consentInformation.canRequestAds()) loadBanner()
             else maybeRequestAds()
         }
+        updateShellVisibility()
+    }
+
+    /**
+     * Authenticated pages briefly re-hydrate profile/Pro state on each document.
+     * Fail closed visually without destroying a healthy banner while that check
+     * is pending; an authoritative ad-free result still destroys it immediately.
+     */
+    fun setEntitlementPending() {
+        if (!BuildConfig.ADMOB_ENABLED || BuildConfig.ADMOB_BANNER_ID.isBlank() || destroyed) return
+        if (Looper.myLooper() != Looper.getMainLooper()) {
+            withLiveActivity { setEntitlementPending() }
+            return
+        }
+        entitlementPending = true
+        privacyButton.visibility = View.GONE
+        updateShellVisibility()
     }
 
     private fun startConsentFlow() {
@@ -162,7 +206,7 @@ class AdMobController(
 
     private fun maybeRequestAds() {
         if (!isConsentUiAvailable() || !BuildConfig.ADMOB_ENABLED ||
-            entitlementAdFree || adsInitialized || adInitFailed ||
+            entitlementPending || entitlementAdFree || adsInitialized || adInitFailed ||
             !consentInformation.canRequestAds()
         ) return
         adsInitialized = true // Claim single init before launching the worker.
@@ -172,7 +216,7 @@ class AdMobController(
                 MobileAds.initialize(activity.applicationContext) {
                     withLiveActivity {
                         adsInitializationCompleted = true
-                        if (!entitlementAdFree && consentInformation.canRequestAds()) loadBanner()
+                        if (!entitlementPending && !entitlementAdFree && consentInformation.canRequestAds()) loadBanner()
                     }
                 }
             } catch (error: RuntimeException) {
@@ -184,13 +228,13 @@ class AdMobController(
     }
 
     private fun loadBanner() {
-        if (!isConsentUiAvailable() || entitlementAdFree || bannerRequestStarted ||
+        if (!isConsentUiAvailable() || !adsInitializationCompleted || entitlementPending || entitlementAdFree || bannerRequestStarted ||
             adInitFailed || !consentInformation.canRequestAds()
         ) return
         bannerRequestStarted = true
         val generation = ++bannerGeneration
         bannerContainer.post {
-            if (!isConsentUiAvailable() || entitlementAdFree ||
+            if (!isConsentUiAvailable() || entitlementPending || entitlementAdFree ||
                 adInitFailed || !consentInformation.canRequestAds() ||
                 generation != bannerGeneration
             ) {
@@ -202,14 +246,18 @@ class AdMobController(
                 val widthPixels = bannerContainer.width.takeIf { it > 0 }
                     ?: activity.resources.displayMetrics.widthPixels
                 val widthDp = (widthPixels / density).toInt().coerceAtLeast(1)
-                // Retain the established reserved banner geometry across supported devices.
-                @Suppress("DEPRECATION")
-                val adaptiveSize =
+                // Phones get the compact 320x50 banner so monetization does not
+                // compete with navigation/content. Larger screens keep anchored adaptive ads.
+                val bannerSize = if (activity.resources.configuration.smallestScreenWidthDp < 600) {
+                    AdSize.BANNER
+                } else {
+                    @Suppress("DEPRECATION")
                     AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(activity, widthDp)
+                }
 
                 val nextAdView = AdView(activity).apply {
                     adUnitId = BuildConfig.ADMOB_BANNER_ID
-                    setAdSize(adaptiveSize)
+                    setAdSize(bannerSize)
                     adListener = object : AdListener() {
                         override fun onAdLoaded() {
                             android.util.Log.i("MatchAppAds", "banner onAdLoaded")
@@ -263,7 +311,7 @@ class AdMobController(
 
     private fun updatePrivacyUi() {
         val required =
-            !entitlementAdFree &&
+            !entitlementPending && !entitlementAdFree &&
                 consentInformation.privacyOptionsRequirementStatus ==
                     ConsentInformation.PrivacyOptionsRequirementStatus.REQUIRED
         privacyButton.visibility = if (required) View.VISIBLE else View.GONE
@@ -272,14 +320,15 @@ class AdMobController(
 
     private fun updateShellVisibility() {
         shell.visibility =
-            if (bannerLoaded || privacyButton.visibility == View.VISIBLE) View.VISIBLE else View.GONE
+            if (!entitlementPending && (bannerLoaded || privacyButton.visibility == View.VISIBLE)) View.VISIBLE else View.GONE
     }
 
     /** Read-only access for separately requested rewarded ads; never starts or changes banner work. */
     fun canRequestRewarded(): Boolean =
         Looper.myLooper() == Looper.getMainLooper() && isConsentUiAvailable() &&
             BuildConfig.ADMOB_ENABLED && adsInitializationCompleted && !adInitFailed &&
-            !entitlementAdFree && runCatching { consentInformation.canRequestAds() }.getOrDefault(false)
+            !entitlementPending && !entitlementAdFree &&
+            runCatching { consentInformation.canRequestAds() }.getOrDefault(false)
 
     fun pause() {
         if (!destroyed) runCatching { adView?.pause() }.onFailure { suppressAds(it) }

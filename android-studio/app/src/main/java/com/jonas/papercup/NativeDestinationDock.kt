@@ -29,9 +29,11 @@ class NativeDestinationDock(
     private val web: WebView,
     private val playHaptic: (LongArray) -> Unit
 ) {
-    private val icons = listOf(R.drawable.ic_dock_home, R.drawable.ic_dock_explore, R.drawable.ic_dock_matches,
+    private val icons = listOf(R.drawable.ic_dock_home, R.drawable.ic_dock_explore, R.drawable.matchapp_logo_exact,
         R.drawable.ic_dock_list, R.drawable.ic_dock_profile)
     private val script by lazy { web.context.assets.open("native-destination-dock.js").bufferedReader().use { it.readText() } }
+    private val brandScript by lazy { web.context.assets.open("android-brand-data.js").bufferedReader().use { it.readText() } }
+    private val premiumScript by lazy { web.context.assets.open("android-premium-shell.js").bufferedReader().use { it.readText() } }
     private val explore = NativeExploreSheet(bar.context)
     private val exploreActionId = View.generateViewId()
     private val exploreAccessibility = object : AccessibilityDelegateCompat() {
@@ -63,17 +65,40 @@ class NativeDestinationDock(
 
     fun install() {
         if (!WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER)) return
-        bar.background = GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,
-            intArrayOf(Color.rgb(38,32,50), Color.rgb(22,19,31)))
-        bar.elevation = 8 * density
+        bar.background = GradientDrawable(
+            GradientDrawable.Orientation.TL_BR,
+            intArrayOf(Color.rgb(34, 25, 46), Color.rgb(18, 17, 25), Color.rgb(11, 11, 15))
+        ).apply {
+            cornerRadius = 24 * density
+            setStroke((0.8f * density).toInt().coerceAtLeast(1), Color.argb(42, 211, 183, 241))
+        }
+        // MainActivity already reserves system bars for the parent content.
+        // Material's default inset listener would reserve them again here and
+        // squeeze the label group to a single pixel on compact phone layouts.
+        ViewCompat.setOnApplyWindowInsetsListener(bar) { view, insets ->
+            val padding = (4 * density).toInt()
+            view.setPadding(0, padding, 0, padding)
+            insets
+        }
+        bar.itemPaddingTop = (6 * density).toInt()
+        bar.itemPaddingBottom = (6 * density).toInt()
+        bar.elevation = 18 * density
+        bar.translationZ = 10 * density
         bar.itemIconTintList = null
-        bar.itemTextColor = ColorStateList(arrayOf(intArrayOf(android.R.attr.state_checked), intArrayOf()),
-            intArrayOf(Color.rgb(255,226,165), Color.rgb(218,211,230)))
+        bar.itemIconSize = (24 * density).toInt()
+        bar.setItemTextAppearanceActive(R.style.TextAppearance_MatchApp_Dock)
+        bar.setItemTextAppearanceInactive(R.style.TextAppearance_MatchApp_Dock)
+        bar.itemTextColor = ColorStateList(
+            arrayOf(intArrayOf(android.R.attr.state_checked), intArrayOf()),
+            intArrayOf(Color.rgb(255, 226, 165), Color.rgb(201, 195, 211))
+        )
         bar.isItemActiveIndicatorEnabled = true
-        bar.itemActiveIndicatorColor = ColorStateList.valueOf(Color.rgb(75,56,91))
+        bar.itemActiveIndicatorColor = ColorStateList.valueOf(Color.rgb(78, 54, 94))
         bar.labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
         bar.isItemHorizontalTranslationEnabled = false
-        icons.forEachIndexed { index, icon -> bar.menu.add(0,index+1,index,"").setIcon(icon) }
+        val initialLabels = listOf("Home", "Explore", "Matches", "My List", "Profile")
+        icons.forEachIndexed { index, icon -> bar.menu.add(0,index+1,index,initialLabels[index]).setIcon(icon) }
+        bar.labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
         fun sendCommand(message: String) {
             if (!requested || keyboard || documentUrl != web.url) return
             explorePending = message == "explore:1"
@@ -190,8 +215,11 @@ class NativeDestinationDock(
     }
 
     fun attach(url: String?) {
-        if (allowed(url) && WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER))
+        if (allowed(url) && WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER)) {
+            web.evaluateJavascript(brandScript,null)
             web.evaluateJavascript(script,null)
+            web.evaluateJavascript(premiumScript,null)
+        }
     }
 
     fun setKeyboard(visible: Boolean) { keyboard=visible; render() }

@@ -48,7 +48,7 @@ test('Top Titles drag is Android-only, two-way, tap-safe, and preserves vertical
  assert.match(main,/vp\.__railHold\?\.\(\)/);
 });
 test('Every adult launcher size is padded, the startup mark is circular and Kids icons are unmodified',()=>{
- assert.match(main,/setImageResource\(R\.drawable\.ic_launcher_foreground\)/);
+ assert.match(main,/setImageResource\(R\.drawable\.matchapp_logo_exact\)/);
  assert.doesNotMatch(main,/setImageResource\(R\.drawable\.matchapp_official_icon\)/);
  assert.deepEqual(dims(path.join(base,'drawable/ic_launcher_foreground.png')),[512,512]);
  const sizes={mdpi:48,hdpi:72,xhdpi:96,xxhdpi:144,xxxhdpi:192};

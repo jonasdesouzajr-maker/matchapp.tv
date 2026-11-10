@@ -1,0 +1,1 @@
+Novo ícone com apenas o logo. Navegação refinada e painéis de acesso e perfil centralizados. Melhorias no carregamento e na inicialização dos anúncios, com opções de privacidade.

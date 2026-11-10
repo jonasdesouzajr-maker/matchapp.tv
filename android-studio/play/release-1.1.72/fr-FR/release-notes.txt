@@ -1,0 +1,1 @@
+Nouvelle icône avec le logo seul. Navigation affinée et panneaux de connexion et de profil centrés. Chargement et démarrage des annonces améliorés, avec choix de confidentialité.

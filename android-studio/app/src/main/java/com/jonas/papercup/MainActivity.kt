@@ -80,6 +80,7 @@ class MainActivity : AppCompatActivity() {
     private var nativeRewardedBridge: NativeRewardedBridge? = null
     private var nativePlayBillingBridge: NativePlayBillingBridge? = null
     private var nativeNewsBridge: NativeNewsBridge? = null
+    private var nativeOnboardingOverlay: NativeOnboardingOverlay? = null
 
     private var filePathCallback: ValueCallback<Array<Uri>>? = null
     private var customView: View? = null
@@ -92,6 +93,8 @@ class MainActivity : AppCompatActivity() {
     private val introDeadline = Runnable { finishIntro() }
     private var introRevealFailsafe: Runnable? = null
     private var startupHost: FrameLayout? = null
+    private var routeTransitionHost: FrameLayout? = null
+    private var routeTransitionDeadline: Runnable? = null
     private val startupDeadline = Runnable { finishStartupTransition() }
     private val startupPrefs by lazy { getSharedPreferences(STARTUP_PREFS, MODE_PRIVATE) }
     private var growthReferrer: GrowthInstallReferrer? = null
@@ -251,12 +254,14 @@ class MainActivity : AppCompatActivity() {
         web.setBackgroundColor(Color.parseColor("#101010"))
         web.webViewClient = MatchClient()
         web.webChromeClient = MatchChrome()
+        nativeOnboardingOverlay = NativeOnboardingOverlay(this, findViewById(R.id.root), web)
         installPageStateBridge()
         installStartupPermissionBridge()
         web.addJavascriptInterface(NativeVoiceBridge(), "MatchAppNativeVoice")
         web.addJavascriptInterface(NativeStartupBridge(), "MatchAppNativeStartup")
         web.addJavascriptInterface(NativeExperienceBridge(), "MatchAppNativeExperience")
         web.addJavascriptInterface(NativeAuthBridge(), "MatchAppNativeAuth")
+        web.addJavascriptInterface(NativeOnboardingBridge(), "MatchAppNativeOnboarding")
         web.addJavascriptInterface(nativeFx, "MatchAppFx")
         nativeRewardedBridge = NativeRewardedBridge(
             this, web,
@@ -288,6 +293,7 @@ class MainActivity : AppCompatActivity() {
                 cancelPendingPageRestore()
                 when {
                     introHost != null -> finishIntro()
+                    nativeOnboardingOverlay?.isShowing == true -> nativeOnboardingOverlay?.close(showNudge = true)
                     customView != null -> hideCustomView()
                     else -> web.evaluateJavascript(
                         "(window.MatchAppHandleBack&&window.MatchAppHandleBack())===true"
@@ -560,6 +566,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         if (::destinationDock.isInitialized) destinationDock.onDocumentChanged()
+        hideRouteTransition(immediate = true)
         publicPageRetry?.let { web.removeCallbacks(it) }
         publicPageRetry = null
         growthReferrer?.close()
@@ -572,6 +579,8 @@ class MainActivity : AppCompatActivity() {
         nativePlayBillingBridge = null
         nativeNewsBridge?.destroy()
         nativeNewsBridge = null
+        nativeOnboardingOverlay?.destroy()
+        nativeOnboardingOverlay = null
         adMobController?.destroy()
         adMobController = null
         inlineVoiceRecognizer?.destroy()
@@ -620,7 +629,7 @@ class MainActivity : AppCompatActivity() {
             isFocusable = true
         }
         val logo = ImageView(this).apply {
-            setImageResource(R.drawable.ic_launcher_foreground)
+            setImageResource(R.drawable.matchapp_logo_exact)
             scaleType = ImageView.ScaleType.CENTER_INSIDE
             alpha = 0f
             scaleX = 0.94f
@@ -665,6 +674,51 @@ class MainActivity : AppCompatActivity() {
                 maybeShowPermissionSetup()
             }
             .start()
+    }
+
+    private fun showRouteTransition() {
+        if (startupHost != null || introHost != null || routeTransitionHost != null || isFinishing || isDestroyed) return
+        val root = findViewById<FrameLayout>(R.id.root)
+        val host = FrameLayout(this).apply {
+            setBackgroundColor(Color.parseColor("#0B0812"))
+            isClickable = true
+            isFocusable = true
+            alpha = 0f
+        }
+        val logo = ImageView(this).apply {
+            setImageResource(R.drawable.matchapp_logo_exact)
+            scaleType = ImageView.ScaleType.CENTER_INSIDE
+            alpha = 0.94f
+            scaleX = 0.94f
+            scaleY = 0.94f
+        }
+        val size = (72 * resources.displayMetrics.density).toInt()
+        host.addView(logo, FrameLayout.LayoutParams(size, size, android.view.Gravity.CENTER))
+        routeTransitionHost = host
+        root.addView(host, FrameLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        ))
+        host.animate().alpha(1f).setDuration(80L).start()
+        logo.animate().scaleX(1f).scaleY(1f).setDuration(180L).start()
+        routeTransitionDeadline = Runnable { hideRouteTransition(immediate = true) }.also {
+            root.postDelayed(it, 2600L)
+        }
+    }
+
+    private fun hideRouteTransition(immediate: Boolean = false) {
+        val root = findViewById<FrameLayout>(R.id.root)
+        routeTransitionDeadline?.let(root::removeCallbacks)
+        routeTransitionDeadline = null
+        val host = routeTransitionHost ?: return
+        routeTransitionHost = null
+        if (immediate) {
+            (host.parent as? ViewGroup)?.removeView(host)
+            return
+        }
+        host.animate().alpha(0f).setDuration(120L).withEndAction {
+            (host.parent as? ViewGroup)?.removeView(host)
+        }.start()
     }
 
     private fun markIntroSeen() {
@@ -1113,14 +1167,14 @@ class MainActivity : AppCompatActivity() {
 
     private inner class MatchClient : WebViewClient() {
         override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
-            if (isAdultAiDocument(request.url)) view.settings.cacheMode = WebSettings.LOAD_NO_CACHE
+            view.settings.cacheMode = if (isAdultAiDocument(request.url)) WebSettings.LOAD_NO_CACHE else WebSettings.LOAD_DEFAULT
             return handleUrl(request.url)
         }
 
         @Deprecated("Deprecated in Java")
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
             val uri = Uri.parse(url)
-            if (isAdultAiDocument(uri)) view.settings.cacheMode = WebSettings.LOAD_NO_CACHE
+            view.settings.cacheMode = if (isAdultAiDocument(uri)) WebSettings.LOAD_NO_CACHE else WebSettings.LOAD_DEFAULT
             return handleUrl(uri)
         }
 
@@ -1140,9 +1194,19 @@ class MainActivity : AppCompatActivity() {
             injectAppMode(view)
             injectAmbientJonas(view)
             injectPageState(view)
+            // Never expose Chromium's empty document between native destinations.
+            view.postDelayed({ hideRouteTransition() }, 90L)
         }
 
         override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
+            val previousUrl = lastUrl
+            val nextUri = url?.let { runCatching { Uri.parse(it) }.getOrNull() }
+            val previousUri = runCatching { Uri.parse(previousUrl) }.getOrNull()
+            if (url != null && url != previousUrl &&
+                nextUri != null && previousUri != null &&
+                isMatchAppHost(nextUri.host.orEmpty()) && isMatchAppHost(previousUri.host.orEmpty())) {
+                showRouteTransition()
+            }
             destinationDock.onDocumentChanged()
             publicPageRetry?.let { view.removeCallbacks(it) }
             publicPageRetry = null
@@ -1163,7 +1227,7 @@ class MainActivity : AppCompatActivity() {
                 view.loadUrl(HOME)
                 return
             }
-            if (uri != null && isAdultAiDocument(uri)) view.settings.cacheMode = WebSettings.LOAD_NO_CACHE
+            view.settings.cacheMode = if (uri != null && isAdultAiDocument(uri)) WebSettings.LOAD_NO_CACHE else WebSettings.LOAD_DEFAULT
             if (pendingScrollRestore?.let { it.url != url } == true) cancelPendingPageRestore()
             lastUrl = url ?: lastUrl
             if (runCatching { JSONObject(pageUiState.orEmpty()).optString("url") }.getOrNull() != url) pageUiState = null
@@ -1177,6 +1241,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onPageFinished(view: WebView, url: String?) {
+            hideRouteTransition()
             if (!mainFrameFailed) destinationDock.attach(url)
             if (!mainFrameFailed) {
                 view.visibility = View.VISIBLE
@@ -1202,6 +1267,7 @@ class MainActivity : AppCompatActivity() {
         override fun onReceivedError(view: WebView, request: WebResourceRequest, error: WebResourceError) {
             if (request.isForMainFrame) {
                 // The native notice owns this failure; do not also expose Chromium error text.
+                hideRouteTransition(immediate = true)
                 mainFrameFailed = true
                 view.visibility = View.INVISIBLE
                 splashKeep = false
@@ -1216,6 +1282,7 @@ class MainActivity : AppCompatActivity() {
             val url = request.url.toString()
             if (!request.isForMainFrame || lastUrl != url || response.statusCode !in setOf(429, 503) ||
                 !PublicPageRetryPolicy.publicDocument(url)) return
+            hideRouteTransition(immediate = true)
             mainFrameFailed = true
             view.visibility = View.INVISIBLE
             splashKeep = false
@@ -1260,6 +1327,14 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         if (isMatchAppHost(host)) {
+            // Android onboarding keeps the real Home document mounted underneath.
+            // The shared web signup flow may schedule a legacy Profile redirect;
+            // never let that tear down the native profile + Taste DNA overlay.
+            if (scheme == "https" &&
+                uri.path.orEmpty().trimEnd('/') == "/profile/profile.html" &&
+                nativeOnboardingOverlay?.isShowing == true) {
+                return true
+            }
             if (scheme == "http") {
                 web.loadUrl(uri.buildUpon().scheme("https").build().toString())
                 return true
@@ -1562,6 +1637,57 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
+     * Opens the Android-only onboarding overlay from a verified MatchApp page.
+     * All text is presentation copy supplied by the page's existing locale.
+     */
+    private inner class NativeOnboardingBridge {
+        @JavascriptInterface
+        fun open(
+            title: String?,
+            subtitle: String?,
+            doneTitle: String?,
+            doneSubtitle: String?,
+            enter: String?,
+            close: String?,
+            prev: String?,
+            next: String?,
+            question: String?,
+            of: String?,
+            save: String?,
+            signedOut: String?
+        ) {
+            runOnUiThread {
+                val source = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
+                if (source?.scheme != "https" || !isMatchAppHost(source.host.orEmpty()) ||
+                    isKidsUri(source)) return@runOnUiThread
+                fun safe(value: String?, fallback: String): String =
+                    value?.take(300)?.takeIf { it.isNotBlank() } ?: fallback
+                nativeOnboardingOverlay?.show(
+                    NativeOnboardingOverlay.Copy(
+                        title = safe(title, "Finish your MatchApp Ai setup"),
+                        subtitle = safe(subtitle, "A few details make your matches much more personal."),
+                        doneTitle = safe(doneTitle, "Your MatchApp Ai is ready"),
+                        doneSubtitle = safe(doneSubtitle, "Your profile and Taste DNA are connected to your account."),
+                        enter = safe(enter, "Enter MatchApp Ai"),
+                        close = safe(close, "Close"),
+                        prev = safe(prev, "Back"),
+                        next = safe(next, "Next"),
+                        question = safe(question, "Question"),
+                        of = safe(of, "of"),
+                        save = safe(save, "Save DNA"),
+                        signedOut = safe(signedOut, "Your account session is not ready yet. Return to MatchApp Ai and sign in again.")
+                    )
+                )
+            }
+        }
+
+        @JavascriptInterface
+        fun close() {
+            runOnUiThread { nativeOnboardingOverlay?.close(showNudge = true) }
+        }
+    }
+
+    /**
      * Open Google OAuth only in the OS browser/account chooser.
      * The callback stays on the verified MatchApp HTTPS App Link and returns to
      * this same WebView, preserving the PKCE verifier and the local auth session.
@@ -1640,6 +1766,16 @@ class MainActivity : AppCompatActivity() {
                 if (current == null || !isMatchAppHost(current.host.orEmpty())) return@runOnUiThread
                 adMobController?.setAdFree(adFree)
                 if (adFree) nativeRewardedBridge?.onAdFreeEntitlement()
+                nativeNewsBridge?.onEntitlementChanged()
+            }
+        }
+
+        @JavascriptInterface
+        fun setAdFreePending() {
+            runOnUiThread {
+                val current = runCatching { Uri.parse(web.url.orEmpty()) }.getOrNull()
+                if (current == null || !isMatchAppHost(current.host.orEmpty())) return@runOnUiThread
+                adMobController?.setEntitlementPending()
                 nativeNewsBridge?.onEntitlementChanged()
             }
         }
@@ -1826,8 +1962,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=71"
-        const val APP_UA = "MatchAppTVAndroid/1.1.71 MatchAppAiAndroid/1.1.71 MatchAppLaunchIntro/1"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=72"
+        const val APP_UA = "MatchAppTVAndroid/1.1.72 MatchAppAiAndroid/1.1.72 MatchAppLaunchIntro/1"
         private const val STARTUP_PREFS = "matchapp_startup"
         private const val PREF_INTRO_SEEN = "intro_seen_v1"
         private const val PREF_INTRO_VERSION = "intro_consumed_package_version_v2"
@@ -1865,6 +2001,13 @@ class MainActivity : AppCompatActivity() {
                   '{display:none!important;height:0!important;min-height:0!important;overflow:hidden!important;' +
                   'padding:0!important;margin:0!important;border:0!important}' +
                   'html.matchapp-ai-android{--android-gold:#e5c158;--android-violet:#8d5cff}' +
+                  'html.matchapp-ai-android .ma-trust,html.matchapp-ai-android [data-ma-trust]{display:none!important;height:0!important;margin:0!important;padding:0!important;overflow:hidden!important}' +
+                  'html.matchapp-ai-android body.ai-chat-page .app-header{min-height:0!important;padding:8px 16px!important;box-shadow:0 10px 30px rgba(0,0,0,.18)!important}' +
+                  'html.matchapp-ai-android body.ai-chat-page .app-header .brand-logo{width:42px!important;height:42px!important;border-radius:13px!important}' +
+                  'html.matchapp-ai-android body.ai-chat-page .app-header .matchapp-wordmark{max-height:38px!important;width:auto!important}' +
+                  'html.matchapp-ai-android body.ai-chat-page .ai-sidebar{width:250px!important;top:68px!important;background:linear-gradient(180deg,rgba(20,15,29,.985),rgba(11,10,16,.985))!important;border-right-color:rgba(229,193,88,.14)!important}' +
+                  'html.matchapp-ai-android body.ai-chat-page .wrap{max-width:1240px!important;width:calc(100% - 278px)!important;margin-left:266px!important;margin-right:auto!important}' +
+                  '@media(max-width:980px){html.matchapp-ai-android body.ai-chat-page .ai-sidebar{width:min(76vw,250px)!important;transform:translateX(-100%)}html.matchapp-ai-android body.ai-chat-page.ai-sidebar-open .ai-sidebar{transform:translateX(0)}html.matchapp-ai-android body.ai-chat-page .wrap,html.matchapp-ai-android body.ai-chat-page.ai-sidebar-collapsed .wrap{width:100%!important;max-width:1240px!important;margin-left:auto!important;margin-right:auto!important;padding-inline:16px!important}}' +
                   'html.matchapp-ai-android :is(button,a,[role="button"],.pill,.card){-webkit-tap-highlight-color:transparent}' +
                   'html.matchapp-ai-android :is(button,a,[role="button"]):active{transform:scale(.975);transition:transform 90ms ease}' +
                   'html.matchapp-ai-android .matchapp-android-thinking{animation:matchappAndroidBreathe 1.15s ease-in-out infinite}' +
@@ -1894,6 +2037,12 @@ class MainActivity : AppCompatActivity() {
                 if (!bridge || typeof bridge.setAdFree !== 'function') return;
                 var generation = (window.__matchAppNativeAdEntitlementGeneration || 0) + 1;
                 window.__matchAppNativeAdEntitlementGeneration = generation;
+                function setNativeAdPending() {
+                  try {
+                    if (typeof bridge.setAdFreePending === 'function') bridge.setAdFreePending();
+                    else bridge.setAdFree(true);
+                  } catch (_) {}
+                }
 
                 var state = window.matchProfileState && window.matchProfileState.status;
                 if (state === 'signedout') {
@@ -1921,13 +2070,14 @@ class MainActivity : AppCompatActivity() {
                   }
                 }
                 if (window.isUserLoggedIn !== true) {
-                  try { bridge.setAdFree(true); } catch (_) {}
+                  setNativeAdPending();
                   return;
                 }
 
-                // Authenticated accounts remain ad-free while the authoritative profile
-                // row and verified Pro status resolve. Existing ad-free entitlements all win.
-                try { bridge.setAdFree(true); } catch (_) {}
+                // Authenticated accounts remain visually ad-free while the authoritative
+                // profile row and verified Pro status resolve, without discarding a healthy
+                // banner that can be reused if the account remains ad-supported.
+                setNativeAdPending();
                 var client = window.supabaseClient;
                 if (!client || !client.from || !client.rpc) return;
 

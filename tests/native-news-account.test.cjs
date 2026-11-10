@@ -104,7 +104,12 @@ test('native account comparison preserves only the same owner, and unknown entit
   const source = read('android-studio/app/src/main/java/com/jonas/papercup/NativeNewsBridge.kt');
   assert.match(source, /if \(resolved == accountContext\) return\s+accountContext = resolved\s+hasValue = resolved != null && resolved == valueAccount/);
   assert.match(source, /accountContext != null && hasValue/);
-  assert.match(nativeSync, /if \(window\.isUserLoggedIn !== true\)[\s\S]*?bridge\.setAdFree\(true\)/);
+  assert.match(nativeSync, /if \(window\.isUserLoggedIn !== true\)\s*\{\s*setNativeAdPending\(\);/);
+  assert.match(nativeSync, /typeof bridge\.setAdFreePending === 'function'\) bridge\.setAdFreePending\(\);\s*else bridge\.setAdFree\(true\)/);
+  const ads = read('android-studio/app/src/main/java/com/jonas/papercup/AdMobController.kt');
+  assert.match(ads, /fun setEntitlementPending\(\)[\s\S]*?entitlementPending = true[\s\S]*?updateShellVisibility\(\)/);
+  assert.match(ads, /if \(!entitlementPending && \(bannerLoaded \|\| privacyButton\.visibility == View\.VISIBLE\)\) View\.VISIBLE else View\.GONE/);
+  assert.match(ads, /fun canRequestRewarded\(\)[\s\S]*?!entitlementPending && !entitlementAdFree/);
   assert.match(nativeSync, /document\.addEventListener\('matchapp:authchange'[\s\S]*?setNewsAccountContext\(''\)/);
 });
 

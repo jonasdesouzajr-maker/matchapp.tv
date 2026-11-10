@@ -1,0 +1,1 @@
+Ikon aplikasi baru hanya dengan logo. Navigasi disempurnakan serta panel masuk dan profil di tengah layar. Pemuatan halaman dan awal iklan ditingkatkan, dengan pilihan privasi.

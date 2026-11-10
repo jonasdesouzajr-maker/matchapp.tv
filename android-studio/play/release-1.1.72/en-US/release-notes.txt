@@ -1,0 +1,1 @@
+New logo-only app icon. Refined navigation and centered sign-in and profile panels. Improved page loading and ad startup, with privacy choices.

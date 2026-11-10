@@ -1,0 +1,1 @@
+Neues App-Symbol ohne Text. Verbesserte Navigation sowie zentrierte Anmelde- und Profilfenster. Optimiertes Laden und Starten von Anzeigen mit Datenschutzoptionen.
