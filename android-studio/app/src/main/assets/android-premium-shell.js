@@ -452,7 +452,8 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
           ['background','border'].forEach(key=>{
             const value=rule.style.getPropertyValue(key);
             if(!value.includes('var('))return;
-            Array.from(props.keys()).filter(k=>k===key||k.startsWith(key+'-')).forEach(k=>props.delete(k));
+            const resets=k=>key==='background'?k.startsWith('background-'):/^border(?:-(?:top|right|bottom|left))?-(?:width|style|color)$/.test(k)||k.startsWith('border-image');
+            Array.from(props.keys()).filter(k=>k===key||resets(k)).forEach(k=>props.delete(k));
             props.set(key,value);
           });
         });
