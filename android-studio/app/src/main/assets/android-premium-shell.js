@@ -70,6 +70,31 @@
       }else if(node.textContent!==value)node.textContent=value;
     });
   }
+  const appearanceCopy={
+    en:['Appearance','Dark','Light'],pt:['Aparência','Escuro','Claro'],es:['Apariencia','Oscuro','Claro'],
+    fr:['Apparence','Sombre','Clair'],de:['Darstellung','Dunkel','Hell'],it:['Aspetto','Scuro','Chiaro'],
+    tr:['Görünüm','Koyu','Açık'],ru:['Оформление','Тёмное','Светлое'],ar:['المظهر','داكن','فاتح'],
+    hi:['दिखावट','गहरा','हल्का'],id:['Tampilan','Gelap','Terang'],ja:['外観','ダーク','ライト'],
+    ko:['화면 모드','다크','라이트'],zh:['外观','深色','浅色'],'zh-tw':['外觀','深色','淺色']
+  };
+  function mountAppearance(){
+    const locale=lang(),c=appearanceCopy[locale]||appearanceCopy[locale.split('-')[0]]||appearanceCopy.en;
+    const light=document.documentElement.dataset.theme==='sunrise';
+    qsa('.ma-cinema-tools-content,.ref-explore-tools-panel,.ma-reference-header-tools-panel').forEach(panel=>{
+      let group=qs('.ma-android-appearance',panel);
+      if(!group){
+        group=document.createElement('fieldset');group.className='ma-android-appearance';group.dataset.maPillExclude='';
+        group.innerHTML='<legend></legend><button type="button" data-ma-appearance="aurora"><span aria-hidden="true">☾</span><span></span></button><button type="button" data-ma-appearance="sunrise"><span aria-hidden="true">☀</span><span></span></button><p class="ma-android-brand-story"></p>';
+        group.addEventListener('click',event=>{const button=event.target.closest('button[data-ma-appearance]');if(button&&window.MatchSettings)window.MatchSettings.set('theme',button.dataset.maAppearance)});
+        panel.prepend(group);
+      }
+      const label=qs('legend',group);if(label.textContent!==c[0])label.textContent=c[0];
+      qsa('button',group).forEach((button,i)=>{const text=button.lastElementChild;if(text.textContent!==c[i+1])text.textContent=c[i+1];const pressed=String((i===1)===light);if(button.getAttribute('aria-pressed')!==pressed)button.setAttribute('aria-pressed',pressed)});
+      const story=qsa('.ma-masthead-intro>span').map(node=>node.textContent.trim()).filter(Boolean).join(' · '),target=qs('.ma-android-brand-story',group);
+      if(target.textContent!==story)target.textContent=story;
+      target.hidden=!story;
+    });
+  }
   function installStyle(){
     if(qs('#ma-android-premium-style'))return;
     const s=document.createElement('style');s.id='ma-android-premium-style';s.textContent=`
@@ -292,6 +317,58 @@ html.matchapp-ai-android body.matchapp-profile .profile-hub {padding:0 14px!impo
 html.matchapp-ai-android body.matchapp-profile :is(.profile-hub,.profile-hub-menu) {gap:10px!important}
 html.matchapp-ai-android body.matchapp-profile .profile-hub-row {border:1px solid #ffffff0b!important;background:linear-gradient(135deg,#21192d,#15111d)!important;border-radius:18px!important;min-height:64px!important;padding:14px!important;box-shadow:none!important}
 @media(max-width:620px){html.matchapp-ai-android #ma-android-match-launch{grid-template-columns:1fr!important}html.matchapp-ai-android .ma-android-rail{grid-auto-columns:minmax(150px,62vw)!important;gap:12px!important;padding-inline:14px!important;scroll-padding-inline:14px!important}}
+/* Compact Android finish. A control has one surface and one spacing owner. */
+html.matchapp-ai-android {--ma-native-bg:#100d17;--ma-native-surface:#1c1626;--ma-native-field:#292132;--ma-native-text:#f5f0fa;--ma-native-muted:#c1b5cc;--ma-native-line:#d5bbff26;--ma-native-accent:#e6c485;--ma-native-ink:#281c29;--ma-native-close:#712c40;--ma-native-close-text:#ffdae2}
+html.matchapp-ai-android[data-theme="sunrise"] {--ma-native-bg:#f7f3ee;--ma-native-surface:#fffdf9;--ma-native-field:#eee7df;--ma-native-text:#302735;--ma-native-muted:#665b70;--ma-native-line:#77618430;--ma-native-accent:#8c6021;--ma-native-ink:#fffaf2;--ma-native-close:#f9e1e7;--ma-native-close-text:#93293f;color-scheme:light!important}
+html.matchapp-ai-android body {background:var(--ma-native-bg)!important;color:var(--ma-native-text)!important}
+html.matchapp-ai-android #ma-reference-header {background:var(--ma-native-surface)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-bottom:1px solid var(--ma-native-line)!important;box-shadow:0 4px 16px #0000000a!important}
+html.matchapp-ai-android .ma-cinema-header-actions>details.ma-cinema-tools {padding:0!important;border:0!important;background:none!important;box-shadow:none!important;border-radius:999px!important}
+html.matchapp-ai-android :is(.ma-cinema-search,.ma-cinema-tools>summary,.ref-explore-tools>summary) {display:flex!important;align-items:center!important;justify-content:center!important;padding:0!important;margin:0!important;width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;border-radius:999px!important;border:1px solid var(--ma-native-line)!important;background:var(--ma-native-field)!important;color:var(--ma-native-text)!important;box-shadow:none!important;gap:0!important}
+html.matchapp-ai-android :is(.ma-cinema-tools>summary,.ref-explore-tools>summary)>svg {width:20px!important;height:20px!important;flex:0 0 20px!important;transform:none!important;margin:0!important}
+html.matchapp-ai-android :is(.ma-cinema-tools>summary,.ref-explore-tools>summary)>span {position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%)!important}
+html.matchapp-ai-android :is(.ma-cinema-tools-content,.ref-explore-tools-panel,.ma-reference-header-tools-panel) {padding:12px!important;border-radius:22px!important;background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important;border:1px solid var(--ma-native-line)!important;box-shadow:0 14px 38px #0003!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;overflow-x:hidden!important}
+html.matchapp-ai-android :is(.ma-cinema-tools,.ref-explore-tools,.ma-reference-header-tools):not([open])>:is(.ma-cinema-tools-content,.ref-explore-tools-panel,.ma-reference-header-tools-panel) {display:none!important}
+html.matchapp-ai-android .ma-cinema-tools-content nav.mh-deck {display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;margin:0 0 8px!important;padding:0!important}
+html.matchapp-ai-android .ma-cinema-tools-content :is(button,a,select) {min-width:0!important;max-width:100%!important;min-height:44px!important;height:auto!important;margin:0!important;padding:10px 14px!important;border-radius:999px!important;box-sizing:border-box!important;font:600 13px/1.35 system-ui!important;gap:8px!important;text-align:center!important;white-space:normal!important;overflow-wrap:break-word!important;align-items:center!important;justify-content:center!important;color:var(--ma-native-text)!important;background:var(--ma-native-field)!important;border:1px solid var(--ma-native-line)!important;box-shadow:none!important}
+html.matchapp-ai-android .ma-cinema-tools-content :is(#lang-switcher-host,#nav-reg-btn,#nav-logout-btn,#profile-link-tab,#quota-badge) {grid-column:1/-1!important;width:100%!important;max-width:none!important}
+html.matchapp-ai-android .ma-cinema-tools-content #lang-switcher-host {grid-row:1!important;margin:0!important;padding:0!important;min-height:44px!important;height:auto!important}
+html.matchapp-ai-android .ma-cinema-tools-content select {height:44px!important;width:100%!important;text-align:start!important;padding-inline:14px 32px!important}
+html.matchapp-ai-android .ma-cinema-tools-content #nav-reg-btn {background:var(--ma-native-accent)!important;color:var(--ma-native-ink)!important}
+html.matchapp-ai-android .ma-cinema-tools-content nav.ma-luxe-shortcuts {display:grid!important;grid-template-columns:1fr!important;gap:8px!important;margin:0!important;padding:0!important}
+html.matchapp-ai-android .ma-cinema-tools-content #ma-donate-shortcut {width:100%!important;justify-self:stretch!important;padding:10px 14px!important;background:var(--ma-native-field)!important;color:var(--ma-native-muted)!important}
+html.matchapp-ai-android .ma-cinema-tools-content #ma-donate-shortcut>span {display:inline!important}
+html.matchapp-ai-android .ma-cinema-tools-content :is(button,a) svg {width:20px!important;height:20px!important;flex:0 0 20px!important;margin:0!important;transform:none!important}
+html.matchapp-ai-android :is(.ja-bubble,.jh-bubble) {border:0!important;border-radius:50%!important;box-shadow:none!important;background:transparent!important}
+html.matchapp-ai-android :is(.ja-premium-face,.jh-portrait) {border-radius:50%!important}
+html.matchapp-ai-android #matchapp-viewer-country {border-radius:999px!important;border:1px solid var(--ma-native-line)!important;color:var(--ma-native-text)!important;background:var(--ma-native-field)!important;font:500 12px/1.3 system-ui!important}
+html.matchapp-ai-android #ma-reference-header-slot .ma-reference-jonas-caption {color:var(--ma-native-text)!important}
+html.matchapp-ai-android .ma-android-appearance {display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;padding:0!important;margin:0 0 12px!important;border:0!important;min-width:0!important}
+html.matchapp-ai-android .ma-android-appearance>legend {float:left!important;grid-column:1/-1!important;width:100%!important;padding:0 4px 4px!important;margin:0!important;color:var(--ma-native-muted)!important;font:600 12px/1.4 system-ui!important}
+html.matchapp-ai-android .ma-android-appearance>button {display:flex!important;min-height:44px!important;border-radius:999px!important;gap:8px!important;align-items:center!important;justify-content:center!important}
+html.matchapp-ai-android .ma-android-appearance>button[aria-pressed="true"] {background:var(--ma-native-accent)!important;color:var(--ma-native-ink)!important;border-color:transparent!important}
+html.matchapp-ai-android .ma-android-brand-story {grid-column:1/-1!important;padding:4px!important;margin:0 0 4px!important;font:500 11px/1.4 system-ui!important;color:var(--ma-native-muted)!important;background:none!important;box-shadow:none!important}
+html.matchapp-ai-android body.page-home .main-layout>.container {max-width:none!important}
+html.matchapp-ai-android body.page-home .home-hero {min-height:142px!important;padding:16px!important;border-radius:20px!important}
+html.matchapp-ai-android body.page-home .home-h1 {font:750 clamp(23px,6.2vw,34px)/1.16 system-ui!important;max-width:none!important;margin:0 0 14px!important}
+html.matchapp-ai-android body.page-home .ma-cinema-hero-footer {position:static!important;width:100%!important;gap:8px!important;align-items:stretch!important}
+html.matchapp-ai-android body.page-home :is(.ma-cinema-hero-action,.ma-cinema-help) {position:static!important;inset:auto!important;transform:none!important;min-height:44px!important;border-radius:999px!important;padding:10px 14px!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;flex:1 1 0%!important;max-width:none!important;white-space:normal!important;font:600 12px/1.35 system-ui!important;text-align:center!important}
+html.matchapp-ai-android .ma-cinema-section-heading {gap:12px!important;min-height:44px!important;align-items:center!important}
+html.matchapp-ai-android .ma-cinema-section-heading :is(h2,h3,h4) {font:700 17px/1.25 system-ui!important;color:var(--ma-native-text)!important;margin:0!important}
+html.matchapp-ai-android .ma-cinema-section-heading a {white-space:nowrap!important;color:var(--ma-native-accent)!important}
+html.matchapp-ai-android #ma-android-match-launch {margin:12px 14px!important;padding:16px!important;border-radius:20px!important;gap:10px!important;background:var(--ma-native-surface)!important;border-color:var(--ma-native-line)!important}
+html.matchapp-ai-android #ma-android-match-launch h2 {font:700 20px/1.2 system-ui!important;color:var(--ma-native-text)!important;margin:4px 0 6px!important}
+html.matchapp-ai-android #ma-android-match-launch :is(p,small) {color:var(--ma-native-muted)!important}
+html.matchapp-ai-android #ma-android-match-launch .mam-open {min-height:44px!important;border-radius:999px!important;background:var(--ma-native-accent)!important;color:var(--ma-native-ink)!important}
+html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal>.premium-card,#main-auth-modal>.auth-box,.profile-hub-row,.ref-explore-hero,.ref-editorial-banner,.ref-topic-caption) {background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
+html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal,.profile-hub-row,.ref-explore-hero,.ref-editorial-banner,.ref-topic-caption) :is(h2,h3,strong,label) {color:var(--ma-native-text)!important}
+html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal,.profile-hub-row,.ref-explore-hero,.ref-editorial-banner,.ref-topic-caption) :is(p,small) {color:var(--ma-native-muted)!important}
+html.matchapp-ai-android :is(.mam-card,#main-auth-modal) :is(input,select,textarea,.crit-chip,.ma-cinema-select) {background:var(--ma-native-field)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
+html.matchapp-ai-android :is(.mam-x,.mao-x,.ma-android-auth-x,#ma-ambient-panel .ja-close) {background:var(--ma-native-close)!important;color:var(--ma-native-close-text)!important;border-color:var(--ma-native-line)!important}
+html.matchapp-ai-android #ma-ambient-panel {background:var(--ma-native-bg)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
+html.matchapp-ai-android #ma-ambient-panel :is(.ja-panel-head,.ja-hello,.ma-guide-pills) {background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important}
+html.matchapp-ai-android #ma-ambient-panel :is(.ja-head-text strong,.ja-head-text span) {color:var(--ma-native-text)!important}
+html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marquee-title) {background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important}
+@media(max-width:620px){html.matchapp-ai-android #ma-reference-header .ma-masthead-intro {display:none!important}}
 @media(prefers-reduced-motion:no-preference){html.matchapp-ai-android :is(.mam-card,.mao-card){animation:ma-native-enter .2s cubic-bezier(.2,.8,.2,1)}@keyframes ma-native-enter{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}}
 
 }
@@ -368,7 +445,16 @@ html.matchapp-ai-android body.matchapp-profile .profile-hub-row {border:1px soli
       if(rule.selectorText&&rule.style){
         qsa(rule.selectorText).forEach(el=>{
           if(!desired.has(el))desired.set(el,new Map());
-          Array.from(rule.style).forEach(k=>desired.get(el).set(k,rule.style.getPropertyValue(k)));
+          const props=desired.get(el);
+          Array.from(rule.style).forEach(k=>{const value=rule.style.getPropertyValue(k);if(value)props.set(k,value)});
+          // CSSOM exposes empty longhands for an unresolved var() shorthand.
+          // Preserve the authored shorthand instead of clearing the surface.
+          ['background','border'].forEach(key=>{
+            const value=rule.style.getPropertyValue(key);
+            if(!value.includes('var('))return;
+            Array.from(props.keys()).filter(k=>k===key||k.startsWith(key+'-')).forEach(k=>props.delete(k));
+            props.set(key,value);
+          });
         });
       }else if(rule.cssRules&&(!rule.conditionText||matchMedia(rule.conditionText).matches)&&!rule.name)collect(rule.cssRules);
     });
@@ -395,7 +481,7 @@ html.matchapp-ai-android body.matchapp-profile .profile-hub-row {border:1px soli
     refreshQueued=true;
     requestAnimationFrame(()=>{
       refreshQueued=false;
-      applyBrand();markRails();compactPhoneHeader();polishCinemaPosters();polishCinemaSurfaces();paintAndroidChrome();paintMatchOverlay();addRedClose();installMatchOverlay();enforceJonasFullscreen();polishErrorBubble();
+      applyBrand();markRails();mountAppearance();compactPhoneHeader();polishCinemaPosters();polishCinemaSurfaces();paintAndroidChrome();paintMatchOverlay();addRedClose();installMatchOverlay();enforceJonasFullscreen();polishErrorBubble();
     });
   }
   function polishJonasFrame(){
@@ -403,6 +489,7 @@ html.matchapp-ai-android body.matchapp-profile .profile-hub-row {border:1px soli
     if(!frame.dataset.maCinemaBound){frame.dataset.maCinemaBound='1';frame.addEventListener('load',polishJonasFrame)}
     let doc;try{doc=frame.contentDocument}catch(_){return}
     const head=doc?.querySelector('.discover-head');if(!head)return;
+    const palette=getComputedStyle(document.documentElement),color=name=>palette.getPropertyValue('--ma-native-'+name).trim();
     const set=(selector,props)=>Array.from(doc.querySelectorAll(selector)).forEach(el=>Object.entries(props).forEach(([k,v])=>{if(el.style.getPropertyValue(k)!==v)el.style.setProperty(k,v,'important')}));
     let toolbar=doc.querySelector('.ma-native-chat-toolbar');
     if(!toolbar){
@@ -416,21 +503,24 @@ html.matchapp-ai-android body.matchapp-profile .profile-hub-row {border:1px soli
       details.className='ma-native-chat-guide';summary.textContent=article.querySelector('h2')?.textContent||article.querySelector('h3')?.textContent||t().dna;
       article.before(details);details.append(summary,article);
     }
-    set('html,body',{background:'rgb(16, 13, 23)',margin:'0px',padding:'0px'});
+    set('html,body',{background:color('bg'),color:color('text'),margin:'0px',padding:'0px'});
     set('.poster-wall,.luxury-bg',{opacity:'0'});
-    set('main.wrap',{background:'rgb(16, 13, 23)',width:'100%','max-width':'none',margin:'0px',padding:'8px','box-sizing':'border-box'});
-    set('.discover-head',{position:'relative',display:'flex','flex-direction':'column',height:'calc(100dvh - 16px)','min-height':'260px',margin:'0px',padding:'0px',border:'0px',background:'rgb(16, 13, 23)','box-shadow':'none',gap:'10px','box-sizing':'border-box'});
+    set('main.wrap',{background:color('bg'),width:'100%','max-width':'none',margin:'0px',padding:'8px','box-sizing':'border-box'});
+    set('.discover-head',{position:'relative',display:'flex','flex-direction':'column',height:'calc(100dvh - 16px)','min-height':'260px',margin:'0px',padding:'0px',border:'0px',background:color('bg'),'box-shadow':'none',gap:'10px','box-sizing':'border-box'});
     set('.ma-native-chat-toolbar',{display:'block',position:'relative',height:'44px','min-height':'44px','flex-shrink':'0'});
-    set('.jonas-top-history,#jonas-header-new-chat',{display:'inline-flex',position:'absolute',top:'0px',left:'auto',right:'auto',width:'calc(50% - 4px)','min-width':'0px','min-height':'44px',height:'44px','max-height':'44px',margin:'0px',padding:'8px',background:'rgb(37, 28, 49)',color:'rgb(235, 222, 248)',border:'1px solid rgba(255, 255, 255, 0.08)','border-radius':'14px',font:'600 12px/1.2 system-ui','box-sizing':'border-box','justify-content':'center','align-items':'center',gap:'6px','z-index':'2'});
+    set('.jonas-top-history,#jonas-header-new-chat',{display:'inline-flex',position:'absolute',top:'0px',left:'auto',right:'auto',width:'calc(50% - 4px)','min-width':'0px','min-height':'44px',height:'44px','max-height':'44px',margin:'0px',padding:'8px',background:color('surface'),color:color('text'),border:'1px solid rgba(255, 255, 255, 0.08)','border-radius':'14px',font:'600 12px/1.2 system-ui','box-sizing':'border-box','justify-content':'center','align-items':'center',gap:'6px','z-index':'2'});
     set('.jonas-top-history',{'inset-inline-start':'0px','inset-inline-end':'auto'});
     set('#jonas-header-new-chat',{'inset-inline-end':'0px','inset-inline-start':'auto'});
-    set('#chat-log',{display:'flex','flex-direction':'column',background:'rgb(16, 13, 23)',flex:'1 1 0%','min-height':'0px','max-height':'none','overflow-y':'auto',margin:'0px',padding:'4px','overscroll-behavior':'contain'});
+    set('#chat-log',{display:'flex','flex-direction':'column',background:color('bg'),flex:'1 1 0%','min-height':'0px','max-height':'none','overflow-y':'auto',margin:'0px',padding:'4px','overscroll-behavior':'contain'});
     set('.newsearch-row',{'flex-shrink':'0',position:'static',margin:'0px',padding:'0px',width:'100%'});
-    set('.composer',{display:'grid','grid-template-columns':'minmax(0, 1fr) 44px auto',gap:'6px',padding:'6px',background:'rgb(32, 24, 43)',border:'1px solid rgba(209, 180, 245, 0.24)','border-radius':'20px','box-sizing':'border-box'});
+    set('.composer',{display:'grid','grid-template-columns':'minmax(0, 1fr) 44px auto',gap:'6px',padding:'6px',background:color('field'),border:'1px solid rgba(209, 180, 245, 0.24)','border-radius':'20px','box-sizing':'border-box'});
     set('#discover-new-input',{'min-width':'0px',width:'100%','min-height':'44px','max-height':'96px',margin:'0px',padding:'11px 10px',border:'0px',background:'transparent',font:'400 14px/1.5 system-ui','box-sizing':'border-box'});
     set('.composer-send,#mic-btn-discover',{'min-height':'44px',height:'44px',margin:'0px',padding:'8px 12px','border-radius':'14px',font:'700 12px/1.2 system-ui'});
-    set('.newsearch-row p',{font:'400 11px/1.4 system-ui',margin:'6px 4px',color:'rgb(182, 170, 197)'});
-    set('.ma-native-chat-guide',{margin:'12px 8px',padding:'12px',background:'rgb(28, 21, 38)','border-radius':'16px',font:'500 12px/1.5 system-ui'});
+    set('.newsearch-row p',{font:'400 11px/1.4 system-ui',margin:'6px 4px',color:color('muted')});
+    set('.ma-native-chat-guide',{margin:'12px 8px',padding:'12px',background:color('surface'),'border-radius':'16px',font:'500 12px/1.5 system-ui'});
+    set('#chat-log :is(.chat-answer-text,.chat-message,.ai-message)',{color:color('text')});
+    set('#discover-new-input',{color:color('text')});
+    set('.composer-send,#mic-btn-discover',{background:color('surface'),color:color('text')});
     if(doc.body.classList.contains('ai-sidebar-open'))set('.ai-sidebar',{display:'flex',position:'fixed',inset:'8px',width:'auto','max-width':'none','max-height':'none','z-index':'2147483500'});
     else {const side=doc.querySelector('.ai-sidebar');if(side?.style.getPropertyValue('z-index')==='2147483500')['display','position','inset','width','max-width','max-height','z-index'].forEach(k=>side.style.removeProperty(k))}
     if(!doc.documentElement.dataset.maCinemaFrame){
@@ -457,7 +547,7 @@ html.matchapp-ai-android body.matchapp-profile .profile-hub-row {border:1px soli
     polishJonasFrame();
     const vv=window.visualViewport,inset=8;
     const width=Math.round(vv?.width||window.innerWidth),height=Math.round(vv?.height||window.innerHeight);
-    const props={position:'fixed',left:((vv?.offsetLeft||0)+inset)+'px',right:'auto',top:((vv?.offsetTop||0)+inset)+'px',bottom:'auto',width:Math.max(1,width-inset*2)+'px',height:Math.max(1,height-inset*2)+'px','max-width':'none','max-height':'none','min-height':'0px',margin:'0px',padding:'0px',transform:'none','border-radius':'24px',display:'flex','flex-direction':'column','z-index':'2147483500',background:'rgb(16, 13, 23)'};
+    const props={position:'fixed',left:((vv?.offsetLeft||0)+inset)+'px',right:'auto',top:((vv?.offsetTop||0)+inset)+'px',bottom:'auto',width:Math.max(1,width-inset*2)+'px',height:Math.max(1,height-inset*2)+'px','max-width':'none','max-height':'none','min-height':'0px',margin:'0px',padding:'0px',transform:'none','border-radius':'24px',display:'flex','flex-direction':'column','z-index':'2147483500',background:'var(--ma-native-bg)'};
     Object.entries(props).forEach(([k,v])=>{if(panel.style.getPropertyValue(k)!==v||panel.style.getPropertyPriority(k)!=='important')panel.style.setProperty(k,v,'important')});
     panel.setAttribute('aria-modal','true');
   }
@@ -647,7 +737,7 @@ html.matchapp-ai-android body.matchapp-profile .profile-hub-row {border:1px soli
     return false;
   }
   function boot(){
-    installStyle();applyBrand();markRails();compactPhoneHeader();polishCinemaPosters();polishCinemaSurfaces();paintAndroidChrome();addRedClose();installMatchOverlay();authIntent();
+    installStyle();applyBrand();markRails();mountAppearance();compactPhoneHeader();polishCinemaPosters();polishCinemaSurfaces();paintAndroidChrome();addRedClose();installMatchOverlay();authIntent();
     [120,420,1000,2200].forEach(ms=>setTimeout(schedulePremiumRefresh,ms));
     if(routeVerifiedSignup())return;
     const u=new URL(location.href);if((location.pathname==='/'||location.pathname==='/index.html')&&u.searchParams.get('maAndroidOnboarding')==='1'){sessionStorage.setItem('ma_android_onboarding_pending','1');setTimeout(openOnboarding,500)}
@@ -666,6 +756,9 @@ html.matchapp-ai-android body.matchapp-profile .profile-hub-row {border:1px soli
     window.visualViewport?.addEventListener('resize',enforceJonasFullscreen,{passive:true});
     window.visualViewport?.addEventListener('scroll',enforceJonasFullscreen,{passive:true});
     ['matchapp:langchange','matchapp:languagechange'].forEach(name=>document.addEventListener(name,()=>setTimeout(schedulePremiumRefresh,0)));
+    document.addEventListener('matchapp:settingschanged',schedulePremiumRefresh);
+    document.addEventListener('toggle',event=>{if(event.target.matches?.('.ma-cinema-tools,.ref-explore-tools,.ma-reference-header-tools'))schedulePremiumRefresh()},true);
+    new MutationObserver(schedulePremiumRefresh).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
     window.addEventListener('storage',e=>{if(e.key==='match_lang')setTimeout(schedulePremiumRefresh,0)});
     new MutationObserver(schedulePremiumRefresh).observe(document.documentElement,{childList:true,subtree:true});
   }

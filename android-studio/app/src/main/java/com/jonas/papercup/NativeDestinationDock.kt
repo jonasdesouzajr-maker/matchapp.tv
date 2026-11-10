@@ -2,6 +2,7 @@ package com.jonas.papercup
 
 import android.animation.AnimatorInflater
 import android.animation.ValueAnimator
+import android.app.Activity
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
@@ -15,6 +16,7 @@ import android.view.animation.DecelerateInterpolator
 import android.webkit.WebView
 import androidx.core.view.AccessibilityDelegateCompat
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import androidx.webkit.JavaScriptReplyProxy
 import androidx.webkit.WebViewCompat
@@ -50,6 +52,7 @@ class NativeDestinationDock(
         }
     }
     private var language = "en"
+    private var lightAppearance: Boolean? = null
     private var syncing = false
     private var keyboard = false
     private var requested = false
@@ -111,7 +114,7 @@ class NativeDestinationDock(
         }
         fun showExplore() {
             explore.show(language, bar.layoutDirection == View.LAYOUT_DIRECTION_RTL,
-                bar.menu.getItem(1).title.toString(), pressMotion == true) { key, locale ->
+                bar.menu.getItem(1).title.toString(), pressMotion == true, lightAppearance == true) { key, locale ->
                 if (!requested || keyboard || documentUrl != web.url) return@show
                 when (key) {
                     "matches" -> sendCommand("activate:2")
@@ -153,6 +156,7 @@ class NativeDestinationDock(
                 return@addWebMessageListener
             }
             val labels=data.optJSONArray("labels") ?: return@addWebMessageListener
+            applyAppearance(data.optBoolean("light"))
             val active=data.optInt("selected",-1)
             requested=data.optBoolean("visible") && labels.length()==icons.size && active in icons.indices &&
                 (0 until labels.length()).all { labels.optString(it).length in 1..80 } &&
@@ -187,6 +191,34 @@ class NativeDestinationDock(
             }
             render()
             reply.postMessage(if(requested)"shown" else "hidden")
+        }
+    }
+
+    private fun applyAppearance(light: Boolean) {
+        if (lightAppearance == light) return
+        lightAppearance = light
+        val surface = if (light) 0xFFFFFDF9.toInt() else 0xFF1C1626.toInt()
+        val page = if (light) 0xFFF7F3EE.toInt() else 0xFF100D17.toInt()
+        bar.background = GradientDrawable().apply {
+            setColor(surface); cornerRadius = 24 * density
+            setStroke(density.toInt().coerceAtLeast(1), if (light) 0x30776184 else 0x26D5BBFF)
+        }
+        bar.itemActiveIndicatorColor = ColorStateList.valueOf(if (light) 0xFFE9DCF5.toInt() else 0xFF4E365E.toInt())
+        bar.itemTextColor = ColorStateList(
+            arrayOf(intArrayOf(android.R.attr.state_checked), intArrayOf()),
+            if (light) intArrayOf(0xFF51325E.toInt(),0xFF665B70.toInt())
+            else intArrayOf(0xFFFFE2A5.toInt(),0xFFC9C3D3.toInt())
+        )
+        web.setBackgroundColor(page)
+        (web.parent as? View)?.setBackgroundColor(page)
+        bar.rootView.findViewById<View>(R.id.root)?.setBackgroundColor(page)
+        bar.rootView.findViewById<View>(R.id.ad_shell)?.setBackgroundColor(page)
+        (bar.context as? Activity)?.window?.let { window ->
+            window.decorView.setBackgroundColor(page)
+            WindowInsetsControllerCompat(window,window.decorView).apply {
+                isAppearanceLightStatusBars = light
+                isAppearanceLightNavigationBars = light
+            }
         }
     }
 

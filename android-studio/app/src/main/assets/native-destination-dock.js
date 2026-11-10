@@ -204,7 +204,7 @@
     try { language = localStorage.getItem('match_lang') || ''; } catch (_) {}
     const payload = JSON.stringify({href:location.href, visible:!blocked() && labels.every(Boolean), labels,
       selected:domSelected>=0?domSelected:routeSelected, rtl:root.dir==='rtl', lang:language||window.MATCH_LANG||root.lang||'en',
-      motion:!motion.matches && !root.classList.contains('reduce-motion')});
+      light:root.dataset.theme==='sunrise', motion:!motion.matches && !root.classList.contains('reduce-motion')});
     if (payload !== sent) { sent=payload; bridge.postMessage(payload); }
   }
   function targetFor(message) {
@@ -442,7 +442,7 @@
   const bind = () => {
     const body=document.body;
     new MutationObserver(schedule).observe(body,{childList:true,attributes:true,attributeFilter:['class']});
-    new MutationObserver(schedule).observe(root,{attributes:true,attributeFilter:['lang','dir','class']});
+    new MutationObserver(schedule).observe(root,{attributes:true,attributeFilter:['lang','dir','class','data-theme']});
     document.querySelectorAll('.ai-sidebar,#chat-log,.matchapp-notification-panel').forEach(host=>{
       new MutationObserver(schedule).observe(host,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:['aria-label','title']});
     });

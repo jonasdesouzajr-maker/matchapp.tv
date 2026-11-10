@@ -45,7 +45,7 @@ class NativeExploreSheet(private val context: Context) {
 
     fun close() { dialog?.dismiss() }
 
-    fun show(lang: String, rtl: Boolean, exploreLabel: String, motion: Boolean, select: (String, String) -> Unit) {
+    fun show(lang: String, rtl: Boolean, exploreLabel: String, motion: Boolean, light: Boolean = false, select: (String, String) -> Unit) {
         if (dialog?.isShowing == true) return
         val selectedLanguage = NativeLaunchPolicy.appLanguageTag(lang)
         val code = selectedLanguage.substringBefore('-').lowercase(java.util.Locale.ROOT)
@@ -56,6 +56,8 @@ class NativeExploreSheet(private val context: Context) {
             else -> "en"
         }
         val copy = copies.getJSONObject(locale)
+        val textColor = if (light) 0xFF302735.toInt() else 0xFFFFF6EC.toInt()
+        val mutedColor = if (light) 0xFF665B70.toInt() else 0xFFDFD3E3.toInt()
         val wide = context.resources.configuration.smallestScreenWidthDp >= 600
         val systemMotion = if (Build.VERSION.SDK_INT >= 26) ValueAnimator.areAnimatorsEnabled() else
             Settings.Global.getFloat(context.contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f) > 0
@@ -72,7 +74,8 @@ class NativeExploreSheet(private val context: Context) {
         }
         val scroll = ScrollView(context).apply { isFillViewport = true; clipToPadding = false }
         val backdrop = GradientDrawable(GradientDrawable.Orientation.TL_BR,
-            intArrayOf(0xFF3B284C.toInt(), 0xFF211B30.toInt(), 0xFF17151F.toInt()))
+            if (light) intArrayOf(0xFFF3EDF6.toInt(),0xFFFFFDF9.toInt(),0xFFF7F3EE.toInt())
+            else intArrayOf(0xFF3B284C.toInt(), 0xFF211B30.toInt(), 0xFF17151F.toInt()))
         scroll.background = backdrop
         val frame = FrameLayout(context)
         val width = minOf(dp(if (wide) 880 else 650), context.resources.displayMetrics.widthPixels)
@@ -98,13 +101,13 @@ class NativeExploreSheet(private val context: Context) {
         val headings = LinearLayout(context).apply {
             orientation = LinearLayout.VERTICAL
             setPaddingRelative(0,dp(12),dp(8),dp(12))
-            addView(label("MatchApp Ai · $exploreLabel", 13f, true, 0xFFF1D29A.toInt()))
-            addView(label(copy.getString("heading"), if (wide) 30f else 22f, true, 0xFFFFF7EC.toInt()))
+            addView(label("MatchApp Ai · $exploreLabel", 12f, true, if (light) 0xFF8C6021.toInt() else 0xFFF1D29A.toInt()))
+            addView(label(copy.getString("heading"), if (wide) 28f else 20f, true, textColor))
         }
         header.addView(headings, LinearLayout.LayoutParams(0,LayoutParams.WRAP_CONTENT,1f))
         header.addView(ImageButton(context).apply {
             setImageResource(android.R.drawable.ic_menu_close_clear_cancel)
-            setColorFilter(0xFFEDDFEC.toInt())
+            setColorFilter(if (light) 0xFF93293F.toInt() else 0xFFEDDFEC.toInt())
             val value = android.util.TypedValue()
             context.theme.resolveAttribute(android.R.attr.selectableItemBackgroundBorderless, value,true)
             setBackgroundResource(value.resourceId)
@@ -122,7 +125,12 @@ class NativeExploreSheet(private val context: Context) {
                 cardElevation = dp(6).toFloat()
                 cameraDistance = 9000 * context.resources.displayMetrics.density
                 if (animate) stateListAnimator = AnimatorInflater.loadStateListAnimator(context, R.animator.explore_press_depth)
-                setCardBackgroundColor(color)
+                setCardBackgroundColor(if (light) when(key) {
+                    "matches" -> 0xFFF3E6D7.toInt()
+                    "tech" -> 0xFFEDE4F5.toInt()
+                    "trail" -> 0xFFE2EFEB.toInt()
+                    else -> 0xFFF0EBF2.toInt()
+                } else color)
                 strokeWidth = 0
                 rippleColor = ColorStateList.valueOf(0x44FFF0CC)
                 isClickable = true
@@ -135,8 +143,8 @@ class NativeExploreSheet(private val context: Context) {
                 orientation = if (tile) LinearLayout.VERTICAL else LinearLayout.HORIZONTAL
                 background = GradientDrawable(GradientDrawable.Orientation.TL_BR,
                     intArrayOf(0x16FFFFFF,0x03FFFFFF,0x16000000))
-                minimumHeight = dp(if (tile) 208 else if (primary) 132 else if (hint == null) 60 else 92)
-                setPadding(dp(if (wide) 22 else 17),dp(if (primary) 24 else 14),dp(17),dp(if (primary) 24 else 14))
+                minimumHeight = dp(if (tile) 184 else if (primary) 108 else if (hint == null) 56 else 80)
+                setPadding(dp(if (wide) 20 else 16),dp(if (primary) 18 else 12),dp(16),dp(if (primary) 18 else 12))
                 importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS
             }
             row.addView(ImageView(context).apply {
@@ -148,8 +156,8 @@ class NativeExploreSheet(private val context: Context) {
             val captions = LinearLayout(context).apply {
                 orientation = LinearLayout.VERTICAL
                 setPaddingRelative(dp(if (tile) 0 else 15),dp(if (tile) 15 else 0),0,0)
-                addView(label(title,if (primary) 24f else if (wide) 20f else 18f,true,0xFFFFF6EC.toInt()))
-                if (hint != null) addView(label(hint,if (wide) 15f else 14f,false,0xFFDFD3E3.toInt()))
+                addView(label(title,if (primary) 22f else if (wide) 19f else 17f,true,textColor))
+                if (hint != null) addView(label(hint,if (wide) 14f else 13f,false,mutedColor))
             }
             row.addView(captions,if (tile) LinearLayout.LayoutParams(-1,-2) else LinearLayout.LayoutParams(0,-2,1f))
             row.addView(ImageView(context).apply {
@@ -179,8 +187,8 @@ class NativeExploreSheet(private val context: Context) {
         sheet.setContentView(scroll)
         sheet.window?.let { window ->
             WindowCompat.setDecorFitsSystemWindows(window,false)
-            WindowInsetsControllerCompat(window,scroll).isAppearanceLightStatusBars = false
-            WindowInsetsControllerCompat(window,scroll).isAppearanceLightNavigationBars = false
+            WindowInsetsControllerCompat(window,scroll).isAppearanceLightStatusBars = light
+            WindowInsetsControllerCompat(window,scroll).isAppearanceLightNavigationBars = light
         }
         sheet.show()
         sheet.window?.setLayout(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT)

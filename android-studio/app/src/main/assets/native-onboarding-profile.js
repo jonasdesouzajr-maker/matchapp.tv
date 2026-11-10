@@ -56,6 +56,16 @@
     @media(max-width:620px){.main-layout,.container{padding:9px!important}#account-details{padding:10px!important}#editable-fields-section,.taste-q-grid{grid-template-columns:1fr!important}.mao-quiz-nav{grid-template-columns:1fr auto 1fr!important;gap:7px!important}.mao-quiz-nav button{padding:8px 9px!important}.mao-progress{font-size:10px!important}}
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}}
   `;
+  if(C.light)style.textContent+=`
+    html body{background:#fffdf9!important;color:#302735!important}
+    html body :is(#account-details>h3,#taste-quiz>h2,.taste-q legend,#editable-fields-section label){color:#302735!important}
+    html body :is(.pf-card-sub,.taste-lead,.taste-multi,.mao-progress,.mao-inline-status){color:#665b70!important}
+    html body :is(#editable-fields-section input,#editable-fields-section select,#registration-account-fields input,#registration-account-fields select,.taste-choice,.mao-quiz-nav button){background:#eee7df!important;color:#302735!important;border-color:#77618430!important}
+    html body .taste-q{background:#f7f3ee!important;border-color:#77618430!important}
+    html body .taste-choice.mao-selected{background:#eadcf4!important;border-color:#8056a1!important}
+    html body .taste-status{background:#f9e1e7!important;color:#93293f!important}
+    html body :is(#save-profile-btn,.mao-quiz-nav button:last-child){background:#74508b!important;color:#fff!important;box-shadow:none!important}
+  `;
   document.head.appendChild(style);
 
   function hideChrome(){

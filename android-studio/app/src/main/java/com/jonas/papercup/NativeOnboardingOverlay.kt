@@ -61,6 +61,10 @@ class NativeOnboardingOverlay(
     private var contentWebView: WebView? = null
     private var loading: ProgressBar? = null
     private var copy: Copy? = null
+    private var lightAppearance = false
+    private val surfaceColor get() = if (lightAppearance) 0xFFFFFDF9.toInt() else Color.rgb(10, 10, 15)
+    private val textColor get() = if (lightAppearance) 0xFF302735.toInt() else Color.WHITE
+    private val mutedColor get() = if (lightAppearance) 0xFF665B70.toInt() else Color.rgb(198, 187, 211)
     private val density get() = activity.resources.displayMetrics.density
     private fun dp(value: Int) = (value * density + 0.5f).toInt()
 
@@ -70,9 +74,17 @@ class NativeOnboardingOverlay(
 
     val isShowing: Boolean get() = host != null
 
-    @SuppressLint("SetJavaScriptEnabled")
     fun show(copy: Copy) {
         if (host != null) return
+        mainWebView.evaluateJavascript("document.documentElement.dataset.theme === 'sunrise'") { value ->
+            if (!activity.isFinishing && !activity.isDestroyed) showResolved(copy, value == "true")
+        }
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
+    private fun showResolved(copy: Copy, light: Boolean) {
+        if (host != null) return
+        lightAppearance = light
         this.copy = copy
 
         val overlay = FrameLayout(activity).apply {
@@ -92,7 +104,7 @@ class NativeOnboardingOverlay(
             elevation = dp(24).toFloat()
             background = GradientDrawable(
                 GradientDrawable.Orientation.TL_BR,
-                intArrayOf(
+                if (lightAppearance) intArrayOf(0xFFFFFDF9.toInt(),0xFFF7F3EE.toInt()) else intArrayOf(
                     Color.rgb(33, 22, 47),
                     Color.rgb(15, 13, 21),
                     Color.rgb(8, 8, 13)
@@ -142,14 +154,14 @@ class NativeOnboardingOverlay(
         }
         val title = TextView(activity).apply {
             text = copy.title
-            setTextColor(Color.WHITE)
+            setTextColor(textColor)
             textSize = 19f
             setTypeface(typeface, Typeface.BOLD)
             maxLines = 2
         }
         val subtitle = TextView(activity).apply {
             text = copy.subtitle
-            setTextColor(Color.rgb(198, 187, 211))
+            setTextColor(mutedColor)
             textSize = 12f
             maxLines = 2
             setPadding(0, dp(3), 0, 0)
@@ -195,7 +207,7 @@ class NativeOnboardingOverlay(
         )
 
         val body = FrameLayout(activity).apply {
-            setBackgroundColor(Color.rgb(10, 10, 15))
+            setBackgroundColor(surfaceColor)
         }
         panel.addView(
             body,
@@ -207,7 +219,7 @@ class NativeOnboardingOverlay(
         )
 
         val onboardingWeb = WebView(activity).apply {
-            setBackgroundColor(Color.rgb(10, 10, 15))
+            setBackgroundColor(surfaceColor)
             visibility = View.INVISIBLE
             isVerticalScrollBarEnabled = false
             isHorizontalScrollBarEnabled = false
@@ -356,6 +368,7 @@ class NativeOnboardingOverlay(
     private fun injectProfilePresentation(view: WebView) {
         val c = copy ?: return
         val json = JSONObject()
+            .put("light", lightAppearance)
             .put("prev", c.prev)
             .put("next", c.next)
             .put("question", c.question)
@@ -391,7 +404,7 @@ class NativeOnboardingOverlay(
             orientation = LinearLayout.VERTICAL
             gravity = Gravity.CENTER
             setPadding(dp(24), dp(28), dp(24), dp(28))
-            setBackgroundColor(Color.rgb(10, 10, 15))
+            setBackgroundColor(surfaceColor)
         }
         val logo = ImageView(activity).apply {
             setImageResource(R.drawable.matchapp_logo_exact)
@@ -402,7 +415,7 @@ class NativeOnboardingOverlay(
 
         val title = TextView(activity).apply {
             text = c.doneTitle
-            setTextColor(Color.WHITE)
+            setTextColor(textColor)
             textSize = 27f
             gravity = Gravity.CENTER
             setTypeface(typeface, Typeface.BOLD)
@@ -418,7 +431,7 @@ class NativeOnboardingOverlay(
 
         val subtitle = TextView(activity).apply {
             text = c.doneSubtitle
-            setTextColor(Color.rgb(194, 184, 206))
+            setTextColor(mutedColor)
             textSize = 14f
             gravity = Gravity.CENTER
             setPadding(dp(8), dp(8), dp(8), dp(18))
