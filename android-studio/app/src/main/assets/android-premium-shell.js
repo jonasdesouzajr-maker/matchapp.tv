@@ -77,6 +77,18 @@
     hi:['दिखावट','गहरा','हल्का'],id:['Tampilan','Gelap','Terang'],ja:['外観','ダーク','ライト'],
     ko:['화면 모드','다크','라이트'],zh:['外观','深色','浅色'],'zh-tw':['外觀','深色','淺色']
   };
+  function saveAppearance(theme){
+    if(!['aurora','sunrise'].includes(theme))return;
+    if(window.MatchSettings){window.MatchSettings.set('theme',theme);return}
+    // Lightweight editorial pages share the saved palette without loading the
+    // Home settings controller. Preserve every other preference in its record.
+    try{
+      const saved=JSON.parse(localStorage.getItem('match_settings')||'{}');
+      localStorage.setItem('match_settings',JSON.stringify({...saved,theme}));
+      document.documentElement.dataset.theme=theme;
+      document.dispatchEvent(new CustomEvent('matchapp:settingschanged',{detail:{key:'theme',value:theme}}));
+    }catch(_){}
+  }
   function mountAppearance(){
     const locale=lang(),c=appearanceCopy[locale]||appearanceCopy[locale.split('-')[0]]||appearanceCopy.en;
     const light=document.documentElement.dataset.theme==='sunrise';
@@ -85,7 +97,7 @@
       if(!group){
         group=document.createElement('fieldset');group.className='ma-android-appearance';group.dataset.maPillExclude='';
         group.innerHTML='<legend></legend><button type="button" data-ma-appearance="aurora"><span aria-hidden="true">☾</span><span></span></button><button type="button" data-ma-appearance="sunrise"><span aria-hidden="true">☀</span><span></span></button><p class="ma-android-brand-story"></p>';
-        group.addEventListener('click',event=>{const button=event.target.closest('button[data-ma-appearance]');if(button&&window.MatchSettings)window.MatchSettings.set('theme',button.dataset.maAppearance)});
+        group.addEventListener('click',event=>{const button=event.target.closest('button[data-ma-appearance]');if(button)saveAppearance(button.dataset.maAppearance)});
         panel.prepend(group);
       }
       const label=qs('legend',group);if(label.textContent!==c[0])label.textContent=c[0];
