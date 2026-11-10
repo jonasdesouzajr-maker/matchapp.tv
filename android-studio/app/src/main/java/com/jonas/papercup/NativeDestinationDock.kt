@@ -217,6 +217,16 @@ class NativeDestinationDock(
             if (light) intArrayOf(0xFF51325E.toInt(),0xFF665B70.toInt())
             else intArrayOf(0xFFFFE2A5.toInt(),0xFFC9C3D3.toInt())
         )
+        for (index in 0 until bar.menu.size()) {
+            if (index == 2) continue // Preserve the full-color MatchApp Ai logo.
+            val icon = bar.menu.getItem(index).icon?.mutate() ?: continue
+            icon.setTintList(if (light) ColorStateList.valueOf(when(index) {
+                0 -> 0xFF8C6021.toInt()
+                3 -> 0xFF276F69.toInt()
+                else -> 0xFF6D458F.toInt()
+            }) else null)
+            bar.menu.getItem(index).icon = icon
+        }
         web.setBackgroundColor(page)
         (web.parent as? View)?.setBackgroundColor(page)
         bar.rootView.findViewById<View>(R.id.root)?.setBackgroundColor(page)

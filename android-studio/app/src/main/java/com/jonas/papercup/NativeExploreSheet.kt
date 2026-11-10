@@ -149,6 +149,11 @@ class NativeExploreSheet(private val context: Context) {
             }
             row.addView(ImageView(context).apply {
                 setImageResource(icon)
+                if (light && key != "matches") setColorFilter(when(key) {
+                    "tech" -> 0xFF6D458F.toInt()
+                    "trail" -> 0xFF276F69.toInt()
+                    else -> 0xFF8C6021.toInt()
+                })
                 setPadding(dp(10),dp(10),dp(10),dp(10))
                 background = GradientDrawable(GradientDrawable.Orientation.TL_BR,
                     intArrayOf(0x305F466F,0x15000000)).apply { cornerRadius = dp(16).toFloat() }
@@ -162,6 +167,7 @@ class NativeExploreSheet(private val context: Context) {
             row.addView(captions,if (tile) LinearLayout.LayoutParams(-1,-2) else LinearLayout.LayoutParams(0,-2,1f))
             row.addView(ImageView(context).apply {
                 setImageResource(R.drawable.ic_explore_arrow)
+                if (light) setColorFilter(0xFF8C6021.toInt())
                 importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
             }, LinearLayout.LayoutParams(dp(20),dp(20)).apply { marginStart = dp(10); if (tile) { gravity = Gravity.END; topMargin = dp(12) } })
             item.addView(row)
@@ -176,7 +182,7 @@ class NativeExploreSheet(private val context: Context) {
             }
             cardIndex++
         }
-        card("matches","pick","matchHint",R.drawable.ic_dock_matches,0xFF4E3742.toInt(),primary = true)
+        card("matches","pick","matchHint",R.drawable.matchapp_logo_exact,0xFF4E3742.toInt(),primary = true)
         val discoveries = if (split) LinearLayout(context).also { row ->
             row.orientation = LinearLayout.HORIZONTAL
             panel.addView(row,LinearLayout.LayoutParams(-1,-2).apply { topMargin = dp(14) })

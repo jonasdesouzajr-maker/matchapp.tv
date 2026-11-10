@@ -234,7 +234,7 @@ html.matchapp-ai-android #ma-reference-header#ma-reference-header#ma-reference-h
 html.matchapp-ai-android #ref-explore-header .ref-explore-tools>summary {display:grid!important;place-items:center!important;width:44px!important;height:44px!important;box-sizing:border-box!important;padding:10px!important;margin:0!important;background:#ffffff08!important;border:1px solid #ffffff0c!important;border-radius:16px!important}
 html.matchapp-ai-android body.page-explore main {padding:12px 14px!important;box-sizing:border-box!important;width:100%!important;max-width:1120px!important;margin:0 auto!important}
 html.matchapp-ai-android body.page-explore .ref-explore-hero {min-height:0!important;padding:20px!important;margin:0 0 12px!important;border:1px solid #ffffff10!important;border-radius:24px!important;box-sizing:border-box!important}
-html.matchapp-ai-android body.page-explore .ref-explore-hero-copy {max-width:100%!important;width:100%!important}
+html.matchapp-ai-android body.page-explore .ref-explore-hero-copy {padding:0!important;max-width:100%!important;width:100%!important}
 html.matchapp-ai-android body.page-explore .hub-title {width:100%!important;font:750 clamp(28px,7vw,40px)/1.08 system-ui!important;max-width:none!important;margin:0 0 8px!important;letter-spacing:-.035em!important}
 html.matchapp-ai-android body.page-explore .hub-lede {font:400 13px/1.5 system-ui!important;max-width:32em!important;margin:0 0 16px!important}
 html.matchapp-ai-android body.page-explore .ref-explore-primary {min-height:44px!important;padding:10px 16px!important;font:700 13px/1.3 system-ui!important;border-radius:14px!important}
@@ -364,10 +364,13 @@ html.matchapp-ai-android #ma-android-match-launch :is(p,small) {color:var(--ma-n
 html.matchapp-ai-android #ma-android-match-launch :is(h2,h3) {color:var(--ma-native-text)!important}
 html.matchapp-ai-android #ma-android-match-launch p {color:var(--ma-native-muted)!important}
 html.matchapp-ai-android #ma-android-match-launch .mam-open {min-height:44px!important;border-radius:999px!important;background:var(--ma-native-accent)!important;color:var(--ma-native-ink)!important}
+html.matchapp-ai-android body.page-explore :is(.ref-explore-hero,.ref-editorial-banner) {background-color:#170e21!important;color:#fff8ef!important}
+html.matchapp-ai-android body.page-explore :is(.ref-explore-hero,.ref-editorial-banner) :is(h1,h2,h3,strong) {color:#fff8ef!important}
+html.matchapp-ai-android body.page-explore :is(.ref-explore-hero,.ref-editorial-banner) :is(p,small,.ref-editorial-sub) {color:#e5dbe9!important}
 html.matchapp-ai-android .ma-auth-offer-fold {background:var(--ma-native-field)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
-html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal>.premium-card,#main-auth-modal>.auth-box,.profile-hub-row,.ref-explore-hero,.ref-editorial-banner,.ref-topic-caption) {background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
-html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal,.profile-hub-row,.ref-explore-hero,.ref-editorial-banner,.ref-topic-caption) :is(h2,h3,strong,label) {color:var(--ma-native-text)!important}
-html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal,.profile-hub-row,.ref-explore-hero,.ref-editorial-banner,.ref-topic-caption) :is(p,small) {color:var(--ma-native-muted)!important}
+html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal>.premium-card,#main-auth-modal>.auth-box,.profile-hub-row,.ref-topic-caption) {background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
+html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal,.profile-hub-row,.ref-topic-caption) :is(h2,h3,strong,label) {color:var(--ma-native-text)!important}
+html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal,.profile-hub-row,.ref-topic-caption) :is(p,small) {color:var(--ma-native-muted)!important}
 html.matchapp-ai-android :is(.mam-card,#main-auth-modal) :is(input,select,textarea,.crit-chip,.ma-cinema-select) {background:var(--ma-native-field)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
 html.matchapp-ai-android :is(.mam-x,.mao-x,.ma-android-auth-x,#ma-ambient-panel .ja-close) {background:var(--ma-native-close)!important;color:var(--ma-native-close-text)!important;border-color:var(--ma-native-line)!important}
 html.matchapp-ai-android #ma-ambient-panel {background:var(--ma-native-bg)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
