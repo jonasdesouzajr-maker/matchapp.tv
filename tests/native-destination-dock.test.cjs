@@ -6,6 +6,19 @@ const source=fs.readFileSync(path.join(__dirname,'../android-studio/app/src/main
 const keys=['home','explore','matches','list','profile'];
 const feedback=fs.readFileSync(path.join(__dirname,'../patches/immersive-feedback-20261014.js'),'utf8');
 const tick=()=>new Promise(resolve=>setTimeout(resolve,5));
+test('native appearance follows a theme change without changing destinations or duplicating messages',async()=>{
+  const nav='<nav class="ma-cinema-dock">'+keys.map(key=>'<a href="#'+key+'" data-cinema-route="'+key+'"><span data-cinema-copy>'+key+'</span></a>').join('')+'</nav>';
+  const dom=new JSDOM(nav,{url:'https://matchapp.tv/',runScripts:'outside-only',pretendToBeVisual:true});
+  try{
+    const w=dom.window,posts=[];w.matchMedia=()=>({matches:false});nativeBridge(w,posts);w.eval(source);
+    const frame=()=>new Promise(resolve=>w.requestAnimationFrame(()=>w.requestAnimationFrame(resolve)));
+    await frame();assert.equal(posts.at(-1).light,false);
+    w.document.documentElement.dataset.theme='sunrise';await frame();
+    assert.equal(posts.at(-1).light,true);assert.deepEqual(posts.at(-1).labels,keys);
+    const count=posts.length;w.document.documentElement.dataset.theme='sunrise';await frame();assert.equal(posts.length,count);
+    w.document.documentElement.dataset.theme='aurora';await frame();assert.equal(posts.at(-1).light,false);
+  }finally{dom.window.close()}
+});
 function nativeBridge(w,posts) {
   const listeners=[];
   w.MatchAppDestinationDock={
