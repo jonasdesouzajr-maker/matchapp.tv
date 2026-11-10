@@ -8,8 +8,11 @@
   const root = document.documentElement;
   const slots = ['home','explore','matches','list','profile'];
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
-  let nav, timer, sent, restore;
-  function schedule() { if (!timer) timer = requestAnimationFrame(publish); }
+  let nav, timer, sent, restore, suspended=false;
+  function schedule() {
+    if(!suspended && window.document?.body?.isConnected && !timer) timer=requestAnimationFrame(publish);
+  }
+
   const labelsObserver = new MutationObserver(schedule);
   const emptyWatchLater = {
     'en':'Your Watch Later portfolio is empty. Go match!',
@@ -157,8 +160,19 @@
     wrapped.__maOriginal=original;
     window.discoverRecommendationRequest=wrapped;
   }
+  const dialogSelector = 'dialog,[role="dialog"],#ma-ambient-panel,#ma-android-onboarding,#ma-android-match-modal';
+  function blocked() {
+    return suspended || document.hidden || document.fullscreenElement || !nav || nav.hidden ||
+      document.body?.classList.contains('ma-jonas-modal-open') ||
+      document.body?.classList.contains('ma-jonas-chat-open') ||
+      [...document.querySelectorAll('dialog[open],[role="dialog"][aria-modal="true"]:not([hidden]),#ma-ambient-panel,#ma-android-onboarding,#ma-android-match-modal')]
+        .some(el => !el.hidden && el.getAttribute('aria-hidden') !== 'true' &&
+          getComputedStyle(el).display !== 'none' && getComputedStyle(el).visibility !== 'hidden' &&
+          Number(getComputedStyle(el).opacity || 1) > .01 && el.getClientRects().length);
+  }
   function publish() {
     timer = 0;
+    if(suspended || !window.document?.body?.isConnected)return;
     cleanStaticWebCopy();
     patchAndroidFollowups();
     const current = document.querySelector('nav.ma-cinema-dock');
@@ -182,39 +196,35 @@
       });
       if('requestIdleCallback' in window)requestIdleCallback(warm,{timeout:1800});else setTimeout(warm,600);
     }
-    const visibleOverlay = el => {
-      if(!el || el.hidden || el.getAttribute('aria-hidden')==='true')return false;
-      const cs=getComputedStyle(el),r=el.getBoundingClientRect();
-      return cs.display!=='none' && cs.visibility!=='hidden' && Number(cs.opacity||1)>.01 &&
-        r.width>8 && r.height>8 && r.bottom>0 && r.right>0 && r.top<innerHeight && r.left<innerWidth;
-    };
-    const blocked = document.hidden || document.fullscreenElement ||
-      visibleOverlay(document.querySelector('#ma-ambient-panel')) ||
-      visibleOverlay(document.querySelector('#ma-android-onboarding')) ||
-      visibleOverlay(document.querySelector('#ma-android-match-modal')) || !nav ||
-      [...document.querySelectorAll('dialog[open],[role="dialog"][aria-modal="true"]:not([hidden])')].some(visibleOverlay);
     const domSelected=links.findIndex(a=>a?.getAttribute('aria-current')==='page');
     const p=location.pathname,h=location.hash;
     const routeSelected=(p==='/'||p==='/index.html')?(h==='#questionnaire-box'?2:0):
       (p==='/profile/profile.html'?(h==='#tab-watchlater'?3:4):1);
-    const payload = JSON.stringify({href:location.href, visible:!blocked && labels.every(Boolean), labels,
-      selected:domSelected>=0?domSelected:routeSelected, rtl:root.dir==='rtl',
+    let language = '';
+    try { language = localStorage.getItem('match_lang') || ''; } catch (_) {}
+    const payload = JSON.stringify({href:location.href, visible:!blocked() && labels.every(Boolean), labels,
+      selected:domSelected>=0?domSelected:routeSelected, rtl:root.dir==='rtl', lang:language||window.MATCH_LANG||root.lang||'en',
       motion:!motion.matches && !root.classList.contains('reduce-motion')});
     if (payload !== sent) { sent=payload; bridge.postMessage(payload); }
   }
-  // Keeping the web anchors preserves same-page handlers, history and the existing feedback owner.
-  window.__maNativeDock = {activate(index) {
-    if(!root.hasAttribute('data-native-dock') || !slots[index])return;
-    const anchor=nav?.querySelector('a[data-cinema-route="'+slots[index]+'"]');
-    if(!anchor)return;
-    const before=location.href,target=new URL(anchor.href,location.href).href;
-    anchor.click();
-    // Some Android WebView pages can absorb the synthetic anchor click while
-    // a transition/observer owns focus. Preserve the original click first,
-    // then fall back to the exact same canonical destination if it did not move.
-    if(target!==before)setTimeout(()=>{if(location.href===before)location.assign(target)},140);
-  }};
+  function targetFor(message) {
+    if (!root.hasAttribute('data-native-dock') || !/^(?:activate:[0-4]|explore:1)$/.test(message) || blocked()) return null;
+    const anchor=nav?.querySelector('a[data-cinema-route="'+slots[message.slice(-1)]+'"]');
+    return anchor?.isConnected && anchor.getAttribute('aria-disabled')!=='true' ? anchor : null;
+  }
+  window.__maNativeDock = {targetFor};
+  // Only Android's menu listeners send activation replies. The feedback owner hears the
+  // same reply synchronously before the existing anchor handles navigation.
+  bridge.addEventListener('message', event => {
+    const anchor=targetFor(event.data);
+    if (anchor && event.data==='explore:1') {
+      bridge.postMessage(JSON.stringify({href:location.href, openExplore:true}));
+      return;
+    }
+    if (anchor) setTimeout(()=>{ if (targetFor(event.data)===anchor) anchor.click(); },0);
+  });
   bridge.onmessage = event => {
+    if (event.data!=='shown' && event.data!=='hidden') return;
     const shown=event.data==='shown';
     root.toggleAttribute('data-native-dock',shown);
     if(shown && nav && !restore){
@@ -436,14 +446,28 @@
     document.querySelectorAll('.ai-sidebar,#chat-log,.matchapp-notification-panel').forEach(host=>{
       new MutationObserver(schedule).observe(host,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:['aria-label','title']});
     });
+    // Existing dialogs open through style or class changes. Watch those writes
+    // on dialogs alone so unrelated animation and scroll styles stay cheap.
+    const dialogVisibility = new MutationObserver(schedule);
+    function watchDialogs() {
+      dialogVisibility.disconnect();
+      for(const el of body.querySelectorAll(dialogSelector))
+        dialogVisibility.observe(el,{attributes:true,attributeFilter:['style','class','open','aria-modal','aria-hidden','hidden']});
+    }
+    watchDialogs();
     new MutationObserver(records=>{
-      if(records.some(r=>r.target.matches?.('dialog,[role="dialog"],#ma-ambient-panel,#ma-android-onboarding,#ma-android-match-modal')||
-        [...r.addedNodes,...r.removedNodes].some(n=>n.matches?.('dialog,[role="dialog"],#ma-ambient-panel,#ma-android-onboarding,#ma-android-match-modal'))))schedule();
-    }).observe(body,{childList:true,subtree:true,attributes:true,attributeFilter:['open','aria-modal','aria-hidden','hidden','style']});
+      const changed=records.some(r=>r.type==='attributes'
+        ? r.oldValue==='dialog' || r.target.matches(dialogSelector)
+        : [...r.addedNodes,...r.removedNodes].some(n=>n.matches?.(dialogSelector) || n.querySelector?.(dialogSelector)));
+      if(changed){watchDialogs();schedule();}
+    }).observe(body,{childList:true,subtree:true,attributes:true,attributeFilter:['role'],attributeOldValue:true});
     publish();
   };
   if(document.body) bind(); else document.addEventListener('DOMContentLoaded',bind,{once:true});
-  for(const event of ['pageshow','hashchange','popstate'])window.addEventListener(event,schedule);
+  window.addEventListener('pagehide',()=>{suspended=true;cancelAnimationFrame(timer);timer=0;});
+  window.addEventListener('pageshow',()=>{suspended=false;sent=null;schedule();});
+  for(const event of ['hashchange','popstate'])window.addEventListener(event,schedule);
+
   for(const event of ['visibilitychange','fullscreenchange','matchapp:langchange','matchapp:settingschanged'])document.addEventListener(event,schedule);
   motion.addEventListener?.('change',schedule);
 })();

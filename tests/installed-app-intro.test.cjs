@@ -73,8 +73,8 @@ test('native intro is bundled, duration-aware, one-time and destroyed on backgro
  assert.match(s,/maxOf\(player\.duration\.toLong\(\), 10000L\) \+ 5000L/);
  assert.match(s,/PREF_INTRO_SEEN/);
  assert.match(s,/NativeStartupBridge/);
- // Returning users see the centered circular adaptive mark, not the old square tile.
- assert.match(s,/R\.drawable\.ic_launcher_foreground/);
+ // Returning users see the centered logo-only mark, not the old square tile.
+ assert.match(s,/R\.drawable\.matchapp_logo_exact/);
  assert.doesNotMatch(s,/setImageResource\(R\.drawable\.matchapp_official_icon\)/);
  assert.match(s,/setOnErrorListener/);
  assert.match(s,/override fun onPause\(\) \{\s*lastPermissionInteractionAt = 0L\s*finishIntro\(immediate = true\)\s*finishStartupTransition\(immediate = true\)/);
