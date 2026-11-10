@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.os.Build
@@ -16,6 +17,7 @@ import android.provider.Settings
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.webkit.WebView
+import android.widget.ImageView
 import androidx.core.view.AccessibilityDelegateCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -219,13 +221,15 @@ class NativeDestinationDock(
         )
         for (index in 0 until bar.menu.size()) {
             if (index == 2) continue // Preserve the full-color MatchApp Ai logo.
-            val icon = bar.menu.getItem(index).icon?.mutate() ?: continue
-            icon.setTintList(if (light) ColorStateList.valueOf(when(index) {
+            // Material clones menu drawables and clears their tint when the bar
+            // preserves full-color artwork. Tint the rendered icon instead.
+            val icon = bar.findViewById<View>(index + 1)?.findViewById<ImageView>(
+                com.google.android.material.R.id.navigation_bar_item_icon_view) ?: continue
+            if (light) icon.setColorFilter(when(index) {
                 0 -> 0xFF8C6021.toInt()
                 3 -> 0xFF276F69.toInt()
                 else -> 0xFF6D458F.toInt()
-            }) else null)
-            bar.menu.getItem(index).icon = icon
+            }, PorterDuff.Mode.SRC_IN) else icon.clearColorFilter()
         }
         web.setBackgroundColor(page)
         (web.parent as? View)?.setBackgroundColor(page)
