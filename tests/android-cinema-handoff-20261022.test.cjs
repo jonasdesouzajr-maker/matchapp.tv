@@ -46,6 +46,6 @@ test('the missing-handler message has authored resources for every supported nat
 test('the native CI gate executes the new JVM routing tests before exporting the current adult artifacts',()=>{
   const flow=read('.github/workflows/android-validation.yml');
   assert.match(flow,/\.\/gradlew :app:testDebugUnitTest :app:assembleDebug :app:bundleRelease :kidsapp:assembleDebug/);
-  assert.match(flow,/MatchApp-Ai-adult-1\.1\.71-code71-UNSIGNED-AAB/);
-  assert.match(flow,/version: 1\.1\.71; versionCode: 71/);
+  assert.match(flow,/MatchApp-Ai-adult-1\.1\.72-code72-UNSIGNED-AAB/);
+  assert.match(flow,/version: 1\.1\.72; versionCode: 72/);
 });

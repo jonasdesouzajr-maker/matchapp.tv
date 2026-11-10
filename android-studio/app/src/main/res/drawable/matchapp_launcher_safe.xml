@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Artwork has its own 66dp safe region; no baked square plate or second inset. -->
-<inset xmlns:android="http://schemas.android.com/apk/res/android" android:drawable="@drawable/matchapp_launcher_orbit" android:inset="0%" />
+<!-- Exact owner-approved, text-free mark; keep the full logo inside adaptive masks. -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/matchapp_logo_exact"
+    android:inset="18%" />

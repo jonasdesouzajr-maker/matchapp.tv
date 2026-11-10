@@ -9,7 +9,7 @@ import zlib
 
 ROOT = Path(__file__).resolve().parents[1]
 RES = ROOT / "app/src/main/res"
-ART = ROOT / "play/refresh-20261104/artwork"
+ART = ROOT / "play/refresh-20261110/artwork"
 
 
 def rgba_png(path, expected_size):
@@ -65,13 +65,21 @@ play = rgba_png(play_path, (512, 512))
 assert play_path.stat().st_size <= 1024 * 1024, "Play listing icon exceeds 1024 KB"
 assert all(a == 255 for row in play for a in row[3::4]), "Play icon must be full-bleed, without a baked transparent outer mask"
 
-foreground = rgba_png(RES / "drawable-nodpi/matchapp_launcher_orbit.png", (432, 432))
-visible = [(x, y) for y, row in enumerate(foreground) for x in range(432) if row[x * 4 + 3] > 8]
+# Validate the actual foreground used by the packaged adaptive icon, including its inset.
+logo_path = RES / "drawable-nodpi/matchapp_logo_exact.png"
+assert hashlib.sha256(logo_path.read_bytes()).hexdigest() == "5e2dcfccb511be5383e5ea4cf3c14ca4eb43a19034bfb023605fe75ecc4f20a1", "Approved logo bytes changed"
+foreground = rgba_png(logo_path, (512, 512))
+android = "{http://schemas.android.com/apk/res/android}"
+safe = ET.parse(RES / "drawable/matchapp_launcher_safe.xml").getroot()
+assert safe.tag == "inset"
+assert safe.attrib[android + "drawable"] == "@drawable/matchapp_logo_exact"
+assert safe.attrib[android + "inset"] == "18%"
+visible = [(x, y) for y, row in enumerate(foreground) for x in range(512) if row[x * 4 + 3] > 8]
 assert len(visible) > 5000, "Adaptive foreground is empty or damaged"
-max_radius = max(math.hypot(x + 0.5 - 216, y + 0.5 - 216) for x, y in visible)
-assert max_radius <= 432 * 33 / 108, f"Artwork escapes Android's 66dp safe circle: {max_radius}"
+max_radius = max(math.hypot(x + 0.5 - 256, y + 0.5 - 256) * 0.64 for x, y in visible)
+assert max_radius <= 512 * 33 / 108, f"Artwork escapes Android's 66dp safe circle: {max_radius}"
 assert foreground[0][3] == foreground[-1][-1] == 0, "Adaptive foreground has an opaque canvas"
-assert sum(a == 0 for row in foreground for a in row[3::4]) > 432 * 432 / 2
+assert sum(a == 0 for row in foreground for a in row[3::4]) > 512 * 512 / 2
 
 for density, size in (("mdpi", 48), ("hdpi", 72), ("xhdpi", 96), ("xxhdpi", 144), ("xxxhdpi", 192)):
     for name in ("ic_launcher", "ic_launcher_round"):
@@ -91,4 +99,4 @@ for qualifier in ("v26", "v33"):
 
 studio = RES / "drawable-nodpi/adv_dev_ops_studio.jpg"
 assert hashlib.sha256(studio.read_bytes()).hexdigest() == "2663e87fc0b2fab3fba870696ec76ff97fc1f8fe47fb3ef680c091f5365b6f1d", "Owner-supplied company artwork bytes changed"
-print(f"Android/Play icon sizes, alpha, safe circle ({max_radius:.2f}px <= 132px), themed resources and exact company artwork: PASS")
+print(f"Android/Play icon sizes, alpha, safe circle ({max_radius:.2f}px <= 156.44px), themed resources and exact company artwork: PASS")

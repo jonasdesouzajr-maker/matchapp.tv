@@ -7,16 +7,12 @@ import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.os.Build
-import android.os.Bundle
-import android.os.SystemClock
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.webkit.WebView
-import androidx.core.view.AccessibilityDelegateCompat
 import androidx.core.view.ViewCompat
-import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
-import androidx.webkit.JavaScriptReplyProxy
 import androidx.webkit.WebViewCompat
 import androidx.webkit.WebViewFeature
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -24,80 +20,62 @@ import com.google.android.material.navigation.NavigationBarView
 import org.json.JSONObject
 
 /** Native touch targets reuse the current page's navigation and translated labels. */
-class NativeDestinationDock(
-    private val bar: BottomNavigationView,
-    private val web: WebView,
-    private val playHaptic: (LongArray) -> Unit
-) {
-    private val icons = listOf(R.drawable.ic_dock_home, R.drawable.ic_dock_explore, R.drawable.ic_dock_matches,
+class NativeDestinationDock(private val bar: BottomNavigationView, private val web: WebView) {
+    private val icons = listOf(R.drawable.ic_dock_home, R.drawable.ic_dock_explore, R.drawable.matchapp_logo_exact,
         R.drawable.ic_dock_list, R.drawable.ic_dock_profile)
     private val script by lazy { web.context.assets.open("native-destination-dock.js").bufferedReader().use { it.readText() } }
-    private val explore = NativeExploreSheet(bar.context)
-    private val exploreActionId = View.generateViewId()
-    private val exploreAccessibility = object : AccessibilityDelegateCompat() {
-        override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfoCompat) {
-            super.onInitializeAccessibilityNodeInfo(host, info)
-            // Material removes ACTION_CLICK from selected tabs after this callback.
-            // A separate chooser action remains available to accessibility services.
-            if (host.isSelected) info.addAction(AccessibilityNodeInfoCompat.AccessibilityActionCompat(
-                exploreActionId, bar.menu.getItem(1).title))
-        }
-        override fun performAccessibilityAction(host: View, action: Int, args: Bundle?): Boolean {
-            return if (action == exploreActionId) host.performClick()
-                else super.performAccessibilityAction(host, action, args)
-        }
-    }
-    private var language = "en"
+    private val brandScript by lazy { web.context.assets.open("android-brand-data.js").bufferedReader().use { it.readText() } }
+    private val premiumScript by lazy { web.context.assets.open("android-premium-shell.js").bufferedReader().use { it.readText() } }
     private var syncing = false
     private var keyboard = false
     private var requested = false
     private var pressMotion: Boolean? = null
     private var previousRoute: String? = null
     private var documentUrl: String? = null
-    private var documentReply: JavaScriptReplyProxy? = null
-    private var pendingHaptic: String? = null
-    private var explorePending = false
-    private var tappedAt = 0L
     private val density = bar.resources.displayMetrics.density
     private val origins = setOf("https://matchapp.tv", "https://www.matchapp.tv")
 
     fun install() {
-        if (!WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER)) return
-        bar.background = GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,
-            intArrayOf(Color.rgb(38,32,50), Color.rgb(22,19,31)))
-        bar.elevation = 8 * density
+        val supported = WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER)
+        Log.d("MatchAppDock", "install webMessageSupported=$supported")
+        if (!supported) return
+        bar.background = GradientDrawable(
+            GradientDrawable.Orientation.TL_BR,
+            intArrayOf(Color.rgb(34, 25, 46), Color.rgb(18, 17, 25), Color.rgb(11, 11, 15))
+        ).apply {
+            cornerRadius = 24 * density
+            setStroke((0.8f * density).toInt().coerceAtLeast(1), Color.argb(42, 211, 183, 241))
+        }
+        // MainActivity already reserves system bars for the parent content.
+        // Material's default inset listener would reserve them again here and
+        // squeeze the label group to a single pixel on compact phone layouts.
+        ViewCompat.setOnApplyWindowInsetsListener(bar) { view, insets ->
+            val padding = (4 * density).toInt()
+            view.setPadding(0, padding, 0, padding)
+            insets
+        }
+        bar.itemPaddingTop = (6 * density).toInt()
+        bar.itemPaddingBottom = (6 * density).toInt()
+        bar.elevation = 18 * density
+        bar.translationZ = 10 * density
         bar.itemIconTintList = null
-        bar.itemTextColor = ColorStateList(arrayOf(intArrayOf(android.R.attr.state_checked), intArrayOf()),
-            intArrayOf(Color.rgb(255,226,165), Color.rgb(218,211,230)))
+        bar.itemIconSize = (24 * density).toInt()
+        bar.setItemTextAppearanceActive(R.style.TextAppearance_MatchApp_Dock)
+        bar.setItemTextAppearanceInactive(R.style.TextAppearance_MatchApp_Dock)
+        bar.itemTextColor = ColorStateList(
+            arrayOf(intArrayOf(android.R.attr.state_checked), intArrayOf()),
+            intArrayOf(Color.rgb(255, 226, 165), Color.rgb(201, 195, 211))
+        )
         bar.isItemActiveIndicatorEnabled = true
-        bar.itemActiveIndicatorColor = ColorStateList.valueOf(Color.rgb(75,56,91))
+        bar.itemActiveIndicatorColor = ColorStateList.valueOf(Color.rgb(78, 54, 94))
         bar.labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
         bar.isItemHorizontalTranslationEnabled = false
-        icons.forEachIndexed { index, icon -> bar.menu.add(0,index+1,index,"").setIcon(icon) }
-        fun sendCommand(message: String) {
-            if (!requested || keyboard || documentUrl != web.url) return
-            explorePending = message == "explore:1"
-            pendingHaptic = message
-            tappedAt = SystemClock.elapsedRealtime()
-            documentReply?.postMessage(message)
-        }
+        val initialLabels = listOf("Home", "Explore", "Matches", "My List", "Profile")
+        icons.forEachIndexed { index, icon -> bar.menu.add(0,index+1,index,initialLabels[index]).setIcon(icon) }
+        bar.labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
         fun activate(id: Int) {
-            sendCommand(if (id == 2) "explore:1" else "activate:" + (id - 1))
-        }
-        fun showExplore() {
-            explore.show(language, bar.layoutDirection == View.LAYOUT_DIRECTION_RTL,
-                bar.menu.getItem(1).title.toString(), pressMotion == true) { key, locale ->
-                if (!requested || keyboard || documentUrl != web.url) return@show
-                when (key) {
-                    "matches" -> sendCommand("activate:2")
-                    "all" -> sendCommand("activate:1")
-                    "tech", "trail" -> {
-                        val group = if (key == "tech") "tech" else "catalog-trails"
-                        val edition = if (locale == "en") "" else locale.lowercase(java.util.Locale.ROOT) + "/"
-                        web.loadUrl("https://matchapp.tv/$group/$edition")
-                    }
-                }
-            }
+            if (requested && documentUrl == web.url)
+                web.evaluateJavascript("window.__maNativeDock?.activate(${id-1})", null)
         }
         bar.setOnItemSelectedListener { item ->
             if (syncing) true else { activate(item.itemId); false }
@@ -108,34 +86,14 @@ class NativeDestinationDock(
             val data=message.data?.takeIf { it.length<=8192 }?.let { runCatching { JSONObject(it) }.getOrNull() } ?: return@addWebMessageListener
             val href=data.optString("href")
             if (view.url!=href || !allowed(href)) return@addWebMessageListener
-            if (data.optBoolean("openExplore")) {
-                if (!explorePending || !requested || keyboard || documentUrl != href ||
-                    SystemClock.elapsedRealtime() - tappedAt > 1000) return@addWebMessageListener
-                explorePending = false
-                showExplore()
-                return@addWebMessageListener
-            }
-            if (data.has("dockHaptic")) {
-                // A freshly navigated WebView may deny vibrate() until its own surface is touched.
-                // Permit one bounded pattern only for the current physical menu activation.
-                if (data.optString("dockHaptic") != pendingHaptic || documentUrl != href ||
-                    SystemClock.elapsedRealtime() - tappedAt > 1000) return@addWebMessageListener
-                pendingHaptic = null
-                val pattern = data.optJSONArray("timings") ?: return@addWebMessageListener
-                if (pattern.length() !in setOf(1,3)) return@addWebMessageListener
-                val timings = LongArray(pattern.length()) { pattern.optLong(it) }
-                if (timings.all { it in 1L..40L }) playHaptic(longArrayOf(0L) + timings)
-                return@addWebMessageListener
-            }
             val labels=data.optJSONArray("labels") ?: return@addWebMessageListener
             val active=data.optInt("selected",-1)
             requested=data.optBoolean("visible") && labels.length()==icons.size && active in icons.indices &&
                 (0 until labels.length()).all { labels.optString(it).length in 1..80 } &&
                 bar.resources.configuration.fontScale<=1.35f
+            Log.d("MatchAppDock", "href=$href visible=${data.optBoolean("visible")} labels=${labels.length()} active=$active fontScale=${bar.resources.configuration.fontScale} requested=$requested")
             documentUrl=href
-            documentReply=reply
             if (requested) {
-                language = data.optString("lang","en").take(16)
                 bar.layoutDirection=if(data.optBoolean("rtl")) View.LAYOUT_DIRECTION_RTL else View.LAYOUT_DIRECTION_LTR
                 syncing=true
                 try {
@@ -178,28 +136,27 @@ class NativeDestinationDock(
     }
 
     fun onDocumentChanged() {
-        explore.close()
         requested=false
         documentUrl=null
-        documentReply=null
-        pendingHaptic=null
-        explorePending=false
         render()
         web.animate().cancel()
         web.scaleX=1f; web.scaleY=1f; web.translationY=0f
     }
 
     fun attach(url: String?) {
-        if (allowed(url) && WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER))
-            web.evaluateJavascript(script,null)
+        val allowedNow = allowed(url)
+        val supported = WebViewFeature.isFeatureSupported(WebViewFeature.WEB_MESSAGE_LISTENER)
+        Log.d("MatchAppDock", "attach url=$url allowed=$allowedNow supported=$supported")
+        if (allowedNow && supported) {
+            web.evaluateJavascript(brandScript) { Log.d("MatchAppDock", "brandInjected result=$it") }
+            web.evaluateJavascript(script) { Log.d("MatchAppDock", "dockInjected result=$it") }
+            web.evaluateJavascript(premiumScript) { Log.d("MatchAppDock", "premiumInjected result=$it") }
+        }
     }
 
     fun setKeyboard(visible: Boolean) { keyboard=visible; render() }
 
     private fun render() {
-        // Menu title updates can rebuild Material's selected item view.
-        // Restore Explore's chooser action on the current view after every update.
-        bar.findViewById<View>(2)?.let { ViewCompat.setAccessibilityDelegate(it, exploreAccessibility) }
         bar.visibility=if(requested && !keyboard) View.VISIBLE else View.GONE
     }
 
