@@ -12,8 +12,8 @@ android {
         applicationId = "com.jonas.papercup"
         minSdk = 24
         targetSdk = 36
-        versionCode = 72
-        versionName = "1.1.72"
+        versionCode = 73
+        versionName = "1.1.73"
         // Production banner is enabled only after the native entitlement + UMP consent gates allow it.
         buildConfigField("Boolean", "ADMOB_ENABLED", "true")
         buildConfigField("String", "ADMOB_BANNER_ID", "\"ca-app-pub-9541435081010948/5523667258\"")
