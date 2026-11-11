@@ -51,6 +51,13 @@ header,main,footer{max-width:1040px;margin:auto;padding:22px 20px}header{padding
 nav{margin:20px 0 34px}.links{display:flex;flex-wrap:wrap;gap:13px}
 section{margin:25px 0}.note{border-left:3px solid #d1ae67;padding-left:15px;color:#cec4da}
 footer{border-top:1px solid #453551;margin-top:35px;font-size:.9rem}
+@layer ma-reference.refinement {
+html.ma-browser-gutters body.ma-worldwide-guide-page main {width:calc(100% - 32px)!important;max-width:1200px!important;margin-inline:auto!important;padding:16px 0 90px!important}
+html.ma-browser-gutters body.ma-worldwide-guide-page main>section {padding:clamp(16px,2.5vw,28px)!important;border-radius:18px!important;background:var(--cinema-panel,#17111fe8)!important;line-height:1.65!important}
+html.ma-browser-gutters body.ma-worldwide-guide-page main>section>p {max-width:85ch!important;line-height:1.65!important}
+html.ma-reference.ma-browser-gutters body.ma-worldwide-guide-page #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header .ma-reference-header-brand>span {font-size:clamp(18px,5.7vw,36px)!important;line-height:1.12!important}
+html.ma-reference.ma-browser-gutters body.ma-worldwide-guide-page #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header .ma-reference-header-brand .ma-word-ai {font-size:inherit!important;line-height:inherit!important}
+}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style><link rel="stylesheet" href="/brand.css?v=20261018-nativeheader1&amp;frame=20261020-borderless1&amp;fastart=20261020-1">
 <!-- Google Tag Manager -->
@@ -82,7 +89,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:image" content="https://matchapp.tv/assets/brand/matchapp-official-icon-512.webp" data-ma-preview>
 <!-- end MatchApp discovery previews -->
 </head>
-<body>
+<body class="ma-worldwide-guide-page">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 

@@ -167,6 +167,13 @@ header,main,footer{max-width:1040px;margin:auto;padding:22px 20px}header{padding
 nav{margin:20px 0 34px}.links{display:flex;flex-wrap:wrap;gap:13px}
 section{margin:25px 0}.note{border-left:3px solid #d1ae67;padding-left:15px;color:#cec4da}
 footer{border-top:1px solid #453551;margin-top:35px;font-size:.9rem}
+@layer ma-reference.refinement {
+html.ma-browser-gutters body.ma-worldwide-guide-page main {width:calc(100% - 32px)!important;max-width:1200px!important;margin-inline:auto!important;padding:16px 0 90px!important}
+html.ma-browser-gutters body.ma-worldwide-guide-page main>section {padding:clamp(16px,2.5vw,28px)!important;border-radius:18px!important;background:var(--cinema-panel,#17111fe8)!important;line-height:1.65!important}
+html.ma-browser-gutters body.ma-worldwide-guide-page main>section>p {max-width:85ch!important;line-height:1.65!important}
+html.ma-reference.ma-browser-gutters body.ma-worldwide-guide-page #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header .ma-reference-header-brand>span {font-size:clamp(18px,5.7vw,36px)!important;line-height:1.12!important}
+html.ma-reference.ma-browser-gutters body.ma-worldwide-guide-page #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header .ma-reference-header-brand .ma-word-ai {font-size:inherit!important;line-height:inherit!important}
+}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style><link rel="stylesheet" href="/brand.css?v=20261018-nativeheader1&amp;frame=20261016-rounded1">
 <!-- Google Tag Manager -->
@@ -179,7 +186,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script defer src="/patches/jonas-adult-page.js?v=header20261018-1&resize=20261022-1&stellar=20261020-1&headerface=20261020-1&ui=20261024-1&repair=20261023-1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&dock=20261020-1"></script>
 </head>
-<body>
+<body class="ma-worldwide-guide-page">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
