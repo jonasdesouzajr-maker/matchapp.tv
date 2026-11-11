@@ -9,6 +9,8 @@ Scope: live browser design/mechanics first; SEO follows separately. Production b
 - The browser masthead leaves additional clearance between the original wordmark and Jonas. The reading header groups tools beside country selection; its navigation and format buttons wrap cleanly, and the matching entry appears before the long explanation.
 - Jonas navigation pills have 44px targets; its header and close button keep predictable footprints. Existing drag, resizing and conversation owners remain unchanged.
 - Music content is constrained to a readable desktop width, retaining edge-to-edge background artwork.
+- The reading format selection now has a distinct filled state. Its actual aria-pressed state was changing correctly while a later style made every option look the same.
+- Embedded browser chat prepares its compact shell at DOM readiness, instead of waiting for all portraits and other assets to finish loading. A deliberately stalled-image check verifies the real composer is visible at 320 and 390px while the document is still interactive. Native and standalone discovery retain their existing owners.
 - Twelve ordered Home reading scripts, totalling 418,144 source bytes, now defer until parsing finishes. This is a parsing improvement, not a measured claim of network-byte savings or a Core Web Vitals improvement.
 
 ## Evidence

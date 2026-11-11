@@ -1,6 +1,8 @@
 /* Adult browsers only. Original brand art, ad geometry and native UI stay owned
    by their existing components. Repair measured narrow-screen layout failures. */
 @layer ma-reference.refinement {
+  html.ma-reference.ma-browser-gutters body.ebook-page #ebook-matcher-root button.ebook-chip[aria-pressed="true"] {background:var(--ma-refined-accent,#e7c277)!important;color:var(--ma-refined-ink,#241708)!important;font-weight:650!important;box-shadow:0 4px 12px #0002!important}
+  html.ma-reference.ma-browser-gutters body.ebook-page #ebook-matcher-root button.ebook-chip[aria-pressed="true"] span {color:inherit!important}
   html.ma-browser-gutters body.page-explore #explore-main .ref-explore-hero-copy {width:70%!important;max-width:46rem!important}
   html.ma-browser-gutters body.page-explore #explore-main .ref-explore-hero .hub-title {width:auto!important;max-width:100%!important;line-height:1.12!important}
   html.ma-browser-gutters body.page-explore #explore-main .ref-explore-hero .hub-lede {max-width:42ch!important}

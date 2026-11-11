@@ -37,8 +37,16 @@ const server = http.createServer((req,res) => {
         const key=width+'-'+(route==='/'?'home':route.replace(/[^a-z0-9]+/gi,'-'));
         await page.screenshot({path:path.join(out,key+'.png')});
         if(route==='/explore.html') {await page.locator('#explore-topics').scrollIntoViewIfNeeded();await page.screenshot({path:path.join(out,key+'-cards.png')});}
+        if(route==='/ebooks/') {
+          const formats=page.locator('button[data-ebook-field="format"]');
+          await formats.nth(2).click();
+          const selection=await formats.evaluateAll(nodes=>nodes.map(n=>({pressed:n.getAttribute('aria-pressed'),background:getComputedStyle(n).background})));
+          if(selection[2].pressed!=='true'||selection[0].pressed!=='false'||selection[0].background===selection[2].background)throw new Error('Reading format selection must be visually distinct at '+width);
+          await page.screenshot({path:path.join(out,key+'-selection.png')});
+        }
         results.push({route,...state,errors});page.removeListener('pageerror',onError);
         console.log(width+' '+route+' overflow='+state.overflow+' errors='+errors.length);
+        if(state.overflow>2||errors.length)throw new Error('Layout regression: '+width+' '+route);
       }
       await context.close();
     }
