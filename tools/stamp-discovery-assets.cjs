@@ -36,7 +36,7 @@ function stampControlFlow(source,html=false) {
   return source.replace(/(["'])(\/(?:ui-fixes-20261023\.css|patches\/jonas-adult-page\.js))(?:\?([^"'#\s)]*))?\1/g,
     (match,quote,url,query='')=>{
       const params=new URLSearchParams(query.replace(/&amp;/g,'&'));
-      params.set('flow','20261104-1');
+      params.set('flow',url.includes('jonas-adult-page')?'20261111-1':'20261104-1');
       const search=html?params.toString().replace(/&/g,'&amp;'):params.toString();
       return quote+url+'?'+search+quote;
     });

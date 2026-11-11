@@ -2,6 +2,7 @@
 if (window.top === window && !window.MatchAppFx &&
     !/MatchApp(?:TV|Ai(?:Kids)?)Android\/|\bwv\b/i.test(navigator.userAgent)) {
   document.documentElement.classList.add('ma-browser-gutters');
+
 }
 /* One persistent adult companion; Home and native Android retain their existing owner. */
 (function(){
@@ -29,4 +30,18 @@ if (window.top === window && !window.MatchAppFx &&
 /* Jonas guide (2026-10-31): pills, Back closes overlays. Adult pages only. */
 (function(){
  if(!/^\/(kids|private-voice|oauth)(\/|$)/.test(location.pathname)&&!/\/(callback|confirm)\.html$/.test(location.pathname)&&!document.getElementById('ma-guide-20261031')){var g=document.createElement('script');g.id='ma-guide-20261031';g.defer=true;g.src='/jonas-guide-20261031.js?v=8';(document.head||document.documentElement).appendChild(g);}
+})();
+
+/* Load browser refinements after the existing companion and isolated-route guards. */
+(function(){
+  if (!document.documentElement.classList.contains('ma-browser-gutters') ||
+      /^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname) ||
+      document.getElementById('ma-browser-polish-20261111')) return;
+  var finish=document.createElement('link');finish.id='ma-browser-polish-20261111';
+  finish.rel='stylesheet';finish.href='/patches/browser-polish-20261111.css?v=1';
+  document.head.appendChild(finish);
+  if (/^\/(?:index\.html|explore\.html)?$/.test(location.pathname)) {
+    var guide=document.createElement('script');guide.defer=true;
+    guide.src='/patches/browser-guide-copy-20261111.js?v=1';document.head.appendChild(guide);
+  }
 })();
