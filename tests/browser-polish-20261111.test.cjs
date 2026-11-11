@@ -13,6 +13,7 @@ test('embedded browser chat prepares its existing compact shell before window lo
     vm.runInNewContext(script,{window:w,document:dom.window.document,location:{origin:'https://matchapp.tv',search:kind==='other-query'?'':'?ambient=1'},navigator:{userAgent:kind==='native'?'MatchAppAiAndroid/73':'Chrome/157'},URLSearchParams});
     assert.equal(dom.window.document.documentElement.classList.contains('matchapp-ambient-frame'),kind==='browser',kind);
     assert.equal(dom.window.document.querySelectorAll('link[data-ma-ambient-embed]').length,kind==='browser'?1:0,kind);
+    assert.equal(dom.window.document.querySelectorAll('style[data-ma-browser-ambient-critical]').length,kind==='browser'?1:0,kind);
     dom.window.close();
   }
   source.window.close();

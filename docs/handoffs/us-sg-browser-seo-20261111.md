@@ -2,6 +2,8 @@
 
 Follows the browser live audit and fixes in PR #477. No purchases or paid APIs were used.
 
+The production Edge recheck caught a transient standalone header during chat parsing. A browser-only critical style now hides the four standalone chrome elements before delayed scripts reach DOMContentLoaded. The existing chat and native guards are preserved; the renderer test holds a parser script as well as images to cover this exact loading state.
+
 ## Evidence and scope
 
 Google Search Console, October 12–November 8: US 6 clicks / 1,855 impressions / average position 12.3; Singapore 0 clicks / 30 impressions / average position 10.9. These are search results, not all website visits. Singapore is an emerging opportunity rather than an established high-volume organic market.
