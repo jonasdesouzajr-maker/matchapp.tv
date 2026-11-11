@@ -14,6 +14,25 @@
 <link rel="preload" as="style" data-cinema-preload="critical-style" href="/patches/premium-type-20261014.css?v=type3">
 <link rel="preload" as="style" data-cinema-preload="critical-style" href="/patches/premium-touch-motion-20261014.css?v=touch1">
 <script src="/android-early-ui-20261011.js?v=20261011-live2"></script>
+<script data-ma-browser-ambient-shell="20261111-1">
+/* Prepare the embedded browser conversation before slow images finish loading. */
+(function(){
+  try{
+    if(window.top===window||new URLSearchParams(location.search).get('ambient')!=='1'||
+       window.parent.location.origin!==location.origin||window.MatchAppFx||window.parent.MatchAppFx||
+       /MatchApp(?:TV|Ai(?:Kids)?)Android\/|\bwv\b/i.test(navigator.userAgent))return;
+    document.documentElement.classList.add('matchapp-ambient-frame');
+    var sheet=document.createElement('link');sheet.rel='stylesheet';sheet.dataset.maAmbientEmbed='1';
+    sheet.href='/jonas/android-ambient-embed-20261011.css?browserfirstpaint=20261111-1';
+    document.head.appendChild(sheet);
+    document.addEventListener('DOMContentLoaded',function(){
+      document.querySelectorAll('header.app-header,#jonas-voice-stage,.discover-title-row,.ai-session-strip').forEach(function(el){el.style.setProperty('display','none','important');});
+      var reset=document.getElementById('jonas-header-new-chat'),workspace=document.querySelector('.discover-head');
+      if(reset&&workspace){reset.classList.add('ai-new-chat');workspace.insertBefore(reset,workspace.firstChild);}
+    },{once:true});
+  }catch(_){}
+})();
+</script>
 <script src="/pro-plan.js?v=20261017-3&amp;billingcopy=20261018-1&amp;cinemasound=20261020-1&amp;locale71=1"></script>
     <!-- Google Tag Manager -->
     <script data-ma-consent-defaults="20261101-1">

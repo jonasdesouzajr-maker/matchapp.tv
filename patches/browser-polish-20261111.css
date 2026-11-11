@@ -1,0 +1,55 @@
+/* Adult browsers only. Original brand art, ad geometry and native UI stay owned
+   by their existing components. Repair measured narrow-screen layout failures. */
+@layer ma-reference.refinement {
+  html.ma-reference.ma-browser-gutters body.ebook-page #ebook-matcher-root button.ebook-chip[aria-pressed="true"] {background:var(--ma-refined-accent,#e7c277)!important;color:var(--ma-refined-ink,#241708)!important;font-weight:650!important;box-shadow:0 4px 12px #0002!important}
+  html.ma-reference.ma-browser-gutters body.ebook-page #ebook-matcher-root button.ebook-chip[aria-pressed="true"] span {color:inherit!important}
+  html.ma-browser-gutters body.page-explore #explore-main .ref-explore-hero-copy {width:70%!important;max-width:46rem!important}
+  html.ma-browser-gutters body.page-explore #explore-main .ref-explore-hero .hub-title {width:auto!important;max-width:100%!important;line-height:1.12!important}
+  html.ma-browser-gutters body.page-explore #explore-main .ref-explore-hero .hub-lede {max-width:42ch!important}
+  html.ma-browser-gutters body.page-explore #explore-main .ma-explore-static-guide,
+  html.ma-browser-gutters body.page-home #ma-home-static-intro {padding:clamp(18px,3vw,28px)!important;text-align:start!important;line-height:1.65!important}
+  html.ma-browser-gutters :is(.ma-explore-static-guide,#ma-home-static-intro) p {max-width:80ch!important;line-height:1.65!important;margin-block:0 12px!important}
+  html.ma-browser-gutters .ma-explore-static-guide ul {display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px 24px!important;padding-inline-start:1.2em!important}
+  html.ma-browser-gutters .ma-explore-static-guide li {min-width:0!important;line-height:1.55!important}
+  html.ma-browser-gutters .ma-browser-guide-links {display:flex!important;flex-wrap:wrap!important;gap:10px!important;margin-top:16px!important}
+  html.ma-browser-gutters .ma-browser-guide-links a {display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:44px!important;box-sizing:border-box!important;padding:10px 16px!important;border-radius:999px!important;background:var(--cinema-panel,#211b26)!important;color:var(--cinema-text,#f4f0e9)!important;text-decoration:none!important;line-height:1.4!important}
+  html.ma-browser-gutters body.page-explore #explore-main .ref-topic-caption {width:100%!important;min-width:0!important;gap:10px!important}
+  html.ma-browser-gutters body.page-explore #explore-main .ref-topic-caption h2 {flex:1!important;min-width:0!important;width:auto!important;max-width:none!important;word-break:normal!important;overflow-wrap:normal!important;hyphens:auto!important;font-size:clamp(1rem,1.6vw,1.4rem)!important;line-height:1.3!important}
+  html.ma-browser-gutters body.page-explore #explore-main .ref-topic-caption svg {flex:0 0 22px!important;width:22px!important;height:22px!important}
+  html.ma-browser-gutters #ma-ambient-panel .ma-guide-pills {flex:0 0 auto!important;min-height:48px!important;max-height:64px!important;gap:8px!important;padding:6px 10px!important;overflow-x:auto!important;overscroll-behavior-inline:contain}
+  html.ma-browser-gutters #ma-ambient-panel .ma-guide-pills a {flex:0 0 auto!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;min-height:44px!important;padding:10px 16px!important;line-height:1.3!important}
+  html.ma-browser-gutters #ma-ambient-panel .ja-panel-head {box-sizing:border-box!important;min-height:76px!important;height:auto!important;padding:14px 16px!important;gap:12px!important}
+  html.ma-browser-gutters #ma-ambient-panel .ja-head-text {min-width:0!important;flex:1!important}
+  html.ma-browser-gutters #ma-ambient-panel .ja-close {flex:0 0 44px!important;min-width:44px!important;min-height:44px!important}
+  html.ma-browser-gutters #ma-ambient-panel .ja-face-wrap {flex:0 0 52px!important;width:52px!important;height:52px!important}
+  html.ma-browser-gutters body.ebook-page .ebook-chip[data-ebook-field="format"] {display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:4px!important;padding:10px 8px!important;min-height:72px!important;height:auto!important;line-height:1.3!important;hyphens:none!important;overflow-wrap:normal!important;word-break:normal!important}
+  html.ma-browser-gutters body.ebook-page .ebook-page-hero {display:flex!important;flex-direction:column!important;gap:12px!important}
+  html.ma-browser-gutters body.ebook-page .ebook-page-hero .ebook-page-eyebrow {order:0!important}
+  html.ma-browser-gutters body.ebook-page .ebook-page-hero h1 {order:1!important;margin:0!important}
+  html.ma-browser-gutters body.ebook-page .ebook-page-hero .ebook-page-cta {order:2!important;align-self:flex-start!important;min-height:48px!important}
+  html.ma-browser-gutters body.ebook-page .ebook-page-hero p:not(.ebook-page-eyebrow) {order:3!important}
+  html.ma-browser-gutters body.page-music .hub-shell {width:calc(100% - 32px)!important;max-width:1440px!important;margin-inline:auto!important;box-sizing:border-box!important}
+  html.ma-browser-gutters body.page-music .swifties-copy {max-width:78ch!important;line-height:1.65!important}
+  html.ma-browser-gutters body.page-music .swifties-new-album {display:flex!important;align-items:center!important;gap:16px!important;flex-wrap:wrap!important;line-height:1.5!important}
+  @media(max-width:699px) {
+    html.ma-reference.ma-browser-gutters body.ebook-page #ebook-matcher-root .ebook-chips:has(>button[data-ebook-field="format"]) {display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+    html.ma-reference.ma-browser-gutters body.ebook-page #ebook-matcher-root button[data-ebook-field="format"] {width:100%!important;max-width:100%!important;min-width:0!important;transform:none!important}
+    html.ma-reference.ma-browser-gutters body.ebook-page #ebook-matcher-root button[data-ebook-field="format"] span {overflow-wrap:normal!important;word-break:normal!important;hyphens:none!important}
+    html.ma-reference.ma-browser-gutters body.ebook-page #ebook-matcher-root .ebook-fields[data-ma-density-fields] {grid-template-columns:repeat(2,minmax(0,1fr))!important}
+    html.ma-reference.ma-browser-gutters body.ebook-page #ebook-matcher-root .ebook-fields>.ma-density-field-fold:not([open]) {grid-column:span 1!important}
+    html.ma-reference.ma-browser-gutters body.ebook-page #ebook-matcher-root .ma-density-field-fold>summary {min-height:68px!important;overflow-wrap:normal!important;word-break:normal!important}
+    html.ma-reference.ma-browser-gutters body.ebook-page #ebook-matcher-root .ma-density-field-fold :is(.ma-density-field-title,.ma-density-field-value) {overflow-wrap:normal!important;word-break:normal!important;hyphens:auto!important}
+    html.ma-reference.ma-browser-gutters #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-wordmark,.ma-word-match,.ma-word-app,.ma-word-ai,.ma-reference-header-brand>span,.ma-playai-wordmark,.ebook-text-wordmark,.ebook-brand-match,.ebook-brand-app,.ebook-brand-ai) {font-size:clamp(18px,5.7vw,36px)!important;letter-spacing:-.018em!important;line-height:1.12!important}
+    html.ma-browser-gutters body.page-explore #explore-main .ref-explore-hero-copy {width:100%!important;padding:24px 20px!important}
+    html.ma-browser-gutters body.page-explore #explore-main .ref-explore-hero::before {background:linear-gradient(90deg,#100617e8,#10061785)!important}
+    html.ma-browser-gutters body.page-explore #explore-main .ref-primary-topics>.ref-topic {grid-column:span 3!important;min-height:132px!important;padding:14px!important}
+    html.ma-browser-gutters .ma-explore-static-guide ul {grid-template-columns:1fr!important}
+    html.ma-browser-gutters body.ebook-page #ma-reference-header .ma-reference-header-chrome {position:relative!important}
+    html.ma-browser-gutters body.ebook-page #ma-reference-header#ma-reference-header#ma-reference-header header.ebook-page-top {position:static!important;display:block!important;min-height:48px!important}
+    html.ma-browser-gutters body.ebook-page #ma-reference-header header.ebook-page-top>.ma-reference-header-tools {position:absolute!important;inset:auto auto 0 0!important;margin:0!important;width:44px!important}
+    html.ma-browser-gutters body.ebook-page #ma-reference-header #matchapp-viewer-country-control {margin-inline-start:52px!important;inline-size:calc(100% - 52px)!important;max-inline-size:none!important}
+    html.ma-browser-gutters body.ebook-page .ebook-source-links {display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+    html.ma-browser-gutters body.ebook-page .ebook-source-links>a {grid-column:auto!important;width:100%!important;min-height:48px!important;margin:0!important}
+    html.ma-browser-gutters body.ebook-page .ebook-source-links>[data-us-trends-entry] {grid-column:1/-1!important}
+  }
+}
