@@ -203,7 +203,8 @@ test('fresh worldwide guide preserves every authored language section and discov
   assertPresentationOnly(raw,themed,'guides/worldwide-entertainment-discovery/index.html');
   const w=new JSDOM(themed).window;
   try{
-    const cards=[...w.document.querySelectorAll('.lang-card')];assert.equal(cards.length,14);
+    const cards=[...w.document.querySelectorAll('.lang-card')];assert.equal(cards.length,15);
+    assert.ok(cards.some(card=>card.lang==='zh-TW'),'Traditional Chinese remains authored in the generated guide');
     assert.equal(cards.find(card=>card.lang==='ar').getAttribute('dir'),'rtl');
     for(const card of cards)assert.ok(card.querySelector('a').getAttribute('href').includes('lang='+card.lang));
   }finally{w.close();}

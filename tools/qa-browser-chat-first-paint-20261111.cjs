@@ -15,11 +15,19 @@ const server=http.createServer((q,r)=>{
     for(const width of [320,390]){
       const page=await browser.newPage({viewport:{width,height:844}});
       const heldPortraits=[];
+      let releaseParser;const parserReady=new Promise(resolve=>{releaseParser=resolve;});
       await page.route(/googlesyndication|googletagmanager|google-analytics/,r=>r.abort());
       await page.route(/\/jonas\/faces\//,r=>heldPortraits.push(r));
+      await page.route(/\/voice-input\.js/,r=>releaseParser(r));
       await page.goto('http://127.0.0.1:'+server.address().port+'/explore.html',{waitUntil:'domcontentloaded'});
       await page.locator('#ma-ambient-jonas .ja-bubble').click();
       const frame=page.frameLocator('#ma-ambient-chat-frame');
+      const stalledScript=await parserReady;
+      const loading=await frame.locator('html').evaluate(()=>({ready:document.readyState,header:getComputedStyle(document.querySelector('header.app-header')).display}));
+      assert.equal(loading.ready,'loading','hold a late parser script before DOMContentLoaded');
+      assert.equal(loading.header,'none','standalone header must never flash during parsing');
+      console.log('PASS parser-loading',width,JSON.stringify(loading));
+      await stalledScript.continue();
       await frame.locator('#discover-new-input').waitFor({state:'visible',timeout:15000});
       await frame.locator('header.app-header').waitFor({state:'hidden',timeout:15000});
       const state=await frame.locator('html').evaluate(el=>{

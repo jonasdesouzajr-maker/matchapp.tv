@@ -51,6 +51,7 @@ function validateRegistry(registry) {
       throw new Error(`${service.id}: checked date required`);
     }
     if (!service.evidence_scope || !service.caveats) throw new Error(`${service.id}: limitations required`);
+    if (service.access_condition !== undefined && service.access_condition !== 'library') throw new Error(`${service.id}: unsupported access condition`);
     if (service.integration !== 'directory_only') throw new Error(`${service.id}: directory must not assert a title integration`);
     if (service.status !== 'active' && service.offer_types.length) throw new Error(`${service.id}: inactive service cannot advertise current offers`);
     for (const [country, url] of Object.entries(service.destinations || {})) {
@@ -86,6 +87,7 @@ function projectDirectory(registry) {
     focus: service.focus,
     checked_on: service.checked_on,
     official_sources: service.official_sources,
+    ...(service.access_condition ? {access_condition: service.access_condition} : {}),
     integration: 'directory_only'
   })).sort((a, b) => a.name.localeCompare(b.name, 'en'));
 }

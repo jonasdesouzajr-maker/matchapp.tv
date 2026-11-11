@@ -15,7 +15,7 @@ function renderStreamingDirectory({registry,services,copy,esc}) {
 <p class="mp-market">${service.markets.length?countryNames(service.markets):label('directoryUnmapped')}</p>
 <p class="mp-service-focus">${service.focus.length?service.focus.map(value=>label('focus_'+value)).join(' · '):label(service.kind)}</p>
 <p class="mp-service-offers">${service.offer_types.map(value=>label('offer_'+value)).join(' · ')}</p>
-${aliasLine(service)}${sourceDate(service)}${evidence(service)}
+${service.access_condition==='library'?text('p','directoryLibraryAccess','mp-note'):''}${aliasLine(service)}${sourceDate(service)}${evidence(service)}
 ${text('p','access','mp-note')}
 ${service.destinations?Object.entries(service.destinations).map(([code,url])=>`<a class="mp-pill secondary" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${label('open')} · <span data-market-code="${code}">${esc(names.of(code))}</span></a>`).join(''):`<a class="mp-pill secondary" href="${esc(service.url)}" target="_blank" rel="noopener noreferrer" data-mp="open">${esc(copy.open)}</a>`}
 </article>`).join('\n');

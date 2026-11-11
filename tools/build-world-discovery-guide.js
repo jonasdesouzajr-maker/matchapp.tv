@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-// A single substantive multilingual guide, not 14 near-duplicate doorway URLs.
+// A single substantive multilingual guide, not near-duplicate doorway URLs.
 // Verified local URLs and genuine translated search phrases; no fabricated hreflang.
 const fs=require('node:fs');
 const discoveryLinks=require('./search-guide-links.cjs').renderGuideLinks();
@@ -118,6 +118,14 @@ const LANGUAGES=[
     "mood": "按心情寻找电影和剧集",
     "books": "在哪里寻找电子书和经过核实的有声书？",
     "description": "选择心情和内容类型，向 MatchApp 寻求推荐。观看或购买前，请确认所在国家或地区的服务可用性。"
+  },
+  {
+    "code": "zh-TW",
+    "label": "繁體中文",
+    "watch": "今晚看什麼？",
+    "mood": "依心情尋找電影和影集",
+    "books": "哪裡可以找到電子書和經過核實的有聲書？",
+    "description": "選擇心情和內容類型，向 MatchApp Ai 尋求推薦。觀看或購買前，請確認所在國家或地區的服務供應情況。"
   }
 ];
 const render=function render(data){
@@ -125,16 +133,16 @@ const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&
 const SITE="https://matchapp.tv",url=SITE+"/guides/worldwide-entertainment-discovery/";
 const link=(href,label)=>`<a href="${esc(href)}">${esc(label)}</a>`;
 const sections=data.map(r=>`<section class="lang-card" id="lang-${esc(r.code.toLowerCase())}" lang="${esc(r.code)}"${r.code==="ar"?' dir="rtl"':""}><h2>${esc(r.label)}</h2><p>${esc(r.description)}</p><h3>${esc(r.watch)}</h3><ul><li>${esc(r.mood)}</li><li>${esc(r.books)}</li></ul><p>${link("/?lang="+encodeURIComponent(r.code),r.code==="en"?"Explore MatchApp in English":r.watch+" →")}</p></section>`).join("\n");
-const ld={"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Worldwide movie, series, e-book and audiobook discovery in 14 languages","description":"A practical guide to MatchApp's entertainment discovery categories, localized search prompts and regional publisher links.","url":url,"inLanguage":"en","about":[{"@type":"Thing","name":"Movies and TV by mood"},{"@type":"Thing","name":"E-books and verified audiobooks"},{"@type":"Thing","name":"Streaming availability by country"}],"isPartOf":{"@type":"WebSite","url":SITE+"/","name":"MatchApp Ai","alternateName":["MatchApp","MatchApp.tv"]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"MatchApp Ai","item":SITE+"/"},{"@type":"ListItem","position":2,"name":"Worldwide entertainment discovery","item":url}]}]};
+const ld={"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Worldwide movie, series, e-book and audiobook discovery in 15 languages","description":"A practical guide to choosing movies, series, books and audiobooks in Singapore, the United States and other regions, with dated sources and 15 language prompts.","dateModified":"2026-11-11","url":url,"inLanguage":"en","about":[{"@type":"Thing","name":"Movies and TV by mood"},{"@type":"Thing","name":"E-books and verified audiobooks"},{"@type":"Thing","name":"Streaming availability by country"}],"isPartOf":{"@type":"WebSite","url":SITE+"/","name":"MatchApp Ai","alternateName":["MatchApp","MatchApp.tv"]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"MatchApp Ai","item":SITE+"/"},{"@type":"ListItem","position":2,"name":"Worldwide entertainment discovery","item":url}]}]};
 return require('./public-discovery-head.cjs').publicHeadForHtml(cinemaAssets(`<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>What to Watch or Read Worldwide | MatchApp Ai</title>
-<meta name="description" content="Find movies, series, books and audiobooks by mood with MatchApp Ai. Search in 14 languages; explore curated guides for Brazil, Mexico, India and more.">
+<title>What to Watch in Singapore, the US & Worldwide | MatchApp Ai</title>
+<meta name="description" content="Choose what to watch in Singapore or the US: compare local streaming sources, K-dramas, free library films and AI picks by mood. Explore 15 language prompts.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="${url}">\n<link rel="alternate" hreflang="en-AU" href="${SITE}/au/">\n<link rel="alternate" hreflang="pt-BR" href="${SITE}/br/">\n<link rel="alternate" hreflang="en-US" href="${SITE}/us/">\n<link rel="alternate" hreflang="en-GB" href="${SITE}/uk/">\n<link rel="alternate" hreflang="en-CA" href="${SITE}/ca/">\n<link rel="alternate" hreflang="ja-JP" href="${SITE}/jp/">\n<link rel="alternate" hreflang="x-default" href="${url}">\n<meta property="og:type" content="website"><meta property="og:site_name" content="MatchApp Ai">
-<meta property="og:url" content="${url}"><meta property="og:title" content="Worldwide Entertainment Discovery | MatchApp Ai">
-<meta property="og:description" content="Learn how to find movies, series, books and audiobooks by mood in 14 languages, and browse regional entertainment guides.">
+<meta property="og:url" content="${url}"><meta property="og:title" content="What to Watch in Singapore, the US & Worldwide | MatchApp Ai">
+<meta property="og:description" content="Find a story for your mood, compare Singapore and US viewing sources, and explore movie, series, book and audiobook discovery in 15 languages.">
 <meta property="og:image" content="${SITE}/assets/brand/matchapp-official-icon-512.webp">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#100d1a">
@@ -159,6 +167,13 @@ header,main,footer{max-width:1040px;margin:auto;padding:22px 20px}header{padding
 nav{margin:20px 0 34px}.links{display:flex;flex-wrap:wrap;gap:13px}
 section{margin:25px 0}.note{border-left:3px solid #d1ae67;padding-left:15px;color:#cec4da}
 footer{border-top:1px solid #453551;margin-top:35px;font-size:.9rem}
+@layer ma-reference.refinement {
+html.ma-browser-gutters body.ma-worldwide-guide-page main {width:calc(100% - 32px)!important;max-width:1200px!important;margin-inline:auto!important;padding:16px 0 90px!important}
+html.ma-browser-gutters body.ma-worldwide-guide-page main>section {padding:clamp(16px,2.5vw,28px)!important;border-radius:18px!important;background:var(--cinema-panel,#17111fe8)!important;line-height:1.65!important}
+html.ma-browser-gutters body.ma-worldwide-guide-page main>section>p {max-width:85ch!important;line-height:1.65!important}
+html.ma-reference.ma-browser-gutters body.ma-worldwide-guide-page #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header .ma-reference-header-brand>span {font-size:clamp(18px,5.7vw,36px)!important;line-height:1.12!important}
+html.ma-reference.ma-browser-gutters body.ma-worldwide-guide-page #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header .ma-reference-header-brand .ma-word-ai {font-size:inherit!important;line-height:inherit!important}
+}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style><link rel="stylesheet" href="/brand.css?v=20261018-nativeheader1&amp;frame=20261016-rounded1">
 <!-- Google Tag Manager -->
@@ -171,18 +186,39 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script defer src="/patches/jonas-adult-page.js?v=header20261018-1&resize=20261022-1&stellar=20261020-1&headerface=20261020-1&ui=20261024-1&repair=20261023-1"></script>
 <script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&dock=20261020-1"></script>
 </head>
-<body>
+<body class="ma-worldwide-guide-page">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <header><div class="brand"><a href="/" aria-label="MatchApp Ai" class="matchapp-brand-link"><img class="matchapp-wordmark ma-playai-mark" src="/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1" alt="" width="48" height="48" decoding="async" style="width:48px;height:48px;object-fit:contain;border:0;border-radius:0;box-shadow:none;background:transparent;vertical-align:middle"><span class="ma-playai-wordmark" translate="no" style="display:inline-block;vertical-align:middle;margin-left:12px;font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(22px,4.6vw,30px);letter-spacing:.04em;line-height:1;white-space:nowrap;color:#E6C36A;text-shadow:0 1px 12px rgba(230,195,106,.28)">MatchApp <span style="color:#f8f1e0">Ai</span></span></a></div><p class="eyebrow">A practical worldwide discovery guide</p>
 <h1>What to watch, read or listen to — in your language</h1>
-<p class="intro">Choose your mood and what you want to enjoy: a movie, a series, a book, an audiobook, a magazine, music or a podcast. MatchApp’s interface supports 14 languages and helps you explore entertainment from multiple countries. Content and store availability vary by region; always confirm with the linked publisher or provider.</p>
+<p class="intro">Choose your mood and what you want to enjoy: a movie, a series, a book, an audiobook, a magazine, music or a podcast. MatchApp’s interface supports 15 languages and helps you explore entertainment from multiple countries. Content and store availability vary by region; always confirm with the linked publisher or provider.</p>
 <nav class="links" aria-label="Jump to discovery categories">
+${link("#singapore","Singapore")} ${link("#united-states","United States")} ${link("#compare-discovery","Compare discovery tools")}
 ${link("/","Find what to watch")} ${link("/ebooks/","Match e-books and audiobooks")}
 ${link("/discover.html","Ask AI")} ${link("/news/","Latest news")} ${link("/events-archive.html","Global events")}
 </nav></header>
 <main>
+<section aria-labelledby="singapore-heading" id="singapore"><h2 id="singapore-heading">What to watch in Singapore: local stories, K-dramas and a shorter shortlist</h2>
+<p>Start with Singapore as your viewing country, then choose the kind of evening you want. A familiar comedy after work, a Korean drama with subtitles and a superhero catch-up are different requests. Include your preferred audio language, whether subtitles are welcome, and the services you already use. MatchApp Ai helps narrow that choice; the provider's Singapore page confirms the actual viewing offer.</p>
+<div class="route-grid">
+<article class="route"><h3>Where to watch Korean dramas in Singapore</h3><p>For an Asian-series search, check Viu alongside your existing subscriptions. Viu's developer listing and its Singapore distribution partner describe free and Premium access, with English and Chinese subtitles on selected titles. Check the individual show's language tracks and membership conditions. A free tier is not a promise that every episode is free.</p><p>${link("/collections/k-drama/","Explore Korean drama moods")} · ${link("/streaming/#service-viu","Viu source and market notes")} · ${link("https://www.m1.com.sg/support/faq/viu-faq","Official Singapore Viu FAQ")}</p></article>
+<article class="route"><h3>Singapore television and free channels</h3><p>For Singapore programmes or live television, start with mewatch's own catalogue and free-channel directory. Separate free channels from Prime and partner subscriptions. Then check the programme's language, episode order and availability before planning a watch night. A service listing is a discovery route, not confirmation of every title.</p><p>${link("/streaming/#service-mewatch","mewatch service notes")} · ${link("https://www.mewatch.sg/live-tv/free-channels","Official free channels")} · ${link("/watch-night/","Plan your viewing time")}</p></article>
+<article class="route"><h3>What is popular on Netflix Singapore?</h3><p>Use Netflix's Singapore Top 10 for a country-specific shortlist, then read the synopsis and rating. The chart period checked on November 11 was November 2–8, 2026. A chart is a record of that period; it does not tell you which show matches your mood or guarantee that the next episode is suitable for your group.</p><p>${link("https://www.netflix.com/tudum/top10/singapore/tv","Netflix Singapore weekly TV chart")} · ${link("/moods/cozy-comfort-watch/","Find a comfort watch")} · ${link("/together.html","Choose something together")}</p></article>
+</div></section>
+<section aria-labelledby="november-signal-heading" id="november-2026"><h2 id="november-signal-heading">A shared US and Singapore search signal: VisionQuest</h2>
+<p><strong>Research snapshot: November 11, 2026.</strong> VisionQuest appeared in Google's entertainment Trending Now lists for both countries during this check. That is search interest, not a streaming audience count or a promise that interest will last. Disney's US and Singapore guides both schedule episode eight for November 11; their premiere dates differ by market.</p>
+<p>For a catch-up night, start with the story connections before opening a provider. Disney places VisionQuest after WandaVision and Agatha All Along. The series follows the rebuilt Vision as he tries to define himself while facing pursuit and Ultron's influence. Paul Bettany and James Spader return, with Terry Matalas as creator. Open the official guide for the trailer, cast and local schedule; check the episode's runtime and rating in your own Disney+ account.</p>
+<p>${link("https://www.disneyplus.com/explore/articles/marvel-visionquest","Disney+ US guide")} · ${link("https://www.disneyplus.com/en-sg/explore/articles/marvel-visionquest","Disney+ Singapore guide")} · ${link("https://trends.google.com/trending?geo=US&category=4","Google Trends US")} · ${link("https://trends.google.com/trending?geo=SG&category=4","Google Trends Singapore")}</p>
+<p>Try asking: “I liked WandaVision's identity mystery. Suggest a thoughtful science-fiction series available in Singapore, with English subtitles, and explain which provider link is verified.” For the US, change the country and name your subscriptions. This gives Jonas useful constraints without assuming an unverified regional licence.</p></section>
+<section aria-labelledby="us-heading" id="united-states"><h2 id="us-heading">What should I watch tonight in the US without adding another subscription?</h2>
+<p>Start with the services you already have, a finish time and one mood. For example: “A funny movie under 100 minutes, available in the United States, with no extra rental.” If a result points to a store search rather than an exact included offer, treat it as a lead to verify. Subscription, rental, purchase and free-with-ads are separate access types.</p>
+<div class="route-grid"><article class="route"><h3>Free movies with a US library card</h3><p>Check whether your own library participates in Kanopy or Hoopla. Kanopy offers films through participating libraries and universities; Hoopla also covers audiobooks, e-books, music and other formats. A library card does not unlock every service everywhere. Eligibility, borrowing allowances and the available catalogue are set by the participating institution.</p><p>${link("/streaming/#service-kanopy","Kanopy directory entry")} · ${link("/streaming/#service-hoopla","Hoopla directory entry")} · ${link("https://www.kanopy.com/en/libraries","Kanopy's library service")} · ${link("https://www.hoopladigital.com/about","About Hoopla")}</p></article>
+<article class="route"><h3>A movie, one episode or an audiobook?</h3><p>Use the watch-night planner to make a realistic shortlist for your available time. For a screen break, choose the reading matcher's audiobook format and verify the exact title and author. The narrator and running time belong to that audio edition; they cannot be inferred from the printed book or a screen adaptation.</p><p>${link("/watch-night/","Plan a watch night")} · ${link("/ebooks/","Find an e-book or verified audiobook")} · ${link("/us/","US viewing guide")} · ${link("/en/us/watch/","US title availability snapshots")}</p></article></div></section>
+<section aria-labelledby="comparison-heading" id="compare-discovery"><h2 id="comparison-heading">MatchApp Ai, JustWatch and Reelgood: which search fits the question?</h2>
+<p>When you know the title, start with a regional availability guide and confirm the offer with the provider. When you know only your mood, start with MatchApp Ai's matching or ask Jonas for a reasoned shortlist. For a shared evening, Match Together helps combine preferences. These are complementary ways to choose; MatchApp Ai is independent of the services below.</p>
+<div class="route-grid"><article class="route"><h3>“Where can I watch this exact title?”</h3><p>JustWatch's Singapore catalogue exposes filters for release year, genre, price and ratings. Use the correct country, then inspect the exact version and provider. An aggregator link still needs a final check at the streaming service.</p><p>${link("https://www.justwatch.com/sg","JustWatch Singapore")} · ${link("https://www.justwatch.com/us","JustWatch US")} · ${link("/where-to-watch/","MatchApp title guides")}</p></article>
+<article class="route"><h3>“What are people discovering?”</h3><p>Reelgood's Streaming Service Popularity Index and Netflix's country charts use their own measurement windows. Google Trends measures searches. None is an interchangeable popularity score. Check the date, source and country before using a list, then choose something suited to your own evening.</p><p>${link("https://data.reelgood.com/streaming-service-popularity-index/","Reelgood's published index")} · ${link("https://www.netflix.com/tudum/top10/united-states/tv","Netflix US weekly chart")} · ${link("/guides/choose-what-to-watch/","Build a shortlist by mood")}</p></article></div></section>
 <section aria-labelledby="ways"><h2 id="ways">Start with the kind of recommendation you need</h2>
 <div class="route-grid">
 <article class="route"><h3>Movies and series by mood</h3><p>Looking for a cozy comedy, a thrilling film or a romantic series? Choose your mood and preferred format before deciding where to watch.</p>

@@ -22,6 +22,10 @@
        window.parent.location.origin!==location.origin||window.MatchAppFx||window.parent.MatchAppFx||
        /MatchApp(?:TV|Ai(?:Kids)?)Android\/|\bwv\b/i.test(navigator.userAgent))return;
     document.documentElement.classList.add('matchapp-ambient-frame');
+    // This early layer also applies while later parser-blocking scripts load.
+    var critical=document.createElement('style');critical.dataset.maBrowserAmbientCritical='1';
+    critical.textContent='@layer ma-reference.ambient-browser-first-paint{html.matchapp-ambient-frame header.app-header,html.matchapp-ambient-frame #jonas-voice-stage,html.matchapp-ambient-frame .discover-title-row,html.matchapp-ambient-frame .ai-session-strip{display:none!important}}';
+    document.head.appendChild(critical);
     var sheet=document.createElement('link');sheet.rel='stylesheet';sheet.dataset.maAmbientEmbed='1';
     sheet.href='/jonas/android-ambient-embed-20261011.css?browserfirstpaint=20261111-1';
     document.head.appendChild(sheet);

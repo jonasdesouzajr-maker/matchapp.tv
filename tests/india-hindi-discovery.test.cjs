@@ -26,7 +26,8 @@ test('India guidance is crawlable Hindi with real public destinations and explic
       assert.equal(target.window.document.querySelector('link[rel="canonical"]').href, 'https://matchapp.tv/events/kota-dussehra-2026/');
       assert.ok(![...target.window.document.querySelectorAll('meta[name="robots"]')].some(node => /noindex/i.test(node.content)));
     } finally { target.window.close(); }
-    assert.equal(doc.querySelectorAll('.lang-card').length, 14);
+    assert.equal(doc.querySelectorAll('.lang-card').length, 15);
+    assert.equal(doc.querySelector('#lang-zh-tw a').getAttribute('href'), '/?lang=zh-TW');
     assert.equal(doc.querySelector('#lang-hi a').getAttribute('href'), '/?lang=hi');
   } finally { dom.window.close(); }
 });
