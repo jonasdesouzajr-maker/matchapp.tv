@@ -42,6 +42,12 @@ const server = http.createServer((req,res) => {
           await formats.nth(2).click();
           const selection=await formats.evaluateAll(nodes=>nodes.map(n=>({pressed:n.getAttribute('aria-pressed'),background:getComputedStyle(n).background})));
           if(selection[2].pressed!=='true'||selection[0].pressed!=='false'||selection[0].background===selection[2].background)throw new Error('Reading format selection must be visually distinct at '+width);
+          if(width<700){
+            const bounds=await formats.evaluateAll(nodes=>nodes.map(n=>n.getBoundingClientRect().toJSON()));
+            if(Math.abs(bounds[0].top-bounds[1].top)>2||bounds.some(r=>r.width<90))throw new Error('Phone reading formats must fit two readable columns at '+width);
+            const folds=await page.locator('.ma-density-field-fold:not([open])').evaluateAll(nodes=>nodes.map(n=>n.getBoundingClientRect().width));
+            if(!folds.length||folds.some(w=>w<90))throw new Error('Reading preference labels are squeezed at '+width);
+          }
           await page.screenshot({path:path.join(out,key+'-selection.png')});
         }
         results.push({route,...state,errors});page.removeListener('pageerror',onError);

@@ -32,6 +32,13 @@
   html.ma-browser-gutters body.page-music .swifties-copy {max-width:78ch!important;line-height:1.65!important}
   html.ma-browser-gutters body.page-music .swifties-new-album {display:flex!important;align-items:center!important;gap:16px!important;flex-wrap:wrap!important;line-height:1.5!important}
   @media(max-width:699px) {
+    html.ma-reference.ma-browser-gutters body.ebook-page #ebook-matcher-root .ebook-chips:has(>button[data-ebook-field="format"]) {display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+    html.ma-reference.ma-browser-gutters body.ebook-page #ebook-matcher-root button[data-ebook-field="format"] {width:100%!important;max-width:100%!important;min-width:0!important;transform:none!important}
+    html.ma-reference.ma-browser-gutters body.ebook-page #ebook-matcher-root button[data-ebook-field="format"] span {overflow-wrap:normal!important;word-break:normal!important;hyphens:none!important}
+    html.ma-reference.ma-browser-gutters body.ebook-page #ebook-matcher-root .ebook-fields[data-ma-density-fields] {grid-template-columns:repeat(2,minmax(0,1fr))!important}
+    html.ma-reference.ma-browser-gutters body.ebook-page #ebook-matcher-root .ebook-fields>.ma-density-field-fold:not([open]) {grid-column:span 1!important}
+    html.ma-reference.ma-browser-gutters body.ebook-page #ebook-matcher-root .ma-density-field-fold>summary {min-height:68px!important;overflow-wrap:normal!important;word-break:normal!important}
+    html.ma-reference.ma-browser-gutters body.ebook-page #ebook-matcher-root .ma-density-field-fold :is(.ma-density-field-title,.ma-density-field-value) {overflow-wrap:normal!important;word-break:normal!important;hyphens:auto!important}
     html.ma-reference.ma-browser-gutters #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header :is(.ma-wordmark,.ma-word-match,.ma-word-app,.ma-word-ai,.ma-reference-header-brand>span,.ma-playai-wordmark,.ebook-text-wordmark,.ebook-brand-match,.ebook-brand-app,.ebook-brand-ai) {font-size:clamp(18px,5.7vw,36px)!important;letter-spacing:-.018em!important;line-height:1.12!important}
     html.ma-browser-gutters body.page-explore #explore-main .ref-explore-hero-copy {width:100%!important;padding:24px 20px!important}
     html.ma-browser-gutters body.page-explore #explore-main .ref-explore-hero::before {background:linear-gradient(90deg,#100617e8,#10061785)!important}
