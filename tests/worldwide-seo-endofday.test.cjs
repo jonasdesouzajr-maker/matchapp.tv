@@ -11,7 +11,7 @@ const root=path.join(__dirname,'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const page='guides/worldwide-entertainment-discovery/index.html';
 const url='https://matchapp.tv/guides/worldwide-entertainment-discovery/';
-const supported=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh'];
+const supported=['en','pt-BR','es','fr','de','it','tr','ru','ar','hi','id','ja','ko','zh','zh-TW'];
 
 function renderGuide(){
  const filename=path.join(root,'tools/build-world-discovery-guide.js'),target=path.join(root,page),writes=[];
@@ -50,7 +50,7 @@ test('global discovery guide regenerates deterministically with all actual inter
   assert(after.includes('/?lang='+lang),'Supported language preference link missing: '+lang);
  }
  assert.match(after,/<html class="ma-reference" lang="en">/);
- assert.equal((after.match(/class="lang-card"/g)||[]).length,14);
+ assert.equal((after.match(/class="lang-card"/g)||[]).length,15);
  assert.match(after,/<section class="lang-card" id="lang-ar" lang="ar" dir="rtl">/);
 });
 

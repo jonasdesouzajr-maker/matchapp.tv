@@ -151,6 +151,27 @@ test('published service cards preserve official evidence and individual source d
   }
 });
 
+test('Singapore coverage and US library eligibility survive real directory filtering and localization', () => {
+  const dom=openDirectory(),w=dom.window;
+  try {
+    setControl(w,'mp-market','SG');
+    const sg=visibleIds(w);
+    for(const id of ['netflix','disney-plus','viu','mewatch'])assert(sg.includes(id),id+' Singapore source coverage');
+    setControl(w,'mp-market','US');setControl(w,'mp-offer','free');
+    for(const id of ['kanopy','hoopla']) {
+      assert(visibleIds(w).includes(id));
+      const notice=w.document.querySelector('#service-'+id+' [data-mp="directoryLibraryAccess"]');
+      assert(notice&&notice.textContent.includes('participating library'),'library eligibility is visible, not just in metadata');
+    }
+    for(const lang of LANGUAGES) {
+      setControl(w,'mp-language',lang);
+      const expected=w.MATCHAPP_PARTNERSHIP_COPY[lang].directoryLibraryAccess;
+      assert(expected&&expected.length>15,lang+' authored eligibility');
+      assert.equal(w.document.querySelector('#service-hoopla [data-mp="directoryLibraryAccess"]').textContent,expected);
+    }
+  } finally {w.close();}
+});
+
 test('legacy and pending services are never displayed as active providers', () => {
   const registry = loadRegistry(root);
   const retired = registry.services.filter(row => row.status === 'legacy');

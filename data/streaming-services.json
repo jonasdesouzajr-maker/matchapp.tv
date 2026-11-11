@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "research_date": "2026-10-28",
+  "research_date": "2026-11-11",
   "market_scope": "Representative markets only; absence is not evidence of unavailability. No worldwide rights or exhaustive territorial coverage is asserted.",
   "offer_scope": "Models observed for the service; individual titles, countries, channels and plans require separate verification. Free does not mean ad-free or exempt from licence/account requirements.",
   "integration_scope": "Service discovery directory only. Existing matching, title identity, provider verification and Kids allowlists remain authoritative.",
@@ -20,7 +20,8 @@
         "FR",
         "MX",
         "CA",
-        "AU"
+        "AU",
+        "SG"
       ],
       "offer_types": [
         "subscription"
@@ -36,9 +37,13 @@
         {
           "url": "https://help.netflix.com/en/node/14164",
           "note": "Official help confirms service in more than 190 countries and a library that differs by country."
+        },
+        {
+          "url": "https://www.netflix.com/sg/",
+          "note": "Official Singapore service page confirms Singapore membership and local catalogue."
         }
       ],
-      "checked_on": "2026-10-28",
+      "checked_on": "2026-11-11",
       "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
       "status": "active",
       "caveats": "Ad-supported paid plans remain subscription offers, never free-with-ads. No uniform global catalog.",
@@ -109,7 +114,8 @@
       "region_group": "global",
       "representative_markets": [
         "BR",
-        "US"
+        "US",
+        "SG"
       ],
       "offer_types": [
         "subscription",
@@ -135,9 +141,13 @@
         {
           "url": "https://www.disneyplus.com/",
           "note": "US landing page shows Disney+, Hulu and ESPN bundles."
+        },
+        {
+          "url": "https://www.disneyplus.com/en-sg/explore/articles/marvel-visionquest",
+          "note": "Official Singapore editorial guide establishes a Singapore service route; individual plans and titles still require verification."
         }
       ],
-      "checked_on": "2026-10-28",
+      "checked_on": "2026-11-11",
       "evidence_scope": "Service-level directory evidence only. Representative markets are non-exhaustive and are not title rights; offers, plans and playback restrictions vary by country and title. No title-level availability or price is asserted.",
       "status": "active",
       "caveats": "Sports are plan- and country-dependent. Brazil ESPN full sports access requires Premium; international Hulu hub branding does not mean US Hulu subscription rights.",
@@ -3740,7 +3750,9 @@
       "aliases": [],
       "homepage": "https://www.viu.com/",
       "region_group": "Asia-Pacific",
-      "representative_markets": [],
+      "representative_markets": [
+        "SG"
+      ],
       "offer_types": [
         "subscription",
         "free_ads"
@@ -3754,15 +3766,20 @@
         {
           "url": "https://www.hq.viu.com/",
           "note": "Owner states Asia/Middle East/Africa presence and a free ad-supported plus premium subscription model."
+        },
+        {
+          "url": "https://www.m1.com.sg/support/faq/viu-faq",
+          "note": "Singapore distribution partner documents Viu free and Premium access in Singapore, with subtitles on selected titles."
         }
       ],
-      "checked_on": "2026-10-28",
+      "checked_on": "2026-11-11",
       "evidence_scope": "Official provider or owner page supports service identity and the listed offering; this is not title-level availability evidence.",
       "status": "active",
-      "caveats": "No-service geo screen observed from research environment. Regional footprint is established, but a complete ISO country list has not been verified here.",
+      "caveats": "Singapore is verified through an official local distribution partner; other markets remain unmapped. Free and Premium access differ by title, episode and language. No complete territorial catalogue is asserted.",
       "focus": [
         "series",
-        "local"
+        "local",
+        "kdrama"
       ],
       "integration": "directory_only",
       "kind": "regional"
@@ -5404,6 +5421,87 @@
       ],
       "integration": "directory_only",
       "kind": "films"
+    },
+    {
+      "id": "kanopy",
+      "name": "Kanopy",
+      "aliases": [],
+      "homepage": "https://www.kanopy.com/",
+      "region_group": "North America",
+      "representative_markets": [
+        "US"
+      ],
+      "offer_types": [
+        "free"
+      ],
+      "specialties": [
+        "Library films",
+        "Documentaries",
+        "Independent cinema"
+      ],
+      "official_sources": [
+        {
+          "url": "https://www.kanopy.com/en/libraries",
+          "note": "Provider documents film access through participating libraries and universities."
+        },
+        {
+          "url": "https://www.spl.org/books-and-media/movies-and-tv/kanopy",
+          "note": "Seattle Public Library confirms US library-card access and institution-specific borrowing limits."
+        }
+      ],
+      "checked_on": "2026-11-11",
+      "evidence_scope": "Service-level library access only; a directory entry does not verify a title or add a matching-engine integration. US is a representative verified market, not an exhaustive country list.",
+      "status": "active",
+      "caveats": "Requires eligibility at a participating library or institution. Catalogue, borrowing limits and available formats vary by institution; not every library card qualifies.",
+      "focus": [
+        "movies",
+        "documentaries",
+        "arthouse"
+      ],
+      "integration": "directory_only",
+      "kind": "films",
+      "access_condition": "library"
+    },
+    {
+      "id": "hoopla",
+      "name": "Hoopla",
+      "aliases": [],
+      "homepage": "https://www.hoopladigital.com/",
+      "region_group": "North America",
+      "representative_markets": [
+        "US"
+      ],
+      "offer_types": [
+        "free"
+      ],
+      "specialties": [
+        "Library films and television",
+        "Audiobooks",
+        "E-books",
+        "Music"
+      ],
+      "official_sources": [
+        {
+          "url": "https://theloop.hoopladigital.com/support/articles/getting-started/what-is-hoopla-digital/",
+          "note": "Provider describes free access with a participating library card and available media formats."
+        },
+        {
+          "url": "https://sfpl.libanswers.com/faq/129915",
+          "note": "San Francisco Public Library confirms US access and library-specific borrowing rules."
+        }
+      ],
+      "checked_on": "2026-11-11",
+      "evidence_scope": "Service-level library access only; a directory entry does not verify a title or add a matching-engine integration. US is a representative verified market, not an exhaustive country list.",
+      "status": "active",
+      "caveats": "Requires eligibility at a participating library or institution. Catalogue, borrowing limits and available formats vary by institution; not every library card qualifies.",
+      "focus": [
+        "movies",
+        "series",
+        "music"
+      ],
+      "integration": "directory_only",
+      "kind": "films",
+      "access_condition": "library"
     }
   ]
 }

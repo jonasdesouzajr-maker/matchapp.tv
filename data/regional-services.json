@@ -973,7 +973,8 @@
     ],
     "markets": [
       "BR",
-      "US"
+      "US",
+      "SG"
     ],
     "kind": "films",
     "url": "https://www.disneyplus.com/",
@@ -982,7 +983,7 @@
       "sports"
     ],
     "focus": [],
-    "checked_on": "2026-10-28",
+    "checked_on": "2026-11-11",
     "official_sources": [
       {
         "url": "https://www.disneyplus.com/pt-br/browse/entity-f90dfcd0-4748-489e-9001-e797596817f7",
@@ -995,6 +996,10 @@
       {
         "url": "https://www.disneyplus.com/",
         "note": "US landing page shows Disney+, Hulu and ESPN bundles."
+      },
+      {
+        "url": "https://www.disneyplus.com/en-sg/explore/articles/marvel-visionquest",
+        "note": "Official Singapore editorial guide establishes a Singapore service route; individual plans and titles still require verification."
       }
     ],
     "integration": "directory_only"
@@ -1382,6 +1387,37 @@
     "integration": "directory_only"
   },
   {
+    "id": "hoopla",
+    "name": "Hoopla",
+    "aliases": [],
+    "markets": [
+      "US"
+    ],
+    "kind": "films",
+    "url": "https://www.hoopladigital.com/",
+    "offer_types": [
+      "free"
+    ],
+    "focus": [
+      "movies",
+      "series",
+      "music"
+    ],
+    "checked_on": "2026-11-11",
+    "official_sources": [
+      {
+        "url": "https://theloop.hoopladigital.com/support/articles/getting-started/what-is-hoopla-digital/",
+        "note": "Provider describes free access with a participating library card and available media formats."
+      },
+      {
+        "url": "https://sfpl.libanswers.com/faq/129915",
+        "note": "San Francisco Public Library confirms US access and library-specific borrowing rules."
+      }
+    ],
+    "access_condition": "library",
+    "integration": "directory_only"
+  },
+  {
     "id": "hulu",
     "name": "Hulu",
     "aliases": [],
@@ -1601,6 +1637,37 @@
         "note": "Official page explicitly offers free streaming/live TV plus Joyn+ option."
       }
     ],
+    "integration": "directory_only"
+  },
+  {
+    "id": "kanopy",
+    "name": "Kanopy",
+    "aliases": [],
+    "markets": [
+      "US"
+    ],
+    "kind": "films",
+    "url": "https://www.kanopy.com/",
+    "offer_types": [
+      "free"
+    ],
+    "focus": [
+      "movies",
+      "documentaries",
+      "arthouse"
+    ],
+    "checked_on": "2026-11-11",
+    "official_sources": [
+      {
+        "url": "https://www.kanopy.com/en/libraries",
+        "note": "Provider documents film access through participating libraries and universities."
+      },
+      {
+        "url": "https://www.spl.org/books-and-media/movies-and-tv/kanopy",
+        "note": "Seattle Public Library confirms US library-card access and institution-specific borrowing limits."
+      }
+    ],
+    "access_condition": "library",
     "integration": "directory_only"
   },
   {
@@ -2057,7 +2124,8 @@
       "FR",
       "MX",
       "CA",
-      "AU"
+      "AU",
+      "SG"
     ],
     "kind": "films",
     "url": "https://www.netflix.com/",
@@ -2070,11 +2138,15 @@
       "documentaries",
       "anime"
     ],
-    "checked_on": "2026-10-28",
+    "checked_on": "2026-11-11",
     "official_sources": [
       {
         "url": "https://help.netflix.com/en/node/14164",
         "note": "Official help confirms service in more than 190 countries and a library that differs by country."
+      },
+      {
+        "url": "https://www.netflix.com/sg/",
+        "note": "Official Singapore service page confirms Singapore membership and local catalogue."
       }
     ],
     "integration": "directory_only"
@@ -3609,7 +3681,9 @@
     "id": "viu",
     "name": "Viu",
     "aliases": [],
-    "markets": [],
+    "markets": [
+      "SG"
+    ],
     "kind": "regional",
     "url": "https://www.viu.com/",
     "offer_types": [
@@ -3618,13 +3692,18 @@
     ],
     "focus": [
       "series",
-      "local"
+      "local",
+      "kdrama"
     ],
-    "checked_on": "2026-10-28",
+    "checked_on": "2026-11-11",
     "official_sources": [
       {
         "url": "https://www.hq.viu.com/",
         "note": "Owner states Asia/Middle East/Africa presence and a free ad-supported plus premium subscription model."
+      },
+      {
+        "url": "https://www.m1.com.sg/support/faq/viu-faq",
+        "note": "Singapore distribution partner documents Viu free and Premium access in Singapore, with subtitles on selected titles."
       }
     ],
     "integration": "directory_only"
