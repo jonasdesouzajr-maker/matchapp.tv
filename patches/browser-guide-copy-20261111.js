@@ -47,6 +47,11 @@
       // Preserve every original destination link; label them from the already
       // localized navigation/card when available, with an authored fallback.
       var links=Array.from(section.querySelectorAll('a')).map(function(a){
+        var href=a.getAttribute('href');
+        if(href==='/'){a.textContent='MatchApp Ai';return a;}
+        var channel=href==='/tech/'?'tech':href==='/catalog-trails/'?'trail':null;
+        var channelLabel=channel&&document.querySelector('.ref-secondary-topic[data-channel="'+channel+'"] [data-channel-label]');
+        if(channelLabel){a.textContent=channelLabel.textContent;return a;}
         var known=guidePaths.indexOf(a.getAttribute('href'));
         if(known!==-1){a.textContent=(guideNames[lang]||guideNames.en)[known];return a;}
         var found=Array.from(document.querySelectorAll('a[href]')).find(function(x){return !section.contains(x)&&x.getAttribute('href')===a.getAttribute('href')&&x.textContent.trim()});
