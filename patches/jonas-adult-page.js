@@ -38,7 +38,7 @@ if (window.top === window && !window.MatchAppFx &&
       /^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname) ||
       document.getElementById('ma-browser-polish-20261111')) return;
   var finish=document.createElement('link');finish.id='ma-browser-polish-20261111';
-  finish.rel='stylesheet';finish.href='/patches/browser-polish-20261111.css?v=3';
+  finish.rel='stylesheet';finish.href='/patches/browser-polish-20261111.css?v=4';
   document.head.appendChild(finish);
   if (/^\/(?:index\.html|explore\.html)?$/.test(location.pathname)) {
     var guide=document.createElement('script');guide.defer=true;
