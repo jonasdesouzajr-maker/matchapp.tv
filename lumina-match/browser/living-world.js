@@ -80,19 +80,27 @@
     if(!card.classList.contains('flipped')&&!card.classList.contains('matched')) return;
     if(!image?.complete||!image.naturalWidth) return;
     const box=face.getBoundingClientRect();
-    const w=Math.min(320,Math.max(1,face.clientWidth*1.5)),h=Math.min(420,Math.max(1,face.clientHeight*1.5));
+    const density=Math.min(1.5,320/Math.max(1,face.clientWidth),480/Math.max(1,face.clientHeight));
+    const w=Math.max(1,Math.round(face.clientWidth*density)),h=Math.max(1,Math.round(face.clientHeight*density));
     if(box.width<1||box.height<1)return;
     if(canvas.width!==Math.round(w)||canvas.height!==Math.round(h)){canvas.width=Math.round(w);canvas.height=Math.round(h);}
     const c=canvas.getContext('2d');if(!c)return;
     c.clearRect(0,0,canvas.width,canvas.height);
-    const fit=Math.min(w/image.naturalWidth,h/image.naturalHeight)*.89;
+    const fit=Math.max(w/image.naturalWidth,h/image.naturalHeight);
     const iw=image.naturalWidth*fit,ih=image.naturalHeight*fit,left=(w-iw)/2,top=(h-ih)/2;
     const wing=/butterfly|firefly/.test(name),water=/ocean/.test(name),plant=/flower|fern|coral/.test(name);
     for(let j=0;j<24;j++){
       const v=j/24,sh=image.naturalHeight/24,env=Math.sin(Math.PI*v);
       const dx=(motionOff()?0:Math.sin(t*(water?2:1.1)+v*4)*iw*(water?.022:plant?.018:.008)*env);
       const squeeze=wing&&!motionOff()?1-(.10+.09*Math.sin(t*6))*env:1;
-      c.drawImage(image,0,j*sh,image.naturalWidth,Math.min(sh+.7,image.naturalHeight-j*sh),left+dx+iw*(1-squeeze)/2,top+v*ih,iw*squeeze,ih/24+.8);
+      // Pin both outer edges. Only interior bands deform, so motion cannot expose a dark gutter.
+      const cuts=[0,1/3,2/3,1];
+      const edge=u=>left+iw*u+(u===0||u===1?0:dx+(u-.5)*iw*(squeeze-1));
+      for(let k=0;k<3;k++){
+        const x1=edge(cuts[k]),x2=edge(cuts[k+1]);
+        c.drawImage(image,cuts[k]*image.naturalWidth,j*sh,image.naturalWidth/3,
+          Math.min(sh+.7,image.naturalHeight-j*sh),x1,top+v*ih,x2-x1+.5,ih/24+.8);
+      }
     }
     if(!face.classList.contains('lm-art-ready'))face.classList.add('lm-art-ready');
   }
