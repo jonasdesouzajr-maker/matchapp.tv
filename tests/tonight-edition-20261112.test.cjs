@@ -21,6 +21,10 @@ test('six different editorial choices preserve separate dated source measures',(
   assert.match(copies.en.method,/different audiences and periods/);
 });
 
+test('the production brand finalizer leaves every generated edition stable',()=>{
+  assert.equal(require('../tools/finalize-brand.js').finalizeBrand(['trending/2026-11-12/']),0);
+});
+
 test('all 15 authored editions are crawlable, internally linked, dated and source attributed',()=>{
   const inputs=loadInputs();
   for(const lang of LOCALES){
