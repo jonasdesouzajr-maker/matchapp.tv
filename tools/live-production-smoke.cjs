@@ -173,9 +173,10 @@ async function aiQuestion(page,question,expected,label){
       const primary=['/ebooks/#ebook-matcher-root','/cooking/','/news/','/events-archive.html','/music.html#swifties-spotify','/discover.html'];
       const secondary=['/music.html','/together.html','/friends.html','/awareness/breast-cancer-awareness-month-2026/','/guides/worldwide-entertainment-discovery/','/how-it-works.html'];
       record('Signature Explore navigation opens all approved topics '+device.name,
-        destinations.visible&&destinations.primary.length===primary.length&&destinations.secondary.length===secondary.length+4&&
+        destinations.visible&&destinations.primary.length===primary.length&&destinations.secondary.length===secondary.length+5&&
         primary.every(href=>destinations.primary.includes(href))&&secondary.every(href=>destinations.secondary.includes(href))&&
         destinations.secondary.some(href=>/^\/trending\/us\/2026-11-05\/(?:(?:pt-br|es|fr|de|it|tr|ru|ar|hi|id|ja|ko|zh|zh-tw)\/)?$/.test(href))&&
+        destinations.secondary.some(href=>/^\/trending\/2026-11-12\/(?:(?:pt-br|es|fr|de|it|tr|ru|ar|hi|id|ja|ko|zh|zh-tw)\/)?$/.test(href))&&
         ['lumina-match','tech','catalog-trails'].every(section=>destinations.secondary.some(href=>
           new RegExp('^/'+section+'/(?:(?:pt-br|es|fr|de|it|tr|ru|ar|hi|id|ja|ko|zh)/)?$').test(href))),
         JSON.stringify({...destinations,path:new URL(page.url()).pathname}));
@@ -421,11 +422,11 @@ async function aiQuestion(page,question,expected,label){
   // 320px touch layout, RTL and Traditional Chinese. Isolated contexts keep
   // editorial language checks out of the existing matching/account flows.
   for(const device of cases){
-   for(const lang of ['en','ar','zh-TW']){
+   for(const [edition,cardCount,sourceCount,englishTag] of [['us/2026-11-05',30,11,'en-US'],['2026-11-12',6,5,'en']]) for(const lang of ['en','ar','zh-TW']){
     const guideContext=await browser.newContext({viewport:{width:device.width,height:device.height},
       isMobile:device.isMobile,hasTouch:device.hasTouch,deviceScaleFactor:1,locale:'en-US'});
     const guidePage=await guideContext.newPage();
-    const route='/trending/us/2026-11-05/'+(lang==='en'?'':lang.toLowerCase()+'/');
+    const route='/trending/'+edition+'/'+(lang==='en'?'':lang.toLowerCase()+'/');
     try{
       await observed(guidePage,route);
       await guidePage.locator('h1').waitFor({state:'visible',timeout:15000});
@@ -444,12 +445,12 @@ async function aiQuestion(page,question,expected,label){
       const languages=await guidePage.locator('.channel-language-list a').evaluateAll(links=>
         links.length===15&&links.every(link=>link.getClientRects().length>0&&link.textContent.trim()));
       await guidePage.locator('.channel-header summary').click();
-      record('U.S. trends authored locale and responsive layout '+lang+' '+device.name,
-        state.lang===(lang==='en'?'en-US':lang)&&state.dir===(lang==='ar'?'rtl':'ltr')&&
-        state.canonical==='https://matchapp.tv'+route&&state.cards===30&&state.sources===11&&
+      record('Trends '+edition+' authored locale and responsive layout '+lang+' '+device.name,
+        state.lang===(lang==='en'?englishTag:lang)&&state.dir===(lang==='ar'?'rtl':'ltr')&&
+        state.canonical==='https://matchapp.tv'+route&&state.cards===cardCount&&state.sources===sourceCount&&
         !state.overflow&&!state.emptyCards&&!!state.title&&languages,JSON.stringify({...state,languages}));
-      await shot(guidePage,device.name+'-us-trends-'+lang.toLowerCase());
-    }catch(error){record('U.S. trends '+lang+' '+device.name,false,String(error.message||error).slice(0,300));}
+      await shot(guidePage,device.name+'-trends-'+edition.replaceAll('/','-')+'-'+lang.toLowerCase());
+    }catch(error){record('Trends '+edition+' '+lang+' '+device.name,false,String(error.message||error).slice(0,300));}
     finally{await guideContext.close();}
    }
   }
