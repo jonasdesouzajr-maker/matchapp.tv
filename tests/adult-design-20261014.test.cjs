@@ -22,7 +22,7 @@ test('Explore keeps every original destination in its cinematic categories, seco
  const primary=[...doc.querySelectorAll('.ref-primary-topics > a')].map(n=>n.getAttribute('href'));
  const secondary=[...doc.querySelectorAll('.ref-secondary-topics > a')].map(n=>n.getAttribute('href'));
  assert.deepEqual(primary,['/ebooks/#ebook-matcher-root','/cooking/','/news/','/events-archive.html','/music.html#swifties-spotify','/discover.html']);
- assert.deepEqual(secondary,['/lumina-match/','/tech/','/trending/us/2026-11-05/','/catalog-trails/','/music.html','/together.html','/friends.html','/awareness/breast-cancer-awareness-month-2026/','/guides/worldwide-entertainment-discovery/','/how-it-works.html']);
+ assert.deepEqual(secondary,['/lumina-match/','/tech/','/trending/2026-11-12/','/trending/us/2026-11-05/','/catalog-trails/','/music.html','/together.html','/friends.html','/awareness/breast-cancer-awareness-month-2026/','/guides/worldwide-entertainment-discovery/','/how-it-works.html']);
  assert.equal(doc.querySelectorAll('.ref-secondary-topics [data-us-trends-entry]').length,1,'one browser U.S. guide joins the preserved destinations');
  assert.equal(doc.querySelectorAll('.ref-secondary-topics [data-lumina-guide-link]').length,1,'one crawlable game guide joins the preserved destinations');
  const original=['/cooking/','/music.html','/news/','/ebooks/#ebook-matcher-root','/events-archive.html','/together.html','/awareness/breast-cancer-awareness-month-2026/','/guides/worldwide-entertainment-discovery/','/friends.html'];
