@@ -2,6 +2,17 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const {JSDOM}=require('jsdom');
 const source=fs.readFileSync('android-studio/app/src/main/assets/android-premium-shell.js','utf8');
 const refresh=source.slice(source.indexOf('  function refreshForStructuralChanges('),source.indexOf('  function schedulePremiumRefresh('));
+test('editorial normalization preserves native chat cascade priority and preview parity',()=>{
+ const {cinemaAssets}=require('../tools/finalize-brand.js');
+ const page=fs.readFileSync('discover.html','utf8');
+ const normalized=cinemaAssets(page,'discover.html');
+ assert.equal(normalized,page);
+ assert.equal(cinemaAssets(normalized,'discover.html'),normalized);
+ const document=new JSDOM(normalized).window.document;
+ assert.equal(document.head.firstElementChild.textContent,'@layer ma-native-chat,ma-reference;');
+ document.defaultView.close();
+ assert.equal(fs.readFileSync('android-studio/app/src/debug/assets/ambient-preview/discover.html','utf8'),normalized);
+});
 test('live text ticks do not restyle the Android shell; inserted and replaced controls do',async()=>{
   const dom=new JSDOM('<body><span id="count">10</span><section></section></body>',{runScripts:'outside-only'}),w=dom.window;
   try{
