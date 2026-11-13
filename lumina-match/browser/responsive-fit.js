@@ -18,7 +18,7 @@
       var rows = Math.ceil(count / columns);
       var gap = count >= 32 ? 3 : count >= 20 ? 4 : 6;
       var w = (width - (columns - 1) * gap - 4) / columns;
-      var h = (height - (rows - 1) * gap - 4) * 0.75 / rows;
+      var h = (height - (rows - 1) * gap - 4) * (2 / 3) / rows;
       var size = Math.min(w,h,110);
       if (size < 9) continue;
       // Prefer larger cards. Equal sizes favor fewer columns and tidier rows.

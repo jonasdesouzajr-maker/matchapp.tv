@@ -1,0 +1,33 @@
+/* Scoped to the isolated game document. Stable hit targets; motion stays inside artwork. */
+html,body{background:#071c29}
+.lm-living-world{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+#app{position:relative;z-index:1}
+#app .audio-toolbar{background:linear-gradient(180deg,#071c2bee,#0b293bb0);border:0}
+#app>.screen{background:transparent}
+#app[data-screen="home"] .screen{padding-block:clamp(6px,2vh,18px)}
+#app .lm-companions{height:clamp(60px,18dvh,150px);filter:drop-shadow(0 6px 6px #0005)}
+#app .lm-companion{max-width:140px}
+#app .card{aspect-ratio:2/3;perspective:850px;transform-style:preserve-3d;transition:transform .58s cubic-bezier(.2,.75,.2,1),box-shadow .3s;border:1.5px solid #d7ba78;background:#10363e;box-shadow:0 3px 0 #887044,0 5px 0 #4a503c,0 9px 15px #0008}
+#app .card.flipped{transform:rotateY(180deg)}
+#app .card .face{inset:0;overflow:hidden;background-size:cover;background-repeat:no-repeat;background-color:#0d2838}
+#app .card .back{background-image:radial-gradient(ellipse at 40% 20%,#70ddc799,transparent 60%),linear-gradient(140deg,#245765,#0a2339)!important}
+#app .card .back:before{content:"";position:absolute;width:42%;height:42%;left:29%;top:29%;transform:rotate(45deg);border:1px solid #ffe0a3;background:conic-gradient(from 0deg,#ceffef,#339d9d,#c0f6de,#19526d,#ceffef);box-shadow:0 0 20px #6fe6c155;animation:lm-prism-light 7s ease-in-out infinite}
+#app .card .back:after{content:"";position:absolute;inset:12%;border:1px solid #d9c58699;border-radius:50%;border-top-color:#fff2c8;animation:lm-orbit 12s linear infinite}
+.lm-living-face{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#app .card .front.lm-art-ready{background-image:none!important}
+#app .card.matched{box-shadow:0 0 0 1px #e2d39a,0 4px 0 #8a7750,0 0 18px #b9eab133}
+.lm-living-eyes{transform-box:fill-box;transform-origin:center;animation:lm-natural-blink 5.3s linear infinite}
+.lm-fox .lm-animal{animation:lm-fox-weight 7s ease-in-out infinite}
+.lm-fox .lm-tail{animation-duration:3.7s}
+.lm-giraffe .lm-ears{transform-origin:50px 32px;animation:lm-ear-listen 6.7s ease-in-out infinite}
+.lm-jellyfish .lm-tentacles path:nth-child(2){transform-origin:50px 60px;animation:lm-tentacle-wave 3.8s ease-in-out -1s infinite}
+@keyframes lm-natural-blink{0%,90%,94%,100%{transform:scaleY(1)}92%{transform:scaleY(.08)}}
+@keyframes lm-fox-weight{0%,100%{transform:scale(1,1) rotate(-1deg)}50%{transform:scale(1.018,.985) rotate(1deg)}}
+@keyframes lm-ear-listen{0%,30%,60%,100%{transform:rotate(0)}35%{transform:rotate(-4deg)}40%{transform:rotate(3deg)}}
+@keyframes lm-prism-light{0%,100%{transform:rotate(45deg) scale(.96);filter:brightness(.92)}50%{transform:rotate(50deg) scale(1.03);filter:brightness(1.15)}}
+@keyframes lm-orbit{to{transform:rotate(360deg)}}
+.lm-world-paused #app .card .back:before,.lm-world-paused #app .card .back:after,.lm-world-paused .lm-companion *{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){#app .card{transition:none}#app .card .back:before,#app .card .back:after,.lm-living-eyes,.lm-companion *{animation:none!important}}
+.reduce-motion #app .card .back:before,.reduce-motion #app .card .back:after,.reduce-motion .lm-living-eyes{animation:none!important}
+@media(max-height:480px){#app .lm-companions{height:44px}}
+@media(forced-colors:active){.lm-living-world{display:none}#app .card{border:2px solid ButtonText}#app .card .face{forced-color-adjust:none}}
