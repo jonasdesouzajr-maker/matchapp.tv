@@ -11,7 +11,7 @@ test('each native Explore edition uses the channel names visitors see on the des
  }
 });
 test('new Play artwork and 15 localized listings meet upload dimensions and text limits',()=>{
- const icon=read(android+'play/refresh-20261110/artwork/matchapp-ai-play-512.png',null),feature=read(android+'play/refresh-20261104/artwork/feature-graphic.png',null);
+ const icon=read(android+'play/refresh-20261113/artwork/matchapp-ai-play-512.png',null),feature=read(android+'play/refresh-20261104/artwork/feature-graphic.png',null);
  for(const [image,w,h] of [[icon,512,512],[feature,1024,500]]){assert.equal(image.readUInt32BE(16),w);assert.equal(image.readUInt32BE(20),h);}
  assert.ok(icon.length<=1024*1024);assert.ok(icon.equals(read(android+'play/icon-512.png',null)),'Current Play icon must match the release artwork');
  for(const locale of ['en-US','pt-BR','es-419','fr-FR','de-DE','it-IT','tr-TR','ru-RU','ar','hi-IN','id','ja-JP','ko-KR','zh-CN','zh-TW']){
