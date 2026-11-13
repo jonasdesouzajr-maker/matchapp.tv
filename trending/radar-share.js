@@ -6,7 +6,7 @@
   const status=document.querySelector('[data-radar-share-status]');
   const canonical=document.querySelector('link[rel="canonical"]');
   const url=canonical?canonical.href+'#radar':location.href;
-  if(!navigator.share&&!navigator.clipboard?.writeText){button.hidden=true;return;}
+  if(!navigator.share&&!navigator.clipboard?.writeText){button.remove();return;}
   button.addEventListener('click',async()=>{
     if(button.disabled)return;
     button.disabled=true;

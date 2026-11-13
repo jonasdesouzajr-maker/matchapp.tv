@@ -78,6 +78,6 @@ test('cancelled sharing stays silent and failed clipboard access exposes a real 
     try{dom.window.document.querySelector('button').click();await settle();const status=dom.window.document.querySelector('[data-radar-share-status]');assert.equal(status.querySelectorAll('a').length,abort?0:1);assert.ok(!status.textContent.includes('Copiado'));assert.equal(dom.window.document.querySelector('button').disabled,false);}finally{dom.window.close();}
   }
 });
-test('unsupported sharing is hidden without an unusable control',()=>{
-  const dom=shareDom({});try{assert.equal(dom.window.document.querySelector('button').hidden,true);}finally{dom.window.close();}
+test('unsupported sharing is removed without relying on overridden hidden styles',()=>{
+  const dom=shareDom({});try{assert.equal(dom.window.document.querySelector('button'),null);}finally{dom.window.close();}
 });
