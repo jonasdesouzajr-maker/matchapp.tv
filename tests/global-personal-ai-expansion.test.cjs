@@ -100,7 +100,10 @@ test('regional original events, rich pages and sitemaps agree without claiming e
    assert.match(page,/application\/ld\+json/);
    assert(page.includes('https://matchapp.tv/events/'+slug+'/'));
    assert(page.includes('original independent MatchApp editorial illustration'));
-   assert(home.includes('data-event-slug="'+slug+'"'));
+   // Home retains completed events for 72 hours; historic guides and sitemap stay available.
+   const {homeEventOrder}=require('../tools/event-lifecycle');
+   const expectedOnHome=homeEventOrder(events).some(item=>item.slug===slug);
+   assert.equal(home.includes('data-event-slug="'+slug+'"'),expectedOnHome,slug+' Home retention');
    assert(site.includes('https://matchapp.tv/events/'+slug+'/'));
  }
  for(const slug of ['indian-cinema','mexican-series-films']){

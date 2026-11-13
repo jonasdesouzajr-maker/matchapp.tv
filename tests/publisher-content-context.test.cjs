@@ -49,7 +49,18 @@ test('Tokyo guide, event cards and link previews use the original MatchApp Ai il
  assert.match(event.posterCredit, /original editorial illustration by MatchApp Ai/i);
  assert.ok(fs.existsSync('.' + event.poster));
  assert.ok(fs.existsSync('.' + event.poster.replace('.jpg', '.svg')));
- for (const file of ['index.html','events-archive.html','events/' + event.slug + '/index.html']) {
+ const {homeEventOrder} = require('../tools/event-lifecycle');
+ const home = new JSDOM(fs.readFileSync('index.html', 'utf8'));
+ try {
+  const homeArt = home.window.document.querySelector('[data-event-slug="' + event.slug + '"] img');
+  const onHome = homeEventOrder(require('../tools/global-events.json')).some(e => e.slug === event.slug);
+  assert.equal(Boolean(homeArt), onHome, 'expired event card follows the approved Home retention window');
+  if (homeArt) {
+   assert.equal(homeArt.getAttribute('src'), event.poster);
+   assert.match(homeArt.alt, /original independent MatchApp editorial illustration/);
+  }
+ } finally { home.window.close(); }
+ for (const file of ['events-archive.html','events/' + event.slug + '/index.html']) {
   const dom = new JSDOM(fs.readFileSync(file, 'utf8'));
   try {
    const page = dom.window.document;
