@@ -2,7 +2,9 @@ package com.jonas.papercup
 
 import android.app.Activity
 import android.os.Looper
+import android.os.SystemClock
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
@@ -43,6 +45,24 @@ class AdMobController(
     private var destroyed = false
     private var adInitFailed = false
     private var bannerGeneration = 0
+    private var foreground = false
+    private val retryPolicy = BannerRetryPolicy()
+    private var retryAt = 0L
+    private val retryBanner = Runnable { loadBanner() }
+
+    private fun cancelRetry(reset: Boolean) {
+        bannerContainer.removeCallbacks(retryBanner)
+        if (reset) {
+            retryAt = 0L
+            retryPolicy.reset()
+        }
+    }
+
+    private fun scheduleRetry(errorCode: Int) {
+        val delay = retryPolicy.delayAfterFailure(errorCode) ?: return
+        retryAt = SystemClock.elapsedRealtime() + delay
+        loadBanner() // Applies lifecycle/consent gates and waits for the deadline.
+    }
 
     // UMP callbacks, native ad surfaces and visibility belong to the UI thread.
     // A dismissed consent sheet must never update a destroyed Activity.
@@ -158,6 +178,7 @@ class AdMobController(
             return
         }
         entitlementPending = true
+        cancelRetry(reset = false)
         privacyButton.visibility = View.GONE
         updateShellVisibility()
     }
@@ -228,13 +249,20 @@ class AdMobController(
     }
 
     private fun loadBanner() {
-        if (!isConsentUiAvailable() || !adsInitializationCompleted || entitlementPending || entitlementAdFree || bannerRequestStarted ||
+        if (!foreground || !isConsentUiAvailable() || !adsInitializationCompleted || entitlementPending || entitlementAdFree || bannerRequestStarted ||
             adInitFailed || !consentInformation.canRequestAds()
         ) return
+        bannerContainer.removeCallbacks(retryBanner)
+        val remaining = retryAt - SystemClock.elapsedRealtime()
+        if (remaining > 0) {
+            bannerContainer.postDelayed(retryBanner, remaining)
+            return
+        }
+        retryAt = 0L
         bannerRequestStarted = true
         val generation = ++bannerGeneration
         bannerContainer.post {
-            if (!isConsentUiAvailable() || entitlementPending || entitlementAdFree ||
+            if (!foreground || !isConsentUiAvailable() || entitlementPending || entitlementAdFree ||
                 adInitFailed || !consentInformation.canRequestAds() ||
                 generation != bannerGeneration
             ) {
@@ -251,8 +279,7 @@ class AdMobController(
                 val bannerSize = if (activity.resources.configuration.smallestScreenWidthDp < 600) {
                     AdSize.BANNER
                 } else {
-                    @Suppress("DEPRECATION")
-                    AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(activity, widthDp)
+                    AdSize.getLargeAnchoredAdaptiveBannerAdSize(activity, widthDp)
                 }
 
                 val nextAdView = AdView(activity).apply {
@@ -262,6 +289,7 @@ class AdMobController(
                         override fun onAdLoaded() {
                             android.util.Log.i("MatchAppAds", "banner onAdLoaded")
                             if (generation != bannerGeneration || destroyed) return
+                            cancelRetry(reset = true)
                             bannerLoaded = true
                             updateShellVisibility()
                         }
@@ -269,16 +297,24 @@ class AdMobController(
                             android.util.Log.i("MatchAppAds", "banner onAdFailedToLoad code=${error.code}")
                             if (generation != bannerGeneration || destroyed) return
                             bannerLoaded = false
-                            bannerRequestStarted = false
                             // Avoid destroying the view while its callback is executing.
-                            bannerContainer.post { if (generation == bannerGeneration && !destroyed) clearBanner() }
+                            bannerContainer.post {
+                                if (generation == bannerGeneration && !destroyed) {
+                                    clearBanner(resetRetry = false)
+                                    scheduleRetry(error.code)
+                                }
+                            }
                         }
                     }
                 }
                 adView?.destroy()
                 adView = nextAdView
                 bannerContainer.removeAllViews()
-                bannerContainer.addView(nextAdView)
+                bannerContainer.addView(nextAdView, FrameLayout.LayoutParams(
+                    FrameLayout.LayoutParams.WRAP_CONTENT,
+                    FrameLayout.LayoutParams.WRAP_CONTENT,
+                    Gravity.CENTER
+                ))
                 nextAdView.loadAd(AdRequest.Builder().build())
             } catch (error: RuntimeException) {
                 bannerRequestStarted = false
@@ -299,7 +335,8 @@ class AdMobController(
         }
     }
 
-    private fun clearBanner() {
+    private fun clearBanner(resetRetry: Boolean = true) {
+        cancelRetry(resetRetry)
         bannerGeneration++ // Invalidate delayed callbacks after privacy changes.
         bannerLoaded = false
         bannerRequestStarted = false
@@ -331,11 +368,15 @@ class AdMobController(
             runCatching { consentInformation.canRequestAds() }.getOrDefault(false)
 
     fun pause() {
+        foreground = false
+        cancelRetry(reset = false)
         if (!destroyed) runCatching { adView?.pause() }.onFailure { suppressAds(it) }
     }
 
     fun resume() {
+        foreground = true
         if (!destroyed) runCatching { adView?.resume() }.onFailure { suppressAds(it) }
+        loadBanner()
     }
 
     fun destroy() {

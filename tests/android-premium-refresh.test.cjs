@@ -17,3 +17,25 @@ test('live text ticks do not restyle the Android shell; inserted and replaced co
     observer.disconnect();
   }finally{w.close()}
 });
+
+test('Jonas speech highlights do not restyle the iframe, but mode and structural changes do',()=>{
+  const dom=new JSDOM('<body><span id="word">hello</span></body>',{runScripts:'outside-only'}),w=dom.window;
+  try{
+    const fn=source.slice(source.indexOf('  function shouldPolishJonasFrame('),source.indexOf('  function polishJonasFrame('));
+    w.eval(fn+';window.shouldPolish=shouldPolishJonasFrame;');
+    const body=w.document.body,word=body.querySelector('span');
+    assert.equal(w.shouldPolish([{type:'attributes',target:word,attributeName:'class'}],body),false);
+    assert.equal(w.shouldPolish([{type:'attributes',target:body,attributeName:'class'}],body),true);
+    assert.equal(w.shouldPolish([{type:'childList',addedNodes:[w.document.createTextNode('hi')],removedNodes:[]}],body),false);
+    assert.equal(w.shouldPolish([{type:'childList',addedNodes:[w.document.createElement('button')],removedNodes:[]}],body),true);
+  }finally{w.close()}
+});
+test('login-only modal records login without requiring a signup form',()=>{
+  const dom=new JSDOM('<div id="main-auth-modal"><button>Continue</button></div>',{url:'https://matchapp.tv/',runScripts:'outside-only'}),w=dom.window;
+  try{
+    const fn=source.slice(source.indexOf('  function authIntent('),source.indexOf('  function cleanupOnboardingParam('));
+    const errors=[];w.addEventListener('error',e=>errors.push(e.error));w.qs=(selector,root=w.document)=>root.querySelector(selector);
+    w.eval(fn+';authIntent();');w.document.querySelector('button').click();
+    assert.deepEqual(errors,[]);assert.equal(w.sessionStorage.getItem('ma_android_auth_flow'),'login');
+  }finally{w.close()}
+});

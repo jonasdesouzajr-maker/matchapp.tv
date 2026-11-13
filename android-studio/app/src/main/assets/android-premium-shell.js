@@ -336,6 +336,12 @@ html.matchapp-ai-android body.matchapp-profile .profile-hub-row {border:1px soli
 html.matchapp-ai-android {--ma-native-bg:#100d17;--ma-native-surface:#1c1626;--ma-native-field:#292132;--ma-native-text:#f5f0fa;--ma-native-muted:#c1b5cc;--ma-native-line:#d5bbff26;--ma-native-accent:#e6c485;--ma-native-ink:#281c29;--ma-native-close:#712c40;--ma-native-close-text:#ffdae2}
 html.matchapp-ai-android[data-theme="sunrise"] {--ma-native-bg:#f7f3ee;--ma-native-surface:#fffdf9;--ma-native-field:#eee7df;--ma-native-text:#302735;--ma-native-muted:#665b70;--ma-native-line:#77618430;--ma-native-accent:#8c6021;--ma-native-ink:#fffaf2;--ma-native-close:#f9e1e7;--ma-native-close-text:#93293f;color-scheme:light!important}
 html.matchapp-ai-android body {background:var(--ma-native-bg)!important;color:var(--ma-native-text)!important}
+/* Keep the first screen interactive while lower sections wait for the viewport. */
+html.matchapp-ai-android body.page-home .seo-footer {content-visibility:auto;contain-intrinsic-size:auto 700px;background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
+html.matchapp-ai-android .seo-footer :is(h2,h3,h4,strong,summary) {color:var(--ma-native-text)!important;text-shadow:none!important}
+html.matchapp-ai-android .seo-footer :is(p,small,.seo-footer-lede,.seo-footer-legal) {color:var(--ma-native-muted)!important;text-shadow:none!important}
+html.matchapp-ai-android .seo-footer :is(a,button) {color:var(--ma-native-accent)!important;border-color:var(--ma-native-line)!important}
+html.matchapp-ai-android :is(.ma-brand-caption,.mh-tagline) {color:var(--ma-native-muted)!important;text-shadow:none!important}
 html.matchapp-ai-android #ma-reference-header {background:var(--ma-native-surface)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-bottom:1px solid var(--ma-native-line)!important;box-shadow:0 4px 16px #0000000a!important}
 html.matchapp-ai-android .ma-cinema-header-actions>details.ma-cinema-tools {padding:0!important;border:0!important;background:none!important;box-shadow:none!important;border-radius:999px!important}
 html.matchapp-ai-android :is(.ma-cinema-search,.ma-cinema-tools>summary,.ref-explore-tools>summary) {display:flex!important;align-items:center!important;justify-content:center!important;padding:0!important;margin:0!important;width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;border-radius:999px!important;border:1px solid var(--ma-native-line)!important;background:var(--ma-native-field)!important;color:var(--ma-native-text)!important;box-shadow:none!important;gap:0!important}
@@ -414,6 +420,7 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
   }
   const phoneGeometry=new Map();
   function compactPhoneHeader(){
+    phoneGeometry.forEach((_,el)=>{if(!el.isConnected)phoneGeometry.delete(el)});
     const phone=window.matchMedia?.('(max-width:620px)').matches===true;
     const set=(selector,props)=>qsa(selector).forEach(el=>Object.entries(props).forEach(([k,v])=>{
       if(!phone){const old=phoneGeometry.get(el)?.get(k);if(old)el.style.setProperty(k,old[0],old[1]);return}
@@ -519,6 +526,11 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
       applyBrand();markRails();mountAppearance();compactPhoneHeader();polishCinemaPosters();polishCinemaSurfaces();paintAndroidChrome();paintMatchOverlay();addRedClose();installMatchOverlay();enforceJonasFullscreen();polishErrorBubble();
     });
   }
+  function shouldPolishJonasFrame(records,body){
+    return records.some(record=>record.type==='attributes'
+      ?record.target===body&&record.attributeName==='class'
+      :Array.from(record.addedNodes).concat(Array.from(record.removedNodes)).some(node=>node.nodeType===1));
+  }
   function polishJonasFrame(){
     const frame=qs('#ma-ambient-chat-frame');if(!frame)return;
     if(!frame.dataset.maCinemaBound){frame.dataset.maCinemaBound='1';frame.addEventListener('load',polishJonasFrame)}
@@ -561,9 +573,11 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
     if(!doc.documentElement.dataset.maCinemaFrame){
       doc.documentElement.dataset.maCinemaFrame='1';
       let queued=false;
-      const observer=new frame.contentWindow.MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;polishJonasFrame()})});
-      observer.observe(doc.body,{childList:true,subtree:true});
-      observer.observe(doc.body,{attributes:true,attributeFilter:['class'],childList:true,subtree:true});
+      // Speech highlights change a word's class many times per second. Only
+      // new controls/results and the body's sidebar state need a layout pass.
+      const observer=new frame.contentWindow.MutationObserver(records=>{if(queued||!shouldPolishJonasFrame(records,doc.body))return;queued=true;requestAnimationFrame(()=>{queued=false;if(frame.isConnected)polishJonasFrame()})});
+      observer.observe(doc.documentElement,{childList:true,subtree:true});
+      observer.observe(doc.body,{attributes:true,attributeFilter:['class']});
       frame.addEventListener('load',()=>observer.disconnect(),{once:true});
     }
   }
@@ -692,7 +706,7 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
   }
   function authIntent(){
     document.addEventListener('submit',e=>{const id=e.target?.id;if(id==='form-login'||id==='form-signup')sessionStorage.setItem('ma_android_auth_flow',id==='form-login'?'login':'signup')},true);
-    document.addEventListener('click',e=>{const modal=e.target?.closest?.('#main-auth-modal');if(!modal)return;const signup=qs('#tab-signup.active',modal)||(!qs('#form-signup',modal)?.hidden&&getComputedStyle(qs('#form-signup',modal)).display!=='none');sessionStorage.setItem('ma_android_auth_flow',signup?'signup':'login')},true);
+    document.addEventListener('click',e=>{const modal=e.target?.closest?.('#main-auth-modal');if(!modal)return;const form=qs('#form-signup',modal);const signup=qs('#tab-signup.active',modal)||(form&&!form.hidden&&getComputedStyle(form).display!=='none');sessionStorage.setItem('ma_android_auth_flow',signup?'signup':'login')},true);
   }
   function cleanupOnboardingParam(){
     const u=new URL(location.href);if(!u.searchParams.has('maAndroidOnboarding'))return;u.searchParams.delete('maAndroidOnboarding');history.replaceState(null,'',u.pathname+u.search+u.hash);
