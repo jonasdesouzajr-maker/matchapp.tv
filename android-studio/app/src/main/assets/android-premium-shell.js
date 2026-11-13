@@ -237,6 +237,8 @@
       html.matchapp-ai-android :is(input,select,textarea){min-height:46px;border-radius:15px!important;margin-block:4px!important}
       html.matchapp-ai-android img{max-width:100%}
       @layer ma-reference {
+        html.matchapp-ai-android #questionnaire-box#questionnaire-box .gold-btn.ma-primary::after{content:none!important;display:none!important}
+        html.matchapp-ai-android #questionnaire-box#questionnaire-box .match-more-filters>summary::after{left:auto!important;right:auto!important;inset-inline-end:12px!important}
         html.matchapp-ai-android :is(.mam-x,.mao-x,.ma-android-auth-x)::before,html.matchapp-ai-android :is(.mam-x,.mao-x,.ma-android-auth-x)::after{content:none!important;display:none!important}
         html.matchapp-ai-android :is(.mam-x,.mao-x,.ma-android-auth-x){text-decoration:none!important;font:650 24px/1 system-ui!important}
         html.matchapp-ai-android body.page-home #questionnaire-box#questionnaire-box#questionnaire-box .crit-toggle::before{width:18px!important;height:18px!important;min-width:18px!important;grid-column:1!important;grid-row:1/3!important;align-self:center!important}
@@ -492,6 +494,8 @@ html.matchapp-ai-android .mam-card {max-height:calc(100dvh - 24px)!important;gri
 html.matchapp-ai-android .mam-card>header {padding:12px 14px!important;gap:12px!important;min-width:0!important}
 html.matchapp-ai-android .mam-card>header strong {font:700 20px/1.25 system-ui!important;overflow-wrap:anywhere!important}
 html.matchapp-ai-android .mam-body {min-height:0!important;padding:12px!important;scrollbar-width:thin!important}
+html.matchapp-ai-android :is(.mam-x,.mao-x,.ma-android-auth-x) {text-decoration:none!important;font:650 24px/1 system-ui!important}
+html.matchapp-ai-android #questionnaire-box .match-more-filters>summary {padding-inline-start:12px!important;padding-inline-end:44px!important;text-align:start!important;white-space:normal!important;overflow-wrap:anywhere!important}
 html.matchapp-ai-android .mam-body #questionnaire-box {box-sizing:border-box!important;min-width:0!important;max-width:100%!important;padding:0!important;animation:none!important;transform:none!important;background:transparent!important;box-shadow:none!important}
 html.matchapp-ai-android .mam-body #questionnaire-box>h2 {font:600 14px/1.4 system-ui!important;color:var(--ma-native-muted)!important;text-align:start!important;margin:0 0 12px!important;padding:0!important;letter-spacing:normal!important;text-transform:none!important;background:none!important;border:0!important}
 html.matchapp-ai-android #questionnaire-box :is(.q-grid,#advanced-filters) {min-width:0!important;max-width:100%!important;box-sizing:border-box!important;gap:8px!important}

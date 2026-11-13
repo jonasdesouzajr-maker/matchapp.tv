@@ -102,6 +102,8 @@ class NativeDestinationDock(
         bar.isItemActiveIndicatorEnabled = true
         bar.itemActiveIndicatorColor = ColorStateList.valueOf(Color.rgb(78, 54, 94))
         bar.labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
+        // Localized destinations must remain readable on narrow phones.
+        bar.setLabelMaxLines(2)
         bar.isItemHorizontalTranslationEnabled = false
         val initialLabels = listOf("Home", "Explore", "Matches", "My List", "Profile")
         icons.forEachIndexed { index, icon -> bar.menu.add(0,index+1,index,initialLabels[index]).setIcon(icon) }
