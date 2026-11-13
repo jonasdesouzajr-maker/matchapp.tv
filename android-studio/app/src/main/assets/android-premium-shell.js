@@ -60,6 +60,37 @@
     zh:{sub:'无需离开当前页面，即可快速进入专注的 Match 体验。',cta:'寻找想看的内容',modal:'你的 Match'}
   };
   function overlayCopy(){const l=lang();return matchOverlayCopy[l]||matchOverlayCopy[l.split('-')[0]]||matchOverlayCopy.en}
+  const studioCopy={
+    en:['More from ADV_DEV_OPS','Coming soon to Google Play','Explore our games'],
+    pt:['Mais de ADV_DEV_OPS','Em breve no Google Play','Conheça nossos jogos'],
+    es:['Más de ADV_DEV_OPS','Próximamente en Google Play','Descubre nuestros juegos'],
+    fr:['Aussi par ADV_DEV_OPS','Bientôt sur Google Play','Découvrez nos jeux'],
+    de:['Mehr von ADV_DEV_OPS','Demnächst bei Google Play','Entdecke unsere Spiele'],
+    it:['Altro da ADV_DEV_OPS','Presto su Google Play','Scopri i nostri giochi'],
+    tr:['ADV_DEV_OPS oyunları','Yakında Google Play’de','Oyunlarımızı keşfet'],
+    ru:['Ещё от ADV_DEV_OPS','Скоро в Google Play','Откройте наши игры'],
+    ar:['المزيد من ADV_DEV_OPS','قريبًا على Google Play','اكتشف ألعابنا'],
+    hi:['ADV_DEV_OPS की और पेशकश','जल्द Google Play पर','हमारे गेम खोजें'],
+    id:['Lainnya dari ADV_DEV_OPS','Segera di Google Play','Jelajahi game kami'],
+    ja:['ADV_DEV_OPS のゲーム','Google Play で近日公開','ゲームをチェック'],
+    ko:['ADV_DEV_OPS의 다른 앱','Google Play에서 곧 출시','게임 살펴보기'],
+    zh:['ADV_DEV_OPS 的更多作品','即将登陆 Google Play','探索我们的游戏'],
+    'zh-tw':['ADV_DEV_OPS 的更多作品','即將登陸 Google Play','探索我們的遊戲']
+  };
+  function mountStudioGames(){
+    if(!document.body.classList.contains('page-home'))return;
+    const footer=qs('.seo-footer');if(!footer)return;
+    const c=studioCopy[lang()]||studioCopy[lang().split('-')[0]]||studioCopy.en;
+    let section=qs('#ma-android-studio-games');
+    if(!section){
+      section=document.createElement('section');section.id='ma-android-studio-games';
+      section.setAttribute('aria-labelledby','ma-studio-title');
+      section.innerHTML='<h2 id="ma-studio-title"></h2><div class="ma-studio-grid"><a href="/founder/#lumina-title"><img src="/reelforge/email/lumina_icon.jpg" alt="" width="64" height="64" loading="lazy" decoding="async"><span><strong translate="no">Lumina Match</strong><small></small></span></a><a href="/founder/#reelforge-title"><img src="/reelforge/email/reelforge_icon.jpg" alt="" width="64" height="64" loading="lazy" decoding="async"><span><strong translate="no">ReelForge: Cinema Clash</strong><small></small></span></a></div><a class="ma-studio-more" href="/founder/"></a>';
+      footer.before(section);
+    }
+    const put=(node,value)=>{if(node.textContent!==value)node.textContent=value};
+    put(qs('h2',section),c[0]);qsa('small',section).forEach(node=>put(node,c[1]));put(qs('.ma-studio-more',section),c[2]);
+  }
   function paintAndroidChrome(){
     const l=lang(),c=androidChromeCopy[l]||androidChromeCopy[l.split('-')[0]]||androidChromeCopy.en;
     qsa('[data-cinema-copy]').forEach(node=>{
@@ -338,6 +369,14 @@ html.matchapp-ai-android[data-theme="sunrise"] {--ma-native-bg:#f7f3ee;--ma-nati
 html.matchapp-ai-android body {background:var(--ma-native-bg)!important;color:var(--ma-native-text)!important}
 /* Keep the first screen interactive while lower sections wait for the viewport. */
 html.matchapp-ai-android body.page-home .seo-footer {content-visibility:auto;contain-intrinsic-size:auto 700px;background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
+html.matchapp-ai-android #ma-android-studio-games {margin:14px!important;padding:18px!important;border-radius:22px!important;background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important;border:1px solid var(--ma-native-line)!important;content-visibility:auto;contain-intrinsic-size:auto 220px}
+html.matchapp-ai-android #ma-android-studio-games h2 {margin:0 0 14px!important;font:700 18px/1.3 system-ui!important;color:var(--ma-native-text)!important}
+html.matchapp-ai-android .ma-studio-grid {display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))!important;gap:12px!important}
+html.matchapp-ai-android .ma-studio-grid a {display:flex!important;align-items:center!important;gap:12px!important;padding:12px!important;border-radius:18px!important;background:var(--ma-native-field)!important;color:var(--ma-native-text)!important;text-decoration:none!important;min-width:0!important}
+html.matchapp-ai-android .ma-studio-grid img {width:56px!important;height:56px!important;object-fit:cover!important;border-radius:14px!important;flex:0 0 56px!important}
+html.matchapp-ai-android .ma-studio-grid strong {display:block!important;color:var(--ma-native-text)!important;font:650 14px/1.4 system-ui!important}
+html.matchapp-ai-android .ma-studio-grid small {display:block!important;color:var(--ma-native-muted)!important;font:500 12px/1.5 system-ui!important;margin-top:4px!important}
+html.matchapp-ai-android .ma-studio-more {display:inline-flex!important;align-items:center!important;min-height:44px!important;margin-top:8px!important;color:var(--ma-native-accent)!important;font:600 13px/1.4 system-ui!important}
 html.matchapp-ai-android .seo-footer :is(h2,h3,h4,strong,summary) {color:var(--ma-native-text)!important;text-shadow:none!important}
 html.matchapp-ai-android .seo-footer :is(p,small,.seo-footer-lede,.seo-footer-legal) {color:var(--ma-native-muted)!important;text-shadow:none!important}
 html.matchapp-ai-android .seo-footer :is(a,button) {color:var(--ma-native-accent)!important;border-color:var(--ma-native-line)!important}
@@ -523,7 +562,7 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
     refreshQueued=true;
     requestAnimationFrame(()=>{
       refreshQueued=false;
-      applyBrand();markRails();mountAppearance();compactPhoneHeader();polishCinemaPosters();polishCinemaSurfaces();paintAndroidChrome();paintMatchOverlay();addRedClose();installMatchOverlay();enforceJonasFullscreen();polishErrorBubble();
+      applyBrand();markRails();mountAppearance();mountStudioGames();compactPhoneHeader();polishCinemaPosters();polishCinemaSurfaces();paintAndroidChrome();paintMatchOverlay();addRedClose();installMatchOverlay();enforceJonasFullscreen();polishErrorBubble();
     });
   }
   function shouldPolishJonasFrame(records,body){
@@ -800,7 +839,7 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
     return false;
   }
   function boot(){
-    installStyle();applyBrand();markRails();mountAppearance();compactPhoneHeader();polishCinemaPosters();polishCinemaSurfaces();paintAndroidChrome();addRedClose();installMatchOverlay();authIntent();
+    installStyle();applyBrand();markRails();mountAppearance();mountStudioGames();compactPhoneHeader();polishCinemaPosters();polishCinemaSurfaces();paintAndroidChrome();addRedClose();installMatchOverlay();authIntent();
     [120,420,1000,2200].forEach(ms=>setTimeout(schedulePremiumRefresh,ms));
     if(routeVerifiedSignup())return;
     const u=new URL(location.href);if((location.pathname==='/'||location.pathname==='/index.html')&&u.searchParams.get('maAndroidOnboarding')==='1'){sessionStorage.setItem('ma_android_onboarding_pending','1');setTimeout(openOnboarding,500)}

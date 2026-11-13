@@ -39,3 +39,17 @@ test('login-only modal records login without requiring a signup form',()=>{
     assert.deepEqual(errors,[]);assert.equal(w.sessionStorage.getItem('ma_android_auth_flow'),'login');
   }finally{w.close()}
 });
+
+test('studio cards keep real project links, localized availability and one instance',()=>{
+ const dom=new JSDOM('<body class="page-home"><footer class="seo-footer"></footer></body>',{runScripts:'outside-only'}),w=dom.window;
+ try{
+  w.qs=(selector,root=w.document)=>root.querySelector(selector);w.qsa=(selector,root=w.document)=>[...root.querySelectorAll(selector)];let locale='pt';w.lang=()=>locale;
+  const fn=source.slice(source.indexOf('  const studioCopy='),source.indexOf('  function paintAndroidChrome('));
+  w.eval(fn+';window.mountGames=mountStudioGames;');w.mountGames();w.mountGames();
+  const section=w.document.querySelector('#ma-android-studio-games');assert(section);assert.equal(w.document.querySelectorAll('#ma-android-studio-games').length,1);
+  assert.equal(section.querySelector('small').textContent,'Em breve no Google Play');
+  assert.deepEqual([...section.querySelectorAll('.ma-studio-grid a')].map(a=>a.getAttribute('href')),['/founder/#lumina-title','/founder/#reelforge-title']);
+  assert.equal(section.nextElementSibling.tagName,'FOOTER');locale='en';w.mountGames();assert.equal(section.querySelector('small').textContent,'Coming soon to Google Play');
+  assert.equal(section.querySelectorAll('img[loading="lazy"]').length,2);
+ }finally{w.close()}
+});
