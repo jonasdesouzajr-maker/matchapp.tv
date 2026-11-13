@@ -126,3 +126,10 @@ html body #ma-ambient-panel iframe{
  html.matchapp-ai-android #ma-ambient-panel .ja-chat-skeleton i:nth-child(2) {width:70%}
  html.matchapp-ai-android #ma-ambient-panel .ja-chat-skeleton i:nth-child(3) {width:50%}
 }
+@layer ma-reference.native-chat-tools {
+ html.matchapp-ai-android #ma-ambient-panel .ja-native-tools {position:static!important;flex:0 0 44px!important}
+ html.matchapp-ai-android #ma-ambient-panel .ja-native-tools>summary {display:flex!important;align-items:center!important;justify-content:center!important;list-style:none!important;width:44px!important;height:44px!important;min-height:44px!important;padding:0!important;border:0!important;background:transparent!important;color:var(--ma-native-text)!important;font:700 24px system-ui!important;cursor:pointer}
+ html.matchapp-ai-android #ma-ambient-panel .ja-native-tools>summary::-webkit-details-marker {display:none}
+ html.matchapp-ai-android #ma-ambient-panel .ja-native-tools:not([open])>.ma-guide-pills {display:none!important}
+ html.matchapp-ai-android #ma-ambient-panel .ja-native-tools[open]>.ma-guide-pills {position:absolute!important;top:68px!important;inset-inline:12px!important;z-index:30!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;height:auto!important;max-height:60%!important;overflow:auto!important;background:var(--ma-native-surface)!important;padding:10px!important;border:1px solid var(--ma-native-line)!important;border-radius:18px!important;box-shadow:0 12px 35px #0003!important}
+}

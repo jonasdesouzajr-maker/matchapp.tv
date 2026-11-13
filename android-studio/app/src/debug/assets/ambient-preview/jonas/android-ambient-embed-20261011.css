@@ -105,7 +105,7 @@ html.matchapp-ambient-frame body.ai-chat-page .discover-head>.newsearch-row{posi
   flex:1 1 0!important;min-height:0!important;padding:16px 0!important;margin:0!important;gap:20px!important;
   background:transparent!important;scroll-behavior:auto!important;overflow-anchor:auto;
  }
- html.matchapp-native-chat #chat-log:empty::before {content:attr(data-greeting);display:block;margin:auto 12px;color:var(--ma-native-text);font:650 clamp(21px,6vw,27px)/1.4 system-ui;text-align:start;max-width:26ch}
+ html.matchapp-native-chat #chat-log:empty::before {content:attr(data-greeting)!important;display:block!important;min-height:0!important;width:auto!important;margin:auto 12px!important;color:var(--ma-native-text)!important;font:650 clamp(21px,6vw,27px)/1.4 system-ui!important;text-align:start!important;max-width:26ch!important;filter:none!important;text-shadow:none!important}
  html.matchapp-native-chat #chat-log :is(.chat-bubble,.chat-answer-row,.chat-answer-text,[data-ma-text-pill]) {
   box-shadow:none!important;text-shadow:none!important;filter:none!important;animation:none!important;
   color:var(--ma-native-text)!important;font:400 16px/1.65 system-ui!important;letter-spacing:normal!important;

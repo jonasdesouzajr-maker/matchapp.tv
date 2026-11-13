@@ -588,6 +588,14 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
       [doc.querySelector('.jonas-top-history'),doc.querySelector('#jonas-header-new-chat')].forEach(button=>{if(button&&button.parentElement!==toolbar)toolbar.append(button)});
       const log=doc.querySelector('#chat-log');
       if(log)log.dataset.greeting=qs('#ma-ambient-panel .ja-hello')?.textContent||'';
+      const panel=qs('#ma-ambient-panel'),hello=qs('.ja-hello',panel),guides=qs('.ma-guide-pills',panel);
+      if(hello)hello.style.setProperty('display','none','important');
+      if(guides&&!guides.closest('.ja-native-tools')){
+        const menu=document.createElement('details'),summary=document.createElement('summary');menu.className='ja-native-tools';
+        summary.textContent='⋯';summary.setAttribute('aria-label',guides.querySelector('a,button')?.textContent||t().dna);
+        menu.append(summary,guides);qs('.ja-panel-head',panel)?.insertBefore(menu,qs('.ja-close',panel));
+        guides.addEventListener('click',event=>{if(event.target.closest('a,button'))menu.open=false});
+      }
       return;
     }
     const palette=getComputedStyle(document.documentElement),color=name=>palette.getPropertyValue('--ma-native-'+name).trim();

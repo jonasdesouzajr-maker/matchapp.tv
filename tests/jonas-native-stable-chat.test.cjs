@@ -17,7 +17,7 @@ test('native idle warmup creates one dormant conversation without speech and reu
   assert.equal(w.document.querySelector('#ma-ambient-panel').hidden,true);
   assert.equal(new URL(frame.src).searchParams.get('q'),null);
   w.MatchAppAmbientJonas.open();w.MatchAppAmbientJonas.close();w.MatchAppAmbientJonas.open();s.warm();
-  assert.equal(w.document.querySelector('#ma-ambient-chat-frame'),frame);assert.equal(w.document.querySelectorAll('#ma-ambient-chat-frame').length,1);
+  assert.equal(w.document.querySelector('#ma-ambient-chat-frame'),frame);assert.equal(w.document.querySelectorAll('#ma-ambient-chat-frame').length,1);assert.equal(s.speech(),0,'native opens in text mode');
  }finally{s.close()}
 });
 test('save-data sessions load only on tap; usable composer reveals before image load and stale documents cannot mark ready',()=>{
@@ -39,6 +39,6 @@ test('warming before a title is selected preserves contextual title handoff on t
  const s=scene(),w=s.w;
  try{s.warm();const old=w.document.querySelector('iframe');w.currentMatchIdentity={title:'Arrival'};w.document.body.insertAdjacentHTML('beforeend','<div id="result-box" style="display:block"><h2 id="res-title">Arrival</h2></div>');w.MatchAppAmbientJonas.open();
   const frame=w.document.querySelector('iframe');assert.notEqual(frame,old);assert.equal(new URL(frame.src).searchParams.get('title'),'Arrival');
-  assert.equal(w.document.querySelectorAll('#ma-ambient-chat-frame').length,1);
+  assert.equal(w.document.querySelectorAll('#ma-ambient-chat-frame').length,1);assert.equal(s.speech(),0,'native opens in text mode');
  }finally{s.close()}
 });
