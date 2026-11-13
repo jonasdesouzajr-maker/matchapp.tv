@@ -22,8 +22,8 @@ test('main Android launcher uses official icon and consent-safe production nativ
  for(const marker of ['setAdFree(adFree: Boolean)','syncNativeAdEntitlement','is_vip,is_business,is_ad_free'])assert.match(main,new RegExp(marker.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));
  assert.match(launcher,/@drawable\/matchapp_launcher_safe/);
  const safe=read('android-studio/app/src/main/res/drawable/matchapp_launcher_safe.xml');
- assert.match(safe,/@drawable\/matchapp_logo_exact/);assert.match(safe,/android:inset="18%"/);
- assert.ok(fs.statSync(path.join(root,"android-studio/app/src/main/res/drawable-nodpi/matchapp_logo_exact.png")).size>1000);
+ assert.match(safe,/@drawable\/matchapp_launcher_ai_ribbon/);assert.match(safe,/android:inset="18%"/);
+ assert.ok(fs.statSync(path.join(root,"android-studio/app/src/main/res/drawable-nodpi/matchapp_launcher_ai_ribbon.png")).size>1000);
 });
 
 
