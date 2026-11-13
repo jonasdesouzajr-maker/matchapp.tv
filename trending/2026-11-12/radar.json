@@ -1,0 +1,15 @@
+{
+  "checked": "2026-11-13",
+  "chartPeriod": "2026-11-02/2026-11-08",
+  "facts": [
+    {"id":"global-film","title":"A Dog's Perfect Christmas","rank":1,"views":8600000,"source":"https://www.netflix.com/tudum/top10"},
+    {"id":"global-series","title":"Taken: Natalee Holloway · Season 1","rank":1,"views":12900000,"source":"https://www.netflix.com/tudum/top10/tv"},
+    {"id":"brazil-series","title":"Dom de Iludir / The Gift of Deceit · Season 1","rank":1,"source":"https://www.netflix.com/tudum/top10/brazil/tv"}
+  ],
+  "candidates": [
+    {"id":"rings-of-power","title":"The Lord of the Rings: The Rings of Power · Season 3","dates":["2026-11-18","2026-11-25"],"source":"https://www.aboutamazon.com/news/entertainment/sauron-lord-of-the-rings-rings-of-power","publisher":"Amazon","destination":"/discover.html"},
+    {"id":"blade-runner-2099","title":"Blade Runner 2099","dates":["2026-11-25"],"source":"https://www.aboutamazon.com/news/entertainment/blade-runner-2099-prime-video","publisher":"Amazon","destination":"/discover.html"},
+    {"id":"ccxp26","title":"CCXP26","dates":["2026-12-03","2026-12-06"],"source":"https://ccxp.com.br/imprensa/","publisher":"CCXP","destination":"/events/ccxp-2026/","ptDestination":"/pt-br/ccxp-2026/"},
+    {"id":"narnia","title":"Narnia: The Magician’s Nephew","dates":["2027-02-12","2027-04-02"],"source":"https://www.netflix.com/tudum/articles/narnia-release-date","publisher":"Netflix Tudum","destination":"/ebooks/"}
+  ]
+}
