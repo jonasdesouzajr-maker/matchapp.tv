@@ -53,3 +53,17 @@ test('studio cards keep real project links, localized availability and one insta
   assert.equal(section.querySelectorAll('img[loading="lazy"]').length,2);
  }finally{w.close()}
 });
+
+test('Android notifications move the live control into the menu without losing its click handler or unread badge',()=>{
+ const dom=new JSDOM('<body><div class="ma-cinema-tools-content"><button class="matchapp-notification-button"></button></div><button class="matchapp-notification-button matchapp-notification-floating" aria-label="Notifications"><span class="matchapp-notification-count">2</span></button></body>',{runScripts:'outside-only'}),w=dom.window;
+ try{
+  const button=w.document.querySelector('.matchapp-notification-floating');let opened=0;button.onclick=()=>opened++;
+  w.qs=(s,r=w.document)=>r.querySelector(s);
+  const fn=source.slice(source.indexOf('  function dockNativeNotifications(){'),source.indexOf('  function paintAndroidChrome(){'));
+  w.eval(fn+';window.dock=dockNativeNotifications');w.dock();w.dock();
+  assert.equal(w.document.querySelectorAll('.matchapp-notification-button').length,1);
+  assert.equal(w.document.querySelector('.ma-cinema-tools-content .ma-native-notifications'),button);
+  assert.equal(button.querySelector('.matchapp-notification-count').textContent,'2');button.click();assert.equal(opened,1);
+  button.setAttribute('aria-label','Notificações');w.dock();assert.equal(button.querySelector('.ma-native-notifications-label').textContent,'Notificações');
+ }finally{w.close()}
+});

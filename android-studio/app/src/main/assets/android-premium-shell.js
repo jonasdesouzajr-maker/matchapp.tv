@@ -91,6 +91,20 @@
     const put=(node,value)=>{if(node.textContent!==value)node.textContent=value};
     put(qs('h2',section),c[0]);qsa('small',section).forEach(node=>put(node,c[1]));put(qs('.ma-studio-more',section),c[2]);
   }
+  function dockNativeNotifications(){
+    const panel=qs('.ma-cinema-tools-content,.ref-explore-tools-panel,.ma-reference-header-tools-panel');
+    if(!panel)return;
+    const button=qs('.matchapp-notification-floating')||qs('.ma-native-notifications');
+    if(!button)return;
+    const placeholder=qs('.matchapp-notification-button:not(.ma-native-notifications)',panel);
+    if(placeholder&&placeholder!==button)placeholder.replaceWith(button);
+    else if(!panel.contains(button))panel.append(button);
+    button.classList.remove('matchapp-notification-floating');button.classList.add('ma-native-notifications');
+    let label=qs('.ma-native-notifications-label',button);
+    if(!label){label=document.createElement('span');label.className='ma-native-notifications-label';button.append(label)}
+    const text=button.getAttribute('aria-label')||button.title;
+    if(text&&label.textContent!==text)label.textContent=text;
+  }
   function paintAndroidChrome(){
     const l=lang(),c=androidChromeCopy[l]||androidChromeCopy[l.split('-')[0]]||androidChromeCopy.en;
     qsa('[data-cinema-copy]').forEach(node=>{
@@ -219,9 +233,14 @@
           box-shadow:0 8px 20px rgba(0,0,0,.22)!important
         }
       }
-      html.matchapp-ai-android :is(button,.btn,.gold-btn,.secondary-btn,.pill,.chip,[role="button"]){min-height:44px;border-radius:999px!important;margin:3px!important}
+      html.matchapp-ai-android :is(button,.btn,.gold-btn,.secondary-btn,.pill,.chip,[role="button"]){box-sizing:border-box;min-width:0;max-width:100%;min-height:44px;border-radius:999px!important;margin:0!important}
       html.matchapp-ai-android :is(input,select,textarea){min-height:46px;border-radius:15px!important;margin-block:4px!important}
       html.matchapp-ai-android img{max-width:100%}
+      @layer ma-reference {
+        html.matchapp-ai-android :is(.mam-x,.mao-x,.ma-android-auth-x)::before,html.matchapp-ai-android :is(.mam-x,.mao-x,.ma-android-auth-x)::after{content:none!important;display:none!important}
+        html.matchapp-ai-android :is(.mam-x,.mao-x,.ma-android-auth-x){text-decoration:none!important;font:650 24px/1 system-ui!important}
+        html.matchapp-ai-android body.page-home #questionnaire-box#questionnaire-box#questionnaire-box .crit-toggle::before{width:18px!important;height:18px!important;min-width:18px!important;grid-column:1!important;grid-row:1/3!important;align-self:center!important}
+      }
       html.matchapp-ai-android :is(.section-head,.title-row,.card-actions,.result-actions,.portfolio-tabs){gap:10px!important}
       html.matchapp-ai-android body.page-home #trending-rail{margin:6px auto 10px!important;padding:8px 0 9px!important;border-radius:18px!important}
       html.matchapp-ai-android body.page-home #trending-rail h4{margin:0 12px 7px!important}
@@ -285,10 +304,12 @@ html.matchapp-ai-android body.page-explore .ref-editorial-banners {gap:10px!impo
 html.matchapp-ai-android body.page-explore .ref-editorial-banner {padding:14px!important;min-height:80px!important;border:1px solid #ffffff10!important;border-radius:20px!important;box-sizing:border-box!important}
 html.matchapp-ai-android body.page-explore .ref-editorial-banner h2 {font:750 18px/1.2 system-ui!important;margin:0 0 6px!important}
 html.matchapp-ai-android body.page-explore .ref-editorial-sub {font:500 12px/1.3 system-ui!important}
-html.matchapp-ai-android body.page-explore .ref-primary-topics {gap:10px!important}
-html.matchapp-ai-android body.page-explore .ref-topic-caption {gap:6px!important;padding:10px!important;box-sizing:border-box!important;width:100%!important}
-html.matchapp-ai-android body.page-explore .ref-topic-caption h2 {font:700 14px/1.3 system-ui!important;word-break:normal!important;overflow-wrap:normal!important;margin:0!important;min-width:0!important}
+html.matchapp-ai-android body.page-explore .ref-primary-topics {display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+html.matchapp-ai-android body.page-explore .ref-primary-topics .ref-topic {grid-column:auto!important;aspect-ratio:4/3!important;min-height:132px!important;padding:14px!important;border:0!important;border-radius:20px!important;box-shadow:none!important;box-sizing:border-box!important;background-color:#201729!important}
+html.matchapp-ai-android body.page-explore .ref-topic-caption {gap:8px!important;padding:0!important;box-sizing:border-box!important;width:auto!important;min-height:44px!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;color:#fff8ef!important}
+html.matchapp-ai-android body.page-explore .ref-topic-caption h2 {font:700 16px/1.3 system-ui!important;word-break:normal!important;overflow-wrap:anywhere!important;margin:0!important;padding:0!important;min-width:0!important;background:transparent!important;border:0!important;box-shadow:none!important;color:#fff8ef!important;text-shadow:0 1px 3px #0009!important}
 html.matchapp-ai-android body.page-explore .ref-topic-caption svg {width:20px!important;height:20px!important;flex:0 0 20px!important}
+@media(min-width:700px){html.matchapp-ai-android body.page-explore .ref-primary-topics {grid-template-columns:repeat(3,minmax(0,1fr))!important}}
 
 /* Android cinema refinement. No web asset, route or catalog mutations. */
 html.matchapp-ai-android body.page-home .main-layout {width:100%!important;max-width:none!important;margin:0!important;box-sizing:border-box!important}
@@ -367,6 +388,10 @@ html.matchapp-ai-android body.matchapp-profile .profile-hub-row {border:1px soli
 html.matchapp-ai-android {--ma-native-bg:#100d17;--ma-native-surface:#1c1626;--ma-native-field:#292132;--ma-native-text:#f5f0fa;--ma-native-muted:#c1b5cc;--ma-native-line:#d5bbff26;--ma-native-accent:#e6c485;--ma-native-ink:#281c29;--ma-native-close:#712c40;--ma-native-close-text:#ffdae2}
 html.matchapp-ai-android[data-theme="sunrise"] {--ma-native-bg:#f7f3ee;--ma-native-surface:#fffdf9;--ma-native-field:#eee7df;--ma-native-text:#302735;--ma-native-muted:#665b70;--ma-native-line:#77618430;--ma-native-accent:#8c6021;--ma-native-ink:#fffaf2;--ma-native-close:#f9e1e7;--ma-native-close-text:#93293f;color-scheme:light!important}
 html.matchapp-ai-android body {background:var(--ma-native-bg)!important;color:var(--ma-native-text)!important}
+/* Static native controls do not need a permanent GPU layer each. Keep the
+   actual title artwork and cinematic header, without a second blurred wall. */
+html.matchapp-ai-android body>.poster-wall {display:none!important}
+html.matchapp-ai-android :is(.crit-chip,.gold-btn,.premium-card,.ma-cinema-help,.ai-trust-notice) {will-change:auto!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 /* Keep the first screen interactive while lower sections wait for the viewport. */
 html.matchapp-ai-android body.page-home .seo-footer {content-visibility:auto;contain-intrinsic-size:auto 700px;background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
 html.matchapp-ai-android #ma-android-studio-games {margin:14px!important;padding:18px!important;border-radius:22px!important;background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important;border:1px solid var(--ma-native-line)!important;content-visibility:auto;contain-intrinsic-size:auto 220px}
@@ -431,9 +456,9 @@ html.matchapp-ai-android #result-box .ma-guest-trial-button {background:var(--ma
 html.matchapp-ai-android #result-box :is(.ma-result-exit,.result-dismiss) {display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:44px!important;padding:10px 14px!important;border-radius:999px!important;background:var(--ma-native-field)!important;color:var(--ma-native-text)!important;font:650 13px/1.3 system-ui!important;box-sizing:border-box!important}
 html.matchapp-ai-android #result-box .result-dismiss {width:44px!important;height:44px!important;padding:10px!important;background:var(--ma-native-close)!important;color:var(--ma-native-close-text)!important}
 @media(max-width:620px){html.matchapp-ai-android #result-box {padding:16px!important}html.matchapp-ai-android #result-box .match-result-toolbar {min-height:44px!important;height:auto!important;margin:0 0 12px!important;padding:0!important}html.matchapp-ai-android #result-box .res-poster-col {max-width:220px!important;width:58vw!important;margin-inline:auto!important}}
-html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal>.premium-card,#main-auth-modal>.auth-box,.profile-hub-row,.ref-topic-caption) {background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
-html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal,.profile-hub-row,.ref-topic-caption) :is(h2,h3,strong,label) {color:var(--ma-native-text)!important}
-html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal,.profile-hub-row,.ref-topic-caption) :is(p,small) {color:var(--ma-native-muted)!important}
+html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal>.premium-card,#main-auth-modal>.auth-box,.profile-hub-row) {background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
+html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal,.profile-hub-row) :is(h2,h3,strong,label) {color:var(--ma-native-text)!important}
+html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal,.profile-hub-row) :is(p,small) {color:var(--ma-native-muted)!important}
 html.matchapp-ai-android :is(.mam-card,#main-auth-modal) :is(input,select,textarea,.crit-chip,.ma-cinema-select) {background:var(--ma-native-field)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
 html.matchapp-ai-android :is(.mam-x,.mao-x,.ma-android-auth-x,#ma-ambient-panel .ja-close) {background:var(--ma-native-close)!important;color:var(--ma-native-close-text)!important;border-color:var(--ma-native-line)!important}
 html.matchapp-ai-android #ma-ambient-panel {background:var(--ma-native-bg)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
@@ -442,6 +467,49 @@ html.matchapp-ai-android #ma-ambient-panel .ma-guide-pills :is(a,button) {backgr
 html.matchapp-ai-android #ma-ambient-panel :is(.ja-head-text strong,.ja-head-text span) {color:var(--ma-native-text)!important}
 html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marquee-title) {background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important}
 @media(max-width:620px){html.matchapp-ai-android #ma-reference-header .ma-masthead-intro {display:none!important}}
+/* Native bounds: intrinsic text wraps inside its control, never outside a panel. */
+html.matchapp-ai-android body.page-home #trending-rail .marquee-track {align-items:stretch!important}
+html.matchapp-ai-android body.page-home #trending-rail .marquee-item {height:auto!important;align-self:stretch!important}
+html.matchapp-ai-android body.page-home #trending-rail .marquee-title {display:block!important;-webkit-line-clamp:unset!important;min-height:48px!important;max-height:none!important;height:auto!important;overflow:visible!important;overflow-wrap:anywhere!important;flex:1 1 auto!important;padding:7px 8px!important}
+html.matchapp-ai-android .ma-cinema-tools-content .sound-toggle-btn {grid-column:1/-1!important;width:100%!important}
+
+html.matchapp-ai-android {--ma-native-secondary:#bda4ef;--ma-native-secondary-ink:#211630}
+html.matchapp-ai-android[data-theme="sunrise"] {--ma-native-secondary:#705099;--ma-native-secondary-ink:#fff}
+html.matchapp-ai-android :is(.mam-card,.mao-card,.mam-body,.mao-head,.profile-hub-row,.ma-studio-grid a,.ma-studio-grid a>span,.ref-topic-caption,.ma-cinema-hero-footer,.ma-cinema-section-heading) {box-sizing:border-box!important;min-width:0!important}
+html.matchapp-ai-android :is(.ma-cinema-hero-action,.ma-cinema-help,.mam-open,.ref-explore-primary,.ma-studio-more,.profile-hub-row) {box-sizing:border-box!important;min-width:0!important;max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere!important;height:auto!important}
+html.matchapp-ai-android .ma-cinema-section-heading {flex-wrap:wrap!important}
+html.matchapp-ai-android .ma-cinema-section-heading a {white-space:normal!important;max-width:100%!important}
+html.matchapp-ai-android :is(.ma-cinema-tools-content,.ref-explore-tools-panel,.ma-reference-header-tools-panel) {position:fixed!important;inset:64px 12px auto!important;width:auto!important;max-width:440px!important;max-height:calc(100dvh - 88px)!important;margin-inline-start:auto!important;box-sizing:border-box!important;overflow-y:auto!important;overscroll-behavior:contain!important;transform:none!important}
+html.matchapp-ai-android :is(.ma-cinema-tools,.ref-explore-tools,.ma-reference-header-tools)[open]>:is(.ma-cinema-tools-content,.ref-explore-tools-panel,.ma-reference-header-tools-panel) {display:block!important}
+html.matchapp-ai-android :is(.ref-explore-tools-panel,.ma-reference-header-tools-panel) :is(button,a,select) {box-sizing:border-box!important;min-width:0!important;max-width:100%!important;margin:0!important;min-height:44px!important;white-space:normal!important;overflow-wrap:anywhere!important}
+html.matchapp-ai-android .ma-native-notifications {position:relative!important;inset:auto!important;display:flex!important;grid-column:1/-1!important;width:100%!important;height:auto!important;min-height:44px!important;border-radius:16px!important;gap:8px!important;animation:none!important;background:var(--ma-native-field)!important;color:var(--ma-native-text)!important}
+html.matchapp-ai-android .ma-native-notifications .matchapp-notification-count {position:static!important;min-width:20px!important;min-height:20px!important;margin:0!important;flex:none!important}
+html.matchapp-ai-android .matchapp-notification-panel {box-sizing:border-box!important;inset:64px 12px auto!important;width:auto!important;max-width:520px!important;max-height:calc(100dvh - 88px)!important;margin-inline:auto!important}
+html.matchapp-ai-android .matchapp-notification-toolbar {display:flex!important;flex-wrap:wrap!important;gap:8px!important}
+html.matchapp-ai-android .matchapp-notification-toolbar>* {box-sizing:border-box!important;min-width:0!important;max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere!important;min-height:44px!important;flex:1 1 100px!important}
+html.matchapp-ai-android #ma-android-match-modal {box-sizing:border-box!important;padding:12px!important;backdrop-filter:none!important}
+html.matchapp-ai-android .mam-card {max-height:calc(100dvh - 24px)!important;grid-template-rows:auto minmax(0,1fr)!important;border-radius:24px!important}
+html.matchapp-ai-android .mam-card>header {padding:12px 14px!important;gap:12px!important;min-width:0!important}
+html.matchapp-ai-android .mam-card>header strong {font:700 20px/1.25 system-ui!important;overflow-wrap:anywhere!important}
+html.matchapp-ai-android .mam-body {min-height:0!important;padding:12px!important;scrollbar-width:thin!important}
+html.matchapp-ai-android .mam-body #questionnaire-box {box-sizing:border-box!important;min-width:0!important;max-width:100%!important;padding:0!important;animation:none!important;transform:none!important;background:transparent!important;box-shadow:none!important}
+html.matchapp-ai-android .mam-body #questionnaire-box>h2 {font:600 14px/1.4 system-ui!important;color:var(--ma-native-muted)!important;text-align:start!important;margin:0 0 12px!important;padding:0!important;letter-spacing:normal!important;text-transform:none!important;background:none!important;border:0!important}
+html.matchapp-ai-android #questionnaire-box :is(.q-grid,#advanced-filters) {min-width:0!important;max-width:100%!important;box-sizing:border-box!important;gap:8px!important}
+html.matchapp-ai-android #questionnaire-box #advanced-filters {padding:0!important}
+html.matchapp-ai-android #questionnaire-box .crit-collapsible {box-sizing:border-box!important;min-width:0!important;max-width:100%!important;border:0!important}
+html.matchapp-ai-android #questionnaire-box .crit-toggle {box-sizing:border-box!important;display:grid!important;grid-template-columns:18px minmax(0,1fr) 14px!important;grid-template-rows:auto auto!important;gap:3px 6px!important;min-width:0!important;width:100%!important;max-width:100%!important;min-height:64px!important;height:auto!important;margin:0!important;padding:10px!important;border-radius:16px!important;border:1px solid var(--ma-native-line)!important;background:var(--ma-native-field)!important;color:var(--ma-native-text)!important;white-space:normal!important;text-align:start!important;overflow-wrap:anywhere!important}
+html.matchapp-ai-android #questionnaire-box .crit-toggle :is(.crit-toggle-label,.crit-toggle-summary) {box-sizing:border-box!important;min-width:0!important;width:auto!important;max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere!important;word-break:normal!important;position:static!important;padding:0!important;margin:0!important;background:none!important;border:0!important;box-shadow:none!important;text-align:start!important}
+html.matchapp-ai-android #questionnaire-box .crit-toggle-label {grid-column:2!important;grid-row:1!important;font:600 12px/1.35 system-ui!important;color:var(--ma-native-text)!important}
+html.matchapp-ai-android #questionnaire-box .crit-toggle-summary {grid-column:2!important;grid-row:2!important;font:400 12px/1.4 system-ui!important;color:var(--ma-native-muted)!important}
+html.matchapp-ai-android #questionnaire-box .crit-toggle-chevron {grid-column:3!important;grid-row:1/3!important;align-self:center!important;width:14px!important;min-width:0!important;margin:0!important;padding:0!important;color:var(--ma-native-secondary)!important}
+html.matchapp-ai-android #questionnaire-box .crit-chips:not([hidden]) {box-sizing:border-box!important;width:100%!important;max-width:100%!important;min-width:0!important;display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,116px),1fr))!important;gap:8px!important;padding:10px 0!important;background:transparent!important;border:0!important}
+html.matchapp-ai-android #questionnaire-box .crit-chip {box-sizing:border-box!important;min-width:0!important;width:100%!important;max-width:100%!important;min-height:44px!important;height:auto!important;margin:0!important;padding:10px!important;border:1px solid var(--ma-native-line)!important;border-radius:14px!important;font:500 13px/1.4 system-ui!important;white-space:normal!important;overflow-wrap:anywhere!important;word-break:normal!important;text-align:start!important;background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important}
+html.matchapp-ai-android #questionnaire-box .crit-chip[aria-pressed="true"] {background:var(--ma-native-secondary)!important;color:var(--ma-native-secondary-ink)!important;border-color:transparent!important}
+html.matchapp-ai-android #questionnaire-box :is(.crit-group,.crit-more) {grid-column:1/-1!important;min-width:0!important;max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere!important}
+html.matchapp-ai-android #questionnaire-box :is(.gold-btn.ma-primary,.ma-fine-link) {box-sizing:border-box!important;min-width:0!important;max-width:100%!important;min-height:48px!important;height:auto!important;margin-inline:0!important;padding:12px!important;white-space:normal!important;overflow-wrap:anywhere!important;font:650 14px/1.4 system-ui!important}
+html.matchapp-ai-android #questionnaire-box .gold-btn.ma-primary {background:var(--ma-native-accent)!important;color:var(--ma-native-ink)!important;border:0!important}
+html.matchapp-ai-android :is(.mao-head h2,.mao-head p,.profile-hub-row span,.ma-studio-grid strong,.ma-studio-grid small) {min-width:0!important;max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere!important}
+@media(max-width:360px){html.matchapp-ai-android #questionnaire-box .q-grid{grid-template-columns:minmax(0,1fr)!important}html.matchapp-ai-android .mao-head{grid-template-columns:36px minmax(0,1fr) 44px!important;gap:8px!important}html.matchapp-ai-android .mao-logo{width:36px!important;height:36px!important}}
 @media(prefers-reduced-motion:no-preference){html.matchapp-ai-android :is(.mam-card,.mao-card){animation:ma-native-enter .2s cubic-bezier(.2,.8,.2,1)}@keyframes ma-native-enter{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}}
 
 }
@@ -501,7 +569,7 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
     const width=window.matchMedia('(max-width:620px)').matches?112:148;
     qsa('#trending-rail .marquee-item').forEach(el=>{
       const set=(node,k,v)=>{if(node&&node.style.getPropertyValue(k)!==v)node.style.setProperty(k,v,'important')};
-      set(el,'width',width+'px');set(el,'min-width',width+'px');set(el,'max-width',width+'px');set(el,'height',(width*1.5+38)+'px');set(el,'flex','0 0 '+width+'px');set(el,'border-radius','14px');set(el,'margin','0px');
+      set(el,'width',width+'px');set(el,'min-width',width+'px');set(el,'max-width',width+'px');set(el,'height','auto');set(el,'min-height',(width*1.5+48)+'px');set(el,'flex','0 0 '+width+'px');set(el,'border-radius','14px');set(el,'margin','0px');
       const poster=el.querySelector(':scope>img');
       if(poster){set(poster,'width',width+'px');set(poster,'height',(width*1.5)+'px');if(poster.sizes!==width+'px')poster.sizes=width+'px'}
     });
@@ -562,7 +630,7 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
     refreshQueued=true;
     requestAnimationFrame(()=>{
       refreshQueued=false;
-      applyBrand();markRails();mountAppearance();mountStudioGames();compactPhoneHeader();polishCinemaPosters();polishCinemaSurfaces();paintAndroidChrome();paintMatchOverlay();addRedClose();installMatchOverlay();enforceJonasFullscreen();polishErrorBubble();
+      applyBrand();markRails();mountAppearance();mountStudioGames();dockNativeNotifications();compactPhoneHeader();polishCinemaPosters();polishCinemaSurfaces();paintAndroidChrome();paintMatchOverlay();addRedClose();installMatchOverlay();enforceJonasFullscreen();polishErrorBubble();
     });
   }
   function shouldPolishJonasFrame(records,body){
@@ -862,7 +930,7 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
     return false;
   }
   function boot(){
-    installStyle();applyBrand();markRails();mountAppearance();mountStudioGames();compactPhoneHeader();polishCinemaPosters();polishCinemaSurfaces();paintAndroidChrome();addRedClose();installMatchOverlay();authIntent();
+    installStyle();applyBrand();markRails();mountAppearance();mountStudioGames();dockNativeNotifications();compactPhoneHeader();polishCinemaPosters();polishCinemaSurfaces();paintAndroidChrome();addRedClose();installMatchOverlay();authIntent();
     [120,420,1000,2200].forEach(ms=>setTimeout(schedulePremiumRefresh,ms));
     if(routeVerifiedSignup())return;
     const u=new URL(location.href);if((location.pathname==='/'||location.pathname==='/index.html')&&u.searchParams.get('maAndroidOnboarding')==='1'){sessionStorage.setItem('ma_android_onboarding_pending','1');setTimeout(openOnboarding,500)}

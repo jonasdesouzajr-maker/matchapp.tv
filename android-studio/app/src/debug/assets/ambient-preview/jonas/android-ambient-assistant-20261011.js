@@ -79,7 +79,7 @@
   status.append(message,button);panel.appendChild(status);
   button.addEventListener('click',function(){ensureFrameSource(candidate,title,true)});
   awaitParentAccount(retry).then(function(available){
-   if(attempt!==frameAccountEpoch||frame!==candidate||!open||!candidate.isConnected)return;
+   if(attempt!==frameAccountEpoch||frame!==candidate||(!open&&candidate.dataset.prewarmed!=='1')||!candidate.isConnected)return;
    if(!available){status.dataset.state='error';message.textContent=conversationAccountCopy()[1];button.textContent=conversationAccountCopy()[2];button.hidden=false;button.style.setProperty('display','inline-flex','important');return}
    status.remove();if(accountStatus===status)accountStatus=null;
    candidate.style.removeProperty('display');candidate.src=frameUrl(title);
