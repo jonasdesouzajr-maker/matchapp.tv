@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Exact owner-approved, text-free mark; keep the full logo inside adaptive masks. -->
+<!-- Approved Flow concept A; fitted AI ribbon and gold mark survive adaptive masks. -->
 <inset xmlns:android="http://schemas.android.com/apk/res/android"
-    android:drawable="@drawable/matchapp_logo_exact"
+    android:drawable="@drawable/matchapp_launcher_ai_ribbon"
     android:inset="18%" />

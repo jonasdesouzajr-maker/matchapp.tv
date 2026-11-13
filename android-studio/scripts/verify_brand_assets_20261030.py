@@ -9,7 +9,7 @@ import zlib
 
 ROOT = Path(__file__).resolve().parents[1]
 RES = ROOT / "app/src/main/res"
-ART = ROOT / "play/refresh-20261110/artwork"
+ART = ROOT / "play/refresh-20261113/artwork"
 
 
 def rgba_png(path, expected_size):
@@ -68,18 +68,32 @@ assert all(a == 255 for row in play for a in row[3::4]), "Play icon must be full
 # Validate the actual foreground used by the packaged adaptive icon, including its inset.
 logo_path = RES / "drawable-nodpi/matchapp_logo_exact.png"
 assert hashlib.sha256(logo_path.read_bytes()).hexdigest() == "5e2dcfccb511be5383e5ea4cf3c14ca4eb43a19034bfb023605fe75ecc4f20a1", "Approved logo bytes changed"
-foreground = rgba_png(logo_path, (512, 512))
+# The in-app logo stays byte-identical. The owner approved separate Flow A
+# launcher artwork on November 13, including the upper-left red AI ribbon.
+assert hashlib.sha256((ART / "approved-icon-a.jpg").read_bytes()).hexdigest() == "1a5dcdbe636540a28c104ebe366b3e2211f579d1ddf404df84d3bbe37b74daea"
+foreground = rgba_png(RES / "drawable-nodpi/matchapp_launcher_ai_ribbon.png", (512, 512))
 android = "{http://schemas.android.com/apk/res/android}"
 safe = ET.parse(RES / "drawable/matchapp_launcher_safe.xml").getroot()
 assert safe.tag == "inset"
-assert safe.attrib[android + "drawable"] == "@drawable/matchapp_logo_exact"
+assert safe.attrib[android + "drawable"] == "@drawable/matchapp_launcher_ai_ribbon"
 assert safe.attrib[android + "inset"] == "18%"
-visible = [(x, y) for y, row in enumerate(foreground) for x in range(512) if row[x * 4 + 3] > 8]
-assert len(visible) > 5000, "Adaptive foreground is empty or damaged"
-max_radius = max(math.hypot(x + 0.5 - 256, y + 0.5 - 256) * 0.64 for x, y in visible)
-assert max_radius <= 512 * 33 / 108, f"Artwork escapes Android's 66dp safe circle: {max_radius}"
-assert foreground[0][3] == foreground[-1][-1] == 0, "Adaptive foreground has an opaque canvas"
-assert sum(a == 0 for row in foreground for a in row[3::4]) > 512 * 512 / 2
+# Only decorative purple background / ribbon ends may enter the mask margin.
+# Measure actual gold pixels and white AI lettering, not an assumed rectangle.
+critical = []
+letters = []
+for y, row in enumerate(foreground):
+    for x in range(512):
+        r, g, b, a = row[x * 4:x * 4 + 4]
+        white = min(r, g, b) > 210
+        gold = r > 120 and g > 85 and r > b * 1.3 and g > b * 1.15
+        if a > 240 and (white or gold):
+            critical.append((x, y))
+        if a > 240 and white and x < 180 and y < 180:
+            letters.append((x, y))
+assert len(critical) > 10000 and len(letters) > 800, "Gold mark or AI ribbon lettering is missing"
+max_radius = max(math.hypot(x + 0.5 - 256, y + 0.5 - 256) * 0.64 for x, y in critical)
+assert max_radius <= 512 * 33 / 108, f"Gold mark or AI letters escape the 66dp safe circle: {max_radius}"
+assert foreground[0][3] == foreground[-1][-1] == 0, "Adaptive foreground has an opaque outer canvas"
 
 for density, size in (("mdpi", 48), ("hdpi", 72), ("xhdpi", 96), ("xxhdpi", 144), ("xxxhdpi", 192)):
     for name in ("ic_launcher", "ic_launcher_round"):

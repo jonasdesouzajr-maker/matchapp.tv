@@ -58,3 +58,7 @@ establish Play publication.
 ## Owner brand and masthead update — November 4, 2026
 
 Jonas approved the Play comet artwork for the adult website, install icons and Google Search brand signals. The adult masthead gives the existing animated MatchApp Ai wordmark more space, groups the original controls and retains the draggable Jonas launcher. The separate Kids product keeps its own identity.
+
+## Owner-approved Android Flow icon — November 13, 2026
+
+Jonas approved concept A: gold play/comet artwork on purple with a red upper-left AI ribbon, generated in Google Flow using Nano Banana Pro. The exact approved source, Android launcher exports and Play icon are authorized. This approval does not alter website or in-app branding, the company intro, or Kids. Preserve all previously verified Android layout fixes.

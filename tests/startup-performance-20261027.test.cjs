@@ -36,7 +36,7 @@ test('compact footer preserves the original explanatory node and disclosure acce
 test('Android loads posters near the viewport instead of eagerly promoting the first sixteen',async()=>{
  const dom=new JSDOM('<body>'+Array.from({length:20},()=>'<img loading="lazy" src="/poster.jpg">').join('')+'</body>',{url:'https://matchapp.tv/explore/',runScripts:'outside-only'}),w=dom.window;
  try{
-  Object.defineProperty(w.navigator,'userAgent',{value:'MatchAppAiAndroid/1.1.74'});
+  Object.defineProperty(w.navigator,'userAgent',{value:'MatchAppAiAndroid/1.1.75'});
   let callback,margin;const observed=[];
   w.IntersectionObserver=class{constructor(cb,options){callback=cb;margin=options.rootMargin;}observe(n){observed.push(n)}unobserve(){}};
   w.eval(read('page-fluidity.js'));await tick();

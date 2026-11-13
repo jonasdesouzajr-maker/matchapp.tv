@@ -1,3 +1,9 @@
+## November 13, 2026 approved Flow A icon — 1.1.75 (code 75)
+
+Jonas selected concept A and authorized continuation after viewing the two original Google Flow Nano Banana Pro images. The exact approved JPEG is retained in `refresh-20261113/artwork/approved-icon-a.jpg`. The Play icon is a full-bleed 512px export; native launchers fit the gold symbol and white AI lettering inside Android’s adaptive safe circle. Preserve the separate in-app logo, company intro, website branding and Kids resources.
+
+Play inventory checked November 13 at 09:47 UTC: highest uploaded adult code 74. Candidate 75 supersedes that bundle with the approved launcher. The CI artifact `MatchApp-Ai-adult-1.1.75-code75-UNSIGNED-AAB` still needs physical-device QA, local signing with the existing upload key, package/version/certificate verification and owner Console submission. Keep managed publishing enabled until the approved icon and matching release are ready together. This file is preparation, not proof of store publication.
+
 ## October 30, 2026 company opening and launcher artwork — 1.1.65 candidate (code 65)
 
 The owner requested the exact supplied Adv_Dev_Ops company artwork before the original native intro video, a refreshed purple/gold MatchApp AI icon and an updated Play listing. The adult candidate is `com.jonas.papercup`; the separate Lumina Match and Kids apps are unchanged.
