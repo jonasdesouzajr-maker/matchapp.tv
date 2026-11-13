@@ -19,16 +19,22 @@
 (function(){
   try{
     if(window.top===window||new URLSearchParams(location.search).get('ambient')!=='1'||
-       window.parent.location.origin!==location.origin||window.MatchAppFx||window.parent.MatchAppFx||
-       /MatchApp(?:TV|Ai(?:Kids)?)Android\/|\bwv\b/i.test(navigator.userAgent))return;
+       window.parent.location.origin!==location.origin)return;
+    var native=/MatchAppAiAndroid\//i.test(navigator.userAgent);
+    if(!native&&(window.MatchAppFx||window.parent.MatchAppFx||
+       /MatchApp(?:TV|Ai(?:Kids)?)Android\/|\bwv\b/i.test(navigator.userAgent)))return;
     document.documentElement.classList.add('matchapp-ambient-frame');
+    if(native)document.documentElement.classList.add('matchapp-native-chat');
     var sheet=document.createElement('link');sheet.rel='stylesheet';sheet.dataset.maAmbientEmbed='1';
-    sheet.href='/jonas/android-ambient-embed-20261011.css?browserfirstpaint=20261111-1';
+    sheet.href='/jonas/android-ambient-embed-20261011.css?v=20261113-stable-chat1';
     document.head.appendChild(sheet);
     document.addEventListener('DOMContentLoaded',function(){
       document.querySelectorAll('header.app-header,#jonas-voice-stage,.discover-title-row,.ai-session-strip').forEach(function(el){el.style.setProperty('display','none','important');});
       var reset=document.getElementById('jonas-header-new-chat'),workspace=document.querySelector('.discover-head');
       if(reset&&workspace){reset.classList.add('ai-new-chat');workspace.insertBefore(reset,workspace.firstChild);}
+      if(native)setTimeout(function(){
+        window.parent.dispatchEvent(new CustomEvent('matchapp:jonas-ready',{detail:{document:document}}));
+      },0);
     },{once:true});
   }catch(_){}
 })();

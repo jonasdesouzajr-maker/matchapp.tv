@@ -113,3 +113,16 @@ html body #ma-ambient-panel iframe{
 @media(prefers-reduced-motion:reduce){
  html body #ma-ambient-panel{animation:none!important}
 }
+
+/* Native shell paints immediately, keeping the frame's final footprint while
+   its real controls connect. No animated shimmer or repeating layout work. */
+@layer ma-reference.native-chat-loading {
+ html.matchapp-ai-android #ma-ambient-panel[data-native-chat] {animation:none!important;box-shadow:0 12px 40px #0004!important}
+ html.matchapp-ai-android #ma-ambient-panel .ja-chat-loading {position:absolute;inset:112px 0 0;z-index:20;display:flex;flex-direction:column;justify-content:center;gap:16px;padding:24px;background:var(--ma-native-bg,#141019);color:var(--ma-native-text,#f4edf7);font:500 14px/1.5 system-ui}
+ html.matchapp-ai-android #ma-ambient-panel .ja-chat-loading[hidden],html.matchapp-ai-android #ma-ambient-panel .ja-chat-loading button[hidden] {display:none!important}
+ html.matchapp-ai-android #ma-ambient-panel .ja-chat-loading button {min-height:44px;padding:10px 18px;border-radius:16px;border:1px solid var(--ma-native-line,#ffffff20);background:var(--ma-native-field,#2b2334);color:inherit;font:600 14px system-ui}
+ html.matchapp-ai-android #ma-ambient-panel .ja-chat-skeleton {display:grid;gap:12px}
+ html.matchapp-ai-android #ma-ambient-panel .ja-chat-skeleton i {display:block;height:12px;border-radius:6px;background:var(--ma-native-field,#2b2334);width:90%}
+ html.matchapp-ai-android #ma-ambient-panel .ja-chat-skeleton i:nth-child(2) {width:70%}
+ html.matchapp-ai-android #ma-ambient-panel .ja-chat-skeleton i:nth-child(3) {width:50%}
+}

@@ -1154,10 +1154,15 @@ class MainActivity : AppCompatActivity() {
             "/jonas/narrated-transcript-20261011.js" -> "jonas/narrated-transcript-20261011.js"
             "/voice-input.js" -> "voice-input.js"
             "/discover.js" -> "discover.js"
+            "/discover.html" -> "discover.html"
             else -> return null
         }
         return runCatching {
-            val mime = if (relative.endsWith(".css")) "text/css" else "application/javascript"
+            val mime = when {
+                relative.endsWith(".css") -> "text/css"
+                relative.endsWith(".html") -> "text/html"
+                else -> "application/javascript"
+            }
             WebResourceResponse(mime, "UTF-8", assets.open("ambient-preview/$relative")).apply {
                 responseHeaders = mapOf("Cache-Control" to "no-store",
                     "Access-Control-Allow-Origin" to "https://matchapp.tv")

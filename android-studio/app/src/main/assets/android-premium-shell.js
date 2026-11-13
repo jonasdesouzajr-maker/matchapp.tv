@@ -575,6 +575,21 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
     if(!frame.dataset.maCinemaBound){frame.dataset.maCinemaBound='1';frame.addEventListener('load',polishJonasFrame)}
     let doc;try{doc=frame.contentDocument}catch(_){return}
     const head=doc?.querySelector('.discover-head');if(!head)return;
+    // The early native stylesheet owns layout. Do not walk/rewrite each message
+    // on speech ticks or appended results; retain the original chat handlers.
+    if(doc.documentElement.classList.contains('matchapp-native-chat')){
+      const palette=getComputedStyle(document.documentElement);
+      ['bg','text','muted','surface','field','line','accent'].forEach(name=>{
+        const value=palette.getPropertyValue('--ma-native-'+name).trim();
+        if(doc.documentElement.style.getPropertyValue('--ma-native-'+name)!==value)doc.documentElement.style.setProperty('--ma-native-'+name,value);
+      });
+      let toolbar=doc.querySelector('.ma-native-chat-toolbar');
+      if(!toolbar){toolbar=doc.createElement('div');toolbar.className='ma-native-chat-toolbar';head.prepend(toolbar)}
+      [doc.querySelector('.jonas-top-history'),doc.querySelector('#jonas-header-new-chat')].forEach(button=>{if(button&&button.parentElement!==toolbar)toolbar.append(button)});
+      const log=doc.querySelector('#chat-log');
+      if(log)log.dataset.greeting=qs('#ma-ambient-panel .ja-hello')?.textContent||'';
+      return;
+    }
     const palette=getComputedStyle(document.documentElement),color=name=>palette.getPropertyValue('--ma-native-'+name).trim();
     const set=(selector,props)=>Array.from(doc.querySelectorAll(selector)).forEach(el=>Object.entries(props).forEach(([k,v])=>{if(el.style.getPropertyValue(k)!==v)el.style.setProperty(k,v,'important')}));
     let toolbar=doc.querySelector('.ma-native-chat-toolbar');
@@ -853,6 +868,7 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
       if(e.target?.closest?.('#ma-ambient-panel .ja-close'))setTimeout(schedulePremiumRefresh,80);
     },true);
     window.addEventListener('resize',enforceJonasFullscreen,{passive:true});
+    window.addEventListener('matchapp:jonas-ready',()=>requestAnimationFrame(enforceJonasFullscreen));
     window.addEventListener('resize',schedulePremiumRefresh,{passive:true});
     window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',schedulePremiumRefresh);
     window.visualViewport?.addEventListener('resize',enforceJonasFullscreen,{passive:true});

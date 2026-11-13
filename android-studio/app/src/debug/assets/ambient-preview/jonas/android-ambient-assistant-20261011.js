@@ -9,7 +9,8 @@
  // Only the Android app launches this script; explicit local QA opt-in never affects website users.
  if(!/MatchAppAiAndroid\//.test(navigator.userAgent)&&!window.__MATCHAPP_AMBIENT_QA__&&!window.__MATCHAPP_AMBIENT_WEB__)return;
  window.__matchappAmbientJonas=true;
- var asset='/jonas/android-ambient-assistant-20261011.css?v=corner20261020-1&stellar=20261020-1&headerface=20261020-1&greeting=20261101-2',frame=null,panel=null,root=null,bubble=null;
+ var asset='/jonas/android-ambient-assistant-20261011.css?v=20261113-stable-chat1&stellar=20261020-1&headerface=20261020-1&greeting=20261101-2',frame=null,panel=null,root=null,bubble=null;
+ var nativeChat=/MatchAppAiAndroid\//i.test(navigator.userAgent),loadTimer=0,loadStatus=null;
  var open=false,epoch=0,ready=false,drag=null,dragRaf=0,flingRaf=0,skipClick=false,activeTitle='',helloTimer=0,parkedBeforeChat=null;
  var greetStarted=0,cloudGreetingStarted=0,greetingFinished=0,pendingListen=0,pendingCloud=0,restoreNativeState=null,faceObserver=null;
  var key='matchapp_jonas_ambient_position_v1';
@@ -294,7 +295,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
    var newChat=doc.getElementById('jonas-header-new-chat'),workspace=doc.querySelector('.discover-head');
    if(newChat&&workspace){
     newChat.classList.add('ai-new-chat');
-    if(newChat.parentElement!==workspace)workspace.insertBefore(newChat,workspace.firstChild);
+    if(!newChat.closest('.ma-native-chat-toolbar')&&newChat.parentElement!==workspace)workspace.insertBefore(newChat,workspace.firstChild);
     if(!newChat.dataset.ambientReset){
      newChat.dataset.ambientReset='1';
      newChat.addEventListener('click',function(){stopConversation();greetingFinished=epoch;activeTitle='';panel.querySelector('.ja-hello').textContent=greeting()},true);
@@ -314,7 +315,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
    // Avoid observing style mutations: site layout routines update them often.
    if(!doc.querySelector('link[data-ma-ambient-embed]')){
      var sheet=doc.createElement('link');sheet.rel='stylesheet';sheet.dataset.maAmbientEmbed='1';
-     sheet.href='/jonas/android-ambient-embed-20261011.css?live=&repair=20261023-1'+Date.now();doc.head.appendChild(sheet);
+     sheet.href='/jonas/android-ambient-embed-20261011.css?v=20261113-stable-chat1';doc.head.appendChild(sheet);
    }
   }catch(_){}
  }
@@ -334,12 +335,35 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
  }
  function onFrameLoad(){
   try{if(frame.contentWindow.location.origin!==location.origin||frame.contentWindow.location.pathname!=='/discover.html')return}catch(_){return}
+  if(ready)return;
+  if(nativeChat&&typeof frame.contentWindow.newDiscoverSearch!=='function')return;
   ready=true;embedStyle();mirrorConversationFace();panel.querySelector('.ja-hello').textContent=greeting();
+  clearTimeout(loadTimer);panel.dataset.chatState='ready';if(loadStatus)loadStatus.hidden=true;
   frame.contentDocument?.addEventListener('keydown',escapeKey);
   if(!open)return;
   if(pendingCloud===epoch){cloudGreeting(epoch);return}
   if(pendingListen===epoch){pendingListen=0;listen();return}
   spokenGreeting(epoch);
+ }
+ // The composer is usable at DOM readiness; unrelated images must not gate it.
+ window.addEventListener('matchapp:jonas-ready',function(event){
+  if(nativeChat&&event.detail?.document===frame?.contentDocument&&typeof frame.contentWindow.newDiscoverSearch==='function')onFrameLoad();
+ });
+ function showNativeLoading(){
+  if(!nativeChat)return;
+  panel.dataset.nativeChat='1';panel.dataset.chatState='loading';
+  if(!loadStatus){
+   loadStatus=document.createElement('div');loadStatus.className='ja-chat-loading';loadStatus.setAttribute('role','status');
+   loadStatus.innerHTML='<div class="ja-chat-skeleton" aria-hidden="true"><i></i><i></i><i></i></div><p></p><button type="button"></button>';
+   loadStatus.querySelector('button').addEventListener('click',function(){createFrame(activeTitle)});
+   panel.appendChild(loadStatus);
+  }
+  loadStatus.hidden=false;loadStatus.querySelector('p').textContent=conversationAccountCopy()[0];
+  var retry=loadStatus.querySelector('button');retry.textContent=conversationAccountCopy()[2];retry.hidden=true;
+  clearTimeout(loadTimer);loadTimer=setTimeout(function(){
+   if(ready)return;panel.dataset.chatState='error';
+   loadStatus.querySelector('p').textContent=conversationAccountCopy()[1];retry.hidden=false;
+  },20000);
  }
  function frameUrl(title){
   var u=new URL('/discover.html',location.origin);u.searchParams.set('ambient','1');
@@ -353,6 +377,7 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   frame=document.createElement('iframe');frame.id='ma-ambient-chat-frame';
   frame.title='Jonas — MatchApp Ai';frame.allow='microphone';frame.referrerPolicy='same-origin';
   frame.addEventListener('load',onFrameLoad);
+  showNativeLoading();
   panel.appendChild(frame);ensureFrameSource(frame,title,false);
  }
  function readPanelViewport(){
@@ -380,7 +405,11 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
   var preViewport=readPanelViewport();
   parkedBeforeChat=['z-index','visibility','pointer-events'].map(function(key){return [key,root.style.getPropertyValue(key),root.style.getPropertyPriority(key)]});
   root.dataset.jonasPositionHeld='1';
-  open=true;epoch++;if(!frame)activeTitle=contextTitle();
+  open=true;epoch++;if(!frame||frame.dataset.prewarmed==='1')activeTitle=contextTitle();
+  if(frame?.dataset.prewarmed==='1'){
+   delete frame.dataset.prewarmed;
+   if(activeTitle)createFrame(activeTitle);
+  }
   panel.hidden=false;pendingPanelViewport=preViewport;syncPanelViewport();panel.querySelector('.ja-hello').textContent=greeting();
   // The conversation is viewport-anchored. Keep the same movable launcher
   // at its existing position so the user can tap it again to close.
@@ -534,11 +563,21 @@ html.matchapp-ai-android #ma-jonas-home,html.matchapp-ai-android #matchapp-andro
     accountStatus.querySelector('p').textContent=conversationAccountCopy()[accountStatus.dataset.state==='error'?1:0];
     accountStatus.querySelector('button').textContent=conversationAccountCopy()[2];
    }
+   if(loadStatus&&!ready){loadStatus.querySelector('p').textContent=conversationAccountCopy()[panel.dataset.chatState==='error'?1:0];loadStatus.querySelector('button').textContent=conversationAccountCopy()[2];}
    try{frame?.contentWindow?.setLanguage?.(selectedLanguage())}catch(_){}
   });
   routeNative();restore();
-  // Keep Jonas dormant/lightweight. Native greeting happens on tap while
-  // the single conversation frame initializes only when the user opens it.
+  // Warm the single native Home conversation only after the first page loads
+  // and the browser is idle. No prompt, audio or AI request is submitted here.
+  // Save-data/offline/background sessions retain the on-demand loading path.
+  if(nativeChat&&/^\/(?:index\.html)?$/.test(location.pathname)){
+   function warm(){
+    if(frame||open||document.hidden||navigator.onLine===false||navigator.connection?.saveData||!window.supabaseClient)return;
+    createFrame('');frame.dataset.prewarmed='1';
+   }
+   function idle(){if(window.requestIdleCallback)window.requestIdleCallback(warm,{timeout:5000});else setTimeout(warm,1500)}
+   if(document.readyState==='complete')idle();else window.addEventListener('load',idle,{once:true});
+  }
   window.MatchAppAmbientJonas=Object.freeze({open:openPanel,close:closePanel,getContext:contextTitle,isOpen:()=>open});
   if(document.body)document.dispatchEvent(new Event('matchapp:jonas-mounted'));
  }
