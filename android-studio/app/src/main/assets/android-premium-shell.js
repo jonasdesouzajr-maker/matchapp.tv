@@ -540,8 +540,8 @@ html.matchapp-ai-android :is(.mao-head h2,.mao-head p,.profile-hub-row span,.ma-
       if(el.dataset.maAndroidPhoneGeom!=='1')el.dataset.maAndroidPhoneGeom='1';
       if(el.style.getPropertyValue(k)!==v||el.style.getPropertyPriority(k)!=='important')el.style.setProperty(k,v,'important');
     }));
-    set('#ma-reference-header',{padding:'8px 14px 10px','min-height':'0px'});
-    set('.ma-reference-header-bar',{display:'grid','grid-template-columns':'minmax(0,1fr) 36px 44px 44px',padding:'0px',gap:'8px','min-height':'0px','align-items':'center'});
+    set('#ma-reference-header',{padding:'8px 14px 10px','min-height':'0px',width:'100vw','max-width':'100vw','min-width':'0px','box-sizing':'border-box'});
+    set('.ma-reference-header-bar',{display:'grid','grid-template-columns':'minmax(0,1fr) 28px 44px 44px',width:'100%','max-width':'100%','min-width':'0px','box-sizing':'border-box',padding:'0px',gap:'8px','min-height':'0px','align-items':'center'});
     set('.ma-reference-header-chrome',{display:'contents'});
     set('.ma-reference-header-original',{display:'contents'});
     set('.ma-reference-header-original>.mh-head',{'grid-area':'1 / 1 / 2 / 3',display:'block',padding:'0px','min-width':'0px'});
@@ -550,12 +550,12 @@ html.matchapp-ai-android :is(.mao-head h2,.mao-head p,.profile-hub-row span,.ma-
     set('.ma-cinema-header-actions>.ma-cinema-tools',{'grid-area':'1 / 4'});
     set('#shell-brand-lockup,#home-brand-lockup,.ma-brand-home-link',{height:'44px','min-height':'44px',margin:'0px'});
     set('.mh-head .ma-brand-orb-stage,.mh-head .ma-brand-orb',{width:'40px',height:'40px','min-width':'40px','max-width':'40px','min-height':'40px','max-height':'40px','flex-basis':'40px'});
-    set('#ref-explore-header>.hub-brand',{'grid-area':'1 / 1 / 2 / 3',display:'flex','min-width':'0px'});
+    set('#ref-explore-header>.hub-brand',{'grid-area':'1 / 1 / 2 / 3',display:'flex','min-width':'0px',gap:'6px'});
     set('#ref-explore-header>.ma-cinema-search',{'grid-area':'1 / 3',width:'44px',height:'44px',display:'grid','place-items':'center'});
     set('#ref-explore-header>.ref-explore-tools',{'grid-area':'1 / 4',width:'44px',height:'44px',padding:'0px'});
     set('#ref-explore-header>.ma-masthead-intro',{'grid-area':'2 / 1',width:'100%','align-self':'center'});
-    set('#ref-explore-header .hub-brand>img',{display:'block',width:'40px',height:'40px','min-width':'40px','object-fit':'contain',background:'transparent'});
-    set('#ref-explore-header .ma-wordmark,#ref-explore-header .ma-word-ai',{'font-size':'clamp(20px,5.8vw,24px)','line-height':'1'});
+    set('#ref-explore-header .hub-brand>img',{display:'block',width:'32px',height:'32px','min-width':'32px','object-fit':'contain',background:'transparent'});
+    set('#ref-explore-header .ma-wordmark,#ref-explore-header .ma-word-ai',{'font-size':'clamp(18px,5vw,22px)','line-height':'1','letter-spacing':'0px'});
     set('.mh-head .ma-wordmark,.mh-head .ma-word-ai',{'font-size':'clamp(20px,5.8vw,24px)','line-height':'1'});
     set('.ma-masthead-intro',{margin:'3px 0 1px',padding:'0px',gap:'1px'});
     set('.ma-masthead-story',{font:'500 10px/13px system-ui,sans-serif','letter-spacing':'0px'});
