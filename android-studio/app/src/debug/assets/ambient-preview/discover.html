@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html class="ma-reference" lang="en">
+<head>
+<style data-cinema-layer>@layer ma-native-chat,ma-reference;</style>
+<meta charset="UTF-8">
+<link rel="preload" as="style" data-cinema-preload="critical-style" href="/patches/reference-header.css?v=20261020-header1&amp;polish=20261020-ui1&amp;androidqa=20261021-1&amp;masthead=20261025-1">
+<link rel="preload" as="style" data-cinema-preload="critical-style" href="/patches/reference-dock.css?v=20261020-dock1&amp;androidqa=20261021-1">
+<link rel="preload" as="style" data-cinema-preload="critical-style" href="/patches/reference-palette-tokens.css?v=20261020-palettes1">
+<link rel="preload" as="style" data-cinema-preload="critical-style" href="/patches/reference-pills.css?v=20261022-flat1&amp;polish=20261020-ui1">
+<link rel="preload" as="style" data-cinema-preload="critical-style" href="/patches/adult-screen-fit-20261015.css?v=consistency2&amp;auth=20261016-1&amp;header=20261018-1">
+<link rel="preload" as="style" data-cinema-preload="critical-style" href="/patches/signature-ui-20261015.css?v=orbit3">
+<link rel="preload" as="style" data-cinema-preload="critical-style" href="/adult-page-compact.css?v=20260929-1&amp;fastart=20261020-1">
+<link rel="preload" as="style" data-cinema-preload="critical-style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Outfit:wght@500;600;700;800&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap">
+<link rel="preload" as="style" data-cinema-preload="critical-style" href="/patches/premium-type-20261014.css?v=type3">
+<link rel="preload" as="style" data-cinema-preload="critical-style" href="/patches/premium-touch-motion-20261014.css?v=touch1">
+<script src="/android-early-ui-20261011.js?v=20261011-live2"></script>
+<script data-ma-browser-ambient-shell="20261111-1">
+/* Prepare the embedded browser conversation before slow images finish loading. */
+(function(){
+  try{
+    if(window.top===window||new URLSearchParams(location.search).get('ambient')!=='1'||
+       window.parent.location.origin!==location.origin)return;
+    var native=/MatchAppAiAndroid\//i.test(navigator.userAgent);
+    if(!native&&(window.MatchAppFx||window.parent.MatchAppFx||
+       /MatchApp(?:TV|Ai(?:Kids)?)Android\/|\bwv\b/i.test(navigator.userAgent)))return;
+    document.documentElement.classList.add('matchapp-ambient-frame');
+    if(native)document.documentElement.classList.add('matchapp-native-chat');
+    var sheet=document.createElement('link');sheet.rel='stylesheet';sheet.dataset.maAmbientEmbed='1';
+    sheet.href='/jonas/android-ambient-embed-20261011.css?v=20261113-stable-chat1';
+    document.head.appendChild(sheet);
+    document.addEventListener('DOMContentLoaded',function(){
+      document.querySelectorAll('header.app-header,#jonas-voice-stage,.discover-title-row,.ai-session-strip').forEach(function(el){el.style.setProperty('display','none','important');});
+      var reset=document.getElementById('jonas-header-new-chat'),workspace=document.querySelector('.discover-head');
+      if(reset&&workspace){reset.classList.add('ai-new-chat');workspace.insertBefore(reset,workspace.firstChild);}
+      if(native)setTimeout(function(){
+        window.parent.dispatchEvent(new CustomEvent('matchapp:jonas-ready',{detail:{document:document}}));
+      },0);
+    },{once:true});
+  }catch(_){}
+})();
+</script>
+<script src="/pro-plan.js?v=20261017-3&amp;billingcopy=20261018-1&amp;cinemasound=20261020-1&amp;locale71=1"></script>
+    <!-- Google Tag Manager -->
+    <script data-ma-consent-defaults="20261101-1">
+(function(w){
+  var q=w.dataLayer=w.dataLayer||[];
+  var g=w.gtag=w.gtag||function(){q.push(arguments);};
+  if(!q.some(function(x){return x&&x[0]==='consent'&&x[1]==='default';})){
+    g('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:2000,region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']});
+  }
+  try{if(w.localStorage.getItem('match_cookie_choice')==='essential')g('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});}catch(_){}
+})(window);
+</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M7J3NNBN');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<script src="/page-origin.js?v=20260919-origin3"></script>
+    <meta name="theme-color" content="#101010">
+
+    <title>Ask AI What to Watch, Read or Listen To | MatchApp Ai</title>
+    <meta name="description" content="Ask MatchApp Ai what to watch, read or listen to: movies, anime, K-dramas, books, verified audiobooks, magazines and podcasts, with regional source links.">
+    <meta name="keywords" content="ask AI what to watch, AI movie recommendations, AI TV recommendations, where to watch a movie, where to stream a title, movies by mood, shows like my favorites, voice entertainment search, anime recommendation AI, K-drama finder, micro-drama finder, book recommendation AI, audiobook recommendations, AI magazine finder, podcast discovery, perguntar à IA o que assistir">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://matchapp.tv/discover.html">
+    <!-- Language is a display preference on this URL. -->
+<link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/logo.jpeg?v=2">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MatchApp Ai">
+    <meta property="og:url" content="https://matchapp.tv/discover.html">
+    <meta property="og:title" content="Ask AI What to Watch, Read or Listen To | MatchApp Ai">
+    <meta property="og:description" content="Ask MatchApp Ai what to watch, read or listen to: movies, anime, K-dramas, books, verified audiobooks, magazines and podcasts, with regional source links.">
+    <meta property="og:image" content="https://matchapp.tv/og-image.jpg?v=20260928-brand-preview1">
+    <meta property="og:image:secure_url" content="https://matchapp.tv/og-image.jpg?v=20260928-brand-preview1">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:alt" content="MatchApp Ai">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ask AI What to Watch, Read or Listen To | MatchApp Ai">
+    <meta name="twitter:description" content="Ask MatchApp Ai what to watch, read or listen to: movies, anime, K-dramas, books, verified audiobooks, magazines and podcasts, with regional source links.">
+    <meta name="twitter:image" content="https://matchapp.tv/og-image.jpg?v=20260928-brand-preview1">
+    <meta name="twitter:image:alt" content="MatchApp Ai">
+<link rel="icon" href="/assets/brand/matchapp-ai-favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/assets/brand/matchapp-ai-favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/matchapp-ai-favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/brand/matchapp-ai-favicon-48.png">
+
+    <script defer src="/discover-editorial-locales.js?v=20261104-1"></script>
+    <script defer src="/i18n.js?v=20261001-canonicalai-profilept1&amp;billing=20261017-2&amp;fastlang=20261014-1&amp;polish=20261020-ui1&amp;locale71=1&amp;askguide=20261104-1"></script>
+<script defer src="/polish-i18n.js?v=193&amp;locale71=1"></script>
+<script defer src="/event-i18n.js?v=187&amp;locale71=1"></script>
+<script defer src="/page-locale.js?v=187&amp;locale71=1"></script>
+    <script src="/build-meta.js?v=20260924-runtime2&amp;seo=20260928-2&amp;release=20260929-4&amp;intent=20260930-1&amp;installfix=20260930-1&amp;icon=20261001-circle-launch1&amp;jonas=cloud2&amp;fastlang=20261014-2&amp;polish=20261020-ui1&amp;androidqa=20261021-1&amp;repair=20261023-1&amp;masthead=20261025-1"></script>
+<script src="/app-install-state.js?v=20260930-install-recovery1&amp;icon=20261001-circle-launch1&amp;device=20261005-playroute2"></script>
+<script defer src="/install.js?v=20260930-install-recovery1&amp;icon=20261001-circle-launch1&amp;device=20261005-playroute2"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://matchapp.tv/"},{"@type":"ListItem","position":2,"name":"Ask AI","item":"https://matchapp.tv/discover.html"}]}</script>
+
+    <link rel="stylesheet" href="/style.css?v=201&fastart=20261020-1">
+    <link rel="stylesheet" href="/tv.css?v=187">
+    <style>
+        :root { --gold: #E5C158; --gold-deep: #B8912F; --gold-glow: #FFF3A3; --ink: #14131A; --royal-deep: #130734; --royal: #402562; --royal-lift: #6B3FA0; --royal-glow: #A376B6; --bg-dark: #14131A; --card-bg: rgba(26, 22, 38, 0.90); }
+        body { background: var(--bg-dark); color: #fff; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+        .app-header { display: flex; align-items: center; justify-content: space-between; padding: 15px 25px; background: linear-gradient(135deg, rgba(19,7,52,0.97), rgba(26,25,31,0.97)); border-bottom: 2px solid var(--gold); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(15px); flex-wrap: wrap; gap: 14px; }
+        .header-brand-area { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+        .brand-logo { width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--gold); box-shadow: 0 0 22px rgba(229,193,88,0.55); }
+        .app-title-main { font-size: 25px; font-weight: 900; color: var(--gold); letter-spacing: 1px; }
+        .wrap { max-width: 1150px; margin: 0 auto; padding: 34px 18px 110px 18px; }
+        .premium-card { background: linear-gradient(160deg, rgba(32,24,52,0.92), rgba(20,19,26,0.94)); border: 1px solid rgba(229,193,88,0.45); border-radius: 20px; padding: 30px; margin-bottom: 26px; box-shadow: 0 15px 50px rgba(0,0,0,0.9); }
+
+        .discover-head h1 { color: var(--gold); font-size: 30px; margin: 0 0 8px 0; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
+        #discover-query { color: var(--gold-glow); font-size: 20px; font-style: italic; display: block; margin-bottom: 14px; }
+        #discover-answer { display: block; color: #ddd6ec; font-size: 17px; line-height: 1.7; margin: 0; flex: 1; }
+        .answer-row { display: flex; align-items: flex-start; gap: 14px; background: rgba(216,156,72,0.18); border-left: 4px solid var(--gold); padding: 16px 20px; border-radius: 12px; margin-top: 6px; }
+        .offline-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,138,92,0.18); border: 1px solid #ff8a5c; color: #ffc9b0; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; padding: 5px 11px; border-radius: 20px; margin-bottom: 10px; }
+        .discover-speak { flex-shrink: 0; background: rgba(229,193,88,0.15); border: 1px solid var(--gold); color: var(--gold-glow); width: 42px; height: 42px; border-radius: 50%; font-size: 18px; cursor: pointer; transition: 0.25s; display: inline-flex; align-items: center; justify-content: center; }
+        .discover-speak:hover { background: rgba(229,193,88,0.3); transform: scale(1.08); }
+        .discover-speak.speaking { background: var(--gold); color: #14131A; animation: speakPulse 1s ease-in-out infinite; }
+        @keyframes speakPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(229,193,88,0.6); } 50% { box-shadow: 0 0 0 10px rgba(229,193,88,0); } }
+
+        .newsearch-row { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; align-items: flex-end; }
+
+        /* ===== AUTO-GROWING COMPOSER =====
+           A single-line input hid everything past ~40 characters, which is
+           punishing when the whole point is asking a full question — and worse
+           with voice, where dictation can run several sentences long. This
+           grows with the content instead, up to a scrollable cap. */
+        .composer { flex: 1; min-width: 220px; display: flex; align-items: flex-end; gap: 8px;
+                    background: rgba(0,0,0,0.6); border: 1px solid var(--gold); border-radius: 16px;
+                    padding: 6px 8px 6px 14px; transition: box-shadow 0.25s, border-color 0.25s; }
+        .composer { border-color: rgba(142,242,231,.8); background: linear-gradient(135deg, rgba(64,37,98,.74), rgba(19,7,52,.86)); box-shadow: inset 0 0 0 1px rgba(229,193,88,.16), 0 8px 24px rgba(0,0,0,.24); }
+        .composer:focus-within { box-shadow: 0 0 0 2px rgba(142,242,231,.18), 0 0 26px rgba(229,193,88,.42); border-color: var(--gold-glow); }
+        .discover-poster { overflow: visible; }
+        .discover-poster img { border-radius: 11px; }
+        .discover-cinema-ribbon { position:absolute; z-index:4; top:10px; left:-8px; padding:5px 10px 5px 12px; border-radius:4px 8px 8px 4px; background:#d6253f; color:#fff; font-size:10px; line-height:1; font-weight:900; letter-spacing:.06em; text-transform:uppercase; box-shadow:0 5px 14px rgba(214,37,63,.35); }
+        .discover-cinema-ribbon::after { content:""; position:absolute; left:0; bottom:-6px; border-top:6px solid #871427; border-left:7px solid transparent; }
+        .discover-categories { display:flex; flex-wrap:wrap; gap:6px; margin:7px 0 8px; }
+        .discover-category { display:inline-flex; align-items:center; min-height:22px; padding:3px 8px; border:1px solid rgba(168,240,255,.26); border-radius:999px; background:rgba(168,240,255,.08); color:#dffcff; font-size:10.5px; font-weight:700; }
+        .discover-card-preview { margin:10px 0 4px; }
+        .discover-card-preview[hidden] { display:none!important; }
+        .discover-card-preview iframe { display:block; width:100%; aspect-ratio:16/9; border:0; border-radius:12px; background:#000; }
+        .discover-play.is-cinema { background:linear-gradient(135deg,#d6253f,#9f1730)!important; color:#fff!important; border-color:#ff6b7d!important; }
+        .composer textarea { flex: 1; background: transparent; border: none; color: #fff; font-size: 16px;
+                             font-family: inherit; line-height: 1.55; padding: 11px 0; margin: 0;
+                             resize: none; overflow-y: hidden; max-height: 190px; min-height: 24px; }
+        .composer textarea:focus { outline: none; }
+        .composer textarea::placeholder { color: #8d84a5; }
+        .composer.is-tall textarea { overflow-y: auto; }
+        .composer .mic-btn { flex-shrink: 0; margin-bottom: 2px; }
+        .composer-hint { color: #7c7391; font-size: 11.5px; margin: 7px 2px 0 2px; }
+        .composer-send { width: auto; padding: 16px 26px; flex-shrink: 0; }
+        @media (max-width: 620px) {
+            .composer-send { width: 100%; }
+            .composer { min-width: 100%; }
+        }
+        .newsearch-row input { flex: 1; min-width: 220px; padding: 16px; border-radius: 12px; border: 1px solid var(--gold); background: rgba(0,0,0,0.6); color: #fff; font-size: 16px; }
+        .newsearch-row input:focus { outline: none; box-shadow: 0 0 20px rgba(229,193,88,0.4); }
+        .concierge-tagline { color: #a89cc4; font-size: 13.5px; font-style: italic; margin: 0 0 4px 0; }
+
+        /* ===== CHAT INTERFACE ===== */
+        .chat-log { display: flex; flex-direction: column; gap: 18px; margin: 18px 0 4px 0; }
+        .chat-log:empty { margin: 0; }
+        .chat-bubble { border-radius: 16px; padding: 15px 19px; animation: bubbleIn 0.4s cubic-bezier(0.22,1,0.36,1); }
+        @keyframes bubbleIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform:none; } }
+        .chat-user { align-self: flex-end; max-width: 85%; background: linear-gradient(135deg, var(--royal-lift), var(--royal)); color: #fff; font-weight: 600; font-size: 15px; border-bottom-right-radius: 5px; }
+        .chat-assistant { align-self: stretch; background: rgba(216,156,72,0.16); border-left: 4px solid var(--gold); border-bottom-left-radius: 5px; }
+        .chat-answer-row { display: flex; align-items: flex-start; gap: 14px; }
+        .chat-answer-text { color: #ddd6ec; font-size: 16.5px; line-height: 1.7; margin: 0; flex: 1; white-space: pre-wrap; }
+        .chat-results-grid { display: none; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 18px; margin-top: 18px; }
+        .chat-newchat-btn { width: 100%; margin-top: 14px; background: transparent; border: 1px dashed rgba(229,193,88,0.45); color: var(--gold-glow); padding: 13px; border-radius: 12px; font-size: 13.5px; font-weight: 700; cursor: pointer; transition: 0.25s; font-family: inherit; }
+        .chat-newchat-btn:hover { background: rgba(229,193,88,0.12); border-style: solid; }
+
+        .chat-history-card h3 { color: var(--gold); font-size: 19px; margin: 0 0 6px 0; text-transform: uppercase; font-weight: 900; }
+        .chat-history-sub { color: #9d95b0; font-size: 13px; margin: 0 0 18px 0; }
+        .chat-history-empty { color: #7d7590; font-size: 13.5px; font-style: italic; margin: 0; }
+        .chat-thread-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 16px; border-radius: 12px; background: rgba(0,0,0,0.4); border: 1px solid rgba(229,193,88,0.2); margin-bottom: 9px; cursor: pointer; transition: 0.22s; }
+        .chat-thread-item:hover { border-color: var(--gold); background: rgba(216,156,72,0.24); transform: translateX(3px); }
+        .chat-thread-item.active { border-color: var(--gold); background: rgba(229,193,88,0.14); }
+        .chat-thread-title { color: #ddd6ec; font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .chat-thread-del { background: none; border: none; color: #7d7590; font-size: 15px; cursor: pointer; flex-shrink: 0; padding: 4px 6px; border-radius: 6px; }
+        .chat-thread-del:hover { color: #ff6b6b; background: rgba(255,107,107,0.12); }
+        @media (prefers-reduced-motion: reduce) { .chat-bubble { animation: none; } }
+
+        /* ===== VOICE INPUT (mic button) ===== */
+        .mic-btn { flex-shrink: 0; width: 56px; height: 56px; border-radius: 50%; background: rgba(229,193,88,0.12); border: 2px solid var(--gold); color: var(--gold-glow); font-size: 21px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: 0.25s; position: relative; }
+        .mic-btn:hover { background: rgba(229,193,88,0.26); transform: scale(1.06); }
+        .mic-btn.mic-listening { background: #ff4757; border-color: #ff4757; color: #fff; animation: micCorePulse 1.15s ease-in-out infinite; }
+        @keyframes micCorePulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+        .mic-btn.mic-listening::before, .mic-btn.mic-listening::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid rgba(255,71,87,0.55); animation: micRing 1.6s ease-out infinite; }
+        .mic-btn.mic-listening::after { animation-delay: 0.5s; }
+        @keyframes micRing { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.1); opacity: 0; } }
+        @media (prefers-reduced-motion: reduce) { .mic-btn.mic-listening, .mic-btn.mic-listening::before, .mic-btn.mic-listening::after { animation: none; } }
+
+        #discover-grid { display: none; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 22px; }
+        .discover-card { display: flex; gap: 16px; background: linear-gradient(160deg, rgba(32,24,52,0.92), rgba(20,19,26,0.94)); border: 1px solid rgba(229,193,88,0.32); border-radius: 18px; padding: 16px; opacity: 1; transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s; }
+        .discover-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 16px 44px rgba(216,156,72,0.45); }
+        .discover-poster { position: relative; flex-shrink: 0; width: 104px; height: 156px; border-radius: 11px; overflow: hidden; border: 1px solid var(--gold); background: var(--royal-deep); }
+        .discover-poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .discover-rank { position: absolute; top: 6px; left: 6px; background: var(--gold); color: #14131A; font-size: 10px; font-weight: 900; padding: 3px 7px; border-radius: 6px; }
+        .discover-body { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+        .discover-body h3 { color: #fff; font-size: 17px; margin: 0 0 5px 0; font-weight: 900; line-height: 1.3; }
+        .discover-meta { color: var(--gold); font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 800; margin-bottom: 9px; }
+        .discover-facts { display: flex; flex-direction: column; gap: 4px; margin: 0 0 10px 0; }
+        .discover-fact { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; font-size: 13px; line-height: 1.4; color: #ddd6ec; }
+        .discover-fact-k { color: var(--gold); font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; min-width: 7.8em; }
+        .discover-where, .discover-when { font-weight: 700; color: #fff; }
+        .discover-body p { color: #b9b1cc; font-size: 13.5px; line-height: 1.6; margin: 0 0 14px 0; flex: 1; }
+        .discover-actions { display: flex; gap: 9px; flex-wrap: wrap; }
+        .discover-play { flex: 1; min-width: 120px; font-size: 13px !important; padding: 11px !important; }
+        .discover-save { background: transparent; border: 1px solid var(--gold); color: var(--gold-glow); padding: 11px 15px; border-radius: 12px; font-weight: 900; font-size: 13px; cursor: pointer; transition: 0.25s; }
+        .discover-save:hover { background: rgba(229,193,88,0.16); }
+        .discover-save.saved { background: var(--gold); color: #14131A; }
+        .discover-nfm { background: transparent; border: 1px solid rgba(255,82,82,0.55); color: #ff8a8a; padding: 11px 15px; border-radius: 12px; font-weight: 900; font-size: 13px; cursor: pointer; transition: 0.25s; }
+        .discover-nfm:hover { background: rgba(255,82,82,0.14); }
+        .discover-why { color: var(--gold-glow); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 6px 0; }
+        .discover-related-head { grid-column: 1 / -1; color: var(--gold); font-size: 14px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.8px; margin: 10px 0 0 0; }
+        .discover-card.is-related { border-style: dashed; }
+        /* Only the real adult Bookworms matcher can verify store/audio editions. */
+        .discover-book-matcher-link { display: inline-flex; align-items: center; justify-content: center; max-width: 100%; min-height: 44px; margin: 12px 0 3px; padding: 10px 15px; border-radius: 13px; line-height: 1.35; font-size: 13px; font-weight: 800; text-decoration: none; white-space: normal; overflow-wrap: anywhere; text-align: center; }
+        .discover-book-matcher-link:focus-visible { outline: 3px solid #7ee9d3; outline-offset: 3px; }
+        @media(max-width:600px){ .discover-book-matcher-link{width:100%;} }
+        .discover-card.is-hidden { display: none !important; }
+
+        #discover-loading { text-align: center; padding: 40px 20px; }
+        .scan-dots { display: inline-flex; gap: 9px; margin-bottom: 20px; }
+        .scan-dots span { width: 13px; height: 13px; border-radius: 50%; background: var(--gold); animation: scanBounce 1.15s ease-in-out infinite; }
+        .scan-dots span:nth-child(2) { animation-delay: 0.16s; } .scan-dots span:nth-child(3) { animation-delay: 0.32s; }
+        @keyframes scanBounce { 0%,80%,100% { transform: translateY(0); opacity:0.45; } 40% { transform: translateY(-16px); opacity:1; } }
+        #discover-empty { display:none; text-align:center; padding: 34px; color:#b9b1cc; }
+        .ad-banner-container { text-align:center; margin-bottom:26px; background: rgba(0,0,0,0.55); padding:15px; border-radius:16px; border:1px solid rgba(229,193,88,0.35); min-height:100px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+        /* Mobile: KEEP the side-by-side thumbnail layout rather than stacking.
+           This used to switch to flex-direction:column with a full-width 210px
+           poster, which made each card dramatically TALLER on the smallest
+           screens — the opposite of what's wanted. A compact row matches the
+           result card's mobile treatment and fits far more per screen. */
+        @media (max-width: 620px) {
+            .discover-card { gap: 11px; padding: 11px; }
+            .discover-poster { width: 78px; height: 117px; }
+            .wrap { padding: 22px 14px 110px 14px; }
+        }
+        @media (max-width: 380px) {
+            .discover-poster { width: 66px; height: 99px; }
+        }
+
+        /* ===== MOBILE DENSITY PASS =====
+           Wasted vertical space only — tap targets and the 16px input font
+           are untouched, since a smaller input font makes iOS Safari auto-zoom
+           the page on focus. */
+        @media (max-width: 640px) {
+            .wrap { padding: 16px 12px 96px 12px; }
+            .premium-card { padding: 15px 13px; margin-bottom: 14px; border-radius: 16px; }
+            .concierge-tagline { font-size: 12.5px; }
+            .discover-card { margin-bottom: 0; }
+            #discover-grid { gap: 12px; }
+        }
+        @media (max-width: 400px) {
+            .premium-card { padding: 12px 10px; }
+        }
+
+        /* ===== MATCHAPP AI WORKSPACE ===== */
+        body.ai-chat-page { overflow-x:hidden; }
+        .ai-sidebar-toggle { position:fixed; left:14px; top:92px; z-index:1205; width:44px; height:44px; border-radius:14px;
+                             border:1px solid rgba(229,193,88,.48); color:var(--gold-glow); background:rgba(20,13,37,.95);
+                             box-shadow:0 10px 30px rgba(0,0,0,.45); cursor:pointer; display:grid; place-items:center; transition:.22s; }
+        .ai-sidebar-toggle:hover { transform:translateY(-2px); border-color:var(--gold); }
+        .ai-sidebar { position:fixed; inset:84px auto 0 0; z-index:1200; width:290px; box-sizing:border-box; padding:14px 12px 18px;
+                      background:linear-gradient(180deg,rgba(20,12,39,.985),rgba(13,10,25,.985));
+                      border-right:1px solid rgba(229,193,88,.28); box-shadow:18px 0 44px rgba(0,0,0,.35);
+                      display:flex; flex-direction:column; gap:12px; transform:translateX(0); transition:transform .28s cubic-bezier(.2,.8,.2,1); }
+        .ai-sidebar-head { display:flex; align-items:center; gap:10px; padding:6px 4px 2px; }
+        .ai-sidebar-logo { width:38px; height:38px; border-radius:12px; }
+        .ai-sidebar-brand { min-width:0; flex:1; }
+        .ai-sidebar-brand strong { display:block; color:#fff; font-size:14px; line-height:1.1; }
+        .ai-sidebar-brand span { display:block; color:#9388aa; font-size:10px; margin-top:3px; letter-spacing:.4px; }
+        .ai-sidebar-fold { width:32px; height:32px; border-radius:10px; border:1px solid rgba(229,193,88,.22); color:#bfb2d2;
+                           background:rgba(255,255,255,.03); cursor:pointer; }
+        .ai-new-chat { display:flex; align-items:center; gap:10px; width:100%; padding:12px 13px; border-radius:14px; cursor:pointer;
+                       border:1px solid rgba(229,193,88,.48); color:#17111f; font-weight:900; font-family:inherit;
+                       background:linear-gradient(135deg,#FFF3A3,#E5C158); box-shadow:0 8px 20px rgba(229,193,88,.14); }
+        .ai-new-chat:disabled { opacity:.48; cursor:not-allowed; filter:saturate(.45); }
+        .ai-sidebar-section-title { color:#8f84a7; font-size:10px; letter-spacing:1.4px; text-transform:uppercase; font-weight:900; padding:2px 5px 0; }
+        .ai-history-scroll { min-height:90px; max-height:38vh; overflow:auto; padding-right:3px; scrollbar-width:thin; }
+        .ai-sidebar .chat-thread-item { margin-bottom:6px; padding:10px 11px; border-color:rgba(229,193,88,.13); background:rgba(255,255,255,.025); }
+        .ai-sidebar .chat-thread-title { font-size:12.5px; }
+        .ai-usage-card { margin-top:auto; border:1px solid rgba(229,193,88,.2); border-radius:16px; padding:12px;
+                         background:linear-gradient(145deg,rgba(75,42,110,.2),rgba(0,0,0,.22)); }
+        .ai-usage-row { display:flex; justify-content:space-between; gap:10px; align-items:baseline; color:#cfc5df; font-size:11px; }
+        .ai-usage-row strong { color:var(--gold-glow); font-size:12px; }
+        .ai-meter-track { height:8px; margin:8px 0 7px; overflow:hidden; border-radius:999px; background:rgba(255,255,255,.07);
+                          box-shadow:inset 0 1px 4px rgba(0,0,0,.45); }
+        .ai-meter-fill { display:block; height:100%; width:0%; border-radius:inherit;
+                         background:linear-gradient(90deg,#6B3FA0,#A376B6,#E5C158); transition:width .7s cubic-bezier(.2,.8,.2,1);
+                         box-shadow:0 0 14px rgba(229,193,88,.28); }
+        .ai-credit-line { color:#8f84a7; font-size:10.5px; line-height:1.45; }
+        .ai-sidebar-scrim { display:none; position:fixed; inset:84px 0 0; z-index:1190; background:rgba(5,4,10,.62); backdrop-filter:blur(2px); }
+        .ai-chat-page .wrap { max-width:1120px; width:calc(100% - 322px); margin-left:306px; margin-right:auto; box-sizing:border-box; transition:width .28s,margin .28s; }
+        .ai-chat-page.ai-sidebar-collapsed .ai-sidebar { transform:translateX(-100%); }
+        .ai-chat-page.ai-sidebar-collapsed .wrap { width:min(1150px,calc(100% - 76px)); margin-left:64px; }
+        .ai-chat-page.ai-sidebar-collapsed .ai-sidebar-toggle { display:grid; }
+        .ai-chat-page:not(.ai-sidebar-collapsed) .ai-sidebar-toggle { display:none; }
+        .discover-head { overflow:hidden; }
+        .discover-title-row { display:flex; align-items:center; gap:12px; }
+        .discover-ai-mark { width:46px; height:46px; border-radius:15px; flex:none; filter:drop-shadow(0 0 12px rgba(229,193,88,.22)); }
+        .discover-title-copy h1 { margin:0 0 4px!important; }
+        .ai-session-strip { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin:12px 0 3px; }
+        .ai-session-chip { display:inline-flex; align-items:center; gap:7px; border:1px solid rgba(229,193,88,.22); border-radius:999px;
+                           padding:6px 10px; color:#bfb4d1; background:rgba(255,255,255,.025); font-size:10.5px; font-weight:800; }
+        .ai-session-dot { width:7px; height:7px; border-radius:50%; background:#7DE8A0; box-shadow:0 0 10px rgba(125,232,160,.7); animation:aiStatusPulse 2s ease-in-out infinite; }
+        @keyframes aiStatusPulse { 50% { opacity:.45; transform:scale(.78); } }
+        .ai-thinking { text-align:left!important; padding:20px!important; overflow:hidden; position:relative; }
+        .ai-thinking-head { display:flex; align-items:center; gap:12px; margin-bottom:13px; }
+        .ai-thinking-icon { width:38px; height:38px; border-radius:12px; }
+        .ai-thinking-copy #ai-thinking-label { margin:0!important; color:var(--gold)!important; font-size:16px!important; text-transform:none!important; }
+        .ai-thinking-copy p { margin:3px 0 0!important; color:#9d92b0!important; font-size:12px!important; }
+        .ai-workflow-track { height:9px; border-radius:999px; background:rgba(255,255,255,.06); overflow:hidden; }
+        .ai-workflow-fill { display:block; width:7%; height:100%; border-radius:inherit;
+                            background:linear-gradient(90deg,#6B3FA0,#A376B6,#E5C158,#A8F0FF); background-size:220% 100%;
+                            box-shadow:0 0 16px rgba(229,193,88,.28); transition:width .55s cubic-bezier(.2,.8,.2,1); animation:aiWorkflowGlow 2.4s linear infinite; }
+        .ai-workflow-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:10px; color:#756c88; font-size:9.5px; font-weight:800; letter-spacing:.4px; text-transform:uppercase; }
+        .ai-workflow-step.active { color:var(--gold-glow); }
+        @keyframes aiWorkflowGlow { to { background-position:220% 0; } }
+        @media (max-width:980px) {
+            .ai-sidebar { top:76px; transform:translateX(-100%); width:min(86vw,310px); }
+            .ai-chat-page .wrap,.ai-chat-page.ai-sidebar-collapsed .wrap { width:100%; max-width:1150px; margin-left:auto; margin-right:auto; }
+            .ai-chat-page.ai-sidebar-open .ai-sidebar { transform:translateX(0); }
+            .ai-chat-page.ai-sidebar-open .ai-sidebar-scrim { display:block; }
+            .ai-sidebar-toggle { top:84px; display:grid!important; }
+        }
+        @media (max-width:640px) {
+            .discover-title-row { align-items:flex-start; }
+            .discover-ai-mark { width:40px; height:40px; }
+            .ai-session-strip { gap:6px; }
+            .ai-session-chip { font-size:9.5px; }
+        }
+        @media (prefers-reduced-motion:reduce) {
+            .ai-session-dot,.ai-workflow-fill { animation:none; }
+            .ai-sidebar,.ai-chat-page .wrap,.ai-meter-fill { transition:none; }
+        }
+    </style>
+
+<link rel="stylesheet" href="/app-updates.css?v=188">
+<link rel="stylesheet" href="/app-install-state.css?v=187">
+
+<link rel="stylesheet" href="/themes.css?v=194">
+<link rel="stylesheet" href="/app-polish.css?v=187">
+<script src="/themes.js?v=187"></script>
+<link rel="stylesheet" href="/poster-wall.css?v=20260922-global1&ui=20261024-1"><script defer src="/poster-wall.js?v=20260922-global1&amp;posters=20261020-1&ui=20261024-1&amp;masthead=20261025-1&amp;rights=20261105-1"></script><link rel="stylesheet" href="/brand.css?v=20261018-nativeheader1&amp;frame=20261020-borderless1&amp;fastart=20261020-1">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"MatchApp Ai Concierge","applicationCategory":"MultimediaApplication","operatingSystem":"Any (web-based)","url":"https://matchapp.tv/discover.html","description":"Conversational AI that answers natural-language questions about what to watch or listen to, in 14 languages, with real streaming links.","featureList":["Multi-turn conversation with saved history","Voice input in 14 languages","Read-aloud answers","Real streaming links per title"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"MatchApp Ai","url":"https://matchapp.tv/","logo":{"@type":"ImageObject","url":"https://matchapp.tv/assets/brand/matchapp-icon-512.png","width":512,"height":512}}}</script>
+
+<link rel="stylesheet" href="/matchapp-ia.css?v=20260924-ads1&amp;sound=20261001-modern1" data-matchapp-ia="1">
+<script defer src="/matchapp-ia.js?v=20260926-brandai1&amp;brand=20261001-canonicalai1&amp;composer=20260929-1&amp;sound=20261001-modern1&amp;fastlang=20261014-2&amp;approvedlogo=20261014&amp;accountphoto=20261020-1&amp;androidqa=20261021-1&amp;guestcountry=20261027-1&amp;locale71=1" data-matchapp-ia="1"></script>
+    <link rel="stylesheet" href="/page-shell.css?v=20260926-ai-energy2" data-page-shell="1">
+    <link rel="stylesheet" href="/ui-containment.css?v=20260921-ui1" data-ui-containment="1">
+    <link rel="stylesheet" href="/daily-checkin.css?v=20260921-checkin2" data-daily-checkin="1">
+<link rel="stylesheet" href="/trust-notice.css?v=20260922-trust1">
+    <link rel="stylesheet" href="/frontend-polish.css?v=20260924-ui2">
+<link rel="stylesheet" href="/ebooks/ebook-matcher.css?v=20260926-publishericon2">
+<link rel="stylesheet" href="/guest-share-rewards.css?v=20260926-selectedposter1">
+<link rel="stylesheet" href="/ai-composer.css?v=20261002-premium-coherence1">
+<link rel="stylesheet" href="/mobile-compact.css?v=20260929-compact3">
+<link rel="stylesheet" href="/discover-compact.css?v=20261001-sidebar1">
+<script defer src="/discover-sidebar-layout.js?v=20261001-sidebar1"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script defer src="/locale-results.js?v=20260929-language1&amp;language=20260930-fix2&amp;sbt=20261004-1&amp;criteria=20261026-2&amp;sourcewire=20261026-1&amp;locale71=1"></script>
+<script defer src="/ai-composer.js?v=20260929-5&amp;language=20260930-fix2&amp;fastlang=20261014-2&amp;brandlocale=20261020-1&amp;locale71=1"></script>
+<link rel="stylesheet" href="/music-video-releases.css?v=20261021-meta-wrap1">
+<script defer src="/music-video-releases.js?v=20261003-meta1&amp;spokenlang=20261102-1&amp;locale71=1"></script>
+<link rel="stylesheet" href="/title-identity.css?v=20260930-1">
+<script defer src="/title-identity.js?v=20260930-1&amp;locale71=1"></script>
+<link rel="stylesheet" href="/ui-harmony.css?v=20261003-1">
+<link rel="stylesheet" href="/jonas/discover-mobile-repair-20261010.css?v=3">
+<link rel="stylesheet" href="/jonas/discover-editorial-20261010.css?v=20261010-b2">
+<link rel="stylesheet" href="/jonas/discovery-avatar-stage-20261010.css?v=20261010-life1">
+<link rel="stylesheet" href="/premium-unified-20261010.css?v=20261010-luxe1">
+<link rel="stylesheet" href="/jonas/discover-composer-final-20261010.css?v=20261010-v4">
+<link rel="stylesheet" href="/premium-finish-20261011.css?v=20261011-grid3&amp;reliability=20261018-1">
+<link rel="stylesheet" href="/jonas/chat-workspace-20261011.css?v=20261028-reply1">
+<link rel="stylesheet" href="/jonas/premium-chat-finish-20261011.css?v=20261011-deviceqa6">
+<link rel="stylesheet" href="/jonas/composer-quota-row-20261011.css?v=20261011-quota3">
+<link rel="stylesheet" href="/jonas/settings-header-touch-target-20261011.css?v=20261011-touch1">
+<link rel="stylesheet" href="/jonas/android-premium-composer-20261012.css?v=20261012-premium1">
+<script defer src="/jonas/chat-workspace-20261011.js?v=20261012-ambient-recovery1&amp;viewport=20261028-1"></script>
+<link rel="stylesheet" href="/cinematic-header.css?v=cinematic-homeparity1">
+<script defer src="/patches/jonas-adult-page.js?v=header20261018-1&amp;resize=20261022-1&amp;corner=20261020-1&amp;stellar=20261020-1&amp;headerface=20261020-1&amp;ui=20261024-1&amp;repair=20261023-1&amp;masthead=20261025-1&amp;refined=20261025-4&amp;account=20261101-2&amp;subtle=20261101-4"></script>
+<script defer src="/patches/immersive-feedback-20261014.js?v=immersive1&amp;dock=20261020-1&amp;cinemasound=20261020-1&amp;assetrev=b063a22f1273"></script>
+<link rel="stylesheet" href="/patches/ask-language-label-fit-20261015.css?v=1&amp;control=20261023-1">
+<link rel="stylesheet" href="/match-tokens.css?v=20261017-3&amp;legacyrewards=20261101-1">
+<link rel="stylesheet" href="/pro-plan.css?v=20261017-3">
+
+<link rel="stylesheet" href="/patches/reference-system.css?v=20261020-review1&amp;premium=20261020-2&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1&amp;footer=20261020-1&amp;androidqa=20261021-1&amp;masthead=20261025-1">
+<link rel="stylesheet" href="/patches/reference-pages.css?v=20261020-review1&amp;premium=20261020-2&amp;androidqa=20261021-1">
+<script defer src="/patches/reference-system.js?v=20261020-review1&amp;dialogs=20261020-1&amp;pills=20261020-1&amp;headernav=20261020-1&amp;polish=20261020-ui1&amp;launcher=20261020-1&amp;androidqa=20261021-1&amp;masthead=20261025-1&amp;perf=20261027-1&amp;locale71=1"></script>
+<link rel="stylesheet" href="/navigation-escape-20261026.css?v=20261026-1">
+<script defer src="/navigation-escape-20261026.js?v=20261026-1&amp;locale71=1"></script>
+<script defer src="/channels/labels.js?v=2&amp;assetrev=183e587d4ea9"></script>
+<script defer src="/channels/discovery.js?v=3&amp;assetrev=e06e462e4371"></script>
+</head>
+<body class="ai-chat-page">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7J3NNBN"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="luxury-bg"></div>
+    <div class="ma-trust" data-ma-trust role="note" aria-label="Improvement notice"><span class="ma-trust-dot" aria-hidden="true"></span><span class="ma-trust-text">MatchApp is improving its design and experience every day — you may still spot the occasional error.</span></div>
+
+    <header class="app-header">
+        <a href="/" class="header-brand-area matchapp-brand-link" aria-label="MatchApp Ai">
+            <img width="60" height="60" src="/logo.jpeg?v=2" alt="MatchApp Logo" class="brand-logo">
+            <span class="app-title-main"><img class="matchapp-wordmark ma-playai-mark" src="/assets/brand/matchapp-ai-mark.svg?v=20261022-vector1" alt="" width="48" height="48" decoding="async" style="width:48px;height:48px;object-fit:contain;border:0;border-radius:0;box-shadow:none;background:transparent;vertical-align:middle"><span class="ma-playai-wordmark" translate="no" style="display:inline-block;vertical-align:middle;margin-left:12px;font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(22px,4.6vw,30px);letter-spacing:.04em;line-height:1;white-space:nowrap;color:#E6C36A;text-shadow:0 1px 12px rgba(230,195,106,.28)">MatchApp <span style="color:#f8f1e0">Ai</span></span></span>
+        </a>
+        <nav aria-label="Jonas conversation navigation" class="jonas-top-actions">
+            <button type="button" class="jonas-top-new" id="jonas-header-new-chat" onclick="startNewChat()" aria-label="New chat">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span data-jonas-head="new">New chat</span>
+            </button>
+            <button type="button" class="jonas-top-history" onclick="toggleAiSidebar(true)" aria-label="Conversation history">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.5-6.3M3 4v5h5"/><path d="M12 7v5l3 2"/></svg><span data-jonas-head="history">History</span>
+            </button>
+            <div id="lang-switcher-host"></div>
+        </nav>
+    </header>
+    <nav class="ma-page-escapes" aria-label="Page navigation"><button class="ma-escape-pill" type="button" onclick="window.matchappSafeBack ? window.matchappSafeBack() : (location.href='/')" aria-label="Go back" data-ma-nav-back>Back</button><a class="ma-escape-pill" href="/" aria-label="Go to Home" data-ma-nav-home>Home</a></nav>
+    <button id="ai-sidebar-toggle" class="ai-sidebar-toggle" type="button" hidden aria-hidden="true" tabindex="-1" style="display:none!important" onclick="toggleAiSidebar()" aria-label="Open conversation history" title="Conversation history">☰</button>
+    <aside id="ai-sidebar" class="ai-sidebar" aria-label="AI conversation history">
+        <div class="ai-sidebar-head">
+            <img class="ai-sidebar-logo" src="/assets/brand/matchapp-ai-orbit-fullbleed.svg?v=1" alt="" width="38" height="38">
+            <div class="ai-sidebar-brand"><strong>MatchApp Ai</strong><span>Your entertainment conversation</span></div>
+            <button class="ai-sidebar-fold" type="button" onclick="toggleAiSidebar()" aria-label="Fold conversation history" title="Fold">‹</button>
+        </div>
+        <button id="ai-new-chat" class="ai-new-chat" type="button" onclick="startNewChat()"><span aria-hidden="true">＋</span><span>New chat</span></button>
+        <div class="ai-sidebar-section-title">Recent conversations</div>
+        <div class="ai-history-scroll"><div id="chat-history-list"></div></div>
+        <div class="ai-usage-card" aria-live="polite">
+            <div class="ai-usage-row"><span>AI allowance</span><strong id="ai-usage-value">Checking…</strong></div>
+            <div class="ai-meter-track"><span id="ai-usage-fill" class="ai-meter-fill"></span></div>
+            <div id="ai-credit-line" class="ai-credit-line">Loading your available AI credits…</div>
+        </div>
+    </aside>
+    <div class="ai-sidebar-scrim" onclick="toggleAiSidebar(false)" aria-hidden="true"></div>
+
+    <main class="wrap">
+        <section class="premium-card discover-head">
+            <div class="discover-title-row">
+                <img class="discover-ai-mark" src="/assets/brand/matchapp-ai-orbit-fullbleed.svg?v=1" alt="" width="46" height="46">
+                <div class="discover-title-copy">
+                    <h1 data-i18n="discover.title">Ask MatchApp Ai</h1>
+                    <p class="concierge-tagline" data-i18n="discover.conciergeTagline">Your personal AI Concierge for entertainment — ask a question by typing or speaking, in any language.</p>
+                </div>
+            </div>
+            <div class="ai-session-strip">
+                <span class="ai-session-chip"><span class="ai-session-dot" aria-hidden="true"></span>Conversational AI online</span>
+                <span class="ai-session-chip">Context-aware follow-ups</span>
+                <span class="ai-session-chip">14 languages</span>
+            </div>
+            <span id="discover-offline-badge" class="offline-badge" style="display:none;" data-i18n="dc.offline">📡 Offline mode — catalog results</span>
+
+            <!-- Multi-turn conversation. Each exchange appends here so a user
+                 can keep asking follow-ups in the same thread. -->
+            <div id="chat-log" class="chat-log"></div>
+
+            <button type="button" class="ma-ask-again" onclick="startNewChat()">Ask another question</button>
+            <div class="newsearch-row">
+                <div class="composer">
+                    <label class="composer-input-label" for="discover-new-input">Type your question here</label>
+                    <textarea id="discover-new-input" rows="1"
+                              placeholder="Ask anything — e.g. Is there a series about Doctors Without Borders?"
+                              data-i18n-placeholder="discover.placeholder"
+                              aria-label="Ask the AI Concierge" aria-describedby="discover-compose-help" autocomplete="off" spellcheck="true"></textarea>
+                    <button id="mic-btn-discover" class="mic-btn" type="button" aria-label="Speak your question" title="Speak your question"><svg viewBox="0 0 48 48" width="30" height="30" aria-hidden="true" focusable="false">
+                            <path d="M8,20 Q4,24 8,28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity="0.55"/>
+                            <path d="M3,17 Q-3,24 3,31" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity="0.3"/>
+                            <path d="M40,20 Q44,24 40,28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity="0.55"/>
+                            <path d="M45,17 Q51,24 45,31" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity="0.3"/>
+                            <rect x="18" y="6" width="12" height="21" rx="6" fill="currentColor"/>
+                            <path d="M13,21 a11,11 0 0 0 22,0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                            <line x1="24" y1="32" x2="24" y2="38" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                            <line x1="17" y1="38" x2="31" y2="38" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                        </svg></button>
+                    <button onclick="newDiscoverSearch()" type="button" class="gold-btn composer-send" aria-label="Send your question" title="Send to Jonas">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m5 12 14 0m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span class="composer-send-label" data-i18n="discover.ask">Ask AI</span>
+                    </button>
+                </div>
+                <div id="discover-compose-help" class="composer-hint" aria-live="polite">Type your question or tap the microphone. Ask AI can read its answer aloud in your selected language.</div>
+            </div>
+        </section><div id="discover-loading" role="status" aria-live="polite" class="premium-card ai-thinking" style="display:none;">
+            <div class="ai-thinking-head">
+                <img class="ai-thinking-icon" src="/assets/brand/matchapp-ai-orbit-fullbleed.svg?v=1" alt="" width="38" height="38">
+                <div class="ai-thinking-copy">
+                    <strong id="ai-thinking-label">Understanding your request…</strong>
+                    <p>MatchApp Ai is building your answer and checking entertainment sources.</p>
+                </div>
+            </div>
+            <div class="ai-workflow-track"><span id="ai-workflow-fill" class="ai-workflow-fill"></span></div>
+            <div class="ai-workflow-steps">
+                <span id="ai-step-understand" class="ai-workflow-step active">Understand</span>
+                <span id="ai-step-match" class="ai-workflow-step">Match</span>
+                <span id="ai-step-answer" class="ai-workflow-step">Answer</span>
+            </div>
+        </div>
+
+        <div id="discover-empty" class="premium-card" style="display:none;">
+            <div style="font-size:52px; margin-bottom:14px;">💬</div>
+            <h2 style="color:var(--gold); margin:0 0 10px 0; font-size:1.17em;" data-i18n="chat.startTitle">Ask me anything about what to watch</h2>
+            <p data-i18n-html="chat.startBody">Try <em data-i18n="dc.ex1">"what should I watch after Breaking Bad?"</em>, <em data-i18n="dc.ex2">"a feel-good movie for a rainy Sunday"</em>, or <em data-i18n="dc.ex3">"documentaries about Antarctic expeditions"</em>. Keep the conversation going with follow-up questions — I'll remember what we've talked about.</p>
+        </div>
+
+<p style="text-align:center; color:#8f85a8; font-size:12.5px; margin:24px 0 4px 0;"><span data-i18n="support.ideas">💌 Got an idea for MatchApp? We read every email —</span> <a href="mailto:support@matchapp.tv" style="color:var(--gold); text-decoration:none; font-weight:bold;">support@matchapp.tv</a> <span style="color:#6f6880;">·</span> <a href="https://wa.me/5521988214594" target="_blank" rel="noopener noreferrer" style="color:#25D366; text-decoration:none; font-weight:bold;">WhatsApp</a></p>
+    </main>
+
+    <section class="ma-discover-editorial" aria-labelledby="ma-discover-how-to">
+      <span class="editorial-eyebrow" data-i18n="dc.guide.eyebrow">Practical entertainment discovery</span>
+      <h2 id="ma-discover-how-to" data-i18n="dc.guide.title">How to ask for a recommendation you can actually use</h2>
+      <p><span data-i18n="dc.guide.introStart">A recommendation is more helpful when it answers both </span><strong data-i18n="dc.guide.introTaste">what fits your taste</strong><span data-i18n="dc.guide.introAnd"> and </span><strong data-i18n="dc.guide.introWhere">where you can find it</strong><span data-i18n="dc.guide.introEnd">. MatchApp Ai combines your question with entertainment metadata and the available viewing or reading sources. You can refine the result in the same conversation. Start with your country, the type of title you want and any subscriptions you already have. This avoids suggestions that sound relevant but cannot easily be watched where you live.</span></p>
+      <div class="editorial-columns">
+        <div>
+          <h3 data-i18n="dc.guide.contextTitle">1. Give the AI enough context</h3>
+          <p data-i18n="dc.guide.contextBody">Instead of asking for a good film, describe how you want to feel, your preferred language and your time limit. For a family viewing night, mention the viewers' ages and whether subtitles are acceptable. If you dislike a particular genre or want to avoid a subject, say that explicitly. A useful question is specific enough to narrow the choice but still leaves room for discovery.</p>
+          <p class="editorial-example" data-i18n="dc.guide.contextExample">“I'm in Brazil with Netflix and Prime Video. Recommend a suspenseful documentary series with episodes under an hour. Nothing about serial killers, please.”</p>
+        </div>
+        <div>
+          <h3 data-i18n="dc.guide.versionTitle">2. Check the specific version</h3>
+          <p data-i18n="dc.guide.versionBody">A film may have a theatrical cut and an extended edition. A series can share its name with an unrelated remake. A book may have an audiobook, e-book or print edition with different regional sellers. Confirm the original title, release year, author or cast before choosing a provider. For audiobooks, a search link is not confirmation that a narrated edition exists.</p>
+          <p class="editorial-example" data-i18n="dc.guide.versionExample">“Do you mean the original series or the remake? Give me the original title and release year before showing a viewing link.”</p>
+        </div>
+        <div>
+          <h3 data-i18n="dc.guide.linksTitle">3. Treat viewing links as a starting point</h3>
+          <p data-i18n="dc.guide.linksBody">Streaming rights, catalogues, languages and subscription tiers change. A title may be included with a service in one country and offered as a rental in another. Check the actual provider page before paying, subscribing or planning a viewing session. If the app cannot establish a reliable viewing destination, ask for alternative distributors or search again with a different platform.</p>
+          <p class="editorial-example" data-i18n="dc.guide.linksExample">“Only include options available in Portugal. Tell me whether each is included with a subscription, rented separately or not yet verified.”</p>
+        </div>
+        <div>
+          <h3 data-i18n="dc.guide.refineTitle">4. Keep refining in the conversation</h3>
+          <p data-i18n="dc.guide.refineBody">Tell Jonas which recommendation you have already seen or disliked, and why. You can ask for a lighter tone, a shorter runtime, original-language audio, less violence or a different country of origin. Refinements work better than repeating the same broad query. When the catalogue does not produce a confident answer, a clear limitation is better than an invented title or a misleading source.</p>
+          <p class="editorial-example" data-i18n="dc.guide.refineExample">“I have seen that one. Find a more recent Brazilian film with a similar atmosphere, but avoid horror.”</p>
+        </div>
+      </div>
+      <h3 data-i18n="dc.guide.sourcesTitle">How MatchApp Ai handles sources and AI limitations</h3>
+      <p data-i18n="dc.guide.sourcesBody">MatchApp Ai is an entertainment-discovery tool, not a streaming provider, publisher or ticket seller. AI-generated descriptions can contain mistakes or lack current provider data. Poster artwork, ratings and catalogue entries come from their respective owners and data sources; their presence does not prove that a title is playable through a particular subscription. News and chart information should be checked against the cited publisher, and user reviews should not be confused with independently verified ratings.</p>
+      <p><span data-i18n="dc.guide.moreStart">For browsing without a conversation, start with our </span><a href="/guides/worldwide-entertainment-discovery/" data-i18n="dc.guide.moreWorldwide">worldwide entertainment guide</a><span data-i18n="dc.guide.moreOr"> or </span><a href="/guides/what-to-watch-september-2026/" data-i18n="dc.guide.moreEditorial">editorial viewing guide</a><span data-i18n="dc.guide.moreReport">. If a title, description or provider link looks wrong, </span><a href="/contact.html" data-i18n="dc.guide.moreContact">contact MatchApp Ai</a><span data-i18n="dc.guide.moreExplain"> so we can investigate. For details about the product and its purpose, read </span><a href="/about.html" data-i18n="dc.guide.moreAbout">About MatchApp Ai</a><span data-i18n="dc.guide.moreEnd">.</span></p>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.js"></script>
+    <script src="/settings.js?v=20260926-guarantee-outage1&amp;matching=20260928-session1&amp;posters=20261020-1&amp;dialogs=20261020-1&amp;accountphoto=20261020-1&amp;brandlocale=20261020-1&amp;androidqa=20261021-1&amp;criteria=20261026-2&amp;perf=20261027-1&amp;errors=20261027-2&amp;locale71=1"></script>
+    <script src="/guest-reservations.js?v=20261019-1"></script><script src="/matching-policy.js?v=20260926-conflicts2&amp;reliability=20261019-2&amp;lifetime=20261019-1"></script>
+    <script src="/match-localization.js?v=20260925-matchrestore2&amp;language=20260930-fix2&amp;locale71=1"></script>
+<script src="/match-ai-rank.js?v=20260927-ranked1-mobilefresh1"></script>
+<script src="/topic-focus.js?v=20260928-1"></script>
+<script src="/match-tokens.js?v=20261019-refresh1&amp;legacyrewards=20261101-1&amp;locale71=1"></script>
+<script src="/viewer-country.js?v=20261018-1&amp;guestcountry=20261027-1&amp;locale71=1"></script>
+<script src="/app.js?v=20260926-catalogscale1&amp;auth=20260926-emailsingle1&amp;welcome=20260926-welcome1&amp;login=20260926-loginfix1&amp;trial=20260926-guesttrial1&amp;openai=20260927-criteria1&amp;global=20260927-ranked1&amp;mobilefresh=20260927-1&amp;providerfix=20260927-1&amp;poster=20260927-mobile1&amp;matching=20260928-session1&amp;topic=20260928-1&amp;formatfix=20260929-1&amp;fallbackfix=20260929-1&amp;recovery=20260929-2&amp;desktop=20260929-details1&amp;series=20260929-horrortv2&amp;language=20260930-fix2&amp;coverreuse=20261001-1&amp;sound=20261001-modern1&amp;spotlightfix=20261002-1&amp;sbt=20261004-1&amp;androidauth=20261010-v49&amp;audio=20261014-1&amp;tokens=20261017-1&amp;regional=20261016-1&amp;reliability=20261018-1&amp;lifetime=20261019-1&amp;art=20261020-source1&amp;dialogs=20261020-1&amp;accountphoto=20261020-1&amp;polish=20261020-ui1&amp;androidqa=20261021-1&amp;readiness=20261022-1&amp;repair=20261023-1&amp;delivery=20261023-2&amp;sourcewire=20261026-1&amp;errors=20261027-2&amp;guestcountry=20261027-1&amp;authsession=20261101-1&amp;locale71=1"></script>
+<script src="/guest-share-rewards.js?v=20260926-selectedposter1&amp;tokens=20261017-1"></script>
+<script src="/verified-public-guest-share.js?v=20261002-shareposter-recovery1&amp;tokens=20261017-1"></script>
+<script src="/catalog-plus.js?v=20260919-catalog3&amp;sbt=20261004-1&amp;shelves=20261104"></script>
+    <script src="/catalog-media.js?v=20260927-posterrecovery2&amp;sbt=20261004-1&amp;reliability=20261018-1&amp;posters=20261020-1&amp;fastart=20261020-1&amp;androidqa=20261021-1&amp;cinemalocation=20261022-1&amp;repair=20261023-1&amp;delivery=20261023-2&amp;guestcountry=20261027-1&amp;locale71=1"></script>
+    <script src="/install-progress.js?v=20260930-install-recovery1"></script>
+    <script src="/content-safety.js?v=20260925-xxx2"></script>
+    <script src="/ebooks/locale.js?v=20261020-books14-1&amp;locale71=1"></script>
+<script src="/ebooks/locale-choices.js?v=20261020-books14-1&amp;locale71=1"></script>
+<script src="/ebooks/locale-interface.js?v=20261020-books14-1&amp;locale71=1"></script>
+<script src="/ebooks/locale-details.js?v=20261020-books14-1&amp;guestcountry=20261027-1&amp;locale71=1"></script>
+<script src="/ebooks/catalog.js?v=20260926-catalogscale1&amp;shelves=20261104"></script>
+    <script src="/ebooks/magazines.js?v=20260926-publishericon2&amp;publishericon=20261019-1&amp;shelves=20261104"></script>
+    <script src="/ebooks/affiliate-links.js?v=20260925-amzmag1&locale=20261020-books14-1&amp;retail=2"></script>
+    <script src="/ebooks/audiobooks.js?v=20260926-catalogscale1&amp;reliability=20261018-1&amp;locale=20261020-books14-1"></script>
+    <script src="/ebooks/reading-ai.js?v=20260926-publishericon2&amp;language=20260930-fix2&amp;reliability=20261018-1&amp;lifetime=20261019-1&amp;art=20261020-source1&amp;locale=20261020-books14-1&amp;ebookart=20261020-renditions1&amp;fastart=20261020-1&amp;audiocover=20261022-1&amp;guestcountry=20261027-1&amp;shelves=20261104&amp;locale71=1"></script>
+    <script src="/cooking/catalog.js?v=20260929-1&intent=20261020-1"></script>
+    <script src="/jonas/male-voice-policy-20261010.js"></script>
+    <script src="/jonas/locales-20261009-v2.js?v=20261014-fastlang1&amp;locale71=1"></script>
+    <script src="/jonas/secure-speech-20261010.js?v=20261011-final3&amp;fastlang=20261014-1&amp;voicepair=20261014-1&amp;instant=20261015-1&amp;elevenfallback=20261017-1&amp;locale71=1"></script>
+    <script src="/jonas/title-card-presentation-20261011.js?v=20261019-localized2&amp;locale71=1"></script>
+    <script src="/jonas/verified-documentary-series-20261011.js?v=20261011-doc1&amp;reliability=20261018-1"></script>
+<script src="/jonas/narrated-transcript-20261011.js?v=20261028-reply1&amp;locale71=1"></script>
+<script src="/patches/landing-match-intent.js?v=20261020-1&amp;locale71=1"></script>
+<script type="module" src="/jonas/message-language.mjs?v=1&amp;locale71=1"></script>
+<script src="/discover.js?v=20260925-intent1&amp;cooking=20260929-1&amp;guest=20260926-guesttrial1&amp;offline=20260926-sourcematch1&amp;mobilefresh=20260927-1&amp;askbtn=20260927-1&amp;recovery=20260929-2&amp;posters=20260929-chat1&amp;composer=20260929-abovecards1&amp;music=20260930-recovery3&amp;language=20260930-fix2&amp;brand=20261001-canonicalai1&amp;sbt=20261004-1&amp;jonas=voice20261010&amp;jonas=voiceanswers20261010&amp;visual=20261011-a1&amp;chatfix=20261011-convo1&amp;viewport=20261011-2&amp;speech=20261011-final3&amp;quota=20261011-row2&amp;ambient=20261012-answer-recovery1&amp;latency=20261012-source-first1&amp;fastlang=20261014-2&amp;voicepair=20261014-1&amp;reliability=20261018-1&amp;recoverylang=20261019-1&amp;locale=20261020-books14-1&amp;factual=20261020-negation1&amp;landing=20261020-1&amp;androidqa=20261021-1&amp;repair=20261023-1&amp;followups=20261028-1&amp;replyview=20261028-1&amp;draft=20261030-2&amp;replyvalid=20261101-1&amp;spokenlang=20261102-1&amp;channels=2&amp;locale71=1&amp;quotacopy=20261104-1"></script>
+    <script src="/jonas/discovery-speech-lock-20261010.js"></script>
+    <script src="/title-experience.js?v=20260918-notify2&amp;music=20260930-1"></script>
+    <script src="/voice-input.js?v=20261005-voiceorigin1&amp;fastlang=20261014-1&amp;androidqa=20261021-1&amp;locale71=1"></script>
+    <script src="/jonas/discovery-avatar-stage-20261010.js?v=20261011-final3&amp;fastlang=20261014-1&amp;repair=20261023-1&amp;spokenlang=20261102-1&amp;locale71=1"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initVoiceInput('discover-new-input', 'mic-btn-discover', () => window.newDiscoverSearch());
+        });
+    </script>
+    <script src="/tv.js?v=187"></script>
+    <script src="/tmdb.js?v=20261001-verifiedalias1&amp;language=20260930-fix2&amp;reliability=20261018-1&amp;sourcewire=20261026-1&amp;locale71=1"></script>
+<script src="/app-updates.js?v=20260927-mobilefresh1&amp;installfix=20260930-1&amp;androidqa=20261021-1&amp;locale71=1"></script>
+<script src="/title-captions.js?v=190&amp;posters=20261020-1&amp;accountphoto=20261020-1&amp;registry=20261026-1&amp;locale71=1"></script><script defer src="/page-shell.js?v=20261011-brandlock1&amp;approvedlogo=20261014" data-page-shell="1"></script>
+<script defer src="/daily-checkin.js?v=20260927-bubble1&amp;coach=20261024-1&amp;approvedlogo=20261014" data-daily-checkin="1"></script>
+<script defer src="/trust-notice.js?v=20260922-trust1&amp;locale71=1"></script>
+<script defer src="/jonas/discover-layout-runtime-20261010.js?locale71=1"></script>
+<script defer src="/brand-lock-20261011.js?v=20261011-a1"></script>
+<script defer src="/patches/donate-shortcut.js?v=20261031-growth1&amp;locale71=1"></script>
+</body>
+</html>

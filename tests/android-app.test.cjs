@@ -18,7 +18,7 @@ test('main Android launcher uses official icon and consent-safe production nativ
  assert.match(debugManifest,/ca-app-pub-3940256099942544~3347511713/);assert.match(debugManifest,/tools:replace="android:value"/);assert.match(gradle,/play-services-ads:25\.5\.0/);assert.match(gradle,/user-messaging-platform:4\.0\.0/);
  assert.match(gradle,/ADMOB_ENABLED", "true"/);assert.match(gradle,/ca-app-pub-9541435081010948\/4843348278/);assert.match(gradle,/ca-app-pub-3940256099942544\/9214589741/);
  assert.equal(appAds.trim(),'google.com, pub-9541435081010948, DIRECT, f08c47fec0942fa0');
- for(const marker of ['requestConsentInfoUpdate','loadAndShowConsentFormIfRequired','canRequestAds','showPrivacyOptionsForm','MobileAds.initialize','getCurrentOrientationAnchoredAdaptiveBannerAdSize','fun setAdFree(adFree: Boolean)'])assert.match(admob,new RegExp(marker.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));
+ for(const marker of ['requestConsentInfoUpdate','loadAndShowConsentFormIfRequired','canRequestAds','showPrivacyOptionsForm','MobileAds.initialize','getLargeAnchoredAdaptiveBannerAdSize','fun setAdFree(adFree: Boolean)'])assert.match(admob,new RegExp(marker.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));
  for(const marker of ['setAdFree(adFree: Boolean)','syncNativeAdEntitlement','is_vip,is_business,is_ad_free'])assert.match(main,new RegExp(marker.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));
  assert.match(launcher,/@drawable\/matchapp_launcher_safe/);
  const safe=read('android-studio/app/src/main/res/drawable/matchapp_launcher_safe.xml');

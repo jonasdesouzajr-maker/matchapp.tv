@@ -108,7 +108,10 @@ function cinemaAssets(html, relativePath) {
       const edit=edits[edits.length-1];
       if(html.slice(0,edit[0]).endsWith(eol))edit[0]-=eol.length;
     }
-    insert(head.startTag.endOffset,eol+'<style data-cinema-layer>@layer ma-reference;</style>');
+    // Native chat uses an earlier layer so its scoped important rules win.
+    // Keep that order when editorial builds normalize the shared chat page.
+    const layers=rel==='discover.html'?'ma-native-chat,ma-reference':'ma-reference';
+    insert(head.startTag.endOffset,eol+'<style data-cinema-layer>@layer '+layers+';</style>');
 
     const names=(doc.documentElement.getAttribute('class')||'').split(/\s+/).filter(Boolean),classes=names.filter((name,index)=>name!=='ma-reference'||names.indexOf(name)===index);
     if(!classes.includes('ma-reference'))classes.push('ma-reference');

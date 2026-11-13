@@ -1154,10 +1154,15 @@ class MainActivity : AppCompatActivity() {
             "/jonas/narrated-transcript-20261011.js" -> "jonas/narrated-transcript-20261011.js"
             "/voice-input.js" -> "voice-input.js"
             "/discover.js" -> "discover.js"
+            "/discover.html" -> "discover.html"
             else -> return null
         }
         return runCatching {
-            val mime = if (relative.endsWith(".css")) "text/css" else "application/javascript"
+            val mime = when {
+                relative.endsWith(".css") -> "text/css"
+                relative.endsWith(".html") -> "text/html"
+                else -> "application/javascript"
+            }
             WebResourceResponse(mime, "UTF-8", assets.open("ambient-preview/$relative")).apply {
                 responseHeaders = mapOf("Cache-Control" to "no-store",
                     "Access-Control-Allow-Origin" to "https://matchapp.tv")
@@ -1962,8 +1967,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=72"
-        const val APP_UA = "MatchAppTVAndroid/1.1.73 MatchAppAiAndroid/1.1.73 MatchAppLaunchIntro/1"
+        const val HOME = "https://matchapp.tv/?utm_source=android_app&appBuild=74"
+        const val APP_UA = "MatchAppTVAndroid/1.1.74 MatchAppAiAndroid/1.1.74 MatchAppLaunchIntro/1"
         private const val STARTUP_PREFS = "matchapp_startup"
         private const val PREF_INTRO_SEEN = "intro_seen_v1"
         private const val PREF_INTRO_VERSION = "intro_consumed_package_version_v2"

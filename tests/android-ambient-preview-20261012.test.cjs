@@ -2,7 +2,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..');
 const app=path.join(root,'android-studio','app'),native=fs.readFileSync(path.join(app,'src','main','java','com','jonas','papercup','MainActivity.kt'),'utf8');
-const filenames=['jonas/android-ambient-assistant-20261011.js','jonas/android-ambient-assistant-20261011.css','jonas/android-ambient-embed-20261011.css','jonas/narrated-transcript-20261011.js','discover.js','voice-input.js'];
+const filenames=['discover.html','jonas/android-ambient-assistant-20261011.js','jonas/android-ambient-assistant-20261011.css','jonas/android-ambient-embed-20261011.css','jonas/narrated-transcript-20261011.js','discover.js','voice-input.js'];
 test('debug preview bundles the exact validated web assets, and release contains none',()=>{
  for(const name of filenames){
   const source=fs.readFileSync(path.join(root,name)),preview=fs.readFileSync(path.join(app,'src','debug','assets','ambient-preview',name));

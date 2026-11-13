@@ -60,6 +60,51 @@
     zh:{sub:'无需离开当前页面，即可快速进入专注的 Match 体验。',cta:'寻找想看的内容',modal:'你的 Match'}
   };
   function overlayCopy(){const l=lang();return matchOverlayCopy[l]||matchOverlayCopy[l.split('-')[0]]||matchOverlayCopy.en}
+  const studioCopy={
+    en:['More from ADV_DEV_OPS','Coming soon to Google Play','Explore our games'],
+    pt:['Mais de ADV_DEV_OPS','Em breve no Google Play','Conheça nossos jogos'],
+    es:['Más de ADV_DEV_OPS','Próximamente en Google Play','Descubre nuestros juegos'],
+    fr:['Aussi par ADV_DEV_OPS','Bientôt sur Google Play','Découvrez nos jeux'],
+    de:['Mehr von ADV_DEV_OPS','Demnächst bei Google Play','Entdecke unsere Spiele'],
+    it:['Altro da ADV_DEV_OPS','Presto su Google Play','Scopri i nostri giochi'],
+    tr:['ADV_DEV_OPS oyunları','Yakında Google Play’de','Oyunlarımızı keşfet'],
+    ru:['Ещё от ADV_DEV_OPS','Скоро в Google Play','Откройте наши игры'],
+    ar:['المزيد من ADV_DEV_OPS','قريبًا على Google Play','اكتشف ألعابنا'],
+    hi:['ADV_DEV_OPS की और पेशकश','जल्द Google Play पर','हमारे गेम खोजें'],
+    id:['Lainnya dari ADV_DEV_OPS','Segera di Google Play','Jelajahi game kami'],
+    ja:['ADV_DEV_OPS のゲーム','Google Play で近日公開','ゲームをチェック'],
+    ko:['ADV_DEV_OPS의 다른 앱','Google Play에서 곧 출시','게임 살펴보기'],
+    zh:['ADV_DEV_OPS 的更多作品','即将登陆 Google Play','探索我们的游戏'],
+    'zh-tw':['ADV_DEV_OPS 的更多作品','即將登陸 Google Play','探索我們的遊戲']
+  };
+  function mountStudioGames(){
+    if(!document.body.classList.contains('page-home'))return;
+    const footer=qs('.seo-footer');if(!footer)return;
+    const c=studioCopy[lang()]||studioCopy[lang().split('-')[0]]||studioCopy.en;
+    let section=qs('#ma-android-studio-games');
+    if(!section){
+      section=document.createElement('section');section.id='ma-android-studio-games';
+      section.setAttribute('aria-labelledby','ma-studio-title');
+      section.innerHTML='<h2 id="ma-studio-title"></h2><div class="ma-studio-grid"><a href="/founder/#lumina-title"><img src="/reelforge/email/lumina_icon.jpg" alt="" width="64" height="64" loading="lazy" decoding="async"><span><strong translate="no">Lumina Match</strong><small></small></span></a><a href="/founder/#reelforge-title"><img src="/reelforge/email/reelforge_icon.jpg" alt="" width="64" height="64" loading="lazy" decoding="async"><span><strong translate="no">ReelForge: Cinema Clash</strong><small></small></span></a></div><a class="ma-studio-more" href="/founder/"></a>';
+      footer.before(section);
+    }
+    const put=(node,value)=>{if(node.textContent!==value)node.textContent=value};
+    put(qs('h2',section),c[0]);qsa('small',section).forEach(node=>put(node,c[1]));put(qs('.ma-studio-more',section),c[2]);
+  }
+  function dockNativeNotifications(){
+    const panel=qs('.ma-cinema-tools-content,.ref-explore-tools-panel,.ma-reference-header-tools-panel');
+    if(!panel)return;
+    const button=qs('.matchapp-notification-floating')||qs('.ma-native-notifications');
+    if(!button)return;
+    const placeholder=qs('.matchapp-notification-button:not(.ma-native-notifications)',panel);
+    if(placeholder&&placeholder!==button)placeholder.replaceWith(button);
+    else if(!panel.contains(button))panel.append(button);
+    button.classList.remove('matchapp-notification-floating');button.classList.add('ma-native-notifications');
+    let label=qs('.ma-native-notifications-label',button);
+    if(!label){label=document.createElement('span');label.className='ma-native-notifications-label';button.append(label)}
+    const text=button.getAttribute('aria-label')||button.title;
+    if(text&&label.textContent!==text)label.textContent=text;
+  }
   function paintAndroidChrome(){
     const l=lang(),c=androidChromeCopy[l]||androidChromeCopy[l.split('-')[0]]||androidChromeCopy.en;
     qsa('[data-cinema-copy]').forEach(node=>{
@@ -188,9 +233,16 @@
           box-shadow:0 8px 20px rgba(0,0,0,.22)!important
         }
       }
-      html.matchapp-ai-android :is(button,.btn,.gold-btn,.secondary-btn,.pill,.chip,[role="button"]){min-height:44px;border-radius:999px!important;margin:3px!important}
+      html.matchapp-ai-android :is(button,.btn,.gold-btn,.secondary-btn,.pill,.chip,[role="button"]){box-sizing:border-box;min-width:0;max-width:100%;min-height:44px;border-radius:999px!important;margin:0!important}
       html.matchapp-ai-android :is(input,select,textarea){min-height:46px;border-radius:15px!important;margin-block:4px!important}
       html.matchapp-ai-android img{max-width:100%}
+      @layer ma-reference {
+        html.matchapp-ai-android #questionnaire-box#questionnaire-box .gold-btn.ma-primary::after{content:none!important;display:none!important}
+        html.matchapp-ai-android #questionnaire-box#questionnaire-box .match-more-filters>summary::after{left:auto!important;right:auto!important;inset-inline-end:12px!important}
+        html.matchapp-ai-android :is(.mam-x,.mao-x,.ma-android-auth-x)::before,html.matchapp-ai-android :is(.mam-x,.mao-x,.ma-android-auth-x)::after{content:none!important;display:none!important}
+        html.matchapp-ai-android :is(.mam-x,.mao-x,.ma-android-auth-x){text-decoration:none!important;font:650 24px/1 system-ui!important}
+        html.matchapp-ai-android body.page-home #questionnaire-box#questionnaire-box#questionnaire-box .crit-toggle::before{width:18px!important;height:18px!important;min-width:18px!important;grid-column:1!important;grid-row:1/3!important;align-self:center!important}
+      }
       html.matchapp-ai-android :is(.section-head,.title-row,.card-actions,.result-actions,.portfolio-tabs){gap:10px!important}
       html.matchapp-ai-android body.page-home #trending-rail{margin:6px auto 10px!important;padding:8px 0 9px!important;border-radius:18px!important}
       html.matchapp-ai-android body.page-home #trending-rail h4{margin:0 12px 7px!important}
@@ -254,10 +306,12 @@ html.matchapp-ai-android body.page-explore .ref-editorial-banners {gap:10px!impo
 html.matchapp-ai-android body.page-explore .ref-editorial-banner {padding:14px!important;min-height:80px!important;border:1px solid #ffffff10!important;border-radius:20px!important;box-sizing:border-box!important}
 html.matchapp-ai-android body.page-explore .ref-editorial-banner h2 {font:750 18px/1.2 system-ui!important;margin:0 0 6px!important}
 html.matchapp-ai-android body.page-explore .ref-editorial-sub {font:500 12px/1.3 system-ui!important}
-html.matchapp-ai-android body.page-explore .ref-primary-topics {gap:10px!important}
-html.matchapp-ai-android body.page-explore .ref-topic-caption {gap:6px!important;padding:10px!important;box-sizing:border-box!important;width:100%!important}
-html.matchapp-ai-android body.page-explore .ref-topic-caption h2 {font:700 14px/1.3 system-ui!important;word-break:normal!important;overflow-wrap:normal!important;margin:0!important;min-width:0!important}
+html.matchapp-ai-android body.page-explore .ref-primary-topics {display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+html.matchapp-ai-android body.page-explore .ref-primary-topics .ref-topic {grid-column:auto!important;width:100%!important;max-width:100%!important;min-width:0!important;aspect-ratio:4/3!important;min-height:clamp(112px,32vw,132px)!important;padding:14px!important;border:0!important;border-radius:20px!important;box-shadow:none!important;box-sizing:border-box!important;background-color:#201729!important}
+html.matchapp-ai-android body.page-explore .ref-topic-caption {gap:8px!important;padding:0!important;box-sizing:border-box!important;width:auto!important;min-height:44px!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;color:#fff8ef!important}
+html.matchapp-ai-android body.page-explore .ref-topic-caption h2 {font:700 16px/1.3 system-ui!important;word-break:normal!important;overflow-wrap:anywhere!important;margin:0!important;padding:0!important;min-width:0!important;background:transparent!important;border:0!important;box-shadow:none!important;color:#fff8ef!important;text-shadow:0 1px 3px #0009!important}
 html.matchapp-ai-android body.page-explore .ref-topic-caption svg {width:20px!important;height:20px!important;flex:0 0 20px!important}
+@media(min-width:700px){html.matchapp-ai-android body.page-explore .ref-primary-topics {grid-template-columns:repeat(3,minmax(0,1fr))!important}}
 
 /* Android cinema refinement. No web asset, route or catalog mutations. */
 html.matchapp-ai-android body.page-home .main-layout {width:100%!important;max-width:none!important;margin:0!important;box-sizing:border-box!important}
@@ -336,6 +390,24 @@ html.matchapp-ai-android body.matchapp-profile .profile-hub-row {border:1px soli
 html.matchapp-ai-android {--ma-native-bg:#100d17;--ma-native-surface:#1c1626;--ma-native-field:#292132;--ma-native-text:#f5f0fa;--ma-native-muted:#c1b5cc;--ma-native-line:#d5bbff26;--ma-native-accent:#e6c485;--ma-native-ink:#281c29;--ma-native-close:#712c40;--ma-native-close-text:#ffdae2}
 html.matchapp-ai-android[data-theme="sunrise"] {--ma-native-bg:#f7f3ee;--ma-native-surface:#fffdf9;--ma-native-field:#eee7df;--ma-native-text:#302735;--ma-native-muted:#665b70;--ma-native-line:#77618430;--ma-native-accent:#8c6021;--ma-native-ink:#fffaf2;--ma-native-close:#f9e1e7;--ma-native-close-text:#93293f;color-scheme:light!important}
 html.matchapp-ai-android body {background:var(--ma-native-bg)!important;color:var(--ma-native-text)!important}
+/* Static native controls do not need a permanent GPU layer each. Keep the
+   actual title artwork and cinematic header, without a second blurred wall. */
+html.matchapp-ai-android body>.poster-wall {display:none!important}
+html.matchapp-ai-android :is(.crit-chip,.gold-btn,.premium-card,.ma-cinema-help,.ai-trust-notice) {will-change:auto!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+/* Keep the first screen interactive while lower sections wait for the viewport. */
+html.matchapp-ai-android body.page-home .seo-footer {content-visibility:auto;contain-intrinsic-size:auto 700px;background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
+html.matchapp-ai-android #ma-android-studio-games {margin:14px!important;padding:18px!important;border-radius:22px!important;background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important;border:1px solid var(--ma-native-line)!important;content-visibility:auto;contain-intrinsic-size:auto 220px}
+html.matchapp-ai-android #ma-android-studio-games h2 {margin:0 0 14px!important;font:700 18px/1.3 system-ui!important;color:var(--ma-native-text)!important}
+html.matchapp-ai-android .ma-studio-grid {display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))!important;gap:12px!important}
+html.matchapp-ai-android .ma-studio-grid a {display:flex!important;align-items:center!important;gap:12px!important;padding:12px!important;border-radius:18px!important;background:var(--ma-native-field)!important;color:var(--ma-native-text)!important;text-decoration:none!important;min-width:0!important}
+html.matchapp-ai-android .ma-studio-grid img {width:56px!important;height:56px!important;object-fit:cover!important;border-radius:14px!important;flex:0 0 56px!important}
+html.matchapp-ai-android .ma-studio-grid strong {display:block!important;color:var(--ma-native-text)!important;font:650 14px/1.4 system-ui!important}
+html.matchapp-ai-android .ma-studio-grid small {display:block!important;color:var(--ma-native-muted)!important;font:500 12px/1.5 system-ui!important;margin-top:4px!important}
+html.matchapp-ai-android .ma-studio-more {display:inline-flex!important;align-items:center!important;min-height:44px!important;margin-top:8px!important;color:var(--ma-native-accent)!important;font:600 13px/1.4 system-ui!important}
+html.matchapp-ai-android .seo-footer :is(h2,h3,h4,strong,summary) {color:var(--ma-native-text)!important;text-shadow:none!important}
+html.matchapp-ai-android .seo-footer :is(p,small,.seo-footer-lede,.seo-footer-legal) {color:var(--ma-native-muted)!important;text-shadow:none!important}
+html.matchapp-ai-android .seo-footer :is(a,button) {color:var(--ma-native-accent)!important;border-color:var(--ma-native-line)!important}
+html.matchapp-ai-android :is(.ma-brand-caption,.mh-tagline) {color:var(--ma-native-muted)!important;text-shadow:none!important}
 html.matchapp-ai-android #ma-reference-header {background:var(--ma-native-surface)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-bottom:1px solid var(--ma-native-line)!important;box-shadow:0 4px 16px #0000000a!important}
 html.matchapp-ai-android .ma-cinema-header-actions>details.ma-cinema-tools {padding:0!important;border:0!important;background:none!important;box-shadow:none!important;border-radius:999px!important}
 html.matchapp-ai-android :is(.ma-cinema-search,.ma-cinema-tools>summary,.ref-explore-tools>summary) {display:flex!important;align-items:center!important;justify-content:center!important;padding:0!important;margin:0!important;width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;border-radius:999px!important;border:1px solid var(--ma-native-line)!important;background:var(--ma-native-field)!important;color:var(--ma-native-text)!important;box-shadow:none!important;gap:0!important}
@@ -386,9 +458,9 @@ html.matchapp-ai-android #result-box .ma-guest-trial-button {background:var(--ma
 html.matchapp-ai-android #result-box :is(.ma-result-exit,.result-dismiss) {display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:44px!important;padding:10px 14px!important;border-radius:999px!important;background:var(--ma-native-field)!important;color:var(--ma-native-text)!important;font:650 13px/1.3 system-ui!important;box-sizing:border-box!important}
 html.matchapp-ai-android #result-box .result-dismiss {width:44px!important;height:44px!important;padding:10px!important;background:var(--ma-native-close)!important;color:var(--ma-native-close-text)!important}
 @media(max-width:620px){html.matchapp-ai-android #result-box {padding:16px!important}html.matchapp-ai-android #result-box .match-result-toolbar {min-height:44px!important;height:auto!important;margin:0 0 12px!important;padding:0!important}html.matchapp-ai-android #result-box .res-poster-col {max-width:220px!important;width:58vw!important;margin-inline:auto!important}}
-html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal>.premium-card,#main-auth-modal>.auth-box,.profile-hub-row,.ref-topic-caption) {background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
-html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal,.profile-hub-row,.ref-topic-caption) :is(h2,h3,strong,label) {color:var(--ma-native-text)!important}
-html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal,.profile-hub-row,.ref-topic-caption) :is(p,small) {color:var(--ma-native-muted)!important}
+html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal>.premium-card,#main-auth-modal>.auth-box,.profile-hub-row) {background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
+html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal,.profile-hub-row) :is(h2,h3,strong,label) {color:var(--ma-native-text)!important}
+html.matchapp-ai-android :is(.mam-card,.mao-card,#main-auth-modal,.profile-hub-row) :is(p,small) {color:var(--ma-native-muted)!important}
 html.matchapp-ai-android :is(.mam-card,#main-auth-modal) :is(input,select,textarea,.crit-chip,.ma-cinema-select) {background:var(--ma-native-field)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
 html.matchapp-ai-android :is(.mam-x,.mao-x,.ma-android-auth-x,#ma-ambient-panel .ja-close) {background:var(--ma-native-close)!important;color:var(--ma-native-close-text)!important;border-color:var(--ma-native-line)!important}
 html.matchapp-ai-android #ma-ambient-panel {background:var(--ma-native-bg)!important;color:var(--ma-native-text)!important;border-color:var(--ma-native-line)!important}
@@ -397,6 +469,51 @@ html.matchapp-ai-android #ma-ambient-panel .ma-guide-pills :is(a,button) {backgr
 html.matchapp-ai-android #ma-ambient-panel :is(.ja-head-text strong,.ja-head-text span) {color:var(--ma-native-text)!important}
 html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marquee-title) {background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important}
 @media(max-width:620px){html.matchapp-ai-android #ma-reference-header .ma-masthead-intro {display:none!important}}
+/* Native bounds: intrinsic text wraps inside its control, never outside a panel. */
+html.matchapp-ai-android body.page-home #trending-rail .marquee-track {align-items:stretch!important}
+html.matchapp-ai-android body.page-home #trending-rail .marquee-item {height:auto!important;align-self:stretch!important}
+html.matchapp-ai-android body.page-home #trending-rail .marquee-title {display:block!important;-webkit-line-clamp:unset!important;min-height:48px!important;max-height:none!important;height:auto!important;overflow:visible!important;overflow-wrap:anywhere!important;flex:1 1 auto!important;padding:7px 8px!important}
+html.matchapp-ai-android .ma-cinema-tools-content .sound-toggle-btn {grid-column:1/-1!important;width:100%!important}
+
+html.matchapp-ai-android {--ma-native-secondary:#bda4ef;--ma-native-secondary-ink:#211630}
+html.matchapp-ai-android[data-theme="sunrise"] {--ma-native-secondary:#705099;--ma-native-secondary-ink:#fff}
+html.matchapp-ai-android :is(.mam-card,.mao-card,.mam-body,.mao-head,.profile-hub-row,.ma-studio-grid a,.ma-studio-grid a>span,.ref-topic-caption,.ma-cinema-hero-footer,.ma-cinema-section-heading) {box-sizing:border-box!important;min-width:0!important}
+html.matchapp-ai-android :is(.ma-cinema-hero-action,.ma-cinema-help,.mam-open,.ref-explore-primary,.ma-studio-more,.profile-hub-row) {box-sizing:border-box!important;min-width:0!important;max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere!important;height:auto!important}
+html.matchapp-ai-android .ma-cinema-section-heading {flex-wrap:wrap!important}
+html.matchapp-ai-android .ma-cinema-section-heading a {white-space:normal!important;max-width:100%!important}
+html.matchapp-ai-android :is(.ma-cinema-tools-content,.ref-explore-tools-panel,.ma-reference-header-tools-panel) {position:fixed!important;inset:64px 12px auto!important;width:auto!important;max-width:440px!important;max-height:calc(100dvh - 88px)!important;margin-inline-start:auto!important;box-sizing:border-box!important;overflow-y:auto!important;overscroll-behavior:contain!important;transform:none!important}
+html.matchapp-ai-android :is(.ma-cinema-tools,.ref-explore-tools,.ma-reference-header-tools)[open]>:is(.ma-cinema-tools-content,.ref-explore-tools-panel,.ma-reference-header-tools-panel) {display:block!important}
+html.matchapp-ai-android :is(.ref-explore-tools-panel,.ma-reference-header-tools-panel) :is(button,a,select) {box-sizing:border-box!important;min-width:0!important;max-width:100%!important;margin:0!important;min-height:44px!important;white-space:normal!important;overflow-wrap:anywhere!important}
+html.matchapp-ai-android .ma-native-notifications {position:relative!important;inset:auto!important;display:flex!important;grid-column:1/-1!important;width:100%!important;height:auto!important;min-height:44px!important;border-radius:16px!important;gap:8px!important;animation:none!important;background:var(--ma-native-field)!important;color:var(--ma-native-text)!important}
+html.matchapp-ai-android .ma-native-notifications .matchapp-notification-count {position:static!important;min-width:20px!important;min-height:20px!important;margin:0!important;flex:none!important}
+html.matchapp-ai-android .matchapp-notification-panel {box-sizing:border-box!important;inset:64px 12px auto!important;width:auto!important;max-width:520px!important;max-height:calc(100dvh - 88px)!important;margin-inline:auto!important}
+html.matchapp-ai-android .matchapp-notification-toolbar {display:flex!important;flex-wrap:wrap!important;gap:8px!important}
+html.matchapp-ai-android .matchapp-notification-toolbar>* {box-sizing:border-box!important;min-width:0!important;max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere!important;min-height:44px!important;flex:1 1 100px!important}
+html.matchapp-ai-android #ma-android-match-modal {box-sizing:border-box!important;padding:12px!important;backdrop-filter:none!important}
+html.matchapp-ai-android .mam-card {max-height:calc(100dvh - 24px)!important;grid-template-rows:auto minmax(0,1fr)!important;border-radius:24px!important}
+html.matchapp-ai-android .mam-card>header {padding:12px 14px!important;gap:12px!important;min-width:0!important}
+html.matchapp-ai-android .mam-card>header strong {font:700 20px/1.25 system-ui!important;overflow-wrap:anywhere!important}
+html.matchapp-ai-android .mam-body {min-height:0!important;padding:12px!important;scrollbar-width:thin!important}
+html.matchapp-ai-android :is(.mam-x,.mao-x,.ma-android-auth-x) {text-decoration:none!important;font:650 24px/1 system-ui!important}
+html.matchapp-ai-android #questionnaire-box .match-more-filters>summary {padding-inline-start:12px!important;padding-inline-end:44px!important;text-align:start!important;white-space:normal!important;overflow-wrap:anywhere!important}
+html.matchapp-ai-android .mam-body #questionnaire-box {box-sizing:border-box!important;min-width:0!important;max-width:100%!important;padding:0!important;animation:none!important;transform:none!important;background:transparent!important;box-shadow:none!important}
+html.matchapp-ai-android .mam-body #questionnaire-box>h2 {font:600 14px/1.4 system-ui!important;color:var(--ma-native-muted)!important;text-align:start!important;margin:0 0 12px!important;padding:0!important;letter-spacing:normal!important;text-transform:none!important;background:none!important;border:0!important}
+html.matchapp-ai-android #questionnaire-box :is(.q-grid,#advanced-filters) {min-width:0!important;max-width:100%!important;box-sizing:border-box!important;gap:8px!important}
+html.matchapp-ai-android #questionnaire-box #advanced-filters {padding:0!important}
+html.matchapp-ai-android #questionnaire-box .crit-collapsible {box-sizing:border-box!important;min-width:0!important;max-width:100%!important;border:0!important}
+html.matchapp-ai-android #questionnaire-box .crit-toggle {box-sizing:border-box!important;display:grid!important;grid-template-columns:18px minmax(0,1fr) 14px!important;grid-template-rows:auto auto!important;gap:3px 6px!important;min-width:0!important;width:100%!important;max-width:100%!important;min-height:64px!important;height:auto!important;margin:0!important;padding:10px!important;border-radius:16px!important;border:1px solid var(--ma-native-line)!important;background:var(--ma-native-field)!important;color:var(--ma-native-text)!important;white-space:normal!important;text-align:start!important;overflow-wrap:anywhere!important}
+html.matchapp-ai-android #questionnaire-box .crit-toggle :is(.crit-toggle-label,.crit-toggle-summary) {box-sizing:border-box!important;min-width:0!important;width:auto!important;max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere!important;word-break:normal!important;position:static!important;padding:0!important;margin:0!important;background:none!important;border:0!important;box-shadow:none!important;text-align:start!important}
+html.matchapp-ai-android #questionnaire-box .crit-toggle-label {grid-column:2!important;grid-row:1!important;font:600 12px/1.35 system-ui!important;color:var(--ma-native-text)!important}
+html.matchapp-ai-android #questionnaire-box .crit-toggle-summary {grid-column:2!important;grid-row:2!important;font:400 12px/1.4 system-ui!important;color:var(--ma-native-muted)!important}
+html.matchapp-ai-android #questionnaire-box .crit-toggle-chevron {grid-column:3!important;grid-row:1/3!important;align-self:center!important;width:14px!important;min-width:0!important;margin:0!important;padding:0!important;color:var(--ma-native-secondary)!important}
+html.matchapp-ai-android #questionnaire-box .crit-chips:not([hidden]) {box-sizing:border-box!important;width:100%!important;max-width:100%!important;min-width:0!important;display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,116px),1fr))!important;gap:8px!important;padding:10px 0!important;background:transparent!important;border:0!important}
+html.matchapp-ai-android #questionnaire-box .crit-chip {box-sizing:border-box!important;min-width:0!important;width:100%!important;max-width:100%!important;min-height:44px!important;height:auto!important;margin:0!important;padding:10px!important;border:1px solid var(--ma-native-line)!important;border-radius:14px!important;font:500 13px/1.4 system-ui!important;white-space:normal!important;overflow-wrap:anywhere!important;word-break:normal!important;text-align:start!important;background:var(--ma-native-surface)!important;color:var(--ma-native-text)!important}
+html.matchapp-ai-android #questionnaire-box .crit-chip[aria-pressed="true"] {background:var(--ma-native-secondary)!important;color:var(--ma-native-secondary-ink)!important;border-color:transparent!important}
+html.matchapp-ai-android #questionnaire-box :is(.crit-group,.crit-more) {grid-column:1/-1!important;min-width:0!important;max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere!important}
+html.matchapp-ai-android #questionnaire-box :is(.gold-btn.ma-primary,.ma-fine-link) {box-sizing:border-box!important;min-width:0!important;max-width:100%!important;min-height:48px!important;height:auto!important;margin-inline:0!important;padding:12px!important;white-space:normal!important;overflow-wrap:anywhere!important;font:650 14px/1.4 system-ui!important}
+html.matchapp-ai-android #questionnaire-box .gold-btn.ma-primary {background:var(--ma-native-accent)!important;color:var(--ma-native-ink)!important;border:0!important}
+html.matchapp-ai-android :is(.mao-head h2,.mao-head p,.profile-hub-row span,.ma-studio-grid strong,.ma-studio-grid small) {min-width:0!important;max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere!important}
+@media(max-width:360px){html.matchapp-ai-android #questionnaire-box .q-grid{grid-template-columns:minmax(0,1fr)!important}html.matchapp-ai-android .mao-head{grid-template-columns:36px minmax(0,1fr) 44px!important;gap:8px!important}html.matchapp-ai-android .mao-logo{width:36px!important;height:36px!important}html.matchapp-ai-android #ma-ambient-panel .ja-head-text span{display:none!important}}
 @media(prefers-reduced-motion:no-preference){html.matchapp-ai-android :is(.mam-card,.mao-card){animation:ma-native-enter .2s cubic-bezier(.2,.8,.2,1)}@keyframes ma-native-enter{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}}
 
 }
@@ -414,6 +531,7 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
   }
   const phoneGeometry=new Map();
   function compactPhoneHeader(){
+    phoneGeometry.forEach((_,el)=>{if(!el.isConnected)phoneGeometry.delete(el)});
     const phone=window.matchMedia?.('(max-width:620px)').matches===true;
     const set=(selector,props)=>qsa(selector).forEach(el=>Object.entries(props).forEach(([k,v])=>{
       if(!phone){const old=phoneGeometry.get(el)?.get(k);if(old)el.style.setProperty(k,old[0],old[1]);return}
@@ -422,8 +540,8 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
       if(el.dataset.maAndroidPhoneGeom!=='1')el.dataset.maAndroidPhoneGeom='1';
       if(el.style.getPropertyValue(k)!==v||el.style.getPropertyPriority(k)!=='important')el.style.setProperty(k,v,'important');
     }));
-    set('#ma-reference-header',{padding:'8px 14px 10px','min-height':'0px'});
-    set('.ma-reference-header-bar',{display:'grid','grid-template-columns':'minmax(0,1fr) 36px 44px 44px',padding:'0px',gap:'8px','min-height':'0px','align-items':'center'});
+    set('#ma-reference-header',{padding:'8px 14px 10px','min-height':'0px',width:'100vw','max-width':'100vw','min-width':'0px','box-sizing':'border-box'});
+    set('.ma-reference-header-bar',{display:'grid','grid-template-columns':'minmax(0,1fr) 28px 44px 44px',width:'100%','max-width':'100%','min-width':'0px','box-sizing':'border-box',padding:'0px',gap:'8px','min-height':'0px','align-items':'center'});
     set('.ma-reference-header-chrome',{display:'contents'});
     set('.ma-reference-header-original',{display:'contents'});
     set('.ma-reference-header-original>.mh-head',{'grid-area':'1 / 1 / 2 / 3',display:'block',padding:'0px','min-width':'0px'});
@@ -432,12 +550,12 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
     set('.ma-cinema-header-actions>.ma-cinema-tools',{'grid-area':'1 / 4'});
     set('#shell-brand-lockup,#home-brand-lockup,.ma-brand-home-link',{height:'44px','min-height':'44px',margin:'0px'});
     set('.mh-head .ma-brand-orb-stage,.mh-head .ma-brand-orb',{width:'40px',height:'40px','min-width':'40px','max-width':'40px','min-height':'40px','max-height':'40px','flex-basis':'40px'});
-    set('#ref-explore-header>.hub-brand',{'grid-area':'1 / 1 / 2 / 3',display:'flex','min-width':'0px'});
+    set('#ref-explore-header>.hub-brand',{'grid-area':'1 / 1 / 2 / 3',display:'flex','min-width':'0px',gap:'6px'});
     set('#ref-explore-header>.ma-cinema-search',{'grid-area':'1 / 3',width:'44px',height:'44px',display:'grid','place-items':'center'});
     set('#ref-explore-header>.ref-explore-tools',{'grid-area':'1 / 4',width:'44px',height:'44px',padding:'0px'});
     set('#ref-explore-header>.ma-masthead-intro',{'grid-area':'2 / 1',width:'100%','align-self':'center'});
-    set('#ref-explore-header .hub-brand>img',{display:'block',width:'40px',height:'40px','min-width':'40px','object-fit':'contain',background:'transparent'});
-    set('#ref-explore-header .ma-wordmark,#ref-explore-header .ma-word-ai',{'font-size':'clamp(20px,5.8vw,24px)','line-height':'1'});
+    set('#ref-explore-header .hub-brand>img',{display:'block',width:'32px',height:'32px','min-width':'32px','object-fit':'contain',background:'transparent'});
+    set('#ref-explore-header .ma-wordmark,#ref-explore-header .ma-word-ai',{'font-size':'clamp(18px,5vw,22px)','line-height':'1','letter-spacing':'0px'});
     set('.mh-head .ma-wordmark,.mh-head .ma-word-ai',{'font-size':'clamp(20px,5.8vw,24px)','line-height':'1'});
     set('.ma-masthead-intro',{margin:'3px 0 1px',padding:'0px',gap:'1px'});
     set('.ma-masthead-story',{font:'500 10px/13px system-ui,sans-serif','letter-spacing':'0px'});
@@ -455,7 +573,7 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
     const width=window.matchMedia('(max-width:620px)').matches?112:148;
     qsa('#trending-rail .marquee-item').forEach(el=>{
       const set=(node,k,v)=>{if(node&&node.style.getPropertyValue(k)!==v)node.style.setProperty(k,v,'important')};
-      set(el,'width',width+'px');set(el,'min-width',width+'px');set(el,'max-width',width+'px');set(el,'height',(width*1.5+38)+'px');set(el,'flex','0 0 '+width+'px');set(el,'border-radius','14px');set(el,'margin','0px');
+      set(el,'width',width+'px');set(el,'min-width',width+'px');set(el,'max-width',width+'px');set(el,'height','auto');set(el,'min-height',(width*1.5+48)+'px');set(el,'flex','0 0 '+width+'px');set(el,'border-radius','14px');set(el,'margin','0px');
       const poster=el.querySelector(':scope>img');
       if(poster){set(poster,'width',width+'px');set(poster,'height',(width*1.5)+'px');if(poster.sizes!==width+'px')poster.sizes=width+'px'}
     });
@@ -516,14 +634,42 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
     refreshQueued=true;
     requestAnimationFrame(()=>{
       refreshQueued=false;
-      applyBrand();markRails();mountAppearance();compactPhoneHeader();polishCinemaPosters();polishCinemaSurfaces();paintAndroidChrome();paintMatchOverlay();addRedClose();installMatchOverlay();enforceJonasFullscreen();polishErrorBubble();
+      applyBrand();markRails();mountAppearance();mountStudioGames();dockNativeNotifications();compactPhoneHeader();polishCinemaPosters();polishCinemaSurfaces();paintAndroidChrome();paintMatchOverlay();addRedClose();installMatchOverlay();enforceJonasFullscreen();polishErrorBubble();
     });
+  }
+  function shouldPolishJonasFrame(records,body){
+    return records.some(record=>record.type==='attributes'
+      ?record.target===body&&record.attributeName==='class'
+      :Array.from(record.addedNodes).concat(Array.from(record.removedNodes)).some(node=>node.nodeType===1));
   }
   function polishJonasFrame(){
     const frame=qs('#ma-ambient-chat-frame');if(!frame)return;
     if(!frame.dataset.maCinemaBound){frame.dataset.maCinemaBound='1';frame.addEventListener('load',polishJonasFrame)}
     let doc;try{doc=frame.contentDocument}catch(_){return}
     const head=doc?.querySelector('.discover-head');if(!head)return;
+    // The early native stylesheet owns layout. Do not walk/rewrite each message
+    // on speech ticks or appended results; retain the original chat handlers.
+    if(doc.documentElement.classList.contains('matchapp-native-chat')){
+      const palette=getComputedStyle(document.documentElement);
+      ['bg','text','muted','surface','field','line','accent'].forEach(name=>{
+        const value=palette.getPropertyValue('--ma-native-'+name).trim();
+        if(doc.documentElement.style.getPropertyValue('--ma-native-'+name)!==value)doc.documentElement.style.setProperty('--ma-native-'+name,value);
+      });
+      let toolbar=doc.querySelector('.ma-native-chat-toolbar');
+      if(!toolbar){toolbar=doc.createElement('div');toolbar.className='ma-native-chat-toolbar';head.prepend(toolbar)}
+      [doc.querySelector('.jonas-top-history'),doc.querySelector('#jonas-header-new-chat')].forEach(button=>{if(button&&button.parentElement!==toolbar)toolbar.append(button)});
+      const log=doc.querySelector('#chat-log');
+      if(log)log.dataset.greeting=qs('#ma-ambient-panel .ja-hello')?.textContent||'';
+      const panel=qs('#ma-ambient-panel'),hello=qs('.ja-hello',panel),guides=qs('.ma-guide-pills',panel);
+      if(hello)hello.style.setProperty('display','none','important');
+      if(guides&&!guides.closest('.ja-native-tools')){
+        const menu=document.createElement('details'),summary=document.createElement('summary');menu.className='ja-native-tools';
+        summary.textContent='⋯';summary.setAttribute('aria-label',guides.querySelector('a,button')?.textContent||t().dna);
+        menu.append(summary,guides);qs('.ja-panel-head',panel)?.insertBefore(menu,qs('.ja-close',panel));
+        guides.addEventListener('click',event=>{if(event.target.closest('a,button'))menu.open=false});
+      }
+      return;
+    }
     const palette=getComputedStyle(document.documentElement),color=name=>palette.getPropertyValue('--ma-native-'+name).trim();
     const set=(selector,props)=>Array.from(doc.querySelectorAll(selector)).forEach(el=>Object.entries(props).forEach(([k,v])=>{if(el.style.getPropertyValue(k)!==v)el.style.setProperty(k,v,'important')}));
     let toolbar=doc.querySelector('.ma-native-chat-toolbar');
@@ -561,9 +707,11 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
     if(!doc.documentElement.dataset.maCinemaFrame){
       doc.documentElement.dataset.maCinemaFrame='1';
       let queued=false;
-      const observer=new frame.contentWindow.MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;polishJonasFrame()})});
-      observer.observe(doc.body,{childList:true,subtree:true});
-      observer.observe(doc.body,{attributes:true,attributeFilter:['class'],childList:true,subtree:true});
+      // Speech highlights change a word's class many times per second. Only
+      // new controls/results and the body's sidebar state need a layout pass.
+      const observer=new frame.contentWindow.MutationObserver(records=>{if(queued||!shouldPolishJonasFrame(records,doc.body))return;queued=true;requestAnimationFrame(()=>{queued=false;if(frame.isConnected)polishJonasFrame()})});
+      observer.observe(doc.documentElement,{childList:true,subtree:true});
+      observer.observe(doc.body,{attributes:true,attributeFilter:['class']});
       frame.addEventListener('load',()=>observer.disconnect(),{once:true});
     }
   }
@@ -692,7 +840,7 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
   }
   function authIntent(){
     document.addEventListener('submit',e=>{const id=e.target?.id;if(id==='form-login'||id==='form-signup')sessionStorage.setItem('ma_android_auth_flow',id==='form-login'?'login':'signup')},true);
-    document.addEventListener('click',e=>{const modal=e.target?.closest?.('#main-auth-modal');if(!modal)return;const signup=qs('#tab-signup.active',modal)||(!qs('#form-signup',modal)?.hidden&&getComputedStyle(qs('#form-signup',modal)).display!=='none');sessionStorage.setItem('ma_android_auth_flow',signup?'signup':'login')},true);
+    document.addEventListener('click',e=>{const modal=e.target?.closest?.('#main-auth-modal');if(!modal)return;const form=qs('#form-signup',modal);const signup=qs('#tab-signup.active',modal)||(form&&!form.hidden&&getComputedStyle(form).display!=='none');sessionStorage.setItem('ma_android_auth_flow',signup?'signup':'login')},true);
   }
   function cleanupOnboardingParam(){
     const u=new URL(location.href);if(!u.searchParams.has('maAndroidOnboarding'))return;u.searchParams.delete('maAndroidOnboarding');history.replaceState(null,'',u.pathname+u.search+u.hash);
@@ -786,7 +934,7 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
     return false;
   }
   function boot(){
-    installStyle();applyBrand();markRails();mountAppearance();compactPhoneHeader();polishCinemaPosters();polishCinemaSurfaces();paintAndroidChrome();addRedClose();installMatchOverlay();authIntent();
+    installStyle();applyBrand();markRails();mountAppearance();mountStudioGames();dockNativeNotifications();compactPhoneHeader();polishCinemaPosters();polishCinemaSurfaces();paintAndroidChrome();addRedClose();installMatchOverlay();authIntent();
     [120,420,1000,2200].forEach(ms=>setTimeout(schedulePremiumRefresh,ms));
     if(routeVerifiedSignup())return;
     const u=new URL(location.href);if((location.pathname==='/'||location.pathname==='/index.html')&&u.searchParams.get('maAndroidOnboarding')==='1'){sessionStorage.setItem('ma_android_onboarding_pending','1');setTimeout(openOnboarding,500)}
@@ -800,6 +948,7 @@ html.matchapp-ai-android body.page-home #trending-rail :is(.marquee-item,.marque
       if(e.target?.closest?.('#ma-ambient-panel .ja-close'))setTimeout(schedulePremiumRefresh,80);
     },true);
     window.addEventListener('resize',enforceJonasFullscreen,{passive:true});
+    window.addEventListener('matchapp:jonas-ready',()=>requestAnimationFrame(enforceJonasFullscreen));
     window.addEventListener('resize',schedulePremiumRefresh,{passive:true});
     window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',schedulePremiumRefresh);
     window.visualViewport?.addEventListener('resize',enforceJonasFullscreen,{passive:true});

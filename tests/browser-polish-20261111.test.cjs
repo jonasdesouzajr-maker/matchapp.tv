@@ -2,7 +2,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {JSDOM}=require('jsdom');const root=path.resolve(__dirname,'..'),read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const code=read('patches/browser-guide-copy-20261111.js');
-test('embedded browser chat prepares its existing compact shell before window load, excluding standalone and native',()=>{
+test('embedded browser chat prepares its existing compact shell before window load, with a separate native shell and excluding standalone',()=>{
   const vm=require('node:vm');
   const source=new JSDOM(read('discover.html'));
   const script=source.window.document.querySelector('[data-ma-browser-ambient-shell]').textContent;
@@ -10,9 +10,9 @@ test('embedded browser chat prepares its existing compact shell before window lo
     const dom=new JSDOM('<html><head></head><body></body></html>');
     const w={parent:{location:{origin:kind==='cross-origin'?'https://example.com':'https://matchapp.tv'}}};
     w.top=kind==='standalone'?w:{};if(kind==='bridge')w.parent.MatchAppFx={};
-    vm.runInNewContext(script,{window:w,document:dom.window.document,location:{origin:'https://matchapp.tv',search:kind==='other-query'?'':'?ambient=1'},navigator:{userAgent:kind==='native'?'MatchAppAiAndroid/73':'Chrome/157'},URLSearchParams});
-    assert.equal(dom.window.document.documentElement.classList.contains('matchapp-ambient-frame'),kind==='browser',kind);
-    assert.equal(dom.window.document.querySelectorAll('link[data-ma-ambient-embed]').length,kind==='browser'?1:0,kind);
+    vm.runInNewContext(script,{window:w,document:dom.window.document,location:{origin:'https://matchapp.tv',search:kind==='other-query'?'':'?ambient=1'},navigator:{userAgent:kind==='native'?'MatchAppAiAndroid/73':'Chrome/157'},URLSearchParams,setTimeout:()=>0});
+    assert.equal(dom.window.document.documentElement.classList.contains('matchapp-ambient-frame'),(kind==='browser'||kind==='native'),kind);
+    assert.equal(dom.window.document.querySelectorAll('link[data-ma-ambient-embed]').length,(kind==='browser'||kind==='native')?1:0,kind);
     dom.window.close();
   }
   source.window.close();

@@ -32,3 +32,17 @@ test('compact footer preserves the original explanatory node and disclosure acce
  w.eval(read('patches/reference-support.js'));d.dispatchEvent(new w.Event('DOMContentLoaded'));
  const info=d.querySelector('details.ma-home-service-info');assert(info);assert.equal(info.open,false);assert.equal(info.querySelector('.seo-footer-lede'),lede);assert.equal(lede.textContent,'Original guidance');assert.equal(lede.dataset.i18n,'home.discoveryNote');assert.equal(d.querySelector('a[href="/sponsor/"]'),sponsor);info.open=true;assert.equal(info.querySelector('summary').textContent,'Service information');w.close();
 });
+
+test('Android loads posters near the viewport instead of eagerly promoting the first sixteen',async()=>{
+ const dom=new JSDOM('<body>'+Array.from({length:20},()=>'<img loading="lazy" src="/poster.jpg">').join('')+'</body>',{url:'https://matchapp.tv/explore/',runScripts:'outside-only'}),w=dom.window;
+ try{
+  Object.defineProperty(w.navigator,'userAgent',{value:'MatchAppAiAndroid/1.1.74'});
+  let callback,margin;const observed=[];
+  w.IntersectionObserver=class{constructor(cb,options){callback=cb;margin=options.rootMargin;}observe(n){observed.push(n)}unobserve(){}};
+  w.eval(read('page-fluidity.js'));await tick();
+  assert.equal(margin,'240px 80px');assert.equal(observed.length,20);
+  assert.equal([...w.document.images].filter(img=>img.loading==='eager').length,0);
+  callback([{target:observed[0],isIntersecting:true}]);
+  assert.equal(observed[0].loading,'eager');assert.notEqual(observed[19].loading,'eager');
+ }finally{w.close()}
+});

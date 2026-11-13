@@ -8,6 +8,7 @@
   var CARD_SEL='.premium-card,.ad-banner-container,.discover-card,.global-event,.kids-card';
   var scheduled=0;
   var pendingRoots=new Set(),seenArt=new WeakSet(),near=null,artCount=0;
+  var nativeAndroid=/MatchAppAiAndroid\//.test(navigator.userAgent||'')&&!/^\/kids(?:\/|$)/.test(location.pathname);
 
   function reduced(){
     return !!(document.documentElement.classList.contains('reduce-motion')
@@ -35,11 +36,13 @@
             img.decoding='async';
             near.unobserve(img);
           });
-        },{rootMargin:'1200px 640px'});
+        },{rootMargin:nativeAndroid?'240px 80px':'1200px 640px'});
     each(root,'img[loading="lazy"]',function(img){
       if(seenArt.has(img))return;
       seenArt.add(img);
-      if(artCount++<16){img.loading='eager';img.decoding='async';return;}
+      // Native screens prioritize artwork actually approaching the viewport.
+      // Promoting the first 16 DOM images also fetched hidden/background art.
+      if(!nativeAndroid&&artCount++<16){img.loading='eager';img.decoding='async';return;}
       if(near) near.observe(img);
       else {img.loading='eager';img.decoding='async';}
     });

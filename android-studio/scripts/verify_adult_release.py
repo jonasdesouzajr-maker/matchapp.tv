@@ -19,11 +19,11 @@ template = content("play/assetlinks.json")
 
 assert 'namespace = "com.jonas.papercup"' in gradle
 assert 'applicationId = "com.jonas.papercup"' in gradle
-assert "targetSdk = 36" in gradle and "versionCode = 73" in gradle
-assert 'versionName = "1.1.73"' in gradle
+assert "targetSdk = 36" in gradle and "versionCode = 74" in gradle
+assert 'versionName = "1.1.74"' in gradle
 assert 'package="tv.matchapp.app"' not in manifest
 assert "package com.jonas.papercup" in activity
-assert "appBuild=72" in activity
+assert "appBuild=74" in activity
 assert "isKidsUri(target)" in activity
 assert "child.post { child.destroy() }" in activity
 assert 'applicationId = "tv.matchapp.kids"' in kids
@@ -70,7 +70,7 @@ assert "ca-app-pub-9541435081010948~6998171073" in manifest
 assert "ca-app-pub-3940256099942544~3347511713" not in manifest
 assert "ca-app-pub-3940256099942544~3347511713" in debug_manifest
 assert 'tools:replace="android:value"' in debug_manifest
-for marker in ["requestConsentInfoUpdate", "loadAndShowConsentFormIfRequired", "canRequestAds", "showPrivacyOptionsForm", "MobileAds.initialize", "getCurrentOrientationAnchoredAdaptiveBannerAdSize", "fun setAdFree(adFree: Boolean)"]:
+for marker in ["requestConsentInfoUpdate", "loadAndShowConsentFormIfRequired", "canRequestAds", "showPrivacyOptionsForm", "MobileAds.initialize", "getLargeAnchoredAdaptiveBannerAdSize", "fun setAdFree(adFree: Boolean)"]:
     assert marker in admob, f"Missing consent-safe AdMob integration marker: {marker}"
 for marker in ["MatchAppNativeExperience", "setAdFree(adFree: Boolean)", "is_vip,is_business,is_ad_free", "syncNativeAdEntitlement"]:
     assert marker in activity, f"Missing native ad-free entitlement bridge marker: {marker}"
