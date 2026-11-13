@@ -48,7 +48,7 @@ test('all 15 authored editions are crawlable, internally linked, dated and sourc
       const graph=JSON.parse(doc.querySelector('script[type="application/ld+json"]').textContent)['@graph'];
       assert.equal(graph.find(x=>x['@type']==='ItemList').numberOfItems,6);
       assert.equal(graph.find(x=>x['@type']==='ItemList').itemListOrder,'https://schema.org/ItemListUnordered');
-      assert.equal(graph.find(x=>x['@type']==='Article').dateModified,EDITION);
+      assert.equal(graph.find(x=>x['@type']==='Article').dateModified,inputs.radar.data.checked);
       for(const link of doc.querySelectorAll('a[href^="#"]')) assert.ok(doc.getElementById(link.hash.slice(1)),'Broken section link '+link.href);
       for(const link of doc.querySelectorAll('a[href^="/"]')){
         const url=new URL(link.getAttribute('href'),'https://matchapp.tv');

@@ -434,6 +434,8 @@ async function aiQuestion(page,question,expected,label){
         lang:document.documentElement.lang,dir:document.documentElement.dir,
         canonical:document.querySelector('link[rel="canonical"]')?.href,
         cards:document.querySelectorAll('[data-trend-id]').length,
+        radarCards:document.querySelectorAll('[data-radar-id]').length,
+        radarDate:document.querySelector('#radar time')?.dateTime,
         sources:document.querySelectorAll('.ust-method li').length,
         overflow:document.documentElement.scrollWidth>document.documentElement.clientWidth+1,
         emptyCards:[...document.querySelectorAll('[data-trend-id]')].some(el=>el.getBoundingClientRect().width<1),
@@ -448,8 +450,13 @@ async function aiQuestion(page,question,expected,label){
       record('Trends '+edition+' authored locale and responsive layout '+lang+' '+device.name,
         state.lang===(lang==='en'?englishTag:lang)&&state.dir===(lang==='ar'?'rtl':'ltr')&&
         state.canonical==='https://matchapp.tv'+route&&state.cards===cardCount&&state.sources===sourceCount&&
-        !state.overflow&&!state.emptyCards&&!!state.title&&languages,JSON.stringify({...state,languages}));
+        !state.overflow&&!state.emptyCards&&!!state.title&&languages&&
+        (edition!=='2026-11-12'||(state.radarCards===4&&state.radarDate==='2026-11-13')),JSON.stringify({...state,languages}));
       await shot(guidePage,device.name+'-trends-'+edition.replaceAll('/','-')+'-'+lang.toLowerCase());
+      if(edition==='2026-11-12'){
+        await guidePage.locator('#radar').scrollIntoViewIfNeeded();
+        await shot(guidePage,device.name+'-radar-'+lang.toLowerCase());
+      }
     }catch(error){record('Trends '+edition+' '+lang+' '+device.name,false,String(error.message||error).slice(0,300));}
     finally{await guideContext.close();}
    }

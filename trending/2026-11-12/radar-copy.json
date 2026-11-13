@@ -1,0 +1,557 @@
+{
+  "en": {
+    "title": "Streaming trends and next releases: November 2026",
+    "description": "What to watch now and next: verified Netflix charts, Rings of Power dates, Blade Runner 2099 and CCXP26. Explore a spoiler-free watch plan with MatchApp Ai.",
+    "label": "Streaming trends + what’s next",
+    "heading": "Trend radar: the next conversation starters",
+    "updated": "Research updated",
+    "intro": "Catch the conversation early without letting hype choose your evening. Start with measured popularity, then look at four confirmed dates that could create fresh interest in fantasy, science fiction, Brazilian pop culture and book adaptations.",
+    "factsHeading": "What is already popular: November 2–8",
+    "facts": [
+      "Netflix global English-language films: A Dog’s Perfect Christmas was No. 1 with 8.6 million views.",
+      "Netflix global English-language shows: Taken: Natalee Holloway, Season 1, was No. 1 with 12.9 million views.",
+      "Netflix series in Brazil: Dom de Iludir (The Gift of Deceit), Season 1, was No. 1; Lupin, Part 4, was No. 2."
+    ],
+    "method": "These are separate Netflix charts, not a ranking of all streaming services. Below, near-term dates receive priority because they offer a clear reason to return. The opportunities are editorial judgments: no measured probability of going viral or search-volume forecast is available.",
+    "states": [
+      "Near-term · new episodes",
+      "Near-term · announced premiere",
+      "Brazil · upcoming festival",
+      "Longer-term · revised dates"
+    ],
+    "notes": [
+      "Season 3 began on November 11. Amazon schedules episodes 5–6 for November 18 and 7–8 for November 25. Those two release moments make a spoiler-free catch-up plan useful. New viewers can begin with Season 1; returning viewers should confirm where they stopped. A franchise audience is a reason to watch the conversation, not proof of future viewership.",
+      "Amazon announces all eight episodes for November 25 on Prime Video. The practical question is what to revisit first: Blade Runner (1982), followed by Blade Runner 2049 (2017), provides release-order context. Treat a film rewatch as optional preparation, not a confirmed prerequisite. Check each film’s local rental or subscription offer separately from the new series.",
+      "CCXP26 takes place December 3–6 at São Paulo Expo. This is a useful moment to build a watchlist from official announcements: note a title, verify its studio source, then separate a teaser from a release date. The existing event guide has hours and lineup links. Panel access and public livestream availability must be checked individually.",
+      "Netflix’s current dates are February 12, 2027 in cinemas and April 2, 2027 on Netflix, with IMAX previews from February 10. Do not plan around the older November/December 2026 dates. For now, this is a book-to-screen discovery opportunity: choose The Magician’s Nephew by C. S. Lewis in your preferred reading or audio edition, then save the film for later."
+    ],
+    "explore": "Explore in MatchApp Ai",
+    "promptsTitle": "Make it a watch night worth sharing",
+    "prompts": [
+      "The catch-up pact: each person names the last episode they finished. Agree on a spoiler boundary before choosing the next installment.",
+      "The sci-fi double bill: decide whether you have one evening or two, then use the two Blade Runner films in release order. Check runtimes and access before committing.",
+      "The announcement-to-watchlist game: each person brings one official CCXP announcement and explains the mood it promises. Choose one existing related work together; a trailer alone is not a review."
+    ],
+    "share": "Share this radar",
+    "shareText": "What should we watch next? Pick one idea from MatchApp Ai’s sourced trend radar.",
+    "copied": "Radar link copied."
+  },
+  "pt-BR": {
+    "title": "Filmes e séries em alta e próximas estreias: novembro 2026",
+    "description": "O que assistir agora e depois: rankings Netflix, Os Anéis de Poder, Blade Runner 2099 e CCXP26. Datas e ideias sem spoilers no MatchApp Ai.",
+    "label": "Em alta + próximas estreias",
+    "heading": "Radar de tendências: os próximos assuntos",
+    "updated": "Pesquisa atualizada em",
+    "intro": "Entre na conversa cedo e escolha o que combina com a sua noite. Comece pela popularidade medida e confira quatro datas confirmadas que podem despertar interesse em fantasia, ficção científica, cultura pop brasileira e adaptações literárias.",
+    "factsHeading": "O que já está em alta: 2 a 8 de novembro",
+    "facts": [
+      "Filmes em inglês no ranking global da Netflix: O Natal Perfeito de um Cachorro ficou em 1º, com 8,6 milhões de visualizações.",
+      "Séries em inglês no ranking global da Netflix: Taken: Natalee Holloway, temporada 1, ficou em 1º, com 12,9 milhões de visualizações.",
+      "Séries da Netflix no Brasil: Dom de Iludir, temporada 1, ficou em 1º; Lupin, parte 4, em 2º."
+    ],
+    "method": "São rankings separados da Netflix, não de todos os streamings. Priorizamos as datas próximas por criarem um motivo concreto para voltar. As oportunidades são avaliações editoriais: não há probabilidade medida de viralização nem previsão de volume de buscas.",
+    "states": [
+      "Em breve · novos episódios",
+      "Em breve · estreia anunciada",
+      "Brasil · próximo festival",
+      "Mais adiante · datas revisadas"
+    ],
+    "notes": [
+      "A 3ª temporada começou em 11 de novembro. A Amazon anuncia os episódios 5–6 para 18 de novembro e 7–8 para 25 de novembro. São duas oportunidades para colocar a série em dia sem spoilers. Quem está começando pode ir à temporada 1; quem retorna deve conferir onde parou. O público da franquia justifica acompanhar a conversa, mas não garante audiência futura.",
+      "A Amazon anuncia os oito episódios para 25 de novembro no Prime Video. Para relembrar o universo em ordem de lançamento, comece por Blade Runner (1982) e siga com Blade Runner 2049 (2017). Rever os filmes é uma preparação opcional, não um requisito confirmado. Confira a oferta local de aluguel ou assinatura de cada filme separadamente da nova série.",
+      "A CCXP26 acontece de 3 a 6 de dezembro no São Paulo Expo. Transforme os anúncios oficiais em uma lista: anote o título, confira a fonte do estúdio e diferencie teaser de data de estreia. Nosso guia do evento reúne horários e links da programação. O acesso a cada painel e a existência de transmissão pública precisam ser confirmados individualmente.",
+      "As datas atuais da Netflix são 12 de fevereiro de 2027 nos cinemas e 2 de abril de 2027 no streaming, com pré-estreias IMAX a partir de 10 de fevereiro. As datas antigas de novembro/dezembro de 2026 estão superadas. Por enquanto, aproveite a ponte entre livro e cinema: escolha O Sobrinho do Mago, de C. S. Lewis, no formato de leitura ou áudio desejado e deixe o filme para depois."
+    ],
+    "explore": "Explorar no MatchApp Ai",
+    "promptsTitle": "Uma noite para combinar e compartilhar",
+    "prompts": [
+      "O pacto da maratona: cada pessoa diz qual foi o último episódio que terminou. Combinem até onde podem conversar sem spoilers antes de escolher o próximo.",
+      "A sessão dupla de ficção científica: decidam se têm uma noite ou duas e sigam os dois filmes Blade Runner em ordem de lançamento. Confiram duração e acesso antes.",
+      "Do anúncio à lista: cada pessoa traz um anúncio oficial da CCXP e explica o clima que ele promete. Escolham juntos uma obra relacionada já lançada; trailer não é análise do filme."
+    ],
+    "share": "Compartilhar este radar",
+    "shareText": "O que vamos assistir depois? Escolha uma ideia no radar de tendências do MatchApp Ai.",
+    "copied": "Link do radar copiado."
+  },
+  "es": {
+    "title": "Tendencias de streaming y próximos estrenos: noviembre 2026",
+    "description": "Qué ver ahora y después: listas Netflix, fechas de Los Anillos de Poder, Blade Runner 2099 y CCXP26. Ideas sin spoilers con MatchApp Ai.",
+    "label": "Tendencias y próximos estrenos",
+    "heading": "Radar de tendencias: las próximas conversaciones",
+    "updated": "Investigación actualizada",
+    "intro": "Descubre la conversación a tiempo y elige según tu noche. Partimos de popularidad medida y cuatro fechas confirmadas que podrían despertar interés en fantasía, ciencia ficción, cultura pop brasileña y adaptaciones literarias.",
+    "factsHeading": "Popularidad comprobada: del 2 al 8 de noviembre",
+    "facts": [
+      "Películas en inglés, lista global de Netflix: A Dog’s Perfect Christmas fue número 1 con 8,6 millones de visualizaciones.",
+      "Series en inglés, lista global de Netflix: Taken: Natalee Holloway, temporada 1, fue número 1 con 12,9 millones de visualizaciones.",
+      "Series de Netflix en Brasil: Dom de Iludir (The Gift of Deceit), temporada 1, fue número 1; Lupin, parte 4, número 2."
+    ],
+    "method": "Son listas distintas de Netflix, no de todas las plataformas. Priorizamos las fechas cercanas porque ofrecen un motivo concreto para volver. Son valoraciones editoriales, sin probabilidades medidas de viralidad ni previsiones del volumen de búsquedas.",
+    "states": [
+      "Próximamente · nuevos episodios",
+      "Próximamente · estreno anunciado",
+      "Brasil · próximo festival",
+      "A largo plazo · fechas revisadas"
+    ],
+    "notes": [
+      "La temporada 3 empezó el 11 de noviembre. Amazon anuncia los episodios 5–6 para el 18 y 7–8 para el 25 de noviembre. Son oportunidades para ponerse al día sin spoilers. Empieza por la temporada 1 si eres nuevo y confirma dónde te quedaste si regresas. Los seguidores de la franquicia no garantizan la audiencia futura.",
+      "Amazon anuncia los ocho episodios para el 25 de noviembre en Prime Video. Para repasar el universo por orden de estreno, comienza con Blade Runner (1982) y continúa con Blade Runner 2049 (2017). Es preparación opcional, no un requisito confirmado. Comprueba por separado el alquiler o la suscripción local de cada película.",
+      "CCXP26 se celebra del 3 al 6 de diciembre en São Paulo Expo. Convierte anuncios oficiales en una lista: anota el título, verifica la fuente del estudio y distingue un avance de una fecha de estreno. Nuestra guía incluye horarios y enlaces al programa. Confirma por separado el acceso a paneles y las transmisiones públicas.",
+      "Netflix fija actualmente el 12 de febrero de 2027 para cines y el 2 de abril para streaming, con preestrenos IMAX desde el 10 de febrero. Las antiguas fechas de noviembre/diciembre de 2026 han cambiado. Mientras tanto, descubre El sobrino del mago de C. S. Lewis en el formato de lectura o audio que prefieras."
+    ],
+    "explore": "Explorar en MatchApp Ai",
+    "promptsTitle": "Una noche para elegir y compartir",
+    "prompts": [
+      "Pacto sin spoilers: cada persona dice cuál fue el último episodio que terminó. Acordad el límite antes de elegir el siguiente.",
+      "Sesión doble de ciencia ficción: decidid si tenéis una noche o dos y seguid las dos películas Blade Runner por orden de estreno. Comprobad duración y acceso.",
+      "Del anuncio a la lista: cada persona trae un anuncio oficial de CCXP y explica el ambiente que propone. Elegid una obra relacionada ya estrenada; un tráiler no es una reseña."
+    ],
+    "share": "Compartir este radar",
+    "shareText": "¿Qué vemos después? Elige una idea del radar de tendencias de MatchApp Ai.",
+    "copied": "Enlace del radar copiado."
+  },
+  "fr": {
+    "title": "Tendances streaming et prochaines sorties : novembre 2026",
+    "description": "Que regarder ensuite ? Classements Netflix, Les Anneaux de Pouvoir, Blade Runner 2099 et CCXP26 : dates et idées sans spoilers avec MatchApp Ai.",
+    "label": "Tendances et prochaines sorties",
+    "heading": "Radar des tendances : les prochains sujets",
+    "updated": "Recherche mise à jour le",
+    "intro": "Prenez part à la conversation tout en choisissant selon votre soirée. Voici des résultats mesurés et quatre rendez-vous confirmés susceptibles de relancer l’intérêt pour la fantasy, la science-fiction, la culture pop brésilienne et les adaptations.",
+    "factsHeading": "Popularité observée : du 2 au 8 novembre",
+    "facts": [
+      "Films anglophones, classement mondial Netflix : A Dog’s Perfect Christmas était premier avec 8,6 millions de vues.",
+      "Séries anglophones, classement mondial Netflix : Taken: Natalee Holloway, saison 1, était première avec 12,9 millions de vues.",
+      "Séries Netflix au Brésil : Dom de Iludir (The Gift of Deceit), saison 1, était première ; Lupin, partie 4, deuxième."
+    ],
+    "method": "Ces classements Netflix sont distincts et ne couvrent pas toutes les plateformes. Les dates proches sont prioritaires car elles donnent un motif précis de revenir. Il s’agit d’un choix éditorial, sans probabilité mesurée de viralité ni prévision de recherches.",
+    "states": [
+      "Bientôt · nouveaux épisodes",
+      "Bientôt · première annoncée",
+      "Brésil · festival à venir",
+      "Plus tard · dates révisées"
+    ],
+    "notes": [
+      "La saison 3 a débuté le 11 novembre. Amazon annonce les épisodes 5–6 le 18 et 7–8 le 25 novembre. Deux occasions de se remettre à jour sans spoilers. Les nouveaux spectateurs peuvent commencer par la saison 1 ; les autres doivent vérifier leur progression. Une communauté de fans ne garantit pas les audiences futures.",
+      "Amazon annonce les huit épisodes le 25 novembre sur Prime Video. Pour retrouver cet univers dans l’ordre de sortie, commencez par Blade Runner (1982), puis Blade Runner 2049 (2017). Ce rattrapage est facultatif, pas un prérequis confirmé. Vérifiez séparément les offres locales de location ou d’abonnement des films.",
+      "CCXP26 se tient du 3 au 6 décembre à São Paulo Expo. Transformez les annonces officielles en liste : notez le titre, vérifiez la source du studio et distinguez bande-annonce et date de sortie. Notre guide rassemble horaires et programme. L’accès aux panels et les diffusions publiques sont à vérifier séparément.",
+      "Netflix annonce désormais une sortie en salles le 12 février 2027 et sur Netflix le 2 avril, avec des avant-premières IMAX dès le 10 février. Les anciennes dates de novembre/décembre 2026 sont dépassées. En attendant, découvrez Le Neveu du magicien de C. S. Lewis dans votre édition papier, numérique ou audio préférée."
+    ],
+    "explore": "Explorer avec MatchApp Ai",
+    "promptsTitle": "Une soirée à choisir et à partager",
+    "prompts": [
+      "Le pacte sans spoilers : chacun indique le dernier épisode terminé. Fixez la limite de discussion avant de choisir la suite.",
+      "La double séance de science-fiction : décidez si vous avez une soirée ou deux, puis suivez l’ordre de sortie des deux films Blade Runner. Vérifiez durée et accès.",
+      "De l’annonce à la liste : chacun apporte une annonce officielle de CCXP et décrit l’ambiance attendue. Choisissez une œuvre liée déjà sortie ; une bande-annonce n’est pas une critique."
+    ],
+    "share": "Partager ce radar",
+    "shareText": "Que regarder ensuite ? Choisissez une idée du radar de tendances MatchApp Ai.",
+    "copied": "Lien du radar copié."
+  },
+  "de": {
+    "title": "Streaming-Trends und kommende Starts: November 2026",
+    "description": "Netflix-Charts, neue Folgen von Die Ringe der Macht, Blade Runner 2099 und CCXP26: Termine und spoilerfreie Filmabende mit MatchApp Ai.",
+    "label": "Trends und kommende Starts",
+    "heading": "Trend-Radar: die nächsten Gesprächsthemen",
+    "updated": "Recherche aktualisiert am",
+    "intro": "Entdecke Gesprächsstoff früh und wähle passend zu deinem Abend. Auf gemessene Popularität folgen vier bestätigte Termine, die neues Interesse an Fantasy, Science-Fiction, brasilianischer Popkultur und Buchverfilmungen wecken könnten.",
+    "factsHeading": "Gemessene Popularität: 2.–8. November",
+    "facts": [
+      "Globale Netflix-Charts für englischsprachige Filme: A Dog’s Perfect Christmas lag mit 8,6 Millionen Aufrufen auf Platz 1.",
+      "Globale Netflix-Charts für englischsprachige Serien: Taken: Natalee Holloway, Staffel 1, lag mit 12,9 Millionen Aufrufen auf Platz 1.",
+      "Netflix-Serien in Brasilien: Dom de Iludir (The Gift of Deceit), Staffel 1, lag auf Platz 1; Lupin, Teil 4, auf Platz 2."
+    ],
+    "method": "Dies sind getrennte Netflix-Charts, keine Rangliste aller Anbieter. Nahe Termine erhalten Vorrang, weil sie einen konkreten Anlass zum Wiederkommen bieten. Die Auswahl ist redaktionell; gemessene Viralitätswahrscheinlichkeiten oder Suchvolumenprognosen liegen nicht vor.",
+    "states": [
+      "Demnächst · neue Folgen",
+      "Demnächst · angekündigter Start",
+      "Brasilien · kommendes Festival",
+      "Später · geänderte Termine"
+    ],
+    "notes": [
+      "Staffel 3 startete am 11. November. Amazon nennt den 18. November für Folgen 5–6 und den 25. November für Folgen 7–8. Das sind gute Anlässe für spoilerfreies Aufholen. Neue Zuschauer beginnen bei Staffel 1; Rückkehrer prüfen ihren letzten Stand. Eine Fangemeinde garantiert keine künftigen Zuschauerzahlen.",
+      "Amazon kündigt alle acht Folgen für den 25. November auf Prime Video an. Wer den Hintergrund auffrischen möchte, sieht Blade Runner (1982) vor Blade Runner 2049 (2017). Das ist eine optionale Vorbereitung, keine bestätigte Voraussetzung. Prüfe die örtlichen Leih- und Aboangebote für jeden Film getrennt von der Serie.",
+      "CCXP26 findet vom 3. bis 6. Dezember auf der São Paulo Expo statt. Mache aus offiziellen Ankündigungen eine Merkliste: Titel notieren, Studioquelle prüfen und Teaser von Startterminen unterscheiden. Unser Veranstaltungsführer enthält Öffnungszeiten und Programmverweise. Panelzugang und öffentliche Streams müssen jeweils geprüft werden.",
+      "Netflix nennt jetzt den 12. Februar 2027 für das Kino und den 2. April für Netflix; IMAX-Vorführungen beginnen am 10. Februar. Plane nicht mit den überholten Terminen im November/Dezember 2026. Bis dahin bietet sich C. S. Lewis’ Das Wunder von Narnia als Buch oder Hörbuch in deiner gewünschten Ausgabe an."
+    ],
+    "explore": "In MatchApp Ai entdecken",
+    "promptsTitle": "Ein gemeinsamer Abend zum Weiterempfehlen",
+    "prompts": [
+      "Der Aufholpakt: Jeder nennt die zuletzt beendete Folge. Legt eine Spoilergrenze fest, bevor ihr weiterschaut.",
+      "Der Science-Fiction-Doppelabend: Entscheidet euch für einen oder zwei Abende und schaut die beiden Blade-Runner-Filme in Veröffentlichungsreihenfolge. Laufzeiten und Zugang vorher prüfen.",
+      "Von der Ankündigung zur Merkliste: Jeder bringt eine offizielle CCXP-Meldung mit und beschreibt die erwartete Stimmung. Wählt gemeinsam ein bereits erschienenes verwandtes Werk; ein Trailer ist keine Rezension."
+    ],
+    "share": "Radar teilen",
+    "shareText": "Was schauen wir als Nächstes? Wählt eine Idee aus dem Trend-Radar von MatchApp Ai.",
+    "copied": "Radar-Link kopiert."
+  },
+  "it": {
+    "title": "Tendenze streaming e prossime uscite: novembre 2026",
+    "description": "Classifiche Netflix, Gli Anelli del Potere, Blade Runner 2099 e CCXP26: date e idee senza spoiler per scegliere cosa guardare con MatchApp Ai.",
+    "label": "Tendenze e prossime uscite",
+    "heading": "Radar delle tendenze: i prossimi argomenti",
+    "updated": "Ricerca aggiornata il",
+    "intro": "Entra nella conversazione in anticipo e scegli in base alla tua serata. Partiamo dalla popolarità misurata e da quattro appuntamenti confermati che potrebbero accendere l’interesse per fantasy, fantascienza, cultura pop brasiliana e adattamenti.",
+    "factsHeading": "Popolarità osservata: 2–8 novembre",
+    "facts": [
+      "Film in inglese, classifica globale Netflix: A Dog’s Perfect Christmas era primo con 8,6 milioni di visualizzazioni.",
+      "Serie in inglese, classifica globale Netflix: Taken: Natalee Holloway, stagione 1, era prima con 12,9 milioni di visualizzazioni.",
+      "Serie Netflix in Brasile: Dom de Iludir (The Gift of Deceit), stagione 1, era prima; Lupin, parte 4, secondo."
+    ],
+    "method": "Sono classifiche Netflix distinte, non una graduatoria di tutte le piattaforme. Diamo priorità alle date vicine perché offrono un motivo concreto per tornare. Sono valutazioni editoriali, senza probabilità misurate di viralità né previsioni delle ricerche.",
+    "states": [
+      "A breve · nuovi episodi",
+      "A breve · uscita annunciata",
+      "Brasile · festival in arrivo",
+      "Più avanti · date aggiornate"
+    ],
+    "notes": [
+      "La stagione 3 è iniziata l’11 novembre. Amazon annuncia gli episodi 5–6 il 18 e 7–8 il 25 novembre. Due occasioni per mettersi in pari senza spoiler. Chi comincia può partire dalla stagione 1; chi ritorna deve verificare dove si era fermato. I fan della saga non garantiscono gli ascolti futuri.",
+      "Amazon annuncia tutti gli otto episodi il 25 novembre su Prime Video. Per ripassare l’universo in ordine di uscita, guarda Blade Runner (1982) e poi Blade Runner 2049 (2017). È una preparazione facoltativa, non un requisito confermato. Verifica separatamente noleggio e abbonamenti locali per ciascun film.",
+      "CCXP26 si svolge dal 3 al 6 dicembre al São Paulo Expo. Trasforma gli annunci ufficiali in una lista: annota il titolo, verifica la fonte dello studio e distingui un teaser da una data di uscita. La nostra guida riunisce orari e programma. Accesso ai panel e dirette pubbliche vanno verificati singolarmente.",
+      "Netflix indica ora il 12 febbraio 2027 per i cinema e il 2 aprile per Netflix, con anteprime IMAX dal 10 febbraio. Le vecchie date di novembre/dicembre 2026 sono superate. Nel frattempo, scopri Il nipote del mago di C. S. Lewis nell’edizione da leggere o ascoltare che preferisci."
+    ],
+    "explore": "Esplora su MatchApp Ai",
+    "promptsTitle": "Una serata da scegliere e condividere",
+    "prompts": [
+      "Il patto senza spoiler: ognuno dice l’ultimo episodio terminato. Stabilite il limite della conversazione prima di proseguire.",
+      "La doppia serata di fantascienza: decidete se avete una sera o due e seguite l’ordine di uscita dei due film Blade Runner. Verificate durata e accesso.",
+      "Dall’annuncio alla lista: ognuno porta un annuncio ufficiale CCXP e descrive l’atmosfera promessa. Scegliete un’opera collegata già disponibile; un trailer non è una recensione."
+    ],
+    "share": "Condividi il radar",
+    "shareText": "Cosa guardiamo dopo? Scegli un’idea dal radar delle tendenze MatchApp Ai.",
+    "copied": "Link del radar copiato."
+  },
+  "tr": {
+    "title": "Streaming trendleri ve yeni yapımlar: Kasım 2026",
+    "description": "Netflix listeleri, Güç Yüzükleri, Blade Runner 2099 ve CCXP26: doğrulanmış tarihler ve spoilersız izleme fikirleri MatchApp Ai’da.",
+    "label": "Trendler ve sıradaki yapımlar",
+    "heading": "Trend radarı: sıradaki konuşma konuları",
+    "updated": "Araştırma güncellemesi",
+    "intro": "Sohbete erken katıl, ama seçimini kendi akşamına göre yap. Ölçülmüş popülerlikten başlayıp fantastik kurgu, bilimkurgu, Brezilya popüler kültürü ve kitap uyarlamalarına ilgi getirebilecek dört doğrulanmış tarihe bakıyoruz.",
+    "factsHeading": "Ölçülen popülerlik: 2–8 Kasım",
+    "facts": [
+      "Netflix küresel İngilizce film listesinde A Dog’s Perfect Christmas, 8,6 milyon izlenmeyle birinciydi.",
+      "Netflix küresel İngilizce dizi listesinde Taken: Natalee Holloway 1. sezon, 12,9 milyon izlenmeyle birinciydi.",
+      "Brezilya Netflix dizi listesinde Dom de Iludir (The Gift of Deceit) 1. sezon birinci, Lupin 4. kısım ikinciydi."
+    ],
+    "method": "Bunlar Netflix’in ayrı listeleridir; bütün platformların sıralaması değildir. Yakın tarihler, geri dönmek için belirgin bir neden sunduğundan önceliklidir. Bu editoryal seçimler için ölçülmüş viral olma olasılığı veya arama hacmi tahmini yoktur.",
+    "states": [
+      "Yakında · yeni bölümler",
+      "Yakında · duyurulan prömiyer",
+      "Brezilya · yaklaşan festival",
+      "Daha sonra · değişen tarihler"
+    ],
+    "notes": [
+      "3. sezon 11 Kasım’da başladı. Amazon, 5–6. bölümleri 18 Kasım; 7–8. bölümleri 25 Kasım için duyuruyor. Yeni izleyiciler 1. sezondan başlayabilir, geri dönenler son izledikleri bölümü kontrol edebilir. Bu tarihler spoilersız yetişme planı için yararlıdır; mevcut hayran kitlesi gelecekteki izlenmeyi garanti etmez.",
+      "Amazon, sekiz bölümün tamamını 25 Kasım’da Prime Video için duyuruyor. Evreni çıkış sırasıyla hatırlamak istersen Blade Runner (1982), ardından Blade Runner 2049 (2017) izlenebilir. Bu isteğe bağlı hazırlıktır, doğrulanmış bir zorunluluk değildir. Filmlerin yerel kiralama ve abonelik seçeneklerini diziden ayrı kontrol et.",
+      "CCXP26, 3–6 Aralık’ta São Paulo Expo’da düzenleniyor. Resmî duyuruları izleme listesine dönüştür: başlığı kaydet, stüdyonun açıklamasını doğrula ve tanıtım videosuyla çıkış tarihini ayır. Etkinlik rehberimiz saatleri ve program bağlantılarını içerir. Panel girişi ile halka açık yayınları tek tek kontrol et.",
+      "Netflix’in güncel tarihleri sinemalar için 12 Şubat 2027, Netflix için 2 Nisan 2027; IMAX ön gösterimleri 10 Şubat’ta başlıyor. Eski Kasım/Aralık 2026 tarihleriyle plan yapma. Bu arada C. S. Lewis’in Büyücünün Yeğeni kitabını istediğin okuma veya sesli kitap baskısında keşfedebilirsin."
+    ],
+    "explore": "MatchApp Ai’da keşfet",
+    "promptsTitle": "Birlikte seçilecek ve paylaşılacak bir akşam",
+    "prompts": [
+      "Yetişme anlaşması: herkes bitirdiği son bölümü söylesin. Sıradakini seçmeden önce spoiler sınırını belirleyin.",
+      "Bilimkurgu ikilisi: bir mi iki mi akşamınız olduğuna karar verin ve iki Blade Runner filmini çıkış sırasıyla izleyin. Süreyi ve erişimi önceden kontrol edin.",
+      "Duyurudan listeye: herkes bir resmî CCXP duyurusu getirsin ve vaat ettiği atmosferi anlatsın. Çıkmış bir ilgili yapımı birlikte seçin; fragman eleştiri değildir."
+    ],
+    "share": "Radarı paylaş",
+    "shareText": "Sırada ne izleyelim? MatchApp Ai trend radarından bir fikir seç.",
+    "copied": "Radar bağlantısı kopyalandı."
+  },
+  "ru": {
+    "title": "Тренды стриминга и будущие премьеры: ноябрь 2026",
+    "description": "Чарты Netflix, «Кольца власти», Blade Runner 2099 и CCXP26: даты и идеи просмотра без спойлеров с MatchApp Ai.",
+    "label": "Тренды и будущие премьеры",
+    "heading": "Радар трендов: новые поводы для обсуждения",
+    "updated": "Исследование обновлено",
+    "intro": "Присоединяйтесь к обсуждению заранее и выбирайте по настроению. Начнём с измеренной популярности, затем рассмотрим четыре подтверждённые даты, способные привлечь внимание к фэнтези, фантастике, бразильской поп-культуре и экранизациям.",
+    "factsHeading": "Измеренная популярность: 2–8 ноября",
+    "facts": [
+      "В мировом чарте англоязычных фильмов Netflix A Dog’s Perfect Christmas занял первое место с 8,6 млн просмотров.",
+      "В мировом чарте англоязычных сериалов Netflix Taken: Natalee Holloway, сезон 1, занял первое место с 12,9 млн просмотров.",
+      "В чарте сериалов Netflix в Бразилии Dom de Iludir (The Gift of Deceit), сезон 1, был первым; «Люпен», часть 4, — вторым."
+    ],
+    "method": "Это отдельные чарты Netflix, а не рейтинг всех платформ. Ближайшим датам отдаётся приоритет как конкретным поводам вернуться. Это редакционные оценки: измеренной вероятности вирусного успеха и прогноза поискового спроса нет.",
+    "states": [
+      "Скоро · новые серии",
+      "Скоро · заявленная премьера",
+      "Бразилия · будущий фестиваль",
+      "Позже · новые даты"
+    ],
+    "notes": [
+      "Третий сезон начался 11 ноября. Amazon объявляет серии 5–6 на 18 ноября, а 7–8 на 25 ноября. Эти даты помогут составить план просмотра без спойлеров. Новичкам стоит начать с первого сезона, возвращающимся — проверить, где они остановились. Наличие поклонников не гарантирует будущую аудиторию.",
+      "Amazon объявляет все восемь серий на 25 ноября в Prime Video. Для знакомства с миром в порядке выхода можно посмотреть Blade Runner (1982), затем Blade Runner 2049 (2017). Это необязательная подготовка, а не подтверждённое условие просмотра. Проверяйте местную аренду и подписки на фильмы отдельно от сериала.",
+      "CCXP26 проходит 3–6 декабря в São Paulo Expo. Превращайте официальные анонсы в список: запишите название, проверьте источник студии и отличайте тизер от даты выхода. Наш гид содержит часы работы и ссылки на программу. Доступ на панели и открытые трансляции проверяйте отдельно.",
+      "Актуальные даты Netflix — 12 февраля 2027 года в кино и 2 апреля на Netflix; показы IMAX начинаются 10 февраля. Старые даты ноября/декабря 2026 года устарели. Пока можно познакомиться с «Племянником чародея» К. С. Льюиса, выбрав нужное книжное или аудиоиздание."
+    ],
+    "explore": "Открыть в MatchApp Ai",
+    "promptsTitle": "Вечер, который хочется разделить",
+    "prompts": [
+      "Договор без спойлеров: каждый называет последнюю просмотренную серию. Определите границу обсуждения перед продолжением.",
+      "Двойной вечер фантастики: решите, есть ли у вас один вечер или два, и смотрите фильмы Blade Runner по порядку выхода. Заранее проверьте длительность и доступ.",
+      "От анонса к списку: каждый приносит официальный анонс CCXP и описывает ожидаемое настроение. Выберите связанную работу, которая уже вышла; трейлер не заменяет рецензию."
+    ],
+    "share": "Поделиться радаром",
+    "shareText": "Что посмотрим дальше? Выберите идею из радара трендов MatchApp Ai.",
+    "copied": "Ссылка на радар скопирована."
+  },
+  "ar": {
+    "title": "اتجاهات المشاهدة والإصدارات المقبلة: نوفمبر 2026",
+    "description": "قوائم Netflix ومواعيد حلقات خواتم السلطة وBlade Runner 2099 وCCXP26: أفكار بلا حرق للأحداث مع MatchApp Ai.",
+    "label": "الرائج والإصدارات المقبلة",
+    "heading": "رادار الاتجاهات: موضوعات الحديث المقبلة",
+    "updated": "تحديث البحث",
+    "intro": "شارك في الحديث مبكرًا واختر ما يناسب سهرتك. نبدأ بشعبية مقاسة، ثم أربع مواعيد مؤكدة قد تجذب اهتمامًا جديدًا بالفانتازيا والخيال العلمي والثقافة الشعبية البرازيلية والأعمال المقتبسة من الكتب.",
+    "factsHeading": "الشعبية المقاسة: من 2 إلى 8 نوفمبر",
+    "facts": [
+      "في قائمة Netflix العالمية للأفلام باللغة الإنجليزية، تصدّر A Dog’s Perfect Christmas بـ8.6 ملايين مشاهدة.",
+      "في قائمة Netflix العالمية للمسلسلات باللغة الإنجليزية، تصدّر الموسم الأول من Taken: Natalee Holloway بـ12.9 مليون مشاهدة.",
+      "في قائمة مسلسلات Netflix بالبرازيل، حل الموسم الأول من Dom de Iludir (The Gift of Deceit) أولًا، والجزء الرابع من Lupin ثانيًا."
+    ],
+    "method": "هذه قوائم منفصلة من Netflix وليست ترتيبًا لجميع المنصات. نعطي الأولوية للمواعيد القريبة لأنها توفر سببًا واضحًا للعودة. هذه تقديرات تحريرية، ولا تتوفر احتمالات مقاسة للانتشار الواسع أو توقعات لحجم البحث.",
+    "states": [
+      "قريبًا · حلقات جديدة",
+      "قريبًا · عرض معلن",
+      "البرازيل · مهرجان مقبل",
+      "لاحقًا · مواعيد معدلة"
+    ],
+    "notes": [
+      "بدأ الموسم الثالث في 11 نوفمبر. تعلن Amazon الحلقتين 5 و6 في 18 نوفمبر، و7 و8 في 25 نوفمبر. تساعد هذه المواعيد على اللحاق بالقصة بلا حرق. يمكن للمشاهد الجديد البدء بالموسم الأول، وللعائد التأكد من آخر حلقة شاهدها. جمهور السلسلة لا يضمن المشاهدات المقبلة.",
+      "تعلن Amazon الحلقات الثماني كلها في 25 نوفمبر على Prime Video. للتعرف إلى العالم حسب ترتيب الإصدار، شاهد Blade Runner ‏(1982)، ثم Blade Runner 2049 ‏(2017). هذه تهيئة اختيارية وليست شرطًا مؤكدًا. تحقّق من عروض تأجير كل فيلم أو اشتراكه محليًا بشكل منفصل عن المسلسل.",
+      "تقام CCXP26 من 3 إلى 6 ديسمبر في São Paulo Expo. حوّل الإعلانات الرسمية إلى قائمة: سجّل العنوان، وتحقق من مصدر الاستوديو، وميّز بين إعلان تشويقي وموعد إصدار. دليلنا يجمع ساعات العمل وروابط البرنامج. يجب التحقق من دخول كل جلسة وإتاحة بثها العام على حدة.",
+      "مواعيد Netflix الحالية هي 12 فبراير 2027 للسينما و2 أبريل 2027 للمنصة، مع عروض IMAX مبكرة من 10 فبراير. مواعيد نوفمبر وديسمبر 2026 القديمة لم تعد معتمدة. يمكنك الآن اكتشاف The Magician’s Nephew للكاتب C. S. Lewis في طبعة القراءة أو النسخة الصوتية التي تفضلها."
+    ],
+    "explore": "استكشف في MatchApp Ai",
+    "promptsTitle": "سهرة تختارونها وتتشاركونها",
+    "prompts": [
+      "اتفاق بلا حرق: يذكر كل شخص آخر حلقة أكملها. حددوا حدود النقاش قبل اختيار الحلقة التالية.",
+      "سهرة خيال علمي مزدوجة: قرروا إن كان لديكم مساء واحد أم مساءان، ثم اتبعوا ترتيب إصدار فيلمَي Blade Runner. تحققوا مسبقًا من المدة والإتاحة.",
+      "من الإعلان إلى القائمة: يحضر كل شخص إعلانًا رسميًا من CCXP ويشرح الأجواء التي يعد بها. اختاروا عملًا مرتبطًا صدر بالفعل؛ الإعلان التشويقي ليس مراجعة."
+    ],
+    "share": "مشاركة الرادار",
+    "shareText": "ماذا نشاهد لاحقًا؟ اختر فكرة من رادار اتجاهات MatchApp Ai.",
+    "copied": "تم نسخ رابط الرادار."
+  },
+  "hi": {
+    "title": "स्ट्रीमिंग ट्रेंड और आने वाली रिलीज़: नवंबर 2026",
+    "description": "Netflix चार्ट, The Rings of Power, Blade Runner 2099 और CCXP26: पक्की तारीखें और बिना स्पॉइलर देखने के सुझाव, MatchApp Ai पर।",
+    "label": "ट्रेंड और आने वाली रिलीज़",
+    "heading": "ट्रेंड रडार: अगली चर्चाओं की शुरुआत",
+    "updated": "शोध अपडेट",
+    "intro": "चर्चा से जल्दी जुड़ें, लेकिन अपनी शाम के हिसाब से चुनें। पहले मापी गई लोकप्रियता देखें, फिर चार पक्की तारीखें जो फ़ैंटेसी, साइंस फ़िक्शन, ब्राज़ील की पॉप संस्कृति और किताबों के रूपांतरण में दिलचस्पी बढ़ा सकती हैं।",
+    "factsHeading": "मापी गई लोकप्रियता: 2–8 नवंबर",
+    "facts": [
+      "Netflix के वैश्विक अंग्रेज़ी फ़िल्म चार्ट में A Dog’s Perfect Christmas 86 लाख व्यूज़ के साथ पहले स्थान पर था।",
+      "Netflix के वैश्विक अंग्रेज़ी शो चार्ट में Taken: Natalee Holloway, सीज़न 1, 1.29 करोड़ व्यूज़ के साथ पहले स्थान पर था।",
+      "ब्राज़ील के Netflix सीरीज़ चार्ट में Dom de Iludir (The Gift of Deceit), सीज़न 1, पहले और Lupin, भाग 4, दूसरे स्थान पर था।"
+    ],
+    "method": "ये Netflix के अलग-अलग चार्ट हैं, सभी स्ट्रीमिंग सेवाओं की रैंकिंग नहीं। नज़दीकी तारीखों को प्राथमिकता दी गई है क्योंकि वे लौटने का स्पष्ट कारण देती हैं। ये संपादकीय आकलन हैं; वायरल होने की मापी गई संभावना या खोज की मात्रा का पूर्वानुमान उपलब्ध नहीं है।",
+    "states": [
+      "जल्द · नए एपिसोड",
+      "जल्द · घोषित प्रीमियर",
+      "ब्राज़ील · आगामी उत्सव",
+      "बाद में · बदली हुई तारीखें"
+    ],
+    "notes": [
+      "सीज़न 3 की शुरुआत 11 नवंबर को हुई। Amazon ने एपिसोड 5–6 के लिए 18 नवंबर और 7–8 के लिए 25 नवंबर घोषित किए हैं। बिना स्पॉइलर पिछली कहानी पूरी करने के ये अच्छे मौके हैं। नए दर्शक सीज़न 1 से शुरू कर सकते हैं; लौटने वाले अपना अंतिम एपिसोड जाँचें। प्रशंसकों की मौजूदगी भविष्य के व्यूज़ की गारंटी नहीं है।",
+      "Amazon ने सभी आठ एपिसोड 25 नवंबर को Prime Video पर घोषित किए हैं। रिलीज़ के क्रम में दुनिया को समझने के लिए Blade Runner (1982), फिर Blade Runner 2049 (2017) देख सकते हैं। यह वैकल्पिक तैयारी है, कोई पुष्ट अनिवार्यता नहीं। हर फ़िल्म के स्थानीय किराये या सदस्यता विकल्प को नई सीरीज़ से अलग जाँचें।",
+      "CCXP26, 3–6 दिसंबर को São Paulo Expo में होगा। आधिकारिक घोषणाओं से सूची बनाएँ: शीर्षक लिखें, स्टूडियो का स्रोत जाँचें और टीज़र को रिलीज़ तारीख न मानें। हमारे कार्यक्रम गाइड में समय और लाइनअप लिंक हैं। हर पैनल में प्रवेश और सार्वजनिक लाइवस्ट्रीम की पुष्टि अलग से करें।",
+      "Netflix की मौजूदा तारीखें सिनेमाघरों के लिए 12 फ़रवरी 2027 और Netflix के लिए 2 अप्रैल 2027 हैं; IMAX पूर्व प्रदर्शन 10 फ़रवरी से हैं। नवंबर/दिसंबर 2026 की पुरानी तारीखों पर योजना न बनाएँ। अभी C. S. Lewis की The Magician’s Nephew को अपनी पसंद के पढ़ने या ऑडियो संस्करण में खोजें।"
+    ],
+    "explore": "MatchApp Ai में खोजें",
+    "promptsTitle": "साथ चुनें, साथ देखने की योजना साझा करें",
+    "prompts": [
+      "बिना स्पॉइलर समझौता: हर व्यक्ति आखिरी पूरा किया एपिसोड बताए। अगला चुनने से पहले चर्चा की सीमा तय करें।",
+      "साइंस फ़िक्शन की दो फ़िल्में: तय करें कि एक शाम है या दो, फिर दोनों Blade Runner फ़िल्में रिलीज़ क्रम में देखें। अवधि और उपलब्धता पहले जाँचें।",
+      "घोषणा से सूची तक: हर व्यक्ति CCXP की एक आधिकारिक घोषणा लाए और उसका माहौल बताए। उससे जुड़ा कोई पहले से रिलीज़ काम साथ चुनें; ट्रेलर समीक्षा नहीं है।"
+    ],
+    "share": "यह रडार साझा करें",
+    "shareText": "अब आगे क्या देखें? MatchApp Ai के ट्रेंड रडार से एक सुझाव चुनें।",
+    "copied": "रडार का लिंक कॉपी हो गया।"
+  },
+  "id": {
+    "title": "Tren streaming dan rilis mendatang: November 2026",
+    "description": "Chart Netflix, The Rings of Power, Blade Runner 2099 dan CCXP26: tanggal terverifikasi dan ide menonton tanpa spoiler bersama MatchApp Ai.",
+    "label": "Tren dan rilis berikutnya",
+    "heading": "Radar tren: bahan obrolan berikutnya",
+    "updated": "Riset diperbarui",
+    "intro": "Ikuti percakapan lebih awal sambil memilih sesuai suasana malammu. Mulai dari popularitas terukur, lalu empat tanggal terkonfirmasi yang berpotensi menarik minat pada fantasi, fiksi ilmiah, budaya pop Brasil dan adaptasi buku.",
+    "factsHeading": "Popularitas terukur: 2–8 November",
+    "facts": [
+      "Chart global film berbahasa Inggris Netflix: A Dog’s Perfect Christmas berada di posisi 1 dengan 8,6 juta penayangan.",
+      "Chart global serial berbahasa Inggris Netflix: Taken: Natalee Holloway, musim 1, berada di posisi 1 dengan 12,9 juta penayangan.",
+      "Chart serial Netflix di Brasil: Dom de Iludir (The Gift of Deceit), musim 1, berada di posisi 1; Lupin, bagian 4, di posisi 2."
+    ],
+    "method": "Ini chart Netflix yang terpisah, bukan peringkat semua layanan streaming. Tanggal terdekat diprioritaskan karena memberi alasan konkret untuk kembali. Peluang ini merupakan penilaian editorial; tidak tersedia probabilitas viral terukur atau prediksi volume pencarian.",
+    "states": [
+      "Segera · episode baru",
+      "Segera · tayang perdana diumumkan",
+      "Brasil · festival mendatang",
+      "Jangka panjang · tanggal direvisi"
+    ],
+    "notes": [
+      "Musim 3 dimulai pada 11 November. Amazon menjadwalkan episode 5–6 pada 18 November dan 7–8 pada 25 November. Ini kesempatan menyusul cerita tanpa spoiler. Penonton baru bisa mulai dari musim 1, sedangkan yang kembali perlu memeriksa episode terakhirnya. Penggemar waralaba tidak menjamin jumlah penonton mendatang.",
+      "Amazon mengumumkan seluruh delapan episode pada 25 November di Prime Video. Untuk mengenali dunianya sesuai urutan rilis, tonton Blade Runner (1982), lalu Blade Runner 2049 (2017). Ini persiapan opsional, bukan syarat yang telah dikonfirmasi. Periksa penawaran sewa atau langganan lokal setiap film secara terpisah dari serial baru.",
+      "CCXP26 berlangsung 3–6 Desember di São Paulo Expo. Ubah pengumuman resmi menjadi daftar: catat judul, periksa sumber studio dan bedakan teaser dari tanggal rilis. Panduan acara kami memuat jam buka dan tautan program. Akses panel dan siaran publik harus diperiksa satu per satu.",
+      "Tanggal Netflix terbaru adalah 12 Februari 2027 di bioskop dan 2 April 2027 di Netflix, dengan pratayang IMAX mulai 10 Februari. Jangan merencanakan berdasarkan tanggal lama November/Desember 2026. Sementara itu, temukan The Magician’s Nephew karya C. S. Lewis dalam edisi bacaan atau audio pilihanmu."
+    ],
+    "explore": "Jelajahi di MatchApp Ai",
+    "promptsTitle": "Malam menonton yang layak dibagikan",
+    "prompts": [
+      "Kesepakatan tanpa spoiler: setiap orang menyebutkan episode terakhir yang selesai ditonton. Tentukan batas obrolan sebelum melanjutkan.",
+      "Dua film fiksi ilmiah: putuskan satu atau dua malam, lalu ikuti urutan rilis kedua film Blade Runner. Periksa durasi dan akses terlebih dahulu.",
+      "Dari pengumuman ke daftar: masing-masing membawa satu pengumuman resmi CCXP dan menjelaskan suasana yang dijanjikan. Pilih karya terkait yang sudah rilis; trailer bukan ulasan."
+    ],
+    "share": "Bagikan radar ini",
+    "shareText": "Selanjutnya nonton apa? Pilih satu ide dari radar tren MatchApp Ai.",
+    "copied": "Tautan radar disalin."
+  },
+  "ja": {
+    "title": "配信トレンドと今後の新作：2026年11月",
+    "description": "Netflixランキング、『力の指輪』の配信日、Blade Runner 2099、CCXP26。ネタバレなしの鑑賞計画をMatchApp Aiで。",
+    "label": "配信トレンドと今後の新作",
+    "heading": "トレンドレーダー：次の話題を見つける",
+    "updated": "調査更新日",
+    "intro": "話題を早めに知りつつ、自分の夜に合う作品を選びましょう。実測された人気と、ファンタジー、SF、ブラジルのポップカルチャー、文学の映像化に関心が集まるきっかけとなり得る4つの確定日程を紹介します。",
+    "factsHeading": "確認できた人気：11月2〜8日",
+    "facts": [
+      "Netflixの世界英語映画ランキングでは、A Dog’s Perfect Christmasが860万ビューで1位でした。",
+      "Netflixの世界英語シリーズランキングでは、Taken: Natalee Hollowayのシーズン1が1,290万ビューで1位でした。",
+      "ブラジルのNetflixシリーズランキングでは、Dom de Iludir（The Gift of Deceit）のシーズン1が1位、Lupinのパート4が2位でした。"
+    ],
+    "method": "それぞれ別のNetflixランキングであり、全配信サービスの総合順位ではありません。再訪する具体的な理由になるため、近い日程を優先しています。以下は編集上の見立てで、拡散確率の実測値や検索数の予測はありません。",
+    "states": [
+      "近日・新エピソード",
+      "近日・配信開始予定",
+      "ブラジル・開催予定",
+      "長期・変更後の日程"
+    ],
+    "notes": [
+      "シーズン3は11月11日に開始。Amazonは第5〜6話を11月18日、第7〜8話を11月25日に予定しています。ネタバレを避けて追いつく計画に使える日程です。初めてならシーズン1から、再開するなら最後に見た話を確認しましょう。既存ファンの多さは今後の視聴数を保証しません。",
+      "AmazonはPrime Videoで11月25日に全8話を配信すると発表。世界観を公開順に振り返るなら、Blade Runner（1982）、Blade Runner 2049（2017）の順です。復習は任意で、必須条件と確認されたものではありません。映画それぞれの現地レンタル・定額配信を、新シリーズとは別に確認してください。",
+      "CCXP26は12月3〜6日にSão Paulo Expoで開催。公式発表から鑑賞リストを作るなら、作品名を記録し、スタジオの情報源を確認し、予告映像と公開日を区別しましょう。イベントガイドには営業時間とプログラムへのリンクがあります。パネル入場条件や一般向け配信は個別に確認が必要です。",
+      "Netflixの現在の予定は劇場公開が2027年2月12日、Netflix配信が4月2日で、IMAX先行上映は2月10日からです。以前の2026年11〜12月の日程は使わないでください。それまではC・S・ルイスの『魔術師のおい』を、好みの書籍・音声版で楽しむ選択肢があります。"
+    ],
+    "explore": "MatchApp Aiで探す",
+    "promptsTitle": "一緒に選んで共有したくなる夜",
+    "prompts": [
+      "追いつきの約束：全員が最後に見終えた話を伝え、次を選ぶ前にネタバレの境界を決めましょう。",
+      "SFの2本立て：一晩か二晩かを決め、Blade Runnerの2作品を公開順に鑑賞。上映時間と視聴方法を先に確認しましょう。",
+      "発表から鑑賞リストへ：各自がCCXPの公式発表を1つ持ち寄り、期待する雰囲気を説明。関連する公開済み作品を一緒に選びましょう。予告編はレビューではありません。"
+    ],
+    "share": "レーダーを共有",
+    "shareText": "次は何を見る？MatchApp Aiのトレンドレーダーから選んでみよう。",
+    "copied": "レーダーのリンクをコピーしました。"
+  },
+  "ko": {
+    "title": "스트리밍 트렌드와 예정작: 2026년 11월",
+    "description": "Netflix 순위, 힘의 반지 공개일, Blade Runner 2099와 CCXP26. MatchApp Ai에서 스포일러 없는 시청 계획을 세워 보세요.",
+    "label": "트렌드와 다음 공개작",
+    "heading": "트렌드 레이더: 다음 대화의 시작",
+    "updated": "조사 업데이트",
+    "intro": "화제를 일찍 알아보고 오늘의 기분에 맞게 고르세요. 측정된 인기와 함께 판타지, SF, 브라질 대중문화, 문학 원작 영상화에 새로운 관심을 불러올 수 있는 네 가지 확정 일정을 살펴봅니다.",
+    "factsHeading": "확인된 인기: 11월 2~8일",
+    "facts": [
+      "Netflix 글로벌 영어 영화 순위에서 A Dog’s Perfect Christmas가 860만 뷰로 1위였습니다.",
+      "Netflix 글로벌 영어 시리즈 순위에서 Taken: Natalee Holloway 시즌 1이 1,290만 뷰로 1위였습니다.",
+      "브라질 Netflix 시리즈 순위에서는 Dom de Iludir(The Gift of Deceit) 시즌 1이 1위, Lupin 파트 4가 2위였습니다."
+    ],
+    "method": "각각 별도의 Netflix 순위이며 모든 플랫폼의 종합 순위가 아닙니다. 다시 찾아올 구체적인 이유가 되는 가까운 일정을 우선했습니다. 아래 평가는 편집상의 판단이며, 측정된 바이럴 확률이나 검색량 예측은 없습니다.",
+    "states": [
+      "곧 공개 · 새 에피소드",
+      "곧 공개 · 발표된 첫 공개일",
+      "브라질 · 예정된 축제",
+      "장기 관심 · 변경된 일정"
+    ],
+    "notes": [
+      "시즌 3은 11월 11일 시작했습니다. Amazon은 5~6화를 11월 18일, 7~8화를 11월 25일로 발표했습니다. 스포일러 없이 따라잡을 계획을 세우기 좋은 날짜입니다. 처음이라면 시즌 1부터, 다시 본다면 마지막 시청 지점부터 확인하세요. 기존 팬층이 향후 시청 수를 보장하지는 않습니다.",
+      "Amazon은 11월 25일 Prime Video에서 8화 전체를 공개한다고 발표했습니다. 세계관을 개봉 순으로 돌아보려면 Blade Runner(1982), Blade Runner 2049(2017) 순입니다. 복습은 선택 사항이며 필수 조건으로 확인된 것은 아닙니다. 각 영화의 현지 대여·구독 조건은 새 시리즈와 별도로 확인하세요.",
+      "CCXP26은 12월 3~6일 São Paulo Expo에서 열립니다. 공식 발표로 시청 목록을 만들 때는 제목을 적고 스튜디오 출처를 확인하며 티저와 공개일을 구별하세요. 기존 행사 가이드에 운영 시간과 프로그램 링크가 있습니다. 패널 입장과 공개 생중계 여부는 각각 확인해야 합니다.",
+      "Netflix의 현재 일정은 2027년 2월 12일 극장 개봉, 4월 2일 Netflix 공개이며 IMAX 사전 상영은 2월 10일부터입니다. 이전의 2026년 11~12월 일정으로 계획하지 마세요. 그동안 C. S. 루이스의 『마법사의 조카』를 원하는 책이나 오디오북 판본으로 만나 보세요."
+    ],
+    "explore": "MatchApp Ai에서 탐색",
+    "promptsTitle": "함께 고르고 나누는 시청 계획",
+    "prompts": [
+      "따라잡기 약속: 각자 마지막으로 끝낸 에피소드를 말하고, 다음 편을 고르기 전에 스포일러 경계를 정하세요.",
+      "SF 두 편 보기: 하루 또는 이틀을 정하고 두 Blade Runner 영화를 개봉 순으로 보세요. 상영 시간과 이용 조건을 먼저 확인하세요.",
+      "발표에서 목록으로: 각자 CCXP 공식 발표 하나를 가져와 기대하는 분위기를 설명하세요. 관련된 기존 작품을 함께 고르되, 예고편을 리뷰로 여기지는 마세요."
+    ],
+    "share": "레이더 공유",
+    "shareText": "다음에는 뭘 볼까요? MatchApp Ai 트렌드 레이더에서 골라 보세요.",
+    "copied": "레이더 링크를 복사했습니다."
+  },
+  "zh": {
+    "title": "流媒体趋势与即将上线的新作：2026年11月",
+    "description": "Netflix榜单、《力量之戒》更新日期、Blade Runner 2099与CCXP26。通过MatchApp Ai制定无剧透观影计划。",
+    "label": "热门趋势与即将上线",
+    "heading": "趋势雷达：寻找下一个话题",
+    "updated": "研究更新日期",
+    "intro": "提前了解话题，再按今晚的心情选择。从已测量的人气出发，看看四个已确认的日程：它们可能为奇幻、科幻、巴西流行文化和文学改编带来新关注。",
+    "factsHeading": "已确认的人气：11月2日至8日",
+    "facts": [
+      "Netflix全球英语电影榜：A Dog’s Perfect Christmas以860万观看次数位居第一。",
+      "Netflix全球英语剧集榜：Taken: Natalee Holloway第一季以1290万观看次数位居第一。",
+      "巴西Netflix剧集榜：Dom de Iludir（The Gift of Deceit）第一季排名第一，Lupin第四部分排名第二。"
+    ],
+    "method": "这些是Netflix的不同榜单，并非所有平台的综合排名。我们优先关注临近日期，因为它们提供了明确的回访理由。以下属于编辑判断，没有经过测量的爆红概率或搜索量预测。",
+    "states": [
+      "近期·新集数",
+      "近期·已宣布首播",
+      "巴西·即将举办",
+      "长期·调整后的日期"
+    ],
+    "notes": [
+      "第三季于11月11日开播。Amazon宣布第5至6集于11月18日、第7至8集于11月25日上线。这两个节点适合安排无剧透补剧。新观众可从第一季开始，回归观众先确认上次看到哪一集。系列粉丝基础不能保证未来观看量。",
+      "Amazon宣布全部八集于11月25日在Prime Video上线。若想按上映顺序回顾这个世界，可先看Blade Runner（1982），再看Blade Runner 2049（2017）。重看属于可选准备，并非已确认的观看前提。两部电影的本地租赁或订阅条件须与新剧分别核实。",
+      "CCXP26将于12月3日至6日在São Paulo Expo举办。把官方公告变成片单：记录作品名，核对制片方来源，并区分预告与上映日期。现有活动指南提供开放时间和节目表链接。每场座谈的入场条件和公开直播情况均需单独确认。",
+      "Netflix当前公布的日期为2027年2月12日院线上映、4月2日平台上线，IMAX提前场从2月10日开始。不要再按旧的2026年11月至12月日期规划。等待期间，可以选择C. S. Lewis的The Magician’s Nephew（《魔法师的外甥》）的阅读版或有声版。"
+    ],
+    "explore": "在MatchApp Ai中探索",
+    "promptsTitle": "一起选择、值得分享的观影夜",
+    "prompts": [
+      "补剧约定：每个人说出最后看完的一集，先确定剧透边界，再选择下一集。",
+      "科幻双片计划：决定用一晚还是两晚，按上映顺序观看两部Blade Runner电影。提前确认片长和观看渠道。",
+      "从公告到片单：每个人带来一条CCXP官方公告，说说期待的氛围。共同选择一部已上映的相关作品；预告片不等于影评。"
+    ],
+    "share": "分享此雷达",
+    "shareText": "接下来我们看什么？从MatchApp Ai趋势雷达中选一个点子。",
+    "copied": "已复制雷达链接。"
+  },
+  "zh-TW": {
+    "title": "串流趨勢與即將上線的新作：2026年11月",
+    "description": "Netflix榜單、《力量之戒》更新日期、Blade Runner 2099與CCXP26。透過MatchApp Ai規劃無劇透觀影夜。",
+    "label": "熱門趨勢與即將上線",
+    "heading": "趨勢雷達：尋找下一個話題",
+    "updated": "研究更新日期",
+    "intro": "提早了解話題，再依今晚的心情選擇。從已測量的人氣出發，看看四個已確認的日程：它們可能為奇幻、科幻、巴西流行文化與文學改編帶來新關注。",
+    "factsHeading": "已確認的人氣：11月2日至8日",
+    "facts": [
+      "Netflix全球英語電影榜：A Dog’s Perfect Christmas以860萬觀看次數位居第一。",
+      "Netflix全球英語影集榜：Taken: Natalee Holloway第一季以1290萬觀看次數位居第一。",
+      "巴西Netflix影集榜：Dom de Iludir（The Gift of Deceit）第一季排名第一，Lupin第四部排名第二。"
+    ],
+    "method": "這些是Netflix的不同榜單，並非所有平台的綜合排名。我們優先關注近期日期，因為它們提供了明確的回訪理由。以下屬於編輯判斷，沒有經過測量的爆紅機率或搜尋量預測。",
+    "states": [
+      "近期・新集數",
+      "近期・已公布首播",
+      "巴西・即將舉辦",
+      "長期・調整後的日期"
+    ],
+    "notes": [
+      "第三季於11月11日開播。Amazon公布第5至6集於11月18日、第7至8集於11月25日上線。這兩個節點適合安排無劇透補劇。新觀眾可從第一季開始，回歸觀眾先確認上次看到哪一集。系列粉絲基礎無法保證未來觀看量。",
+      "Amazon宣布全部八集於11月25日在Prime Video上線。若想依上映順序回顧這個世界，可先看Blade Runner（1982），再看Blade Runner 2049（2017）。重看是可選的準備，並非已確認的觀看前提。兩部電影的本地租借或訂閱條件須與新影集分別查證。",
+      "CCXP26將於12月3日至6日在São Paulo Expo舉辦。把官方公告變成片單：記下作品名稱，核對片商來源，並區分預告與上映日期。現有活動指南提供開放時間與節目表連結。每場座談的入場條件及公開直播情況都須個別確認。",
+      "Netflix目前公布的日期為2027年2月12日院線上映、4月2日平台上線，IMAX提前場從2月10日開始。不要再依舊的2026年11月至12月日期規劃。等待期間，可以選擇C. S. Lewis的The Magician’s Nephew（《魔法師的外甥》）閱讀版或有聲版。"
+    ],
+    "explore": "在MatchApp Ai探索",
+    "promptsTitle": "一起選擇、值得分享的觀影夜",
+    "prompts": [
+      "補劇約定：每個人說出最後看完的一集，先決定劇透界線，再選下一集。",
+      "科幻雙片計畫：決定用一晚或兩晚，依上映順序觀看兩部Blade Runner電影。提前確認片長與觀看管道。",
+      "從公告到片單：每個人帶來一則CCXP官方公告，說明期待的氛圍。共同選擇一部已上映的相關作品；預告片不等於影評。"
+    ],
+    "share": "分享此雷達",
+    "shareText": "接下來我們看什麼？從MatchApp Ai趨勢雷達選一個點子。",
+    "copied": "已複製雷達連結。"
+  }
+}
