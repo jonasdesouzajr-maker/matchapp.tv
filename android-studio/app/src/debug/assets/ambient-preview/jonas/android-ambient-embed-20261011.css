@@ -80,6 +80,7 @@ html.matchapp-ambient-frame body.ai-chat-page .discover-head>.newsearch-row{posi
 /* Native conversation: one stable column, no page chrome or layout animation.
    Keep the same textarea, microphone, send, history and metered chat runtime. */
 @layer ma-native-chat {
+ html.matchapp-native-chat #discover-new-input,html.matchapp-native-chat #discover-new-input::placeholder {text-decoration:none!important}
  html.matchapp-native-chat {
   --ma-native-bg:#141019;--ma-native-text:#f4edf7;--ma-native-muted:#b6abbf;
   --ma-native-surface:#201a27;--ma-native-field:#2b2334;--ma-native-line:#ffffff16;--ma-native-accent:#d8b5f5;
