@@ -75,11 +75,21 @@ html=html.replace(/<title>[^<]*<\/title>/,'<title>'+esc(title)+'</title>')
  .replace(/(<meta property="og:description" content=")[^"]*/,(_,prefix)=>prefix+esc(desc));
 fs.writeFileSync(monthly,html);
 const guideLink='<p class="intro" data-october-guide-link>'+link(route+'#october-30-book-screen','bookLink')+'</p>';
+// Editorial navigation, separate from the dated feed and its measured ranking.
+// Exact identities checked against Disney, Hulu Press and Apple TV Press.
+const discoveryTitles=[
+ ['VisionQuest','VisionQuest Paul Bettany','https://thewaltdisneycompany.com/news/marvel-television-visionquest-disney-plus/'],
+ ['All’s Fair','All’s Fair Kim Kardashian','https://press.hulu.com/shows/alls-fair/'],
+ ['Stick','Stick Owen Wilson','https://www.apple.com/tv-pr/originals/stick/']
+];
+const discoverySection='<!-- discovery-collections:start --><section id="discovery-collections" class="reader-spotlight" aria-labelledby="discovery-collections-heading">'+text('series','h2').replace('<h2 ','<h2 id="discovery-collections-heading" ')+'<ul>'+discoveryTitles.map(([title,query,source])=>'<li><p>'+link('/discover.html?q='+encodeURIComponent(query),'ask',title)+' · '+link(source,'source',title)+'</p></li>').join('')+'</ul></section><!-- discovery-collections:end -->';
+const withDiscovery=source=>source.replace(/<!-- discovery-collections:start -->[\s\S]*?<!-- discovery-collections:end -->/g,'').replace(guideLink,guideLink+discoverySection);
 const weekly=path.join(root,'trending/this-week/index.html');
 let trend=fs.readFileSync(weekly,'utf8');
 if(trend.includes('data-october-guide-link'))trend=trend.replace(/<p class="intro" data-october-guide-link>[\s\S]*?<\/p>/,guideLink);
 else trend=trend.replace('<section class="grid">',guideLink+'<section class="grid">');
 trend=refreshScript(trend);
+trend=withDiscovery(trend);
 if(!trend.includes(script))trend=trend.replace('</head>',script+'</head>');
 fs.writeFileSync(weekly,trend);
 // Preserve the link when the existing single publisher next regenerates its page.
@@ -88,6 +98,7 @@ let src=fs.readFileSync(generator,'utf8');
 if(src.includes('data-october-guide-link'))src=src.replace(/<p class="intro" data-october-guide-link>[\s\S]*?<\/p>/,guideLink);
 else src=src.replace('<section class="grid">${cards}',guideLink+'<section class="grid">${cards}');
 src=refreshScript(src);
+src=withDiscovery(src);
 if(!src.includes(script))src=src.replace('</style></head>','</style>'+script+'</head>');
 fs.writeFileSync(generator,src);
 console.log('Updated dated October editorial and persistent weekly guide link in 14 languages.');
