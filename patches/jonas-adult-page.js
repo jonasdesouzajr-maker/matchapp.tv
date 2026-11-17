@@ -187,3 +187,14 @@ if (window.top === window && !window.MatchAppFx &&
   l.href='/patches/contain-cards-20261117.css?v=1';
   (document.head||document.documentElement).appendChild(l);
 })();
+
+/* Fit desktop. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  if (document.getElementById('ma-fit-desktop')) return;
+  var l=document.createElement('link');
+  l.id='ma-fit-desktop';
+  l.rel='stylesheet';
+  l.href='/patches/fit-desktop-20261117.css?v=1';
+  (document.head||document.documentElement).appendChild(l);
+})();
