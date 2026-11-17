@@ -45,3 +45,14 @@ if (window.top === window && !window.MatchAppFx &&
     guide.src='/patches/browser-guide-copy-20261111.js?v=1';document.head.appendChild(guide);
   }
 })();
+
+/* Noindex discover query variants. */
+(function(){
+  if (!/\/discover\.html$/i.test(location.pathname)) return;
+  if (document.getElementById('ma-discover-noindex')) return;
+  var s=document.createElement('script');
+  s.id='ma-discover-noindex';
+  s.defer=true;
+  s.src='/patches/discover-query-noindex-20261117.js?v=1';
+  (document.head||document.documentElement).appendChild(s);
+})();
