@@ -45,3 +45,14 @@ if (window.top === window && !window.MatchAppFx &&
     guide.src='/patches/browser-guide-copy-20261111.js?v=1';document.head.appendChild(guide);
   }
 })();
+
+/* Force layout separation — adult pages only. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  if (document.getElementById('ma-layout-force')) return;
+  var l=document.createElement('link');
+  l.id='ma-layout-force';
+  l.rel='stylesheet';
+  l.href='/patches/layout-force-20261117.css?v=1';
+  (document.head||document.documentElement).appendChild(l);
+})();
