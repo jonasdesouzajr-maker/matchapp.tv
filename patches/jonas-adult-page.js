@@ -165,3 +165,14 @@ if (window.top === window && !window.MatchAppFx &&
   l.href='/patches/center-ads-desktop-20261117.css?v=1';
   (document.head||document.documentElement).appendChild(l);
 })();
+
+/* Fast posters. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  if (document.getElementById('ma-poster-fast')) return;
+  var s=document.createElement('script');
+  s.id='ma-poster-fast';
+  s.defer=true;
+  s.src='/patches/poster-fast-20261117.js?v=1';
+  (document.head||document.documentElement).appendChild(s);
+})();
