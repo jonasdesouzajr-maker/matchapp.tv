@@ -1,0 +1,22 @@
+/* Dock clearance — content stays above the fixed dock */
+html body.page-home {
+  padding-bottom: 0 !important;
+}
+html body.page-home main,
+html body.page-home .main-layout,
+html body.page-home section.container {
+  padding-bottom: 120px !important;
+}
+.ma-cinema-section-heading,
+#trending-rail {
+  scroll-margin-bottom: 100px;
+  margin-bottom: 24px !important;
+}
+nav.ma-cinema-dock {
+  z-index: 100 !important;
+}
+@media (max-width: 820px) {
+  html body.page-home section.container {
+    padding-bottom: 140px !important;
+  }
+}

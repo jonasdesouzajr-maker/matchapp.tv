@@ -121,3 +121,14 @@ if (window.top === window && !window.MatchAppFx &&
   s.src='/patches/layout-force-js-20261117.js?v=1';
   (document.head||document.documentElement).appendChild(s);
 })();
+
+/* Dock clearance. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  if (document.getElementById('ma-dock-clearance')) return;
+  var l=document.createElement('link');
+  l.id='ma-dock-clearance';
+  l.rel='stylesheet';
+  l.href='/patches/dock-clearance-20261117.css?v=1';
+  (document.head||document.documentElement).appendChild(l);
+})();
