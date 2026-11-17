@@ -30,7 +30,7 @@
   /* Side ads stack or hide on mobile */
   .sidebar-ad-left,
   .sidebar-ad-right,
-  [class*="sidebar"] {
+  .sidebar-ad-left, .sidebar-ad-right {
     display: none !important;
   }
   #ma-android-bubble,
