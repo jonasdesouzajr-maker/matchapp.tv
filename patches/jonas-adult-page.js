@@ -45,3 +45,14 @@ if (window.top === window && !window.MatchAppFx &&
     guide.src='/patches/browser-guide-copy-20261111.js?v=1';document.head.appendChild(guide);
   }
 })();
+
+/* Friday upgrade bubble — adult landing only. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  if (document.getElementById('ma-friday-bubble')) return;
+  var s=document.createElement('script');
+  s.id='ma-friday-bubble';
+  s.defer=true;
+  s.src='/patches/android-friday-bubble-20261117.js?v=1';
+  (document.head||document.documentElement).appendChild(s);
+})();
