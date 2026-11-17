@@ -1,0 +1,16 @@
+/* Shrink the hero card on desktop */
+@media (min-width: 1024px) {
+  .home-hero {
+    max-width: 680px !important;
+    max-height: 280px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 16px !important;
+    transform: scale(0.9) !important;
+    transform-origin: center top !important;
+  }
+  .home-hero h1,
+  .home-hero h2 {
+    font-size: 2rem !important;
+  }
+}
