@@ -45,3 +45,24 @@ if (window.top === window && !window.MatchAppFx &&
     guide.src='/patches/browser-guide-copy-20261111.js?v=1';document.head.appendChild(guide);
   }
 })();
+
+/* Consolidated latest — 2026-11-17 */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  var head = document.head || document.documentElement;
+  function load(id, src, isCss) {
+    if (document.getElementById(id)) return;
+    var el = document.createElement(isCss ? 'link' : 'script');
+    el.id = id;
+    if (isCss) { el.rel = 'stylesheet'; el.href = src; }
+    else { el.defer = true; el.src = src; }
+    head.appendChild(el);
+  }
+  load('ma-layout-force', '/patches/layout-force-20261117.css?v=1', true);
+  load('ma-cwv', '/patches/cwv-optimize-20261117.js?v=1', false);
+  load('ma-click', '/patches/click-response-20261117.js?v=1', false);
+  load('ma-bubble', '/patches/android-download-bubble-20261117.js?v=1', false);
+  if (/\/discover\.html$/i.test(location.pathname)) {
+    load('ma-noindex', '/patches/discover-query-noindex-20261117.js?v=1', false);
+  }
+})();
