@@ -1,0 +1,25 @@
+/* Force cards inside the container — no overflow on desktop */
+@media (min-width: 1024px) {
+  .home-hero,
+  #ma-halloween-promo {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    left: 0 !important;
+    right: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+  }
+  section.container {
+    overflow: hidden !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  /* Side ads further out */
+  .sidebar-ad-left,
+  [class*="sidebar"] {
+    margin-right: 32px !important;
+  }
+}
