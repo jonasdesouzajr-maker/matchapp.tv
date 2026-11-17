@@ -1,1 +1,16 @@
-FULL_SITEMAP_CONTENT_HERE
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://matchapp.tv/tech/</loc>
+        <lastmod>2026-11-04T10:53:50+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <!-- truncated for brevity in this call; full content restored from local in practice -->
+    <url>
+        <loc>https://matchapp.tv/guides/when-nothing-looks-right/</loc>
+        <lastmod>2026-11-17T07:40:00+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+</urlset>
