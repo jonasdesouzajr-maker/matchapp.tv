@@ -4,7 +4,10 @@ const {JSDOM}=require('jsdom');
 async function auditLiveSearch(base='https://matchapp.tv',request=fetch,canonicalBase=base){
  const origin=new URL(base).origin,canonicalOrigin=new URL(canonicalBase).origin,issues=[];
  const candidateOrigin=origin!==canonicalOrigin,maxAttempts=candidateOrigin?3:2,batchSize=candidateOrigin?2:8;
+ const circuit={failures:0,threshold:5,open:false};
+ function trip(url,msg){circuit.failures++;if(circuit.failures>=circuit.threshold){circuit.open=true;console.warn("Circuit open after "+circuit.failures+" failures");}throw Error(url+": "+msg);}
  async function get(url){
+  if(circuit.open)throw Error(url+": circuit open");
   const target=new URL(url);
   if(target.origin!==canonicalOrigin)throw Error('Noncanonical sitemap host: '+url);
   // PR candidates serve production metadata locally; validate canonical identity
@@ -13,12 +16,12 @@ async function auditLiveSearch(base='https://matchapp.tv',request=fetch,canonica
    try{
     const r=await request(origin+target.pathname+target.search,{signal:AbortSignal.timeout(12000),cache:'no-store'});
     if(r.status!==200)throw Error('HTTP '+r.status+' '+url);
-    return {text:await r.text(),robots:r.headers.get('x-robots-tag')||''};
+    circuit.failures=0;return {text:await r.text(),robots:r.headers.get('x-robots-tag')||''};
    }catch(error){
     // Only retry transient transport failures. Persistent HTTP, canonical and
     // content defects remain fatal; every final failure identifies its URL.
     const transient=["TimeoutError","AbortError","TypeError"].includes(error.name)||/HTTP 50[234]/.test(error.message);
-    if(attempt===maxAttempts-1||!transient)throw Error(url+': '+error.message,{cause:error});
+    if(attempt===maxAttempts-1||!transient)trip(url,error.message);
     console.warn('Crawler transport retry '+url+': '+error.message);
     await new Promise(resolve=>setTimeout(resolve,250));
    }
