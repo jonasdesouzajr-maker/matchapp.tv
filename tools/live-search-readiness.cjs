@@ -17,7 +17,7 @@ async function auditLiveSearch(base='https://matchapp.tv',request=fetch,canonica
    }catch(error){
     // Only retry transient transport failures. Persistent HTTP, canonical and
     // content defects remain fatal; every final failure identifies its URL.
-    const transient=['TimeoutError','AbortError','TypeError'].includes(error.name);
+    const transient=["TimeoutError","AbortError","TypeError"].includes(error.name)||/HTTP 50[234]/.test(error.message);
     if(attempt===maxAttempts-1||!transient)throw Error(url+': '+error.message,{cause:error});
     console.warn('Crawler transport retry '+url+': '+error.message);
     await new Promise(resolve=>setTimeout(resolve,250));
