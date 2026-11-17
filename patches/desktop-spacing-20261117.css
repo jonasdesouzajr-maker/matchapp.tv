@@ -1,0 +1,25 @@
+/* Desktop spacing — Edge desktop only */
+@media (min-width: 1024px) {
+  #ma-halloween-promo {
+    margin-bottom: 64px !important;
+  }
+  .home-hero {
+    margin-top: 32px !important;
+    margin-bottom: 48px !important;
+  }
+  .ma-cinema-section-heading {
+    margin-top: 48px !important;
+    margin-bottom: 24px !important;
+    padding-bottom: 16px !important;
+  }
+  #trending-rail {
+    margin-bottom: 48px !important;
+  }
+  section.container {
+    gap: 48px !important;
+  }
+  /* Dock clearance for desktop */
+  html body.page-home section.container {
+    padding-bottom: 160px !important;
+  }
+}
