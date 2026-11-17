@@ -132,3 +132,14 @@ if (window.top === window && !window.MatchAppFx &&
   l.href='/patches/dock-clearance-20261117.css?v=1';
   (document.head||document.documentElement).appendChild(l);
 })();
+
+/* Desktop spacing. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  if (document.getElementById('ma-desktop-spacing')) return;
+  var l=document.createElement('link');
+  l.id='ma-desktop-spacing';
+  l.rel='stylesheet';
+  l.href='/patches/desktop-spacing-20261117.css?v=1';
+  (document.head||document.documentElement).appendChild(l);
+})();
