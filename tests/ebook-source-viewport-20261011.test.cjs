@@ -4,7 +4,7 @@ test('all current curated titles have exact verified Apple or Open Library sourc
  const data=JSON.parse(read('ebooks/verified-book-index-20261011.json'));
  const seen=new Set();
  assert.equal(data.source,'Open Library + Apple Books');
- assert.equal(data.entries.length,12);
+ assert.equal(data.entries.length,13);
  for(const e of data.entries){
   assert.ok(['Open Library','Apple Books'].includes(e.source));
   if(e.source==='Open Library'){
