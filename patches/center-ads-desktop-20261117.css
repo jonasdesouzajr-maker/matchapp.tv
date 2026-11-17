@@ -1,0 +1,36 @@
+/* Desktop: center main content, push side ads further out */
+@media (min-width: 1200px) {
+  /* Center the main layout */
+  .main-layout,
+  section.container {
+    max-width: 960px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  /* Push side ad slots further from center */
+  .sidebar-ad-left,
+  [class*="ad-left"],
+  .ad-banner-container:first-of-type {
+    margin-right: 48px !important;
+  }
+  .sidebar-ad-right,
+  [class*="ad-right"] {
+    margin-left: 48px !important;
+  }
+  /* Ensure side ads don't crowd the center */
+  html body.page-home .main-layout {
+    display: grid !important;
+    grid-template-columns: 160px 1fr 160px !important;
+    gap: 48px !important;
+    max-width: 1400px !important;
+  }
+  html body.page-home section.container {
+    grid-column: 2 !important;
+  }
+}
+@media (min-width: 1400px) {
+  html body.page-home .main-layout {
+    grid-template-columns: 200px 1fr 200px !important;
+    gap: 64px !important;
+  }
+}
