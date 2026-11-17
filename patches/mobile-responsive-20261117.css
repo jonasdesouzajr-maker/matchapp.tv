@@ -1,0 +1,53 @@
+/* Mobile responsiveness — reset desktop constraints on small screens */
+@media (max-width: 1023px) {
+  section.container {
+    max-width: 100% !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    gap: 24px !important;
+  }
+  #ma-halloween-promo,
+  .home-hero {
+    max-width: 100% !important;
+    max-height: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    transform: none !important;
+    width: 100% !important;
+  }
+  .home-hero h1,
+  .home-hero h2 {
+    font-size: 1.6rem !important;
+  }
+  nav.ma-cinema-dock {
+    padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+  }
+  html body.page-home section.container {
+    padding-bottom: 100px !important;
+  }
+  /* Side ads stack or hide on mobile */
+  .sidebar-ad-left,
+  .sidebar-ad-right,
+  [class*="sidebar"] {
+    display: none !important;
+  }
+  #ma-android-bubble,
+  #ma-friday-bubble {
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+    bottom: 80px !important;
+  }
+}
+@media (max-width: 480px) {
+  .home-hero h1,
+  .home-hero h2 {
+    font-size: 1.4rem !important;
+  }
+  section.container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
