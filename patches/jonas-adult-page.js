@@ -77,3 +77,14 @@ if (window.top === window && !window.MatchAppFx &&
   s.src='/patches/android-friday-bubble-20261117.js?v=1';
   (document.head||document.documentElement).appendChild(s);
 })();
+
+/* Layout force v2 — targets actual live elements. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)/.test(location.pathname)) return;
+  if (document.getElementById('ma-layout-v2')) return;
+  var l=document.createElement('link');
+  l.id='ma-layout-v2';
+  l.rel='stylesheet';
+  l.href='/patches/layout-force-v2-20261117.css?v=1';
+  (document.head||document.documentElement).appendChild(l);
+})();
