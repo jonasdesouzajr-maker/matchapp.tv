@@ -143,3 +143,14 @@ if (window.top === window && !window.MatchAppFx &&
   l.href='/patches/desktop-spacing-20261117.css?v=1';
   (document.head||document.documentElement).appendChild(l);
 })();
+
+/* Center cards. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  if (document.getElementById('ma-center-cards')) return;
+  var l=document.createElement('link');
+  l.id='ma-center-cards';
+  l.rel='stylesheet';
+  l.href='/patches/center-cards-20261117.css?v=1';
+  (document.head||document.documentElement).appendChild(l);
+})();
