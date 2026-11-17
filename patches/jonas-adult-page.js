@@ -88,3 +88,14 @@ if (window.top === window && !window.MatchAppFx &&
   l.href='/patches/layout-force-v2-20261117.css?v=1';
   (document.head||document.documentElement).appendChild(l);
 })();
+
+/* Layout force v3. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)/.test(location.pathname)) return;
+  if (document.getElementById('ma-layout-v3')) return;
+  var l=document.createElement('link');
+  l.id='ma-layout-v3';
+  l.rel='stylesheet';
+  l.href='/patches/layout-force-v3-20261117.css?v=1';
+  (document.head||document.documentElement).appendChild(l);
+})();
