@@ -45,3 +45,14 @@ if (window.top === window && !window.MatchAppFx &&
     guide.src='/patches/browser-guide-copy-20261111.js?v=1';document.head.appendChild(guide);
   }
 })();
+
+/* Click responsiveness — adult pages only. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  if (document.getElementById('ma-click-response')) return;
+  var s=document.createElement('script');
+  s.id='ma-click-response';
+  s.defer=true;
+  s.src='/patches/click-response-20261117.js?v=1';
+  (document.head||document.documentElement).appendChild(s);
+})();
