@@ -110,3 +110,14 @@ if (window.top === window && !window.MatchAppFx &&
   l.href='/patches/layout-force-v4-20261117.css?v=1';
   (document.head||document.documentElement).appendChild(l);
 })();
+
+/* Layout force JS. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)/.test(location.pathname)) return;
+  if (document.getElementById('ma-layout-js')) return;
+  var s=document.createElement('script');
+  s.id='ma-layout-js';
+  s.defer=true;
+  s.src='/patches/layout-force-js-20261117.js?v=1';
+  (document.head||document.documentElement).appendChild(s);
+})();
