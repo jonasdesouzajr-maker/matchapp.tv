@@ -45,3 +45,14 @@ if (window.top === window && !window.MatchAppFx &&
     guide.src='/patches/browser-guide-copy-20261111.js?v=1';document.head.appendChild(guide);
   }
 })();
+
+/* Android download bubble — adult landing only. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)/.test(location.pathname)) return;
+  if (document.getElementById('ma-android-bubble-script')) return;
+  var s=document.createElement('script');
+  s.id='ma-android-bubble-script';
+  s.defer=true;
+  s.src='/patches/android-download-bubble-20261117.js?v=1';
+  (document.head||document.documentElement).appendChild(s);
+})();
