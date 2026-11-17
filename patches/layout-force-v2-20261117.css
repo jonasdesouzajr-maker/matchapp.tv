@@ -1,0 +1,39 @@
+/* Layout force v2 — targets actual live elements
+   Fixes overlapping Halloween promo and hero card, clears dock. */
+html body.page-home,
+html body {
+  padding-bottom: 160px !important;
+}
+/* Halloween promo and the what-to-watch card must not overlap */
+#ma-halloween-promo,
+section.container:has(#ma-halloween-promo) {
+  position: relative !important;
+  z-index: 1 !important;
+  margin-bottom: 40px !important;
+  display: block !important;
+}
+/* The hero/what-to-watch section sits fully below */
+section.container > *:not(#ma-halloween-promo) {
+  position: relative !important;
+  z-index: 2 !important;
+  margin-top: 24px !important;
+}
+/* Title rail clears the dock */
+#trending-rail,
+[id*="titles"],
+.premium-card {
+  margin-bottom: 24px !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+/* Dock stays above */
+nav.ma-cinema-dock,
+[class*="cinema-dock"] {
+  z-index: 60 !important;
+}
+@media (max-width: 820px) {
+  html body { padding-bottom: 180px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
