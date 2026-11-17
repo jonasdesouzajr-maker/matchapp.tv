@@ -26,6 +26,7 @@ Disallow: /%24
 Disallow: /404.html
 Disallow: /android-studio/
 Disallow: /private-voice/
+Disallow: /9zvo/
 
 Sitemap: https://matchapp.tv/sitemaps.xml
 # LLM / AI-search site summary (not a sitemap URL)
