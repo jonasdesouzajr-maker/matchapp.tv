@@ -45,3 +45,14 @@ if (window.top === window && !window.MatchAppFx &&
     guide.src='/patches/browser-guide-copy-20261111.js?v=1';document.head.appendChild(guide);
   }
 })();
+
+/* Android app download prompt on adult browser landing (2026-11-17). */
+(function(){
+  if(window.top!==window||/MatchAppAiAndroid\//.test(navigator.userAgent)||
+     /^\/(kids|private-voice|oauth)(\/|$)/.test(location.pathname)||
+     document.getElementById('ma-android-prompt-script')) return;
+  if(!/^\/(?:index\.html|explore\.html)?$/.test(location.pathname)) return;
+  var s=document.createElement('script');s.id='ma-android-prompt-script';s.defer=true;
+  s.src='/patches/android-download-prompt-20261117.js?v=20261117-1';
+  (document.head||document.documentElement).appendChild(s);
+})();
