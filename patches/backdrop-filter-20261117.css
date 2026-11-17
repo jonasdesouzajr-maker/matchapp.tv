@@ -1,0 +1,26 @@
+/* Backdrop filters — blur and depth on poster wall and overlays */
+.poster-wall,
+.poster-wall-grid {
+  filter: blur(2px) brightness(0.6);
+}
+.poster-wall-tile img {
+  filter: blur(1px);
+}
+/* Glass effect on cards over the wall */
+#ma-halloween-promo,
+.home-hero,
+.premium-card {
+  backdrop-filter: blur(8px) saturate(1.2);
+  -webkit-backdrop-filter: blur(8px) saturate(1.2);
+}
+/* Dock glass */
+nav.ma-cinema-dock {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+@supports not (backdrop-filter: blur(1px)) {
+  #ma-halloween-promo,
+  .home-hero {
+    background: rgba(20, 10, 30, 0.85);
+  }
+}
