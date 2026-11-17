@@ -27,11 +27,9 @@
   }
   function matches(question) {
     const q=String(question||'').toLowerCase();
-    // Catch natural phrasings such as "Recommend a Brazilian documentary series".
     const documentary=/\b(?:document(?:ar(?:y|ies)|[aá]ri[oa]s?|ais|al)|docu[\s-]?series|docuseries|docus[eé]ries)\b/i.test(q);
     const series=/(?:\bseries\b|\bserie\b|\bshows?\b|\btv\b|s[eé]ries?|miniss[eé]ries?|mini[\s-]?series)/i.test(q);
-    const explicit = /\b(?:recommend|suggest|recomend|sugir|indiqu)\b/i.test(q) && documentary;
-    return (documentary && series || explicit) && !/\b(?:do not|don't|dont|not|no|sem|sin)\s+(?:(?:want|recommend|suggest|show|include)\s+)?(?:any\s+)?(?:documentaries|documentary|document[aá]rios?|docuseries)\b/i.test(q);
+    return documentary && series && !/\b(?:do not|don't|dont|not|no|sem|sin)\s+(?:(?:want|recommend|suggest|show|include)\s+)?(?:any\s+)?(?:documentaries|documentary|document[aá]rios?|docuseries)\b/i.test(q);
   }
   function originFilter(question) {
     const q=String(question||'').toLowerCase();
