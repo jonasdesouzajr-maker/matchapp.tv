@@ -48,7 +48,7 @@ if (window.top === window && !window.MatchAppFx &&
 
 /* Android download bubble — adult landing only. */
 (function(){
-  if (/^\/(kids|private-voice|oauth)(\/|$)/.test(location.pathname)) return;
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
   if (document.getElementById('ma-android-bubble-script')) return;
   var s=document.createElement('script');
   s.id='ma-android-bubble-script';
