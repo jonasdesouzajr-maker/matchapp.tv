@@ -1,0 +1,51 @@
+/* Force layout separation — 2026-11-17
+   Targets the specific overlapping cards and dock coverage seen on desktop.
+   Does not touch AdSense units or protected surfaces. */
+body {
+  padding-bottom: 140px !important;
+}
+/* Force the Halloween banner and hero card into normal flow with clear gap */
+[class*="halloween"],
+[class*="after-dark"],
+[class*="hero-card"],
+section:has(h1),
+section:has(h2) {
+  position: relative !important;
+  z-index: 1 !important;
+  margin-bottom: 32px !important;
+  clear: both;
+}
+/* The "what to watch" card must sit fully below the banner */
+[class*="watch-today"],
+[class*="what-to-watch"],
+section:has([class*="explore"]) {
+  margin-top: 24px !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+/* Title rail and matching form clear the dock */
+[class*="rail"],
+[class*="titles"],
+[id*="questionnaire"],
+[class*="match"] {
+  margin-bottom: 24px !important;
+  position: relative;
+  z-index: 1;
+}
+/* Footer clears dock */
+footer, .seo-footer {
+  margin-bottom: 24px !important;
+  position: relative;
+  z-index: 1;
+}
+/* Ensure the fixed dock stays above content but content has room */
+nav.ma-cinema-dock,
+[class*="cinema-dock"] {
+  z-index: 50;
+}
+@media (max-width: 820px) {
+  body { padding-bottom: 160px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
