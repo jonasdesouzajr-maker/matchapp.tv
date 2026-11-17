@@ -99,3 +99,14 @@ if (window.top === window && !window.MatchAppFx &&
   l.href='/patches/layout-force-v3-20261117.css?v=1';
   (document.head||document.documentElement).appendChild(l);
 })();
+
+/* Layout force v4 — matches home-fold-grid specificity. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)/.test(location.pathname)) return;
+  if (document.getElementById('ma-layout-v4')) return;
+  var l=document.createElement('link');
+  l.id='ma-layout-v4';
+  l.rel='stylesheet';
+  l.href='/patches/layout-force-v4-20261117.css?v=1';
+  (document.head||document.documentElement).appendChild(l);
+})();
