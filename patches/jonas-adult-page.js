@@ -80,7 +80,7 @@ if (window.top === window && !window.MatchAppFx &&
 
 /* Layout force v2 — targets actual live elements. */
 (function(){
-  if (/^\/(kids|private-voice|oauth)(\/|$)/.test(location.pathname)) return;
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
   if (document.getElementById('ma-layout-v2')) return;
   var l=document.createElement('link');
   l.id='ma-layout-v2';
@@ -91,7 +91,7 @@ if (window.top === window && !window.MatchAppFx &&
 
 /* Layout force v3. */
 (function(){
-  if (/^\/(kids|private-voice|oauth)(\/|$)/.test(location.pathname)) return;
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
   if (document.getElementById('ma-layout-v3')) return;
   var l=document.createElement('link');
   l.id='ma-layout-v3';
@@ -102,7 +102,7 @@ if (window.top === window && !window.MatchAppFx &&
 
 /* Layout force v4 — matches home-fold-grid specificity. */
 (function(){
-  if (/^\/(kids|private-voice|oauth)(\/|$)/.test(location.pathname)) return;
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
   if (document.getElementById('ma-layout-v4')) return;
   var l=document.createElement('link');
   l.id='ma-layout-v4';
@@ -113,7 +113,7 @@ if (window.top === window && !window.MatchAppFx &&
 
 /* Layout force JS. */
 (function(){
-  if (/^\/(kids|private-voice|oauth)(\/|$)/.test(location.pathname)) return;
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
   if (document.getElementById('ma-layout-js')) return;
   var s=document.createElement('script');
   s.id='ma-layout-js';
