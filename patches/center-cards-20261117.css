@@ -1,0 +1,31 @@
+/* Center cards on desktop — no negative margins, no overlap */
+@media (min-width: 1024px) {
+  section.container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 48px !important;
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+    padding: 24px !important;
+  }
+  #ma-halloween-promo,
+  .home-hero {
+    width: 100% !important;
+    max-width: 900px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    position: relative !important;
+    left: auto !important;
+    transform: none !important;
+  }
+  #lm-launch-grid {
+    display: flex !important;
+    justify-content: center !important;
+    margin: 24px auto !important;
+  }
+  .ma-cinema-section-heading {
+    text-align: center !important;
+    width: 100% !important;
+  }
+}
