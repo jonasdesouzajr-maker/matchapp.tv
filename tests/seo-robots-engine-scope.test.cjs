@@ -68,7 +68,7 @@ const crawlers = [
 const excluded = [
   '/oauth/', '/callback.html', '/purchase.html', '/reset.html',
   '/ai-check.html', '/billing-check.html', '/$/', '/%24',
-  '/404.html', '/android-studio/', '/private-voice/'
+  '/404.html', '/android-studio/', '/private-voice/', '/9zvo/'
 ];
 
 test('the robots evaluator detects the former named-crawler wildcard-inheritance gap', () => {
