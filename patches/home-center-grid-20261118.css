@@ -1,75 +1,34 @@
-/* Desktop home: keep locked ad rails in their own columns.
-   Injected at the end of body so it wins over display:block !important. */
-@media (min-width: 1180px) {
-  html body.page-home .main-layout {
-    display: grid !important;
-    grid-template-columns: 160px minmax(0, 1fr) 160px !important;
-    column-gap: 24px !important;
-    row-gap: 0 !important;
-    align-items: start !important;
-    width: min(1280px, calc(100% - 24px)) !important;
-    max-width: 1280px !important;
-    margin: 0 auto !important;
-    padding: 12px 0 0 !important;
-    box-sizing: border-box !important;
+/* Home center column. These rules live in ma-reference because that layer's
+   !important declarations beat every unlayered patch. Ad rail size, slots,
+   and initialization stay on the locked rules. */
+@layer ma-reference {
+  @media (min-width: 1180px) {
+    html.ma-reference body.page-home .main-layout.main-layout {
+      display: grid !important;
+    }
+    html.ma-reference body.page-home .main-layout > .container.container {
+      --home-grid-offset: 0px !important;
+      --home-grid-width: 100% !important;
+      overflow: visible !important;
+    }
+    html.ma-reference body.page-home .main-layout.main-layout > .container.container > :is(
+      .home-hero.home-hero,
+      .ma-cinema-section-heading.ma-cinema-section-heading,
+      #trending-rail#trending-rail,
+      #ma-concierge#ma-concierge,
+      #result-box#result-box,
+      #loading-box#loading-box
+    ) {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin-inline-start: 0 !important;
+      margin-inline-end: 0 !important;
+      left: auto !important;
+    }
   }
-  html body.page-home .main-layout > .sidebar-ad-left {
-    grid-column: 1 !important;
-    grid-row: 1 !important;
-    width: 160px !important;
-    min-width: 160px !important;
-    max-width: 160px !important;
-    position: sticky !important;
-    top: 104px !important;
-    z-index: 2 !important;
+  /* Home only. Explore still links to Lumina Match and Reels Forge. */
+  html.ma-reference body.page-home #lm-launch-grid#lm-launch-grid.lm-launch-grid,
+  html.ma-reference body.page-home #lm-launch-grid#lm-launch-grid #lm-launch#lm-launch.lm-launch {
+    display: none !important;
   }
-  html body.page-home .main-layout > .sidebar-ad-right {
-    grid-column: 3 !important;
-    grid-row: 1 !important;
-    width: 160px !important;
-    min-width: 160px !important;
-    max-width: 160px !important;
-    position: sticky !important;
-    top: 104px !important;
-    z-index: 2 !important;
-  }
-  html body.page-home .main-layout > .container {
-    grid-column: 2 !important;
-    grid-row: 1 !important;
-    width: 100% !important;
-    max-width: none !important;
-    min-width: 0 !important;
-    margin: 0 !important;
-    padding: 0 0 140px !important;
-    overflow: hidden !important;
-    box-sizing: border-box !important;
-  }
-  html body.page-home .main-layout > .container > * {
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
-  html body.page-home .home-hero {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    overflow: hidden !important;
-    box-sizing: border-box !important;
-  }
-  html body.page-home .home-h1,
-  html body.page-home .home-hero h1 {
-    max-width: 100% !important;
-    overflow-wrap: anywhere !important;
-  }
-  html body.page-home .marquee-wrapper,
-  html body.page-home .marquee-viewport,
-  html body.page-home #trending-rail {
-    max-width: 100% !important;
-    overflow: hidden !important;
-  }
-}
-/* Home launcher only. Explore and the game stay available. */
-html body.page-home #lm-launch-grid,
-html body.page-home #lm-launch {
-  display: none !important;
 }
