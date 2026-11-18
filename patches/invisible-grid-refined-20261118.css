@@ -1,0 +1,52 @@
+/* Refined invisible grid. Respects locked AdSense rails. */
+@media (min-width: 1120px) {
+  .main-layout {
+    display: grid !important;
+    grid-template-columns: var(--rail-w, 160px) minmax(0, 1fr) var(--rail-w, 160px) !important;
+    gap: var(--rail-gap, 24px) !important;
+    max-width: 1280px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    align-items: start !important;
+  }
+  .sidebar-ad-left, .sidebar-ad-right {
+    width: var(--rail-w, 160px) !important;
+    min-width: var(--rail-w, 160px) !important;
+    position: sticky !important;
+    top: 104px !important;
+  }
+  .main-layout > .container {
+    grid-column: 2 !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  /* Size-organized content blocks inside center */
+  .main-layout .home-hero,
+  .main-layout .matcher-card,
+  .main-layout [class*="matcher"],
+  .main-layout .title-rail,
+  .main-layout section {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  /* Empty rail placeholder — does not change ad unit size */
+  .sidebar-ad-left.is-ad-empty,
+  .sidebar-ad-right.is-ad-empty {
+    border: 1px dashed rgba(229,193,88,.18) !important;
+    border-radius: 14px !important;
+    background: rgba(26,16,48,.25) !important;
+  }
+}
+/* Prevent content from overlapping rails */
+@media (min-width: 1120px) {
+  .page-home .matcher-card,
+  .page-home .home-hero,
+  .page-home #ma-halloween-promo {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+}
