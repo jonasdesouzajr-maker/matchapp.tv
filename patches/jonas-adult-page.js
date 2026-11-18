@@ -357,3 +357,22 @@ if (window.top === window && !window.MatchAppFx &&
     (document.head||document.documentElement).appendChild(s);
   }
 })();
+
+/* Donation and download prompts. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  if (!document.getElementById('ma-donate-js')) {
+    var s=document.createElement('script');
+    s.id='ma-donate-js';
+    s.src='/patches/donate-prompt-20261118.js?v=1';
+    s.defer=true;
+    (document.head||document.documentElement).appendChild(s);
+  }
+  if (!document.getElementById('ma-dl-js')) {
+    var s2=document.createElement('script');
+    s2.id='ma-dl-js';
+    s2.src='/patches/download-bubble-20261118.js?v=1';
+    s2.defer=true;
+    (document.head||document.documentElement).appendChild(s2);
+  }
+})();
