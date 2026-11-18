@@ -438,3 +438,15 @@ if (window.top === window && !window.MatchAppFx &&
     (document.head||document.documentElement).appendChild(l);
   }
 })();
+
+/* Force grid. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  if (!document.getElementById('ma-grid-force')) {
+    var l=document.createElement('link');
+    l.id='ma-grid-force';
+    l.rel='stylesheet';
+    l.href='/patches/grid-force-20261118.css?v=1';
+    (document.head||document.documentElement).appendChild(l);
+  }
+})();
