@@ -253,3 +253,14 @@ if (window.top === window && !window.MatchAppFx &&
   l.href='/patches/adsense-spacing-20261118.css?v=1';
   (document.head||document.documentElement).appendChild(l);
 })();
+
+/* Mobile layout and poster wall. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  if (document.getElementById('ma-mobile-layout')) return;
+  var l=document.createElement('link');
+  l.id='ma-mobile-layout';
+  l.rel='stylesheet';
+  l.href='/patches/mobile-layout-20261118.css?v=1';
+  (document.head||document.documentElement).appendChild(l);
+})();
