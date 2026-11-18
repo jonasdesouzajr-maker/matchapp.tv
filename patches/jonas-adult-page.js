@@ -308,3 +308,14 @@ if (window.top === window && !window.MatchAppFx &&
   s.src='/patches/seo-enrich-20261118.js?v=1';
   (document.head||document.documentElement).appendChild(s);
 })();
+
+/* Single meter. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  if (document.getElementById('ma-single-meter')) return;
+  var l=document.createElement('link');
+  l.id='ma-single-meter';
+  l.rel='stylesheet';
+  l.href='/patches/single-meter-20261118.css?v=1';
+  (document.head||document.documentElement).appendChild(l);
+})();
