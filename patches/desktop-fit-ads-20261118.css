@@ -1,0 +1,35 @@
+/* Desktop: content fits between side AdSense rails.
+   Does not change ad IDs, slots, or initialization. */
+@media (min-width: 1180px) {
+  .main-layout,
+  section.container,
+  .home-content,
+  main > .container {
+    max-width: 820px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .matcher-card,
+  [class*="matcher"],
+  .home-hero,
+  #ma-halloween-promo {
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  /* Filter fields shrink to fit */
+  .matcher-card select,
+  .matcher-card .filter,
+  [class*="filter-group"] {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+@media (min-width: 1400px) {
+  .main-layout,
+  section.container {
+    max-width: 900px !important;
+  }
+}
