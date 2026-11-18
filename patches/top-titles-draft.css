@@ -62,7 +62,7 @@
  html[data-top-titles-draft] .ma-top-titles-arrow:active::before{transform:scale(.92);}
  html.ma-reference .ma-top-titles-arrow:focus-visible,
  html[data-top-titles-draft] .ma-top-titles-arrow:focus-visible{outline:2px solid #f1d49d!important;outline-offset:0!important;}
- @media(max-width:1099px){
+ @media(max-width:799px){
   html.ma-reference #trending-rail.ma-top-titles-grid,html[data-top-titles-draft] #trending-rail.ma-top-titles-grid{grid-template-columns:minmax(0,1fr)!important;column-gap:0!important;}
   html.ma-reference #trending-rail .ma-top-titles-native,html[data-top-titles-draft] #trending-rail .ma-top-titles-native{grid-column:1!important;}
   html.ma-reference .ma-top-titles-controls,html[data-top-titles-draft] .ma-top-titles-controls{display:none!important;}

@@ -5,6 +5,8 @@
   @media (min-width: 1180px) {
     html.ma-reference body.page-home .main-layout.main-layout {
       display: grid !important;
+      position: relative !important;
+      z-index: 1 !important;
     }
     html.ma-reference body.page-home .main-layout > .container.container {
       --home-grid-offset: 0px !important;
@@ -25,6 +27,56 @@
       margin-inline-end: 0 !important;
       left: auto !important;
     }
+  }
+  /* Static title posters behind the page. The wall stylesheet keeps the
+     approved collage; this only undoes the cinema-layer hide and the early
+     0.18 dim. No motion, no new geometry, never on Kids. */
+  html.ma-reference body.page-home:not(.kids-body) :is(#poster-wall#poster-wall, .poster-wall.poster-wall) {
+    display: block !important;
+    visibility: visible !important;
+    pointer-events: none !important;
+    opacity: 1 !important;
+    z-index: 0 !important;
+    animation: none !important;
+  }
+  html.ma-reference body.page-home:not(.kids-body) .poster-wall .poster-wall-grid.poster-wall-grid {
+    opacity: 0.76 !important;
+    animation: none !important;
+    will-change: auto !important;
+  }
+  html.ma-reference body.page-home:not(.kids-body) .poster-wall .poster-wall-tile.poster-wall-tile {
+    opacity: 1 !important;
+    animation: none !important;
+    will-change: auto !important;
+  }
+  /* Tighter home rhythm so the fold needs less scrolling. */
+  html.ma-reference body.page-home .home-hero.home-hero.home-hero {
+    min-height: clamp(128px, 15vw, 188px) !important;
+    padding: 12px 14px !important;
+    margin-bottom: 4px !important;
+  }
+  html.ma-reference body.page-home .ma-cinema-section-heading.ma-cinema-section-heading {
+    min-height: 28px !important;
+    margin-block: 2px 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  html.ma-reference body.page-home .main-layout.main-layout > .container.container > * {
+    margin-bottom: 4px !important;
+  }
+  html.ma-reference body.page-home :is(#ma-home-static-intro, #ma-home-discover-paths) {
+    padding: 8px 12px !important;
+  }
+  html.ma-reference body.page-home #questionnaire-box#questionnaire-box {
+    padding: 8px 10px !important;
+    margin-bottom: 4px !important;
+  }
+  html.ma-reference body.page-home #trending-rail#trending-rail .marquee-item.marquee-item.marquee-item {
+    flex-basis: clamp(84px, 11vw, 118px) !important;
+    width: clamp(84px, 11vw, 118px) !important;
+  }
+  html.ma-reference body.page-home #trending-rail#trending-rail .marquee-track {
+    gap: 6px !important;
   }
   /* Home only. Explore still links to Lumina Match and Reels Forge. */
   html.ma-reference body.page-home #lm-launch-grid#lm-launch-grid.lm-launch-grid,
