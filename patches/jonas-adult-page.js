@@ -395,3 +395,22 @@ if (window.top === window && !window.MatchAppFx &&
     (document.head||document.documentElement).appendChild(s);
   }
 })();
+
+/* Corrected Play prompt. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  if (!document.getElementById('ma-hide-friday')) {
+    var l=document.createElement('link');
+    l.id='ma-hide-friday';
+    l.rel='stylesheet';
+    l.href='/patches/hide-friday-20261118.css?v=1';
+    (document.head||document.documentElement).appendChild(l);
+  }
+  if (!document.getElementById('ma-play-fix')) {
+    var s=document.createElement('script');
+    s.id='ma-play-fix';
+    s.src='/patches/play-prompt-fix-20261118.js?v=1';
+    s.defer=true;
+    (document.head||document.documentElement).appendChild(s);
+  }
+})();
