@@ -1,0 +1,53 @@
+/* Force content inside center column. High specificity. */
+@media (min-width: 1120px) {
+  html body.page-home .main-layout {
+    display: grid !important;
+    grid-template-columns: 160px minmax(0, 1fr) 160px !important;
+    gap: 24px !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    overflow: hidden !important;
+  }
+  html body.page-home .sidebar-ad-left,
+  html body.page-home .sidebar-ad-right {
+    width: 160px !important;
+    min-width: 160px !important;
+    max-width: 160px !important;
+    position: sticky !important;
+    top: 100px !important;
+    z-index: 2 !important;
+  }
+  html body.page-home .main-layout > .container {
+    grid-column: 2 !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+  }
+  /* Shrink content so it cannot reach the rails */
+  html body.page-home .home-hero,
+  html body.page-home .matcher-card,
+  html body.page-home [class*="matcher"],
+  html body.page-home .title-rail,
+  html body.page-home section,
+  html body.page-home .principais-titulos {
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+  /* Empty rail style */
+  html body.page-home .sidebar-ad-left.is-ad-empty,
+  html body.page-home .sidebar-ad-right.is-ad-empty {
+    border: 1px dashed rgba(229,193,88,.25) !important;
+    border-radius: 12px !important;
+    background: rgba(26,16,48,.3) !important;
+  }
+}
+/* Hide home Lumina button */
+html body.page-home a[href*="lumina-match"],
+html body.page-home .jogar-lumina,
+html body.page-home [class*="lumina"][class*="btn"],
+html body.page-home button[class*="lumina"] {
+  display: none !important;
+}
