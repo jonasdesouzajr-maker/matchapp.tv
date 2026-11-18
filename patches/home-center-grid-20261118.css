@@ -44,6 +44,11 @@
     animation: none !important;
     will-change: auto !important;
   }
+  html.ma-reference body.page-home:not(.kids-body) .poster-wall.poster-wall::after {
+    background:
+      linear-gradient(90deg, color-mix(in srgb, var(--theme-bg, #100a23) 38%, transparent), color-mix(in srgb, var(--theme-bg, #100a23) 52%, transparent) 28% 72%, color-mix(in srgb, var(--theme-bg, #100a23) 38%, transparent)),
+      linear-gradient(0deg, color-mix(in srgb, var(--theme-bg, #100a23) 62%, transparent), transparent 72%) !important;
+  }
   html.ma-reference body.page-home:not(.kids-body) .poster-wall .poster-wall-tile.poster-wall-tile {
     opacity: 1 !important;
     animation: none !important;
@@ -72,10 +77,15 @@
     margin-bottom: 4px !important;
   }
   html.ma-reference body.page-home #trending-rail#trending-rail .marquee-item.marquee-item.marquee-item {
+    flex: 0 0 auto !important;
     flex-basis: clamp(84px, 11vw, 118px) !important;
     width: clamp(84px, 11vw, 118px) !important;
+    min-width: clamp(84px, 11vw, 118px) !important;
   }
-  html.ma-reference body.page-home #trending-rail#trending-rail .marquee-track {
+  html.ma-reference body.page-home #trending-rail#trending-rail .marquee-track.marquee-track {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    width: max-content !important;
     gap: 6px !important;
   }
   /* Home only. Explore still links to Lumina Match and Reels Forge. */
