@@ -242,3 +242,14 @@ if (window.top === window && !window.MatchAppFx &&
   l.href='/patches/mobile-responsive-20261117.css?v=1';
   (document.head||document.documentElement).appendChild(l);
 })();
+
+/* AdSense spacing. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  if (document.getElementById('ma-adsense-spacing')) return;
+  var l=document.createElement('link');
+  l.id='ma-adsense-spacing';
+  l.rel='stylesheet';
+  l.href='/patches/adsense-spacing-20261118.css?v=1';
+  (document.head||document.documentElement).appendChild(l);
+})();
