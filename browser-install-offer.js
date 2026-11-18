@@ -218,7 +218,7 @@
     let frame=0;
     function checkBubble(){
       if(!bubble || frame)return;
-      frame=requestAnimationFrame(()=>{
+      frame=(typeof requestAnimationFrame==="function"?requestAnimationFrame:setTimeout)(()=>{
         frame=0;
         if(bubble && (installed() || busy() || !fitBubble(bubble)))dismissBubble(installed());
       });
