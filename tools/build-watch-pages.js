@@ -394,15 +394,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main class="w2w-wrap">
     <h1>Where to Watch</h1>
     <p class="w2w-lede">Streaming, rental and purchase options for ${titles.length} titles across Brazil, the US, the UK and Portugal — sourced from TMDB and JustWatch rather than guessed at.</p>
+    <form class="w2w-search" action="/where-to-watch/" method="get" role="search"><label class="sr-only" for="w2w-title-search">Search the streaming directory</label><input id="w2w-title-search" name="q" type="search" autocomplete="off" placeholder="Search a movie or series" aria-describedby="w2w-search-status"><button type="submit">Search titles</button></form><p class="w2w-search-status" id="w2w-search-status" role="status" aria-live="polite"></p>
     <section><h2>How to use this regional guide</h2><p>Choose a title below, then read the entry for your country. The same service can carry a film in Brazil and omit it in the United States. Each title page separates subscription viewing from rentals and purchases, includes its source snapshot date and links to the underlying regional listing. A blank provider entry means this source did not confirm an offer; it does not mean no legal offer exists.</p><p>Match the exact title and release year before paying. Remakes, series, films and bonus editions can share a name. On the destination service, check season availability, audio and subtitles, price and any additional channel subscription. A source link is a way to verify the offer, not a promise that MatchApp can play the title.</p><p>For help choosing what suits your evening, read our <a href="/guides/what-to-watch-september-2026/">dated movie and series discovery guide</a>. For corrections and the distinction between AI suggestions and source records, read <a href="/about.html">our source and correction approach</a>.</p></section>
     ${countryNavigation}
     <nav class="w2w-related" aria-label="Title availability guides">
                 ${links}
     </nav>
 </main>
+<script defer src="/where-to-watch/search.js?v=20261031-1"></script>
 </body>
 </html>
 `;
+}
+
+function nextWatchPage(existing, generated, title, info) {
+    if (existing && existing.includes('data-watch-editorial="locked"')) return injectWatchPoster(existing, title, info);
+    return generated;
 }
 
 function main() {
@@ -435,8 +442,14 @@ function main() {
             .slice(0, 8);
 
         const dir = path.join(ROOT, 'where-to-watch', slug(title));
+        const file = path.join(dir, 'index.html');
         fs.mkdirSync(dir, { recursive: true });
-        fs.writeFileSync(path.join(dir, 'index.html'), enrichWatchHead(buildPage(title, info, entry, related, generated),title,info), 'utf8');
+        const existing = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : '';
+        const pageHtml = enrichWatchHead(buildPage(title, info, entry, related, generated), title, info);
+        // A locked editorial answer (premiere date, renewal, referral) is not
+        // in the availability snapshot. Refresh its artwork only.
+        const next = nextWatchPage(existing, pageHtml, title, info);
+        if (next !== existing) fs.writeFileSync(file, next, 'utf8');
         if (hasConfirmedOffer(info)) urls.push(`${SITE}/where-to-watch/${slug(title)}/`);
     });
 
@@ -458,4 +471,4 @@ if(require.main===module){
   require('./discovery-metadata.js').applyFiles('where-to-watch/');
   require('./public-discovery-head.cjs').refreshPublicFiles(['where-to-watch/','en/br/watch/','en/us/watch/','en/gb/watch/','en/pt/watch/','pt/br/watch/']);
 }
-module.exports={buildPage,buildIndex,watchPoster,watchPosterMarkup,WATCH_POSTER_STYLE,injectWatchPoster};
+module.exports={buildPage,buildIndex,watchPoster,watchPosterMarkup,WATCH_POSTER_STYLE,injectWatchPoster,nextWatchPage};

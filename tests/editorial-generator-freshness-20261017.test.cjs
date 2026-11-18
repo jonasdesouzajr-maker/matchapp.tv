@@ -80,9 +80,13 @@ test('Awareness regeneration preserves the approved shared shell and committed s
    assert.equal(output.split(asset).length-1,1,key+' retains one exact approved asset');
    assert.ok(output.indexOf(asset)<output.indexOf('</head>'),key+' keeps the shell in the head');
   }
-  // The managed runtime query may serialize the same ampersand as & or &amp;.
-  // Preserve every other byte, including campaign copy, metadata and source URLs.
+  // The managed runtime query may serialize the same ampersand as & or &.
+  // Expiry may switch only the robots directive. Every other byte, including
+  // campaign copy, metadata and source URLs, stays the committed template.
   const scriptEncoding=html=>html.replace(/(<script\b[^>]*\bsrc=["']\/patches\/reference-system\.js(?:\?[^"']*)?)(["'])/g,(all,src,end)=>src.replace(/&amp;/g,'&')+end);
-  assert.equal(scriptEncoding(output),scriptEncoding(fs.readFileSync(path.join(ROOT,'awareness',campaign.id,'index.html'),'utf8')),key+' template retains the committed source, metadata and body');
+  const comparable=html=>scriptEncoding(html).replace(/<meta name="robots" content="[^"]*">/gi,'<meta name="robots" content="managed">');
+  const committed=fs.readFileSync(path.join(ROOT,'awareness',campaign.id,'index.html'),'utf8');
+  assert.match(committed,/<meta name="robots" content="(?:index,follow,max-image-preview:large,max-snippet:-1|noindex,follow)">/,key+' robots stay on the publisher allow-list');
+  assert.equal(comparable(output),comparable(committed),key+' template retains the committed source, metadata and body');
  }
 });

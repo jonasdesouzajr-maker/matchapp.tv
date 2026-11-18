@@ -162,7 +162,24 @@ function screenSections(page, plan) {
     };
 }
 
-/* ---------- page template ---------- */
+function longtailSections(html) {
+    if (!html) return [];
+    return [...html.matchAll(/<section\b(?=[^>]*(?:id|aria-labelledby)="[^"]*longtail[^"]*")[^>]*>[\s\S]*?<\/section>/gi)].map(match => match[0]);
+}
+
+// Catalog regeneration replaces the shortlist. Hand-written long-tail sections
+// are not in the catalog, so put the previous ones back before the format links.
+function retainLongtail(previous, next) {
+    let html = next;
+    for (const section of longtailSections(previous)) {
+        if (html.includes(section)) continue;
+        const anchor = '<section class="seo-section seo-other-formats"';
+        html = html.includes(anchor)
+            ? html.replace(anchor, section + '\n' + anchor)
+            : html.replace('</main>', section + '\n</main>');
+    }
+    return html;
+}
 function buildPage({ kind, key, title, lede, items, related }) {
     const s = slug(key);
     const page = kind + '/' + s;
@@ -412,9 +429,10 @@ function main() {
         const items = [...f.items].sort((a, b) => (b.synopsis || '').length - (a.synopsis || '').length);
 
         const dir = path.join(ROOT, f.kind, slug(f.key));
+        const file = path.join(dir, 'index.html');
         fs.mkdirSync(dir, { recursive: true });
-        fs.writeFileSync(path.join(dir, 'index.html'),
-            buildPage({ ...f, items, related }), 'utf8');
+        const previous = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : '';
+        fs.writeFileSync(file, retainLongtail(previous, buildPage({ ...f, items, related })), 'utf8');
         urls.push(`${SITE}/${f.kind}/${slug(f.key)}/`);
         written++;
     });
@@ -437,4 +455,4 @@ if (require.main === module) {
     require('./public-discovery-head.cjs').refreshPublicFiles(['moods/','collections/','platforms/','languages/','decades/']);
 }
 
-module.exports = {buildPage, loadCatalog, slug, MOOD_COPY, CAT_COPY, PLAT_COPY};
+module.exports = {buildPage, loadCatalog, slug, MOOD_COPY, CAT_COPY, PLAT_COPY, retainLongtail};

@@ -38,6 +38,17 @@ test('Anime and K-drama expose product-relevant long-tail prose; Discover keeps 
   assert.match(discover, /micro-drama finder/);
 });
 
+test('catalog regeneration puts a hand-written long-tail section back', () => {
+  const {retainLongtail} = require('../tools/build-seo-pages.js');
+  const section = '<section class="seo-section" aria-labelledby="kdrama-longtail"><h2 id="kdrama-longtail">Starting a K-drama when you like historical romance</h2></section>';
+  const rebuilt = '<main><section class="seo-section seo-other-formats" aria-labelledby="seo-other-heading"></section></main>';
+  const kept = retainLongtail(section, rebuilt);
+  assert.match(kept, /kdrama-longtail/);
+  assert.match(kept, /historical romance/);
+  assert.ok(kept.indexOf('kdrama-longtail') < kept.indexOf('seo-other-formats'));
+  assert.equal(retainLongtail('', rebuilt), rebuilt);
+});
+
 test('internal hubs and sitemap surface the new guide without touching AdSense hold', () => {
   assert.match(read('explore.html'), /guides\/what-to-watch-when-you-disagree\//);
   assert.match(read('index.html'), /guides\/what-to-watch-when-you-disagree\//);
