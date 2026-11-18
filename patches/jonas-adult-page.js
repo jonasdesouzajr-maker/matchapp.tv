@@ -297,3 +297,14 @@ if (window.top === window && !window.MatchAppFx &&
   s.src='/patches/cwv-optimize-20261118.js?v=1';
   (document.head||document.documentElement).appendChild(s);
 })();
+
+/* SEO enrich. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  if (document.getElementById('ma-seo-enrich')) return;
+  var s=document.createElement('script');
+  s.id='ma-seo-enrich';
+  s.defer=true;
+  s.src='/patches/seo-enrich-20261118.js?v=1';
+  (document.head||document.documentElement).appendChild(s);
+})();
