@@ -1,0 +1,35 @@
+/* Video-audit fixes 2026-11-18
+   Desktop: better empty ad frames, spacing, no overlap. */
+@media (min-width: 1024px) {
+  .sidebar-ad-left, .sidebar-ad-right {
+    width: 160px !important;
+    min-width: 160px !important;
+    margin: 0 24px !important;
+  }
+  .sidebar-ad-left:empty, .sidebar-ad-right:empty,
+  .sidebar-ad-left:has(ins:empty), .sidebar-ad-right:has(ins:empty) {
+    background: transparent !important;
+    border: 1px dashed rgba(255,255,255,0.08) !important;
+    border-radius: 12px !important;
+  }
+  .main-content, .page-content, #main-content {
+    max-width: 920px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 0 16px !important;
+  }
+  .hero-card, .premium-card, #loading-box {
+    margin-bottom: 32px !important;
+  }
+  .title-rail, .marquee-rail {
+    gap: 16px !important;
+    padding: 0 8px !important;
+  }
+  .marquee-item {
+    margin: 0 6px !important;
+  }
+}
+/* Faster paint */
+.poster-wall-tile img {
+  content-visibility: auto;
+}
