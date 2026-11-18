@@ -1,0 +1,10 @@
+/* Single meter bar during match search.
+   Keeps the premium meter. Hides any duplicate. */
+#loading-box .meter-shell:not(.premium-meter),
+#loading-box .meter-fill:not(.premium-meter-fill),
+#loading-box [class*="progress-bar"]:not(#ai-progress-bar) {
+  display: none !important;
+}
+#loading-box .premium-meter {
+  display: block !important;
+}
