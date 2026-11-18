@@ -1,0 +1,21 @@
+/* Compact layout and overlap fixes. Desktop. */
+@media (min-width: 1024px) {
+  .main-layout, section.container, .page-home > main {
+    max-width: 780px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 0 12px !important;
+  }
+  .matcher-card, [class*="matcher"], .home-hero, #ma-halloween-promo {
+    max-width: 100% !important;
+    margin-bottom: 16px !important;
+  }
+  .sidebar-ad-left, .sidebar-ad-right {
+    width: 140px !important;
+    min-width: 140px !important;
+    margin: 0 16px !important;
+  }
+}
+/* Hide duplicate download bubbles */
+#ma-dl-bubble { display: none !important; }
+#ma-donate { bottom: 80px !important; right: 16px !important; max-width: 280px !important; }
