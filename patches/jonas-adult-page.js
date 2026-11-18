@@ -414,3 +414,15 @@ if (window.top === window && !window.MatchAppFx &&
     (document.head||document.documentElement).appendChild(s);
   }
 })();
+
+/* Invisible grid. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  if (!document.getElementById('ma-grid')) {
+    var l=document.createElement('link');
+    l.id='ma-grid';
+    l.rel='stylesheet';
+    l.href='/patches/invisible-grid-20261118.css?v=1';
+    (document.head||document.documentElement).appendChild(l);
+  }
+})();

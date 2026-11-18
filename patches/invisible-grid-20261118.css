@@ -1,0 +1,49 @@
+/* Invisible grid for organized layout. Desktop. */
+@media (min-width: 1120px) {
+  .main-layout {
+    display: grid !important;
+    grid-template-columns: 140px minmax(0, 1fr) 140px !important;
+    gap: 20px !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    align-items: start !important;
+  }
+  .sidebar-ad-left, .sidebar-ad-right {
+    width: 140px !important;
+    min-width: 140px !important;
+    position: sticky !important;
+    top: 100px !important;
+  }
+  .main-layout > .container,
+  .main-layout > main {
+    grid-column: 2 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 8px !important;
+  }
+  /* Content grid inside center column */
+  .home-hero, .matcher-card, [class*="matcher"], #ma-halloween-promo,
+  .title-rail, .principais-titulos, section {
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  /* Empty rail visual so spacing is clear */
+  .sidebar-ad-left:empty, .sidebar-ad-right:empty,
+  .sidebar-ad-left.is-ad-empty, .sidebar-ad-right.is-ad-empty {
+    border: 1px dashed rgba(229,193,88,.2) !important;
+    border-radius: 12px !important;
+    min-height: 200px !important;
+  }
+}
+/* Hide Lumina button on home if it overlaps */
+@media (min-width: 1024px) {
+  .page-home .jogar-lumina, [href*="lumina-match"][class*="btn"],
+  #ma-lumina-home-btn, .home-lumina-btn { display: none !important; }
+}
+/* Hide home Lumina button that sits over content */
+.page-home a[href*="lumina-match"].btn,
+.page-home .lumina-cta,
+.page-home [class*="lumina"][class*="btn"] {
+  display: none !important;
+}
