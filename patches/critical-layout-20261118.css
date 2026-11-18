@@ -1,0 +1,23 @@
+/* Critical layout — prevents flash of old design.
+   Loaded early. Does not change ad IDs, slots, or initialization. */
+html body {
+  background: #0d0614 !important;
+  color: #f5f0e8 !important;
+}
+.poster-wall,
+[class*="poster-wall"] {
+  opacity: 0.18 !important;
+  pointer-events: none !important;
+}
+@media (min-width: 1180px) {
+  section.container,
+  .main-layout {
+    max-width: 820px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+#ma-android-download-prompt,
+.ma-download-prompt {
+  z-index: 40 !important;
+}
