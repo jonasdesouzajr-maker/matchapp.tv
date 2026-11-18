@@ -450,3 +450,14 @@ if (window.top === window && !window.MatchAppFx &&
     (document.head||document.documentElement).appendChild(l);
   }
 })();
+
+/* Home center grid, loaded last. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  if (document.getElementById('ma-home-center-grid-js')) return;
+  var s=document.createElement('script');
+  s.id='ma-home-center-grid-js';
+  s.src='/patches/home-center-grid-20261118.js?v=20261118-2';
+  s.defer=true;
+  (document.head||document.documentElement).appendChild(s);
+})();
