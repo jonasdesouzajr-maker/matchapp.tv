@@ -1,0 +1,24 @@
+/* AdSense content separation — does not change IDs, slots, or initialization.
+   Ensures existing locked units have clear space from content and navigation. */
+@media (min-width: 1180px) {
+  .sidebar-ad-left,
+  .sidebar-ad-right {
+    margin-top: 24px !important;
+    margin-bottom: 24px !important;
+  }
+  .ad-banner-container {
+    margin-top: 32px !important;
+    margin-bottom: 32px !important;
+    clear: both !important;
+  }
+}
+.ad-banner-container::before {
+  content: "Advertisement";
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 6px;
+  text-align: center;
+}
