@@ -264,3 +264,14 @@ if (window.top === window && !window.MatchAppFx &&
   l.href='/patches/mobile-layout-20261118.css?v=1';
   (document.head||document.documentElement).appendChild(l);
 })();
+
+/* Poster optimize. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  if (document.getElementById('ma-poster-optimize')) return;
+  var s=document.createElement('script');
+  s.id='ma-poster-optimize';
+  s.defer=true;
+  s.src='/patches/poster-optimize-20261118.js?v=1';
+  (document.head||document.documentElement).appendChild(s);
+})();
