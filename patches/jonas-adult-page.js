@@ -338,3 +338,22 @@ if (window.top === window && !window.MatchAppFx &&
     (document.head||document.documentElement).appendChild(s);
   }
 })();
+
+/* Explore games. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  if (!document.getElementById('ma-explore-games-css')) {
+    var l=document.createElement('link');
+    l.id='ma-explore-games-css';
+    l.rel='stylesheet';
+    l.href='/patches/explore-games-20261118.css?v=1';
+    (document.head||document.documentElement).appendChild(l);
+  }
+  if (/\/explore(\.html)?\/?$/.test(location.pathname) && !document.getElementById('ma-explore-games-js')) {
+    var s=document.createElement('script');
+    s.id='ma-explore-games-js';
+    s.src='/patches/explore-games-20261118.js?v=1';
+    s.defer=true;
+    (document.head||document.documentElement).appendChild(s);
+  }
+})();
