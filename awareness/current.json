@@ -1,21 +1,4 @@
 {
   "schemaVersion": 1,
-  "campaign": {
-    "id": "breast-cancer-awareness-month-2026",
-    "key": "breast-cancer-awareness-month",
-    "year": 2026,
-    "name": "Breast Cancer Awareness Month",
-    "startDate": "2026-10-01",
-    "endExclusive": "2026-11-01",
-    "sourceName": "World Health Organization",
-    "sourceUrl": "https://www.who.int/initiatives/global-breast-cancer-initiative",
-    "pageUrl": "/awareness/breast-cancer-awareness-month-2026/",
-    "ribbonColor": "#F58695",
-    "ribbonColorName": "pink",
-    "ribbonSourceName": "National Breast Cancer Foundation",
-    "ribbonSourceUrl": "https://www.nationalbreastcancer.org/breast-cancer-ribbon/",
-    "ribbonVerifyTerm": "pink ribbon",
-    "theme": "",
-    "supportLine": "Early detection and timely care save lives. Reliable information first."
-  }
+  "campaign": null
 }

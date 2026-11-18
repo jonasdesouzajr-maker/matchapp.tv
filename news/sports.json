@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-30T11:00:21.492Z",
+  "updated_at": "2026-11-18T14:14:42.494Z",
   "source_policy": "Authorized publisher RSS/Atom; directly linked canonical URLs, no article-body/image republication and no betting guides",
   "items": [
     {
-      "id": "ca3ecc0d",
-      "title": "Buried cats, exorcisms and a sunken Colonel Sanders – the strange world of sporting curses",
-      "url": "https://theconversation.com/buried-cats-exorcisms-and-a-sunken-colonel-sanders-the-strange-world-of-sporting-curses-288604",
+      "id": "28c74dc3",
+      "title": "Pourquoi la génération Z doit en partie à Napoléon son obsession pour la musculation",
+      "url": "https://theconversation.com/pourquoi-la-generation-z-doit-en-partie-a-napoleon-son-obsession-pour-la-musculation-295641",
       "source": "The Conversation",
       "source_domain": "theconversation.com",
       "source_home": "https://theconversation.com",
@@ -13,23 +13,7 @@
       "category": "sports",
       "sport": "Sports",
       "event_type": "Sports",
-      "published_at": "2026-10-29T23:29:56.000Z",
-      "timestamp_kind": "published",
-      "discovery_source": "Authorized publisher RSS/Atom",
-      "image": null
-    },
-    {
-      "id": "b04776b3",
-      "title": "Politics with Michelle Grattan: Joe Hockey on how Trump would handle defeat in the midterms",
-      "url": "https://theconversation.com/politics-with-michelle-grattan-joe-hockey-on-how-trump-would-handle-defeat-in-the-midterms-295167",
-      "source": "The Conversation",
-      "source_domain": "theconversation.com",
-      "source_home": "https://theconversation.com",
-      "country": "GLOBAL",
-      "category": "sports",
-      "sport": "Sports",
-      "event_type": "Sports",
-      "published_at": "2026-10-27T06:44:38.000Z",
+      "published_at": "2026-11-18T10:26:52.000Z",
       "timestamp_kind": "published",
       "discovery_source": "Authorized publisher RSS/Atom",
       "image": null
