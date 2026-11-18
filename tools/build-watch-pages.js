@@ -407,9 +407,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 `;
 }
 
+function editorialSections(html) {
+    if (!html) return [];
+    return [...html.matchAll(/<section\b[^>]*\bdata-watch-editorial="locked"[\s\S]*?<\/section>/gi)].map(match => match[0]);
+}
+
 function nextWatchPage(existing, generated, title, info) {
-    if (existing && existing.includes('data-watch-editorial="locked"')) return injectWatchPoster(existing, title, info);
-    return generated;
+    const sections = editorialSections(existing);
+    if (!sections.length) return generated;
+    const block = sections.join('\n');
+    const anchor = '<section aria-label="Availability by region">';
+    const page = generated.includes(block) ? generated : (generated.includes(anchor) ? generated.replace(anchor, block + '\n' + anchor) : generated.replace('</header>', '</header>\n' + block));
+    return injectWatchPoster(page, title, info);
 }
 
 function main() {

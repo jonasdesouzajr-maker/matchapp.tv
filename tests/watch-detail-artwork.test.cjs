@@ -5,10 +5,13 @@ const {watchPoster,watchPosterMarkup,injectWatchPoster,nextWatchPage}=require('.
 const info={tmdbId:693134,kind:'movie',year:2024,regions:{},regionObservations:{}};
 const row={title:'Dune: Part Two',tmdbId:693134,kind:'movie',year:2024,poster:'https://image.tmdb.org/t/p/w500/6izwz7rsy95ARzTR3poZ8H6c5pp.jpg'};
 test('a locked editorial watch page keeps its referral facts when availability is rebuilt',()=>{
- const locked='<html><head></head><body><header class="w2w-hero"><h1>A Different World</h1></header><section data-watch-editorial="locked"><p>September 24, 2026</p><p>Season 2 renewal</p></section></body></html>';
- const out=nextWatchPage(locked,'<html>generic availability page</html>','A Different World',{kind:'tv',year:2026,regions:{}});
- assert.match(out,/September 24, 2026/);assert.match(out,/Season 2 renewal/);assert.doesNotMatch(out,/generic availability page/);
- assert.equal(nextWatchPage('<html>old</html>','<html>generic availability page</html>','Other',info),'<html>generic availability page</html>');
+ const locked='<html><head></head><body><header class="w2w-hero"><h1>A Different World</h1></header><section data-watch-editorial="locked"><p>September 24, 2026</p><p>Season 2 renewal</p></section><section aria-label="Availability by region"></section></body></html>';
+ const generated='<html><body><header class="w2w-hero"></header><section aria-label="Availability by region"></section><section aria-label="Source context and comparison"><time datetime="2026-11-18T14:05:27.886Z"></time></section></body></html>';
+ const out=nextWatchPage(locked,generated,'A Different World',{kind:'tv',year:2026,regions:{}});
+ assert.match(out,/September 24, 2026/);assert.match(out,/Season 2 renewal/);
+ assert.match(out,/2026-11-18T14:05:27\.886Z/);
+ assert.ok(out.indexOf('data-watch-editorial')<out.indexOf('Availability by region'));
+ assert.equal(nextWatchPage('<html>old</html>',generated,'Other',info),generated);
 });
 test('watch detail art must match numeric identity, kind, year and trusted source',()=>{
  assert.ok(watchPoster(info,[row]));
