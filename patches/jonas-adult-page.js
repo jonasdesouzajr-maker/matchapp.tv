@@ -319,3 +319,22 @@ if (window.top === window && !window.MatchAppFx &&
   l.href='/patches/single-meter-20261118.css?v=1';
   (document.head||document.documentElement).appendChild(l);
 })();
+
+/* Video audit fixes. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  if (!document.getElementById('ma-video-fix')) {
+    var l=document.createElement('link');
+    l.id='ma-video-fix';
+    l.rel='stylesheet';
+    l.href='/patches/video-fix-20261118.css?v=1';
+    (document.head||document.documentElement).appendChild(l);
+  }
+  if (!document.getElementById('ma-real-posters-v2')) {
+    var s=document.createElement('script');
+    s.id='ma-real-posters-v2';
+    s.src='/patches/real-posters-v2-20261118.js?v=1';
+    s.defer=true;
+    (document.head||document.documentElement).appendChild(s);
+  }
+})();
