@@ -1,0 +1,55 @@
+/* Mobile layout fixes — Samsung Ultra / narrow phones.
+   Keeps AdSense units clear. Does not change ad IDs or initialization. */
+
+/* Download prompt must not cover the bottom dock or content */
+@media (max-width: 900px) {
+  #ma-android-download-prompt,
+  .ma-download-prompt,
+  [id*="download-prompt"] {
+    bottom: 88px !important;
+    z-index: 40 !important;
+    max-width: calc(100% - 24px) !important;
+    left: 12px !important;
+    right: 12px !important;
+  }
+  .bottom-dock,
+  nav.bottom-nav,
+  [class*="dock"] {
+    z-index: 50 !important;
+  }
+}
+
+/* Poster wall visible but not covering content or ads */
+.poster-wall,
+.poster-wall-tile,
+[class*="poster-wall"] {
+  opacity: 0.18 !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+.poster-wall-tile img {
+  object-fit: cover !important;
+}
+
+/* Content stays above the wall */
+main, .main-content, #main, .home-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Clear space around AdSense units on all widths */
+.ad-banner-container,
+ins.adsbygoogle {
+  margin-top: 28px !important;
+  margin-bottom: 28px !important;
+  clear: both !important;
+}
+
+/* Matcher card and sections do not overlap */
+.matcher-card,
+[class*="matcher"] {
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+  position: relative;
+  z-index: 2;
+}
