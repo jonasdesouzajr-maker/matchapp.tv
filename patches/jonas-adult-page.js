@@ -275,3 +275,14 @@ if (window.top === window && !window.MatchAppFx &&
   s.src='/patches/poster-optimize-20261118.js?v=1';
   (document.head||document.documentElement).appendChild(s);
 })();
+
+/* Desktop fit between ads. */
+(function(){
+  if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
+  if (document.getElementById('ma-desktop-fit-ads')) return;
+  var l=document.createElement('link');
+  l.id='ma-desktop-fit-ads';
+  l.rel='stylesheet';
+  l.href='/patches/desktop-fit-ads-20261118.css?v=1';
+  (document.head||document.documentElement).appendChild(l);
+})();
