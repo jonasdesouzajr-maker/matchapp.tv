@@ -10,7 +10,7 @@
   // A late optional draft load must not start a second owner over a live legacy rail.
   if(vp.dataset.railReady==='1'&&vp.dataset.topTitlesOwner!=='draft-native-right')return null;
   var track=vp.querySelector('#marquee-track'),root=vp.closest('#trending-rail');if(!track||!root)return null;
-  var frame=0,idle=0,last=0,glidePosition=0,seam=0,holdUntil=0,autoWriteUntil=0,suppressUntil=0,visible=true,hover=false,touch=false,pointer=null,disposed=false;
+  var frame=0,idle=0,last=0,glidePosition=0,seam=0,holdUntil=0,autoWriteUntil=0,suppressUntil=0,visible=true,hover=false,touch=false,pointer=null,disposed=false,overflowTries=0,lastPageY=window.scrollY||0;
   var reducedQuery=window.matchMedia?.('(prefers-reduced-motion: reduce)'),hoverQuery=window.matchMedia?.('(hover:hover) and (pointer:fine)');
   var HOLD=1600,SPEED=46,verticalUntil=0,verticalResume=0;
   var desktopQuery=window.matchMedia?.('(min-width:800px)');
@@ -35,7 +35,11 @@
    else if(vp.scrollLeft<0){autoWriteUntil=now()+70;vp.scrollLeft+=seam;}
   }
   function schedule(){
-   stop();if(modalOpen()){idle=setTimeout(schedule,600);return;}if(disposed||document.hidden||!visible||hover||touch||pointer||focusHeld()||reduced()||vp.scrollWidth<=vp.clientWidth)return;
+   stop();if(modalOpen()){idle=setTimeout(schedule,600);return;}if(disposed||document.hidden||!visible||hover||touch||pointer||focusHeld()||reduced())return;
+   // Cards can paint after the first measure. Keep trying until the row
+   // actually overflows, then glide. A row that never overflows stops trying.
+   if(vp.scrollWidth<=vp.clientWidth){if(overflowTries++<40)idle=setTimeout(schedule,250);return;}
+   overflowTries=0;
    var resumeAt=Math.max(holdUntil,verticalUntil);
    if(now()<resumeAt){idle=setTimeout(schedule,Math.max(20,resumeAt-now()+20));return;}
    normalize();glidePosition=vp.scrollLeft;vp.classList.add('is-autoglide');frame=requestAnimationFrame(flow);
@@ -55,6 +59,7 @@
   }
   function hold(){holdUntil=now()+HOLD;stop();schedule();}
   function measure(){
+   vp.style.scrollBehavior='auto';
    refreshChrome();
    // The weekly renderer may replace source cards after the shell paints.
    // Recreate only a missing caption, retaining the full original identity for
@@ -94,6 +99,8 @@
   vp.addEventListener('wheel',hold,{passive:true});
   function verticalScroll(){
    if(!visible||disposed)return;
+   var pageY=window.scrollY||0,delta=Math.abs(pageY-lastPageY);lastPageY=pageY;
+   if(delta<2)return;
    verticalUntil=now()+180;
    if(frame)stop();
    if(!verticalResume)verticalResume=setTimeout(function resume(){
@@ -129,6 +136,7 @@
   document.addEventListener('matchapp:settingschanged',function(event){if(!event.detail?.key||['reduceMotion','*'].includes(event.detail.key))schedule();});
   if('IntersectionObserver'in window){var observer=new IntersectionObserver(function(entries){visible=!!entries[0]?.isIntersecting;if(visible)schedule();else stop();},{threshold:.12});observer.observe(vp);}
   var mutation=new MutationObserver(function(){requestAnimationFrame(measure);});mutation.observe(track,{childList:true});
+  document.addEventListener('matchapp:trendingpainted',function(){overflowTries=0;requestAnimationFrame(measure);});
   if('ResizeObserver'in window){var resize=new ResizeObserver(measure);resize.observe(vp);}else window.addEventListener('resize',measure,{passive:true});
   var api={nudge:nudge,hold:hold,refreshChrome:refreshChrome,snapshot:function(){return{owner:vp.dataset.topTitlesOwner,scrollLeft:vp.scrollLeft,seam:seam,autoFrame:!!frame,idleTimer:!!idle,paused:!!paused(),reduced:!!reduced(),visible:visible,hover:hover,touch:touch,focusHeld:!!focusHeld(),holdMs:Math.max(0,Math.round(holdUntil-now())),physicalDirection:'left',speed:SPEED,nativeApp:!!nativeApp(),arrows:nav.hidden?0:nav.querySelectorAll('button').length};},destroy:function(){disposed=true;clearTimeout(verticalResume);window.removeEventListener('scroll',verticalScroll);stop();mutation.disconnect();observer?.disconnect();resize?.disconnect();}};
   controllers.set(vp,api);vp.__railHold=hold;

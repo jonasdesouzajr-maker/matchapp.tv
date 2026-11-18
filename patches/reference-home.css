@@ -277,8 +277,8 @@ html.ma-reference body.page-home #questionnaire-box#questionnaire-box .q-grid--p
  html.ma-reference body.page-home #questionnaire-box#questionnaire-box > .match-more-filters {grid-column:1/8!important;margin:0!important;align-self:start;}
  html.ma-reference body.page-home #questionnaire-box#questionnaire-box > .gold-btn {grid-column:8/-1!important;margin:0!important;min-height:44px!important;font-size:1.2rem!important;}
 }
-/* Original posters belong in cards; keep the decorative background quiet. */
-html.ma-reference body.page-home :is(#poster-wall,.poster-wall,#ambient-bg,.ambient-bg) {display:none!important;}
+/* Title posters stay behind the page. Only the flat ambient fill stays hidden. */
+html.ma-reference body.page-home :is(#ambient-bg,.ambient-bg) {display:none!important;}
 html.ma-reference body.page-home #mh-topbox#mh-topbox .ma-brand-orb-stage {background:transparent!important;box-shadow:none!important;}
 html.ma-reference body.page-home #mh-topbox#mh-topbox .ma-brand-orb-stage::before,
 html.ma-reference body.page-home #mh-topbox#mh-topbox .ma-brand-orb-stage::after {display:none!important;}

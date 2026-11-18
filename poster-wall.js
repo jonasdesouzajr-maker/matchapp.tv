@@ -71,12 +71,21 @@
     if(seen.has(match[1]))return;
     seen.add(match[1]);files.push(match[1]);
    };
+   function railPosters(){
+    document.querySelectorAll('#trending-rail .marquee-item[data-loop-copy="0"] img[src]').forEach(img=>add(img.getAttribute('src')||''));
+   }
+   if(native){
    (Array.isArray(wallList)?wallList:[]).forEach(entry=>{if(entry)add(entry.poster);});
    (Array.isArray(identities)?identities:[]).forEach(entry=>{if(entry&&entry.adult!==true)add(entry.poster);});
    ((watchIds&&Array.isArray(watchIds.entries))?watchIds.entries:[]).forEach(entry=>{if(entry&&entry.adult!==true)add(entry.poster);});
-   try{if(native&&typeof VERIFIED_POSTERS==='object'&&VERIFIED_POSTERS)Object.keys(VERIFIED_POSTERS).forEach(k=>add(VERIFIED_POSTERS[k]));}catch(_){}
-   if(native)document.querySelectorAll('#trending-rail .marquee-item img[src]').forEach(img=>add(img.getAttribute('src')));
-   else files.push(...OWNED_ART);
+   try{if(typeof VERIFIED_POSTERS==='object'&&VERIFIED_POSTERS)Object.keys(VERIFIED_POSTERS).forEach(k=>add(VERIFIED_POSTERS[k]));}catch(_){}
+   document.querySelectorAll('#trending-rail .marquee-item img[src]').forEach(img=>add(img.getAttribute('src')));
+   }else{
+    railPosters();
+    // Pages without a title rail keep the original MatchApp covers. Home uses
+    // the posters already on the rail, so the wall does not fetch a catalogue.
+    if(!files.length)files.push(...OWNED_ART);
+   }
    if(!files.length||themeHidesWall())return;
    // Enough tiles to fill the tilted grid at every breakpoint. With the pooled
    // catalogue this is reached without repeating; the modulo only matters if a
@@ -104,11 +113,13 @@
      const tile=document.createElement('div');tile.className='poster-wall-tile';
      const img=document.createElement('img');
      const base='https://image.tmdb.org/t/p/';
+     const file=posters[i];
+     const owned=typeof file==='string'&&file.charAt(0)==='/';
      // Background renditions only. The tiles sit at ~100-170px behind a scrim,
      // so w185 is the largest rendition worth fetching even on retina.
-     img.src=native?base+'w154/'+posters[i]:posters[i];
+     img.src=native?base+'w154/'+file:(owned?file:base+'w185/'+file);
      // Small tiles, but sharp on 2x/3x screens: w342 covers 100px at 3x.
-     if(native)img.srcset=base+'w154/'+posters[i]+' 154w, '+base+'w185/'+posters[i]+' 185w, '+base+'w342/'+posters[i]+' 342w';
+     if(!owned)img.srcset=base+'w154/'+file+' 154w, '+base+'w185/'+file+' 185w, '+base+'w342/'+file+' 342w';
      img.sizes='(max-width:700px) 66px, (max-width:1099px) 88px, 100px';
      img.alt='';img.loading='eager';img.decoding='async';img.fetchPriority='low';
      img.onerror=()=>{tile.hidden=true;};
@@ -129,6 +140,25 @@
    window.addEventListener('pagehide',event=>{if(!event.persisted){clearTimeout(resizeTimer);window.removeEventListener('resize',resized);}},{once:true});
   }catch(_){/* The selected theme remains complete when decorative images cannot load. */}
  }
+ function refreshFromRail(){
+  if(nativeSurface()||kids())return;
+  const seen=new Set(),files=[];
+  document.querySelectorAll('#trending-rail .marquee-item[data-loop-copy="0"] img[src]').forEach(img=>{
+    const src=img.getAttribute('src')||'';
+    if(!SAFE.test(src))return;
+    const match=FILE.exec(src);if(!match||seen.has(match[1]))return;
+    seen.add(match[1]);files.push(match[1]);
+  });
+  const grid=document.querySelector('.poster-wall-grid');
+  if(!grid||files.length<6)return;
+  const base='https://image.tmdb.org/t/p/';
+  grid.querySelectorAll('img').forEach((img,i)=>{
+    const file=files[i%files.length];
+    img.src=base+'w185/'+file;
+    img.srcset=base+'w154/'+file+' 154w, '+base+'w185/'+file+' 185w, '+base+'w342/'+file+' 342w';
+  });
+ }
+ document.addEventListener('matchapp:trendingpainted',refreshFromRail);
  function scheduleBoot(){
   let queued=false,fallback=0;
   const run=()=>boot();

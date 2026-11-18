@@ -20,8 +20,8 @@ test('home center rules join ma-reference and do not resize ad rails', () => {
   assert.doesNotMatch(css, /sidebar-ad/);
   const embedded = JSON.parse(js.match(/var CSS = ("(?:\\.|[^"])*");/)[1]);
   assert.equal(embedded, css);
-  assert.match(adult, /home-center-grid-20261118\.js\?v=20261118-4/);
-  assert.match(home, /jonas-adult-page\.js\?v=20261118-grid4/);
+  assert.match(adult, /home-center-grid-20261118\.js\?v=20261118-5/);
+  assert.match(home, /jonas-adult-page\.js\?v=20261118-grid5/);
   assert.match(home, /top-titles-draft\.js\?v=20261118-left1/);
   assert.match(home, /top-titles-draft\.css\?v=20261118-left1/);
 });

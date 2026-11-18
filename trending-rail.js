@@ -44,13 +44,8 @@ function paint(data){
   // film/TV card path or users can see an image-only duplicate.
   const editorialTitles=data.titles.filter(item=>item?.kind!=='music-video');
   if(!editorialTitles.length)return;
-  // The owner-curated 26 identities are Home's authority; daily trend data
-  // belongs to the discovery guide and must not replace this complete rail.
-  const committed=Array.from(track.querySelectorAll('img[data-title]'));
-  if(committed.length===52){
-    document.dispatchEvent(new CustomEvent('matchapp:trendingpainted',{detail:{count:26}}));
-    return;
-  }
+  // Home shows the latest daily titles. The committed cards are only the
+  // first paint; a verified weekly file with artwork replaces them in place.
   const weekLabel={en:'Top titles this week','pt-BR':'Títulos em alta nesta semana',es:'Títulos top de esta semana',fr:'Titres phares de la semaine',de:'Top-Titel dieser Woche',it:'Titoli top di questa settimana',tr:'Bu haftanın öne çıkanları',ru:'Главные названия недели',ar:'أبرز العناوين هذا الأسبوع',hi:'इस हफ्ते के शीर्ष शीर्षक',id:'Judul teratas minggu ini',ja:'今週の注目タイトル',ko:'이번 주 인기 작품',zh:'本周热门标题', "zh-TW": "本週熱門標題"};
   const lang=String(document.documentElement.lang||localStorage.getItem('match_lang')||'en');
   const shown=weekLabel[lang]||weekLabel[lang.slice(0,2)]||data.label||weekLabel.en;
@@ -63,13 +58,13 @@ function paint(data){
   editorialTitles.forEach((item,index)=>track.appendChild(card(item,true,index)));
   track.dataset.loopCount=String(editorialTitles.length);
   // app.js owns scroll state. Resync its invisible loop seam after a weekly repaint.
-  requestAnimationFrame(()=>window.dispatchEvent(new Event('resize')));
+  try{requestAnimationFrame(()=>window.dispatchEvent(new Event('resize')));}catch(_){window.dispatchEvent(new Event('resize'));}
   document.dispatchEvent(new CustomEvent('matchapp:trendingpainted',{detail:{count:editorialTitles.length}}));
 }
 function boot(){
   // The committed rail is already usable; app.js owns all motion so Android never has two scroll writers fighting a finger swipe.
   Promise.all([
-    fetch('/data/trending-week.json?v=20261002-week1',{cache:'no-store'}).then(r=>r.ok?r.json():null),
+    fetch('/data/trending-week.json?v=20261118-daily1',{cache:'no-store'}).then(r=>r.ok?r.json():null),
     fetch('/data/poster-identities.json?v=20261002-poster1',{cache:'force-cache'}).then(r=>r.ok?r.json():[]).catch(()=>[])
   ]).then(([data,identities])=>{
     if(!data||!Array.isArray(data.titles))return;
