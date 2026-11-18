@@ -2,7 +2,15 @@ name: Validate website
 on:
   push:
     branches: [main, fix/stability-premium-ui, fix/content-bot-retry]
+    paths-ignore:
+      - "docs/**"
+      - "reports/**"
+      - "*.md"
   pull_request:
+    paths-ignore:
+      - "docs/**"
+      - "reports/**"
+      - "*.md"
 permissions:
   contents: read
 concurrency:
@@ -11,7 +19,7 @@ concurrency:
 jobs:
   validate:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
