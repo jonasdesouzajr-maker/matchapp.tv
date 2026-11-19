@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "weekOf": "2026-11-16",
-  "updated": "2026-11-18T14:14:42.028Z",
+  "updated": "2026-11-19T13:46:14.295Z",
   "label": "Latest titles trending right now",
   "sourceNote": "Movie and TV positions refresh from MatchApp’s current TMDB daily trend metadata; verified official music-video releases from monitored top-artist channels refresh daily with release dates, YouTube view counts, direct links, keywords and structured metadata. Availability can vary by country.",
   "titles": [
@@ -14,7 +14,7 @@
       "platform": "Cinemas",
       "platforms": [],
       "tmdbId": "1368337",
-      "poster": "https://image.tmdb.org/t/p/w780/zG7hzAyqa9KIjM0Yse0bxty4Cq8.jpg",
+      "poster": "https://image.tmdb.org/t/p/w780/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg",
       "description": "Odysseus, the legendary King of Ithaca, embarks on a long and perilous journey home following the Trojan War. Throughout his voyage, he is forced to confront the whims of gods, mythological monsters, and trials that stretch both his cunning and his humanity to the breaking point.",
       "genre": [
         "Adventure",
@@ -30,7 +30,7 @@
       ],
       "runtimeMinutes": 173,
       "contentRating": "R",
-      "voteAverage": 8.02,
+      "voteAverage": 8,
       "previewUrl": "https://www.youtube.com/watch?v=AyIZ9tiiN8I",
       "availability": {
         "BR": {
@@ -55,8 +55,14 @@
           "cinema_release_date": "2026-07-16"
         },
         "US": {
-          "buy": [],
-          "link": null,
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/1368337-the-odyssey/watch?locale=US",
           "rent": [],
           "stream": [],
           "cinema_release_date": "2026-07-17"
@@ -111,7 +117,7 @@
       "platform": "Cinemas",
       "platforms": [],
       "tmdbId": "1300968",
-      "poster": "https://image.tmdb.org/t/p/w780/j1MNyNNgNQL6f27cb3m3uKaPKd6.jpg",
+      "poster": "https://image.tmdb.org/t/p/w780/nzIXSQNgYZwFOMrmv0d0I3ulvkM.jpg",
       "description": "Return to the world of Panem 24 years before the events of The Hunger Games, starting on the morning of the reaping of the 50th Hunger Games, also known as the Second Quarter Quell.",
       "genre": [
         "Science Fiction",
@@ -127,7 +133,7 @@
       ],
       "runtimeMinutes": 159,
       "contentRating": "PG-13",
-      "voteAverage": 8.18,
+      "voteAverage": 7.48,
       "previewUrl": "https://www.youtube.com/watch?v=Dr060OLTodE",
       "availability": {
         "BR": {
@@ -200,93 +206,69 @@
       }
     },
     {
-      "title": "Avengers: Doomsday",
+      "title": "Guarding Stars",
       "kind": "movie",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
-      "platform": "Cinemas",
+      "platform": "",
       "platforms": [],
-      "tmdbId": "1003596",
-      "poster": "https://image.tmdb.org/t/p/w780/1zqWkLwC1zLBBBtIWzmkmWeMWnT.jpg",
-      "description": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
+      "tmdbId": "1551025",
+      "poster": "https://image.tmdb.org/t/p/w780/wWNizZ4IcSld3xXH1WEXziJiNJN.jpg",
+      "description": "When a no-nonsense bodyguard is assigned to protect a charming action star over the holidays, sparks fly, secrets unravel, and Christmas gets a whole lot more complicated.",
       "genre": [
-        "Science Fiction",
-        "Action",
-        "Adventure"
+        "Romance",
+        "Comedy"
       ],
       "inLanguage": "en",
       "cast": [
-        "Robert Downey Jr.",
-        "Chris Evans",
-        "Chris Hemsworth",
-        "Pedro Pascal"
+        "Leighton Meester",
+        "Jared Padalecki",
+        "Andie MacDowell",
+        "Walker Hayes"
       ],
-      "runtimeMinutes": 165,
+      "runtimeMinutes": 109,
       "contentRating": "PG-13",
-      "voteAverage": 0,
-      "previewUrl": "https://www.youtube.com/watch?v=X1aFkAkFASk",
+      "voteAverage": 7.2,
+      "previewUrl": "https://www.youtube.com/watch?v=mFvtVPMa5ak",
       "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-12-16"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-12-16"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-12-18"
-        },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1003596"
+        "source_page_url": "https://www.themoviedb.org/movie/1551025"
       },
       "sourceRank": 3,
       "keywords": [
-        "Avengers: Doomsday",
-        "Avengers: Doomsday 2026",
-        "where to watch Avengers: Doomsday",
-        "Science Fiction movie",
-        "Action movie",
-        "Adventure movie",
-        "Robert Downey Jr.",
-        "Chris Evans"
+        "Guarding Stars",
+        "Guarding Stars 2026",
+        "where to watch Guarding Stars",
+        "Romance movie",
+        "Comedy movie",
+        "Leighton Meester",
+        "Jared Padalecki"
       ],
       "longTailKeywords": [
-        "where to watch Avengers: Doomsday 2026",
-        "Avengers: Doomsday streaming in Brazil and United States",
-        "Avengers: Doomsday cast synopsis trailer and where to watch",
-        "what Science Fiction to watch this week"
+        "where to watch Guarding Stars 2026",
+        "Guarding Stars streaming in Brazil and United States",
+        "Guarding Stars cast synopsis trailer and where to watch",
+        "what Romance to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Avengers: Doomsday (2026) | MatchApp Ai",
-        "description": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
+        "title": "Where to watch Guarding Stars (2026) | MatchApp Ai",
+        "description": "When a no-nonsense bodyguard is assigned to protect a charming action star over the holidays, sparks fly, secrets unravel, and Christmas gets a whole lot more",
         "keywords": [
-          "Avengers: Doomsday",
-          "Avengers: Doomsday 2026",
-          "where to watch Avengers: Doomsday",
-          "Science Fiction movie",
-          "Action movie",
-          "Adventure movie",
-          "Robert Downey Jr.",
-          "Chris Evans",
-          "where to watch Avengers: Doomsday 2026",
-          "Avengers: Doomsday streaming in Brazil and United States",
-          "Avengers: Doomsday cast synopsis trailer and where to watch",
-          "what Science Fiction to watch this week"
+          "Guarding Stars",
+          "Guarding Stars 2026",
+          "where to watch Guarding Stars",
+          "Romance movie",
+          "Comedy movie",
+          "Leighton Meester",
+          "Jared Padalecki",
+          "where to watch Guarding Stars 2026",
+          "Guarding Stars streaming in Brazil and United States",
+          "Guarding Stars cast synopsis trailer and where to watch",
+          "what Romance to watch this week"
         ],
-        "canonicalQuery": "Avengers: Doomsday"
+        "canonicalQuery": "Guarding Stars"
       }
     },
     {
@@ -349,76 +331,169 @@
       "sourceRank": 1
     },
     {
-      "title": "The Beast",
+      "title": "Madden",
       "kind": "movie",
       "year": 2026,
-      "origin": "GB",
-      "originName": "United Kingdom",
+      "origin": "US",
+      "originName": "United States",
       "platform": "Cinemas",
       "platforms": [],
-      "tmdbId": "1185344",
-      "poster": "https://image.tmdb.org/t/p/w780/ocg5JfJP19fodcv5uQUApkmZMdI.jpg",
-      "description": "When a militia of unidentified hostiles coordinates a coup against the United States, the president must fight back by utilizing the highly classified offensive capabilities of his armored limousine, nicknamed The Beast.",
+      "tmdbId": "1131943",
+      "poster": "https://image.tmdb.org/t/p/w780/bRa83oPFFPqaAF3wrpVWPqqfFel.jpg",
+      "description": "Chronicles John Madden's incredible journey alongside best friend and true original Al Davis—from a Super Bowl-winning partnership with the Raiders, to becoming football's most recognizable voice, to building the worldwide Madden NFL video game.",
       "genre": [
-        "Action",
-        "Thriller"
+        "Drama",
+        "History",
+        "Comedy"
       ],
       "inLanguage": "en",
       "cast": [
-        "Samuel L. Jackson",
-        "Joel Kinnaman",
-        "Guy Burnet",
-        "Eoin Macken"
+        "Nicolas Cage",
+        "Christian Bale",
+        "Kathryn Hahn",
+        "Sienna Miller"
       ],
-      "runtimeMinutes": 99,
+      "runtimeMinutes": 112,
       "contentRating": "R",
-      "voteAverage": 5.19,
-      "previewUrl": "https://www.youtube.com/watch?v=5ckqV_uf8E0",
+      "voteAverage": 8.09,
+      "previewUrl": "https://www.youtube.com/watch?v=xzh7HzLXXpk",
       "availability": {
         "US": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-10-09"
+          "cinema_release_date": "2026-11-18"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1185344"
+        "source_page_url": "https://www.themoviedb.org/movie/1131943"
       },
       "sourceRank": 4,
       "keywords": [
-        "The Beast",
-        "The Beast 2026",
-        "where to watch The Beast",
-        "Action movie",
-        "Thriller movie",
-        "Samuel L. Jackson",
-        "Joel Kinnaman"
+        "Madden",
+        "Madden 2026",
+        "where to watch Madden",
+        "Drama movie",
+        "History movie",
+        "Comedy movie",
+        "Nicolas Cage",
+        "Christian Bale"
       ],
       "longTailKeywords": [
-        "where to watch The Beast 2026",
-        "The Beast streaming in Brazil and United States",
-        "The Beast cast synopsis trailer and where to watch",
-        "what Action to watch this week"
+        "where to watch Madden 2026",
+        "Madden streaming in Brazil and United States",
+        "Madden cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
       ],
       "seo": {
-        "title": "Where to watch The Beast (2026) | MatchApp Ai",
-        "description": "When a militia of unidentified hostiles coordinates a coup against the United States, the president must fight back by utilizing the highly classified offensi",
+        "title": "Where to watch Madden (2026) | MatchApp Ai",
+        "description": "Chronicles John Madden's incredible journey alongside best friend and true original Al Davis—from a Super Bowl-winning partnership with the Raiders, to becomi",
         "keywords": [
-          "The Beast",
-          "The Beast 2026",
-          "where to watch The Beast",
-          "Action movie",
-          "Thriller movie",
-          "Samuel L. Jackson",
-          "Joel Kinnaman",
-          "where to watch The Beast 2026",
-          "The Beast streaming in Brazil and United States",
-          "The Beast cast synopsis trailer and where to watch",
-          "what Action to watch this week"
+          "Madden",
+          "Madden 2026",
+          "where to watch Madden",
+          "Drama movie",
+          "History movie",
+          "Comedy movie",
+          "Nicolas Cage",
+          "Christian Bale",
+          "where to watch Madden 2026",
+          "Madden streaming in Brazil and United States",
+          "Madden cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
         ],
-        "canonicalQuery": "The Beast"
+        "canonicalQuery": "Madden"
+      }
+    },
+    {
+      "title": "Avengers: Doomsday",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1003596",
+      "poster": "https://image.tmdb.org/t/p/w780/cWXtJhrlruF8CeYuaBGE8vdj3Q9.jpg",
+      "description": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
+      "genre": [
+        "Science Fiction",
+        "Action",
+        "Adventure"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Robert Downey Jr.",
+        "Chris Evans",
+        "Chris Hemsworth",
+        "Pedro Pascal"
+      ],
+      "runtimeMinutes": 165,
+      "contentRating": "PG-13",
+      "voteAverage": 0,
+      "previewUrl": "https://www.youtube.com/watch?v=X1aFkAkFASk",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-12-16"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-12-16"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-12-18"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1003596"
+      },
+      "sourceRank": 5,
+      "keywords": [
+        "Avengers: Doomsday",
+        "Avengers: Doomsday 2026",
+        "where to watch Avengers: Doomsday",
+        "Science Fiction movie",
+        "Action movie",
+        "Adventure movie",
+        "Robert Downey Jr.",
+        "Chris Evans"
+      ],
+      "longTailKeywords": [
+        "where to watch Avengers: Doomsday 2026",
+        "Avengers: Doomsday streaming in Brazil and United States",
+        "Avengers: Doomsday cast synopsis trailer and where to watch",
+        "what Science Fiction to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Avengers: Doomsday (2026) | MatchApp Ai",
+        "description": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
+        "keywords": [
+          "Avengers: Doomsday",
+          "Avengers: Doomsday 2026",
+          "where to watch Avengers: Doomsday",
+          "Science Fiction movie",
+          "Action movie",
+          "Adventure movie",
+          "Robert Downey Jr.",
+          "Chris Evans",
+          "where to watch Avengers: Doomsday 2026",
+          "Avengers: Doomsday streaming in Brazil and United States",
+          "Avengers: Doomsday cast synopsis trailer and where to watch",
+          "what Science Fiction to watch this week"
+        ],
+        "canonicalQuery": "Avengers: Doomsday"
       }
     },
     {
@@ -450,7 +525,7 @@
       ],
       "runtimeMinutes": null,
       "contentRating": "TV-14",
-      "voteAverage": 7.22,
+      "voteAverage": 7.2,
       "previewUrl": "https://www.youtube.com/watch?v=x8UAUAuKNcU",
       "availability": {
         "BR": {
@@ -498,7 +573,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/84773"
       },
-      "sourceRank": 5,
+      "sourceRank": 6,
       "keywords": [
         "The Lord of the Rings: The Rings of Power",
         "The Lord of the Rings: The Rings of Power 2022",
@@ -535,79 +610,6 @@
           "what Action & Adventure to watch this week"
         ],
         "canonicalQuery": "The Lord of the Rings: The Rings of Power"
-      }
-    },
-    {
-      "title": "Madden",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1131943",
-      "poster": "https://image.tmdb.org/t/p/w780/bRa83oPFFPqaAF3wrpVWPqqfFel.jpg",
-      "description": "Chronicles John Madden's incredible journey alongside best friend and true original Al Davis—from a Super Bowl-winning partnership with the Raiders, to becoming football’s most recognizable voice, to building the worldwide Madden NFL video game.",
-      "genre": [
-        "Drama",
-        "History"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Nicolas Cage",
-        "Christian Bale",
-        "John Mulaney",
-        "Kathryn Hahn"
-      ],
-      "runtimeMinutes": 110,
-      "contentRating": "R",
-      "voteAverage": 0,
-      "previewUrl": "https://www.youtube.com/watch?v=xzh7HzLXXpk",
-      "availability": {
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-11-18"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1131943"
-      },
-      "sourceRank": 6,
-      "keywords": [
-        "Madden",
-        "Madden 2026",
-        "where to watch Madden",
-        "Drama movie",
-        "History movie",
-        "Nicolas Cage",
-        "Christian Bale"
-      ],
-      "longTailKeywords": [
-        "where to watch Madden 2026",
-        "Madden streaming in Brazil and United States",
-        "Madden cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Madden (2026) | MatchApp Ai",
-        "description": "Chronicles John Madden's incredible journey alongside best friend and true original Al Davis—from a Super Bowl-winning partnership with the Raiders, to becomi",
-        "keywords": [
-          "Madden",
-          "Madden 2026",
-          "where to watch Madden",
-          "Drama movie",
-          "History movie",
-          "Nicolas Cage",
-          "Christian Bale",
-          "where to watch Madden 2026",
-          "Madden streaming in Brazil and United States",
-          "Madden cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
-        ],
-        "canonicalQuery": "Madden"
       }
     },
     {
@@ -672,93 +674,149 @@
       "sourceRank": 2
     },
     {
-      "title": "A Talent for Murder",
-      "kind": "movie",
+      "title": "The Law of Beasts",
+      "kind": "tv",
       "year": 2026,
-      "origin": "AU",
-      "originName": "Australia",
-      "platform": "Cinemas",
+      "origin": "PL",
+      "originName": "PL",
+      "platform": "",
       "platforms": [],
-      "tmdbId": "1084409",
-      "poster": "https://image.tmdb.org/t/p/w780/mstDPKNKgSGFvVFVdfzeMNkcyw2.jpg",
-      "description": "A young man travels from New York to Switzerland to try to persuade acclaimed thriller writer Patricia Highsmith to write one final installment of her Tom Ripley series, with his efforts gradually turning more sinister.",
+      "tmdbId": "332839",
+      "poster": "https://image.tmdb.org/t/p/w780/KnhUSXgKqiG96mf4GofisAhhS2.jpg",
+      "description": "When the case of a child serial killer resurfaces after 25 years as an unresolved legal and social problem, two former friends are forced to confront the choices that broke their friendship and shaped their lives.",
       "genre": [
-        "Thriller",
-        "Drama",
-        "Crime"
+        "Crime",
+        "Drama"
       ],
-      "inLanguage": "en",
+      "inLanguage": "pl",
       "cast": [
-        "Helen Mirren",
-        "Alden Ehrenreich",
-        "Olivia Cooke",
-        "Juliet Stevenson"
+        "Agnieszka Grochowska",
+        "Agnieszka Żulewska",
+        "Michał Pawlik",
+        "Andrzej Chyra"
       ],
-      "runtimeMinutes": 106,
-      "contentRating": "R",
-      "voteAverage": 7.2,
-      "previewUrl": "https://www.youtube.com/watch?v=2AMYg6UmmjM",
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 7.44,
+      "previewUrl": "",
       "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2027-01-14"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-11-20"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-23"
-        },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1084409"
+        "source_page_url": "https://www.themoviedb.org/tv/332839"
       },
       "sourceRank": 7,
       "keywords": [
-        "A Talent for Murder",
-        "A Talent for Murder 2026",
-        "where to watch A Talent for Murder",
-        "Thriller movie",
-        "Drama movie",
-        "Crime movie",
-        "Helen Mirren",
-        "Alden Ehrenreich"
+        "The Law of Beasts",
+        "The Law of Beasts 2026",
+        "where to watch The Law of Beasts",
+        "Crime series",
+        "Drama series",
+        "Agnieszka Grochowska",
+        "Agnieszka Żulewska"
       ],
       "longTailKeywords": [
-        "where to watch A Talent for Murder 2026",
-        "A Talent for Murder streaming in Brazil and United States",
-        "A Talent for Murder cast synopsis trailer and where to watch",
-        "what Thriller to watch this week"
+        "where to watch The Law of Beasts 2026",
+        "The Law of Beasts streaming in Brazil and United States",
+        "The Law of Beasts cast synopsis trailer and where to watch",
+        "what Crime to watch this week"
       ],
       "seo": {
-        "title": "Where to watch A Talent for Murder (2026) | MatchApp Ai",
-        "description": "A young man travels from New York to Switzerland to try to persuade acclaimed thriller writer Patricia Highsmith to write one final installment of her Tom Rip",
+        "title": "Where to watch The Law of Beasts (2026) | MatchApp Ai",
+        "description": "When the case of a child serial killer resurfaces after 25 years as an unresolved legal and social problem, two former friends are forced to confront the choi",
         "keywords": [
-          "A Talent for Murder",
-          "A Talent for Murder 2026",
-          "where to watch A Talent for Murder",
-          "Thriller movie",
-          "Drama movie",
-          "Crime movie",
-          "Helen Mirren",
-          "Alden Ehrenreich",
-          "where to watch A Talent for Murder 2026",
-          "A Talent for Murder streaming in Brazil and United States",
-          "A Talent for Murder cast synopsis trailer and where to watch",
-          "what Thriller to watch this week"
+          "The Law of Beasts",
+          "The Law of Beasts 2026",
+          "where to watch The Law of Beasts",
+          "Crime series",
+          "Drama series",
+          "Agnieszka Grochowska",
+          "Agnieszka Żulewska",
+          "where to watch The Law of Beasts 2026",
+          "The Law of Beasts streaming in Brazil and United States",
+          "The Law of Beasts cast synopsis trailer and where to watch",
+          "what Crime to watch this week"
         ],
-        "canonicalQuery": "A Talent for Murder"
+        "canonicalQuery": "The Law of Beasts"
+      }
+    },
+    {
+      "title": "The Beast",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "GB",
+      "originName": "United Kingdom",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1185344",
+      "poster": "https://image.tmdb.org/t/p/w780/ocg5JfJP19fodcv5uQUApkmZMdI.jpg",
+      "description": "When a militia of unidentified hostiles coordinates a coup against the United States, the president must fight back by utilizing the highly classified offensive capabilities of his armored limousine, nicknamed The Beast.",
+      "genre": [
+        "Action",
+        "Thriller"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Samuel L. Jackson",
+        "Joel Kinnaman",
+        "Guy Burnet",
+        "Eoin Macken"
+      ],
+      "runtimeMinutes": 99,
+      "contentRating": "R",
+      "voteAverage": 5.2,
+      "previewUrl": "https://www.youtube.com/watch?v=5ckqV_uf8E0",
+      "availability": {
+        "US": {
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store"
+          ],
+          "link": "https://www.themoviedb.org/movie/1185344-the-beast/watch?locale=US",
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Plex"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-10-09"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1185344"
+      },
+      "sourceRank": 8,
+      "keywords": [
+        "The Beast",
+        "The Beast 2026",
+        "where to watch The Beast",
+        "Action movie",
+        "Thriller movie",
+        "Samuel L. Jackson",
+        "Joel Kinnaman"
+      ],
+      "longTailKeywords": [
+        "where to watch The Beast 2026",
+        "The Beast streaming in Brazil and United States",
+        "The Beast cast synopsis trailer and where to watch",
+        "what Action to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch The Beast (2026) | MatchApp Ai",
+        "description": "When a militia of unidentified hostiles coordinates a coup against the United States, the president must fight back by utilizing the highly classified offensi",
+        "keywords": [
+          "The Beast",
+          "The Beast 2026",
+          "where to watch The Beast",
+          "Action movie",
+          "Thriller movie",
+          "Samuel L. Jackson",
+          "Joel Kinnaman",
+          "where to watch The Beast 2026",
+          "The Beast streaming in Brazil and United States",
+          "The Beast cast synopsis trailer and where to watch",
+          "what Action to watch this week"
+        ],
+        "canonicalQuery": "The Beast"
       }
     },
     {
@@ -788,7 +846,7 @@
       ],
       "runtimeMinutes": 145,
       "contentRating": "PG-13",
-      "voteAverage": 8.5,
+      "voteAverage": 8.46,
       "previewUrl": "https://www.youtube.com/watch?v=P3uI5sLosKU",
       "availability": {
         "BR": {
@@ -858,7 +916,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/969681"
       },
-      "sourceRank": 8,
+      "sourceRank": 9,
       "keywords": [
         "Spider-Man: Brand New Day",
         "Spider-Man: Brand New Day 2026",
@@ -895,118 +953,6 @@
           "what Science Fiction to watch this week"
         ],
         "canonicalQuery": "Spider-Man: Brand New Day"
-      }
-    },
-    {
-      "title": "The Body",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Netflix",
-      "platforms": [
-        "Netflix",
-        "Netflix Standard with Ads"
-      ],
-      "tmdbId": "291507",
-      "poster": "https://image.tmdb.org/t/p/w780/zleCYDRbW5mKwgZwVK4SNIrKXWx.jpg",
-      "description": "On Halloween night, an all-girls dance squad tumbles into Catholic guilt, unholy desires and ghostly visions when an initiation goes to hell.",
-      "genre": [
-        "Mystery",
-        "Drama"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Kristina Bogic",
-        "Geena Meszaros",
-        "Sara Boustany",
-        "Nnamdi Asomugha"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 7.8,
-      "previewUrl": "https://www.youtube.com/watch?v=wl7uj7n7DoY",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/291507-the-body/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/291507-the-body/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/291507-the-body/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Netflix"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/291507-the-body/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/291507"
-      },
-      "sourceRank": 9,
-      "keywords": [
-        "The Body",
-        "The Body 2026",
-        "where to watch The Body",
-        "Mystery series",
-        "Drama series",
-        "Netflix trending series",
-        "Netflix Standard with Ads trending series",
-        "Kristina Bogic",
-        "Geena Meszaros"
-      ],
-      "longTailKeywords": [
-        "where to watch The Body 2026",
-        "The Body streaming in Brazil and United States",
-        "The Body cast synopsis trailer and where to watch",
-        "what Mystery to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch The Body (2026) | MatchApp Ai",
-        "description": "On Halloween night, an all-girls dance squad tumbles into Catholic guilt, unholy desires and ghostly visions when an initiation goes to hell.",
-        "keywords": [
-          "The Body",
-          "The Body 2026",
-          "where to watch The Body",
-          "Mystery series",
-          "Drama series",
-          "Netflix trending series",
-          "Netflix Standard with Ads trending series",
-          "Kristina Bogic",
-          "Geena Meszaros",
-          "where to watch The Body 2026",
-          "The Body streaming in Brazil and United States",
-          "The Body cast synopsis trailer and where to watch",
-          "what Mystery to watch this week"
-        ],
-        "canonicalQuery": "The Body"
       }
     },
     {
@@ -1069,231 +1015,149 @@
       "sourceRank": 3
     },
     {
-      "title": "Guarding Stars",
-      "kind": "movie",
+      "title": "The Body",
+      "kind": "tv",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "1551025",
-      "poster": "https://image.tmdb.org/t/p/w780/wWNizZ4IcSld3xXH1WEXziJiNJN.jpg",
-      "description": "When a no-nonsense bodyguard is assigned to protect a charming action star over the holidays, sparks fly, secrets unravel, and Christmas gets a whole lot more complicated.",
+      "platform": "Netflix",
+      "platforms": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "tmdbId": "291507",
+      "poster": "https://image.tmdb.org/t/p/w780/195kCuy2RqGaEAZDDpGTx7gBUBZ.jpg",
+      "description": "On Halloween night, an all-girls dance squad tumbles into Catholic guilt, unholy desires and ghostly visions when an initiation goes to hell.",
       "genre": [
-        "Comedy",
-        "Romance"
+        "Mystery",
+        "Drama"
       ],
       "inLanguage": "en",
       "cast": [
-        "Leighton Meester",
-        "Jared Padalecki",
-        "Andie MacDowell",
-        "Walker Hayes"
+        "Kristina Bogic",
+        "Geena Meszaros",
+        "Sara Boustany",
+        "Nnamdi Asomugha"
       ],
-      "runtimeMinutes": 109,
-      "contentRating": "12",
-      "voteAverage": 5.67,
-      "previewUrl": "https://www.youtube.com/watch?v=mFvtVPMa5ak",
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 7.9,
+      "previewUrl": "https://www.youtube.com/watch?v=wl7uj7n7DoY",
       "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/291507-the-body/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/291507-the-body/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/291507-the-body/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Netflix"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/291507-the-body/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1551025"
+        "source_page_url": "https://www.themoviedb.org/tv/291507"
       },
       "sourceRank": 10,
       "keywords": [
-        "Guarding Stars",
-        "Guarding Stars 2026",
-        "where to watch Guarding Stars",
-        "Comedy movie",
-        "Romance movie",
-        "Leighton Meester",
-        "Jared Padalecki"
+        "The Body",
+        "The Body 2026",
+        "where to watch The Body",
+        "Mystery series",
+        "Drama series",
+        "Netflix trending series",
+        "Netflix Standard with Ads trending series",
+        "Kristina Bogic",
+        "Geena Meszaros"
       ],
       "longTailKeywords": [
-        "where to watch Guarding Stars 2026",
-        "Guarding Stars streaming in Brazil and United States",
-        "Guarding Stars cast synopsis trailer and where to watch",
-        "what Comedy to watch this week"
+        "where to watch The Body 2026",
+        "The Body streaming in Brazil and United States",
+        "The Body cast synopsis trailer and where to watch",
+        "what Mystery to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Guarding Stars (2026) | MatchApp Ai",
-        "description": "When a no-nonsense bodyguard is assigned to protect a charming action star over the holidays, sparks fly, secrets unravel, and Christmas gets a whole lot more",
+        "title": "Where to watch The Body (2026) | MatchApp Ai",
+        "description": "On Halloween night, an all-girls dance squad tumbles into Catholic guilt, unholy desires and ghostly visions when an initiation goes to hell.",
         "keywords": [
-          "Guarding Stars",
-          "Guarding Stars 2026",
-          "where to watch Guarding Stars",
-          "Comedy movie",
-          "Romance movie",
-          "Leighton Meester",
-          "Jared Padalecki",
-          "where to watch Guarding Stars 2026",
-          "Guarding Stars streaming in Brazil and United States",
-          "Guarding Stars cast synopsis trailer and where to watch",
-          "what Comedy to watch this week"
+          "The Body",
+          "The Body 2026",
+          "where to watch The Body",
+          "Mystery series",
+          "Drama series",
+          "Netflix trending series",
+          "Netflix Standard with Ads trending series",
+          "Kristina Bogic",
+          "Geena Meszaros",
+          "where to watch The Body 2026",
+          "The Body streaming in Brazil and United States",
+          "The Body cast synopsis trailer and where to watch",
+          "what Mystery to watch this week"
         ],
-        "canonicalQuery": "Guarding Stars"
+        "canonicalQuery": "The Body"
       }
     },
     {
-      "title": "Other Mommy",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1400837",
-      "poster": "https://image.tmdb.org/t/p/w780/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg",
-      "description": "Young Bela forms a relationship with a sinister entity in her home that looks uncannily like her own mother, drawing her into a terrifying and increasingly dark world.",
-      "genre": [
-        "Horror"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Jessica Chastain",
-        "Arabella Olivia Clark",
-        "Jay Duplass",
-        "Karen Allen"
-      ],
-      "runtimeMinutes": 93,
-      "contentRating": "R",
-      "voteAverage": 6.4,
-      "previewUrl": "https://www.youtube.com/watch?v=-mnTITqqiT0",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-08"
-        },
-        "GB": {
-          "buy": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video",
-            "Sky Store"
-          ],
-          "link": "https://www.themoviedb.org/movie/1400837-other-mommy/watch?locale=GB",
-          "rent": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video",
-            "Sky Store"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-10-09"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-08"
-        },
-        "US": {
-          "buy": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/1400837-other-mommy/watch?locale=US",
-          "rent": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Fandango At Home"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-10-09"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1400837"
-      },
-      "sourceRank": 11,
-      "keywords": [
-        "Other Mommy",
-        "Other Mommy 2026",
-        "where to watch Other Mommy",
-        "Horror movie",
-        "Jessica Chastain",
-        "Arabella Olivia Clark"
-      ],
-      "longTailKeywords": [
-        "where to watch Other Mommy 2026",
-        "Other Mommy streaming in Brazil and United States",
-        "Other Mommy cast synopsis trailer and where to watch",
-        "what Horror to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Other Mommy (2026) | MatchApp Ai",
-        "description": "Young Bela forms a relationship with a sinister entity in her home that looks uncannily like her own mother, drawing her into a terrifying and increasingly da",
-        "keywords": [
-          "Other Mommy",
-          "Other Mommy 2026",
-          "where to watch Other Mommy",
-          "Horror movie",
-          "Jessica Chastain",
-          "Arabella Olivia Clark",
-          "where to watch Other Mommy 2026",
-          "Other Mommy streaming in Brazil and United States",
-          "Other Mommy cast synopsis trailer and where to watch",
-          "what Horror to watch this week"
-        ],
-        "canonicalQuery": "Other Mommy"
-      }
-    },
-    {
-      "title": "The Remarried Empress",
+      "title": "Vienna Game",
       "kind": "tv",
       "year": 2026,
-      "origin": "KR",
-      "originName": "South Korea",
-      "platform": "Disney Plus",
+      "origin": "AT",
+      "originName": "AT",
+      "platform": "Hulu",
       "platforms": [
-        "Disney Plus",
-        "Hulu"
+        "Hulu",
+        "Disney Plus"
       ],
-      "tmdbId": "279246",
-      "poster": "https://image.tmdb.org/t/p/w780/zn3IXZzGavH3qle3o3g1r32eXDy.jpg",
-      "description": "Beloved Empress Navier rules the Eastern Empire alongside Emperor Sovieshu. But when Sovieshu falls for a runaway slave and demands a divorce, Navier will agree on one condition: that she's given approval to remarry rival Prince Heinrey of the Western Kingdom.",
+      "tmdbId": "288120",
+      "poster": "https://image.tmdb.org/t/p/w780/eX6E7u6AicwNsMAZ2lm8zFM8lz2.jpg",
+      "description": "While Napoleon Bonaparte is exiled on Elba, kings and crown princes, ministers and spies, noblewomen and mistresses, adventurers, inventors, artists, and concubines gather in Vienna to celebrate and negotiate. Here, the fate of Europe is decided on the dance floor and in the boudoir.",
       "genre": [
-        "Drama",
-        "Sci-Fi & Fantasy"
+        "Comedy"
       ],
-      "inLanguage": "ko",
+      "inLanguage": "de",
       "cast": [
-        "Shin Min-a",
-        "Ju Ji-hoon",
-        "Lee Jong-suk",
-        "Lee Se-young"
+        "Fritz Karl",
+        "Marlene Tanczik",
+        "Daniel Donskoy",
+        "Alexander Scheer"
       ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-14",
-      "voteAverage": 8.72,
-      "previewUrl": "https://www.youtube.com/watch?v=aScUjuKvHSo",
+      "runtimeMinutes": 53,
+      "contentRating": "TV-MA",
+      "voteAverage": 8.5,
+      "previewUrl": "",
       "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/279246-jaehon-hwanghu/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Disney Plus"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/279246-jaehon-hwanghu/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Disney Plus"
-          ],
-          "cinema_release_date": null
-        },
         "PT": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/279246-jaehon-hwanghu/watch?locale=PT",
+          "link": "https://www.themoviedb.org/tv/288120-vienna-game/watch?locale=PT",
           "rent": [],
           "stream": [
             "Disney Plus"
@@ -1302,55 +1166,164 @@
         },
         "US": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/279246-jaehon-hwanghu/watch?locale=US",
+          "link": "https://www.themoviedb.org/tv/288120-vienna-game/watch?locale=US",
           "rent": [],
           "stream": [
-            "Disney Plus",
             "Hulu"
           ],
           "cinema_release_date": null
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/279246"
+        "source_page_url": "https://www.themoviedb.org/tv/288120"
+      },
+      "sourceRank": 11,
+      "keywords": [
+        "Vienna Game",
+        "Vienna Game 2026",
+        "where to watch Vienna Game",
+        "Comedy series",
+        "Hulu trending series",
+        "Disney Plus trending series",
+        "Fritz Karl",
+        "Marlene Tanczik"
+      ],
+      "longTailKeywords": [
+        "where to watch Vienna Game 2026",
+        "Vienna Game streaming in Brazil and United States",
+        "Vienna Game cast synopsis trailer and where to watch",
+        "what Comedy to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Vienna Game (2026) | MatchApp Ai",
+        "description": "While Napoleon Bonaparte is exiled on Elba, kings and crown princes, ministers and spies, noblewomen and mistresses, adventurers, inventors, artists, and conc",
+        "keywords": [
+          "Vienna Game",
+          "Vienna Game 2026",
+          "where to watch Vienna Game",
+          "Comedy series",
+          "Hulu trending series",
+          "Disney Plus trending series",
+          "Fritz Karl",
+          "Marlene Tanczik",
+          "where to watch Vienna Game 2026",
+          "Vienna Game streaming in Brazil and United States",
+          "Vienna Game cast synopsis trailer and where to watch",
+          "what Comedy to watch this week"
+        ],
+        "canonicalQuery": "Vienna Game"
+      }
+    },
+    {
+      "title": "Gordon",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "",
+      "originName": "",
+      "platform": "Netflix",
+      "platforms": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "tmdbId": "340280",
+      "poster": "https://image.tmdb.org/t/p/w780/yLgl70D5Up0MlvBWP2MJTLAbFAF.jpg",
+      "description": "Aníbal Gordon rises from a small-time thief to a convicted murderer in Argentina during the '70s.",
+      "genre": [
+        "Drama",
+        "Crime"
+      ],
+      "inLanguage": "es",
+      "cast": [
+        "Rodrigo de la Serna",
+        "Matías Recalt",
+        "Camila Peralta",
+        "Fiorella Bottaioli"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 7.3,
+      "previewUrl": "",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/340280-gordon/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/340280-gordon/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/340280-gordon/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Netflix"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/340280-gordon/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/340280"
       },
       "sourceRank": 12,
       "keywords": [
-        "The Remarried Empress",
-        "The Remarried Empress 2026",
-        "where to watch The Remarried Empress",
+        "Gordon",
+        "Gordon 2026",
+        "where to watch Gordon",
         "Drama series",
-        "Sci-Fi & Fantasy series",
-        "Disney Plus trending series",
-        "Hulu trending series",
-        "Shin Min-a",
-        "Ju Ji-hoon"
+        "Crime series",
+        "Netflix trending series",
+        "Netflix Standard with Ads trending series",
+        "Rodrigo de la Serna",
+        "Matías Recalt"
       ],
       "longTailKeywords": [
-        "where to watch The Remarried Empress 2026",
-        "The Remarried Empress streaming in Brazil and United States",
-        "The Remarried Empress cast synopsis trailer and where to watch",
+        "where to watch Gordon 2026",
+        "Gordon streaming in Brazil and United States",
+        "Gordon cast synopsis trailer and where to watch",
         "what Drama to watch this week"
       ],
       "seo": {
-        "title": "Where to watch The Remarried Empress (2026) | MatchApp Ai",
-        "description": "Beloved Empress Navier rules the Eastern Empire alongside Emperor Sovieshu. But when Sovieshu falls for a runaway slave and demands a divorce, Navier will agr",
+        "title": "Where to watch Gordon (2026) | MatchApp Ai",
+        "description": "Aníbal Gordon rises from a small-time thief to a convicted murderer in Argentina during the '70s.",
         "keywords": [
-          "The Remarried Empress",
-          "The Remarried Empress 2026",
-          "where to watch The Remarried Empress",
+          "Gordon",
+          "Gordon 2026",
+          "where to watch Gordon",
           "Drama series",
-          "Sci-Fi & Fantasy series",
-          "Disney Plus trending series",
-          "Hulu trending series",
-          "Shin Min-a",
-          "Ju Ji-hoon",
-          "where to watch The Remarried Empress 2026",
-          "The Remarried Empress streaming in Brazil and United States",
-          "The Remarried Empress cast synopsis trailer and where to watch",
+          "Crime series",
+          "Netflix trending series",
+          "Netflix Standard with Ads trending series",
+          "Rodrigo de la Serna",
+          "Matías Recalt",
+          "where to watch Gordon 2026",
+          "Gordon streaming in Brazil and United States",
+          "Gordon cast synopsis trailer and where to watch",
           "what Drama to watch this week"
         ],
-        "canonicalQuery": "The Remarried Empress"
+        "canonicalQuery": "Gordon"
       }
     },
     {
@@ -1417,408 +1390,343 @@
       "sourceRank": 4
     },
     {
-      "title": "The Law of Beasts",
+      "title": "The Altruists",
       "kind": "tv",
       "year": 2026,
-      "origin": "PL",
-      "originName": "PL",
+      "origin": "US",
+      "originName": "United States",
       "platform": "",
       "platforms": [],
-      "tmdbId": "332839",
-      "poster": "https://image.tmdb.org/t/p/w780/voEzFC5aSgtF5gMXS74Fs1Q1IML.jpg",
-      "description": "When the case of a child serial killer resurfaces after 25 years as an unresolved legal and social problem, two former friends are forced to confront the choices that broke their friendship and shaped their lives.",
+      "tmdbId": "308007",
+      "poster": "https://image.tmdb.org/t/p/w780/foTyGlJ1jJh8QID5KwjsMytsJTV.jpg",
+      "description": "The story of Sam Bankman-Fried and Caroline Ellison, two hyper-smart, ambitious young idealists who tried to remake the global financial system in the blink of an eye - before they were accused of stealing $8 billion and became Gen Z's own Bonnie & Clyde.",
       "genre": [
         "Drama",
         "Crime"
       ],
-      "inLanguage": "pl",
+      "inLanguage": "en",
       "cast": [
-        "Agnieszka Grochowska",
-        "Agnieszka Żulewska",
-        "Michał Pawlik"
+        "Julia Garner",
+        "Anthony Boyle",
+        "Alex Lawther",
+        "Karan Soni"
       ],
       "runtimeMinutes": null,
-      "contentRating": "",
+      "contentRating": "TV-MA",
       "voteAverage": 0,
+      "previewUrl": "https://www.youtube.com/watch?v=9aGeKSSyuhk",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/308007"
+      },
+      "sourceRank": 13,
+      "keywords": [
+        "The Altruists",
+        "The Altruists 2026",
+        "where to watch The Altruists",
+        "Drama series",
+        "Crime series",
+        "Julia Garner",
+        "Anthony Boyle"
+      ],
+      "longTailKeywords": [
+        "where to watch The Altruists 2026",
+        "The Altruists streaming in Brazil and United States",
+        "The Altruists cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch The Altruists (2026) | MatchApp Ai",
+        "description": "The story of Sam Bankman-Fried and Caroline Ellison, two hyper-smart, ambitious young idealists who tried to remake the global financial system in the blink o",
+        "keywords": [
+          "The Altruists",
+          "The Altruists 2026",
+          "where to watch The Altruists",
+          "Drama series",
+          "Crime series",
+          "Julia Garner",
+          "Anthony Boyle",
+          "where to watch The Altruists 2026",
+          "The Altruists streaming in Brazil and United States",
+          "The Altruists cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
+        ],
+        "canonicalQuery": "The Altruists"
+      }
+    },
+    {
+      "title": "The Remarried Empress",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "KR",
+      "originName": "South Korea",
+      "platform": "Disney Plus",
+      "platforms": [
+        "Disney Plus",
+        "Hulu"
+      ],
+      "tmdbId": "279246",
+      "poster": "https://image.tmdb.org/t/p/w780/zn3IXZzGavH3qle3o3g1r32eXDy.jpg",
+      "description": "Beloved Empress Navier rules the Eastern Empire alongside Emperor Sovieshu. But when Sovieshu falls for a runaway slave and demands a divorce, Navier will agree on one condition: that she's given approval to remarry rival Prince Heinrey of the Western Kingdom.",
+      "genre": [
+        "Drama",
+        "Sci-Fi & Fantasy"
+      ],
+      "inLanguage": "ko",
+      "cast": [
+        "Shin Min-a",
+        "Ju Ji-hoon",
+        "Lee Jong-suk",
+        "Lee Se-young"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-14",
+      "voteAverage": 8.79,
+      "previewUrl": "https://www.youtube.com/watch?v=aScUjuKvHSo",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/279246-jaehon-hwanghu/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Disney Plus"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/279246-jaehon-hwanghu/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Disney Plus"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/279246-jaehon-hwanghu/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Disney Plus"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/279246-jaehon-hwanghu/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Disney Plus",
+            "Hulu"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/279246"
+      },
+      "sourceRank": 14,
+      "keywords": [
+        "The Remarried Empress",
+        "The Remarried Empress 2026",
+        "where to watch The Remarried Empress",
+        "Drama series",
+        "Sci-Fi & Fantasy series",
+        "Disney Plus trending series",
+        "Hulu trending series",
+        "Shin Min-a",
+        "Ju Ji-hoon"
+      ],
+      "longTailKeywords": [
+        "where to watch The Remarried Empress 2026",
+        "The Remarried Empress streaming in Brazil and United States",
+        "The Remarried Empress cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch The Remarried Empress (2026) | MatchApp Ai",
+        "description": "Beloved Empress Navier rules the Eastern Empire alongside Emperor Sovieshu. But when Sovieshu falls for a runaway slave and demands a divorce, Navier will agr",
+        "keywords": [
+          "The Remarried Empress",
+          "The Remarried Empress 2026",
+          "where to watch The Remarried Empress",
+          "Drama series",
+          "Sci-Fi & Fantasy series",
+          "Disney Plus trending series",
+          "Hulu trending series",
+          "Shin Min-a",
+          "Ju Ji-hoon",
+          "where to watch The Remarried Empress 2026",
+          "The Remarried Empress streaming in Brazil and United States",
+          "The Remarried Empress cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
+        ],
+        "canonicalQuery": "The Remarried Empress"
+      }
+    },
+    {
+      "title": "A Talent for Murder",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "AU",
+      "originName": "Australia",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1084409",
+      "poster": "https://image.tmdb.org/t/p/w780/mstDPKNKgSGFvVFVdfzeMNkcyw2.jpg",
+      "description": "A young man travels from New York to Switzerland to try to persuade acclaimed thriller writer Patricia Highsmith to write one final installment of her Tom Ripley series, with his efforts gradually turning more sinister.",
+      "genre": [
+        "Thriller",
+        "Drama",
+        "Crime"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Helen Mirren",
+        "Alden Ehrenreich",
+        "Olivia Cooke",
+        "Juliet Stevenson"
+      ],
+      "runtimeMinutes": 106,
+      "contentRating": "R",
+      "voteAverage": 6.88,
+      "previewUrl": "https://www.youtube.com/watch?v=2AMYg6UmmjM",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2027-01-14"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-11-20"
+        },
+        "US": {
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/1084409-a-talent-for-murder/watch?locale=US",
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-10-23"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1084409"
+      },
+      "sourceRank": 15,
+      "keywords": [
+        "A Talent for Murder",
+        "A Talent for Murder 2026",
+        "where to watch A Talent for Murder",
+        "Thriller movie",
+        "Drama movie",
+        "Crime movie",
+        "Helen Mirren",
+        "Alden Ehrenreich"
+      ],
+      "longTailKeywords": [
+        "where to watch A Talent for Murder 2026",
+        "A Talent for Murder streaming in Brazil and United States",
+        "A Talent for Murder cast synopsis trailer and where to watch",
+        "what Thriller to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch A Talent for Murder (2026) | MatchApp Ai",
+        "description": "A young man travels from New York to Switzerland to try to persuade acclaimed thriller writer Patricia Highsmith to write one final installment of her Tom Rip",
+        "keywords": [
+          "A Talent for Murder",
+          "A Talent for Murder 2026",
+          "where to watch A Talent for Murder",
+          "Thriller movie",
+          "Drama movie",
+          "Crime movie",
+          "Helen Mirren",
+          "Alden Ehrenreich",
+          "where to watch A Talent for Murder 2026",
+          "A Talent for Murder streaming in Brazil and United States",
+          "A Talent for Murder cast synopsis trailer and where to watch",
+          "what Thriller to watch this week"
+        ],
+        "canonicalQuery": "A Talent for Murder"
+      }
+    },
+    {
+      "title": "Valentina and the 12 Signs",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "BR",
+      "originName": "Brazil",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "318420",
+      "poster": "https://image.tmdb.org/t/p/w780/ihjonCRR5gEUEH8RG2Qbk4Fy3HB.jpg",
+      "description": "After a devastating breakup, Valentina decides to date one man from every zodiac sign. But the universe has other plans.",
+      "genre": [
+        "Drama",
+        "Comedy"
+      ],
+      "inLanguage": "pt",
+      "cast": [
+        "Giovanna Grigio",
+        "Lucas Leto",
+        "José Condessa",
+        "Jéssica Marques"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 5.5,
       "previewUrl": "",
       "availability": {
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/332839"
-      },
-      "sourceRank": 13,
-      "keywords": [
-        "The Law of Beasts",
-        "The Law of Beasts 2026",
-        "where to watch The Law of Beasts",
-        "Drama series",
-        "Crime series",
-        "Agnieszka Grochowska",
-        "Agnieszka Żulewska"
-      ],
-      "longTailKeywords": [
-        "where to watch The Law of Beasts 2026",
-        "The Law of Beasts streaming in Brazil and United States",
-        "The Law of Beasts cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch The Law of Beasts (2026) | MatchApp Ai",
-        "description": "When the case of a child serial killer resurfaces after 25 years as an unresolved legal and social problem, two former friends are forced to confront the choi",
-        "keywords": [
-          "The Law of Beasts",
-          "The Law of Beasts 2026",
-          "where to watch The Law of Beasts",
-          "Drama series",
-          "Crime series",
-          "Agnieszka Grochowska",
-          "Agnieszka Żulewska",
-          "where to watch The Law of Beasts 2026",
-          "The Law of Beasts streaming in Brazil and United States",
-          "The Law of Beasts cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
-        ],
-        "canonicalQuery": "The Law of Beasts"
-      }
-    },
-    {
-      "title": "VisionQuest",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Disney Plus",
-      "platforms": [
-        "Disney Plus"
-      ],
-      "tmdbId": "213375",
-      "poster": "https://image.tmdb.org/t/p/w780/WGyAyBPncfuu8MZhLY9RtfZPM0.jpg",
-      "description": "With a bounty on his head, Vision must confront his nature and resist Ultron's influence to survive.",
-      "genre": [
-        "Sci-Fi & Fantasy",
-        "Drama"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Paul Bettany",
-        "James Spader",
-        "Ruaridh Mollica",
-        "Todd Stashwick"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-14",
-      "voteAverage": 8.28,
-      "previewUrl": "https://www.youtube.com/watch?v=sXKnmgmbkoE",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/213375-visionquest/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Disney Plus"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/213375-visionquest/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Disney Plus"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/213375-visionquest/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Disney Plus"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/213375-visionquest/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Disney Plus"
-          ],
-          "cinema_release_date": null
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/213375"
-      },
-      "sourceRank": 14,
-      "keywords": [
-        "VisionQuest",
-        "VisionQuest 2026",
-        "where to watch VisionQuest",
-        "Sci-Fi & Fantasy series",
-        "Drama series",
-        "Disney Plus trending series",
-        "Paul Bettany",
-        "James Spader"
-      ],
-      "longTailKeywords": [
-        "where to watch VisionQuest 2026",
-        "VisionQuest streaming in Brazil and United States",
-        "VisionQuest cast synopsis trailer and where to watch",
-        "what Sci-Fi & Fantasy to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch VisionQuest (2026) | MatchApp Ai",
-        "description": "With a bounty on his head, Vision must confront his nature and resist Ultron's influence to survive.",
-        "keywords": [
-          "VisionQuest",
-          "VisionQuest 2026",
-          "where to watch VisionQuest",
-          "Sci-Fi & Fantasy series",
-          "Drama series",
-          "Disney Plus trending series",
-          "Paul Bettany",
-          "James Spader",
-          "where to watch VisionQuest 2026",
-          "VisionQuest streaming in Brazil and United States",
-          "VisionQuest cast synopsis trailer and where to watch",
-          "what Sci-Fi & Fantasy to watch this week"
-        ],
-        "canonicalQuery": "VisionQuest"
-      }
-    },
-    {
-      "title": "Ebenezer",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1567605",
-      "poster": "https://image.tmdb.org/t/p/w780/6H2N59jJW1hZEzn2ZdrMvJw5vNI.jpg",
-      "description": "An elderly miser embarks on a supernatural journey after visits from the ghost of his former business partner and the Spirits of Christmas Past, Present, and Yet to Come force him to confront his past and fight for a second chance at happiness.",
-      "genre": [
-        "Fantasy",
-        "Comedy",
-        "Horror"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Johnny Depp",
-        "Rupert Grint",
-        "Daisy Ridley",
-        "Ian McKellen"
-      ],
-      "runtimeMinutes": 115,
-      "contentRating": "PG-13",
-      "voteAverage": 7.6,
-      "previewUrl": "https://www.youtube.com/watch?v=D-n-lqKVr78",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-11-12"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-11-13"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-11-12"
-        },
-        "US": {
-          "buy": [
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/1567605-ebenezer/watch?locale=US",
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-11-13"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1567605"
-      },
-      "sourceRank": 15,
-      "keywords": [
-        "Ebenezer",
-        "Ebenezer 2026",
-        "where to watch Ebenezer",
-        "Fantasy movie",
-        "Comedy movie",
-        "Horror movie",
-        "Johnny Depp",
-        "Rupert Grint"
-      ],
-      "longTailKeywords": [
-        "where to watch Ebenezer 2026",
-        "Ebenezer streaming in Brazil and United States",
-        "Ebenezer cast synopsis trailer and where to watch",
-        "what Fantasy to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Ebenezer (2026) | MatchApp Ai",
-        "description": "An elderly miser embarks on a supernatural journey after visits from the ghost of his former business partner and the Spirits of Christmas Past, Present, and ",
-        "keywords": [
-          "Ebenezer",
-          "Ebenezer 2026",
-          "where to watch Ebenezer",
-          "Fantasy movie",
-          "Comedy movie",
-          "Horror movie",
-          "Johnny Depp",
-          "Rupert Grint",
-          "where to watch Ebenezer 2026",
-          "Ebenezer streaming in Brazil and United States",
-          "Ebenezer cast synopsis trailer and where to watch",
-          "what Fantasy to watch this week"
-        ],
-        "canonicalQuery": "Ebenezer"
-      }
-    },
-    {
-      "title": "Resident Evil",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Claro tv+",
-      "platforms": [
-        "Claro tv+"
-      ],
-      "tmdbId": "1423191",
-      "poster": "https://image.tmdb.org/t/p/w780/gAgWJhUSQWCgtKR8170nMkYlBda.jpg",
-      "description": "Medical courier Bryan unwittingly finds himself fighting for survival as one fateful, horrifying night collapses around him in chaos.",
-      "genre": [
-        "Horror",
-        "Science Fiction",
-        "Adventure"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Austin Abrams",
-        "Paul Walter Hauser",
-        "Kali Reis",
-        "Zach Cherry"
-      ],
-      "runtimeMinutes": 94,
-      "contentRating": "R",
-      "voteAverage": 7.5,
-      "previewUrl": "https://www.youtube.com/watch?v=mNd1gb19A-c",
-      "availability": {
-        "BR": {
-          "buy": [
-            "Apple TV Store",
-            "Amazon Video"
-          ],
-          "link": "https://www.themoviedb.org/movie/1423191-resident-evil/watch?locale=BR",
-          "rent": [
-            "Apple TV Store",
-            "Amazon Video"
-          ],
-          "stream": [
-            "Claro tv+"
-          ],
-          "cinema_release_date": "2026-09-17"
-        },
-        "GB": {
-          "buy": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video",
-            "Sky Store"
-          ],
-          "link": "https://www.themoviedb.org/movie/1423191-resident-evil/watch?locale=GB",
-          "rent": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video",
-            "Sky Store"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-09-18"
-        },
-        "PT": {
-          "buy": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video"
-          ],
-          "link": "https://www.themoviedb.org/movie/1423191-resident-evil/watch?locale=PT",
-          "rent": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-09-17"
-        },
-        "US": {
-          "buy": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/1423191-resident-evil/watch?locale=US",
-          "rent": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Fandango At Home"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-09-18"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1423191"
+        "source_page_url": "https://www.themoviedb.org/tv/318420"
       },
       "sourceRank": 16,
       "keywords": [
-        "Resident Evil",
-        "Resident Evil 2026",
-        "where to watch Resident Evil",
-        "Horror movie",
-        "Science Fiction movie",
-        "Adventure movie",
-        "Claro tv+ trending movie",
-        "Austin Abrams",
-        "Paul Walter Hauser"
+        "Valentina and the 12 Signs",
+        "Valentina and the 12 Signs 2026",
+        "where to watch Valentina and the 12 Signs",
+        "Drama series",
+        "Comedy series",
+        "Giovanna Grigio",
+        "Lucas Leto"
       ],
       "longTailKeywords": [
-        "where to watch Resident Evil 2026",
-        "Resident Evil streaming in Brazil and United States",
-        "Resident Evil cast synopsis trailer and where to watch",
-        "what Horror to watch this week"
+        "where to watch Valentina and the 12 Signs 2026",
+        "Valentina and the 12 Signs streaming in Brazil and United States",
+        "Valentina and the 12 Signs cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Resident Evil (2026) | MatchApp Ai",
-        "description": "Medical courier Bryan unwittingly finds himself fighting for survival as one fateful, horrifying night collapses around him in chaos.",
+        "title": "Where to watch Valentina and the 12 Signs (2026) | MatchApp Ai",
+        "description": "After a devastating breakup, Valentina decides to date one man from every zodiac sign. But the universe has other plans.",
         "keywords": [
-          "Resident Evil",
-          "Resident Evil 2026",
-          "where to watch Resident Evil",
-          "Horror movie",
-          "Science Fiction movie",
-          "Adventure movie",
-          "Claro tv+ trending movie",
-          "Austin Abrams",
-          "Paul Walter Hauser",
-          "where to watch Resident Evil 2026",
-          "Resident Evil streaming in Brazil and United States",
-          "Resident Evil cast synopsis trailer and where to watch",
-          "what Horror to watch this week"
+          "Valentina and the 12 Signs",
+          "Valentina and the 12 Signs 2026",
+          "where to watch Valentina and the 12 Signs",
+          "Drama series",
+          "Comedy series",
+          "Giovanna Grigio",
+          "Lucas Leto",
+          "where to watch Valentina and the 12 Signs 2026",
+          "Valentina and the 12 Signs streaming in Brazil and United States",
+          "Valentina and the 12 Signs cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
         ],
-        "canonicalQuery": "Resident Evil"
+        "canonicalQuery": "Valentina and the 12 Signs"
       }
     }
   ]

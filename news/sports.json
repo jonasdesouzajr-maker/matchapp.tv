@@ -1,7 +1,23 @@
 {
-  "updated_at": "2026-11-18T14:14:42.494Z",
+  "updated_at": "2026-11-19T13:46:14.854Z",
   "source_policy": "Authorized publisher RSS/Atom; directly linked canonical URLs, no article-body/image republication and no betting guides",
   "items": [
+    {
+      "id": "e162cfff",
+      "title": "How can Cricket Australia move on from its greatest controversy? The ‘underarm incident’ may offer lessons",
+      "url": "https://theconversation.com/how-can-cricket-australia-move-on-from-its-greatest-controversy-the-underarm-incident-may-offer-lessons-297037",
+      "source": "The Conversation",
+      "source_domain": "theconversation.com",
+      "source_home": "https://theconversation.com",
+      "country": "GLOBAL",
+      "category": "sports",
+      "sport": "Sports",
+      "event_type": "Sports",
+      "published_at": "2026-11-19T02:49:07.000Z",
+      "timestamp_kind": "published",
+      "discovery_source": "Authorized publisher RSS/Atom",
+      "image": null
+    },
     {
       "id": "28c74dc3",
       "title": "Pourquoi la génération Z doit en partie à Napoléon son obsession pour la musculation",
