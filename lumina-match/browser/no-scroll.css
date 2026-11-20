@@ -91,7 +91,7 @@ body {display:flex;flex-direction:column;}
  gap:var(--fit-gap)!important;justify-content:center;align-content:center;
  width:max-content;max-width:100%;height:auto;max-height:100%;margin:0 auto;padding:1px;}
 #app[data-screen="game"] .grid>.card {width:var(--fit-card-width)!important;height:auto;
- aspect-ratio:3/4!important;min-height:0!important;max-height:none!important;min-width:0!important;
+ aspect-ratio:2/3!important;min-height:0!important;max-height:none!important;min-width:0!important;
  border-radius:clamp(5px,1vw,11px)!important;}
 #app[data-screen="game"] .board-area.is-paused .grid {visibility:hidden;}
 #app[data-screen="game"] .pause-panel {inset:0;max-height:100%;min-height:0;overflow:hidden!important;
@@ -141,7 +141,7 @@ body {display:flex;flex-direction:column;}
 .lm-practice-status {font-size:clamp(12px,2.3dvh,15px);line-height:1.3;min-height:2.5em;text-align:center;}
 .lm-practice-board {display:grid;grid-template-columns:repeat(4,minmax(0,75px));gap:9px;
  justify-content:center;align-items:center;flex:1 1 0;min-height:0;max-height:145px;margin:auto 0;}
-.lm-practice-board .lm-practice-card {aspect-ratio:3/4;min-width:0;min-height:0;border-radius:11px;}
+.lm-practice-board .lm-practice-card {aspect-ratio:2/3;min-width:0;min-height:0;border-radius:11px;}
 .lm-practice-actions {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
 .lm-practice-actions .pill {width:100%;min-height:40px;margin:0;padding:6px;font-size:var(--lm-pill);border-radius:999px;
  white-space:normal;overflow-wrap:anywhere;}

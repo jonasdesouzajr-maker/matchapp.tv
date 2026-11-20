@@ -24,7 +24,7 @@ h1{font-size:clamp(42px,11vw,56px);font-weight:300;letter-spacing:2px;line-heigh
 .pill.friends{background:#5c6bc0}
 .pill.teal{background:#4db6ac;color:#122b2c}
 .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(6px,2vw,8px);width:100%;max-width:420px;margin:12px auto;justify-content:center;perspective:1000px}
-.card{display:block;width:100%;aspect-ratio:.75;border-radius:clamp(9px,3vw,16px);padding:0;background:#1a1633;border:1.5px solid #ffffff33;box-shadow:0 4px 10px #0006;cursor:pointer;position:relative;transform-style:preserve-3d;transition:transform .45s;color:var(--text)}
+.card{display:block;width:100%;aspect-ratio:2/3;border-radius:clamp(9px,3vw,16px);padding:0;background:#1a1633;border:1.5px solid #ffffff33;box-shadow:0 4px 10px #0006;cursor:pointer;position:relative;transform-style:preserve-3d;transition:transform .45s;color:var(--text)}
 .card.flipped{transform:rotateY(180deg)}
 .card.matched{box-shadow:0 0 0 2px #ffd54f66,0 4px 12px #0005}
 .card:disabled{cursor:default}
