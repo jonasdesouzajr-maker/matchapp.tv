@@ -23,5 +23,8 @@ test('home center rules join ma-reference and do not resize ad rails', () => {
   assert.match(adult, /home-center-grid-20261118\.js\?v=20261118-5/);
   assert.match(home, /jonas-adult-page\.js\?v=20261118-grid5/);
   assert.match(home, /top-titles-draft\.js\?v=20261118-left1/);
-  assert.match(home, /top-titles-draft\.css\?v=20261118-left1/);
+  assert.match(home, /top-titles-draft\.css\?v=20261121-week-heading-grid2/);
+  const topTitlesCss = fs.readFileSync(require.resolve('../patches/top-titles-draft.css'), 'utf8');
+  assert.match(topTitlesCss, /grid-column:1\s*\/\s*-1!important/);
+  assert.match(topTitlesCss, /grid-row:2!important/);
 });
