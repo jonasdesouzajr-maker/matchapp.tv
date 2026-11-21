@@ -69,3 +69,33 @@
  }
  @media(prefers-reduced-motion:reduce){html.ma-reference .ma-top-titles-arrow::before,html[data-top-titles-draft] .ma-top-titles-arrow::before{transition:none!important;transform:none!important;}}
 }
+
+
+/* Samsung tablet/browser QA 2026-11-21: weekly copy is a full-width heading,
+   never a third carousel arrow squeezed into the 44px navigation column. */
+@layer ma-reference {
+ html.ma-reference #trending-rail.ma-top-titles-grid > .trending-week-label,
+ html[data-top-titles-draft] #trending-rail.ma-top-titles-grid > .trending-week-label {
+  display:block!important;
+  grid-column:1 / -1!important;
+  grid-row:1!important;
+  justify-self:stretch!important;
+  align-self:auto!important;
+  width:auto!important;
+  max-width:none!important;
+  min-width:0!important;
+  margin:8px 14px 10px!important;
+  white-space:normal!important;
+  word-break:normal!important;
+  overflow-wrap:normal!important;
+  writing-mode:horizontal-tb!important;
+ }
+ html.ma-reference #trending-rail.ma-top-titles-grid > .ma-top-titles-native,
+ html[data-top-titles-draft] #trending-rail.ma-top-titles-grid > .ma-top-titles-native {
+  grid-row:2!important;
+ }
+ html.ma-reference #trending-rail.ma-top-titles-grid .ma-top-titles-controls .ma-top-titles-arrow,
+ html[data-top-titles-draft] #trending-rail.ma-top-titles-grid .ma-top-titles-controls .ma-top-titles-arrow {
+  grid-row:2!important;
+ }
+}
