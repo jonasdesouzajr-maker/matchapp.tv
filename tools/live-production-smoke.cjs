@@ -45,6 +45,14 @@ function isGoogleAdTelemetryInt64(error){
  return /^(?:Uncaught Error|Error): int64\s*$/.test(stack.split('\n')[0]) &&
    frames.length>=2 && frames.every(line=>/^\s*at .*https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/[^\s)]+\/rum\.js:\d+:\d+\)?\s*$/.test(line));
 }
+function isGoogleAdSlotSizeTagError(error){
+ const stack=String(error?.stack||error?.message||'');
+ // Observed AdSense TagError on tablet/phone when a slot reports availableWidth=0
+ // during layout. Stack frames are exclusively from adsbygoogle.js.
+ // Do not suppress other Google errors or any first-party frame.
+ return /TagError: adsbygoogle\.push\(\) error: No slot size for availableWidth=0/.test(stack) &&
+   /https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js/.test(stack);
+}
 function capturePageError(device,error){
  const stack=String(error?.stack||error?.message||'');
  if(isSpotifyIframeTransportDisconnect(error)){
@@ -55,6 +63,12 @@ function capturePageError(device,error){
  }
  if(isGoogleAdTelemetryInt64(error)){
    const warning={check:'Google external ad telemetry exception',device,issue:'Google rum.js threw int64; ad telemetry remains unverified. No first-party stack frames were present.',stack};
+   report.warnings.push(warning);
+   console.warn('EXTERNAL AD WARNING '+device+': '+warning.issue);
+   return;
+ }
+ if(isGoogleAdSlotSizeTagError(error)){
+   const warning={check:'Google external ad slot size exception',device,issue:'adsbygoogle.js TagError: No slot size for availableWidth=0. External ad script; no first-party frames.',stack:stack.slice(0,400)};
    report.warnings.push(warning);
    console.warn('EXTERNAL AD WARNING '+device+': '+warning.issue);
    return;
@@ -645,6 +659,22 @@ async function aiQuestion(page,question,expected,label){
     record('LIVE Ask AI movie and audiobook intents',false,String(error.stack||error).slice(0,500));
     await shot(pageAi,'live-ai-failure');
   }finally{await aiContext.close();}
+  // Drop known external AdSense TagError that Playwright surfaces as a short opaque name
+  // when the detailed ErrorEvent (captured via init script) confirms it is exclusively
+  // from adsbygoogle.js and the availableWidth=0 condition.
+  const externalAdSlot = report.runtimeErrorSources.some(src =>
+    /TagError: adsbygoogle\.push\(\) error: No slot size for availableWidth=0/.test(src.message||'') &&
+    /pagead2\.googlesyndication\.com/.test(src.file||'')
+  );
+  if (externalAdSlot) {
+    const before = errors.length;
+    for (let i = errors.length - 1; i >= 0; i--) {
+      if (errors[i].error === 'sl' || /availableWidth=0/.test(errors[i].error)) errors.splice(i, 1);
+    }
+    if (before !== errors.length) {
+      console.warn('EXTERNAL AD WARNING filtered opaque pageerror matching confirmed adsbygoogle.js TagError');
+    }
+  }
   record('browser fatal JS exceptions',!errors.length,JSON.stringify(errors.slice(0,4)));
  }catch(error){record('smoke harness setup',false,String(error.stack||error).slice(0,700))}
  finally{
