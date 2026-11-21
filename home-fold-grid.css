@@ -431,3 +431,36 @@ html body.page-home #trending-rail .marquee-item:not([data-music-video])>img{
  ){filter:none!important}
  html body.page-home #trending-rail .marquee-item:not([data-music-video]):hover{transform:none!important}
 }
+
+
+/* Tablet/phone QA 2026-11-21: the generated week label must occupy its own
+   horizontal row. Never allow it to shrink beside the scrolling title track. */
+html body.page-home #trending-rail.marquee-wrapper{
+ display:block!important;
+ width:100%!important;
+ max-width:100%!important;
+ min-width:0!important;
+ height:auto!important;
+ box-sizing:border-box!important;
+ clear:both!important;
+}
+html body.page-home #trending-rail .trending-week-label{
+ display:block!important;
+ position:static!important;
+ float:none!important;
+ box-sizing:border-box!important;
+ width:calc(100% - 28px)!important;
+ max-width:calc(100% - 28px)!important;
+ min-width:0!important;
+ height:auto!important;
+ white-space:normal!important;
+ overflow-wrap:normal!important;
+ word-break:normal!important;
+ writing-mode:horizontal-tb!important;
+}
+html body.page-home #trending-rail .marquee-viewport{
+ display:block!important;
+ width:100%!important;
+ max-width:100%!important;
+ min-width:0!important;
+}
