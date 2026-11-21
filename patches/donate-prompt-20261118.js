@@ -1,4 +1,4 @@
-/* Donation prompt on page change. Closeable. Non-blocking. */
+/* Opt-in voluntary support prompt. No page-load solicitation. */
 (function () {
   'use strict';
   if (/^\/(kids|private-voice|oauth)(\/|$)/.test(location.pathname)) return;
@@ -16,6 +16,10 @@
     setTimeout(function () { if (box.parentNode) { box.remove(); sessionStorage.setItem(KEY, '1'); } }, 12000);
   }
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(show, 800); });
-  else setTimeout(show, 800);
+  // A voluntary support offer must never cover the page without a user gesture.
+  // Existing in-page donation/support controls remain available independently.
+  document.addEventListener('click', function(event) {
+    var trigger=event.target && event.target.closest && event.target.closest('[data-ma-donate-prompt]');
+    if(trigger)show();
+  });
 })();

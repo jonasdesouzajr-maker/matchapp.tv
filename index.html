@@ -31,6 +31,21 @@
     <script id="ma-review-ad-visibility-20261121">
     // Only the live document may manage the review-stage layout.
     document.documentElement.classList.add('ads-empty');
+    // Existing review-stage ad hosts remain in the markup for future approval.
+    // Inline important rules override legacy layout CSS without polling.
+    (function () {
+      function collapseReviewAds() {
+        document.querySelectorAll('body.page-home .sidebar-ad-left,body.page-home .sidebar-ad-right,body.page-home .ad-banner-container,body.page-home .mobile-ad-bottom,body.page-home .ma-inline-ad,body.page-home .premium-ad-frame').forEach(function (host) {
+          ['display','min-height','height','margin','padding'].forEach(function (name) { host.style.setProperty(name,name==='display'?'none':'0','important'); });
+        });
+        var layout=document.querySelector('body.page-home .main-layout');
+        if(layout)layout.style.setProperty('grid-template-columns','minmax(0,1fr)','important');
+      }
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',collapseReviewAds,{once:true});
+      else collapseReviewAds();
+      window.addEventListener('load',collapseReviewAds,{once:true});
+      window.addEventListener('pageshow',collapseReviewAds);
+    })();
     </script>
     <style id="ma-review-ad-space-20261121">
     html.ads-empty body.page-home :is(.sidebar-ad-left,.sidebar-ad-right,.ad-banner-container,.mobile-ad-bottom,.ma-inline-ad,.premium-ad-frame){display:none!important;min-height:0!important;margin:0!important;padding:0!important}
