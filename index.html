@@ -27,7 +27,13 @@
     <script id="ma-publisher-review-hold">
     window.adsbygoogle = window.adsbygoogle || [];
     window.adsbygoogle.pauseAdRequests = 1;
+    // Keep review-stage placements from occupying visitor screen space.
+    document.documentElement.classList.add('ads-empty');
     </script>
+    <style id="ma-review-ad-space-20261121">
+    html.ads-empty body.page-home :is(.sidebar-ad-left,.sidebar-ad-right,.ad-banner-container,.mobile-ad-bottom,.ma-inline-ad,.premium-ad-frame){display:none!important;min-height:0!important;margin:0!important;padding:0!important}
+    html.ads-empty body.page-home .main-layout{grid-template-columns:minmax(0,1fr)!important}
+    </style>
     <!-- GOOGLE CONSENT MODE: EEA + UK + Switzerland default denied until a certified CMP supplies consent. -->
     <script>
     window.dataLayer=window.dataLayer||[];

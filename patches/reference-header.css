@@ -284,3 +284,14 @@ html.ma-reference.reduce-motion #ma-reference-header::before,html.ma-reference.r
  html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header .ma-cinema-tools-content #ma-donate-shortcut#ma-donate-shortcut::after {display:none!important;}
  html.ma-reference #ma-reference-header#ma-reference-header#ma-reference-header#ma-reference-header .ma-cinema-tools-content #ma-donate-shortcut#ma-donate-shortcut > svg {width:20px!important;height:20px!important;margin:0!important;transform:none!important;}
 }
+
+/* 2026-11-21: real 320px Android browser QA. Compact only the *visible*
+   invitation on very narrow phones; the launcher's localized aria-label
+   and the label's click/touch target remain intact. */
+@layer ma-reference {
+ @media (max-width:374px) {
+  html.ma-reference[data-ma-jonas-header] #ma-reference-header #ma-reference-header-slot :is(#ma-ambient-jonas,#ma-jonas-home) > .ma-reference-jonas-caption {min-height:22px!important;padding:3px 1px!important;gap:0!important;line-height:1!important;}
+  html.ma-reference[data-ma-jonas-header] #ma-reference-header #ma-reference-header-slot :is(#ma-ambient-jonas,#ma-jonas-home) > .ma-reference-jonas-caption > :is(strong,span) {display:none!important;}
+  html.ma-reference[data-ma-jonas-header] #ma-reference-header #ma-reference-header-slot :is(#ma-ambient-jonas,#ma-jonas-home) > .ma-reference-jonas-caption::after {content:"Jonas AI";display:block!important;font:650 11px/1.15 system-ui,sans-serif!important;white-space:nowrap!important;letter-spacing:0!important;}
+ }
+}
