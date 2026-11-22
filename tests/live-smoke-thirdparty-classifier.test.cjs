@@ -35,3 +35,25 @@ test('Google telemetry warning requires exact int64 error and exclusively proven
  assert.equal(fn({stack:external.replace(/pagead2\.googlesyndication\.com/g,'pagead2.googlesyndication.com.evil.example')}),false);
  assert.equal(fn({message:'Error: int64'}),false);
 });
+
+test('AdSense zero-width warnings require exact external provenance, same device and near-synchronous evidence',()=>{
+ const start=smoke.indexOf('function isConfirmedGoogleAdSlotSource(source){');
+ const end=smoke.indexOf('function reconcileConfirmedAdSlotExceptions(){',start);
+ assert.ok(start>0&&end>start);
+ const helpers=vm.runInNewContext(smoke.slice(start,end)+'; ({source:isConfirmedGoogleAdSlotSource,correlate:isCorrelatedGoogleAdSlotError})',{URL});
+ const src={message:'Uncaught TagError: adsbygoogle.push() error: No slot size for availableWidth=0',
+  file:'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
+  stack:'TagError: adsbygoogle.push() error: No slot size for availableWidth=0\n    at push (https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js:15:7)',
+  device:'phone',observedAt:10000};
+ assert.equal(helpers.source(src),true);
+ assert.equal(helpers.correlate({device:'phone',error:'sl'},src,9950),true);
+ assert.equal(helpers.correlate({device:'desktop',error:'sl'},src,9950),false,'different device must not pass');
+ assert.equal(helpers.correlate({device:'phone',error:'sl'},src,1000),false,'unrelated timestamp must not pass');
+ assert.equal(helpers.correlate({device:'phone',error:'some first-party error'},src,9950),false,'arbitrary app exception must stay fatal');
+ assert.equal(helpers.source({...src,file:'https://pagead2.googlesyndication.com.evil.test/pagead/js/adsbygoogle.js'}),false);
+ assert.equal(helpers.source({...src,file:'https://matchapp.tv/app.js'}),false);
+ assert.equal(helpers.source({...src,message:'Uncaught TypeError: broken match'}),false);
+ assert.equal(helpers.source({...src,stack:src.stack+'\n    at app (https://matchapp.tv/app.js:1:1)'}),false);
+ assert.match(smoke,/report\.warnings\.push\(warning\)/);
+ assert.match(smoke,/record\('browser fatal JS exceptions',!errors\.length/);
+});

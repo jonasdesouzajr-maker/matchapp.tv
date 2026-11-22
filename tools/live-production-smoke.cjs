@@ -18,6 +18,7 @@ const cases=[
  {name:'small-phone',width:320,height:710,isMobile:true,hasTouch:true}
 ];
 const errors=[];
+const errorTimes=[];
 // Playwright surfaces exceptions from cross-origin iframe scripts as pageerror.
 // Keep first-party JS failures release-blocking, but classify the EXACT known
 // Spotify third-party iframe transport disconnect separately. Do not count it
@@ -45,6 +46,34 @@ function isGoogleAdTelemetryInt64(error){
  return /^(?:Uncaught Error|Error): int64\s*$/.test(stack.split('\n')[0]) &&
    frames.length>=2 && frames.every(line=>/^\s*at .*https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/[^\s)]+\/rum\.js:\d+:\d+\)?\s*$/.test(line));
 }
+function isConfirmedGoogleAdSlotSource(source){
+ const message=String(source?.message||'').trim();
+ if(!/^(?:Uncaught )?TagError: adsbygoogle\.push\(\) error: No slot size for availableWidth=0\.?$/.test(message))return false;
+ let script;try{script=new URL(String(source?.file||''))}catch{return false}
+ if(script.origin!=='https://pagead2.googlesyndication.com'||script.pathname!=='/pagead/js/adsbygoogle.js')return false;
+ const stack=String(source?.stack||'');
+ const frames=stack.split('\n').slice(1).filter(line=>/^\s*at\s/.test(line));
+ return frames.every(line=>line.includes('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'));
+}
+function isCorrelatedGoogleAdSlotError(entry,source,errorAt){
+ const opaque=entry?.error==='sl'||/^(?:Uncaught )?TagError: adsbygoogle\.push\(\) error: No slot size for availableWidth=0/.test(String(entry?.error||''));
+ return opaque&&entry.device===source?.device&&isConfirmedGoogleAdSlotSource(source)&&
+  Number.isFinite(errorAt)&&Number.isFinite(source.observedAt)&&Math.abs(source.observedAt-errorAt)<=5000;
+}
+function reconcileConfirmedAdSlotExceptions(){
+ const sourceEvents=report.runtimeErrorSources.filter(isConfirmedGoogleAdSlotSource).map(source=>({source,used:false}));
+ for(let i=errors.length-1;i>=0;i--){
+  const match=sourceEvents.find(item=>!item.used&&isCorrelatedGoogleAdSlotError(errors[i],item.source,errorTimes[i]));
+  if(!match)continue;
+  match.used=true;
+  const warning={check:'External Google AdSense zero-width slot',device:errors[i].device,
+   issue:'Confirmed adsbygoogle.js TagError: No slot size for availableWidth=0; page functionality audited independently.',
+   source:match.source.file};
+  report.warnings.push(warning);
+  console.warn('EXTERNAL AD WARNING '+warning.device+': '+warning.issue);
+  errors.splice(i,1);errorTimes.splice(i,1);
+ }
+}
 function capturePageError(device,error){
  const stack=String(error?.stack||error?.message||'');
  if(isSpotifyIframeTransportDisconnect(error)){
@@ -60,6 +89,7 @@ function capturePageError(device,error){
    return;
  }
  errors.push({device,page:'home',error:stack.slice(0,500)});
+ errorTimes.push(Date.now());
 }
 const {captureAuditedScreenshot} = require('./live-qa-screenshot.cjs');
 async function shot(page,name){
@@ -70,18 +100,24 @@ async function shot(page,name){
  }catch(error){record('screenshot '+name,false,String(error.message||error).slice(0,250));return false}
 }
 async function observed(page,url){
- // Observe ErrorEvent provenance as well as Playwright's sometimes opaque
- // pageerror (e.g. minified external exception name "W"). Never suppress it.
- page.on('console',message=>{
-  const prefix='MATCHAPP_QA_ERROR_SOURCE ';
-  if(!message.text().startsWith(prefix))return;
-  try{report.runtimeErrorSources.push(JSON.parse(message.text().slice(prefix.length)))}catch(_){}
- });
- if(!page.listenerCount('pageerror'))page.on('pageerror',error=>capturePageError(url,error));
- await page.addInitScript(()=>window.addEventListener('error',event=>{
-  console.error('MATCHAPP_QA_ERROR_SOURCE '+JSON.stringify({message:event.message,
+ // One observer per Playwright page, with provenance retained by device.
+ // Detailed ErrorEvent evidence must corroborate an opaque external pageerror.
+ if(!page.__matchappSourceObserverInstalled){
+  page.__matchappSourceObserverInstalled=true;
+  page.on('console',message=>{
+   const prefix='MATCHAPP_QA_ERROR_SOURCE ';
+   if(!message.text().startsWith(prefix))return;
+   try{
+    const source=JSON.parse(message.text().slice(prefix.length));
+    report.runtimeErrorSources.push({...source,device:page.__matchappQaDevice||url,observedAt:Date.now()});
+   }catch(_){}
+  });
+  await page.addInitScript(()=>window.addEventListener('error',event=>{
+   console.error('MATCHAPP_QA_ERROR_SOURCE '+JSON.stringify({message:event.message,
     file:event.filename,line:event.lineno,column:event.colno,stack:String(event.error?.stack||'').slice(0,2000)}));
- }));
+  }));
+ }
+ if(!page.listenerCount('pageerror'))page.on('pageerror',error=>capturePageError(page.__matchappQaDevice||url,error));
  await page.goto(base+url,{waitUntil:'domcontentloaded',timeout:60000});
  await page.waitForTimeout(1400);return page;
 }
@@ -141,6 +177,7 @@ async function aiQuestion(page,question,expected,label){
    const context=await browser.newContext({viewport:{width:device.width,height:device.height},
       isMobile:device.isMobile,hasTouch:device.hasTouch,deviceScaleFactor:1,locale:'en-US'});
    const page=await context.newPage();
+   page.__matchappQaDevice=device.name;
    page.on('pageerror',error=>capturePageError(device.name,error));
    try{
     await observed(page,'/');
@@ -645,6 +682,7 @@ async function aiQuestion(page,question,expected,label){
     record('LIVE Ask AI movie and audiobook intents',false,String(error.stack||error).slice(0,500));
     await shot(pageAi,'live-ai-failure');
   }finally{await aiContext.close();}
+  reconcileConfirmedAdSlotExceptions();
   record('browser fatal JS exceptions',!errors.length,JSON.stringify(errors.slice(0,4)));
  }catch(error){record('smoke harness setup',false,String(error.stack||error).slice(0,700))}
  finally{
