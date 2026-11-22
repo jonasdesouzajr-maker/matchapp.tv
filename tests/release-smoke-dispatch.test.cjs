@@ -332,7 +332,8 @@ test('workflow wiring preserves single ownership, independent IndexNow, exact SH
   assert.match(smokeYaml, /run-name: 'Release smoke: \$\{\{ inputs\.expected_sha \}\}'/);
   assert.match(smokeYaml, /ref: \$\{\{ inputs\.expected_sha \}\}/);
   assert.ok(smokeYaml.indexOf('Verify deployment identity before checkout') < smokeYaml.indexOf('uses: actions/checkout@'));
-  assert.match(pagesYaml, /group: pages\n  cancel-in-progress: true/);
+  assert.match(pagesYaml, /group: pages\n  cancel-in-progress: false\n  queue: max/);
+  assert.doesNotMatch(pagesYaml, /group: pages\n  cancel-in-progress: true/);
   assert.match(pagesYaml, /Request one live smoke for the deployed SHA\n        if: \$\{\{ !cancelled\(\) && steps\.deploy\.outcome == 'success' \}\}/);
   assert.ok(pagesYaml.indexOf('gh workflow run indexnow.yml --ref main') < pagesYaml.indexOf(DISPATCH_STEP));
   assert.match(pagesYaml, /retries: 0/);
