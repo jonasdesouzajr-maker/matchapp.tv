@@ -123,7 +123,7 @@ test('Brand Bot hands off Pages once only after a changed commit and preserves f
  assert.equal((workflow.match(/gh workflow run pages-deploy\.yml --ref main/g)||[]).length,1);
  assert.match(workflow,/if: steps\.publish\.outputs\.changed == '1'/);
  assert.doesNotMatch(workflow,/gh workflow run (?:indexnow|news-refresh|midnight-content-rotation)/);
- assert.match(workflow,/if: failure\(\)\s*\n\s+uses: actions\/upload-artifact@v4/);
+ assert.match(workflow,/if: failure\(\)\s*\n\s+uses: actions\/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f\b/);
  assert.match(workflow,/candidate\.patch/);
  assert.match(workflow,/base-sha\.txt/);
 });

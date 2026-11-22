@@ -167,7 +167,7 @@ jobs:
         run: node tools/live-production-deep-matching.cjs
       - name: Archive audit evidence
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0 (Node.js 24)
         with:
           name: matching-ai-audit
           path: |

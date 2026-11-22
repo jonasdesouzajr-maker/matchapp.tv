@@ -110,7 +110,7 @@ jobs:
           fi
       - name: Keep screenshots and machine-readable test report, even on failure
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0 (Node.js 24)
         with:
           name: MatchApp-live-browser-screenshots
           path: artifacts/live-smoke/
@@ -157,7 +157,7 @@ jobs:
           script: MATCHAPP_ANDROID_SMOKE_TARGET="${{ matrix.target }}" bash tools/android-emulator-smoke.sh
       - name: Export Android emulator images, activity state and crash evidence
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0 (Node.js 24)
         with:
           name: MatchApp-Android-emulator-evidence-${{ matrix.target }}
           path: artifacts/android-emulator/

@@ -45,6 +45,12 @@ test('Kids title generator uses rich title-specific metadata and safe structured
   assert.doesNotMatch(src,/AggregateRating|reviewRating|ratingValue/);
 });
 
+test('Kids generation finalizes only its Kids HTML and cannot exhaust memory parsing unrelated adult pages',()=>{
+  const src=read('tools/build-kids-pages.js');
+  assert.ok(src.includes("finalizeBrand(['kids/'])"),'Only generated Kids pages should be brand-finalized');
+  assert.doesNotMatch(src,/finalizeBrand\(\s*\)/);
+});
+
 test('Kids generated pages stay free of the general GTM container',()=>{
   const src=read('tools/build-kids-pages.js');
   assert.doesNotMatch(src,/GTM-M7J3NNBN|googletagmanager\.com/);

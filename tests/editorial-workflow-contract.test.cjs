@@ -55,7 +55,11 @@ test('changed content uses Pages discovery; only unchanged verified production u
  assert.match(deploy,/node tools\/check-content-rotation\.js/);
  assert.match(flow('site-validation'),/node tools\/check-content-rotation\.js/);
  assert.doesNotMatch(deploy,/id!=='world-alzheimers-month-2026'/,'Deployment may never pin an expiring campaign');
- assert.ok(deploy.indexOf('uses: actions/deploy-pages@v4')<deploy.indexOf('gh workflow run indexnow.yml --ref main'));
+ const upload=deploy.indexOf('uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9');
+ const deployed=deploy.indexOf('uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346');
+ const indexNow=deploy.indexOf('gh workflow run indexnow.yml --ref main');
+ assert.ok(upload>=0&&deployed>upload&&indexNow>deployed,'Node 24 Pages actions must deploy before IndexNow');
+ assert.match(deploy,/include-hidden-files: true/,'Pages uploads must preserve the existing dotfiles');
  assert.doesNotMatch(now,/  push:/,'Raw commits may not ping still-unpublished pages');
  assert.match(now,/workflow_dispatch:/);
  assert.doesNotMatch(now,/schedule:|cron:/,'IndexNow recovery belongs inside the sole daily refresh');
