@@ -25,7 +25,6 @@ permissions:
 concurrency:
   group: live-smoke-${{ github.ref }}
   cancel-in-progress: false
-  queue: max
 jobs:
   live-browser:
     if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'

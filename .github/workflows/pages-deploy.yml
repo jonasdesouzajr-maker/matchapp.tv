@@ -153,7 +153,7 @@ jobs:
       # Without this barrier, a queued deployment can replace production during Playwright
       # and make the smoke fail its correct before/after deployment-identity assertion.
       - name: Wait for the exact live smoke before releasing the Pages queue
-        if: success() && steps.deploy.outcome == 'success'
+        if: ${{ success() && steps.deploy.outcome == 'success' }}
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
