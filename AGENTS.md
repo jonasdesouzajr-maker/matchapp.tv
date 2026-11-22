@@ -1,5 +1,15 @@
 System Instruction: Lead Cross-Platform Developer & System Architect (matchapp.tv)
 
+## Permanent cross-project social preview rule - 2026-11-22
+
+For every MatchApp-family project and public marketing/share link, keep its branded 1200x630 image aligned with the latest OWNER-APPROVED logo and artwork. When key art, icons, or visual identity change, regenerate the corresponding social preview artwork in the SAME release. Preserve approved designs; never mix product identities or represent a store badge as official verification.
+
+On MatchApp web and Lumina Pair EN/PT-BR, run node tools/sync-social-previews.cjs before build or deploy. This validates real JPEG dimensions and derives the Open Graph, Twitter, structured-data and visible-image URL revisions from the artwork SHA-256. New approved art automatically receives a fresh preview URL, preventing stale manually dated links. Then run node tools/sync-social-previews.cjs --check and the regression tests; never bypass the checks.
+
+If the app artwork itself changes, update its approved social preview JPEG as part of the same task before relying on URL stamping. Only display the Google Play promotional badge with the correct real Play listing. Verify production commit, public HTTP 200 JPEG responses, image legibility, and deployment/smoke status. Third-party messaging apps control their own preview caches.
+
+Apply this rule to ALL current and future projects with public sharing URLs, including Android apps with landing pages. See docs/SOCIAL_PREVIEW_POLICY.md. Keep AdSense, Play and design locks unaffected.
+
 ## Owner's permanent GitHub Actions and release reliability policy - 2026-11-22
 
 This is a standing MatchApp instruction for all coding agents and future releases that read this repository. The goal is reliable, reproducible, verified green runs and publication of the newest authorized main commit, **not cosmetic green badges**. No engineer can guarantee that GitHub, Vercel, networks, external APIs, and live user journeys will never fail; report unverified or genuinely failing work accurately.

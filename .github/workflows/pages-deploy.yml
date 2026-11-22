@@ -51,6 +51,8 @@ jobs:
             echo "::error::build-meta.js did not match release.json in source. Commit the synchronized version before merging."
             exit 1
           }
+      - name: Synchronize approved social artwork and metadata
+        run: node tools/sync-social-previews.cjs && node tools/sync-social-previews.cjs --check
       - name: Validate production sources
         run: |
           node --check app.js
