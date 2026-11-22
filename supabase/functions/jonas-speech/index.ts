@@ -77,7 +77,7 @@ async function synth(text:string,locale:string,stream=false,allowElevenLabs=fals
  const google=Deno.env.get("GEMINI_API_KEY")?.trim()||Deno.env.get("GEMINI_FREE_API_KEY")?.trim();
  if(google){
   try{
-   const response=await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent",{
+   const response=await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash-tts:generateContent",{
     method:"POST",signal:AbortSignal.timeout(18000),
     headers:{"x-goog-api-key":google,"Content-Type":"application/json"},
     body:JSON.stringify({
