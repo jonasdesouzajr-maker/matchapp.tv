@@ -1,10 +1,551 @@
 {
-  "generated_at": "2026-11-22T08:52:12.413Z",
-  "feed_version": "628047ec",
-  "sports_updated_at": "2026-11-21T12:56:52.986Z",
+  "generated_at": "2026-11-22T12:48:59.032Z",
+  "feed_version": "4703e68f",
+  "sports_updated_at": "2026-11-22T12:48:24.346Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "rebuilt per check; modification dates advance only with content + source citation + stable archive",
   "items": [
+    {
+      "id": "024b89e8",
+      "title": "A 'utopia socialista' que levou um grupo de australianos idealistas ao Paraguai há mais de 130 anos",
+      "url": "https://g1.globo.com/mundo/noticia/2026/11/22/a-utopia-socialista-que-levou-um-grupo-de-australianos-idealistas-ao-paraguai-ha-mais-de-130-anos.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-11-22T12:23:09.000Z",
+      "discovered_at": "2026-11-22T12:48:59.032Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-11-22. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/BKOLImQwYysfjNMumQr74PDuk7M=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/d/x/fmyvcUSp29VscjS0bnqQ/captura-de-tela-2026-11-22-092406-colonia-paraguai.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/a-utopia-socialista-que-levou-um-grupo-de-australianos-idealistas-ao-paraguai-ha-024b89/",
+      "landing_url": "https://matchapp.tv/?news=024b89e8#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-11-22",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "utopia",
+          "socialista",
+          "que",
+          "levou",
+          "grupo",
+          "australianos"
+        ],
+        "long_tail": [
+          "A 'utopia socialista' que levou um grupo de australianos idealistas ao Paraguai há mais de 130 anos 2026-11-22",
+          "notícias mundiais novembro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "utopia",
+          "socialista",
+          "que",
+          "levou",
+          "grupo",
+          "australianos"
+        ],
+        "freshness_keywords": [
+          "2026-11-22"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "A 'utopia socialista' que levou um grupo de australianos…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-22. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-11-22",
+          "notícias do mundo",
+          "notícias internacionais",
+          "utopia",
+          "socialista",
+          "que",
+          "levou",
+          "grupo",
+          "australianos",
+          "A 'utopia socialista' que levou um grupo de australianos idealistas ao Paraguai há mais de 130 anos 2026-11-22",
+          "notícias mundiais novembro 2026",
+          "2026-11-22",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-11-22T12:48:59.032Z"
+      }
+    },
+    {
+      "id": "48a68950",
+      "title": "COP31 deve terminar sem acordo após UE e outros países rejeitarem texto final",
+      "url": "https://g1.globo.com/meio-ambiente/noticia/2026/11/22/cop31-acordo-final-plenaria.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-11-22T12:00:37.000Z",
+      "discovered_at": "2026-11-22T12:48:59.032Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-11-22. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/GF0nQhrtchwhiLryZUplgoNO3VY=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/4/6/RjA6jLQAqjVqIKjDBjaw/ap26325805482465.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/cop31-deve-terminar-sem-acordo-apos-ue-e-outros-paises-rejeitarem-texto-final-48a689/",
+      "landing_url": "https://matchapp.tv/?news=48a68950#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-11-22",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "cop31",
+          "deve",
+          "terminar",
+          "sem",
+          "acordo",
+          "apos"
+        ],
+        "long_tail": [
+          "COP31 deve terminar sem acordo após UE e outros países rejeitarem texto final 2026-11-22",
+          "notícias mundiais novembro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "cop31",
+          "deve",
+          "terminar",
+          "sem",
+          "acordo",
+          "apos"
+        ],
+        "freshness_keywords": [
+          "2026-11-22"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "COP31 deve terminar sem acordo após UE e outros países…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-22. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-11-22",
+          "notícias do mundo",
+          "notícias internacionais",
+          "cop31",
+          "deve",
+          "terminar",
+          "sem",
+          "acordo",
+          "apos",
+          "COP31 deve terminar sem acordo após UE e outros países rejeitarem texto final 2026-11-22",
+          "notícias mundiais novembro 2026",
+          "2026-11-22",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-11-22T12:48:59.032Z"
+      }
+    },
+    {
+      "id": "a9bb7c6e",
+      "title": "Russia-bound ship still on fire after attack in Gulf of Finland",
+      "url": "https://www.bbc.co.uk/news/articles/cj752ddve27ko?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-11-22T11:25:14.000Z",
+      "discovered_at": "2026-11-22T12:48:59.032Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-11-22. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d6f9/live/a55b16b0-e66d-11f1-9e24-791c5321ff0f.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/russia-bound-ship-still-on-fire-after-attack-in-gulf-of-finland-a9bb7c/",
+      "landing_url": "https://matchapp.tv/?news=a9bb7c6e#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-11-22",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "russia",
+          "bound",
+          "ship",
+          "still",
+          "fire",
+          "after"
+        ],
+        "long_tail": [
+          "Russia-bound ship still on fire after attack in Gulf of Finland 2026-11-22",
+          "world news November 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "russia",
+          "bound",
+          "ship",
+          "still",
+          "fire",
+          "after"
+        ],
+        "freshness_keywords": [
+          "2026-11-22"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Russia-bound ship still on fire after attack in Gulf of…",
+        "meta_description": "World report published by BBC World on 2026-11-22. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-11-22",
+          "world news",
+          "global headlines",
+          "russia",
+          "bound",
+          "ship",
+          "still",
+          "fire",
+          "after",
+          "Russia-bound ship still on fire after attack in Gulf of Finland 2026-11-22",
+          "world news November 2026",
+          "2026-11-22",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-11-22T12:48:59.032Z"
+      }
+    },
+    {
+      "id": "03af4e10",
+      "title": "Priscila Tossan programa para 2027 o álbum 'Onze', produzido por Iuri Rio Branco com 'sonoridades diferentes'",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/11/22/priscila-tossan-programa-para-2027-o-album-onze-produzido-por-iuri-rio-branco-com-sonoridades-diferentes.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-11-22T11:11:03.000Z",
+      "discovered_at": "2026-11-22T12:48:59.032Z",
+      "event_type": "Music",
+      "category": "entertainment",
+      "person": "Priscila Tossan",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/5N1tRz-MiMpZpGQoL731FF9Zzjc=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/J/x/nUxgoEQBCXgmAtVwQ71Q/foto-priscila-tossan.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/priscila-tossan-programa-para-2027-o-album-onze-produzido-por-iuri-rio-branco-co-03af4e/",
+      "landing_url": "https://matchapp.tv/?news=03af4e10#latest-news",
+      "seo": {
+        "primary_keyword": "Priscila Tossan últimas notícias",
+        "short_tail": [
+          "Priscila Tossan",
+          "Priscila Tossan news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "Priscila Tossan latest news November 2026",
+          "Priscila Tossan music update 2026",
+          "Priscila Tossan news 2026-11-22",
+          "latest music news about Priscila Tossan",
+          "priscila tossan priscila tossan programa 2027 latest update",
+          "G1 Priscila Tossan music",
+          "últimas notícias sobre Priscila Tossan novembro 2026",
+          "Priscila Tossan notícia de 2026-11-22",
+          "o que aconteceu com Priscila Tossan"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Priscila Tossan",
+          "priscila",
+          "tossan",
+          "programa",
+          "2027",
+          "album",
+          "onze"
+        ],
+        "freshness_keywords": [
+          "November 2026",
+          "2026-11-22",
+          "novembro 2026",
+          "Priscila Tossan 2026"
+        ],
+        "source_keywords": [
+          "G1 Priscila Tossan",
+          "g1.globo.com Priscila Tossan",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Priscila Tossan programa para 2027 o álbum 'Onze',…",
+        "meta_description": "Priscila Tossan: Notícia publicada por G1 em 2026-11-22. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "Priscila Tossan últimas notícias",
+          "Priscila Tossan",
+          "Priscila Tossan news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "Priscila Tossan latest news November 2026",
+          "Priscila Tossan music update 2026",
+          "Priscila Tossan news 2026-11-22",
+          "latest music news about Priscila Tossan",
+          "priscila tossan priscila tossan programa 2027 latest update",
+          "G1 Priscila Tossan music",
+          "últimas notícias sobre Priscila Tossan novembro 2026",
+          "Priscila Tossan notícia de 2026-11-22",
+          "o que aconteceu com Priscila Tossan",
+          "priscila",
+          "tossan",
+          "programa",
+          "2027",
+          "album",
+          "onze",
+          "November 2026",
+          "2026-11-22",
+          "novembro 2026",
+          "Priscila Tossan 2026",
+          "G1 Priscila Tossan",
+          "g1.globo.com Priscila Tossan",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-11-22T12:48:59.032Z"
+      }
+    },
+    {
+      "id": "95e1b8e1",
+      "title": "Mysterious Mercury gets a visitor - after spacecraft's eight-year epic voyage",
+      "url": "https://www.bbc.co.uk/news/articles/c39w9l4v1p9ro?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Science",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-11-22T10:44:12.000Z",
+      "discovered_at": "2026-11-22T12:48:59.032Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "Mysterious Mercury",
+      "description": "World news reported by BBC Science on 2026-11-22. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/eca5/live/034a6cb0-e4c7-11f1-a094-5fdc692f3e33.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/mysterious-mercury-gets-a-visitor-after-spacecraft-s-eight-year-epic-voyage-95e1b8/",
+      "landing_url": "https://matchapp.tv/?news=95e1b8e1#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-11-22",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "mysterious",
+          "mercury",
+          "gets",
+          "visitor",
+          "after",
+          "spacecraft"
+        ],
+        "long_tail": [
+          "Mysterious Mercury gets a visitor - after spacecraft's eight-year epic voyage 2026-11-22",
+          "world news November 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "mysterious",
+          "mercury",
+          "gets",
+          "visitor",
+          "after",
+          "spacecraft"
+        ],
+        "freshness_keywords": [
+          "2026-11-22"
+        ],
+        "source_keywords": [
+          "BBC Science"
+        ],
+        "meta_title": "Mysterious Mercury gets a visitor - after spacecraft's…",
+        "meta_description": "World report published by BBC Science on 2026-11-22. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-11-22",
+          "world news",
+          "global headlines",
+          "mysterious",
+          "mercury",
+          "gets",
+          "visitor",
+          "after",
+          "spacecraft",
+          "Mysterious Mercury gets a visitor - after spacecraft's eight-year epic voyage 2026-11-22",
+          "world news November 2026",
+          "2026-11-22",
+          "BBC Science"
+        ],
+        "seo_generated_at": "2026-11-22T12:48:59.032Z"
+      }
+    },
+    {
+      "id": "1702b449",
+      "title": "South Korea education minister resigns over exam cheating scandal",
+      "url": "https://www.bbc.co.uk/news/articles/cw3dgk29d37no?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-11-22T09:20:45.000Z",
+      "discovered_at": "2026-11-22T12:48:59.032Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "South Korea",
+      "description": "World news reported by BBC World on 2026-11-22. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/dc28/live/9c42c760-e66a-11f1-99b6-a35a62fa4264.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/south-korea-education-minister-resigns-over-exam-cheating-scandal-1702b4/",
+      "landing_url": "https://matchapp.tv/?news=1702b449#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-11-22",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "south",
+          "korea",
+          "education",
+          "minister",
+          "resigns",
+          "over"
+        ],
+        "long_tail": [
+          "South Korea education minister resigns over exam cheating scandal 2026-11-22",
+          "world news November 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "south",
+          "korea",
+          "education",
+          "minister",
+          "resigns",
+          "over"
+        ],
+        "freshness_keywords": [
+          "2026-11-22"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "South Korea education minister resigns over exam cheating…",
+        "meta_description": "World report published by BBC World on 2026-11-22. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-11-22",
+          "world news",
+          "global headlines",
+          "south",
+          "korea",
+          "education",
+          "minister",
+          "resigns",
+          "over",
+          "South Korea education minister resigns over exam cheating scandal 2026-11-22",
+          "world news November 2026",
+          "2026-11-22",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-11-22T12:48:59.032Z"
+      }
+    },
+    {
+      "id": "e1363751",
+      "title": "Cantor PC Silva movimenta a própria engrenagem no show que gera o álbum ao vivo autoral 'Eu vou ganhar o mundo'",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/11/22/cantor-pc-silva-movimenta-a-propria-engrenagem-no-show-que-gera-o-album-ao-vivo-autoral-eu-vou-ganhar-o-mundo.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-11-22T09:00:00.000Z",
+      "discovered_at": "2026-11-22T12:48:59.032Z",
+      "event_type": "Music",
+      "category": "entertainment",
+      "person": "Cantor PC Silva",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/FEKNWEPMxhvC5K180etBW8mndkY=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/q/y/9eWaAqSF6HkyoxyAK7yQ/pc-silva-creditos-qorpo.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/cantor-pc-silva-movimenta-a-propria-engrenagem-no-show-que-gera-o-album-ao-vivo--e13637/",
+      "landing_url": "https://matchapp.tv/?news=e1363751#latest-news",
+      "seo": {
+        "primary_keyword": "Cantor PC Silva últimas notícias",
+        "short_tail": [
+          "Cantor PC Silva",
+          "Cantor PC Silva news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "Cantor PC Silva latest news November 2026",
+          "Cantor PC Silva music update 2026",
+          "Cantor PC Silva news 2026-11-22",
+          "latest music news about Cantor PC Silva",
+          "cantor silva cantor silva movimenta propria latest update",
+          "G1 Cantor PC Silva music",
+          "últimas notícias sobre Cantor PC Silva novembro 2026",
+          "Cantor PC Silva notícia de 2026-11-22",
+          "o que aconteceu com Cantor PC Silva"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Cantor PC Silva",
+          "cantor",
+          "silva",
+          "movimenta",
+          "propria",
+          "engrenagem",
+          "show"
+        ],
+        "freshness_keywords": [
+          "November 2026",
+          "2026-11-22",
+          "novembro 2026",
+          "Cantor PC Silva 2026"
+        ],
+        "source_keywords": [
+          "G1 Cantor PC Silva",
+          "g1.globo.com Cantor PC Silva",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Cantor PC Silva movimenta a própria engrenagem no show que…",
+        "meta_description": "Cantor PC Silva: Notícia publicada por G1 em 2026-11-22. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "Cantor PC Silva últimas notícias",
+          "Cantor PC Silva",
+          "Cantor PC Silva news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "Cantor PC Silva latest news November 2026",
+          "Cantor PC Silva music update 2026",
+          "Cantor PC Silva news 2026-11-22",
+          "latest music news about Cantor PC Silva",
+          "cantor silva cantor silva movimenta propria latest update",
+          "G1 Cantor PC Silva music",
+          "últimas notícias sobre Cantor PC Silva novembro 2026",
+          "Cantor PC Silva notícia de 2026-11-22",
+          "o que aconteceu com Cantor PC Silva",
+          "cantor",
+          "silva",
+          "movimenta",
+          "propria",
+          "engrenagem",
+          "show",
+          "November 2026",
+          "2026-11-22",
+          "novembro 2026",
+          "Cantor PC Silva 2026",
+          "G1 Cantor PC Silva",
+          "g1.globo.com Cantor PC Silva",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-11-22T12:48:59.032Z"
+      }
+    },
     {
       "id": "c8a9e0a5",
       "title": "Man who studied drama in young offenders' institution now a West End actor",
@@ -20,7 +561,7 @@
       "category": "entertainment",
       "person": "",
       "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6c2e/live/f6f8a710-e1bf-11f1-a339-49d4d3ed4c86.jpg",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/5fad/live/0aacc2f0-e65c-11f1-8ebd-1d2173202734.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/man-who-studied-drama-in-young-offenders-institution-now-a-west-end-actor-c8a9e0/",
       "landing_url": "https://matchapp.tv/?news=c8a9e0a5#latest-news",
       "seo": {
@@ -204,6 +745,75 @@
       }
     },
     {
+      "id": "f52c822b",
+      "title": "Italian jeweller and businessman Paolo Bulgari dies aged 89",
+      "url": "https://www.bbc.co.uk/news/articles/c8e39qk5vrpdo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-11-22T07:12:41.000Z",
+      "discovered_at": "2026-11-22T12:48:59.032Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-11-22. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/11c4/live/b30a2e00-e635-11f1-bcaa-b74b42067918.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/italian-jeweller-and-businessman-paolo-bulgari-dies-aged-89-f52c82/",
+      "landing_url": "https://matchapp.tv/?news=f52c822b#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-11-22",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "italian",
+          "jeweller",
+          "businessman",
+          "paolo",
+          "bulgari",
+          "dies"
+        ],
+        "long_tail": [
+          "Italian jeweller and businessman Paolo Bulgari dies aged 89 2026-11-22",
+          "world news November 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "italian",
+          "jeweller",
+          "businessman",
+          "paolo",
+          "bulgari",
+          "dies"
+        ],
+        "freshness_keywords": [
+          "2026-11-22"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Italian jeweller and businessman Paolo Bulgari dies aged…",
+        "meta_description": "World report published by BBC World on 2026-11-22. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-11-22",
+          "world news",
+          "global headlines",
+          "italian",
+          "jeweller",
+          "businessman",
+          "paolo",
+          "bulgari",
+          "dies",
+          "Italian jeweller and businessman Paolo Bulgari dies aged 89 2026-11-22",
+          "world news November 2026",
+          "2026-11-22",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-11-22T12:48:59.032Z"
+      }
+    },
+    {
       "id": "d2d64bb0",
       "title": "Anitta usou biojoias de designer do interior de SP em gravação de 'EQUILIBRIVM', vencedor do Grammy Latino",
       "url": "https://g1.globo.com/sp/piracicaba-regiao/noticia/2026/11/22/anitta-usou-biojoias-de-designer-do-interior-de-sp-em-gravacao-de-equilibrivm-vencedor-do-grammy-latino.ghtml",
@@ -308,7 +918,7 @@
       "id": "384d88b2",
       "title": "New draft deal aims to avert collapse of talks at COP31 climate summit",
       "url": "https://www.bbc.co.uk/news/articles/cq7827z2841zo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
+      "source": "BBC Science",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
@@ -318,7 +928,7 @@
       "event_type": "World",
       "category": "world",
       "person": "",
-      "description": "World news reported by BBC World on 2026-11-22. MatchApp links to the original report for its complete context and ongoing updates.",
+      "description": "World news reported by BBC Science on 2026-11-22. MatchApp links to the original report for its complete context and ongoing updates.",
       "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9b71/live/e0c68530-e61e-11f1-94c8-1db910b5b42e.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/new-draft-deal-aims-to-avert-collapse-of-talks-at-cop31-climate-summit-384d88/",
       "landing_url": "https://matchapp.tv/?news=384d88b2#latest-news",
@@ -351,10 +961,10 @@
           "2026-11-22"
         ],
         "source_keywords": [
-          "BBC World"
+          "BBC Science"
         ],
         "meta_title": "New draft deal aims to avert collapse of talks at COP31…",
-        "meta_description": "World report published by BBC World on 2026-11-22. Open the original report for full context.",
+        "meta_description": "World report published by BBC Science on 2026-11-22. Open the original report for full context.",
         "keywords": [
           "world news 2026-11-22",
           "world news",
@@ -368,9 +978,9 @@
           "New draft deal aims to avert collapse of talks at COP31 climate summit 2026-11-22",
           "world news November 2026",
           "2026-11-22",
-          "BBC World"
+          "BBC Science"
         ],
-        "seo_generated_at": "2026-11-22T08:52:12.413Z"
+        "seo_generated_at": "2026-11-22T12:48:59.032Z"
       }
     },
     {
@@ -509,6 +1119,101 @@
           "BBC World"
         ],
         "seo_generated_at": "2026-11-22T08:52:12.413Z"
+      }
+    },
+    {
+      "id": "c9a33060",
+      "title": "Chitãozinho e Xororó anunciam aposentadoria dos palcos",
+      "url": "https://g1.globo.com/fantastico/noticia/2026/11/22/chitaozinho-e-xororo-anunciam-aposentadoria-dos-palcos.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-11-22T03:18:18.000Z",
+      "discovered_at": "2026-11-22T12:48:59.032Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/9cKqLqF_-8rW5NenrzdN94qmpwI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/h/p/anI3HaRsCN6y97pORsMg/dsc08104.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/chitaozinho-e-xororo-anunciam-aposentadoria-dos-palcos-c9a330/",
+      "landing_url": "https://matchapp.tv/?news=c9a33060#latest-news",
+      "seo": {
+        "primary_keyword": "chitaozinho xororo anunciam aposentadoria últimas notícias",
+        "short_tail": [
+          "chitaozinho xororo anunciam aposentadoria",
+          "chitaozinho xororo anunciam aposentadoria news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "chitaozinho xororo anunciam aposentadoria latest news November 2026",
+          "chitaozinho xororo anunciam aposentadoria entertainment update 2026",
+          "chitaozinho xororo anunciam aposentadoria news 2026-11-22",
+          "latest entertainment news about chitaozinho xororo anunciam aposentadoria",
+          "chitaozinho xororo anunciam aposentadoria palcos latest update",
+          "G1 chitaozinho xororo anunciam aposentadoria entertainment",
+          "últimas notícias sobre chitaozinho xororo anunciam aposentadoria novembro 2026",
+          "chitaozinho xororo anunciam aposentadoria notícia de 2026-11-22",
+          "o que aconteceu com chitaozinho xororo anunciam aposentadoria"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "chitaozinho",
+          "xororo",
+          "anunciam",
+          "aposentadoria",
+          "palcos"
+        ],
+        "freshness_keywords": [
+          "November 2026",
+          "2026-11-22",
+          "novembro 2026",
+          "chitaozinho xororo anunciam aposentadoria 2026"
+        ],
+        "source_keywords": [
+          "G1 chitaozinho xororo anunciam aposentadoria",
+          "g1.globo.com chitaozinho xororo anunciam aposentadoria",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Chitãozinho e Xororó anunciam aposentadoria dos palcos |…",
+        "meta_description": "Notícia publicada por G1 em 2026-11-22. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "chitaozinho xororo anunciam aposentadoria últimas notícias",
+          "chitaozinho xororo anunciam aposentadoria",
+          "chitaozinho xororo anunciam aposentadoria news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "chitaozinho xororo anunciam aposentadoria latest news November 2026",
+          "chitaozinho xororo anunciam aposentadoria entertainment update 2026",
+          "chitaozinho xororo anunciam aposentadoria news 2026-11-22",
+          "latest entertainment news about chitaozinho xororo anunciam aposentadoria",
+          "chitaozinho xororo anunciam aposentadoria palcos latest update",
+          "G1 chitaozinho xororo anunciam aposentadoria entertainment",
+          "últimas notícias sobre chitaozinho xororo anunciam aposentadoria novembro 2026",
+          "chitaozinho xororo anunciam aposentadoria notícia de 2026-11-22",
+          "o que aconteceu com chitaozinho xororo anunciam aposentadoria",
+          "chitaozinho",
+          "xororo",
+          "anunciam",
+          "aposentadoria",
+          "palcos",
+          "November 2026",
+          "2026-11-22",
+          "novembro 2026",
+          "chitaozinho xororo anunciam aposentadoria 2026",
+          "G1 chitaozinho xororo anunciam aposentadoria",
+          "g1.globo.com chitaozinho xororo anunciam aposentadoria",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-11-22T12:48:59.032Z"
       }
     },
     {
@@ -719,144 +1424,6 @@
       }
     },
     {
-      "id": "a201ec4f",
-      "title": "Nigerian youth have shown their power in the past - why aren't they shaping this election?",
-      "url": "https://www.bbc.co.uk/news/articles/ck4g174n020eo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-11-22T00:10:37.000Z",
-      "discovered_at": "2026-11-22T08:52:12.413Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-11-22. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/abb2/live/99a82d30-e4e7-11f1-99a1-253766e7ad8b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/nigerian-youth-have-shown-their-power-in-the-past-why-aren-t-they-shaping-this-e-a201ec/",
-      "landing_url": "https://matchapp.tv/?news=a201ec4f#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-11-22",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "nigerian",
-          "youth",
-          "have",
-          "shown",
-          "their",
-          "power"
-        ],
-        "long_tail": [
-          "Nigerian youth have shown their power in the past - why aren't they shaping this election? 2026-11-22",
-          "world news November 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "nigerian",
-          "youth",
-          "have",
-          "shown",
-          "their",
-          "power"
-        ],
-        "freshness_keywords": [
-          "2026-11-22"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Nigerian youth have shown their power in the past - why…",
-        "meta_description": "World report published by BBC World on 2026-11-22. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-11-22",
-          "world news",
-          "global headlines",
-          "nigerian",
-          "youth",
-          "have",
-          "shown",
-          "their",
-          "power",
-          "Nigerian youth have shown their power in the past - why aren't they shaping this election? 2026-11-22",
-          "world news November 2026",
-          "2026-11-22",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-11-22T08:52:12.413Z"
-      }
-    },
-    {
-      "id": "7b29528f",
-      "title": "How a teen gamer and his mother helped rescue a missing girl",
-      "url": "https://www.bbc.co.uk/news/articles/cmq8lyv8lkjwo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-11-22T00:09:58.000Z",
-      "discovered_at": "2026-11-22T08:52:12.413Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-11-22. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3e06/live/d8778490-e503-11f1-9e2f-7fb5281f0b3c.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/how-a-teen-gamer-and-his-mother-helped-rescue-a-missing-girl-7b2952/",
-      "landing_url": "https://matchapp.tv/?news=7b29528f#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-11-22",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "how",
-          "teen",
-          "gamer",
-          "his",
-          "mother",
-          "helped"
-        ],
-        "long_tail": [
-          "How a teen gamer and his mother helped rescue a missing girl 2026-11-22",
-          "world news November 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "how",
-          "teen",
-          "gamer",
-          "his",
-          "mother",
-          "helped"
-        ],
-        "freshness_keywords": [
-          "2026-11-22"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "How a teen gamer and his mother helped rescue a missing…",
-        "meta_description": "World report published by BBC World on 2026-11-22. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-11-22",
-          "world news",
-          "global headlines",
-          "how",
-          "teen",
-          "gamer",
-          "his",
-          "mother",
-          "helped",
-          "How a teen gamer and his mother helped rescue a missing girl 2026-11-22",
-          "world news November 2026",
-          "2026-11-22",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-11-22T08:52:12.413Z"
-      }
-    },
-    {
       "id": "64efd5bf",
       "title": "Luca Guadagnino Says His ‘American Psycho’ Movie Not Moving Forward",
       "url": "https://www.hollywoodreporter.com/movies/movie-news/luca-guadagnino-american-psycho-movie-not-moving-forward-1236760596/",
@@ -944,144 +1511,6 @@
           "The Hollywood Reporter Luca Guadagnino Says His",
           "hollywoodreporter.com Luca Guadagnino Says His",
           "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-11-22T08:52:12.413Z"
-      }
-    },
-    {
-      "id": "d93cccce",
-      "title": "Will COP31 end with a new global climate deal?",
-      "url": "https://www.bbc.co.uk/news/videos/cqn0dwrewrwxo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-11-21T22:44:52.000Z",
-      "discovered_at": "2026-11-22T08:52:12.413Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-11-21. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/511b/live/004fea80-e5fd-11f1-a094-5fdc692f3e33.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/will-cop31-end-with-a-new-global-climate-deal-d93ccc/",
-      "landing_url": "https://matchapp.tv/?news=d93cccce#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-11-21",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "will",
-          "cop31",
-          "end",
-          "new",
-          "global",
-          "climate"
-        ],
-        "long_tail": [
-          "Will COP31 end with a new global climate deal? 2026-11-21",
-          "world news November 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "will",
-          "cop31",
-          "end",
-          "new",
-          "global",
-          "climate"
-        ],
-        "freshness_keywords": [
-          "2026-11-21"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Will COP31 end with a new global climate deal? | World…",
-        "meta_description": "World report published by BBC Science on 2026-11-21. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-11-21",
-          "world news",
-          "global headlines",
-          "will",
-          "cop31",
-          "end",
-          "new",
-          "global",
-          "climate",
-          "Will COP31 end with a new global climate deal? 2026-11-21",
-          "world news November 2026",
-          "2026-11-21",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-11-22T08:52:12.413Z"
-      }
-    },
-    {
-      "id": "e54ec07f",
-      "title": "Fight over fossil fuels leaves COP31 climate talks in deadlock",
-      "url": "https://www.bbc.co.uk/news/articles/c6ly5w40eg07o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-11-21T22:19:43.000Z",
-      "discovered_at": "2026-11-21T12:57:04.743Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-11-21. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/5253/live/c9ca5500-e579-11f1-a5f6-b3028adf2d6d.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/fight-over-fossil-fuels-leaves-cop31-climate-talks-in-deadlock-e54ec0/",
-      "landing_url": "https://matchapp.tv/?news=e54ec07f#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-11-21",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "fight",
-          "over",
-          "fossil",
-          "fuels",
-          "leaves",
-          "cop31"
-        ],
-        "long_tail": [
-          "Fight over fossil fuels leaves COP31 climate talks in deadlock 2026-11-21",
-          "world news November 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "fight",
-          "over",
-          "fossil",
-          "fuels",
-          "leaves",
-          "cop31"
-        ],
-        "freshness_keywords": [
-          "2026-11-21"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Fight over fossil fuels leaves COP31 climate talks in…",
-        "meta_description": "World report published by BBC Science on 2026-11-21. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-11-21",
-          "world news",
-          "global headlines",
-          "fight",
-          "over",
-          "fossil",
-          "fuels",
-          "leaves",
-          "cop31",
-          "Fight over fossil fuels leaves COP31 climate talks in deadlock 2026-11-21",
-          "world news November 2026",
-          "2026-11-21",
-          "BBC Science"
         ],
         "seo_generated_at": "2026-11-22T08:52:12.413Z"
       }
@@ -1555,144 +1984,6 @@
           "The Hollywood Reporter hunger games sunrise reaping",
           "hollywoodreporter.com hunger games sunrise reaping",
           "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-11-22T08:52:12.413Z"
-      }
-    },
-    {
-      "id": "a727c7ec",
-      "title": "'O câncer muda você': princesa Kate Middleton fala sobre doença em documentário da BBC",
-      "url": "https://g1.globo.com/mundo/noticia/2026/11/21/o-cancer-muda-voce-princesa-catherine-fala-sobre-doenca-em-documentario-da-bbc.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-11-21T15:39:09.000Z",
-      "discovered_at": "2026-11-22T08:52:12.413Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-11-21. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/mTIlQZ8puBt_PCb_MUh9_PtLibE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/o/e/vmBMLbRpWIxWjY1v9r9g/e837a860-e459-11f1-9431-9fe383d2f2c7.jpg.webp",
-      "matchapp_url": "https://matchapp.tv/news/articles/o-cancer-muda-voce-princesa-kate-middleton-fala-sobre-doenca-em-documentario-da--a727c7/",
-      "landing_url": "https://matchapp.tv/?news=a727c7ec#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-11-21",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "cancer",
-          "muda",
-          "voce",
-          "princesa",
-          "kate",
-          "middleton"
-        ],
-        "long_tail": [
-          "'O câncer muda você': princesa Kate Middleton fala sobre doença em documentário da BBC 2026-11-21",
-          "notícias mundiais novembro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "cancer",
-          "muda",
-          "voce",
-          "princesa",
-          "kate",
-          "middleton"
-        ],
-        "freshness_keywords": [
-          "2026-11-21"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "'O câncer muda você': princesa Kate Middleton fala sobre…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-21. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-11-21",
-          "notícias do mundo",
-          "notícias internacionais",
-          "cancer",
-          "muda",
-          "voce",
-          "princesa",
-          "kate",
-          "middleton",
-          "'O câncer muda você': princesa Kate Middleton fala sobre doença em documentário da BBC 2026-11-21",
-          "notícias mundiais novembro 2026",
-          "2026-11-21",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-11-22T08:52:12.413Z"
-      }
-    },
-    {
-      "id": "d90b1098",
-      "title": "'Ainda não há compromisso' na COP31 do clima para um acordo, afirma União Europeia",
-      "url": "https://g1.globo.com/meio-ambiente/noticia/2026/11/21/ainda-nao-ha-compromisso-na-cop31-do-clima-para-um-acordo-afirma-uniao-europeia.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-11-21T15:31:31.000Z",
-      "discovered_at": "2026-11-22T08:52:12.413Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-11-21. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/YqqTimsjsdg0GwGM8zj4fmPDlxg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/1/N/r5N104TYa9odUAGPtQ8A/2026-11-08t135734z-2008179015-rc2pjoap5ed7-rtrmadp-3-climate-cop31.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/ainda-nao-ha-compromisso-na-cop31-do-clima-para-um-acordo-afirma-uniao-europeia-d90b10/",
-      "landing_url": "https://matchapp.tv/?news=d90b1098#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-11-21",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "ainda",
-          "nao",
-          "compromisso",
-          "cop31",
-          "clima",
-          "acordo"
-        ],
-        "long_tail": [
-          "'Ainda não há compromisso' na COP31 do clima para um acordo, afirma União Europeia 2026-11-21",
-          "notícias mundiais novembro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "ainda",
-          "nao",
-          "compromisso",
-          "cop31",
-          "clima",
-          "acordo"
-        ],
-        "freshness_keywords": [
-          "2026-11-21"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "'Ainda não há compromisso' na COP31 do clima para um…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-21. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-11-21",
-          "notícias do mundo",
-          "notícias internacionais",
-          "ainda",
-          "nao",
-          "compromisso",
-          "cop31",
-          "clima",
-          "acordo",
-          "'Ainda não há compromisso' na COP31 do clima para um acordo, afirma União Europeia 2026-11-21",
-          "notícias mundiais novembro 2026",
-          "2026-11-21",
-          "G1 Mundo"
         ],
         "seo_generated_at": "2026-11-22T08:52:12.413Z"
       }
@@ -3252,104 +3543,6 @@
       }
     },
     {
-      "id": "8d2a8ee1",
-      "title": "Deep Purple adia show no Brasil após vocalista precisar de atendimento médico de urgência",
-      "url": "https://g1.globo.com/pop-arte/noticia/2026/11/19/deep-purple-adia-show-no-brasil-apos-vocalista-precisar-de-atendimento-medico-de-urgencia.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-11-19T19:57:43.000Z",
-      "discovered_at": "2026-11-20T13:30:38.187Z",
-      "event_type": "Music",
-      "category": "entertainment",
-      "person": "Deep Purple",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/JBPFFYypEs555SUDTzNaajQg94I=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2023/x/A/bY0uAFQTaNuBUuAxG6mw/dsc-7357.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/deep-purple-adia-show-no-brasil-apos-vocalista-precisar-de-atendimento-medico-de-8d2a8e/",
-      "landing_url": "https://matchapp.tv/?news=8d2a8ee1#latest-news",
-      "seo": {
-        "primary_keyword": "Deep Purple últimas notícias",
-        "short_tail": [
-          "Deep Purple",
-          "Deep Purple news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "Deep Purple latest news November 2026",
-          "Deep Purple music update 2026",
-          "Deep Purple news 2026-11-19",
-          "latest music news about Deep Purple",
-          "deep purple deep purple adia show latest update",
-          "G1 Deep Purple music",
-          "últimas notícias sobre Deep Purple novembro 2026",
-          "Deep Purple notícia de 2026-11-19",
-          "o que aconteceu com Deep Purple"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Deep Purple",
-          "deep",
-          "purple",
-          "adia",
-          "show",
-          "brasil",
-          "apos"
-        ],
-        "freshness_keywords": [
-          "November 2026",
-          "2026-11-19",
-          "novembro 2026",
-          "Deep Purple 2026"
-        ],
-        "source_keywords": [
-          "G1 Deep Purple",
-          "g1.globo.com Deep Purple",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Deep Purple adia show no Brasil após vocalista precisar de…",
-        "meta_description": "Deep Purple: Notícia publicada por G1 em 2026-11-19. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "Deep Purple últimas notícias",
-          "Deep Purple",
-          "Deep Purple news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Deep Purple latest news November 2026",
-          "Deep Purple music update 2026",
-          "Deep Purple news 2026-11-19",
-          "latest music news about Deep Purple",
-          "deep purple deep purple adia show latest update",
-          "G1 Deep Purple music",
-          "últimas notícias sobre Deep Purple novembro 2026",
-          "Deep Purple notícia de 2026-11-19",
-          "o que aconteceu com Deep Purple",
-          "deep",
-          "purple",
-          "adia",
-          "show",
-          "brasil",
-          "apos",
-          "November 2026",
-          "2026-11-19",
-          "novembro 2026",
-          "Deep Purple 2026",
-          "G1 Deep Purple",
-          "g1.globo.com Deep Purple",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-11-20T13:30:38.187Z"
-      }
-    },
-    {
       "id": "8ed26ef3",
       "title": "The most iconic sports film of all time taught us winning isn’t everything: 50 years of Rocky",
       "url": "https://theconversation.com/the-most-iconic-sports-film-of-all-time-taught-us-winning-isnt-everything-50-years-of-rocky-276876",
@@ -3435,203 +3628,6 @@
           "The Conversation sports headlines",
           "2026-11-19",
           "November 2026"
-        ],
-        "seo_generated_at": "2026-11-20T13:30:38.187Z"
-      }
-    },
-    {
-      "id": "f55361ff",
-      "title": "Marlon Jackson, irmão de Michael Jackson, revela diagnóstico de câncer de próstata",
-      "url": "https://g1.globo.com/pop-arte/noticia/2026/11/19/marlon-jackson-irmao-de-michael-jackson-revela-diagnostico-de-cancer-de-prostata.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-11-19T18:25:25.000Z",
-      "discovered_at": "2026-11-20T13:30:38.187Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Marlon Jackson",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/R7pJxgf0S1G3P-LSpOPt0_HxR1o=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/n/d/rzDxvoTE6M3RdBgZ1z6Q/michael-2.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/marlon-jackson-irmao-de-michael-jackson-revela-diagnostico-de-cancer-de-prostata-f55361/",
-      "landing_url": "https://matchapp.tv/?news=f55361ff#latest-news",
-      "seo": {
-        "primary_keyword": "Marlon Jackson últimas notícias",
-        "short_tail": [
-          "Marlon Jackson",
-          "Marlon Jackson news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "Marlon Jackson latest news November 2026",
-          "Marlon Jackson entertainment update 2026",
-          "Marlon Jackson news 2026-11-19",
-          "latest entertainment news about Marlon Jackson",
-          "marlon jackson marlon jackson irmao michael latest update",
-          "G1 Marlon Jackson entertainment",
-          "últimas notícias sobre Marlon Jackson novembro 2026",
-          "Marlon Jackson notícia de 2026-11-19",
-          "o que aconteceu com Marlon Jackson"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Marlon Jackson",
-          "marlon",
-          "jackson",
-          "irmao",
-          "michael",
-          "revela"
-        ],
-        "freshness_keywords": [
-          "November 2026",
-          "2026-11-19",
-          "novembro 2026",
-          "Marlon Jackson 2026"
-        ],
-        "source_keywords": [
-          "G1 Marlon Jackson",
-          "g1.globo.com Marlon Jackson",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Marlon Jackson, irmão de Michael Jackson, revela…",
-        "meta_description": "Marlon Jackson: Notícia publicada por G1 em 2026-11-19. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "Marlon Jackson últimas notícias",
-          "Marlon Jackson",
-          "Marlon Jackson news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Marlon Jackson latest news November 2026",
-          "Marlon Jackson entertainment update 2026",
-          "Marlon Jackson news 2026-11-19",
-          "latest entertainment news about Marlon Jackson",
-          "marlon jackson marlon jackson irmao michael latest update",
-          "G1 Marlon Jackson entertainment",
-          "últimas notícias sobre Marlon Jackson novembro 2026",
-          "Marlon Jackson notícia de 2026-11-19",
-          "o que aconteceu com Marlon Jackson",
-          "marlon",
-          "jackson",
-          "irmao",
-          "michael",
-          "revela",
-          "November 2026",
-          "2026-11-19",
-          "novembro 2026",
-          "Marlon Jackson 2026",
-          "G1 Marlon Jackson",
-          "g1.globo.com Marlon Jackson",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-11-20T13:30:38.187Z"
-      }
-    },
-    {
-      "id": "50911f2f",
-      "title": "Por que GTA 6 não é recomendado para menores de 18 anos — e o alerta de psiquiatras e psicólogos",
-      "url": "https://g1.globo.com/pop-arte/games/noticia/2026/11/19/por-que-gta-6-nao-e-recomendado-para-menores-de-18-anos-e-o-alerta-de-psiquiatras-e-psicologos.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-11-19T16:24:01.000Z",
-      "discovered_at": "2026-11-20T13:30:38.187Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/WSe1wrtgsnxyHnFlLgz1IHTFHy8=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/1/T/lrPsHNSxSL0S0JCC2qxA/8af84970-e337-11f1-99a1-253766e7ad8b.jpg.webp",
-      "matchapp_url": "https://matchapp.tv/news/articles/por-que-gta-6-nao-e-recomendado-para-menores-de-18-anos-e-o-alerta-de-psiquiatra-50911f/",
-      "landing_url": "https://matchapp.tv/?news=50911f2f#latest-news",
-      "seo": {
-        "primary_keyword": "que gta nao recomendado últimas notícias",
-        "short_tail": [
-          "que gta nao recomendado",
-          "que gta nao recomendado news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "que gta nao recomendado latest news November 2026",
-          "que gta nao recomendado entertainment update 2026",
-          "que gta nao recomendado news 2026-11-19",
-          "latest entertainment news about que gta nao recomendado",
-          "que gta nao recomendado menores anos latest update",
-          "G1 que gta nao recomendado entertainment",
-          "últimas notícias sobre que gta nao recomendado novembro 2026",
-          "que gta nao recomendado notícia de 2026-11-19",
-          "o que aconteceu com que gta nao recomendado"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "que",
-          "gta",
-          "nao",
-          "recomendado",
-          "menores",
-          "anos",
-          "alerta",
-          "psiquiatras"
-        ],
-        "freshness_keywords": [
-          "November 2026",
-          "2026-11-19",
-          "novembro 2026",
-          "que gta nao recomendado 2026"
-        ],
-        "source_keywords": [
-          "G1 que gta nao recomendado",
-          "g1.globo.com que gta nao recomendado",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Por que GTA 6 não é recomendado para menores de 18 anos —…",
-        "meta_description": "Notícia publicada por G1 em 2026-11-19. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "que gta nao recomendado últimas notícias",
-          "que gta nao recomendado",
-          "que gta nao recomendado news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "que gta nao recomendado latest news November 2026",
-          "que gta nao recomendado entertainment update 2026",
-          "que gta nao recomendado news 2026-11-19",
-          "latest entertainment news about que gta nao recomendado",
-          "que gta nao recomendado menores anos latest update",
-          "G1 que gta nao recomendado entertainment",
-          "últimas notícias sobre que gta nao recomendado novembro 2026",
-          "que gta nao recomendado notícia de 2026-11-19",
-          "o que aconteceu com que gta nao recomendado",
-          "que",
-          "gta",
-          "nao",
-          "recomendado",
-          "menores",
-          "anos",
-          "alerta",
-          "psiquiatras",
-          "November 2026",
-          "2026-11-19",
-          "novembro 2026",
-          "que gta nao recomendado 2026",
-          "G1 que gta nao recomendado",
-          "g1.globo.com que gta nao recomendado",
-          "G1 entertainment news"
         ],
         "seo_generated_at": "2026-11-20T13:30:38.187Z"
       }
@@ -3724,96 +3720,6 @@
           "November 2026"
         ],
         "seo_generated_at": "2026-11-19T13:46:30.705Z"
-      }
-    },
-    {
-      "id": "28c74dc3",
-      "title": "Pourquoi la génération Z doit en partie à Napoléon son obsession pour la musculation",
-      "url": "https://theconversation.com/pourquoi-la-generation-z-doit-en-partie-a-napoleon-son-obsession-pour-la-musculation-295641",
-      "source": "The Conversation",
-      "source_domain": "theconversation.com",
-      "source_home": "https://theconversation.com",
-      "country": "GLOBAL",
-      "category": "sports",
-      "sport": "Sports",
-      "event_type": "Sports",
-      "published_at": "2026-11-18T10:26:52.000Z",
-      "timestamp_kind": "published",
-      "discovery_source": "Authorized publisher RSS/Atom",
-      "image": null,
-      "language": "en",
-      "discovered_at": "2026-11-18T14:14:42.494Z",
-      "person": "",
-      "description": "Sports coverage linked to the original publisher The Conversation. MatchApp records when it was indexed; open the source for full context.",
-      "matchapp_url": "https://matchapp.tv/news/articles/pourquoi-la-generation-z-doit-en-partie-a-napoleon-son-obsession-pour-la-muscula-28c74d/",
-      "landing_url": "https://matchapp.tv/?news=28c74dc3#latest-news",
-      "seo": {
-        "primary_keyword": "pourquoi generation doit partie napoleon sports news",
-        "short_tail": [
-          "Sports",
-          "sports news",
-          "latest sports news",
-          "today sports headlines",
-          "pourquoi",
-          "generation",
-          "doit",
-          "partie",
-          "napoleon",
-          "son"
-        ],
-        "long_tail": [
-          "pourquoi generation doit partie napoleon sports news 2026",
-          "pourquoi generation doit partie napoleon latest update 2026-11-18",
-          "Sports latest news November 2026",
-          "The Conversation sports news indexed 2026-11-18",
-          "pourquoi generation doit partie napoleon The Conversation original report"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "pourquoi",
-          "generation",
-          "doit",
-          "partie",
-          "napoleon",
-          "son",
-          "obsession",
-          "pour"
-        ],
-        "freshness_keywords": [
-          "2026-11-18",
-          "November 2026"
-        ],
-        "source_keywords": [
-          "The Conversation",
-          "Sports The Conversation",
-          "The Conversation sports headlines"
-        ],
-        "meta_title": "Pourquoi la génération Z doit en partie à Napoléon son…",
-        "meta_description": "Sports reporting indexed 2026-11-18. Open the original publisher through MatchApp Latest News.",
-        "keywords": [
-          "pourquoi generation doit partie napoleon sports news",
-          "Sports",
-          "sports news",
-          "latest sports news",
-          "today sports headlines",
-          "pourquoi",
-          "generation",
-          "doit",
-          "partie",
-          "napoleon",
-          "son",
-          "pourquoi generation doit partie napoleon sports news 2026",
-          "pourquoi generation doit partie napoleon latest update 2026-11-18",
-          "Sports latest news November 2026",
-          "The Conversation sports news indexed 2026-11-18",
-          "pourquoi generation doit partie napoleon The Conversation original report",
-          "The Conversation",
-          "Sports The Conversation",
-          "The Conversation sports headlines",
-          "2026-11-18",
-          "November 2026"
-        ],
-        "seo_generated_at": "2026-11-18T14:15:20.024Z"
       }
     }
   ]
