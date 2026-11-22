@@ -33,7 +33,7 @@ test('PR crawler checks fetch candidate files locally while enforcing the produc
  await assert.rejects(auditLiveSearch(local,transport({'/sitemaps.xml':'<sitemapindex><sitemap><loc>https://untrusted.example/sitemap.xml</loc></sitemap></sitemapindex>'}),base),/Noncanonical/);
 });
 
-test('crawler retries a transient timeout once and preserves persistent failure URL',async()=>{
+test('crawler retries transient failures with bounded backoff, never masking persistent HTTP errors',async()=>{
  const healthy=transport();let calls=0;
  const retry=async(url,options)=>{
   if(new URL(url).pathname==='/guide/'&&++calls===1)throw new DOMException('request timed out','TimeoutError');
