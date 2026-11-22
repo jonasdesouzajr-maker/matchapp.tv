@@ -151,4 +151,4 @@ fs.writeFileSync(path.join(root,'tools/kids-sitemap-meta.json'),JSON.stringify(s
 console.log(`Built ${urls.length} public Kids guides with stable SEO revision ${SEO_REVISION}.`);
 
 // Preserve the shared brand on regenerated guides.
-require('./finalize-brand.js').finalizeBrand();
+require('./finalize-brand.js').finalizeBrand(['kids/']);
