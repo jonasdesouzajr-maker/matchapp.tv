@@ -88,10 +88,12 @@ jobs:
         run: |
           printf '%s\n' "$GITHUB_SHA" > deployment-sha.txt
           test "$(cat deployment-sha.txt)" = "$GITHUB_SHA"
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0 (Node.js 24 uploader)
         with:
           name: github-pages-${{ github.run_attempt }}
           path: .
+          # v3 included dotfiles; v5 defaults to excluding them. Preserve the live artifact.
+          include-hidden-files: true
       # Upload finalization can precede artifact visibility in the Actions API.
       # Deploy-pages queries that API immediately and otherwise fails with "Found 0 artifact(s)".
       - name: Wait until uploaded Pages artifact is indexed
@@ -116,7 +118,7 @@ jobs:
           exit 1
       - name: Deploy validated Pages artifact
         id: deploy
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1 (Node.js 24)
         with:
           artifact_name: github-pages-${{ github.run_attempt }}
 
