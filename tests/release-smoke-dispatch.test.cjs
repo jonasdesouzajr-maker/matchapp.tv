@@ -7,8 +7,8 @@ const vm = require('node:vm');
 const {requestReleaseSmoke, titleFor, completeList, DISPATCH_STEP} = require('../tools/release-smoke-dispatch.cjs');
 const SHA = 'a'.repeat(40), NEWER = 'b'.repeat(40);
 const root = path.join(__dirname, '..');
-const pagesYaml = fs.readFileSync(path.join(root, '.github/workflows/pages-deploy.yml'), 'utf8');
-const smokeYaml = fs.readFileSync(path.join(root, '.github/workflows/release-smoke.yml'), 'utf8');
+const pagesYaml = fs.readFileSync(path.join(root, '.github/workflows/pages-deploy.yml'), 'utf8').replace(/\r\n/g, '\n');
+const smokeYaml = fs.readFileSync(path.join(root, '.github/workflows/release-smoke.yml'), 'utf8').replace(/\r\n/g, '\n');
 const pageRun = (extra = {}) => ({id: 101, path: '.github/workflows/pages-deploy.yml',
   head_sha: SHA, head_branch: 'main', run_attempt: 1, status: 'in_progress',
   created_at: '2026-10-20T21:00:00Z', ...extra});

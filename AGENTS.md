@@ -10,6 +10,14 @@ If the app artwork itself changes, update its approved social preview JPEG as pa
 
 Apply this rule to ALL current and future projects with public sharing URLs, including Android apps with landing pages. See docs/SOCIAL_PREVIEW_POLICY.md. Keep AdSense, Play and design locks unaffected.
 
+## Permanent Git release preflight across projects - 2026-11-22
+
+For ANY Git-connected ChatGPT project, treat avoiding foreseeable red runs as a release requirement. Before a push/merge/dispatch, fetch the latest remote branch; inspect in-progress workflows and known failing assertions; validate files included/excluded from each target (GitHub Actions, Vercel, Android debug/release, Pages) and run the complete relevant build, test, lint, syntax and policy audit on the exact candidate commit. Run targeted regression tests AND full suites where feasible. For changes to generated or mirrored artifacts, synchronize every required byte-for-byte source and test the downstream consumers. Never leave known failures for CI to discover.
+
+Do not push parallel competing edits or start overlapping releases; use atomic commits and existing deployment serialization. Keep production on the newest tested authorized SHA. Use bounded retries only for confirmed transient infrastructure problems; real test failures must fail closed, never be suppressed, deleted or relabeled as success. Preserve all historical failures, source-specific security and AdSense gates, and evidence. On an unexpected run failure, investigate logs immediately, reproduce, fix the cause, verify with the relevant pipelines, publish the corrected revision and report the truth. No platform can guarantee zero errors; avoid promises, measure and reduce preventable failures.
+
+Specifically, Vercel excludes android-studio debug files while GitHub Pages CI includes them: social metadata sync must skip an absent native debug file in the website-only build but must enforce exact parity in a full GitHub checkout. Review build target inclusion before modifying cross-platform sync scripts.
+
 ## Owner's permanent GitHub Actions and release reliability policy - 2026-11-22
 
 This is a standing MatchApp instruction for all coding agents and future releases that read this repository. The goal is reliable, reproducible, verified green runs and publication of the newest authorized main commit, **not cosmetic green badges**. No engineer can guarantee that GitHub, Vercel, networks, external APIs, and live user journeys will never fail; report unverified or genuinely failing work accurately.

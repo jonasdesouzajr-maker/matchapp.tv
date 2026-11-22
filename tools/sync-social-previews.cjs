@@ -58,6 +58,22 @@ function render(html,route,bytes){
  }
  return out;
 }
+function syncAndroidDebugPreview(mode='write',env=process.env,preview=path.join(root,'android-studio','app','src','debug','assets','ambient-preview','discover.html'),source=path.join(root,'discover.html')){
+ // Vercel intentionally omits android-studio from website-only build uploads.
+ // A complete GitHub checkout MUST contain the native debug preview.
+ if(!fs.existsSync(preview)){
+  if(env.GITHUB_ACTIONS==='true')throw Error('Required Android debug-preview file missing in GitHub CI: '+preview);
+  console.log('Android debug preview omitted from web-only build; social artwork metadata still validated');
+  return false;
+ }
+ const discover=fs.readFileSync(source),staged=fs.readFileSync(preview);
+ if(!discover.equals(staged)){
+  if(mode==='check')throw Error('Stale Android debug preview: discover.html is out of sync');
+  fs.writeFileSync(preview,discover);
+  console.log('Synced Android debug-only discover.html preview');
+ }
+ return true;
+}
 function main(mode='write'){
  let updates=0;
  for(const route of routes){
@@ -70,21 +86,11 @@ function main(mode='write'){
   }
   console.log('Social artwork:',route.page,route.image,revision(image));
  }
- // The debug-only Android WebView preview is required to match the live web HTML
- // byte-for-byte. Social metadata is rewritten above, so refresh its staged copy
- // before running the native preview parity tests. Never touch release assets.
- const preview=path.join(root,'android-studio','app','src','debug','assets','ambient-preview','discover.html');
- const discover=fs.readFileSync(path.join(root,'discover.html'));
- const staged=fs.readFileSync(preview);
- if(!discover.equals(staged)){
-  if(mode==='check')throw Error('Stale Android debug preview: discover.html is out of sync');
-  fs.writeFileSync(preview,discover);
-  console.log('Synced Android debug-only discover.html preview');
- }
+ syncAndroidDebugPreview(mode);
  console.log(mode==='check'?'Validated all social preview revisions':'Updated '+updates+' public page(s)');
 }
 if(require.main===module){
  try{main(process.argv.includes('--check')?'check':'write');}
  catch(error){console.error(error.stack);process.exitCode=1;}
 }
-module.exports={routes,revision,jpegSize,render,main};
+module.exports={routes,revision,jpegSize,render,syncAndroidDebugPreview,main};
