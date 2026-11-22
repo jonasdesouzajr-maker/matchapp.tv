@@ -55,25 +55,31 @@ test('verified guest poster can be saved or shared without bypassing public-post
  assert.ok(!read('kids/index.html').includes('ma-public-proof-poster'),'Kids Mode remains untouched');
 });
 
-test('adult landing pages show brand wordmark previews while share cards retain the selected poster',()=>{
- const url='https://matchapp.tv/og-image.jpg?v=20260928-brand-preview1';
- const preview=fs.readFileSync(path.join(root,'og-image.jpg'));
- assert.equal(preview.subarray(0,2).toString('hex'),'ffd8');
- assert.ok(preview.length<300000,'link preview should be small enough for messaging crawlers');
+test('adult landing pages expose real public branded previews while share cards retain the selected poster',()=>{
  const schemaLogo=fs.readFileSync(path.join(root,'assets/brand/matchapp-official-icon-512.webp'));
  assert.equal(schemaLogo.subarray(0,4).toString(),'RIFF');
  assert.equal(schemaLogo.subarray(8,12).toString(),'WEBP');
  for(const page of ['index.html','discover.html']){
   const html=read(page);
+  const match=html.match(/<meta\s+property="og:image"\s+content="([^"]+)"/i);
+  assert.ok(match,page+' is missing an og:image URL');
+  const url=new URL(match[1]);
+  assert.equal(url.origin,'https://matchapp.tv',page+' must use the canonical HTTPS host');
+  assert.match(url.pathname,/^\/[a-z0-9][a-z0-9-]*\.jpe?g$/i,page+' must publish a branded JPEG preview');
+  const preview=fs.readFileSync(path.join(root,url.pathname.slice(1)));
+  assert.equal(preview.subarray(0,2).toString('hex'),'ffd8',page+' preview is not a JPEG');
+  assert.ok(preview.length<300000,page+' preview should be small enough for messaging crawlers');
   for(const fragment of [
-   'property="og:image" content="'+url+'"',
+   'property="og:image:secure_url" content="'+url.href+'"',
+   'property="og:image:type" content="image/jpeg"',
    'property="og:image:width" content="1200"',
    'property="og:image:height" content="630"',
-   'name="twitter:image" content="'+url+'"',
+   'name="twitter:image" content="'+url.href+'"',
    'verified-public-guest-share.js?v=20261002-shareposter-recovery1',
    'guest-share-rewards.css?v=20260926-selectedposter1'
   ])assert.ok(html.includes(fragment),page+' missing '+fragment);
  }
+
  const share=read('share.js');
  const caption=share.slice(share.indexOf('function shareText()'),share.indexOf('// Native share sheet'));
  assert.ok(caption.includes('MatchApp Ai'));
