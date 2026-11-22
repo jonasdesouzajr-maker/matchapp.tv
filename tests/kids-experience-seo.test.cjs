@@ -47,7 +47,7 @@ test('Kids title generator uses rich title-specific metadata and safe structured
 
 test('Kids generation finalizes only its Kids HTML and cannot exhaust memory parsing unrelated adult pages',()=>{
   const src=read('tools/build-kids-pages.js');
-  assert.match(src,/finalizeBrand\(\['kids\\/'\]\)/);
+  assert.ok(src.includes("finalizeBrand(['kids/'])"),'Only generated Kids pages should be brand-finalized');
   assert.doesNotMatch(src,/finalizeBrand\(\s*\)/);
 });
 
