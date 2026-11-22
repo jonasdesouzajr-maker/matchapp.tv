@@ -1,3 +1,5 @@
+[Reading 205 lines from start (total: 205 lines, 0 remaining)]
+
 name: Deploy MatchApp Pages
 
 on:
@@ -23,7 +25,7 @@ jobs:
       name: github-pages
       url: https://matchapp.tv
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -147,6 +149,54 @@ jobs:
             await core.summary.addHeading('Production smoke delivery')
               .addRaw(`SHA ${evidence.expectedSha}: ${evidence.status}\n`)
               .addLink('Existing smoke run', evidence.smokeUrl).write();
+      # Hold the Pages concurrency slot until the exact matching live smoke completes.
+      # Without this barrier, a queued deployment can replace production during Playwright
+      # and make the smoke fail its correct before/after deployment-identity assertion.
+      - name: Wait for the exact live smoke before releasing the Pages queue
+        if: success() && steps.deploy.outcome == 'success'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          evidence="artifacts/release-smoke-dispatch/delivery.json"
+          test -s "$evidence"
+          smoke_id="$(node -e "const d=require('./artifacts/release-smoke-dispatch/delivery.json'); if (!Number.isSafeInteger(d.smokeRunId) || d.smokeRunId < 1) process.exit(2); process.stdout.write(String(d.smokeRunId));")"
+          expected_title="Release smoke: ${EXPECTED_SHA}"
+          for attempt in $(seq 1 180); do
+            run_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${smoke_id}")"
+            title="$(jq -r '.display_title // ""' <<< "$run_json")"
+            event="$(jq -r '.event // ""' <<< "$run_json")"
+            path="$(jq -r '.path // ""' <<< "$run_json")"
+            branch="$(jq -r '.head_branch // ""' <<< "$run_json")"
+            status="$(jq -r '.status // ""' <<< "$run_json")"
+            conclusion="$(jq -r '.conclusion // ""' <<< "$run_json")"
+            if [[ "$title" != "$expected_title" || "$event" != "workflow_dispatch" || "$path" != ".github/workflows/release-smoke.yml" || "$branch" != "main" ]]; then
+              echo "::error::Smoke run identity does not match the deployed SHA and expected workflow."
+              exit 1
+            fi
+            case "$status" in
+              completed)
+                if [[ "$conclusion" == "success" ]]; then
+                  echo "Live smoke $smoke_id passed for $EXPECTED_SHA."
+                  exit 0
+                fi
+                echo "::error::Live smoke $smoke_id completed with conclusion '$conclusion'."
+                exit 1
+                ;;
+              queued|in_progress|waiting|pending|requested)
+                echo "Waiting for live smoke $smoke_id (attempt $attempt/180; status=$status)."
+                sleep 10
+                ;;
+              *)
+                echo "::error::Live smoke $smoke_id entered unexpected status '$status'."
+                exit 1
+                ;;
+            esac
+          done
+          echo "::error::Live smoke $smoke_id did not finish within 30 minutes; keeping the release incomplete."
+          exit 1
       - name: Keep smoke dispatch and reconciliation evidence
         if: ${{ always() && steps.deploy.outcome == 'success' }}
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0 (Node.js 24)

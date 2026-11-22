@@ -1,3 +1,5 @@
+[Reading 166 lines from start (total: 166 lines, 0 remaining)]
+
 name: Live MatchApp Browser and Android Emulator Smoke
 run-name: 'Release smoke: ${{ inputs.expected_sha }}'
 on:
@@ -22,7 +24,8 @@ permissions:
   contents: read
 concurrency:
   group: live-smoke-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
+  queue: max
 jobs:
   live-browser:
     if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
