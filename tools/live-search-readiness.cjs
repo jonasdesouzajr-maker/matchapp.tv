@@ -3,7 +3,7 @@ const {JSDOM}=require('jsdom');
 // Public read-only checks. Fetch only canonical URLs declared by the live site.
 async function auditLiveSearch(base='https://matchapp.tv',request=fetch,canonicalBase=base){
  const origin=new URL(base).origin,canonicalOrigin=new URL(canonicalBase).origin,issues=[];
- const candidateOrigin=origin!==canonicalOrigin,maxAttempts=candidateOrigin?3:2,batchSize=candidateOrigin?2:8;
+ const candidateOrigin=origin!==canonicalOrigin,maxAttempts=candidateOrigin?3:4,batchSize=candidateOrigin?2:8;
  const circuit={failures:0,threshold:5,open:false};
  function trip(url,msg){circuit.failures++;if(circuit.failures>=circuit.threshold){circuit.open=true;console.warn("Circuit open after "+circuit.failures+" failures");}throw Error(url+": "+msg);}
  async function get(url){
@@ -20,10 +20,14 @@ async function auditLiveSearch(base='https://matchapp.tv',request=fetch,canonica
    }catch(error){
     // Only retry transient transport failures. Persistent HTTP, canonical and
     // content defects remain fatal; every final failure identifies its URL.
-    const transient=["TimeoutError","AbortError","TypeError"].includes(error.name)||/HTTP 50[234]/.test(error.message);
-    if(attempt===maxAttempts-1||!transient)trip(url,error.message);
-    console.warn('Crawler transport retry '+url+': '+error.message);
-    await new Promise(resolve=>setTimeout(resolve,250));
+    const transient=["TimeoutError","AbortError","TypeError"].includes(error.name)||/^HTTP (?:429|500|502|503|504)\b/.test(error.message);
+    if(attempt===maxAttempts-1||!transient)
+     trip(url,transient?error.message+' (after '+maxAttempts+' attempts)':error.message);
+    // A brief single retry raced a second CDN/connection failure. Exponential
+    // backoff gives transient networks time to recover without hiding defects.
+    const pause=Math.min(2500,400*(2**attempt));
+    console.warn('Crawler transport retry '+(attempt+1)+'/'+(maxAttempts-1)+' '+url+': '+error.message+' (backoff '+pause+'ms)');
+    await new Promise(resolve=>setTimeout(resolve,pause));
    }
   }
  }

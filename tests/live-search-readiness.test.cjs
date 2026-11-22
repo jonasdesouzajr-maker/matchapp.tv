@@ -33,7 +33,7 @@ test('PR crawler checks fetch candidate files locally while enforcing the produc
  await assert.rejects(auditLiveSearch(local,transport({'/sitemaps.xml':'<sitemapindex><sitemap><loc>https://untrusted.example/sitemap.xml</loc></sitemap></sitemapindex>'}),base),/Noncanonical/);
 });
 
-test('crawler retries a transient timeout once and preserves persistent failure URL',async()=>{
+test('crawler retries transient failures with bounded backoff, never masking persistent HTTP errors',async()=>{
  const healthy=transport();let calls=0;
  const retry=async(url,options)=>{
   if(new URL(url).pathname==='/guide/'&&++calls===1)throw new DOMException('request timed out','TimeoutError');
@@ -47,6 +47,21 @@ test('crawler retries a transient timeout once and preserves persistent failure 
   return healthy(url,options);
  };
  const result=await auditLiveSearch(base,fail);
- assert.equal(calls,2);
- assert.deepEqual(result.issues,[base+'/guide/: request timed out']);
+ assert.equal(calls,4);
+ assert.deepEqual(result.issues,[base+'/guide/: request timed out (after 4 attempts)']);
+ calls=0;
+ const slower=async(url,options)=>{
+  if(new URL(url).pathname==='/guide/'&&++calls<4)throw new DOMException('slow connection','TimeoutError');
+  return healthy(url,options);
+ };
+ assert.deepEqual(await auditLiveSearch(base,slower),{checkedUrls:1,issues:[]});
+ assert.equal(calls,4);
+ let missingCalls=0;
+ const missing=async(url,options)=>{
+  if(new URL(url).pathname==='/guide/'){missingCalls++;return new Response('missing',{status:404});}
+  return healthy(url,options);
+ };
+ const missingResult=await auditLiveSearch(base,missing);
+ assert.equal(missingCalls,1,'permanent HTTP 404 must never be retried');
+ assert.deepEqual(missingResult.issues,[base+'/guide/: HTTP 404 '+base+'/guide/']);
 });
