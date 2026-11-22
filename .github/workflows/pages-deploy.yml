@@ -11,10 +11,11 @@ permissions:
   pages: write
   id-token: write
 
-# Newest commit wins so overlapping bot/human publishes do not 400.
+# Queue Pages deploys in arrival order instead of cancelling active or pending releases.
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
+  queue: max
 
 jobs:
   deploy:
