@@ -1,5 +1,3 @@
-[Reading 166 lines from start (total: 166 lines, 0 remaining)]
-
 name: Live MatchApp Browser and Android Emulator Smoke
 run-name: 'Release smoke: ${{ inputs.expected_sha }}'
 on:
