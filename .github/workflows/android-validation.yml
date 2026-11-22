@@ -40,7 +40,7 @@ jobs:
           ./gradlew :app:testDebugUnitTest :app:assembleDebug :app:bundleRelease :kidsapp:assembleDebug --no-daemon --stacktrace
       - name: Export adult debug APK for owner-only device QA
         if: github.event_name == 'pull_request'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0 (Node.js 24)
         with:
           name: MatchApp-Ai-Android-Jonas-Ambient-DEBUG-APK
           path: android-studio/app/build/outputs/apk/debug/app-debug.apk
@@ -70,7 +70,7 @@ jobs:
           sha256sum --check "$MATCHAPP_QA_RELEASE_CHECK"
       - name: Export isolated adult QA APK for existing QA app data
         if: github.event_name == 'pull_request'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0 (Node.js 24)
         with:
           name: MatchApp-Ai-Android-Content-Placements-Isolated-QA-DEBUG-APK
           path: android-studio/app/build/outputs/apk/debug/app-debug.apk
@@ -85,7 +85,7 @@ jobs:
           sha256sum "$BUNDLE" > app/build/outputs/bundle/release/app-release.aab.sha256
           printf '%s\n' 'UNSIGNED RELEASE AAB - NOT READY FOR PLAY CONSOLE UPLOAD.' 'Use your private Play upload keystore to sign it locally, or use Android Studio > Generate Signed Bundle on the app module.' 'Package: com.jonas.papercup; version: 1.1.75; versionCode: 75.' > app/build/outputs/bundle/release/README-UNSIGNED.txt
       - name: Export adult-only AAB for local signing
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0 (Node.js 24)
         with:
           name: MatchApp-Ai-adult-1.1.75-code75-UNSIGNED-AAB
           path: |
