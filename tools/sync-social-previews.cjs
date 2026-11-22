@@ -70,6 +70,17 @@ function main(mode='write'){
   }
   console.log('Social artwork:',route.page,route.image,revision(image));
  }
+ // The debug-only Android WebView preview is required to match the live web HTML
+ // byte-for-byte. Social metadata is rewritten above, so refresh its staged copy
+ // before running the native preview parity tests. Never touch release assets.
+ const preview=path.join(root,'android-studio','app','src','debug','assets','ambient-preview','discover.html');
+ const discover=fs.readFileSync(path.join(root,'discover.html'));
+ const staged=fs.readFileSync(preview);
+ if(!discover.equals(staged)){
+  if(mode==='check')throw Error('Stale Android debug preview: discover.html is out of sync');
+  fs.writeFileSync(preview,discover);
+  console.log('Synced Android debug-only discover.html preview');
+ }
  console.log(mode==='check'?'Validated all social preview revisions':'Updated '+updates+' public page(s)');
 }
 if(require.main===module){
