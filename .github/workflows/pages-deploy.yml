@@ -89,6 +89,28 @@ jobs:
         with:
           name: github-pages-${{ github.run_attempt }}
           path: .
+      # Upload finalization can precede artifact visibility in the Actions API.
+      # Deploy-pages queries that API immediately and otherwise fails with "Found 0 artifact(s)".
+      - name: Wait until uploaded Pages artifact is indexed
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_NAME: github-pages-${{ github.run_attempt }}
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 24); do
+            if gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts?per_page=100" \
+              --jq '.artifacts[].name' | grep -Fxq "${ARTIFACT_NAME}"; then
+              echo "Artifact ${ARTIFACT_NAME} is indexed (attempt ${attempt})."
+              # Allow Pages metadata readers to catch up with the upload index.
+              sleep 5
+              exit 0
+            fi
+            echo "Artifact ${ARTIFACT_NAME} not indexed yet (attempt ${attempt}/24)."
+            sleep 5
+          done
+          echo "::error::Pages artifact is not visible after 120s; refusing to deploy stale content."
+          exit 1
       - name: Deploy validated Pages artifact
         id: deploy
         uses: actions/deploy-pages@v4
