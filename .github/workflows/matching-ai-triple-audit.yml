@@ -59,8 +59,10 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: matching-ai-audit-${{ github.ref }}
-  cancel-in-progress: true
+  # Keep audits of separate commits independent. GitHub can cancel a pending run
+  # when several revisions share a group, even with cancel-in-progress disabled.
+  group: matching-ai-audit-${{ github.ref }}-${{ github.sha }}
+  cancel-in-progress: false
 jobs:
   one-complete-pass:
     name: Complete matching and AI audit
