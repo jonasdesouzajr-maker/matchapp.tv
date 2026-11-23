@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22T12:48:24.346Z",
+  "updated_at": "2026-11-23T10:27:27.769Z",
   "source_policy": "Authorized publisher RSS/Atom; directly linked canonical URLs, no article-body/image republication and no betting guides",
   "items": [
     {
@@ -30,22 +30,6 @@
       "sport": "Sports",
       "event_type": "Sports",
       "published_at": "2026-11-19T19:05:54.000Z",
-      "timestamp_kind": "published",
-      "discovery_source": "Authorized publisher RSS/Atom",
-      "image": null
-    },
-    {
-      "id": "e162cfff",
-      "title": "How can Cricket Australia move on from its greatest controversy? The ‘underarm incident’ may offer lessons",
-      "url": "https://theconversation.com/how-can-cricket-australia-move-on-from-its-greatest-controversy-the-underarm-incident-may-offer-lessons-297037",
-      "source": "The Conversation",
-      "source_domain": "theconversation.com",
-      "source_home": "https://theconversation.com",
-      "country": "GLOBAL",
-      "category": "sports",
-      "sport": "Sports",
-      "event_type": "Sports",
-      "published_at": "2026-11-19T02:49:07.000Z",
       "timestamp_kind": "published",
       "discovery_source": "Authorized publisher RSS/Atom",
       "image": null
