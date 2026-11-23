@@ -9,10 +9,33 @@ const DISPATCH_STEP = 'Request one live smoke for the deployed SHA';
 const ACTIVE = new Set(['queued', 'in_progress', 'requested', 'waiting', 'pending']);
 const titleFor = sha => `Release smoke: ${sha}`;
 
-async function completeList(method, parameters, field) {
+const TRANSIENT_READ_STATUSES = new Set([429, 500, 502, 503, 504]);
+const TRANSIENT_NETWORK_CODES = new Set(['ECONNRESET', 'ETIMEDOUT', 'EAI_AGAIN',
+  'UND_ERR_CONNECT_TIMEOUT', 'UND_ERR_SOCKET']);
+const defaultSleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+function isTransientReadError(error) {
+  const status = Number(error?.status ?? error?.response?.status);
+  const code = error?.code ?? error?.cause?.code;
+  return TRANSIENT_READ_STATUSES.has(status) || TRANSIENT_NETWORK_CODES.has(code);
+}
+
+async function completeList(method, parameters, field, {sleep = defaultSleep} = {}) {
   const items = [];
   for (let page = 1; page <= 10; page++) {
-    const {data} = await method({...parameters, per_page: 100, page});
+    // GitHub can briefly return 5xx after accepting a dispatch. Retry only
+    // idempotent history GETs, never a workflow-dispatch POST.
+    let response;
+    for (let attempt = 0; attempt < 6; attempt++) {
+      try {
+        response = await method({...parameters, per_page: 100, page});
+        break;
+      } catch (error) {
+        if (attempt === 5 || !isTransientReadError(error)) throw error;
+        await sleep(750 * 2 ** attempt);
+      }
+    }
+    const {data} = response;
     if (!data || !Array.isArray(data[field]) || !Number.isInteger(data.total_count)
         || data.total_count < 0 || data.total_count > 1000) {
       throw new Error(`Cannot establish complete ${field} history; stop before another dispatch.`);
@@ -82,7 +105,7 @@ async function requestReleaseSmoke({github, context, expectedSha, runAttempt, sa
       await sleep(1000);
     }
     const pages = await completeList(api.listWorkflowRuns, {owner, repo,
-      workflow_id: PAGES, head_sha: expectedSha, branch: 'main'}, 'workflow_runs');
+      workflow_id: PAGES, head_sha: expectedSha, branch: 'main'}, 'workflow_runs', {sleep});
     if (!pages.some(run => run.id === current.id)) pages.push(current);
     if (pages.some(run => run.head_sha !== expectedSha || run.head_branch !== 'main'
         || run.path !== current.path || !Number.isSafeInteger(run.run_attempt) || run.run_attempt < 1
@@ -95,7 +118,7 @@ async function requestReleaseSmoke({github, context, expectedSha, runAttempt, sa
       // explicit input is retained in run-name, so do not filter by head_sha.
       const runs = await completeList(api.listWorkflowRuns, {owner, repo,
         workflow_id: WORKFLOW, event: 'workflow_dispatch', branch: 'main',
-        created: `>=${since}`}, 'workflow_runs');
+        created: `>=${since}`}, 'workflow_runs', {sleep});
       const matches = runs.filter(run => run.display_title === titleFor(expectedSha)
         && run.event === 'workflow_dispatch' && run.head_branch === 'main'
         && run.path === `.github/workflows/${WORKFLOW}`);
@@ -128,7 +151,7 @@ async function requestReleaseSmoke({github, context, expectedSha, runAttempt, sa
       for (let attempt = 1; attempt <= run.run_attempt; attempt++) {
         if (run.id === current.id && attempt === runAttempt) continue;
         const jobs = await completeList(api.listJobsForWorkflowRunAttempt, {owner, repo,
-          run_id: run.id, attempt_number: attempt}, 'jobs');
+          run_id: run.id, attempt_number: attempt}, 'jobs', {sleep});
         for (const job of jobs) {
           if (!Array.isArray(job.steps) || !job.steps.length) {
             if (job.conclusion === 'skipped') continue;
