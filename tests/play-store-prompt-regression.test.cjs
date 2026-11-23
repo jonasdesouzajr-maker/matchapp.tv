@@ -9,8 +9,11 @@ const { JSDOM } = require('jsdom');
 const script = fs.readFileSync(path.join(__dirname, '..', 'patches', 'android-download-bubble-20261117.js'), 'utf8');
 const android = 'Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 Chrome/130.0 Mobile Safari/537.36';
 
-function fixture({ userAgent = android, url = 'https://matchapp.tv/', dialog = false } = {}) {
-  const html = '<!doctype html><html><head></head><body><button id="content">Explore</button>' +
+function fixture({ userAgent = android, url = 'https://matchapp.tv/', dialog = false,
+  legacyHomeOwner = false } = {}) {
+  const html = '<!doctype html><html><head>' +
+    (legacyHomeOwner ? '<script data-browser-install-offer="1"></script>' : '') +
+    '</head><body><button id="content">Explore</button>' +
     (dialog ? '<div id="dialog" role="dialog">Modal</div>' : '') + '</body></html>';
   const dom = new JSDOM(html, { url, runScripts: 'outside-only', pretendToBeVisual: true });
   const { window } = dom;
@@ -55,6 +58,17 @@ function fixture({ userAgent = android, url = 'https://matchapp.tv/', dialog = f
   return { dom, window, advance, prompt, close, clickContent };
 }
 
+test('home and explore cache-bust the corrected Android promotion loader', () => {
+  const root = path.join(__dirname, '..');
+  const loader = fs.readFileSync(path.join(root, 'patches', 'jonas-adult-page.js'), 'utf8');
+  assert.match(loader, /android-download-bubble-20261117\.js\?v=20261123-smart2/);
+  for (const page of ['index.html', 'explore.html']) {
+    const html = fs.readFileSync(path.join(root, page), 'utf8');
+    assert.match(html, /jonas-adult-page\.js\?[^"\n]*play=20261123-smart2/,
+      `${page} should load the corrected prompt without a stale parent script`);
+  }
+});
+
 test('Android browser shows an accessible, dismissible official Google Play CTA', () => {
   const f = fixture();
   f.advance(10001);
@@ -66,6 +80,20 @@ test('Android browser shows an accessible, dismissible official Google Play CTA'
   assert.equal(p.querySelector('.ma-spp-close').getAttribute('aria-label'), 'Close');
   f.close();
   f.dom.window.close();
+});
+
+test('Home yields to its existing localized Android Play offer instead of stacking prompts', () => {
+  const f = fixture({legacyHomeOwner: true});
+  f.clickContent(7);
+  f.advance(20000);
+  assert.equal(f.prompt(), null, 'Home already has one Play Store invitation owner');
+  f.dom.window.close();
+  const other = fixture({url:'https://matchapp.tv/explore.html', legacyHomeOwner: true});
+  other.clickContent(7);
+  other.advance(700);
+  assert.ok(other.prompt(), 'Explore retains the smart official-artwork invitation');
+  other.close();
+  other.dom.window.close();
 });
 
 test('Android engagement shows prompt, and dismissal respects cooldown and four-show cap', () => {
@@ -106,6 +134,27 @@ test('non-Android, native app shells and Kids pages never receive the Android pr
     assert.equal(f.prompt(), null, 'guard failed for ' + JSON.stringify(options));
     f.dom.window.close();
   }
+});
+
+test('CSS-hidden modal shells must not block a real Android browser promotion', () => {
+  const f = fixture();
+  const style = f.window.document.createElement('style');
+  style.textContent = '.modal-overlay, .nfm-backdrop, #main-auth-modal { display: none; }';
+  f.window.document.head.appendChild(style);
+  for (const [id, cls] of [['poster-zoom-overlay', 'modal-overlay'],
+    ['main-auth-modal', ''], ['notforme-modal', 'nfm-backdrop']]) {
+    const modal = f.window.document.createElement('div');
+    modal.id = id;
+    modal.className = cls;
+    modal.setAttribute('role', 'dialog');
+    modal.textContent = 'Hidden modal shell';
+    f.window.document.body.appendChild(modal);
+    assert.equal(f.window.getComputedStyle(modal).display, 'none');
+  }
+  f.advance(11000);
+  assert.ok(f.prompt(), 'a CSS-hidden dialog shell must not prevent promotion');
+  f.close();
+  f.dom.window.close();
 });
 
 test('open modal suppresses promotion until dialog has closed', () => {

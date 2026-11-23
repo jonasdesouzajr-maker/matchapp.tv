@@ -41,7 +41,7 @@ test('all adult dialog callers and the single shared loader request current sour
  const loader=read('patches/reference-system.js');assert.match(loader,/dialogVersion\s*=\s*['"]20261020-1['"]/);assert.match(loader,/reference-dialogs\.css\?v=['"]\s*\+\s*dialogVersion/);assert.match(loader,/reference-dialogs\.js\?v=['"]\s*\+\s*dialogVersion/);
 });
 test('changed loader chains request the new premium runtime and only Profile receives the final-audit poster suffix',()=>{
- const settings=read('settings.js'),start=settings.indexOf("(function(){'use strict';const V="),end=settings.indexOf('\n\n/* MatchApp Ai shared loader',start);
+ const settings=read('settings.js').replace(/\r\n/g,'\n'),start=settings.indexOf("(function(){'use strict';const V="),end=settings.indexOf('\n\n/* MatchApp Ai shared loader',start);
  assert.ok(start>=0&&end>start);
  for(const route of ['/profile/profile.html','/ebooks/']){
   const dom=new JSDOM('<html><head></head><body></body></html>',{url:'https://matchapp.tv'+route,runScripts:'outside-only'});

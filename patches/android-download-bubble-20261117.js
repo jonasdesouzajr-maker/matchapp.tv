@@ -9,6 +9,10 @@
   if (/MatchApp(?:TV|Ai(?:Kids)?)Android\//.test(navigator.userAgent)) return;
   if (/^\/(kids|private-voice|oauth)(\/|$)|^\/(callback|confirm)\.html$/.test(location.pathname)) return;
   if (document.getElementById('ma-smart-play-prompt')) return;
+  // Home already owns a localized, accessibility-tested Google Play invitation.
+  // Keep a single CTA owner; this richer prompt serves Explore and other adult pages.
+  if (/^\/(?:index\.html)?$/.test(location.pathname) &&
+      document.querySelector('script[data-browser-install-offer="1"]')) return;
 
   const STORE = 'https://play.google.com/store/apps/details?id=com.jonas.papercup';
   const ICON = '/assets/brand/matchapp-ai-icon-192.png';
@@ -33,9 +37,25 @@
   let timer = null;
   let shown = false;
 
+  function hasVisibleDialog() {
+    // Hidden modal shells remain in the live page DOM with role="dialog".
+    // Only a dialog that is actually visible should suppress the promotion.
+    const candidates = document.querySelectorAll('dialog[open], [role="dialog"]:not([hidden])');
+    return Array.from(candidates).some(dialog => {
+      for (let node = dialog; node && node.nodeType === 1; node = node.parentElement) {
+        if (node.hasAttribute('hidden') || node.hasAttribute('inert')) return false;
+        const style = window.getComputedStyle(node);
+        const opacity = Number.parseFloat(style.opacity);
+        if (style.display === 'none' || style.visibility === 'hidden' ||
+            style.visibility === 'collapse' || (Number.isFinite(opacity) && opacity <= 0)) return false;
+      }
+      return true;
+    });
+  }
+
   function canShow() {
     return state.shows < MAX_SHOWS && now() >= state.next && !shown &&
-      document.visibilityState === 'visible' && !document.querySelector('dialog[open], [role="dialog"]:not([hidden])');
+      document.visibilityState === 'visible' && !hasVisibleDialog();
   }
 
   function positionNear(el) {

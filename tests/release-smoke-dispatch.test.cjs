@@ -20,7 +20,7 @@ const smokeRun = (extra = {}) => ({id: 202, path: '.github/workflows/release-smo
 function fixture(options = {}) {
   const current = pageRun({run_attempt: options.attempt || 1, ...options.current});
   const calls = [], saved = [];
-  let sent = false, smokeReads = 0, callerReads = 0;
+  let sent = false, smokeReads = 0, callerReads = 0, transientFailures = 0;
   const sleeps = [];
   const api = {
     async getWorkflowRun(parameters) {
@@ -32,6 +32,13 @@ function fixture(options = {}) {
     },
     async listWorkflowRuns(parameters) {
       calls.push(['list', parameters]);
+      if (parameters.workflow_id === 'release-smoke.yml' && sent
+          && transientFailures < (options.transientAfterDispatch || 0)) {
+        transientFailures++;
+        const error = new Error('fetch failed');
+        error.status = 500;
+        throw error;
+      }
       let runs;
       if (parameters.workflow_id === 'pages-deploy.yml') runs = options.pages || [current];
       else {
@@ -228,6 +235,25 @@ test('a lost POST response is reconciled without sending it twice', async () => 
   assert.equal((await f.run()).smokeRunId, 202);
   assert.equal(f.posts().length, 1);
   assert.ok(f.saved.some(item => item.status === 'dispatch-response-unknown'));
+});
+
+test('transient GitHub 500 after smoke dispatch is reconciled without a second POST', async () => {
+  const f = fixture({transientAfterDispatch: 2});
+  const result = await f.run();
+  assert.equal(result.status, 'run-confirmed');
+  assert.equal(result.smokeRunId, 202);
+  assert.equal(f.posts().length, 1);
+  assert.deepEqual(f.sleeps, [750, 1500]);
+  assert.equal(f.calls.filter(call => call[0] === 'list'
+    && call[1].workflow_id === 'release-smoke.yml').length, 5);
+});
+
+test('persistent GitHub 500 fails closed after bounded GET retries and no extra POST', async () => {
+  const f = fixture({transientAfterDispatch: 10});
+  await assert.rejects(f.run(), /fetch failed/);
+  assert.equal(f.posts().length, 1);
+  assert.deepEqual(f.sleeps, [750, 1500, 3000, 6000, 12000]);
+  assert.equal(f.saved.at(-1).status, 'dispatch-outcome-unknown');
 });
 
 test('unconfirmed and failed-read outcomes never repeat POST and persist unknown evidence', async () => {
