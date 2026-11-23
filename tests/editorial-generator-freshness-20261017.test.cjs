@@ -84,7 +84,8 @@ test('Awareness regeneration preserves the approved shared shell and committed s
   // Expiry may switch only the robots directive. Every other byte, including
   // campaign copy, metadata and source URLs, stays the committed template.
   const scriptEncoding=html=>html.replace(/(<script\b[^>]*\bsrc=["']\/patches\/reference-system\.js(?:\?[^"']*)?)(["'])/g,(all,src,end)=>src.replace(/&amp;/g,'&')+end);
-  const comparable=html=>scriptEncoding(html).replace(/<meta name="robots" content="[^"]*">/gi,'<meta name="robots" content="managed">');
+  // Normalize only platform checkout line endings; source content must still match exactly.
+  const comparable=html=>scriptEncoding(html).replace(/\r\n/g,'\n').replace(/<meta name="robots" content="[^"]*">/gi,'<meta name="robots" content="managed">');
   const committed=fs.readFileSync(path.join(ROOT,'awareness',campaign.id,'index.html'),'utf8');
   assert.match(committed,/<meta name="robots" content="(?:index,follow,max-image-preview:large,max-snippet:-1|noindex,follow)">/,key+' robots stay on the publisher allow-list');
   assert.equal(comparable(output),comparable(committed),key+' template retains the committed source, metadata and body');
