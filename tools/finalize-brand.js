@@ -358,4 +358,42 @@ function finalizeBrand(ownedPaths){
  return count;
 }
 module.exports={MARKER,SCRIPT,firstGoogleTag,consentSourceEdit,canonicalFavicons,FAVICON_LINKS,CRITICAL_STYLE_PRELOADS,versionReferenceRuntimeAssets,cinemaAssets,finalizeBrand,regionalBrand,versionBrandStylesheet,versionFrameStylesheet,name,ADULT,KIDS};
-if(require.main===module)console.log('Brand identity normalized on '+finalizeBrand()+' pages.');
+const BRAND_WORKER_FILE_LIMIT=96;
+function brandBatches(paths,maxSize=BRAND_WORKER_FILE_LIMIT){
+ if(!Array.isArray(paths)||!Number.isSafeInteger(maxSize)||maxSize<1||maxSize>BRAND_WORKER_FILE_LIMIT)
+  throw new TypeError('Invalid Brand worker batch size or file list');
+ const batches=[];
+ for(let i=0;i<paths.length;i+=maxSize)batches.push(paths.slice(i,i+maxSize));
+ return batches;
+}
+function runBrandCli(){
+ if(process.argv[2]==='--worker'){
+  if(process.argv.length!==3)throw new Error('Unexpected Brand worker arguments');
+  const owned=JSON.parse(fs.readFileSync(0,'utf8'));
+  if(!Array.isArray(owned)||owned.length===0||owned.length>BRAND_WORKER_FILE_LIMIT||
+     owned.some(rel=>typeof rel!=='string'||!rel.endsWith('.html')||rel.startsWith('/')||rel.includes('..')||rel.includes('\0')))
+    throw new Error('Invalid Brand worker file list');
+  console.log('BRAND_WORKER_COUNT='+finalizeBrand(owned));
+  return;
+ }
+ if(process.argv.length!==2)throw new Error('Unknown Brand normalization option');
+ // A full site has thousands of HTML files, and jsdom retains a large heap
+ // between documents. Separate Node processes reclaim that memory completely.
+ // Preserve normal source ownership, processing order and all validation gates.
+ const {spawnSync}=require('node:child_process');
+ const paths=files(ROOT).map(file=>path.relative(ROOT,file).replace(/\\/g,'/'));
+ let total=0;
+ for(const batch of brandBatches(paths)){
+  const result=spawnSync(process.execPath,['--max-old-space-size=2048',__filename,'--worker'],{
+   input:JSON.stringify(batch),encoding:'utf8',stdio:['pipe','pipe','inherit'],maxBuffer:1024*1024
+  });
+  if(result.error)throw result.error;
+  if(result.status!==0)throw new Error('Brand worker failed: exit '+result.status+', signal '+(result.signal||'none'));
+  const output=result.stdout.trim();
+  if(!/^BRAND_WORKER_COUNT=\d+$/.test(output))throw new Error('Invalid Brand worker count response');
+  total+=Number(output.slice('BRAND_WORKER_COUNT='.length));
+ }
+ console.log('Brand identity normalized on '+total+' pages.');
+}
+module.exports.brandBatches=brandBatches;
+if(require.main===module)runBrandCli();
