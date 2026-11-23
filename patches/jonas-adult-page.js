@@ -61,7 +61,7 @@ if (window.top === window && !window.MatchAppFx &&
   load('ma-layout-force', '/patches/layout-force-20261117.css?v=1', true);
   load('ma-cwv', '/patches/cwv-optimize-20261117.js?v=1', false);
   load('ma-click', '/patches/click-response-20261117.js?v=1', false);
-  load('ma-bubble', '/patches/android-download-bubble-20261117.js?v=20261123-smart1', false);
+  load('ma-bubble', '/patches/android-download-bubble-20261117.js?v=20261123-smart2', false);
   if (/\/discover\.html$/i.test(location.pathname)) {
     load('ma-noindex', '/patches/discover-query-noindex-20261117.js?v=1', false);
   }

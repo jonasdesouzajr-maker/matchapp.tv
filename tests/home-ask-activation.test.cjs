@@ -1,7 +1,7 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {JSDOM}=require('jsdom');
-const read=name=>fs.readFileSync(path.join(__dirname,'..',name),'utf8');
+const read=name=>fs.readFileSync(path.join(__dirname,'..',name),'utf8').replace(/\r\n/g,'\n');
 test('Home hero headline and duplicate English CTA buttons stay retired',()=>{
  const dom=new JSDOM('<html><body class="page-home"><header class="home-hero"><h1 class="home-h1">Match</h1><p class="home-h1-sub"></p></header><button class="lazy-head" data-fold-key="concierge"></button><section id="ma-concierge" class="ma-concierge lazy-foldable"><button id="ma-tab-ask"></button><div id="ma-panel-ask" hidden><article id="search-box"></article></div></section><article id="questionnaire-box"></article></body></html>',{url:'https://matchapp.tv/',runScripts:'outside-only'});
  const w=dom.window;
