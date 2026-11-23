@@ -16,6 +16,7 @@ permissions:
 concurrency:
   group: matchapp-content-publish
   cancel-in-progress: false
+  queue: max
 
 jobs:
   rebuild:
