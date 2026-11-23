@@ -1,52 +1,52 @@
 {
-  "generated_at": "2026-11-23T10:27:59.795Z",
-  "feed_version": "6d39afa8",
+  "generated_at": "2026-11-23T15:12:58.643Z",
+  "feed_version": "bab98800",
   "sports_updated_at": "2026-11-23T10:27:27.769Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "rebuilt per check; modification dates advance only with content + source citation + stable archive",
   "items": [
     {
-      "id": "cae3d10c",
-      "title": "Quem é o mini Papa brasileiro que Leão XIV pegou no colo no Vaticano",
-      "url": "https://g1.globo.com/fantastico/noticia/2026/11/23/quem-e-o-mini-papa-brasileiro-que-leao-xiv-pegou-no-colo-no-vaticano.ghtml",
+      "id": "c54f58de",
+      "title": "Sem cadeia ou policiais armados: por que a Interpol é conhecida como a polícia internacional?",
+      "url": "https://g1.globo.com/fantastico/noticia/2026/11/23/sem-cadeia-ou-policiais-armados-por-que-a-interpol-e-conhecida-como-a-policia-internacional.ghtml",
       "source": "G1 Mundo",
       "source_domain": "g1.globo.com",
       "source_home": "https://g1.globo.com",
       "country": "GLOBAL",
       "language": "pt",
-      "published_at": "2026-11-23T09:40:33.000Z",
-      "discovered_at": "2026-11-23T10:27:59.795Z",
+      "published_at": "2026-11-23T15:07:34.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
       "event_type": "World",
       "category": "world",
       "person": "",
       "description": "World news reported by G1 Mundo on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/G819rtDOVrT4f_KqiIHJMVciKSg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/8/0/tPUzAHSfAinFkmwvlMjA/captura-de-tela-2026-11-23-063723.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/quem-e-o-mini-papa-brasileiro-que-leao-xiv-pegou-no-colo-no-vaticano-cae3d1/",
-      "landing_url": "https://matchapp.tv/?news=cae3d10c#latest-news",
+      "image": "https://s2-g1.glbimg.com/eq4142v3-l1ziWb3NWgsWctYqiI=/1280x0/filters:format(jpeg)/https://thumbor.globoi.com/unsafe/fit-in/1280x720/s02.video.glbimg.com/deo/vi/85/12/15271285",
+      "matchapp_url": "https://matchapp.tv/news/articles/sem-cadeia-ou-policiais-armados-por-que-a-interpol-e-conhecida-como-a-policia-in-c54f58/",
+      "landing_url": "https://matchapp.tv/?news=c54f58de#latest-news",
       "seo": {
         "primary_keyword": "notícias do mundo 2026-11-23",
         "short_tail": [
           "notícias do mundo",
           "notícias internacionais",
-          "quem",
-          "mini",
-          "papa",
-          "brasileiro",
+          "sem",
+          "cadeia",
+          "policiais",
+          "armados",
           "que",
-          "leao"
+          "interpol"
         ],
         "long_tail": [
-          "Quem é o mini Papa brasileiro que Leão XIV pegou no colo no Vaticano 2026-11-23",
+          "Sem cadeia ou policiais armados: por que a Interpol é conhecida como a polícia internacional? 2026-11-23",
           "notícias mundiais novembro 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "quem",
-          "mini",
-          "papa",
-          "brasileiro",
+          "sem",
+          "cadeia",
+          "policiais",
+          "armados",
           "que",
-          "leao"
+          "interpol"
         ],
         "freshness_keywords": [
           "2026-11-23"
@@ -54,68 +54,68 @@
         "source_keywords": [
           "G1 Mundo"
         ],
-        "meta_title": "Quem é o mini Papa brasileiro que Leão XIV pegou no colo…",
+        "meta_title": "Sem cadeia ou policiais armados: por que a Interpol é…",
         "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-23. Abra a fonte original para o contexto completo.",
         "keywords": [
           "notícias do mundo 2026-11-23",
           "notícias do mundo",
           "notícias internacionais",
-          "quem",
-          "mini",
-          "papa",
-          "brasileiro",
+          "sem",
+          "cadeia",
+          "policiais",
+          "armados",
           "que",
-          "leao",
-          "Quem é o mini Papa brasileiro que Leão XIV pegou no colo no Vaticano 2026-11-23",
+          "interpol",
+          "Sem cadeia ou policiais armados: por que a Interpol é conhecida como a polícia internacional? 2026-11-23",
           "notícias mundiais novembro 2026",
           "2026-11-23",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-11-23T10:27:59.795Z"
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
       }
     },
     {
-      "id": "b92794fe",
-      "title": "Zelensky reivindica ataque contra navio de guerra russo na costa da Líbia; VÍDEO mostra explosão",
-      "url": "https://g1.globo.com/mundo/noticia/2026/11/23/zelensky-reivindica-ataque-navio-de-guerra-russo-libia-video.ghtml",
+      "id": "72e11f9f",
+      "title": "Polícia britânica evacua 12 mil pessoas de show após liberação de 'substância desconhecida' em Manchester",
+      "url": "https://g1.globo.com/mundo/noticia/2026/11/23/policia-britanica-evacua-12-mil-pessoas-de-show-apos-liberacao-de-substancia-desconhecida-em-manchester.ghtml",
       "source": "G1 Mundo",
       "source_domain": "g1.globo.com",
       "source_home": "https://g1.globo.com",
       "country": "GLOBAL",
       "language": "pt",
-      "published_at": "2026-11-23T09:31:15.000Z",
-      "discovered_at": "2026-11-23T10:27:59.795Z",
+      "published_at": "2026-11-23T15:05:00.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
       "event_type": "World",
       "category": "world",
       "person": "",
       "description": "World news reported by G1 Mundo on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/99zFOb8jCCOygoS6HrRYBd1oj_s=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/B/t/kTR8rBRAuC4xOaMHuHJg/2026-11-23t090233z-26004991-rc2ysoavk78q-rtrmadp-3-ukraine-crisis-ships-1-.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/zelensky-reivindica-ataque-contra-navio-de-guerra-russo-na-costa-da-libia-video--b92794/",
-      "landing_url": "https://matchapp.tv/?news=b92794fe#latest-news",
+      "image": "https://g1.globo.com/mundo/noticia/2026/11/23/None",
+      "matchapp_url": "https://matchapp.tv/news/articles/policia-britanica-evacua-12-mil-pessoas-de-show-apos-liberacao-de-substancia-des-72e11f/",
+      "landing_url": "https://matchapp.tv/?news=72e11f9f#latest-news",
       "seo": {
         "primary_keyword": "notícias do mundo 2026-11-23",
         "short_tail": [
           "notícias do mundo",
           "notícias internacionais",
-          "zelensky",
-          "reivindica",
-          "ataque",
-          "contra",
-          "navio",
-          "guerra"
+          "policia",
+          "britanica",
+          "evacua",
+          "mil",
+          "pessoas",
+          "show"
         ],
         "long_tail": [
-          "Zelensky reivindica ataque contra navio de guerra russo na costa da Líbia; VÍDEO mostra explosão 2026-11-23",
+          "Polícia britânica evacua 12 mil pessoas de show após liberação de 'substância desconhecida' em Manchester 2026-11-23",
           "notícias mundiais novembro 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "zelensky",
-          "reivindica",
-          "ataque",
-          "contra",
-          "navio",
-          "guerra"
+          "policia",
+          "britanica",
+          "evacua",
+          "mil",
+          "pessoas",
+          "show"
         ],
         "freshness_keywords": [
           "2026-11-23"
@@ -123,68 +123,450 @@
         "source_keywords": [
           "G1 Mundo"
         ],
-        "meta_title": "Zelensky reivindica ataque contra navio de guerra russo na…",
+        "meta_title": "Polícia britânica evacua 12 mil pessoas de show após…",
         "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-23. Abra a fonte original para o contexto completo.",
         "keywords": [
           "notícias do mundo 2026-11-23",
           "notícias do mundo",
           "notícias internacionais",
-          "zelensky",
-          "reivindica",
-          "ataque",
-          "contra",
-          "navio",
-          "guerra",
-          "Zelensky reivindica ataque contra navio de guerra russo na costa da Líbia; VÍDEO mostra explosão 2026-11-23",
+          "policia",
+          "britanica",
+          "evacua",
+          "mil",
+          "pessoas",
+          "show",
+          "Polícia britânica evacua 12 mil pessoas de show após liberação de 'substância desconhecida' em Manchester 2026-11-23",
           "notícias mundiais novembro 2026",
           "2026-11-23",
           "G1 Mundo"
         ],
-        "seo_generated_at": "2026-11-23T10:27:59.795Z"
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
       }
     },
     {
-      "id": "476e3de4",
-      "title": "Kenya and DR Congo agree to restore ties after tensions over conflict",
-      "url": "https://www.bbc.co.uk/news/articles/cmvg2qnn95vro?at_medium=RSS&at_campaign=rss",
+      "id": "a6ec8971",
+      "title": "‘The Odyssey’ Star Samantha Morton Honored With BFI Fellowship",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/samantha-morton-bfi-fellowship-the-odyssey-film-award-oscar-1236761014/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-11-23T15:00:00.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/11/FotoJet-2026-11-23T112556.650.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/the-odyssey-star-samantha-morton-honored-with-bfi-fellowship-a6ec89/",
+      "landing_url": "https://matchapp.tv/?news=a6ec8971#latest-news",
+      "seo": {
+        "primary_keyword": "odyssey star samantha morton latest news",
+        "short_tail": [
+          "odyssey star samantha morton",
+          "odyssey star samantha morton news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "odyssey star samantha morton latest news November 2026",
+          "odyssey star samantha morton entertainment update 2026",
+          "odyssey star samantha morton news 2026-11-23",
+          "latest entertainment news about odyssey star samantha morton",
+          "odyssey star samantha morton honored bfi latest update",
+          "The Hollywood Reporter odyssey star samantha morton entertainment",
+          "latest news about odyssey star samantha morton November 2026",
+          "odyssey star samantha morton entertainment news 2026-11-23",
+          "what happened with odyssey star samantha morton"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "odyssey",
+          "star",
+          "samantha",
+          "morton",
+          "honored",
+          "bfi",
+          "fellowship"
+        ],
+        "freshness_keywords": [
+          "November 2026",
+          "2026-11-23",
+          "odyssey star samantha morton 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter odyssey star samantha morton",
+          "hollywoodreporter.com odyssey star samantha morton",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘The Odyssey’ Star Samantha Morton Honored With BFI…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-11-23. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "odyssey star samantha morton latest news",
+          "odyssey star samantha morton",
+          "odyssey star samantha morton news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "odyssey star samantha morton latest news November 2026",
+          "odyssey star samantha morton entertainment update 2026",
+          "odyssey star samantha morton news 2026-11-23",
+          "latest entertainment news about odyssey star samantha morton",
+          "odyssey star samantha morton honored bfi latest update",
+          "The Hollywood Reporter odyssey star samantha morton entertainment",
+          "latest news about odyssey star samantha morton November 2026",
+          "odyssey star samantha morton entertainment news 2026-11-23",
+          "what happened with odyssey star samantha morton",
+          "odyssey",
+          "star",
+          "samantha",
+          "morton",
+          "honored",
+          "bfi",
+          "fellowship",
+          "November 2026",
+          "2026-11-23",
+          "odyssey star samantha morton 2026",
+          "The Hollywood Reporter odyssey star samantha morton",
+          "hollywoodreporter.com odyssey star samantha morton",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
+      }
+    },
+    {
+      "id": "f9ab6024",
+      "title": "DOC NYC Reveals U.S., International Competition and Audience Award Winners (Exclusive)",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/2026-doc-nyc-award-winners-1236760812/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-11-23T15:00:00.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
+      "event_type": "Awards",
+      "category": "entertainment",
+      "person": "DOC NYC Reveals U.S",
+      "description": "DOC NYC Reveals U.S: awards headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/11/KICK.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/doc-nyc-reveals-u-s-international-competition-and-audience-award-winners-exclusi-f9ab60/",
+      "landing_url": "https://matchapp.tv/?news=f9ab6024#latest-news",
+      "seo": {
+        "primary_keyword": "DOC NYC Reveals U.S latest news",
+        "short_tail": [
+          "DOC NYC Reveals U.S",
+          "DOC NYC Reveals U.S news",
+          "awards",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "DOC NYC Reveals U.S latest news November 2026",
+          "DOC NYC Reveals U.S awards update 2026",
+          "DOC NYC Reveals U.S news 2026-11-23",
+          "latest awards news about DOC NYC Reveals U.S",
+          "doc nyc reveals doc nyc reveals latest update",
+          "The Hollywood Reporter DOC NYC Reveals U.S awards",
+          "latest news about DOC NYC Reveals U.S November 2026",
+          "DOC NYC Reveals U.S entertainment news 2026-11-23",
+          "what happened with DOC NYC Reveals U.S"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "DOC NYC Reveals U.S",
+          "doc",
+          "nyc",
+          "reveals",
+          "international",
+          "competition"
+        ],
+        "freshness_keywords": [
+          "November 2026",
+          "2026-11-23",
+          "DOC NYC Reveals U.S 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter DOC NYC Reveals U.S",
+          "hollywoodreporter.com DOC NYC Reveals U.S",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "DOC NYC Reveals U.S., International Competition and…",
+        "meta_description": "DOC NYC Reveals U.S: Awards update reported by The Hollywood Reporter on 2026-11-23. See verified context, publication time and the original source via…",
+        "keywords": [
+          "DOC NYC Reveals U.S latest news",
+          "DOC NYC Reveals U.S",
+          "DOC NYC Reveals U.S news",
+          "awards",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "DOC NYC Reveals U.S latest news November 2026",
+          "DOC NYC Reveals U.S awards update 2026",
+          "DOC NYC Reveals U.S news 2026-11-23",
+          "latest awards news about DOC NYC Reveals U.S",
+          "doc nyc reveals doc nyc reveals latest update",
+          "The Hollywood Reporter DOC NYC Reveals U.S awards",
+          "latest news about DOC NYC Reveals U.S November 2026",
+          "DOC NYC Reveals U.S entertainment news 2026-11-23",
+          "what happened with DOC NYC Reveals U.S",
+          "doc",
+          "nyc",
+          "reveals",
+          "international",
+          "competition",
+          "November 2026",
+          "2026-11-23",
+          "DOC NYC Reveals U.S 2026",
+          "The Hollywood Reporter DOC NYC Reveals U.S",
+          "hollywoodreporter.com DOC NYC Reveals U.S",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
+      }
+    },
+    {
+      "id": "723cfaf2",
+      "title": "‘The Dinosaurs,’ ‘Ocean With David Attenborough’ Producer Silverback Films Gets New Top Execs",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/the-dinosaurs-banijay-producer-silverback-films-new-leaders-1236761056/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-11-23T15:00:00.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/11/Silverback-Films-CEO-and-CCO-Jane-Hamlin-and-Huw-Cordey-Silverback-Films.jpg?w=1440&h=810&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/the-dinosaurs-ocean-with-david-attenborough-producer-silverback-films-gets-new-t-723cfa/",
+      "landing_url": "https://matchapp.tv/?news=723cfaf2#latest-news",
+      "seo": {
+        "primary_keyword": "dinosaurs ocean david attenborough latest news",
+        "short_tail": [
+          "dinosaurs ocean david attenborough",
+          "dinosaurs ocean david attenborough news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "dinosaurs ocean david attenborough latest news November 2026",
+          "dinosaurs ocean david attenborough entertainment update 2026",
+          "dinosaurs ocean david attenborough news 2026-11-23",
+          "latest entertainment news about dinosaurs ocean david attenborough",
+          "dinosaurs ocean david attenborough producer silverback latest update",
+          "The Hollywood Reporter dinosaurs ocean david attenborough entertainment",
+          "latest news about dinosaurs ocean david attenborough November 2026",
+          "dinosaurs ocean david attenborough entertainment news 2026-11-23",
+          "what happened with dinosaurs ocean david attenborough"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "dinosaurs",
+          "ocean",
+          "david",
+          "attenborough",
+          "producer",
+          "silverback",
+          "films",
+          "gets"
+        ],
+        "freshness_keywords": [
+          "November 2026",
+          "2026-11-23",
+          "dinosaurs ocean david attenborough 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter dinosaurs ocean david attenborough",
+          "hollywoodreporter.com dinosaurs ocean david attenborough",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘The Dinosaurs,’ ‘Ocean With David Attenborough’ Producer…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-11-23. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "dinosaurs ocean david attenborough latest news",
+          "dinosaurs ocean david attenborough",
+          "dinosaurs ocean david attenborough news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "dinosaurs ocean david attenborough latest news November 2026",
+          "dinosaurs ocean david attenborough entertainment update 2026",
+          "dinosaurs ocean david attenborough news 2026-11-23",
+          "latest entertainment news about dinosaurs ocean david attenborough",
+          "dinosaurs ocean david attenborough producer silverback latest update",
+          "The Hollywood Reporter dinosaurs ocean david attenborough entertainment",
+          "latest news about dinosaurs ocean david attenborough November 2026",
+          "dinosaurs ocean david attenborough entertainment news 2026-11-23",
+          "what happened with dinosaurs ocean david attenborough",
+          "dinosaurs",
+          "ocean",
+          "david",
+          "attenborough",
+          "producer",
+          "silverback",
+          "films",
+          "gets",
+          "November 2026",
+          "2026-11-23",
+          "dinosaurs ocean david attenborough 2026",
+          "The Hollywood Reporter dinosaurs ocean david attenborough",
+          "hollywoodreporter.com dinosaurs ocean david attenborough",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
+      }
+    },
+    {
+      "id": "fa5f91b4",
+      "title": "Justin Timberlake Documentary Trailer: “He’s Not Who I Thought He Was”",
+      "url": "https://www.hollywoodreporter.com/tv/tv-news/justin-timberlake-documentary-trailer-apple-1236761080/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-11-23T14:56:49.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
+      "event_type": "Release",
+      "category": "entertainment",
+      "person": "Justin Timberlake Documentary Trailer",
+      "description": "Justin Timberlake Documentary Trailer: release headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/11/Justin-Timberlake.png?crop=0px%2C50px%2C2840px%2C1589px&resize=1440%2C810",
+      "matchapp_url": "https://matchapp.tv/news/articles/justin-timberlake-documentary-trailer-he-s-not-who-i-thought-he-was-fa5f91/",
+      "landing_url": "https://matchapp.tv/?news=fa5f91b4#latest-news",
+      "seo": {
+        "primary_keyword": "Justin Timberlake Documentary Trailer latest news",
+        "short_tail": [
+          "Justin Timberlake Documentary Trailer",
+          "Justin Timberlake Documentary Trailer news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Justin Timberlake Documentary Trailer latest news November 2026",
+          "Justin Timberlake Documentary Trailer release update 2026",
+          "Justin Timberlake Documentary Trailer news 2026-11-23",
+          "latest release news about Justin Timberlake Documentary Trailer",
+          "justin timberlake documentary trailer justin timberlake latest update",
+          "The Hollywood Reporter Justin Timberlake Documentary Trailer release",
+          "latest news about Justin Timberlake Documentary Trailer November 2026",
+          "Justin Timberlake Documentary Trailer entertainment news 2026-11-23",
+          "what happened with Justin Timberlake Documentary Trailer"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Justin Timberlake Documentary Trailer",
+          "justin",
+          "timberlake",
+          "documentary",
+          "trailer"
+        ],
+        "freshness_keywords": [
+          "November 2026",
+          "2026-11-23",
+          "Justin Timberlake Documentary Trailer 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Justin Timberlake Documentary Trailer",
+          "hollywoodreporter.com Justin Timberlake Documentary Trailer",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Justin Timberlake Documentary Trailer: “He’s Not Who I…",
+        "meta_description": "Justin Timberlake Documentary Trailer: Release update reported by The Hollywood Reporter on 2026-11-23. See verified context, publication time and the…",
+        "keywords": [
+          "Justin Timberlake Documentary Trailer latest news",
+          "Justin Timberlake Documentary Trailer",
+          "Justin Timberlake Documentary Trailer news",
+          "release",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Justin Timberlake Documentary Trailer latest news November 2026",
+          "Justin Timberlake Documentary Trailer release update 2026",
+          "Justin Timberlake Documentary Trailer news 2026-11-23",
+          "latest release news about Justin Timberlake Documentary Trailer",
+          "justin timberlake documentary trailer justin timberlake latest update",
+          "The Hollywood Reporter Justin Timberlake Documentary Trailer release",
+          "latest news about Justin Timberlake Documentary Trailer November 2026",
+          "Justin Timberlake Documentary Trailer entertainment news 2026-11-23",
+          "what happened with Justin Timberlake Documentary Trailer",
+          "justin",
+          "timberlake",
+          "documentary",
+          "trailer",
+          "November 2026",
+          "2026-11-23",
+          "Justin Timberlake Documentary Trailer 2026",
+          "The Hollywood Reporter Justin Timberlake Documentary Trailer",
+          "hollywoodreporter.com Justin Timberlake Documentary Trailer",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
+      }
+    },
+    {
+      "id": "c2176818",
+      "title": "Mexican soldiers attacked in wake of drug lord's arrest",
+      "url": "https://www.bbc.co.uk/news/articles/c5rmgkv2lk73o?at_medium=RSS&at_campaign=rss",
       "source": "BBC World",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
       "language": "en",
-      "published_at": "2026-11-23T08:53:01.000Z",
-      "discovered_at": "2026-11-23T10:27:59.795Z",
+      "published_at": "2026-11-23T14:54:03.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
       "event_type": "World",
       "category": "world",
       "person": "",
       "description": "World news reported by BBC World on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ef67/live/41b58d30-e716-11f1-9c93-b5d142ad154c.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/kenya-and-dr-congo-agree-to-restore-ties-after-tensions-over-conflict-476e3d/",
-      "landing_url": "https://matchapp.tv/?news=476e3de4#latest-news",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/17c3/live/64308a00-e73d-11f1-802a-678be58471bb.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/mexican-soldiers-attacked-in-wake-of-drug-lord-s-arrest-c21768/",
+      "landing_url": "https://matchapp.tv/?news=c2176818#latest-news",
       "seo": {
         "primary_keyword": "world news 2026-11-23",
         "short_tail": [
           "world news",
           "global headlines",
-          "kenya",
-          "congo",
-          "agree",
-          "restore",
-          "ties",
-          "after"
+          "mexican",
+          "soldiers",
+          "attacked",
+          "wake",
+          "drug",
+          "lord"
         ],
         "long_tail": [
-          "Kenya and DR Congo agree to restore ties after tensions over conflict 2026-11-23",
+          "Mexican soldiers attacked in wake of drug lord's arrest 2026-11-23",
           "world news November 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "kenya",
-          "congo",
-          "agree",
-          "restore",
-          "ties",
-          "after"
+          "mexican",
+          "soldiers",
+          "attacked",
+          "wake",
+          "drug",
+          "lord"
         ],
         "freshness_keywords": [
           "2026-11-23"
@@ -192,19 +574,697 @@
         "source_keywords": [
           "BBC World"
         ],
-        "meta_title": "Kenya and DR Congo agree to restore ties after tensions…",
+        "meta_title": "Mexican soldiers attacked in wake of drug lord's arrest |…",
         "meta_description": "World report published by BBC World on 2026-11-23. Open the original report for full context.",
         "keywords": [
           "world news 2026-11-23",
           "world news",
           "global headlines",
-          "kenya",
-          "congo",
-          "agree",
-          "restore",
-          "ties",
-          "after",
-          "Kenya and DR Congo agree to restore ties after tensions over conflict 2026-11-23",
+          "mexican",
+          "soldiers",
+          "attacked",
+          "wake",
+          "drug",
+          "lord",
+          "Mexican soldiers attacked in wake of drug lord's arrest 2026-11-23",
+          "world news November 2026",
+          "2026-11-23",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
+      }
+    },
+    {
+      "id": "6598757c",
+      "title": "Ben Petrie, Juliette Gariépy, Chris Locke, Romina D’Ugo to Star in ‘Man Vs Truck’ Dark Comedy (Exclusive)",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/man-vs-truck-dark-comedy-ben-petrie-chris-locke-1236760057/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-11-23T14:30:00.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
+      "event_type": "Casting",
+      "category": "entertainment",
+      "person": "Ben Petrie",
+      "description": "Ben Petrie: casting headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/11/Ben-Romina-Juliette.jpg?crop=0px%2C14px%2C1200px%2C672px&resize=1440%2C810",
+      "matchapp_url": "https://matchapp.tv/news/articles/ben-petrie-juliette-gariepy-chris-locke-romina-d-ugo-to-star-in-man-vs-truck-dar-659875/",
+      "landing_url": "https://matchapp.tv/?news=6598757c#latest-news",
+      "seo": {
+        "primary_keyword": "Ben Petrie latest news",
+        "short_tail": [
+          "Ben Petrie",
+          "Ben Petrie news",
+          "casting",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Ben Petrie latest news November 2026",
+          "Ben Petrie casting update 2026",
+          "Ben Petrie news 2026-11-23",
+          "latest casting news about Ben Petrie",
+          "ben petrie ben petrie juliette gariepy latest update",
+          "The Hollywood Reporter Ben Petrie casting",
+          "latest news about Ben Petrie November 2026",
+          "Ben Petrie entertainment news 2026-11-23",
+          "what happened with Ben Petrie"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Ben Petrie",
+          "ben",
+          "petrie",
+          "juliette",
+          "gariepy",
+          "chris",
+          "locke"
+        ],
+        "freshness_keywords": [
+          "November 2026",
+          "2026-11-23",
+          "Ben Petrie 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Ben Petrie",
+          "hollywoodreporter.com Ben Petrie",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Ben Petrie, Juliette Gariépy, Chris Locke, Romina D’Ugo to…",
+        "meta_description": "Ben Petrie: Casting update reported by The Hollywood Reporter on 2026-11-23. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "Ben Petrie latest news",
+          "Ben Petrie",
+          "Ben Petrie news",
+          "casting",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Ben Petrie latest news November 2026",
+          "Ben Petrie casting update 2026",
+          "Ben Petrie news 2026-11-23",
+          "latest casting news about Ben Petrie",
+          "ben petrie ben petrie juliette gariepy latest update",
+          "The Hollywood Reporter Ben Petrie casting",
+          "latest news about Ben Petrie November 2026",
+          "Ben Petrie entertainment news 2026-11-23",
+          "what happened with Ben Petrie",
+          "ben",
+          "petrie",
+          "juliette",
+          "gariepy",
+          "chris",
+          "locke",
+          "November 2026",
+          "2026-11-23",
+          "Ben Petrie 2026",
+          "The Hollywood Reporter Ben Petrie",
+          "hollywoodreporter.com Ben Petrie",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
+      }
+    },
+    {
+      "id": "1a67c979",
+      "title": "Presidential villa suffers water and power cuts, Nigerian leader says",
+      "url": "https://www.bbc.co.uk/news/articles/cv1j65xjjk65o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-11-23T14:26:33.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/69d2/live/beff50e0-e71c-11f1-914b-6d226d813a52.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/presidential-villa-suffers-water-and-power-cuts-nigerian-leader-says-1a67c9/",
+      "landing_url": "https://matchapp.tv/?news=1a67c979#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-11-23",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "presidential",
+          "villa",
+          "suffers",
+          "water",
+          "power",
+          "cuts"
+        ],
+        "long_tail": [
+          "Presidential villa suffers water and power cuts, Nigerian leader says 2026-11-23",
+          "world news November 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "presidential",
+          "villa",
+          "suffers",
+          "water",
+          "power",
+          "cuts"
+        ],
+        "freshness_keywords": [
+          "2026-11-23"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Presidential villa suffers water and power cuts, Nigerian…",
+        "meta_description": "World report published by BBC World on 2026-11-23. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-11-23",
+          "world news",
+          "global headlines",
+          "presidential",
+          "villa",
+          "suffers",
+          "water",
+          "power",
+          "cuts",
+          "Presidential villa suffers water and power cuts, Nigerian leader says 2026-11-23",
+          "world news November 2026",
+          "2026-11-23",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
+      }
+    },
+    {
+      "id": "807b80c1",
+      "title": "Trump celebra retorno de Jensen Huang ao comando da Nvidia e diz que não há risco de segurança nacional",
+      "url": "https://g1.globo.com/mundo/noticia/2026/11/23/trump-celebra-retorno-de-jensen-huang-ao-comando-da-nvidia-e-diz-que-nao-ha-risco-de-seguranca-nacional.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-11-23T14:14:05.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/P5GgiQPTgjhGgvmBHFrcP1HGNM4=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/1/t/6V7ZUWSSejgY4MeAwyfQ/2026-11-09t144950z-1963388642-rc27zna502u3-rtrmadp-3-usa-trump.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/trump-celebra-retorno-de-jensen-huang-ao-comando-da-nvidia-e-diz-que-nao-ha-risc-807b80/",
+      "landing_url": "https://matchapp.tv/?news=807b80c1#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-11-23",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "trump",
+          "celebra",
+          "retorno",
+          "jensen",
+          "huang",
+          "comando"
+        ],
+        "long_tail": [
+          "Trump celebra retorno de Jensen Huang ao comando da Nvidia e diz que não há risco de segurança nacional 2026-11-23",
+          "notícias mundiais novembro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "trump",
+          "celebra",
+          "retorno",
+          "jensen",
+          "huang",
+          "comando"
+        ],
+        "freshness_keywords": [
+          "2026-11-23"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Trump celebra retorno de Jensen Huang ao comando da Nvidia…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-23. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-11-23",
+          "notícias do mundo",
+          "notícias internacionais",
+          "trump",
+          "celebra",
+          "retorno",
+          "jensen",
+          "huang",
+          "comando",
+          "Trump celebra retorno de Jensen Huang ao comando da Nvidia e diz que não há risco de segurança nacional 2026-11-23",
+          "notícias mundiais novembro 2026",
+          "2026-11-23",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
+      }
+    },
+    {
+      "id": "c2c96bd8",
+      "title": "GTA 6 hacker released on licence with warning 'don't let this happen again'",
+      "url": "https://www.bbc.co.uk/news/articles/cqpv9kr7pxmro?at_medium=RSS&at_campaign=rss",
+      "source": "BBC Technology",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-11-23T14:08:50.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC Technology on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e22e/live/1d07a600-e269-11f1-a094-5fdc692f3e33.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/gta-6-hacker-released-on-licence-with-warning-don-t-let-this-happen-again-c2c96b/",
+      "landing_url": "https://matchapp.tv/?news=c2c96bd8#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-11-23",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "gta",
+          "hacker",
+          "released",
+          "licence",
+          "warning",
+          "don"
+        ],
+        "long_tail": [
+          "GTA 6 hacker released on licence with warning 'don't let this happen again' 2026-11-23",
+          "world news November 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "gta",
+          "hacker",
+          "released",
+          "licence",
+          "warning",
+          "don"
+        ],
+        "freshness_keywords": [
+          "2026-11-23"
+        ],
+        "source_keywords": [
+          "BBC Technology"
+        ],
+        "meta_title": "GTA 6 hacker released on licence with warning 'don't let…",
+        "meta_description": "World report published by BBC Technology on 2026-11-23. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-11-23",
+          "world news",
+          "global headlines",
+          "gta",
+          "hacker",
+          "released",
+          "licence",
+          "warning",
+          "don",
+          "GTA 6 hacker released on licence with warning 'don't let this happen again' 2026-11-23",
+          "world news November 2026",
+          "2026-11-23",
+          "BBC Technology"
+        ],
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
+      }
+    },
+    {
+      "id": "c3f0c850",
+      "title": "Flights and train services cancelled in Belgium due to strike",
+      "url": "https://www.bbc.co.uk/news/articles/cwdr155e2d05o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-11-23T13:34:02.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6bf3/live/3920ed00-e738-11f1-8294-033bd8ee7e95.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/flights-and-train-services-cancelled-in-belgium-due-to-strike-c3f0c8/",
+      "landing_url": "https://matchapp.tv/?news=c3f0c850#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-11-23",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "flights",
+          "train",
+          "services",
+          "cancelled",
+          "belgium",
+          "due"
+        ],
+        "long_tail": [
+          "Flights and train services cancelled in Belgium due to strike 2026-11-23",
+          "world news November 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "flights",
+          "train",
+          "services",
+          "cancelled",
+          "belgium",
+          "due"
+        ],
+        "freshness_keywords": [
+          "2026-11-23"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Flights and train services cancelled in Belgium due to…",
+        "meta_description": "World report published by BBC World on 2026-11-23. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-11-23",
+          "world news",
+          "global headlines",
+          "flights",
+          "train",
+          "services",
+          "cancelled",
+          "belgium",
+          "due",
+          "Flights and train services cancelled in Belgium due to strike 2026-11-23",
+          "world news November 2026",
+          "2026-11-23",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
+      }
+    },
+    {
+      "id": "712e3ca3",
+      "title": "Panda é entrevistado no g1 Ouviu ao vivo desta quarta-feira (25)",
+      "url": "https://g1.globo.com/pop-arte/musica/ao-vivo/panda-e-entrevistado-no-g1-ouviu-ao-vivo-desta-quarta-feira-25.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-11-23T13:30:35.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/U_ftJWN6DJQCLvCSCOJLYwZyKBo=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/m/K/uUCeoiRvmbWNAQbJj3BA/panda.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/panda-e-entrevistado-no-g1-ouviu-ao-vivo-desta-quarta-feira-25-712e3c/",
+      "landing_url": "https://matchapp.tv/?news=712e3ca3#latest-news",
+      "seo": {
+        "primary_keyword": "panda entrevistado ouviu vivo últimas notícias",
+        "short_tail": [
+          "panda entrevistado ouviu vivo",
+          "panda entrevistado ouviu vivo news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "panda entrevistado ouviu vivo latest news November 2026",
+          "panda entrevistado ouviu vivo entertainment update 2026",
+          "panda entrevistado ouviu vivo news 2026-11-23",
+          "latest entertainment news about panda entrevistado ouviu vivo",
+          "panda entrevistado ouviu vivo desta quarta latest update",
+          "G1 panda entrevistado ouviu vivo entertainment",
+          "últimas notícias sobre panda entrevistado ouviu vivo novembro 2026",
+          "panda entrevistado ouviu vivo notícia de 2026-11-23",
+          "o que aconteceu com panda entrevistado ouviu vivo"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "panda",
+          "entrevistado",
+          "ouviu",
+          "vivo",
+          "desta",
+          "quarta",
+          "feira"
+        ],
+        "freshness_keywords": [
+          "November 2026",
+          "2026-11-23",
+          "novembro 2026",
+          "panda entrevistado ouviu vivo 2026"
+        ],
+        "source_keywords": [
+          "G1 panda entrevistado ouviu vivo",
+          "g1.globo.com panda entrevistado ouviu vivo",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Panda é entrevistado no g1 Ouviu ao vivo desta…",
+        "meta_description": "Notícia publicada por G1 em 2026-11-23. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "panda entrevistado ouviu vivo últimas notícias",
+          "panda entrevistado ouviu vivo",
+          "panda entrevistado ouviu vivo news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "panda entrevistado ouviu vivo latest news November 2026",
+          "panda entrevistado ouviu vivo entertainment update 2026",
+          "panda entrevistado ouviu vivo news 2026-11-23",
+          "latest entertainment news about panda entrevistado ouviu vivo",
+          "panda entrevistado ouviu vivo desta quarta latest update",
+          "G1 panda entrevistado ouviu vivo entertainment",
+          "últimas notícias sobre panda entrevistado ouviu vivo novembro 2026",
+          "panda entrevistado ouviu vivo notícia de 2026-11-23",
+          "o que aconteceu com panda entrevistado ouviu vivo",
+          "panda",
+          "entrevistado",
+          "ouviu",
+          "vivo",
+          "desta",
+          "quarta",
+          "feira",
+          "November 2026",
+          "2026-11-23",
+          "novembro 2026",
+          "panda entrevistado ouviu vivo 2026",
+          "G1 panda entrevistado ouviu vivo",
+          "g1.globo.com panda entrevistado ouviu vivo",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
+      }
+    },
+    {
+      "id": "1190bd19",
+      "title": "Após série de apagões em Cuba, pedidos de refúgio de cubanos no Brasil chegam a 4,9 mil em setembro e somam 33,2 mil em 2026",
+      "url": "https://g1.globo.com/politica/noticia/2026/11/23/refugio-cuba-2026-parcial.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-11-23T13:24:41.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/88ibek9EX0EWsznDrBMp64Mi5-c=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/U/m/EXHpYDTi2rA82cdOayMQ/travessia2.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/apos-serie-de-apagoes-em-cuba-pedidos-de-refugio-de-cubanos-no-brasil-chegam-a-4-1190bd/",
+      "landing_url": "https://matchapp.tv/?news=1190bd19#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-11-23",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "apos",
+          "serie",
+          "apagoes",
+          "cuba",
+          "pedidos",
+          "refugio"
+        ],
+        "long_tail": [
+          "Após série de apagões em Cuba, pedidos de refúgio de cubanos no Brasil chegam a 4,9 mil em setembro e somam 33,2 mil em 2026 2026-11-23",
+          "notícias mundiais novembro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "apos",
+          "serie",
+          "apagoes",
+          "cuba",
+          "pedidos",
+          "refugio"
+        ],
+        "freshness_keywords": [
+          "2026-11-23"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Após série de apagões em Cuba, pedidos de refúgio de…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-23. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-11-23",
+          "notícias do mundo",
+          "notícias internacionais",
+          "apos",
+          "serie",
+          "apagoes",
+          "cuba",
+          "pedidos",
+          "refugio",
+          "Após série de apagões em Cuba, pedidos de refúgio de cubanos no Brasil chegam a 4,9 mil em setembro e somam 33,2 mil em 2026 2026-11-23",
+          "notícias mundiais novembro 2026",
+          "2026-11-23",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
+      }
+    },
+    {
+      "id": "8ce3b0ae",
+      "title": "Alemanha tem ameaças de bomba em mais de 450 escolas em meio a falsos alertas em toda a Europa",
+      "url": "https://g1.globo.com/mundo/noticia/2026/11/23/ameacas-de-bomba-em-mais-de-450-escolas-na-alemanha.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-11-23T13:17:21.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/8Ql5e3NfAGx7gVmV5Ra9cVGZvMw=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/W/a/w6qImaSza80L6fLoZhvQ/afp-20261123-d8ch9dy-v1-midres-germanyparliamentweatherautumn.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/alemanha-tem-ameacas-de-bomba-em-mais-de-450-escolas-em-meio-a-falsos-alertas-em-8ce3b0/",
+      "landing_url": "https://matchapp.tv/?news=8ce3b0ae#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-11-23",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "alemanha",
+          "tem",
+          "ameacas",
+          "bomba",
+          "mais",
+          "450"
+        ],
+        "long_tail": [
+          "Alemanha tem ameaças de bomba em mais de 450 escolas em meio a falsos alertas em toda a Europa 2026-11-23",
+          "notícias mundiais novembro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "alemanha",
+          "tem",
+          "ameacas",
+          "bomba",
+          "mais",
+          "450"
+        ],
+        "freshness_keywords": [
+          "2026-11-23"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Alemanha tem ameaças de bomba em mais de 450 escolas em…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-23. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-11-23",
+          "notícias do mundo",
+          "notícias internacionais",
+          "alemanha",
+          "tem",
+          "ameacas",
+          "bomba",
+          "mais",
+          "450",
+          "Alemanha tem ameaças de bomba em mais de 450 escolas em meio a falsos alertas em toda a Europa 2026-11-23",
+          "notícias mundiais novembro 2026",
+          "2026-11-23",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
+      }
+    },
+    {
+      "id": "7e538376",
+      "title": "Democrats win largest House majority since 1992 after flipping North Carolina seat",
+      "url": "https://www.bbc.co.uk/news/articles/c6vg29g7dlyno?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-11-23T13:02:05.000Z",
+      "discovered_at": "2026-11-23T10:27:59.795Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/4632/live/52e19140-e715-11f1-99b6-a35a62fa4264.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/democrats-win-largest-house-majority-since-1992-after-flipping-north-carolina-se-7e5383/",
+      "landing_url": "https://matchapp.tv/?news=7e538376#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-11-23",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "democrats",
+          "win",
+          "largest",
+          "house",
+          "majority",
+          "since"
+        ],
+        "long_tail": [
+          "Democrats win largest House majority since 1992 after flipping North Carolina seat 2026-11-23",
+          "world news November 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "democrats",
+          "win",
+          "largest",
+          "house",
+          "majority",
+          "since"
+        ],
+        "freshness_keywords": [
+          "2026-11-23"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Democrats win largest House majority since 1992 after…",
+        "meta_description": "World report published by BBC World on 2026-11-23. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-11-23",
+          "world news",
+          "global headlines",
+          "democrats",
+          "win",
+          "largest",
+          "house",
+          "majority",
+          "since",
+          "Democrats win largest House majority since 1992 after flipping North Carolina seat 2026-11-23",
           "world news November 2026",
           "2026-11-23",
           "BBC World"
@@ -213,47 +1273,318 @@
       }
     },
     {
-      "id": "76dc4ef3",
-      "title": "Burnham to tell MPs 'landmark' EU deal could make next decade 'much better'",
-      "url": "https://www.bbc.co.uk/news/articles/cmde1dy82lepo?at_medium=RSS&at_campaign=rss",
+      "id": "6d8b46dd",
+      "title": "Bukele exporta seu modelo de combate ao crime para o atoleiro haitiano",
+      "url": "https://g1.globo.com/mundo/blog/sandra-cohen/post/2026/11/23/bukele-exporta-seu-modelo-de-combate-ao-crime-para-o-atoleiro-haitiano.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-11-23T13:00:18.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/nI3U55jccChPyEt9f74gv3Ua8A0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/b/o/lios6VT7KxLN89pT0jyA/2026-11-20t035714z-141827300-rc2froau0uhp-rtrmadp-3-elsalvador-election-bukele.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/bukele-exporta-seu-modelo-de-combate-ao-crime-para-o-atoleiro-haitiano-6d8b46/",
+      "landing_url": "https://matchapp.tv/?news=6d8b46dd#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-11-23",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "bukele",
+          "exporta",
+          "seu",
+          "modelo",
+          "combate",
+          "crime"
+        ],
+        "long_tail": [
+          "Bukele exporta seu modelo de combate ao crime para o atoleiro haitiano 2026-11-23",
+          "notícias mundiais novembro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "bukele",
+          "exporta",
+          "seu",
+          "modelo",
+          "combate",
+          "crime"
+        ],
+        "freshness_keywords": [
+          "2026-11-23"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Bukele exporta seu modelo de combate ao crime para o…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-23. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-11-23",
+          "notícias do mundo",
+          "notícias internacionais",
+          "bukele",
+          "exporta",
+          "seu",
+          "modelo",
+          "combate",
+          "crime",
+          "Bukele exporta seu modelo de combate ao crime para o atoleiro haitiano 2026-11-23",
+          "notícias mundiais novembro 2026",
+          "2026-11-23",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
+      }
+    },
+    {
+      "id": "13c82612",
+      "title": "Obra de Geraldo Vandré é reavivada em álbum previsto para 2027 com concerto sinfônico com músicas do compositor",
+      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/11/23/obra-de-geraldo-vandre-e-revista-em-album-previsto-para-2027-com-concerto-sinfonico-com-musicas-do-compositor.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-11-23T12:57:12.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
+      "event_type": "Music",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/NstYXwwqZpeG8lwrX-os5WGCfSA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/2/a/G6XhbIQdKwqMJIA4xKcQ/geraldo-vandre-por-eric-clementino.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/obra-de-geraldo-vandre-e-reavivada-em-album-previsto-para-2027-com-concerto-sinf-13c826/",
+      "landing_url": "https://matchapp.tv/?news=13c82612#latest-news",
+      "seo": {
+        "primary_keyword": "obra geraldo vandre reavivada últimas notícias",
+        "short_tail": [
+          "obra geraldo vandre reavivada",
+          "obra geraldo vandre reavivada news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "obra geraldo vandre reavivada latest news November 2026",
+          "obra geraldo vandre reavivada music update 2026",
+          "obra geraldo vandre reavivada news 2026-11-23",
+          "latest music news about obra geraldo vandre reavivada",
+          "obra geraldo vandre reavivada album previsto latest update",
+          "G1 obra geraldo vandre reavivada music",
+          "últimas notícias sobre obra geraldo vandre reavivada novembro 2026",
+          "obra geraldo vandre reavivada notícia de 2026-11-23",
+          "o que aconteceu com obra geraldo vandre reavivada"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "obra",
+          "geraldo",
+          "vandre",
+          "reavivada",
+          "album",
+          "previsto",
+          "2027",
+          "concerto"
+        ],
+        "freshness_keywords": [
+          "November 2026",
+          "2026-11-23",
+          "novembro 2026",
+          "obra geraldo vandre reavivada 2026"
+        ],
+        "source_keywords": [
+          "G1 obra geraldo vandre reavivada",
+          "g1.globo.com obra geraldo vandre reavivada",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Obra de Geraldo Vandré é reavivada em álbum previsto para…",
+        "meta_description": "Notícia publicada por G1 em 2026-11-23. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "obra geraldo vandre reavivada últimas notícias",
+          "obra geraldo vandre reavivada",
+          "obra geraldo vandre reavivada news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "obra geraldo vandre reavivada latest news November 2026",
+          "obra geraldo vandre reavivada music update 2026",
+          "obra geraldo vandre reavivada news 2026-11-23",
+          "latest music news about obra geraldo vandre reavivada",
+          "obra geraldo vandre reavivada album previsto latest update",
+          "G1 obra geraldo vandre reavivada music",
+          "últimas notícias sobre obra geraldo vandre reavivada novembro 2026",
+          "obra geraldo vandre reavivada notícia de 2026-11-23",
+          "o que aconteceu com obra geraldo vandre reavivada",
+          "obra",
+          "geraldo",
+          "vandre",
+          "reavivada",
+          "album",
+          "previsto",
+          "2027",
+          "concerto",
+          "November 2026",
+          "2026-11-23",
+          "novembro 2026",
+          "obra geraldo vandre reavivada 2026",
+          "G1 obra geraldo vandre reavivada",
+          "g1.globo.com obra geraldo vandre reavivada",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
+      }
+    },
+    {
+      "id": "06ecde3d",
+      "title": "Chitãozinho e Xororó anunciam turnê em parceria com Jorge e Mateus para 2027",
+      "url": "https://g1.globo.com/pop-arte/sertanejo/noticia/2026/11/23/chitaozinho-e-xororo-anunciam-turne-em-parceria-com-jorge-e-mateus-para-2027.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-11-23T12:37:56.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
+      "event_type": "Music",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/eeKm_kpIQf13Zm9MdeJGPCtSNUQ=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/U/6/C0AZqqROOG7pANm56tbg/captura-de-tela-2026-11-22-232420.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/chitaozinho-e-xororo-anunciam-turne-em-parceria-com-jorge-e-mateus-para-2027-06ecde/",
+      "landing_url": "https://matchapp.tv/?news=06ecde3d#latest-news",
+      "seo": {
+        "primary_keyword": "chitaozinho xororo anunciam turne últimas notícias",
+        "short_tail": [
+          "chitaozinho xororo anunciam turne",
+          "chitaozinho xororo anunciam turne news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "chitaozinho xororo anunciam turne latest news November 2026",
+          "chitaozinho xororo anunciam turne music update 2026",
+          "chitaozinho xororo anunciam turne news 2026-11-23",
+          "latest music news about chitaozinho xororo anunciam turne",
+          "chitaozinho xororo anunciam turne parceria jorge latest update",
+          "G1 chitaozinho xororo anunciam turne music",
+          "últimas notícias sobre chitaozinho xororo anunciam turne novembro 2026",
+          "chitaozinho xororo anunciam turne notícia de 2026-11-23",
+          "o que aconteceu com chitaozinho xororo anunciam turne"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "chitaozinho",
+          "xororo",
+          "anunciam",
+          "turne",
+          "parceria",
+          "jorge",
+          "mateus",
+          "2027"
+        ],
+        "freshness_keywords": [
+          "November 2026",
+          "2026-11-23",
+          "novembro 2026",
+          "chitaozinho xororo anunciam turne 2026"
+        ],
+        "source_keywords": [
+          "G1 chitaozinho xororo anunciam turne",
+          "g1.globo.com chitaozinho xororo anunciam turne",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Chitãozinho e Xororó anunciam turnê em parceria com Jorge…",
+        "meta_description": "Notícia publicada por G1 em 2026-11-23. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "chitaozinho xororo anunciam turne últimas notícias",
+          "chitaozinho xororo anunciam turne",
+          "chitaozinho xororo anunciam turne news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "chitaozinho xororo anunciam turne latest news November 2026",
+          "chitaozinho xororo anunciam turne music update 2026",
+          "chitaozinho xororo anunciam turne news 2026-11-23",
+          "latest music news about chitaozinho xororo anunciam turne",
+          "chitaozinho xororo anunciam turne parceria jorge latest update",
+          "G1 chitaozinho xororo anunciam turne music",
+          "últimas notícias sobre chitaozinho xororo anunciam turne novembro 2026",
+          "chitaozinho xororo anunciam turne notícia de 2026-11-23",
+          "o que aconteceu com chitaozinho xororo anunciam turne",
+          "chitaozinho",
+          "xororo",
+          "anunciam",
+          "turne",
+          "parceria",
+          "jorge",
+          "mateus",
+          "2027",
+          "November 2026",
+          "2026-11-23",
+          "novembro 2026",
+          "chitaozinho xororo anunciam turne 2026",
+          "G1 chitaozinho xororo anunciam turne",
+          "g1.globo.com chitaozinho xororo anunciam turne",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
+      }
+    },
+    {
+      "id": "81800622",
+      "title": "Israeli attacks have turned Gaza into 'toxic wasteland', Oxfam says",
+      "url": "https://www.bbc.co.uk/news/articles/c8r4gzzxvxl3o?at_medium=RSS&at_campaign=rss",
       "source": "BBC World",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
       "language": "en",
-      "published_at": "2026-11-23T08:41:08.000Z",
-      "discovered_at": "2026-11-23T10:27:59.795Z",
+      "published_at": "2026-11-23T11:57:33.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
       "event_type": "World",
       "category": "world",
       "person": "",
       "description": "World news reported by BBC World on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3431/live/0e8b4920-e6be-11f1-a023-d502158f79f8.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/burnham-to-tell-mps-landmark-eu-deal-could-make-next-decade-much-better-76dc4e/",
-      "landing_url": "https://matchapp.tv/?news=76dc4ef3#latest-news",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/810a/live/c0542f80-e73d-11f1-99a1-253766e7ad8b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/israeli-attacks-have-turned-gaza-into-toxic-wasteland-oxfam-says-818006/",
+      "landing_url": "https://matchapp.tv/?news=81800622#latest-news",
       "seo": {
         "primary_keyword": "world news 2026-11-23",
         "short_tail": [
           "world news",
           "global headlines",
-          "burnham",
-          "tell",
-          "mps",
-          "landmark",
-          "deal",
-          "could"
+          "israeli",
+          "attacks",
+          "have",
+          "turned",
+          "gaza",
+          "into"
         ],
         "long_tail": [
-          "Burnham to tell MPs 'landmark' EU deal could make next decade 'much better' 2026-11-23",
+          "Israeli attacks have turned Gaza into 'toxic wasteland', Oxfam says 2026-11-23",
           "world news November 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "burnham",
-          "tell",
-          "mps",
-          "landmark",
-          "deal",
-          "could"
+          "israeli",
+          "attacks",
+          "have",
+          "turned",
+          "gaza",
+          "into"
         ],
         "freshness_keywords": [
           "2026-11-23"
@@ -261,43 +1592,213 @@
         "source_keywords": [
           "BBC World"
         ],
-        "meta_title": "Burnham to tell MPs 'landmark' EU deal could make next…",
+        "meta_title": "Israeli attacks have turned Gaza into 'toxic wasteland',…",
         "meta_description": "World report published by BBC World on 2026-11-23. Open the original report for full context.",
         "keywords": [
           "world news 2026-11-23",
           "world news",
           "global headlines",
-          "burnham",
-          "tell",
-          "mps",
-          "landmark",
-          "deal",
-          "could",
-          "Burnham to tell MPs 'landmark' EU deal could make next decade 'much better' 2026-11-23",
+          "israeli",
+          "attacks",
+          "have",
+          "turned",
+          "gaza",
+          "into",
+          "Israeli attacks have turned Gaza into 'toxic wasteland', Oxfam says 2026-11-23",
           "world news November 2026",
           "2026-11-23",
           "BBC World"
         ],
-        "seo_generated_at": "2026-11-23T10:27:59.795Z"
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
+      }
+    },
+    {
+      "id": "02a006f4",
+      "title": "VÍDEO: Menino de 7 anos é resgatado após 14 horas sob escombros na Ucrânia: 'Não tenham pressa, estou bem'",
+      "url": "https://g1.globo.com/mundo/noticia/2026/11/23/menino-de-7-anos-e-resgatado-apos-14-horas-sob-escombros-na-ucrania-ataque-matou-11-pessoas.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-11-23T11:53:32.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/iaAX5Jl1VDgqmY8ez6uQSgxEseM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/j/Z/W3CUBQSWOdm4Kx18kBjA/2026-11-23t081851z-541533440-rc2jtoav2vl8-rtrmadp-3-ukraine-crisis-attack-kyiv-region.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/video-menino-de-7-anos-e-resgatado-apos-14-horas-sob-escombros-na-ucrania-nao-te-02a006/",
+      "landing_url": "https://matchapp.tv/?news=02a006f4#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-11-23",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "video",
+          "menino",
+          "anos",
+          "resgatado",
+          "apos",
+          "horas"
+        ],
+        "long_tail": [
+          "VÍDEO: Menino de 7 anos é resgatado após 14 horas sob escombros na Ucrânia: 'Não tenham pressa, estou bem' 2026-11-23",
+          "notícias mundiais novembro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "video",
+          "menino",
+          "anos",
+          "resgatado",
+          "apos",
+          "horas"
+        ],
+        "freshness_keywords": [
+          "2026-11-23"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "VÍDEO: Menino de 7 anos é resgatado após 14 horas sob…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-23. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-11-23",
+          "notícias do mundo",
+          "notícias internacionais",
+          "video",
+          "menino",
+          "anos",
+          "resgatado",
+          "apos",
+          "horas",
+          "VÍDEO: Menino de 7 anos é resgatado após 14 horas sob escombros na Ucrânia: 'Não tenham pressa, estou bem' 2026-11-23",
+          "notícias mundiais novembro 2026",
+          "2026-11-23",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
+      }
+    },
+    {
+      "id": "ddf23876",
+      "title": "Quem era Gabriel Scherer, auxiliar de vídeo da Globo que morreu em acidente durante viagem com a família",
+      "url": "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/quem-era-gabriel-scherer-auxiliar-de-video-da-globo-que-morreu-em-acidente-durante-viagem-com-a-familia.ghtml",
+      "source": "G1",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "BR",
+      "language": "pt",
+      "published_at": "2026-11-23T11:40:46.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
+      "event_type": "Obituary",
+      "category": "entertainment",
+      "person": "",
+      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
+      "image": "https://s2-g1.glbimg.com/ryNetD7dbvtM1HCLwrNN9UfktGQ=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/n/L/pGobWeQ7CWpAyCKm8xlg/gabriel.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/quem-era-gabriel-scherer-auxiliar-de-video-da-globo-que-morreu-em-acidente-duran-ddf238/",
+      "landing_url": "https://matchapp.tv/?news=ddf23876#latest-news",
+      "seo": {
+        "primary_keyword": "quem era gabriel scherer últimas notícias",
+        "short_tail": [
+          "quem era gabriel scherer",
+          "quem era gabriel scherer news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje"
+        ],
+        "long_tail": [
+          "quem era gabriel scherer latest news November 2026",
+          "quem era gabriel scherer obituary update 2026",
+          "quem era gabriel scherer news 2026-11-23",
+          "latest obituary news about quem era gabriel scherer",
+          "quem era gabriel scherer auxiliar video latest update",
+          "G1 quem era gabriel scherer obituary",
+          "últimas notícias sobre quem era gabriel scherer novembro 2026",
+          "quem era gabriel scherer notícia de 2026-11-23",
+          "o que aconteceu com quem era gabriel scherer"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "quem",
+          "era",
+          "gabriel",
+          "scherer",
+          "auxiliar",
+          "video",
+          "globo",
+          "que"
+        ],
+        "freshness_keywords": [
+          "November 2026",
+          "2026-11-23",
+          "novembro 2026",
+          "quem era gabriel scherer 2026"
+        ],
+        "source_keywords": [
+          "G1 quem era gabriel scherer",
+          "g1.globo.com quem era gabriel scherer",
+          "G1 entertainment news"
+        ],
+        "meta_title": "Quem era Gabriel Scherer, auxiliar de vídeo da Globo que…",
+        "meta_description": "Notícia publicada por G1 em 2026-11-23. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
+        "keywords": [
+          "quem era gabriel scherer últimas notícias",
+          "quem era gabriel scherer",
+          "quem era gabriel scherer news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "notícias de entretenimento",
+          "notícias hoje",
+          "quem era gabriel scherer latest news November 2026",
+          "quem era gabriel scherer obituary update 2026",
+          "quem era gabriel scherer news 2026-11-23",
+          "latest obituary news about quem era gabriel scherer",
+          "quem era gabriel scherer auxiliar video latest update",
+          "G1 quem era gabriel scherer obituary",
+          "últimas notícias sobre quem era gabriel scherer novembro 2026",
+          "quem era gabriel scherer notícia de 2026-11-23",
+          "o que aconteceu com quem era gabriel scherer",
+          "quem",
+          "era",
+          "gabriel",
+          "scherer",
+          "auxiliar",
+          "video",
+          "globo",
+          "que",
+          "November 2026",
+          "2026-11-23",
+          "novembro 2026",
+          "quem era gabriel scherer 2026",
+          "G1 quem era gabriel scherer",
+          "g1.globo.com quem era gabriel scherer",
+          "G1 entertainment news"
+        ],
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
       }
     },
     {
       "id": "cb29a20e",
-      "title": "Russian ships hit by Ukrainian drones off Libya coast, Zelensky says",
+      "title": "Russian warship hit by Ukrainian drones in Libya, Zelensky says",
       "url": "https://www.bbc.co.uk/news/articles/cr894gjz0j0yo?at_medium=RSS&at_campaign=rss",
       "source": "BBC World",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
       "language": "en",
-      "published_at": "2026-11-23T08:36:57.000Z",
+      "published_at": "2026-11-23T11:40:01.000Z",
       "discovered_at": "2026-11-23T10:27:59.795Z",
       "event_type": "World",
       "category": "world",
       "person": "",
       "description": "World news reported by BBC World on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7507/live/ee06aa60-e720-11f1-a094-5fdc692f3e33.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/russian-ships-hit-by-ukrainian-drones-off-libya-coast-zelensky-says-cb29a2/",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f684/live/02351f90-e74d-11f1-99b6-a35a62fa4264.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/russian-warship-hit-by-ukrainian-drones-in-libya-zelensky-says-cb29a2/",
       "landing_url": "https://matchapp.tv/?news=cb29a20e#latest-news",
       "seo": {
         "primary_keyword": "world news 2026-11-23",
@@ -305,24 +1806,24 @@
           "world news",
           "global headlines",
           "russian",
-          "ships",
+          "warship",
           "hit",
           "ukrainian",
           "drones",
-          "off"
+          "libya"
         ],
         "long_tail": [
-          "Russian ships hit by Ukrainian drones off Libya coast, Zelensky says 2026-11-23",
+          "Russian warship hit by Ukrainian drones in Libya, Zelensky says 2026-11-23",
           "world news November 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
           "russian",
-          "ships",
+          "warship",
           "hit",
           "ukrainian",
           "drones",
-          "off"
+          "libya"
         ],
         "freshness_keywords": [
           "2026-11-23"
@@ -330,24 +1831,162 @@
         "source_keywords": [
           "BBC World"
         ],
-        "meta_title": "Russian ships hit by Ukrainian drones off Libya coast,…",
+        "meta_title": "Russian warship hit by Ukrainian drones in Libya, Zelensky…",
         "meta_description": "World report published by BBC World on 2026-11-23. Open the original report for full context.",
         "keywords": [
           "world news 2026-11-23",
           "world news",
           "global headlines",
           "russian",
-          "ships",
+          "warship",
           "hit",
           "ukrainian",
           "drones",
-          "off",
-          "Russian ships hit by Ukrainian drones off Libya coast, Zelensky says 2026-11-23",
+          "libya",
+          "Russian warship hit by Ukrainian drones in Libya, Zelensky says 2026-11-23",
           "world news November 2026",
           "2026-11-23",
           "BBC World"
         ],
-        "seo_generated_at": "2026-11-23T10:27:59.795Z"
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
+      }
+    },
+    {
+      "id": "3b152dca",
+      "title": "Ukraine shares video of strikes on Russian ships off Libya",
+      "url": "https://www.bbc.co.uk/news/videos/c6wy93q5wwqvo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-11-23T11:34:10.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9cc6/live/7a950f50-e738-11f1-99b6-a35a62fa4264.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/ukraine-shares-video-of-strikes-on-russian-ships-off-libya-3b152d/",
+      "landing_url": "https://matchapp.tv/?news=3b152dca#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-11-23",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "ukraine",
+          "shares",
+          "video",
+          "strikes",
+          "russian",
+          "ships"
+        ],
+        "long_tail": [
+          "Ukraine shares video of strikes on Russian ships off Libya 2026-11-23",
+          "world news November 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "ukraine",
+          "shares",
+          "video",
+          "strikes",
+          "russian",
+          "ships"
+        ],
+        "freshness_keywords": [
+          "2026-11-23"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Ukraine shares video of strikes on Russian ships off Libya…",
+        "meta_description": "World report published by BBC World on 2026-11-23. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-11-23",
+          "world news",
+          "global headlines",
+          "ukraine",
+          "shares",
+          "video",
+          "strikes",
+          "russian",
+          "ships",
+          "Ukraine shares video of strikes on Russian ships off Libya 2026-11-23",
+          "world news November 2026",
+          "2026-11-23",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
+      }
+    },
+    {
+      "id": "4e3f46ea",
+      "title": "'Agora sei que ele morreu': famílias de migrantes reagem ao descobrir que parentes estavam em embarcação encontrada no Pará",
+      "url": "https://g1.globo.com/fantastico/noticia/2026/11/23/agora-sei-que-ele-morreu-familias-de-migrantes-reagem-ao-descobrir-que-parentes-estavam-em-embarcacao-encontrada-no-para.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-11-23T11:03:31.000Z",
+      "discovered_at": "2026-11-23T15:12:58.643Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/6xmYXqgKxwjmdMQoZgKCWTJhr2E=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/k/p/3eFwD3SAahL8KTMEIGeQ/captura-de-tela-2026-11-23-075220.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/agora-sei-que-ele-morreu-familias-de-migrantes-reagem-ao-descobrir-que-parentes--4e3f46/",
+      "landing_url": "https://matchapp.tv/?news=4e3f46ea#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-11-23",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "agora",
+          "sei",
+          "que",
+          "ele",
+          "morreu",
+          "familias"
+        ],
+        "long_tail": [
+          "'Agora sei que ele morreu': famílias de migrantes reagem ao descobrir que parentes estavam em embarcação encontrada no Pará 2026-11-23",
+          "notícias mundiais novembro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "agora",
+          "sei",
+          "que",
+          "ele",
+          "morreu",
+          "familias"
+        ],
+        "freshness_keywords": [
+          "2026-11-23"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "'Agora sei que ele morreu': famílias de migrantes reagem…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-23. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-11-23",
+          "notícias do mundo",
+          "notícias internacionais",
+          "agora",
+          "sei",
+          "que",
+          "ele",
+          "morreu",
+          "familias",
+          "'Agora sei que ele morreu': famílias de migrantes reagem ao descobrir que parentes estavam em embarcação encontrada no Pará 2026-11-23",
+          "notícias mundiais novembro 2026",
+          "2026-11-23",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
       }
     },
     {
@@ -553,75 +2192,6 @@
       }
     },
     {
-      "id": "4279a336",
-      "title": "Five takeaways from the failed climate talks COP31",
-      "url": "https://www.bbc.co.uk/news/articles/cm75237wlp3lo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-11-23T06:33:50.000Z",
-      "discovered_at": "2026-11-23T10:27:59.795Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/55f7/live/e38ff1a0-e71f-11f1-99b6-a35a62fa4264.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/five-takeaways-from-the-failed-climate-talks-cop31-4279a3/",
-      "landing_url": "https://matchapp.tv/?news=4279a336#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-11-23",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "five",
-          "takeaways",
-          "failed",
-          "climate",
-          "talks",
-          "cop31"
-        ],
-        "long_tail": [
-          "Five takeaways from the failed climate talks COP31 2026-11-23",
-          "world news November 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "five",
-          "takeaways",
-          "failed",
-          "climate",
-          "talks",
-          "cop31"
-        ],
-        "freshness_keywords": [
-          "2026-11-23"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Five takeaways from the failed climate talks COP31 | World…",
-        "meta_description": "World report published by BBC World on 2026-11-23. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-11-23",
-          "world news",
-          "global headlines",
-          "five",
-          "takeaways",
-          "failed",
-          "climate",
-          "talks",
-          "cop31",
-          "Five takeaways from the failed climate talks COP31 2026-11-23",
-          "world news November 2026",
-          "2026-11-23",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-11-23T10:27:59.795Z"
-      }
-    },
-    {
       "id": "51b04f90",
       "title": "Beatles venue may not play live music on rooftop",
       "url": "https://www.bbc.co.uk/news/articles/ckp80ynrn3mvo?at_medium=RSS&at_campaign=rss",
@@ -636,7 +2206,7 @@
       "category": "entertainment",
       "person": "",
       "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/880a/live/7140dca0-e40d-11f1-99b6-a35a62fa4264.jpg",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/cad1/live/8af889b0-e72b-11f1-914b-6d226d813a52.jpg",
       "matchapp_url": "https://matchapp.tv/news/articles/beatles-venue-may-not-play-live-music-on-rooftop-51b04f/",
       "landing_url": "https://matchapp.tv/?news=51b04f90#latest-news",
       "seo": {
@@ -721,489 +2291,6 @@
       }
     },
     {
-      "id": "4d2dfd34",
-      "title": "What's next after no deal at COP31 climate talks?",
-      "url": "https://www.bbc.co.uk/news/videos/cr1ewge81q4qo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-11-23T05:34:39.000Z",
-      "discovered_at": "2026-11-23T10:27:59.795Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/4edf/live/0b9a5c60-e70e-11f1-a094-5fdc692f3e33.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/what-s-next-after-no-deal-at-cop31-climate-talks-4d2dfd/",
-      "landing_url": "https://matchapp.tv/?news=4d2dfd34#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-11-23",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "what",
-          "next",
-          "after",
-          "deal",
-          "cop31",
-          "climate"
-        ],
-        "long_tail": [
-          "What's next after no deal at COP31 climate talks? 2026-11-23",
-          "world news November 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "what",
-          "next",
-          "after",
-          "deal",
-          "cop31",
-          "climate"
-        ],
-        "freshness_keywords": [
-          "2026-11-23"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "What's next after no deal at COP31 climate talks? | World…",
-        "meta_description": "World report published by BBC World on 2026-11-23. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-11-23",
-          "world news",
-          "global headlines",
-          "what",
-          "next",
-          "after",
-          "deal",
-          "cop31",
-          "climate",
-          "What's next after no deal at COP31 climate talks? 2026-11-23",
-          "world news November 2026",
-          "2026-11-23",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-11-23T10:27:59.795Z"
-      }
-    },
-    {
-      "id": "88ba4b47",
-      "title": "Boy, 7, pulled alive from rubble hours after Russian strike on Ukraine, rescuers say",
-      "url": "https://www.bbc.co.uk/news/articles/cqdr15l32d3go?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-11-23T05:33:17.000Z",
-      "discovered_at": "2026-11-23T10:27:59.795Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/cce0/live/b754c730-e6bd-11f1-a023-d502158f79f8.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/boy-7-pulled-alive-from-rubble-hours-after-russian-strike-on-ukraine-rescuers-sa-88ba4b/",
-      "landing_url": "https://matchapp.tv/?news=88ba4b47#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-11-23",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "boy",
-          "pulled",
-          "alive",
-          "rubble",
-          "hours",
-          "after"
-        ],
-        "long_tail": [
-          "Boy, 7, pulled alive from rubble hours after Russian strike on Ukraine, rescuers say 2026-11-23",
-          "world news November 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "boy",
-          "pulled",
-          "alive",
-          "rubble",
-          "hours",
-          "after"
-        ],
-        "freshness_keywords": [
-          "2026-11-23"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Boy, 7, pulled alive from rubble hours after Russian…",
-        "meta_description": "World report published by BBC World on 2026-11-23. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-11-23",
-          "world news",
-          "global headlines",
-          "boy",
-          "pulled",
-          "alive",
-          "rubble",
-          "hours",
-          "after",
-          "Boy, 7, pulled alive from rubble hours after Russian strike on Ukraine, rescuers say 2026-11-23",
-          "world news November 2026",
-          "2026-11-23",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-11-23T10:27:59.795Z"
-      }
-    },
-    {
-      "id": "e4dc3fa8",
-      "title": "Longest-ever UN climate talks end with no deal as deep divisions exposed",
-      "url": "https://www.bbc.co.uk/news/articles/cqwy06zrd26lo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-11-23T05:15:06.000Z",
-      "discovered_at": "2026-11-23T10:27:59.795Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "Longest-ever UN",
-      "description": "World news reported by BBC World on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/a5fe/live/bf5d6f10-e71f-11f1-99a1-253766e7ad8b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/longest-ever-un-climate-talks-end-with-no-deal-as-deep-divisions-exposed-e4dc3f/",
-      "landing_url": "https://matchapp.tv/?news=e4dc3fa8#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-11-23",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "longest",
-          "ever",
-          "climate",
-          "talks",
-          "end",
-          "deal"
-        ],
-        "long_tail": [
-          "Longest-ever UN climate talks end with no deal as deep divisions exposed 2026-11-23",
-          "world news November 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "longest",
-          "ever",
-          "climate",
-          "talks",
-          "end",
-          "deal"
-        ],
-        "freshness_keywords": [
-          "2026-11-23"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Longest-ever UN climate talks end with no deal as deep…",
-        "meta_description": "World report published by BBC World on 2026-11-23. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-11-23",
-          "world news",
-          "global headlines",
-          "longest",
-          "ever",
-          "climate",
-          "talks",
-          "end",
-          "deal",
-          "Longest-ever UN climate talks end with no deal as deep divisions exposed 2026-11-23",
-          "world news November 2026",
-          "2026-11-23",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-11-23T10:27:59.795Z"
-      }
-    },
-    {
-      "id": "85576c5d",
-      "title": "Exército dos EUA planeja detonar 5 toneladas de explosivos apesar de ordem judicial e de alerta de ambientalistas",
-      "url": "https://g1.globo.com/mundo/noticia/2026/11/23/exercito-dos-eua-planeja-detonar-5-toneladas-de-explosivos-apesar-de-ordem-judicial-e-de-alerta-de-ambientalistas.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-11-23T04:17:24.000Z",
-      "discovered_at": "2026-11-23T10:27:59.795Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/CfEy9n7I_hWqbMWa1Uk17Pz1kfk=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/M/X/nrQuz1QFiupP4OPvwx7g/ap26325066137247.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/exercito-dos-eua-planeja-detonar-5-toneladas-de-explosivos-apesar-de-ordem-judic-85576c/",
-      "landing_url": "https://matchapp.tv/?news=85576c5d#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-11-23",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "exercito",
-          "eua",
-          "planeja",
-          "detonar",
-          "toneladas",
-          "explosivos"
-        ],
-        "long_tail": [
-          "Exército dos EUA planeja detonar 5 toneladas de explosivos apesar de ordem judicial e de alerta de ambientalistas 2026-11-23",
-          "notícias mundiais novembro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "exercito",
-          "eua",
-          "planeja",
-          "detonar",
-          "toneladas",
-          "explosivos"
-        ],
-        "freshness_keywords": [
-          "2026-11-23"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Exército dos EUA planeja detonar 5 toneladas de explosivos…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-23. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-11-23",
-          "notícias do mundo",
-          "notícias internacionais",
-          "exercito",
-          "eua",
-          "planeja",
-          "detonar",
-          "toneladas",
-          "explosivos",
-          "Exército dos EUA planeja detonar 5 toneladas de explosivos apesar de ordem judicial e de alerta de ambientalistas 2026-11-23",
-          "notícias mundiais novembro 2026",
-          "2026-11-23",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-11-23T10:27:59.795Z"
-      }
-    },
-    {
-      "id": "3d13e01e",
-      "title": "Sudão do Sul: a tragédia ignorada pelo mundo - O Assunto #1850",
-      "url": "https://g1.globo.com/podcast/o-assunto/noticia/2026/11/23/sudao-do-sul-a-tragedia-ignorada-pelo-mundo-o-assunto-1850.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-11-23T03:30:00.000Z",
-      "discovered_at": "2026-11-23T10:27:59.795Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/Gv9apw4I4mfGbKWp4LWB2j102V0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/C/S/rIkjduSiiphkY1FcYIZw/ap26315578911309.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/sudao-do-sul-a-tragedia-ignorada-pelo-mundo-o-assunto-1850-3d13e0/",
-      "landing_url": "https://matchapp.tv/?news=3d13e01e#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-11-23",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "sudao",
-          "sul",
-          "tragedia",
-          "ignorada",
-          "pelo",
-          "mundo"
-        ],
-        "long_tail": [
-          "Sudão do Sul: a tragédia ignorada pelo mundo - O Assunto #1850 2026-11-23",
-          "notícias mundiais novembro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "sudao",
-          "sul",
-          "tragedia",
-          "ignorada",
-          "pelo",
-          "mundo"
-        ],
-        "freshness_keywords": [
-          "2026-11-23"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Sudão do Sul: a tragédia ignorada pelo mundo - O Assunto…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-23. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-11-23",
-          "notícias do mundo",
-          "notícias internacionais",
-          "sudao",
-          "sul",
-          "tragedia",
-          "ignorada",
-          "pelo",
-          "mundo",
-          "Sudão do Sul: a tragédia ignorada pelo mundo - O Assunto #1850 2026-11-23",
-          "notícias mundiais novembro 2026",
-          "2026-11-23",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-11-23T10:27:59.795Z"
-      }
-    },
-    {
-      "id": "265816f2",
-      "title": "Amante de CEO da Nvidia manteve contato com oficial da espionagem chinesa, segundo o NYT",
-      "url": "https://g1.globo.com/mundo/noticia/2026/11/23/amante-de-ceo-da-nvidia-manteve-contato-com-oficial-da-espionagem-chinesa-segundo-o-nyt.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-11-23T03:00:02.000Z",
-      "discovered_at": "2026-11-23T10:27:59.795Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/V5C6MaijqxCW90I6YcEh1iDFKZE=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/P/q/CgBWleR5y1b2f1h5kn9w/2026-11-16t180057z-1044404862-rc2138adpet8-rtrmadp-3-nvidia-ceo.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/amante-de-ceo-da-nvidia-manteve-contato-com-oficial-da-espionagem-chinesa-segund-265816/",
-      "landing_url": "https://matchapp.tv/?news=265816f2#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-11-23",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "amante",
-          "ceo",
-          "nvidia",
-          "manteve",
-          "contato",
-          "oficial"
-        ],
-        "long_tail": [
-          "Amante de CEO da Nvidia manteve contato com oficial da espionagem chinesa, segundo o NYT 2026-11-23",
-          "notícias mundiais novembro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "amante",
-          "ceo",
-          "nvidia",
-          "manteve",
-          "contato",
-          "oficial"
-        ],
-        "freshness_keywords": [
-          "2026-11-23"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Amante de CEO da Nvidia manteve contato com oficial da…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-23. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-11-23",
-          "notícias do mundo",
-          "notícias internacionais",
-          "amante",
-          "ceo",
-          "nvidia",
-          "manteve",
-          "contato",
-          "oficial",
-          "Amante de CEO da Nvidia manteve contato com oficial da espionagem chinesa, segundo o NYT 2026-11-23",
-          "notícias mundiais novembro 2026",
-          "2026-11-23",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-11-23T10:27:59.795Z"
-      }
-    },
-    {
-      "id": "7e538376",
-      "title": "Democrats win largest House majority since 1992 after flipping North Carolina seat",
-      "url": "https://www.bbc.co.uk/news/articles/c6vg29g7dlyno?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-11-23T01:23:43.000Z",
-      "discovered_at": "2026-11-23T10:27:59.795Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-11-23. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/4632/live/52e19140-e715-11f1-99b6-a35a62fa4264.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/democrats-win-largest-house-majority-since-1992-after-flipping-north-carolina-se-7e5383/",
-      "landing_url": "https://matchapp.tv/?news=7e538376#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-11-23",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "democrats",
-          "win",
-          "largest",
-          "house",
-          "majority",
-          "since"
-        ],
-        "long_tail": [
-          "Democrats win largest House majority since 1992 after flipping North Carolina seat 2026-11-23",
-          "world news November 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "democrats",
-          "win",
-          "largest",
-          "house",
-          "majority",
-          "since"
-        ],
-        "freshness_keywords": [
-          "2026-11-23"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Democrats win largest House majority since 1992 after…",
-        "meta_description": "World report published by BBC World on 2026-11-23. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-11-23",
-          "world news",
-          "global headlines",
-          "democrats",
-          "win",
-          "largest",
-          "house",
-          "majority",
-          "since",
-          "Democrats win largest House majority since 1992 after flipping North Carolina seat 2026-11-23",
-          "world news November 2026",
-          "2026-11-23",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-11-23T10:27:59.795Z"
-      }
-    },
-    {
       "id": "e000e454",
       "title": "Australian music legend Molly Meldrum dies aged 83",
       "url": "https://www.bbc.co.uk/news/articles/c3qj57rkd2k1o?at_medium=RSS&at_campaign=rss",
@@ -1222,7 +2309,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/australian-music-legend-molly-meldrum-dies-aged-83-e000e4/",
       "landing_url": "https://matchapp.tv/?news=e000e454#latest-news",
       "seo": {
-        "primary_keyword": "molly meldrum",
+        "primary_keyword": "australian music legend molly latest news",
         "short_tail": [
           "australian music legend molly",
           "australian music legend molly news",
@@ -1230,8 +2317,7 @@
           "latest entertainment news",
           "entertainment news",
           "celebrity news",
-          "entertainment updates",
-          "molly meldrum"
+          "entertainment updates"
         ],
         "long_tail": [
           "australian music legend molly latest news November 2026",
@@ -1244,9 +2330,7 @@
           "australian music legend molly entertainment news 2026-11-23",
           "what happened with australian music legend molly"
         ],
-        "trend_keywords": [
-          "molly meldrum"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "australian",
           "music",
@@ -1269,7 +2353,7 @@
         "meta_title": "Australian music legend Molly Meldrum dies aged 83 |…",
         "meta_description": "Obituary update reported by BBC on 2026-11-23. See verified context, publication time and the original source via MatchApp Ai.",
         "keywords": [
-          "molly meldrum",
+          "australian music legend molly latest news",
           "australian music legend molly",
           "australian music legend molly news",
           "obituary",
@@ -1300,7 +2384,7 @@
           "bbc.co.uk australian music legend molly",
           "BBC entertainment news"
         ],
-        "seo_generated_at": "2026-11-23T10:27:59.795Z"
+        "seo_generated_at": "2026-11-23T15:12:58.643Z"
       }
     },
     {
@@ -1400,428 +2484,6 @@
           "G1 xuxa revela domingao que",
           "g1.globo.com xuxa revela domingao que",
           "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-11-23T10:27:59.795Z"
-      }
-    },
-    {
-      "id": "1cc38b29",
-      "title": "Robert Eggers Says He’s “Eager” to Take a Break From Horror Genre After ‘Werwulf’",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/robert-eggers-eager-break-horror-genre-werwulf-nosferatu-1236760762/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-11-22T22:44:25.000Z",
-      "discovered_at": "2026-11-23T10:27:59.795Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Robert Eggers Says He’s",
-      "description": "Robert Eggers Says He’s: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2025/01/GettyImages-2189693668-H-2025.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/robert-eggers-says-he-s-eager-to-take-a-break-from-horror-genre-after-werwulf-1cc38b/",
-      "landing_url": "https://matchapp.tv/?news=1cc38b29#latest-news",
-      "seo": {
-        "primary_keyword": "Robert Eggers Says He’s latest news",
-        "short_tail": [
-          "Robert Eggers Says He’s",
-          "Robert Eggers Says He’s news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Robert Eggers Says He’s latest news November 2026",
-          "Robert Eggers Says He’s entertainment update 2026",
-          "Robert Eggers Says He’s news 2026-11-22",
-          "latest entertainment news about Robert Eggers Says He’s",
-          "robert eggers says robert eggers says latest update",
-          "The Hollywood Reporter Robert Eggers Says He’s entertainment",
-          "latest news about Robert Eggers Says He’s November 2026",
-          "Robert Eggers Says He’s entertainment news 2026-11-22",
-          "what happened with Robert Eggers Says He’s"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Robert Eggers Says He’s",
-          "robert",
-          "eggers",
-          "says",
-          "eager",
-          "take"
-        ],
-        "freshness_keywords": [
-          "November 2026",
-          "2026-11-22",
-          "Robert Eggers Says He’s 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Robert Eggers Says He’s",
-          "hollywoodreporter.com Robert Eggers Says He’s",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Robert Eggers Says He’s “Eager” to Take a Break From…",
-        "meta_description": "Robert Eggers Says He’s: Entertainment update reported by The Hollywood Reporter on 2026-11-22. See verified context, publication time and the original…",
-        "keywords": [
-          "Robert Eggers Says He’s latest news",
-          "Robert Eggers Says He’s",
-          "Robert Eggers Says He’s news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Robert Eggers Says He’s latest news November 2026",
-          "Robert Eggers Says He’s entertainment update 2026",
-          "Robert Eggers Says He’s news 2026-11-22",
-          "latest entertainment news about Robert Eggers Says He’s",
-          "robert eggers says robert eggers says latest update",
-          "The Hollywood Reporter Robert Eggers Says He’s entertainment",
-          "latest news about Robert Eggers Says He’s November 2026",
-          "Robert Eggers Says He’s entertainment news 2026-11-22",
-          "what happened with Robert Eggers Says He’s",
-          "robert",
-          "eggers",
-          "says",
-          "eager",
-          "take",
-          "November 2026",
-          "2026-11-22",
-          "Robert Eggers Says He’s 2026",
-          "The Hollywood Reporter Robert Eggers Says He’s",
-          "hollywoodreporter.com Robert Eggers Says He’s",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-11-23T10:27:59.795Z"
-      }
-    },
-    {
-      "id": "09d60505",
-      "title": "Mahershala Ali Says “There Are Not Roles for Me” in “Vast Majority of Projects,” Despite Winning Two Oscars",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/mahershala-ali-no-roles-majority-projects-despite-oscar-wins-1236760722/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-11-22T21:41:46.000Z",
-      "discovered_at": "2026-11-23T10:27:59.795Z",
-      "event_type": "Awards",
-      "category": "entertainment",
-      "person": "Mahershala Ali Says",
-      "description": "Mahershala Ali Says: awards headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/11/Mahershala-Ali-getty-H-2026.png?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/mahershala-ali-says-there-are-not-roles-for-me-in-vast-majority-of-projects-desp-09d605/",
-      "landing_url": "https://matchapp.tv/?news=09d60505#latest-news",
-      "seo": {
-        "primary_keyword": "Mahershala Ali Says latest news",
-        "short_tail": [
-          "Mahershala Ali Says",
-          "Mahershala Ali Says news",
-          "awards",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Mahershala Ali Says latest news November 2026",
-          "Mahershala Ali Says awards update 2026",
-          "Mahershala Ali Says news 2026-11-22",
-          "latest awards news about Mahershala Ali Says",
-          "mahershala ali says mahershala ali says latest update",
-          "The Hollywood Reporter Mahershala Ali Says awards",
-          "latest news about Mahershala Ali Says November 2026",
-          "Mahershala Ali Says entertainment news 2026-11-22",
-          "what happened with Mahershala Ali Says"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Mahershala Ali Says",
-          "mahershala",
-          "ali",
-          "says",
-          "there",
-          "not"
-        ],
-        "freshness_keywords": [
-          "November 2026",
-          "2026-11-22",
-          "Mahershala Ali Says 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Mahershala Ali Says",
-          "hollywoodreporter.com Mahershala Ali Says",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Mahershala Ali Says “There Are Not Roles for Me” in “Vast…",
-        "meta_description": "Mahershala Ali Says: Awards update reported by The Hollywood Reporter on 2026-11-22. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Mahershala Ali Says latest news",
-          "Mahershala Ali Says",
-          "Mahershala Ali Says news",
-          "awards",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Mahershala Ali Says latest news November 2026",
-          "Mahershala Ali Says awards update 2026",
-          "Mahershala Ali Says news 2026-11-22",
-          "latest awards news about Mahershala Ali Says",
-          "mahershala ali says mahershala ali says latest update",
-          "The Hollywood Reporter Mahershala Ali Says awards",
-          "latest news about Mahershala Ali Says November 2026",
-          "Mahershala Ali Says entertainment news 2026-11-22",
-          "what happened with Mahershala Ali Says",
-          "mahershala",
-          "ali",
-          "says",
-          "there",
-          "not",
-          "November 2026",
-          "2026-11-22",
-          "Mahershala Ali Says 2026",
-          "The Hollywood Reporter Mahershala Ali Says",
-          "hollywoodreporter.com Mahershala Ali Says",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-11-23T10:27:59.795Z"
-      }
-    },
-    {
-      "id": "b1ca4e39",
-      "title": "Sheila Mangubat, ’90 Day Fiancé: Before the 90 Days’ Star, Dies at 35",
-      "url": "https://www.hollywoodreporter.com/tv/tv-news/sheila-mangubat-dead-90-day-fiance-before-the-90-days-1236760704/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-11-22T20:28:29.000Z",
-      "discovered_at": "2026-11-23T10:27:59.795Z",
-      "event_type": "Obituary",
-      "category": "entertainment",
-      "person": "Sheila Mangubat",
-      "description": "Sheila Mangubat: obituary headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/11/Sheila-Mangubat-90-Day-Fiance-obit-temp-screenshot-H-2026.png?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/sheila-mangubat-90-day-fiance-before-the-90-days-star-dies-at-35-b1ca4e/",
-      "landing_url": "https://matchapp.tv/?news=b1ca4e39#latest-news",
-      "seo": {
-        "primary_keyword": "Sheila Mangubat latest news",
-        "short_tail": [
-          "Sheila Mangubat",
-          "Sheila Mangubat news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Sheila Mangubat latest news November 2026",
-          "Sheila Mangubat obituary update 2026",
-          "Sheila Mangubat news 2026-11-22",
-          "latest obituary news about Sheila Mangubat",
-          "sheila mangubat sheila mangubat day fiance latest update",
-          "The Hollywood Reporter Sheila Mangubat obituary",
-          "latest news about Sheila Mangubat November 2026",
-          "Sheila Mangubat entertainment news 2026-11-22",
-          "what happened with Sheila Mangubat"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Sheila Mangubat",
-          "sheila",
-          "mangubat",
-          "day",
-          "fiance",
-          "before",
-          "days"
-        ],
-        "freshness_keywords": [
-          "November 2026",
-          "2026-11-22",
-          "Sheila Mangubat 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter Sheila Mangubat",
-          "hollywoodreporter.com Sheila Mangubat",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "Sheila Mangubat, ’90 Day Fiancé: Before the 90 Days’ Star,…",
-        "meta_description": "Sheila Mangubat: Obituary update reported by The Hollywood Reporter on 2026-11-22. See verified context, publication time and the original source via…",
-        "keywords": [
-          "Sheila Mangubat latest news",
-          "Sheila Mangubat",
-          "Sheila Mangubat news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Sheila Mangubat latest news November 2026",
-          "Sheila Mangubat obituary update 2026",
-          "Sheila Mangubat news 2026-11-22",
-          "latest obituary news about Sheila Mangubat",
-          "sheila mangubat sheila mangubat day fiance latest update",
-          "The Hollywood Reporter Sheila Mangubat obituary",
-          "latest news about Sheila Mangubat November 2026",
-          "Sheila Mangubat entertainment news 2026-11-22",
-          "what happened with Sheila Mangubat",
-          "sheila",
-          "mangubat",
-          "day",
-          "fiance",
-          "before",
-          "days",
-          "November 2026",
-          "2026-11-22",
-          "Sheila Mangubat 2026",
-          "The Hollywood Reporter Sheila Mangubat",
-          "hollywoodreporter.com Sheila Mangubat",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-11-23T10:27:59.795Z"
-      }
-    },
-    {
-      "id": "3700dad7",
-      "title": "Agência de aviação dos EUA suspende voos de companhia aérea após falha em sistema",
-      "url": "https://g1.globo.com/mundo/noticia/2026/11/22/suspensao-temporaria-voos-companhia-aerea-eua-falha-em-sistema.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-11-22T19:37:09.000Z",
-      "discovered_at": "2026-11-23T10:27:59.795Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-11-22. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/FtGpeA8qJHH3N3tBXd7slpMjIfk=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/n/Z/E1cfoRQKOX7DVMcMUFfw/2026-11-22t174540z-860519664-rc2dnoaa3unn-rtrmadp-3-delta-air-delays-atlanta.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/agencia-de-aviacao-dos-eua-suspende-voos-de-companhia-aerea-apos-falha-em-sistem-3700da/",
-      "landing_url": "https://matchapp.tv/?news=3700dad7#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-11-22",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "agencia",
-          "aviacao",
-          "eua",
-          "suspende",
-          "voos",
-          "companhia"
-        ],
-        "long_tail": [
-          "Agência de aviação dos EUA suspende voos de companhia aérea após falha em sistema 2026-11-22",
-          "notícias mundiais novembro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "agencia",
-          "aviacao",
-          "eua",
-          "suspende",
-          "voos",
-          "companhia"
-        ],
-        "freshness_keywords": [
-          "2026-11-22"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Agência de aviação dos EUA suspende voos de companhia…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-22. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-11-22",
-          "notícias do mundo",
-          "notícias internacionais",
-          "agencia",
-          "aviacao",
-          "eua",
-          "suspende",
-          "voos",
-          "companhia",
-          "Agência de aviação dos EUA suspende voos de companhia aérea após falha em sistema 2026-11-22",
-          "notícias mundiais novembro 2026",
-          "2026-11-22",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-11-23T10:27:59.795Z"
-      }
-    },
-    {
-      "id": "235a9b53",
-      "title": "EUA: Chá de bebê termina em tiroteio com 3 mortos e 1 ferido",
-      "url": "https://g1.globo.com/mundo/noticia/2026/11/22/eua-cha-de-bebe-termina-em-tiroteio-com-3-mortos-e-1-ferido.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-11-22T18:51:41.000Z",
-      "discovered_at": "2026-11-23T10:27:59.795Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-11-22. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/lSEFM7T2QZ0JzlT0q0bPt0gYkSA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/3/n/IYf5UnQ86CAGlTSPCDfg/ap26326656538919.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/eua-cha-de-bebe-termina-em-tiroteio-com-3-mortos-e-1-ferido-235a9b/",
-      "landing_url": "https://matchapp.tv/?news=235a9b53#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-11-22",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "eua",
-          "cha",
-          "bebe",
-          "termina",
-          "tiroteio",
-          "mortos"
-        ],
-        "long_tail": [
-          "EUA: Chá de bebê termina em tiroteio com 3 mortos e 1 ferido 2026-11-22",
-          "notícias mundiais novembro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "eua",
-          "cha",
-          "bebe",
-          "termina",
-          "tiroteio",
-          "mortos"
-        ],
-        "freshness_keywords": [
-          "2026-11-22"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "EUA: Chá de bebê termina em tiroteio com 3 mortos e 1…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-22. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-11-22",
-          "notícias do mundo",
-          "notícias internacionais",
-          "eua",
-          "cha",
-          "bebe",
-          "termina",
-          "tiroteio",
-          "mortos",
-          "EUA: Chá de bebê termina em tiroteio com 3 mortos e 1 ferido 2026-11-22",
-          "notícias mundiais novembro 2026",
-          "2026-11-22",
-          "G1 Mundo"
         ],
         "seo_generated_at": "2026-11-23T10:27:59.795Z"
       }
@@ -2021,75 +2683,6 @@
           "G1 Miley Cyrus",
           "g1.globo.com Miley Cyrus",
           "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-11-23T10:27:59.795Z"
-      }
-    },
-    {
-      "id": "804c00e5",
-      "title": "Bancada democrata na Câmara dos EUA atinge marca histórica e é a maior em 34 anos",
-      "url": "https://g1.globo.com/mundo/noticia/2026/11/22/bancada-democrata-na-camara-dos-eua-atinge-marca-historica.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-11-22T18:39:33.000Z",
-      "discovered_at": "2026-11-23T10:27:59.795Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-11-22. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/Jtju9p3OTDe_lQ3DR8JAdqEu7no=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/C/B/lBYwlrQBOZpsejvtW1Xw/2026-04-22t011358z-236832966-rc22vgag3pzm-rtrmadp-3-usa-election-virginia-redistricting.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/bancada-democrata-na-camara-dos-eua-atinge-marca-historica-e-e-a-maior-em-34-ano-804c00/",
-      "landing_url": "https://matchapp.tv/?news=804c00e5#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-11-22",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "bancada",
-          "democrata",
-          "camara",
-          "eua",
-          "atinge",
-          "marca"
-        ],
-        "long_tail": [
-          "Bancada democrata na Câmara dos EUA atinge marca histórica e é a maior em 34 anos 2026-11-22",
-          "notícias mundiais novembro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "bancada",
-          "democrata",
-          "camara",
-          "eua",
-          "atinge",
-          "marca"
-        ],
-        "freshness_keywords": [
-          "2026-11-22"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Bancada democrata na Câmara dos EUA atinge marca histórica…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-22. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-11-22",
-          "notícias do mundo",
-          "notícias internacionais",
-          "bancada",
-          "democrata",
-          "camara",
-          "eua",
-          "atinge",
-          "marca",
-          "Bancada democrata na Câmara dos EUA atinge marca histórica e é a maior em 34 anos 2026-11-22",
-          "notícias mundiais novembro 2026",
-          "2026-11-22",
-          "G1 Mundo"
         ],
         "seo_generated_at": "2026-11-23T10:27:59.795Z"
       }
@@ -2873,499 +3466,6 @@
       }
     },
     {
-      "id": "28b35cb3",
-      "title": "TRNSMT: What's the future for Scotland's largest music festival?",
-      "url": "https://www.bbc.co.uk/news/articles/cv702en03nw4o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-11-21T09:27:12.000Z",
-      "discovered_at": "2026-11-21T12:57:04.743Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/017e/live/20b4f390-e4fb-11f1-a8e4-b1e12a49db15.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/trnsmt-what-s-the-future-for-scotland-s-largest-music-festival-28b35c/",
-      "landing_url": "https://matchapp.tv/?news=28b35cb3#latest-news",
-      "seo": {
-        "primary_keyword": "trnsmt what future scotland latest news",
-        "short_tail": [
-          "trnsmt what future scotland",
-          "trnsmt what future scotland news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "trnsmt what future scotland latest news November 2026",
-          "trnsmt what future scotland entertainment update 2026",
-          "trnsmt what future scotland news 2026-11-21",
-          "latest entertainment news about trnsmt what future scotland",
-          "trnsmt what future scotland largest music latest update",
-          "BBC trnsmt what future scotland entertainment",
-          "latest news about trnsmt what future scotland November 2026",
-          "trnsmt what future scotland entertainment news 2026-11-21",
-          "what happened with trnsmt what future scotland"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "trnsmt",
-          "what",
-          "future",
-          "scotland",
-          "largest",
-          "music",
-          "festival"
-        ],
-        "freshness_keywords": [
-          "November 2026",
-          "2026-11-21",
-          "trnsmt what future scotland 2026"
-        ],
-        "source_keywords": [
-          "BBC trnsmt what future scotland",
-          "bbc.co.uk trnsmt what future scotland",
-          "BBC entertainment news"
-        ],
-        "meta_title": "TRNSMT: What's the future for Scotland's largest music…",
-        "meta_description": "Entertainment update reported by BBC on 2026-11-21. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "trnsmt what future scotland latest news",
-          "trnsmt what future scotland",
-          "trnsmt what future scotland news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "trnsmt what future scotland latest news November 2026",
-          "trnsmt what future scotland entertainment update 2026",
-          "trnsmt what future scotland news 2026-11-21",
-          "latest entertainment news about trnsmt what future scotland",
-          "trnsmt what future scotland largest music latest update",
-          "BBC trnsmt what future scotland entertainment",
-          "latest news about trnsmt what future scotland November 2026",
-          "trnsmt what future scotland entertainment news 2026-11-21",
-          "what happened with trnsmt what future scotland",
-          "trnsmt",
-          "what",
-          "future",
-          "scotland",
-          "largest",
-          "music",
-          "festival",
-          "November 2026",
-          "2026-11-21",
-          "trnsmt what future scotland 2026",
-          "BBC trnsmt what future scotland",
-          "bbc.co.uk trnsmt what future scotland",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-11-21T12:57:04.743Z"
-      }
-    },
-    {
-      "id": "2383750b",
-      "title": "Diogo Nogueira reacende o fogo da paixão no primeiro single de 2026",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/11/21/diogo-nogueira-reacende-o-fogo-da-paixao-no-primeiro-single-de-2026.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-11-21T03:02:00.000Z",
-      "discovered_at": "2026-11-21T12:57:04.743Z",
-      "event_type": "Music",
-      "category": "entertainment",
-      "person": "Diogo Nogueira",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/QOqjRXNXui23Bw9wIyQXtZKMvww=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/5/I/AOGCbSQOmxSV2BKsiE0g/diogo-vevemilk.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/diogo-nogueira-reacende-o-fogo-da-paixao-no-primeiro-single-de-2026-238375/",
-      "landing_url": "https://matchapp.tv/?news=2383750b#latest-news",
-      "seo": {
-        "primary_keyword": "Diogo Nogueira últimas notícias",
-        "short_tail": [
-          "Diogo Nogueira",
-          "Diogo Nogueira news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "Diogo Nogueira latest news November 2026",
-          "Diogo Nogueira music update 2026",
-          "Diogo Nogueira news 2026-11-21",
-          "latest music news about Diogo Nogueira",
-          "diogo nogueira diogo nogueira reacende fogo latest update",
-          "G1 Diogo Nogueira music",
-          "últimas notícias sobre Diogo Nogueira novembro 2026",
-          "Diogo Nogueira notícia de 2026-11-21",
-          "o que aconteceu com Diogo Nogueira"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Diogo Nogueira",
-          "diogo",
-          "nogueira",
-          "reacende",
-          "fogo",
-          "paixao",
-          "primeiro"
-        ],
-        "freshness_keywords": [
-          "November 2026",
-          "2026-11-21",
-          "novembro 2026",
-          "Diogo Nogueira 2026"
-        ],
-        "source_keywords": [
-          "G1 Diogo Nogueira",
-          "g1.globo.com Diogo Nogueira",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Diogo Nogueira reacende o fogo da paixão no primeiro…",
-        "meta_description": "Diogo Nogueira: Notícia publicada por G1 em 2026-11-21. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "Diogo Nogueira últimas notícias",
-          "Diogo Nogueira",
-          "Diogo Nogueira news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Diogo Nogueira latest news November 2026",
-          "Diogo Nogueira music update 2026",
-          "Diogo Nogueira news 2026-11-21",
-          "latest music news about Diogo Nogueira",
-          "diogo nogueira diogo nogueira reacende fogo latest update",
-          "G1 Diogo Nogueira music",
-          "últimas notícias sobre Diogo Nogueira novembro 2026",
-          "Diogo Nogueira notícia de 2026-11-21",
-          "o que aconteceu com Diogo Nogueira",
-          "diogo",
-          "nogueira",
-          "reacende",
-          "fogo",
-          "paixao",
-          "primeiro",
-          "November 2026",
-          "2026-11-21",
-          "novembro 2026",
-          "Diogo Nogueira 2026",
-          "G1 Diogo Nogueira",
-          "g1.globo.com Diogo Nogueira",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-11-21T12:57:04.743Z"
-      }
-    },
-    {
-      "id": "5ef06037",
-      "title": "GTA 6 sales hit $3.8bn in a single day - the biggest entertainment launch in history",
-      "url": "https://www.bbc.co.uk/news/articles/c9zr5nyv5dj2o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-11-20T22:53:24.000Z",
-      "discovered_at": "2026-11-20T13:30:38.187Z",
-      "event_type": "Music",
-      "category": "entertainment",
-      "person": "",
-      "description": "music headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3096/live/f678f6e0-e4cc-11f1-99b6-a35a62fa4264.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/gta-6-sales-hit-3-8bn-in-a-single-day-the-biggest-entertainment-launch-in-histor-5ef060/",
-      "landing_url": "https://matchapp.tv/?news=5ef06037#latest-news",
-      "seo": {
-        "primary_keyword": "gta sales hit 8bn latest news",
-        "short_tail": [
-          "gta sales hit 8bn",
-          "gta sales hit 8bn news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "gta sales hit 8bn latest news November 2026",
-          "gta sales hit 8bn music update 2026",
-          "gta sales hit 8bn news 2026-11-20",
-          "latest music news about gta sales hit 8bn",
-          "gta sales hit 8bn single day latest update",
-          "BBC gta sales hit 8bn music",
-          "latest news about gta sales hit 8bn November 2026",
-          "gta sales hit 8bn entertainment news 2026-11-20",
-          "what happened with gta sales hit 8bn"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "gta",
-          "sales",
-          "hit",
-          "8bn",
-          "single",
-          "day",
-          "biggest",
-          "entertainment"
-        ],
-        "freshness_keywords": [
-          "November 2026",
-          "2026-11-20",
-          "gta sales hit 8bn 2026"
-        ],
-        "source_keywords": [
-          "BBC gta sales hit 8bn",
-          "bbc.co.uk gta sales hit 8bn",
-          "BBC entertainment news"
-        ],
-        "meta_title": "GTA 6 sales hit $3.8bn in a single day - the biggest…",
-        "meta_description": "Music update reported by BBC on 2026-11-20. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "gta sales hit 8bn latest news",
-          "gta sales hit 8bn",
-          "gta sales hit 8bn news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "gta sales hit 8bn latest news November 2026",
-          "gta sales hit 8bn music update 2026",
-          "gta sales hit 8bn news 2026-11-20",
-          "latest music news about gta sales hit 8bn",
-          "gta sales hit 8bn single day latest update",
-          "BBC gta sales hit 8bn music",
-          "latest news about gta sales hit 8bn November 2026",
-          "gta sales hit 8bn entertainment news 2026-11-20",
-          "what happened with gta sales hit 8bn",
-          "gta",
-          "sales",
-          "hit",
-          "8bn",
-          "single",
-          "day",
-          "biggest",
-          "entertainment",
-          "November 2026",
-          "2026-11-20",
-          "gta sales hit 8bn 2026",
-          "BBC gta sales hit 8bn",
-          "bbc.co.uk gta sales hit 8bn",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-11-21T12:57:04.743Z"
-      }
-    },
-    {
-      "id": "e18e4638",
-      "title": "'GTA 6' arrecada R$ 22,5 bilhões em vendas no primeiro dia e bate recorde histórico",
-      "url": "https://g1.globo.com/pop-arte/games/noticia/2026/11/20/gta-6-arrecada-r-225-bilhoes-em-vendas-em-primeiro-dia.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-11-20T19:30:18.000Z",
-      "discovered_at": "2026-11-21T12:57:04.743Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/WeuR-5VS26Kog5A7YE50bog9QqM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2023/b/1/FmR1G4TJyq7V75hm4Q8Q/gta-6.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/gta-6-arrecada-r-22-5-bilhoes-em-vendas-no-primeiro-dia-e-bate-recorde-historico-e18e46/",
-      "landing_url": "https://matchapp.tv/?news=e18e4638#latest-news",
-      "seo": {
-        "primary_keyword": "gta arrecada bilhoes vendas últimas notícias",
-        "short_tail": [
-          "gta arrecada bilhoes vendas",
-          "gta arrecada bilhoes vendas news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "gta arrecada bilhoes vendas latest news November 2026",
-          "gta arrecada bilhoes vendas entertainment update 2026",
-          "gta arrecada bilhoes vendas news 2026-11-20",
-          "latest entertainment news about gta arrecada bilhoes vendas",
-          "gta arrecada bilhoes vendas primeiro dia latest update",
-          "G1 gta arrecada bilhoes vendas entertainment",
-          "últimas notícias sobre gta arrecada bilhoes vendas novembro 2026",
-          "gta arrecada bilhoes vendas notícia de 2026-11-20",
-          "o que aconteceu com gta arrecada bilhoes vendas"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "gta",
-          "arrecada",
-          "bilhoes",
-          "vendas",
-          "primeiro",
-          "dia",
-          "bate",
-          "recorde"
-        ],
-        "freshness_keywords": [
-          "November 2026",
-          "2026-11-20",
-          "novembro 2026",
-          "gta arrecada bilhoes vendas 2026"
-        ],
-        "source_keywords": [
-          "G1 gta arrecada bilhoes vendas",
-          "g1.globo.com gta arrecada bilhoes vendas",
-          "G1 entertainment news"
-        ],
-        "meta_title": "'GTA 6' arrecada R$ 22,5 bilhões em vendas no primeiro dia…",
-        "meta_description": "Notícia publicada por G1 em 2026-11-20. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "gta arrecada bilhoes vendas últimas notícias",
-          "gta arrecada bilhoes vendas",
-          "gta arrecada bilhoes vendas news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "gta arrecada bilhoes vendas latest news November 2026",
-          "gta arrecada bilhoes vendas entertainment update 2026",
-          "gta arrecada bilhoes vendas news 2026-11-20",
-          "latest entertainment news about gta arrecada bilhoes vendas",
-          "gta arrecada bilhoes vendas primeiro dia latest update",
-          "G1 gta arrecada bilhoes vendas entertainment",
-          "últimas notícias sobre gta arrecada bilhoes vendas novembro 2026",
-          "gta arrecada bilhoes vendas notícia de 2026-11-20",
-          "o que aconteceu com gta arrecada bilhoes vendas",
-          "gta",
-          "arrecada",
-          "bilhoes",
-          "vendas",
-          "primeiro",
-          "dia",
-          "bate",
-          "recorde",
-          "November 2026",
-          "2026-11-20",
-          "novembro 2026",
-          "gta arrecada bilhoes vendas 2026",
-          "G1 gta arrecada bilhoes vendas",
-          "g1.globo.com gta arrecada bilhoes vendas",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-11-21T12:57:04.743Z"
-      }
-    },
-    {
-      "id": "fde5ae72",
-      "title": "Gerárd Depardieu e escritor Michel Houellebecq são investigados na França por suposto estupro coletivo",
-      "url": "https://g1.globo.com/pop-arte/noticia/2026/11/20/gerard-depardieu-e-escritor-michel-houellebecq-sao-investigados-na-franca-por-suposto-estupro-coletivo.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-11-20T14:02:40.000Z",
-      "discovered_at": "2026-11-21T12:57:04.743Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Gerárd Depardieu",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/f3tyLFJY4tyV2_FDOvj55dvSAcM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2025/X/9/AibodVQVOvnUcsM8rf3Q/2025-03-26t101242z-427673412-rc2xkdaohz5k-rtrmadp-3-people-depardieu-trial.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/gerard-depardieu-e-escritor-michel-houellebecq-sao-investigados-na-franca-por-su-fde5ae/",
-      "landing_url": "https://matchapp.tv/?news=fde5ae72#latest-news",
-      "seo": {
-        "primary_keyword": "Gerárd Depardieu últimas notícias",
-        "short_tail": [
-          "Gerárd Depardieu",
-          "Gerárd Depardieu news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "Gerárd Depardieu latest news November 2026",
-          "Gerárd Depardieu entertainment update 2026",
-          "Gerárd Depardieu news 2026-11-20",
-          "latest entertainment news about Gerárd Depardieu",
-          "gerard depardieu gerard depardieu escritor michel latest update",
-          "G1 Gerárd Depardieu entertainment",
-          "últimas notícias sobre Gerárd Depardieu novembro 2026",
-          "Gerárd Depardieu notícia de 2026-11-20",
-          "o que aconteceu com Gerárd Depardieu"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Gerárd Depardieu",
-          "gerard",
-          "depardieu",
-          "escritor",
-          "michel",
-          "houellebecq",
-          "sao"
-        ],
-        "freshness_keywords": [
-          "November 2026",
-          "2026-11-20",
-          "novembro 2026",
-          "Gerárd Depardieu 2026"
-        ],
-        "source_keywords": [
-          "G1 Gerárd Depardieu",
-          "g1.globo.com Gerárd Depardieu",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Gerárd Depardieu e escritor Michel Houellebecq são…",
-        "meta_description": "Gerárd Depardieu: Notícia publicada por G1 em 2026-11-20. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "Gerárd Depardieu últimas notícias",
-          "Gerárd Depardieu",
-          "Gerárd Depardieu news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Gerárd Depardieu latest news November 2026",
-          "Gerárd Depardieu entertainment update 2026",
-          "Gerárd Depardieu news 2026-11-20",
-          "latest entertainment news about Gerárd Depardieu",
-          "gerard depardieu gerard depardieu escritor michel latest update",
-          "G1 Gerárd Depardieu entertainment",
-          "últimas notícias sobre Gerárd Depardieu novembro 2026",
-          "Gerárd Depardieu notícia de 2026-11-20",
-          "o que aconteceu com Gerárd Depardieu",
-          "gerard",
-          "depardieu",
-          "escritor",
-          "michel",
-          "houellebecq",
-          "sao",
-          "November 2026",
-          "2026-11-20",
-          "novembro 2026",
-          "Gerárd Depardieu 2026",
-          "G1 Gerárd Depardieu",
-          "g1.globo.com Gerárd Depardieu",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-11-21T12:57:04.743Z"
-      }
-    },
-    {
       "id": "ed20de22",
       "title": "How a Pittsburgh-born umpire painted baseball history onto the ball itself",
       "url": "https://theconversation.com/how-a-pittsburgh-born-umpire-painted-baseball-history-onto-the-ball-itself-295293",
@@ -3453,106 +3553,6 @@
           "November 2026"
         ],
         "seo_generated_at": "2026-11-21T12:57:04.743Z"
-      }
-    },
-    {
-      "id": "075446dc",
-      "title": "Black Pantera, Mateus Fazeno Rock e MC Taya se juntam em single inédito para lembrar que o rock nasceu preto",
-      "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/11/20/black-pantera-mateus-fazeno-rock-e-mc-taya-se-juntam-em-single-inedito-para-lembrar-que-o-rock-nasceu-preto.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-11-20T07:00:01.000Z",
-      "discovered_at": "2026-11-20T13:30:38.187Z",
-      "event_type": "Music",
-      "category": "entertainment",
-      "person": "Black Pantera",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/CKlTWPMovTAkmFNZhzQLexjLcAw=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/j/K/lsGKD6QQCba8FFfmMz0g/montagem-rock-de-preto-1-copiar.jpg.jpeg",
-      "matchapp_url": "https://matchapp.tv/news/articles/black-pantera-mateus-fazeno-rock-e-mc-taya-se-juntam-em-single-inedito-para-lemb-075446/",
-      "landing_url": "https://matchapp.tv/?news=075446dc#latest-news",
-      "seo": {
-        "primary_keyword": "black",
-        "short_tail": [
-          "Black Pantera",
-          "Black Pantera news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "black"
-        ],
-        "long_tail": [
-          "Black Pantera latest news November 2026",
-          "Black Pantera music update 2026",
-          "Black Pantera news 2026-11-20",
-          "latest music news about Black Pantera",
-          "black pantera black pantera mateus fazeno latest update",
-          "G1 Black Pantera music",
-          "últimas notícias sobre Black Pantera novembro 2026",
-          "Black Pantera notícia de 2026-11-20",
-          "o que aconteceu com Black Pantera"
-        ],
-        "trend_keywords": [
-          "black"
-        ],
-        "entity_keywords": [
-          "Black Pantera",
-          "black",
-          "pantera",
-          "mateus",
-          "fazeno",
-          "rock",
-          "taya"
-        ],
-        "freshness_keywords": [
-          "November 2026",
-          "2026-11-20",
-          "novembro 2026",
-          "Black Pantera 2026"
-        ],
-        "source_keywords": [
-          "G1 Black Pantera",
-          "g1.globo.com Black Pantera",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Black Pantera, Mateus Fazeno Rock e MC Taya se juntam em…",
-        "meta_description": "Black Pantera: Notícia publicada por G1 em 2026-11-20. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "black",
-          "Black Pantera",
-          "Black Pantera news",
-          "music",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Black Pantera latest news November 2026",
-          "Black Pantera music update 2026",
-          "Black Pantera news 2026-11-20",
-          "latest music news about Black Pantera",
-          "black pantera black pantera mateus fazeno latest update",
-          "G1 Black Pantera music",
-          "últimas notícias sobre Black Pantera novembro 2026",
-          "Black Pantera notícia de 2026-11-20",
-          "o que aconteceu com Black Pantera",
-          "pantera",
-          "mateus",
-          "fazeno",
-          "rock",
-          "taya",
-          "November 2026",
-          "2026-11-20",
-          "novembro 2026",
-          "Black Pantera 2026",
-          "G1 Black Pantera",
-          "g1.globo.com Black Pantera",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-11-23T10:27:59.795Z"
       }
     },
     {
