@@ -1,10 +1,198 @@
 {
   "schemaVersion": 2,
   "weekOf": "2026-11-23",
-  "updated": "2026-11-23T15:12:20.723Z",
+  "updated": "2026-11-24T15:11:11.041Z",
   "label": "Latest titles trending right now",
   "sourceNote": "Movie and TV positions refresh from MatchApp’s current TMDB daily trend metadata; verified official music-video releases from monitored top-artist channels refresh daily with release dates, YouTube view counts, direct links, keywords and structured metadata. Availability can vary by country.",
   "titles": [
+    {
+      "title": "Avengers: Doomsday",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1003596",
+      "poster": "https://image.tmdb.org/t/p/w780/1zqWkLwC1zLBBBtIWzmkmWeMWnT.jpg",
+      "description": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
+      "genre": [
+        "Science Fiction",
+        "Action",
+        "Adventure"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Robert Downey Jr.",
+        "Chris Evans",
+        "Chris Hemsworth",
+        "Pedro Pascal"
+      ],
+      "runtimeMinutes": 165,
+      "contentRating": "PG-13",
+      "voteAverage": 0,
+      "previewUrl": "https://www.youtube.com/watch?v=Wb8Tq_HD4E8",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-12-16"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-12-16"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-12-18"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1003596"
+      },
+      "sourceRank": 1,
+      "keywords": [
+        "Avengers: Doomsday",
+        "Avengers: Doomsday 2026",
+        "where to watch Avengers: Doomsday",
+        "Science Fiction movie",
+        "Action movie",
+        "Adventure movie",
+        "Robert Downey Jr.",
+        "Chris Evans"
+      ],
+      "longTailKeywords": [
+        "where to watch Avengers: Doomsday 2026",
+        "Avengers: Doomsday streaming in Brazil and United States",
+        "Avengers: Doomsday cast synopsis trailer and where to watch",
+        "what Science Fiction to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Avengers: Doomsday (2026) | MatchApp Ai",
+        "description": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
+        "keywords": [
+          "Avengers: Doomsday",
+          "Avengers: Doomsday 2026",
+          "where to watch Avengers: Doomsday",
+          "Science Fiction movie",
+          "Action movie",
+          "Adventure movie",
+          "Robert Downey Jr.",
+          "Chris Evans",
+          "where to watch Avengers: Doomsday 2026",
+          "Avengers: Doomsday streaming in Brazil and United States",
+          "Avengers: Doomsday cast synopsis trailer and where to watch",
+          "what Science Fiction to watch this week"
+        ],
+        "canonicalQuery": "Avengers: Doomsday"
+      }
+    },
+    {
+      "title": "The Social Reckoning",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1281331",
+      "poster": "https://image.tmdb.org/t/p/w780/vWbEuI3LuFOGYZIxESLAmwFwtvr.jpg",
+      "description": "Frances Haugen, a young Facebook engineer, enlists the help of Jeff Horwitz, a Wall Street Journal reporter, to go on a dangerous journey that ends up blowing the whistle on the social network's most guarded secrets.",
+      "genre": [
+        "Drama",
+        "Thriller"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Mikey Madison",
+        "Jeremy Allen White",
+        "Jeremy Strong",
+        "Wunmi Mosaku"
+      ],
+      "runtimeMinutes": 113,
+      "contentRating": "R",
+      "voteAverage": 7,
+      "previewUrl": "https://www.youtube.com/watch?v=R8ANzYpaZaY",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-22"
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1281331-the-social-reckoning/watch?locale=GB",
+          "rent": [
+            "Amazon Video"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-10-09"
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1281331-the-social-reckoning/watch?locale=PT",
+          "rent": [
+            "Amazon Video"
+          ],
+          "stream": [],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-09"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1281331"
+      },
+      "sourceRank": 2,
+      "keywords": [
+        "The Social Reckoning",
+        "The Social Reckoning 2026",
+        "where to watch The Social Reckoning",
+        "Drama movie",
+        "Thriller movie",
+        "Mikey Madison",
+        "Jeremy Allen White"
+      ],
+      "longTailKeywords": [
+        "where to watch The Social Reckoning 2026",
+        "The Social Reckoning streaming in Brazil and United States",
+        "The Social Reckoning cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch The Social Reckoning (2026) | MatchApp Ai",
+        "description": "Frances Haugen, a young Facebook engineer, enlists the help of Jeff Horwitz, a Wall Street Journal reporter, to go on a dangerous journey that ends up blowing",
+        "keywords": [
+          "The Social Reckoning",
+          "The Social Reckoning 2026",
+          "where to watch The Social Reckoning",
+          "Drama movie",
+          "Thriller movie",
+          "Mikey Madison",
+          "Jeremy Allen White",
+          "where to watch The Social Reckoning 2026",
+          "The Social Reckoning streaming in Brazil and United States",
+          "The Social Reckoning cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
+        ],
+        "canonicalQuery": "The Social Reckoning"
+      }
+    },
     {
       "title": "The Hunger Games: Sunrise on the Reaping",
       "kind": "movie",
@@ -14,7 +202,7 @@
       "platform": "Cinemas",
       "platforms": [],
       "tmdbId": "1300968",
-      "poster": "https://image.tmdb.org/t/p/w780/nzIXSQNgYZwFOMrmv0d0I3ulvkM.jpg",
+      "poster": "https://image.tmdb.org/t/p/w780/jNcZH8yplxttRlf0wwqfGGMKHxX.jpg",
       "description": "Return to the world of Panem 24 years before Katniss Everdeen volunteers in her sister's place, commencing on the morning of the reaping of the 50th Hunger Games, also known as the Second Quarter Quell.",
       "genre": [
         "Science Fiction",
@@ -28,7 +216,7 @@
         "Ralph Fiennes",
         "Glenn Close"
       ],
-      "runtimeMinutes": 158,
+      "runtimeMinutes": 159,
       "contentRating": "PG-13",
       "voteAverage": 7.8,
       "previewUrl": "https://www.youtube.com/watch?v=Dr060OLTodE",
@@ -67,7 +255,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/1300968"
       },
-      "sourceRank": 1,
+      "sourceRank": 3,
       "keywords": [
         "The Hunger Games: Sunrise on the Reaping",
         "The Hunger Games: Sunrise on the Reaping 2026",
@@ -102,217 +290,6 @@
           "what Science Fiction to watch this week"
         ],
         "canonicalQuery": "The Hunger Games: Sunrise on the Reaping"
-      }
-    },
-    {
-      "title": "The Odyssey",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "GB",
-      "originName": "United Kingdom",
-      "platform": "Claro tv+",
-      "platforms": [
-        "Claro tv+"
-      ],
-      "tmdbId": "1368337",
-      "poster": "https://image.tmdb.org/t/p/w780/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg",
-      "description": "Odysseus, the legendary King of Ithaca, embarks on a long and perilous journey home following the Trojan War. Throughout his voyage, he is forced to confront the whims of gods, mythological monsters, and trials that stretch both his cunning and his humanity to the breaking point.",
-      "genre": [
-        "Adventure",
-        "Action",
-        "Fantasy"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Matt Damon",
-        "Tom Holland",
-        "Anne Hathaway",
-        "Robert Pattinson"
-      ],
-      "runtimeMinutes": 173,
-      "contentRating": "R",
-      "voteAverage": 8.02,
-      "previewUrl": "https://www.youtube.com/watch?v=AyIZ9tiiN8I",
-      "availability": {
-        "BR": {
-          "buy": [
-            "Apple TV Store",
-            "Amazon Video"
-          ],
-          "link": "https://www.themoviedb.org/movie/1368337-the-odyssey/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Claro tv+"
-          ],
-          "cinema_release_date": "2026-07-16"
-        },
-        "GB": {
-          "buy": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video",
-            "Sky Store"
-          ],
-          "link": "https://www.themoviedb.org/movie/1368337-the-odyssey/watch?locale=GB",
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-07-17"
-        },
-        "PT": {
-          "buy": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video"
-          ],
-          "link": "https://www.themoviedb.org/movie/1368337-the-odyssey/watch?locale=PT",
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-07-16"
-        },
-        "US": {
-          "buy": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Google Play Movies",
-            "YouTube",
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/1368337-the-odyssey/watch?locale=US",
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-07-17"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1368337"
-      },
-      "sourceRank": 2,
-      "keywords": [
-        "The Odyssey",
-        "The Odyssey 2026",
-        "where to watch The Odyssey",
-        "Adventure movie",
-        "Action movie",
-        "Fantasy movie",
-        "Claro tv+ trending movie",
-        "Matt Damon",
-        "Tom Holland"
-      ],
-      "longTailKeywords": [
-        "where to watch The Odyssey 2026",
-        "The Odyssey streaming in Brazil and United States",
-        "The Odyssey cast synopsis trailer and where to watch",
-        "what Adventure to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch The Odyssey (2026) | MatchApp Ai",
-        "description": "Odysseus, the legendary King of Ithaca, embarks on a long and perilous journey home following the Trojan War. Throughout his voyage, he is forced to confront ",
-        "keywords": [
-          "The Odyssey",
-          "The Odyssey 2026",
-          "where to watch The Odyssey",
-          "Adventure movie",
-          "Action movie",
-          "Fantasy movie",
-          "Claro tv+ trending movie",
-          "Matt Damon",
-          "Tom Holland",
-          "where to watch The Odyssey 2026",
-          "The Odyssey streaming in Brazil and United States",
-          "The Odyssey cast synopsis trailer and where to watch",
-          "what Adventure to watch this week"
-        ],
-        "canonicalQuery": "The Odyssey"
-      }
-    },
-    {
-      "title": "Avengers: Doomsday",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1003596",
-      "poster": "https://image.tmdb.org/t/p/w780/tTMmREfhVd51CCg7GN73wL8cIoT.jpg",
-      "description": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
-      "genre": [
-        "Science Fiction",
-        "Action",
-        "Adventure"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Robert Downey Jr.",
-        "Chris Evans",
-        "Chris Hemsworth",
-        "Pedro Pascal"
-      ],
-      "runtimeMinutes": 165,
-      "contentRating": "PG-13",
-      "voteAverage": 0,
-      "previewUrl": "https://www.youtube.com/watch?v=X1aFkAkFASk",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-12-16"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-12-16"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-12-18"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1003596"
-      },
-      "sourceRank": 3,
-      "keywords": [
-        "Avengers: Doomsday",
-        "Avengers: Doomsday 2026",
-        "where to watch Avengers: Doomsday",
-        "Science Fiction movie",
-        "Action movie",
-        "Adventure movie",
-        "Robert Downey Jr.",
-        "Chris Evans"
-      ],
-      "longTailKeywords": [
-        "where to watch Avengers: Doomsday 2026",
-        "Avengers: Doomsday streaming in Brazil and United States",
-        "Avengers: Doomsday cast synopsis trailer and where to watch",
-        "what Science Fiction to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Avengers: Doomsday (2026) | MatchApp Ai",
-        "description": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
-        "keywords": [
-          "Avengers: Doomsday",
-          "Avengers: Doomsday 2026",
-          "where to watch Avengers: Doomsday",
-          "Science Fiction movie",
-          "Action movie",
-          "Adventure movie",
-          "Robert Downey Jr.",
-          "Chris Evans",
-          "where to watch Avengers: Doomsday 2026",
-          "Avengers: Doomsday streaming in Brazil and United States",
-          "Avengers: Doomsday cast synopsis trailer and where to watch",
-          "what Science Fiction to watch this week"
-        ],
-        "canonicalQuery": "Avengers: Doomsday"
       }
     },
     {
@@ -375,123 +352,6 @@
       "sourceRank": 1
     },
     {
-      "title": "Steps",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Netflix",
-      "platforms": [
-        "Netflix",
-        "Netflix Standard with Ads"
-      ],
-      "tmdbId": "1595124",
-      "poster": "https://image.tmdb.org/t/p/w780/jtfCcWZ3ZyKdgi0u7JVOxEOSSJP.jpg",
-      "description": "After being blamed for disrupting the Royal Ball with a stolen magic wand, a misunderstood stepsister accidentally turns her sister into a frog and must team up with Cinderella and an unlikely ally to save the kingdom and rewrite their fairytale ending.",
-      "genre": [
-        "Animation",
-        "Family",
-        "Comedy",
-        "Adventure",
-        "Fantasy"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Ali Wong",
-        "Amanda Seyfried",
-        "Stephanie Hsu",
-        "Nikki Glaser"
-      ],
-      "runtimeMinutes": 107,
-      "contentRating": "PG",
-      "voteAverage": 6.82,
-      "previewUrl": "https://www.youtube.com/watch?v=tNV4i3BqUGY",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1595124-steps/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1595124-steps/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": "2026-11-20"
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1595124-steps/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Netflix"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1595124-steps/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": "2026-11-20"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1595124"
-      },
-      "sourceRank": 4,
-      "keywords": [
-        "Steps",
-        "Steps 2026",
-        "where to watch Steps",
-        "Animation movie",
-        "Family movie",
-        "Comedy movie",
-        "Netflix trending movie",
-        "Netflix Standard with Ads trending movie",
-        "Ali Wong",
-        "Amanda Seyfried"
-      ],
-      "longTailKeywords": [
-        "where to watch Steps 2026",
-        "Steps streaming in Brazil and United States",
-        "Steps cast synopsis trailer and where to watch",
-        "what Animation to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Steps (2026) | MatchApp Ai",
-        "description": "After being blamed for disrupting the Royal Ball with a stolen magic wand, a misunderstood stepsister accidentally turns her sister into a frog and must team ",
-        "keywords": [
-          "Steps",
-          "Steps 2026",
-          "where to watch Steps",
-          "Animation movie",
-          "Family movie",
-          "Comedy movie",
-          "Netflix trending movie",
-          "Netflix Standard with Ads trending movie",
-          "Ali Wong",
-          "Amanda Seyfried",
-          "where to watch Steps 2026",
-          "Steps streaming in Brazil and United States",
-          "Steps cast synopsis trailer and where to watch",
-          "what Animation to watch this week"
-        ],
-        "canonicalQuery": "Steps"
-      }
-    },
-    {
       "title": "Clashing Through the Snow",
       "kind": "movie",
       "year": 2026,
@@ -501,34 +361,34 @@
       "platforms": [],
       "tmdbId": "1611767",
       "poster": "https://image.tmdb.org/t/p/w780/95K1Y96ELBDL3M8kyTVb5wocCtX.jpg",
-      "description": "After weather grounds all flights east for the holidays, two work rivals competing for the same job begrudgingly embark on a cross-country road trip that brings them closer together in ways they never imagined.",
+      "description": "Rival publishing editors Ryan Mitchell and Hannah Hendricks are stranded by a holiday snowstorm and forced to share a rental car to New York, where a career-saving deal awaits them both. As roadside mishaps and small-town detours pile up, the holiday spirit begins to melt their fierce rivalry into something unexpected.",
       "genre": [
-        "Comedy",
-        "Romance"
+        "Romance",
+        "Comedy"
       ],
       "inLanguage": "en",
       "cast": [
         "Christopher Briney",
         "Michelle Randolph",
         "Lukas Gage",
-        "Paris Hilton"
+        "Julia Fox"
       ],
-      "runtimeMinutes": 107,
-      "contentRating": "12",
-      "voteAverage": 0,
+      "runtimeMinutes": 110,
+      "contentRating": "PG-13",
+      "voteAverage": 5.83,
       "previewUrl": "https://www.youtube.com/watch?v=nOyT9RkGRn4",
       "availability": {
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/1611767"
       },
-      "sourceRank": 5,
+      "sourceRank": 4,
       "keywords": [
         "Clashing Through the Snow",
         "Clashing Through the Snow 2026",
         "where to watch Clashing Through the Snow",
-        "Comedy movie",
         "Romance movie",
+        "Comedy movie",
         "Christopher Briney",
         "Michelle Randolph"
       ],
@@ -536,71 +396,68 @@
         "where to watch Clashing Through the Snow 2026",
         "Clashing Through the Snow streaming in Brazil and United States",
         "Clashing Through the Snow cast synopsis trailer and where to watch",
-        "what Comedy to watch this week"
+        "what Romance to watch this week"
       ],
       "seo": {
         "title": "Where to watch Clashing Through the Snow (2026) | MatchApp Ai",
-        "description": "After weather grounds all flights east for the holidays, two work rivals competing for the same job begrudgingly embark on a cross-country road trip that brin",
+        "description": "Rival publishing editors Ryan Mitchell and Hannah Hendricks are stranded by a holiday snowstorm and forced to share a rental car to New York, where a career-s",
         "keywords": [
           "Clashing Through the Snow",
           "Clashing Through the Snow 2026",
           "where to watch Clashing Through the Snow",
-          "Comedy movie",
           "Romance movie",
+          "Comedy movie",
           "Christopher Briney",
           "Michelle Randolph",
           "where to watch Clashing Through the Snow 2026",
           "Clashing Through the Snow streaming in Brazil and United States",
           "Clashing Through the Snow cast synopsis trailer and where to watch",
-          "what Comedy to watch this week"
+          "what Romance to watch this week"
         ],
         "canonicalQuery": "Clashing Through the Snow"
       }
     },
     {
-      "title": "Spider-Man: Brand New Day",
+      "title": "The Odyssey",
       "kind": "movie",
       "year": 2026,
-      "origin": "US",
-      "originName": "United States",
+      "origin": "GB",
+      "originName": "United Kingdom",
       "platform": "Claro tv+",
       "platforms": [
         "Claro tv+"
       ],
-      "tmdbId": "969681",
-      "poster": "https://image.tmdb.org/t/p/w780/bjiS5ipwxb9JFy3XRRN4OAilSeX.jpg",
-      "description": "Fighting crime full-time as Spider-Man in a world that doesn't remember him—and the pressure of seeing his old friends move on without him—sparks a change in Peter Parker he may not have the power to control. But that transformation might also be the only thing that can stop a shocking new threat to the city and those he loves - a powerful villain no one can even see.",
+      "tmdbId": "1368337",
+      "poster": "https://image.tmdb.org/t/p/w780/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg",
+      "description": "Odysseus, the legendary King of Ithaca, embarks on a long and perilous journey home following the Trojan War. Throughout his voyage, he is forced to confront the whims of gods, mythological monsters, and trials that stretch both his cunning and his humanity to the breaking point.",
       "genre": [
-        "Science Fiction",
+        "Adventure",
         "Action",
-        "Adventure"
+        "Fantasy"
       ],
       "inLanguage": "en",
       "cast": [
+        "Matt Damon",
         "Tom Holland",
-        "Sadie Sink",
-        "Tramell Tillman",
-        "Zendaya"
+        "Anne Hathaway",
+        "Robert Pattinson"
       ],
-      "runtimeMinutes": 145,
-      "contentRating": "PG-13",
-      "voteAverage": 8.46,
-      "previewUrl": "https://www.youtube.com/watch?v=P3uI5sLosKU",
+      "runtimeMinutes": 173,
+      "contentRating": "R",
+      "voteAverage": 8.03,
+      "previewUrl": "https://www.youtube.com/watch?v=AyIZ9tiiN8I",
       "availability": {
         "BR": {
           "buy": [
             "Apple TV Store",
             "Amazon Video"
           ],
-          "link": "https://www.themoviedb.org/movie/969681-spider-man-brand-new-day/watch?locale=BR",
-          "rent": [
-            "Apple TV Store",
-            "Amazon Video"
-          ],
+          "link": "https://www.themoviedb.org/movie/1368337-the-odyssey/watch?locale=BR",
+          "rent": [],
           "stream": [
             "Claro tv+"
           ],
-          "cinema_release_date": "2026-07-29"
+          "cinema_release_date": "2026-07-16"
         },
         "GB": {
           "buy": [
@@ -609,15 +466,10 @@
             "Amazon Video",
             "Sky Store"
           ],
-          "link": "https://www.themoviedb.org/movie/969681-spider-man-brand-new-day/watch?locale=GB",
-          "rent": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video",
-            "Sky Store"
-          ],
+          "link": "https://www.themoviedb.org/movie/1368337-the-odyssey/watch?locale=GB",
+          "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-07-29"
+          "cinema_release_date": "2026-07-17"
         },
         "PT": {
           "buy": [
@@ -625,14 +477,10 @@
             "Rakuten TV",
             "Amazon Video"
           ],
-          "link": "https://www.themoviedb.org/movie/969681-spider-man-brand-new-day/watch?locale=PT",
-          "rent": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video"
-          ],
+          "link": "https://www.themoviedb.org/movie/1368337-the-odyssey/watch?locale=PT",
+          "rent": [],
           "stream": [],
-          "cinema_release_date": null
+          "cinema_release_date": "2026-07-16"
         },
         "US": {
           "buy": [
@@ -642,55 +490,115 @@
             "YouTube",
             "Fandango At Home"
           ],
-          "link": "https://www.themoviedb.org/movie/969681-spider-man-brand-new-day/watch?locale=US",
-          "rent": [
-            "Google Play Movies",
-            "YouTube"
-          ],
+          "link": "https://www.themoviedb.org/movie/1368337-the-odyssey/watch?locale=US",
+          "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-07-31"
+          "cinema_release_date": "2026-07-17"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/969681"
+        "source_page_url": "https://www.themoviedb.org/movie/1368337"
+      },
+      "sourceRank": 5,
+      "keywords": [
+        "The Odyssey",
+        "The Odyssey 2026",
+        "where to watch The Odyssey",
+        "Adventure movie",
+        "Action movie",
+        "Fantasy movie",
+        "Claro tv+ trending movie",
+        "Matt Damon",
+        "Tom Holland"
+      ],
+      "longTailKeywords": [
+        "where to watch The Odyssey 2026",
+        "The Odyssey streaming in Brazil and United States",
+        "The Odyssey cast synopsis trailer and where to watch",
+        "what Adventure to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch The Odyssey (2026) | MatchApp Ai",
+        "description": "Odysseus, the legendary King of Ithaca, embarks on a long and perilous journey home following the Trojan War. Throughout his voyage, he is forced to confront ",
+        "keywords": [
+          "The Odyssey",
+          "The Odyssey 2026",
+          "where to watch The Odyssey",
+          "Adventure movie",
+          "Action movie",
+          "Fantasy movie",
+          "Claro tv+ trending movie",
+          "Matt Damon",
+          "Tom Holland",
+          "where to watch The Odyssey 2026",
+          "The Odyssey streaming in Brazil and United States",
+          "The Odyssey cast synopsis trailer and where to watch",
+          "what Adventure to watch this week"
+        ],
+        "canonicalQuery": "The Odyssey"
+      }
+    },
+    {
+      "title": "Dig",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "290826",
+      "poster": "https://image.tmdb.org/t/p/w780/eyW6V0R0SzG3BqtYKhlZKGBaUCn.jpg",
+      "description": "Follow four women who work at an archeological dig in Greece. When the team uncovers a long-buried secret with the potential to rewrite history, they find themselves at the center of a high-stakes international conspiracy.",
+      "genre": [
+        "Comedy"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Amy Poehler",
+        "Hugh Laurie",
+        "Geraldine Viswanathan",
+        "Antonia Thomas"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 6.2,
+      "previewUrl": "https://www.youtube.com/watch?v=ir2zni8_tP4",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/290826"
       },
       "sourceRank": 6,
       "keywords": [
-        "Spider-Man: Brand New Day",
-        "Spider-Man: Brand New Day 2026",
-        "where to watch Spider-Man: Brand New Day",
-        "Science Fiction movie",
-        "Action movie",
-        "Adventure movie",
-        "Claro tv+ trending movie",
-        "Tom Holland",
-        "Sadie Sink"
+        "Dig",
+        "Dig 2026",
+        "where to watch Dig",
+        "Comedy series",
+        "Amy Poehler",
+        "Hugh Laurie"
       ],
       "longTailKeywords": [
-        "where to watch Spider-Man: Brand New Day 2026",
-        "Spider-Man: Brand New Day streaming in Brazil and United States",
-        "Spider-Man: Brand New Day cast synopsis trailer and where to watch",
-        "what Science Fiction to watch this week"
+        "where to watch Dig 2026",
+        "Dig streaming in Brazil and United States",
+        "Dig cast synopsis trailer and where to watch",
+        "what Comedy to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Spider-Man: Brand New Day (2026) | MatchApp Ai",
-        "description": "Fighting crime full-time as Spider-Man in a world that doesn't remember him—and the pressure of seeing his old friends move on without him—sparks a change in ",
+        "title": "Where to watch Dig (2026) | MatchApp Ai",
+        "description": "Follow four women who work at an archeological dig in Greece. When the team uncovers a long-buried secret with the potential to rewrite history, they find the",
         "keywords": [
-          "Spider-Man: Brand New Day",
-          "Spider-Man: Brand New Day 2026",
-          "where to watch Spider-Man: Brand New Day",
-          "Science Fiction movie",
-          "Action movie",
-          "Adventure movie",
-          "Claro tv+ trending movie",
-          "Tom Holland",
-          "Sadie Sink",
-          "where to watch Spider-Man: Brand New Day 2026",
-          "Spider-Man: Brand New Day streaming in Brazil and United States",
-          "Spider-Man: Brand New Day cast synopsis trailer and where to watch",
-          "what Science Fiction to watch this week"
+          "Dig",
+          "Dig 2026",
+          "where to watch Dig",
+          "Comedy series",
+          "Amy Poehler",
+          "Hugh Laurie",
+          "where to watch Dig 2026",
+          "Dig streaming in Brazil and United States",
+          "Dig cast synopsis trailer and where to watch",
+          "what Comedy to watch this week"
         ],
-        "canonicalQuery": "Spider-Man: Brand New Day"
+        "canonicalQuery": "Dig"
       }
     },
     {
@@ -705,11 +613,11 @@
       "artist": "Taylor Swift",
       "songTitle": "Patient Zero",
       "publishedAt": "2026-09-29T22:00:19+00:00",
-      "viewCount": 18638188,
-      "viewCountCheckedAt": "2026-10-12",
+      "viewCount": 31757289,
+      "viewCountCheckedAt": "2026-11-24",
       "channel": "Taylor Swift",
       "channelUrl": "https://www.youtube.com/@TaylorSwift",
-      "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 18,638,188 verified views at the latest daily check.",
+      "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 31,757,289 verified views at the latest daily check.",
       "genre": [
         "Music video"
       ],
@@ -736,7 +644,7 @@
       ],
       "seo": {
         "title": "Taylor Swift — Patient Zero official music video | MatchApp Ai",
-        "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 18,638,188 verified views at the latest daily check.",
+        "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 31,757,289 verified views at the latest daily check.",
         "keywords": [
           "Taylor Swift",
           "Patient Zero",
@@ -755,260 +663,177 @@
       "sourceRank": 2
     },
     {
-      "title": "MobLand",
-      "kind": "tv",
-      "year": 2025,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Paramount Plus",
-      "platforms": [
-        "Paramount Plus",
-        "Claro tv+",
-        "Paramount+ Amazon Channel",
-        "Paramount Plus Apple TV channel",
-        "Paramount Plus Premium",
-        "Amazon Prime Video",
-        "fuboTV",
-        "Paramount Plus Essential",
-        "Paramount+ Roku Premium Channel",
-        "Spectrum On Demand",
-        "Paramount Plus Basic with Ads",
-        "SkyShowtime",
-        "Sky Showtime Amazon Channel"
-      ],
-      "tmdbId": "247718",
-      "poster": "https://image.tmdb.org/t/p/w780/5Xc7WpWsgflfgEMoBlf9TmWhfbH.jpg",
-      "description": "Two mob families clash in a war that threatens to topple empires and lives.",
+      "title": "Wicker",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "GB",
+      "originName": "United Kingdom",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1195803",
+      "poster": "https://image.tmdb.org/t/p/w780/6FcBZOKvyrLCKGCyBG0ySCR4okt.jpg",
+      "description": "On the outskirts of a village by the sea, lives a Fisherwoman; smelly, single and perpetually ridiculed. One day, fed up with her stuffy, small-minded neighbours, she commissions herself a husband to be made from wicker. In an otherwise conservative town, this unconventional romance sparks outrage, jealousy and chaos.",
       "genre": [
-        "Crime",
-        "Drama"
+        "Romance",
+        "Fantasy",
+        "Comedy"
       ],
       "inLanguage": "en",
       "cast": [
-        "Tom Hardy",
-        "Pierce Brosnan",
-        "Paddy Considine",
-        "Joanne Froggatt"
+        "Olivia Colman",
+        "Alexander Skarsgård",
+        "Peter Dinklage",
+        "Elizabeth Debicki"
       ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 8.68,
-      "previewUrl": "https://www.youtube.com/watch?v=qKGgw7Ob5f4",
+      "runtimeMinutes": 105,
+      "contentRating": "R",
+      "voteAverage": 7.4,
+      "previewUrl": "https://www.youtube.com/watch?v=kA9NfV4pM_Q",
       "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/247718-mobland/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Paramount Plus",
-            "Claro tv+",
-            "Paramount+ Amazon Channel",
-            "Paramount Plus Apple TV channel",
-            "Paramount Plus Premium",
-            "Amazon Prime Video"
-          ],
-          "cinema_release_date": null
-        },
         "GB": {
-          "buy": [
-            "Apple TV Store",
-            "Amazon Video",
-            "Sky Store"
-          ],
-          "link": "https://www.themoviedb.org/tv/247718-mobland/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Paramount Plus",
-            "Paramount+ Amazon Channel",
-            "Paramount Plus Apple TV channel",
-            "Paramount Plus Premium",
-            "Paramount Plus Basic with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/247718-mobland/watch?locale=PT",
+          "link": null,
           "rent": [],
-          "stream": [
-            "SkyShowtime",
-            "Sky Showtime Amazon Channel"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-10-30"
         },
         "US": {
-          "buy": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Google Play Movies",
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/tv/247718-mobland/watch?locale=US",
+          "buy": [],
+          "link": null,
           "rent": [],
-          "stream": [
-            "fuboTV",
-            "Paramount Plus Premium",
-            "Paramount Plus Essential",
-            "Paramount Plus Apple TV channel",
-            "Paramount+ Amazon Channel",
-            "Paramount+ Roku Premium Channel",
-            "Spectrum On Demand"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-10-23"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/247718"
+        "source_page_url": "https://www.themoviedb.org/movie/1195803"
       },
       "sourceRank": 7,
       "keywords": [
-        "MobLand",
-        "MobLand 2025",
-        "where to watch MobLand",
-        "Crime series",
-        "Drama series",
-        "Paramount Plus trending series",
-        "Claro tv+ trending series",
-        "Tom Hardy",
-        "Pierce Brosnan"
+        "Wicker",
+        "Wicker 2026",
+        "where to watch Wicker",
+        "Romance movie",
+        "Fantasy movie",
+        "Comedy movie",
+        "Olivia Colman",
+        "Alexander Skarsgård"
       ],
       "longTailKeywords": [
-        "where to watch MobLand 2025",
-        "MobLand streaming in Brazil and United States",
-        "MobLand cast synopsis trailer and where to watch",
-        "what Crime to watch this week"
+        "where to watch Wicker 2026",
+        "Wicker streaming in Brazil and United States",
+        "Wicker cast synopsis trailer and where to watch",
+        "what Romance to watch this week"
       ],
       "seo": {
-        "title": "Where to watch MobLand (2025) | MatchApp Ai",
-        "description": "Two mob families clash in a war that threatens to topple empires and lives.",
+        "title": "Where to watch Wicker (2026) | MatchApp Ai",
+        "description": "On the outskirts of a village by the sea, lives a Fisherwoman; smelly, single and perpetually ridiculed. One day, fed up with her stuffy, small-minded neighbo",
         "keywords": [
-          "MobLand",
-          "MobLand 2025",
-          "where to watch MobLand",
-          "Crime series",
-          "Drama series",
-          "Paramount Plus trending series",
-          "Claro tv+ trending series",
-          "Tom Hardy",
-          "Pierce Brosnan",
-          "where to watch MobLand 2025",
-          "MobLand streaming in Brazil and United States",
-          "MobLand cast synopsis trailer and where to watch",
-          "what Crime to watch this week"
+          "Wicker",
+          "Wicker 2026",
+          "where to watch Wicker",
+          "Romance movie",
+          "Fantasy movie",
+          "Comedy movie",
+          "Olivia Colman",
+          "Alexander Skarsgård",
+          "where to watch Wicker 2026",
+          "Wicker streaming in Brazil and United States",
+          "Wicker cast synopsis trailer and where to watch",
+          "what Romance to watch this week"
         ],
-        "canonicalQuery": "MobLand"
+        "canonicalQuery": "Wicker"
       }
     },
     {
-      "title": "The Blue Road",
-      "kind": "tv",
+      "title": "You Can See Everything",
+      "kind": "movie",
       "year": 2026,
-      "origin": "KR",
-      "originName": "South Korea",
-      "platform": "Netflix",
-      "platforms": [
-        "Netflix",
-        "Netflix Standard with Ads"
-      ],
-      "tmdbId": "300523",
-      "poster": "https://image.tmdb.org/t/p/w780/cVbilrgtgKi7gN74KK4voyV7iDR.jpg",
-      "description": "Two detectives join forces when brutal murders and cryptic messages surface across borders — but the deadly truth lurks dangerously close.",
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1765072",
+      "poster": "https://image.tmdb.org/t/p/w780/mVh3qkw2NUFxWWyF0G1hg2Wh0K5.jpg",
+      "description": "Thirty-four days before she's sent to prison, notorious Silicon Valley founder Elizabeth Holmes invites a skeptical film crew to document her every move. What begins as an intimate portrait of an enigmatic felon becomes a mind-bending three-year journey into the abyss.",
       "genre": [
-        "Crime",
-        "Mystery"
+        "Documentary"
       ],
-      "inLanguage": "ko",
+      "inLanguage": "en",
       "cast": [
-        "Son Suk-ku",
-        "Eita Nagayama",
-        "Kim Shin-rock",
-        "Yosuke Kubozuka"
+        "Elizabeth Holmes",
+        "Nathan Fielder",
+        "Billy Evans",
+        "Amanda Seyfried"
       ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 7.7,
-      "previewUrl": "https://www.youtube.com/watch?v=n1omQI6g3v0",
+      "runtimeMinutes": 175,
+      "contentRating": "R",
+      "voteAverage": 8.8,
+      "previewUrl": "https://www.youtube.com/watch?v=IEx8D1Wb__U",
       "availability": {
         "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/300523-puleungil/watch?locale=BR",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-11-26"
         },
         "GB": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/300523-puleungil/watch?locale=GB",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-11-20"
         },
         "PT": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/300523-puleungil/watch?locale=PT",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Netflix"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-11-12"
         },
         "US": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/300523-puleungil/watch?locale=US",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-10-16"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/300523"
+        "source_page_url": "https://www.themoviedb.org/movie/1765072"
       },
       "sourceRank": 8,
       "keywords": [
-        "The Blue Road",
-        "The Blue Road 2026",
-        "where to watch The Blue Road",
-        "Crime series",
-        "Mystery series",
-        "Netflix trending series",
-        "Netflix Standard with Ads trending series",
-        "Son Suk-ku",
-        "Eita Nagayama"
+        "You Can See Everything",
+        "You Can See Everything 2026",
+        "where to watch You Can See Everything",
+        "Documentary movie",
+        "Elizabeth Holmes",
+        "Nathan Fielder"
       ],
       "longTailKeywords": [
-        "where to watch The Blue Road 2026",
-        "The Blue Road streaming in Brazil and United States",
-        "The Blue Road cast synopsis trailer and where to watch",
-        "what Crime to watch this week"
+        "where to watch You Can See Everything 2026",
+        "You Can See Everything streaming in Brazil and United States",
+        "You Can See Everything cast synopsis trailer and where to watch",
+        "what Documentary to watch this week"
       ],
       "seo": {
-        "title": "Where to watch The Blue Road (2026) | MatchApp Ai",
-        "description": "Two detectives join forces when brutal murders and cryptic messages surface across borders — but the deadly truth lurks dangerously close.",
+        "title": "Where to watch You Can See Everything (2026) | MatchApp Ai",
+        "description": "Thirty-four days before she's sent to prison, notorious Silicon Valley founder Elizabeth Holmes invites a skeptical film crew to document her every move. What",
         "keywords": [
-          "The Blue Road",
-          "The Blue Road 2026",
-          "where to watch The Blue Road",
-          "Crime series",
-          "Mystery series",
-          "Netflix trending series",
-          "Netflix Standard with Ads trending series",
-          "Son Suk-ku",
-          "Eita Nagayama",
-          "where to watch The Blue Road 2026",
-          "The Blue Road streaming in Brazil and United States",
-          "The Blue Road cast synopsis trailer and where to watch",
-          "what Crime to watch this week"
+          "You Can See Everything",
+          "You Can See Everything 2026",
+          "where to watch You Can See Everything",
+          "Documentary movie",
+          "Elizabeth Holmes",
+          "Nathan Fielder",
+          "where to watch You Can See Everything 2026",
+          "You Can See Everything streaming in Brazil and United States",
+          "You Can See Everything cast synopsis trailer and where to watch",
+          "what Documentary to watch this week"
         ],
-        "canonicalQuery": "The Blue Road"
+        "canonicalQuery": "You Can See Everything"
       }
     },
     {
@@ -1038,7 +863,7 @@
       ],
       "runtimeMinutes": 103,
       "contentRating": "PG",
-      "voteAverage": 7.7,
+      "voteAverage": 8.2,
       "previewUrl": "https://www.youtube.com/watch?v=9ke5KSOUl-U",
       "availability": {
         "BR": {
@@ -1170,74 +995,8 @@
       "sourceRank": 3
     },
     {
-      "title": "Battle Through the Heavens: The Battle of Two Emperors",
+      "title": "Steps",
       "kind": "movie",
-      "year": 2026,
-      "origin": "CN",
-      "originName": "China",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "1599184",
-      "poster": "https://image.tmdb.org/t/p/w780/uEyFP5Z0IyQDLzzoOGRthambK7o.jpg",
-      "description": "High above Canaan Academy, the Soul Clan and the Sky Mansion Alliance stand locked in a tense standoff over the legendary Ancient Emperor Tou She. Using the ancient jade, Hun Tiandi unseals the emperor's hidden cave, igniting a fierce battle for the ultimate opportunity to ascend to godhood. With the aid of the Nihility Devouring Flame, Hun Tiandi successfully claims the nascent Emperor Pill, while his rival, Xiao Yan, vanishes into the chaos, his fate unknown. Having absorbed the pill's power, Hun Tiandi ascends to the pinnacle rank of Dou Di and unleashes the Soul Clan's massive army to annihilate the Sky Mansion Alliance. Just as despair threatens to overwhelm the defenders, an ancient resonance awakens within the Xiao Clan's bloodline. Gu Yuan realizes that Xiao Yan is alive and undergoing his own breakthrough to become a Dou Di—becoming humanity's final hope.",
-      "genre": [
-        "Animation",
-        "Adventure"
-      ],
-      "inLanguage": "zh",
-      "cast": [
-        "Bu Yi",
-        "Liu Yuxuan",
-        "Chen Yiwen",
-        "依晨"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "",
-      "voteAverage": 9.4,
-      "previewUrl": "",
-      "availability": {
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1599184"
-      },
-      "sourceRank": 10,
-      "keywords": [
-        "Battle Through the Heavens: The Battle of Two Emperors",
-        "Battle Through the Heavens: The Battle of Two Emperors 2026",
-        "where to watch Battle Through the Heavens: The Battle of Two Emperors",
-        "Animation movie",
-        "Adventure movie",
-        "Bu Yi",
-        "Liu Yuxuan"
-      ],
-      "longTailKeywords": [
-        "where to watch Battle Through the Heavens: The Battle of Two Emperors 2026",
-        "Battle Through the Heavens: The Battle of Two Emperors streaming in Brazil and United States",
-        "Battle Through the Heavens: The Battle of Two Emperors cast synopsis trailer and where to watch",
-        "what Animation to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Battle Through the Heavens: The Battle of Two Emperors (2026) | MatchApp Ai",
-        "description": "High above Canaan Academy, the Soul Clan and the Sky Mansion Alliance stand locked in a tense standoff over the legendary Ancient Emperor Tou She. Using the a",
-        "keywords": [
-          "Battle Through the Heavens: The Battle of Two Emperors",
-          "Battle Through the Heavens: The Battle of Two Emperors 2026",
-          "where to watch Battle Through the Heavens: The Battle of Two Emperors",
-          "Animation movie",
-          "Adventure movie",
-          "Bu Yi",
-          "Liu Yuxuan",
-          "where to watch Battle Through the Heavens: The Battle of Two Emperors 2026",
-          "Battle Through the Heavens: The Battle of Two Emperors streaming in Brazil and United States",
-          "Battle Through the Heavens: The Battle of Two Emperors cast synopsis trailer and where to watch",
-          "what Animation to watch this week"
-        ],
-        "canonicalQuery": "Battle Through the Heavens: The Battle of Two Emperors"
-      }
-    },
-    {
-      "title": "The Body",
-      "kind": "tv",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
@@ -1246,28 +1005,31 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
-      "tmdbId": "291507",
-      "poster": "https://image.tmdb.org/t/p/w780/195kCuy2RqGaEAZDDpGTx7gBUBZ.jpg",
-      "description": "On Halloween night, an all-girls dance squad tumbles into Catholic guilt, unholy desires and ghostly visions when an initiation goes to hell.",
+      "tmdbId": "1595124",
+      "poster": "https://image.tmdb.org/t/p/w780/jtfCcWZ3ZyKdgi0u7JVOxEOSSJP.jpg",
+      "description": "After being blamed for disrupting the Royal Ball with a stolen magic wand, a misunderstood stepsister accidentally turns her sister into a frog and must team up with Cinderella and an unlikely ally to save the kingdom and rewrite their fairytale ending.",
       "genre": [
-        "Mystery",
-        "Drama"
+        "Animation",
+        "Family",
+        "Comedy",
+        "Adventure",
+        "Fantasy"
       ],
       "inLanguage": "en",
       "cast": [
-        "Kristina Bogic",
-        "Geena Meszaros",
-        "Sara Boustany",
-        "Nnamdi Asomugha"
+        "Ali Wong",
+        "Amanda Seyfried",
+        "Stephanie Hsu",
+        "Nikki Glaser"
       ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 8,
-      "previewUrl": "https://www.youtube.com/watch?v=wl7uj7n7DoY",
+      "runtimeMinutes": 107,
+      "contentRating": "PG",
+      "voteAverage": 7.11,
+      "previewUrl": "https://www.youtube.com/watch?v=tNV4i3BqUGY",
       "availability": {
         "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/291507-the-body/watch?locale=BR",
+          "link": "https://www.themoviedb.org/movie/1595124-steps/watch?locale=BR",
           "rent": [],
           "stream": [
             "Netflix",
@@ -1277,17 +1039,17 @@
         },
         "GB": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/291507-the-body/watch?locale=GB",
+          "link": "https://www.themoviedb.org/movie/1595124-steps/watch?locale=GB",
           "rent": [],
           "stream": [
             "Netflix",
             "Netflix Standard with Ads"
           ],
-          "cinema_release_date": null
+          "cinema_release_date": "2026-11-20"
         },
         "PT": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/291507-the-body/watch?locale=PT",
+          "link": "https://www.themoviedb.org/movie/1595124-steps/watch?locale=PT",
           "rent": [],
           "stream": [
             "Netflix"
@@ -1296,118 +1058,284 @@
         },
         "US": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/291507-the-body/watch?locale=US",
+          "link": "https://www.themoviedb.org/movie/1595124-steps/watch?locale=US",
           "rent": [],
           "stream": [
             "Netflix",
             "Netflix Standard with Ads"
           ],
-          "cinema_release_date": null
+          "cinema_release_date": "2026-11-20"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/291507"
+        "source_page_url": "https://www.themoviedb.org/movie/1595124"
       },
-      "sourceRank": 11,
+      "sourceRank": 10,
       "keywords": [
-        "The Body",
-        "The Body 2026",
-        "where to watch The Body",
-        "Mystery series",
-        "Drama series",
-        "Netflix trending series",
-        "Netflix Standard with Ads trending series",
-        "Kristina Bogic",
-        "Geena Meszaros"
+        "Steps",
+        "Steps 2026",
+        "where to watch Steps",
+        "Animation movie",
+        "Family movie",
+        "Comedy movie",
+        "Netflix trending movie",
+        "Netflix Standard with Ads trending movie",
+        "Ali Wong",
+        "Amanda Seyfried"
       ],
       "longTailKeywords": [
-        "where to watch The Body 2026",
-        "The Body streaming in Brazil and United States",
-        "The Body cast synopsis trailer and where to watch",
-        "what Mystery to watch this week"
+        "where to watch Steps 2026",
+        "Steps streaming in Brazil and United States",
+        "Steps cast synopsis trailer and where to watch",
+        "what Animation to watch this week"
       ],
       "seo": {
-        "title": "Where to watch The Body (2026) | MatchApp Ai",
-        "description": "On Halloween night, an all-girls dance squad tumbles into Catholic guilt, unholy desires and ghostly visions when an initiation goes to hell.",
+        "title": "Where to watch Steps (2026) | MatchApp Ai",
+        "description": "After being blamed for disrupting the Royal Ball with a stolen magic wand, a misunderstood stepsister accidentally turns her sister into a frog and must team ",
         "keywords": [
-          "The Body",
-          "The Body 2026",
-          "where to watch The Body",
-          "Mystery series",
-          "Drama series",
-          "Netflix trending series",
-          "Netflix Standard with Ads trending series",
-          "Kristina Bogic",
-          "Geena Meszaros",
-          "where to watch The Body 2026",
-          "The Body streaming in Brazil and United States",
-          "The Body cast synopsis trailer and where to watch",
-          "what Mystery to watch this week"
+          "Steps",
+          "Steps 2026",
+          "where to watch Steps",
+          "Animation movie",
+          "Family movie",
+          "Comedy movie",
+          "Netflix trending movie",
+          "Netflix Standard with Ads trending movie",
+          "Ali Wong",
+          "Amanda Seyfried",
+          "where to watch Steps 2026",
+          "Steps streaming in Brazil and United States",
+          "Steps cast synopsis trailer and where to watch",
+          "what Animation to watch this week"
         ],
-        "canonicalQuery": "The Body"
+        "canonicalQuery": "Steps"
       }
     },
     {
-      "title": "Dig",
-      "kind": "tv",
+      "title": "Spider-Man: Brand New Day",
+      "kind": "movie",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "290826",
-      "poster": "https://image.tmdb.org/t/p/w780/cPJRtFeXHUae8hrTzfpj2AId2m7.jpg",
-      "description": "Follow four women who work at an archeological dig in Greece. When the team uncovers a long-buried secret with the potential to rewrite history, they find themselves at the center of a high-stakes international conspiracy.",
+      "platform": "Claro tv+",
+      "platforms": [
+        "Claro tv+"
+      ],
+      "tmdbId": "969681",
+      "poster": "https://image.tmdb.org/t/p/w780/bjiS5ipwxb9JFy3XRRN4OAilSeX.jpg",
+      "description": "Fighting crime full-time as Spider-Man in a world that doesn't remember him—and the pressure of seeing his old friends move on without him—sparks a change in Peter Parker he may not have the power to control. But that transformation might also be the only thing that can stop a shocking new threat to the city and those he loves - a powerful villain no one can even see.",
       "genre": [
-        "Comedy"
+        "Science Fiction",
+        "Action",
+        "Adventure"
       ],
       "inLanguage": "en",
       "cast": [
-        "Amy Poehler",
-        "Hugh Laurie",
-        "Geraldine Viswanathan",
-        "Antonia Thomas"
+        "Tom Holland",
+        "Sadie Sink",
+        "Tramell Tillman",
+        "Zendaya"
       ],
-      "runtimeMinutes": null,
-      "contentRating": "",
-      "voteAverage": 1,
-      "previewUrl": "https://www.youtube.com/watch?v=ir2zni8_tP4",
+      "runtimeMinutes": 145,
+      "contentRating": "PG-13",
+      "voteAverage": 8.46,
+      "previewUrl": "https://www.youtube.com/watch?v=P3uI5sLosKU",
       "availability": {
+        "BR": {
+          "buy": [
+            "Apple TV Store",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/movie/969681-spider-man-brand-new-day/watch?locale=BR",
+          "rent": [
+            "Apple TV Store",
+            "Amazon Video"
+          ],
+          "stream": [
+            "Claro tv+"
+          ],
+          "cinema_release_date": "2026-07-29"
+        },
+        "GB": {
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Sky Store"
+          ],
+          "link": "https://www.themoviedb.org/movie/969681-spider-man-brand-new-day/watch?locale=GB",
+          "rent": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Sky Store"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-07-29"
+        },
+        "PT": {
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/movie/969681-spider-man-brand-new-day/watch?locale=PT",
+          "rent": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video"
+          ],
+          "stream": [],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/969681-spider-man-brand-new-day/watch?locale=US",
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-07-31"
+        },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/290826"
+        "source_page_url": "https://www.themoviedb.org/movie/969681"
+      },
+      "sourceRank": 11,
+      "keywords": [
+        "Spider-Man: Brand New Day",
+        "Spider-Man: Brand New Day 2026",
+        "where to watch Spider-Man: Brand New Day",
+        "Science Fiction movie",
+        "Action movie",
+        "Adventure movie",
+        "Claro tv+ trending movie",
+        "Tom Holland",
+        "Sadie Sink"
+      ],
+      "longTailKeywords": [
+        "where to watch Spider-Man: Brand New Day 2026",
+        "Spider-Man: Brand New Day streaming in Brazil and United States",
+        "Spider-Man: Brand New Day cast synopsis trailer and where to watch",
+        "what Science Fiction to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Spider-Man: Brand New Day (2026) | MatchApp Ai",
+        "description": "Fighting crime full-time as Spider-Man in a world that doesn't remember him—and the pressure of seeing his old friends move on without him—sparks a change in ",
+        "keywords": [
+          "Spider-Man: Brand New Day",
+          "Spider-Man: Brand New Day 2026",
+          "where to watch Spider-Man: Brand New Day",
+          "Science Fiction movie",
+          "Action movie",
+          "Adventure movie",
+          "Claro tv+ trending movie",
+          "Tom Holland",
+          "Sadie Sink",
+          "where to watch Spider-Man: Brand New Day 2026",
+          "Spider-Man: Brand New Day streaming in Brazil and United States",
+          "Spider-Man: Brand New Day cast synopsis trailer and where to watch",
+          "what Science Fiction to watch this week"
+        ],
+        "canonicalQuery": "Spider-Man: Brand New Day"
+      }
+    },
+    {
+      "title": "Dune: Part Three",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1170608",
+      "poster": "https://image.tmdb.org/t/p/w780/gknAq4pAuToh1Aq5CJfVkGQkExT.jpg",
+      "description": "Nearly two decades after he seized control of the Imperium, Paul Atreides is now a ruthless Emperor, and must face the consequences of his reign as old allies return, terrifying new threats emerge, and betrayal lurks in every shadow. Haunted by visions of Imperial collapse and the reappearance of his long-lost love, Paul is drawn into a sweeping conspiracy, with Chani at the heart of its unfolding mystery. As enemies close in, Paul must confront the true cost of power and the fate of those he loves the most.",
+      "genre": [
+        "Science Fiction",
+        "Adventure"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Timothée Chalamet",
+        "Zendaya",
+        "Jason Momoa",
+        "Florence Pugh"
+      ],
+      "runtimeMinutes": 150,
+      "contentRating": "PG-13",
+      "voteAverage": 0,
+      "previewUrl": "https://www.youtube.com/watch?v=uJqaGLmZpGo",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-12-15"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-12-18"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-12-17"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-12-18"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1170608"
       },
       "sourceRank": 12,
       "keywords": [
-        "Dig",
-        "Dig 2026",
-        "where to watch Dig",
-        "Comedy series",
-        "Amy Poehler",
-        "Hugh Laurie"
+        "Dune: Part Three",
+        "Dune: Part Three 2026",
+        "where to watch Dune: Part Three",
+        "Science Fiction movie",
+        "Adventure movie",
+        "Timothée Chalamet",
+        "Zendaya"
       ],
       "longTailKeywords": [
-        "where to watch Dig 2026",
-        "Dig streaming in Brazil and United States",
-        "Dig cast synopsis trailer and where to watch",
-        "what Comedy to watch this week"
+        "where to watch Dune: Part Three 2026",
+        "Dune: Part Three streaming in Brazil and United States",
+        "Dune: Part Three cast synopsis trailer and where to watch",
+        "what Science Fiction to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Dig (2026) | MatchApp Ai",
-        "description": "Follow four women who work at an archeological dig in Greece. When the team uncovers a long-buried secret with the potential to rewrite history, they find the",
+        "title": "Where to watch Dune: Part Three (2026) | MatchApp Ai",
+        "description": "Nearly two decades after he seized control of the Imperium, Paul Atreides is now a ruthless Emperor, and must face the consequences of his reign as old allies",
         "keywords": [
-          "Dig",
-          "Dig 2026",
-          "where to watch Dig",
-          "Comedy series",
-          "Amy Poehler",
-          "Hugh Laurie",
-          "where to watch Dig 2026",
-          "Dig streaming in Brazil and United States",
-          "Dig cast synopsis trailer and where to watch",
-          "what Comedy to watch this week"
+          "Dune: Part Three",
+          "Dune: Part Three 2026",
+          "where to watch Dune: Part Three",
+          "Science Fiction movie",
+          "Adventure movie",
+          "Timothée Chalamet",
+          "Zendaya",
+          "where to watch Dune: Part Three 2026",
+          "Dune: Part Three streaming in Brazil and United States",
+          "Dune: Part Three cast synopsis trailer and where to watch",
+          "what Science Fiction to watch this week"
         ],
-        "canonicalQuery": "Dig"
+        "canonicalQuery": "Dune: Part Three"
       }
     },
     {
@@ -1474,423 +1402,416 @@
       "sourceRank": 4
     },
     {
-      "title": "The Lord of the Rings: The Rings of Power",
+      "title": "MobLand",
       "kind": "tv",
-      "year": 2022,
+      "year": 2025,
       "origin": "US",
       "originName": "United States",
-      "platform": "Amazon Prime Video",
+      "platform": "Paramount Plus",
       "platforms": [
+        "Paramount Plus",
+        "Claro tv+",
+        "Paramount+ Amazon Channel",
+        "Paramount Plus Apple TV channel",
+        "Paramount Plus Premium",
         "Amazon Prime Video",
-        "Amazon Prime Video with Ads",
-        "Amazon Prime Video Free with Ads",
-        "Amazon MX Player"
+        "fuboTV",
+        "Paramount Plus Essential",
+        "Paramount+ Roku Premium Channel",
+        "Spectrum On Demand",
+        "Paramount Plus Basic with Ads",
+        "SkyShowtime",
+        "Sky Showtime Amazon Channel"
       ],
-      "tmdbId": "84773",
-      "poster": "https://image.tmdb.org/t/p/w780/bMXWXKM9ydUmMTNvDnYo9QtCBRt.jpg",
-      "description": "Beginning in a time of relative peace, we follow an ensemble cast of characters as they confront the re-emergence of evil to Middle-earth. From the darkest depths of the Misty Mountains, to the majestic forests of Lindon, to the breathtaking island kingdom of Númenor, to the furthest reaches of the map, these kingdoms and characters will carve out legacies that live on long after they are gone.",
+      "tmdbId": "247718",
+      "poster": "https://image.tmdb.org/t/p/w780/5Xc7WpWsgflfgEMoBlf9TmWhfbH.jpg",
+      "description": "Two mob families clash in a war that threatens to topple empires and lives.",
       "genre": [
-        "Action & Adventure",
-        "Sci-Fi & Fantasy"
+        "Crime",
+        "Drama"
       ],
       "inLanguage": "en",
       "cast": [
-        "Charlie Vickers",
-        "Morfydd Clark",
-        "Robert Aramayo",
-        "Owain Arthur"
+        "Tom Hardy",
+        "Pierce Brosnan",
+        "Paddy Considine",
+        "Joanne Froggatt"
       ],
       "runtimeMinutes": null,
-      "contentRating": "TV-14",
-      "voteAverage": 7.22,
-      "previewUrl": "https://www.youtube.com/watch?v=x8UAUAuKNcU",
+      "contentRating": "TV-MA",
+      "voteAverage": 8.7,
+      "previewUrl": "https://www.youtube.com/watch?v=qKGgw7Ob5f4",
       "availability": {
         "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/84773-the-lord-of-the-rings-the-rings-of-power/watch?locale=BR",
+          "link": "https://www.themoviedb.org/tv/247718-mobland/watch?locale=BR",
           "rent": [],
           "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/84773-the-lord-of-the-rings-the-rings-of-power/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/84773-the-lord-of-the-rings-the-rings-of-power/watch?locale=PT",
-          "rent": [],
-          "stream": [
+            "Paramount Plus",
+            "Claro tv+",
+            "Paramount+ Amazon Channel",
+            "Paramount Plus Apple TV channel",
+            "Paramount Plus Premium",
             "Amazon Prime Video"
           ],
           "cinema_release_date": null
         },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/84773-the-lord-of-the-rings-the-rings-of-power/watch?locale=US",
+        "GB": {
+          "buy": [
+            "Apple TV Store",
+            "Amazon Video",
+            "Sky Store"
+          ],
+          "link": "https://www.themoviedb.org/tv/247718-mobland/watch?locale=GB",
           "rent": [],
           "stream": [
-            "Amazon Prime Video",
-            "Amazon Prime Video with Ads",
-            "Amazon Prime Video Free with Ads",
-            "Amazon MX Player"
+            "Paramount Plus",
+            "Paramount+ Amazon Channel",
+            "Paramount Plus Apple TV channel",
+            "Paramount Plus Premium",
+            "Paramount Plus Basic with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/247718-mobland/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "SkyShowtime",
+            "Sky Showtime Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/tv/247718-mobland/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "fuboTV",
+            "Paramount Plus Premium",
+            "Paramount Plus Essential",
+            "Paramount Plus Apple TV channel",
+            "Paramount+ Amazon Channel",
+            "Paramount+ Roku Premium Channel",
+            "Spectrum On Demand"
           ],
           "cinema_release_date": null
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/84773"
+        "source_page_url": "https://www.themoviedb.org/tv/247718"
       },
       "sourceRank": 13,
       "keywords": [
-        "The Lord of the Rings: The Rings of Power",
-        "The Lord of the Rings: The Rings of Power 2022",
-        "where to watch The Lord of the Rings: The Rings of Power",
-        "Action & Adventure series",
-        "Sci-Fi & Fantasy series",
-        "Amazon Prime Video trending series",
-        "Amazon Prime Video with Ads trending series",
-        "Charlie Vickers",
-        "Morfydd Clark"
+        "MobLand",
+        "MobLand 2025",
+        "where to watch MobLand",
+        "Crime series",
+        "Drama series",
+        "Paramount Plus trending series",
+        "Claro tv+ trending series",
+        "Tom Hardy",
+        "Pierce Brosnan"
       ],
       "longTailKeywords": [
-        "where to watch The Lord of the Rings: The Rings of Power 2022",
-        "The Lord of the Rings: The Rings of Power streaming in Brazil and United States",
-        "The Lord of the Rings: The Rings of Power cast synopsis trailer and where to watch",
-        "what Action & Adventure to watch this week"
+        "where to watch MobLand 2025",
+        "MobLand streaming in Brazil and United States",
+        "MobLand cast synopsis trailer and where to watch",
+        "what Crime to watch this week"
       ],
       "seo": {
-        "title": "Where to watch The Lord of the Rings: The Rings of Power (2022) | MatchApp Ai",
-        "description": "Beginning in a time of relative peace, we follow an ensemble cast of characters as they confront the re-emergence of evil to Middle-earth. From the darkest de",
+        "title": "Where to watch MobLand (2025) | MatchApp Ai",
+        "description": "Two mob families clash in a war that threatens to topple empires and lives.",
         "keywords": [
-          "The Lord of the Rings: The Rings of Power",
-          "The Lord of the Rings: The Rings of Power 2022",
-          "where to watch The Lord of the Rings: The Rings of Power",
-          "Action & Adventure series",
-          "Sci-Fi & Fantasy series",
-          "Amazon Prime Video trending series",
-          "Amazon Prime Video with Ads trending series",
-          "Charlie Vickers",
-          "Morfydd Clark",
-          "where to watch The Lord of the Rings: The Rings of Power 2022",
-          "The Lord of the Rings: The Rings of Power streaming in Brazil and United States",
-          "The Lord of the Rings: The Rings of Power cast synopsis trailer and where to watch",
-          "what Action & Adventure to watch this week"
+          "MobLand",
+          "MobLand 2025",
+          "where to watch MobLand",
+          "Crime series",
+          "Drama series",
+          "Paramount Plus trending series",
+          "Claro tv+ trending series",
+          "Tom Hardy",
+          "Pierce Brosnan",
+          "where to watch MobLand 2025",
+          "MobLand streaming in Brazil and United States",
+          "MobLand cast synopsis trailer and where to watch",
+          "what Crime to watch this week"
         ],
-        "canonicalQuery": "The Lord of the Rings: The Rings of Power"
+        "canonicalQuery": "MobLand"
       }
     },
     {
-      "title": "The Social Reckoning",
+      "title": "Focker In-Law",
       "kind": "movie",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
       "platform": "Cinemas",
       "platforms": [],
-      "tmdbId": "1281331",
-      "poster": "https://image.tmdb.org/t/p/w780/7jK6NuxVg1XuEV7UdNa6KO03IgZ.jpg",
-      "description": "Frances Haugen, a young Facebook engineer, enlists the help of Jeff Horwitz, a Wall Street Journal reporter, to go on a dangerous journey that ends up blowing the whistle on the social network's most guarded secrets.",
+      "tmdbId": "1400336",
+      "poster": "https://image.tmdb.org/t/p/w780/iHJhSfqFpDMOyeMc6h6BOeHxse2.jpg",
+      "description": "Henry, son of Greg and Pam Focker, aims to marry Olivia, a strong-willed former hostage negotiator who appears to be his complete mismatch. To Greg's shock, father-in-law Jack Byrnes takes a liking to Olivia, and her unprecedented rise into his Circle of Trust sparks chaos in the family before Jack's 80th birthday party.",
       "genre": [
-        "Drama",
-        "Thriller"
+        "Comedy",
+        "Romance"
       ],
       "inLanguage": "en",
       "cast": [
-        "Mikey Madison",
-        "Jeremy Allen White",
-        "Jeremy Strong",
-        "Betty Gilpin"
+        "Ben Stiller",
+        "Robert De Niro",
+        "Ariana Grande",
+        "Skyler Gisondo"
       ],
-      "runtimeMinutes": 113,
-      "contentRating": "R",
-      "voteAverage": 7,
-      "previewUrl": "https://www.youtube.com/watch?v=R8ANzYpaZaY",
+      "runtimeMinutes": 105,
+      "contentRating": "PG-13",
+      "voteAverage": 8,
+      "previewUrl": "https://www.youtube.com/watch?v=9CKu3WoMYCg",
       "availability": {
         "BR": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-10-22"
+          "cinema_release_date": "2026-11-25"
         },
         "GB": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-10-09"
+          "cinema_release_date": "2026-11-25"
         },
         "US": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-10-09"
+          "cinema_release_date": "2026-11-25"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1281331"
+        "source_page_url": "https://www.themoviedb.org/movie/1400336"
       },
       "sourceRank": 14,
       "keywords": [
-        "The Social Reckoning",
-        "The Social Reckoning 2026",
-        "where to watch The Social Reckoning",
-        "Drama movie",
-        "Thriller movie",
-        "Mikey Madison",
-        "Jeremy Allen White"
+        "Focker In-Law",
+        "Focker In-Law 2026",
+        "where to watch Focker In-Law",
+        "Comedy movie",
+        "Romance movie",
+        "Ben Stiller",
+        "Robert De Niro"
       ],
       "longTailKeywords": [
-        "where to watch The Social Reckoning 2026",
-        "The Social Reckoning streaming in Brazil and United States",
-        "The Social Reckoning cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
+        "where to watch Focker In-Law 2026",
+        "Focker In-Law streaming in Brazil and United States",
+        "Focker In-Law cast synopsis trailer and where to watch",
+        "what Comedy to watch this week"
       ],
       "seo": {
-        "title": "Where to watch The Social Reckoning (2026) | MatchApp Ai",
-        "description": "Frances Haugen, a young Facebook engineer, enlists the help of Jeff Horwitz, a Wall Street Journal reporter, to go on a dangerous journey that ends up blowing",
+        "title": "Where to watch Focker In-Law (2026) | MatchApp Ai",
+        "description": "Henry, son of Greg and Pam Focker, aims to marry Olivia, a strong-willed former hostage negotiator who appears to be his complete mismatch. To Greg's shock, f",
         "keywords": [
-          "The Social Reckoning",
-          "The Social Reckoning 2026",
-          "where to watch The Social Reckoning",
-          "Drama movie",
-          "Thriller movie",
-          "Mikey Madison",
-          "Jeremy Allen White",
-          "where to watch The Social Reckoning 2026",
-          "The Social Reckoning streaming in Brazil and United States",
-          "The Social Reckoning cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
+          "Focker In-Law",
+          "Focker In-Law 2026",
+          "where to watch Focker In-Law",
+          "Comedy movie",
+          "Romance movie",
+          "Ben Stiller",
+          "Robert De Niro",
+          "where to watch Focker In-Law 2026",
+          "Focker In-Law streaming in Brazil and United States",
+          "Focker In-Law cast synopsis trailer and where to watch",
+          "what Comedy to watch this week"
         ],
-        "canonicalQuery": "The Social Reckoning"
+        "canonicalQuery": "Focker In-Law"
       }
     },
     {
-      "title": "Dune: Part Three",
-      "kind": "movie",
+      "title": "The Substitute",
+      "kind": "tv",
       "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
+      "origin": "KR",
+      "originName": "South Korea",
+      "platform": "",
       "platforms": [],
-      "tmdbId": "1170608",
-      "poster": "https://image.tmdb.org/t/p/w780/gknAq4pAuToh1Aq5CJfVkGQkExT.jpg",
-      "description": "Nearly two decades after he seized control of the Imperium, Paul Atreides is now a ruthless Emperor, and must face the consequences of his reign as old allies return, terrifying new threats emerge, and betrayal lurks in every shadow. Haunted by visions of Imperial collapse and the reappearance of his long-lost love, Paul is drawn into a sweeping conspiracy, with Chani at the heart of its unfolding mystery. As enemies close in, Paul must confront the true cost of power and the fate of those he loves the most.",
+      "tmdbId": "303552",
+      "poster": "https://image.tmdb.org/t/p/w780/syKpHtIH8xPrcpNwXOgL3dhJ4Rk.jpg",
+      "description": "A brilliant but low-income student uses his smarts for his own gain, but his wealthy rival might ruin both of their lives",
       "genre": [
-        "Science Fiction",
-        "Adventure"
+        "Crime",
+        "Mystery",
+        "Drama"
       ],
-      "inLanguage": "en",
+      "inLanguage": "ko",
       "cast": [
-        "Timothée Chalamet",
-        "Zendaya",
-        "Jason Momoa",
-        "Florence Pugh"
+        "Bae Hyeon-seong",
+        "Cha Kang-yoon",
+        "Park Yoon-ho",
+        "Uhm Ji-won"
       ],
-      "runtimeMinutes": 150,
-      "contentRating": "PG-13",
+      "runtimeMinutes": null,
+      "contentRating": "",
       "voteAverage": 0,
-      "previewUrl": "https://www.youtube.com/watch?v=uJqaGLmZpGo",
+      "previewUrl": "",
       "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-12-15"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-12-18"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-12-17"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-12-18"
-        },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1170608"
+        "source_page_url": "https://www.themoviedb.org/tv/303552"
       },
       "sourceRank": 15,
       "keywords": [
-        "Dune: Part Three",
-        "Dune: Part Three 2026",
-        "where to watch Dune: Part Three",
-        "Science Fiction movie",
-        "Adventure movie",
-        "Timothée Chalamet",
-        "Zendaya"
+        "The Substitute",
+        "The Substitute 2026",
+        "where to watch The Substitute",
+        "Crime series",
+        "Mystery series",
+        "Drama series",
+        "Bae Hyeon-seong",
+        "Cha Kang-yoon"
       ],
       "longTailKeywords": [
-        "where to watch Dune: Part Three 2026",
-        "Dune: Part Three streaming in Brazil and United States",
-        "Dune: Part Three cast synopsis trailer and where to watch",
-        "what Science Fiction to watch this week"
+        "where to watch The Substitute 2026",
+        "The Substitute streaming in Brazil and United States",
+        "The Substitute cast synopsis trailer and where to watch",
+        "what Crime to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Dune: Part Three (2026) | MatchApp Ai",
-        "description": "Nearly two decades after he seized control of the Imperium, Paul Atreides is now a ruthless Emperor, and must face the consequences of his reign as old allies",
+        "title": "Where to watch The Substitute (2026) | MatchApp Ai",
+        "description": "A brilliant but low-income student uses his smarts for his own gain, but his wealthy rival might ruin both of their lives",
         "keywords": [
-          "Dune: Part Three",
-          "Dune: Part Three 2026",
-          "where to watch Dune: Part Three",
-          "Science Fiction movie",
-          "Adventure movie",
-          "Timothée Chalamet",
-          "Zendaya",
-          "where to watch Dune: Part Three 2026",
-          "Dune: Part Three streaming in Brazil and United States",
-          "Dune: Part Three cast synopsis trailer and where to watch",
-          "what Science Fiction to watch this week"
+          "The Substitute",
+          "The Substitute 2026",
+          "where to watch The Substitute",
+          "Crime series",
+          "Mystery series",
+          "Drama series",
+          "Bae Hyeon-seong",
+          "Cha Kang-yoon",
+          "where to watch The Substitute 2026",
+          "The Substitute streaming in Brazil and United States",
+          "The Substitute cast synopsis trailer and where to watch",
+          "what Crime to watch this week"
         ],
-        "canonicalQuery": "Dune: Part Three"
+        "canonicalQuery": "The Substitute"
       }
     },
     {
-      "title": "Percy Jackson and the Olympians",
+      "title": "The Blue Road",
       "kind": "tv",
-      "year": 2023,
-      "origin": "US",
-      "originName": "United States",
+      "year": 2026,
+      "origin": "KR",
+      "originName": "South Korea",
       "platform": "Netflix",
       "platforms": [
         "Netflix",
-        "Disney Plus",
-        "Netflix Standard with Ads",
-        "Hulu"
+        "Netflix Standard with Ads"
       ],
-      "tmdbId": "103540",
-      "poster": "https://image.tmdb.org/t/p/w780/zofPiEpwCRYaezOncTlQwXebHFU.jpg",
-      "description": "Percy Jackson is on a dangerous quest. Outrunning monsters and outwitting gods, he must journey across America to return Zeus's master bolt and stop an all-out war. With the help of his friends Annabeth and Grover, Percy's journey will lead him closer to the answers he seeks: how to fit into a world where he feels out of place, and who he's destined to be.",
+      "tmdbId": "300523",
+      "poster": "https://image.tmdb.org/t/p/w780/cVbilrgtgKi7gN74KK4voyV7iDR.jpg",
+      "description": "Two detectives join forces when brutal murders and cryptic messages surface across borders — but the deadly truth lurks dangerously close.",
       "genre": [
-        "Action & Adventure",
-        "Sci-Fi & Fantasy",
-        "Drama",
-        "Family"
+        "Crime",
+        "Mystery"
       ],
-      "inLanguage": "en",
+      "inLanguage": "ko",
       "cast": [
-        "Walker Scobell",
-        "Leah Sava Jeffries",
-        "Aryan Simhadri",
-        "Charlie Bushnell"
+        "Son Suk-ku",
+        "Eita Nagayama",
+        "Kim Shin-rock",
+        "Choi Sung-eun"
       ],
       "runtimeMinutes": null,
-      "contentRating": "TV-PG",
-      "voteAverage": 7.3,
-      "previewUrl": "https://www.youtube.com/watch?v=yT1ng2tiwLA",
+      "contentRating": "TV-MA",
+      "voteAverage": 7.63,
+      "previewUrl": "https://www.youtube.com/watch?v=n1omQI6g3v0",
       "availability": {
         "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/103540-percy-jackson-and-the-olympians/watch?locale=BR",
+          "link": "https://www.themoviedb.org/tv/300523-puleungil/watch?locale=BR",
           "rent": [],
           "stream": [
             "Netflix",
-            "Disney Plus",
             "Netflix Standard with Ads"
           ],
           "cinema_release_date": null
         },
         "GB": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/103540-percy-jackson-and-the-olympians/watch?locale=GB",
+          "link": "https://www.themoviedb.org/tv/300523-puleungil/watch?locale=GB",
           "rent": [],
           "stream": [
             "Netflix",
-            "Disney Plus",
             "Netflix Standard with Ads"
           ],
           "cinema_release_date": null
         },
         "PT": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/103540-percy-jackson-and-the-olympians/watch?locale=PT",
+          "link": "https://www.themoviedb.org/tv/300523-puleungil/watch?locale=PT",
           "rent": [],
           "stream": [
-            "Netflix",
-            "Disney Plus"
+            "Netflix"
           ],
           "cinema_release_date": null
         },
         "US": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/103540-percy-jackson-and-the-olympians/watch?locale=US",
+          "link": "https://www.themoviedb.org/tv/300523-puleungil/watch?locale=US",
           "rent": [],
           "stream": [
             "Netflix",
-            "Disney Plus",
-            "Hulu",
             "Netflix Standard with Ads"
           ],
           "cinema_release_date": null
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/103540"
+        "source_page_url": "https://www.themoviedb.org/tv/300523"
       },
       "sourceRank": 16,
       "keywords": [
-        "Percy Jackson and the Olympians",
-        "Percy Jackson and the Olympians 2023",
-        "where to watch Percy Jackson and the Olympians",
-        "Action & Adventure series",
-        "Sci-Fi & Fantasy series",
-        "Drama series",
+        "The Blue Road",
+        "The Blue Road 2026",
+        "where to watch The Blue Road",
+        "Crime series",
+        "Mystery series",
         "Netflix trending series",
-        "Disney Plus trending series",
-        "Walker Scobell",
-        "Leah Sava Jeffries"
+        "Netflix Standard with Ads trending series",
+        "Son Suk-ku",
+        "Eita Nagayama"
       ],
       "longTailKeywords": [
-        "where to watch Percy Jackson and the Olympians 2023",
-        "Percy Jackson and the Olympians streaming in Brazil and United States",
-        "Percy Jackson and the Olympians cast synopsis trailer and where to watch",
-        "what Action & Adventure to watch this week"
+        "where to watch The Blue Road 2026",
+        "The Blue Road streaming in Brazil and United States",
+        "The Blue Road cast synopsis trailer and where to watch",
+        "what Crime to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Percy Jackson and the Olympians (2023) | MatchApp Ai",
-        "description": "Percy Jackson is on a dangerous quest. Outrunning monsters and outwitting gods, he must journey across America to return Zeus's master bolt and stop an all-ou",
+        "title": "Where to watch The Blue Road (2026) | MatchApp Ai",
+        "description": "Two detectives join forces when brutal murders and cryptic messages surface across borders — but the deadly truth lurks dangerously close.",
         "keywords": [
-          "Percy Jackson and the Olympians",
-          "Percy Jackson and the Olympians 2023",
-          "where to watch Percy Jackson and the Olympians",
-          "Action & Adventure series",
-          "Sci-Fi & Fantasy series",
-          "Drama series",
+          "The Blue Road",
+          "The Blue Road 2026",
+          "where to watch The Blue Road",
+          "Crime series",
+          "Mystery series",
           "Netflix trending series",
-          "Disney Plus trending series",
-          "Walker Scobell",
-          "Leah Sava Jeffries",
-          "where to watch Percy Jackson and the Olympians 2023",
-          "Percy Jackson and the Olympians streaming in Brazil and United States",
-          "Percy Jackson and the Olympians cast synopsis trailer and where to watch",
-          "what Action & Adventure to watch this week"
+          "Netflix Standard with Ads trending series",
+          "Son Suk-ku",
+          "Eita Nagayama",
+          "where to watch The Blue Road 2026",
+          "The Blue Road streaming in Brazil and United States",
+          "The Blue Road cast synopsis trailer and where to watch",
+          "what Crime to watch this week"
         ],
-        "canonicalQuery": "Percy Jackson and the Olympians"
+        "canonicalQuery": "The Blue Road"
       }
     }
   ]

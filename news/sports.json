@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-23T10:27:27.769Z",
+  "updated_at": "2026-11-24T15:11:11.435Z",
   "source_policy": "Authorized publisher RSS/Atom; directly linked canonical URLs, no article-body/image republication and no betting guides",
   "items": [
     {
-      "id": "ed20de22",
-      "title": "How a Pittsburgh-born umpire painted baseball history onto the ball itself",
-      "url": "https://theconversation.com/how-a-pittsburgh-born-umpire-painted-baseball-history-onto-the-ball-itself-295293",
+      "id": "e14eabc5",
+      "title": "De champion olympique à présidentiable : Les habits – pas très neufs – du candidat Teddy Riner",
+      "url": "https://theconversation.com/de-champion-olympique-a-presidentiable-les-habits-pas-tres-neufs-du-candidat-teddy-riner-297078",
       "source": "The Conversation",
       "source_domain": "theconversation.com",
       "source_home": "https://theconversation.com",
@@ -13,15 +13,15 @@
       "category": "sports",
       "sport": "Sports",
       "event_type": "Sports",
-      "published_at": "2026-11-20T13:43:27.000Z",
+      "published_at": "2026-11-24T15:10:36.000Z",
       "timestamp_kind": "published",
       "discovery_source": "Authorized publisher RSS/Atom",
       "image": null
     },
     {
-      "id": "8ed26ef3",
-      "title": "The most iconic sports film of all time taught us winning isn’t everything: 50 years of Rocky",
-      "url": "https://theconversation.com/the-most-iconic-sports-film-of-all-time-taught-us-winning-isnt-everything-50-years-of-rocky-276876",
+      "id": "3fcaf42e",
+      "title": "Why sportswomen are turning to OnlyFans – and what it says about inequality in sport",
+      "url": "https://theconversation.com/why-sportswomen-are-turning-to-onlyfans-and-what-it-says-about-inequality-in-sport-297131",
       "source": "The Conversation",
       "source_domain": "theconversation.com",
       "source_home": "https://theconversation.com",
@@ -29,7 +29,7 @@
       "category": "sports",
       "sport": "Sports",
       "event_type": "Sports",
-      "published_at": "2026-11-19T19:05:54.000Z",
+      "published_at": "2026-11-23T17:40:43.000Z",
       "timestamp_kind": "published",
       "discovery_source": "Authorized publisher RSS/Atom",
       "image": null
