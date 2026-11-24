@@ -90,6 +90,6 @@ function buildAvailabilityGraph({title,info,entry,url,generated,now=Date.now(),r
   const nowMs=typeof now==='number'?now:Date.parse(now);
   const dates=evidence.map(e=>e.checkedAt).filter(d=>d && Date.parse(d)<=nowMs+5*60*1000).sort();
   if(dates.length)page.dateModified=dates[dates.length-1];
-  return {'@context':'https://schema.org','@graph':[{'@type':'Organization','@id':SITE+'/#organization',name:'MatchApp Ai',url:SITE+'/'},page,titleNode]};
+  return {'@context':'https://schema.org','@graph':[{'@type':'Organization','@id':SITE+'/#organization',name:'MatchApp Ai',url:SITE+'/',logo:{'@type':'ImageObject',url:SITE+'/assets/brand/matchapp-official-icon-512.webp',width:512,height:512}},page,titleNode]};
 }
 module.exports={MAX_AGE_MS,REGION_NAMES,ACCESS,safeJson,httpsUrl,observationTime,regionEvidence,buildAvailabilityGraph,directWatchActions};
