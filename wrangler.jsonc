@@ -1,0 +1,9 @@
+{
+  "name": "matchapp-tv",
+  "compatibility_date": "2026-11-25",
+  "assets": {
+    "directory": ".",
+    "html_handling": "auto-trailing-slash"
+  },
+  "previews": {}
+}
