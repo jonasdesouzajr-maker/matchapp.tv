@@ -72,7 +72,7 @@ function validateMetadata(root=ROOT){
    !Array.isArray(v.seo?.keywords)||v.seo.keywords.length<5)throw Error('Incomplete verified music-video metadata/SEO: '+v.id);
  }
  if(!pick.title?.trim()||!['number','string'].includes(typeof pick.tmdbId)||!/^\d+$/.test(String(pick.tmdbId))||!Number.isSafeInteger(Number(pick.tmdbId))||Number(pick.tmdbId)<=0||!pick.poster?.trim()||!pick.synopsis?.trim())throw Error('Weekly choice is incomplete');
- if(!fs.existsSync(path.join(root,'featured/this-week/index.html'))||!read('sitemap.xml').includes('https://matchapp.tv/featured/this-week/'))throw Error('Weekly featured page or sitemap entry missing');
+ if(!fs.existsSync(path.join(root,'featured/this-week/index.html'))||!new Set(Array.from(read('sitemap.xml').matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/g),m=>m[1])).has('https://matchapp.tv/featured/this-week/'))throw Error('Weekly featured page or sitemap entry missing');
  return {topTitles:trend.titles.length,featuredMusic:featured.length,weeklyPick:pick.title};
 }
 
