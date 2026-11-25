@@ -406,13 +406,7 @@ if (window.top === window && !window.MatchAppFx &&
     l.href='/patches/hide-friday-20261118.css?v=1';
     (document.head||document.documentElement).appendChild(l);
   }
-  if (!document.getElementById('ma-play-fix')) {
-    var s=document.createElement('script');
-    s.id='ma-play-fix';
-    s.src='/patches/play-prompt-fix-20261118.js?v=1';
-    s.defer=true;
-    (document.head||document.documentElement).appendChild(s);
-  }
+  // Android Play invitations are owned exclusively by browser-install-offer.js.
 })();
 
 /* Invisible grid. */
