@@ -19,6 +19,8 @@ const ROOT = path.join(__dirname, '..');
 const SITE = 'https://matchapp.tv';
 
 const CORE = [
+    { loc: `https://matchapp.tv/guides/thanksgiving-streaming-trends-2026/`, freq: 'monthly', pri: '0.8', lastmod: '2026-11-25T00:00:00+00:00' },
+    { loc: `https://matchapp.tv/guides/filmes-series-em-alta-novembro-2026/`, freq: 'monthly', pri: '0.8', lastmod: '2026-11-25T00:00:00+00:00' },
     { loc: `${SITE}/founder/`, freq: 'monthly', pri: '0.6' },
     { loc: `${SITE}/sponsor/`, freq: "monthly", pri: "0.5" },
     { loc: `${SITE}/streaming/`, freq: "monthly", pri: "0.7" },

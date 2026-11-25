@@ -1,32 +1,65 @@
 {
-  "updated": "2026-10-02",
-  "source": "Google Trends and Google movie search interest, United States and Brazil, 2 October 2026. Entertainment queries only.",
+  "updated": "2026-11-25",
+  "source": "Google Trends US newsletter 25 November 2026; entertainment search signals, not audience rankings. Earlier snapshot retained separately.",
   "short": [
-    "Backrooms",
-    "Toy Story 5",
-    "Rocky Horror",
-    "Scary Movie",
-    "Evil Dead Burn",
-    "Supergirl",
-    "Coraline",
-    "Project Hail Mary",
-    "Super Mario Galaxy Movie",
-    "Iron Lung",
-    "East of Eden",
-    "Lanterns",
-    "Monster Lizzie Borden",
-    "Rick Ross"
+    "The Hunger Games: Sunrise on the Reaping",
+    "ENE Repeat",
+    "Ee Nagaraniki Emaindi 2",
+    "Friends Thanksgiving episodes",
+    "Modern Family Thanksgiving episodes",
+    "Miley Cyrus",
+    "Ray Charles Sweet Potato Pie",
+    "Black Friday streaming deals",
+    "PlayStation 5",
+    "GTA VI"
   ],
   "longTail": [
-    "where to watch Backrooms movie",
-    "is Toy Story 5 streaming yet",
-    "where to stream Rocky Horror Picture Show tonight",
-    "scary movies trending on Google today",
-    "where to watch Project Hail Mary",
-    "where to watch East of Eden on Netflix",
-    "o que assistir hoje no Netflix Brasil",
-    "filmes de terror em alta no Google",
-    "where to watch Lanterns on Max",
-    "where to watch Monster The Lizzie Borden Story"
+    "Hunger Games Sunrise on the Reaping showtimes",
+    "Hunger Games movies in chronological order",
+    "ENE Repeat showtimes Telugu",
+    "Ee Nagaraniki Emaindi 2 OTT release date",
+    "Friends Thanksgiving episode season 5",
+    "Modern Family Thanksgiving episodes Hulu",
+    "Black Friday streaming deals 2026 US",
+    "Ray Charles James Taylor Sweet Potato Pie official audio",
+    "GTA VI official launch trailer",
+    "Jogos Vorazes Amanhecer na Colheita onde assistir",
+    "filmes e séries em alta novembro 2026"
+  ],
+  "previous": {
+    "updated": "2026-10-02",
+    "source": "Google Trends and Google movie search interest, United States and Brazil",
+    "short": [
+      "Backrooms",
+      "Toy Story 5",
+      "Rocky Horror",
+      "Scary Movie",
+      "Evil Dead Burn",
+      "Supergirl",
+      "Coraline",
+      "Project Hail Mary",
+      "Super Mario Galaxy Movie",
+      "Iron Lung",
+      "East of Eden",
+      "Lanterns",
+      "Monster Lizzie Borden",
+      "Rick Ross"
+    ],
+    "longTail": [
+      "where to watch Backrooms movie",
+      "is Toy Story 5 streaming yet",
+      "where to stream Rocky Horror Picture Show tonight",
+      "scary movies trending on Google today",
+      "where to watch Project Hail Mary",
+      "where to watch East of Eden on Netflix",
+      "o que assistir hoje no Netflix Brasil",
+      "filmes de terror em alta no Google",
+      "where to watch Lanterns on Max",
+      "where to watch Monster The Lizzie Borden Story"
+    ]
+  },
+  "editorialUrls": [
+    "https://matchapp.tv/guides/thanksgiving-streaming-trends-2026/",
+    "https://matchapp.tv/guides/filmes-series-em-alta-novembro-2026/"
   ]
 }
