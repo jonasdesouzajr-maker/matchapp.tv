@@ -7,7 +7,7 @@ const fragments=new Map();const external=new Set();
 // Parse HTML without creating thousands of browser-like Windows. Keep only exact fragment strings.
 const attr=(el,name)=>el.attrs?.find(a=>a.name===name&&!a.prefix)?.value??null;
 function* elements(node){if(node.tagName)yield node;for(const child of node.childNodes||[])yield* elements(child);}
-const parse=p=>[...elements(parseHTML(fs.readFileSync(p,'utf8')))];
+const parse=p=>[...elements(parseHTML(fs.readFileSync(p,'utf8'),{scriptingEnabled:false}))];
 const indexFragments=(p,els)=>{if(!fragments.has(p))fragments.set(p,new Set(els.flatMap(el=>[attr(el,'id'),attr(el,'name')]).filter(v=>v!==null)));return fragments.get(p);};
 function hasFragment(p,id){return (fragments.get(p)||indexFragments(p,parse(p))).has(id);}
 function text(node){return node.nodeName==='#text'?node.value:(node.childNodes||[]).map(text).join('');}

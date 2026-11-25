@@ -3,27 +3,33 @@ on:
   push:
     branches: [main]
     paths:
-      - 'app.js'
-      - 'discover.js'
-      - 'match-guarantee.js'
-      - 'settings.js'
-      - 'catalog-media.js'
-      - 'ebooks/**'
-      - 'supabase/functions/**'
-      - 'tests/cooking-ask-ai.test.cjs'
+      - '**/*.js'
+      - '**/*.jsx'
+      - '**/*.ts'
+      - '**/*.tsx'
+      - '**/*.mjs'
+      - '**/*.cjs'
+      - '**/*.mts'
+      - '**/*.cts'
+      - '**/*.html'
+      - '**/package.json'
+      - '**/package-lock.json'
       - '.github/workflows/codeql.yml'
   pull_request:
     branches: [main]
     paths:
+      - '**/*.js'
+      - '**/*.jsx'
+      - '**/*.ts'
+      - '**/*.tsx'
+      - '**/*.mjs'
+      - '**/*.cjs'
+      - '**/*.mts'
+      - '**/*.cts'
+      - '**/*.html'
+      - '**/package.json'
+      - '**/package-lock.json'
       - '.github/workflows/codeql.yml'
-      - 'app.js'
-      - 'discover.js'
-      - 'match-guarantee.js'
-      - 'settings.js'
-      - 'catalog-media.js'
-      - 'ebooks/**'
-      - 'supabase/functions/**'
-      - 'tests/cooking-ask-ai.test.cjs'
   workflow_dispatch:
 permissions:
   actions: read
