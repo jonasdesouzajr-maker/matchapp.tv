@@ -61,7 +61,7 @@ if (window.top === window && !window.MatchAppFx &&
   load('ma-layout-force', '/patches/layout-force-20261117.css?v=1', true);
   load('ma-cwv', '/patches/cwv-optimize-20261117.js?v=1', false);
   load('ma-click', '/patches/click-response-20261117.js?v=1', false);
-  load('ma-bubble', '/patches/android-download-bubble-20261117.js?v=20261123-smart2', false);
+  load('ma-bubble', '/patches/android-download-bubble-20261117.js?v=20261125-single', false);
   if (/\/discover\.html$/i.test(location.pathname)) {
     load('ma-noindex', '/patches/discover-query-noindex-20261117.js?v=1', false);
   }
@@ -368,13 +368,7 @@ if (window.top === window && !window.MatchAppFx &&
     s.defer=true;
     (document.head||document.documentElement).appendChild(s);
   }
-  if (!document.getElementById('ma-dl-js')) {
-    var s2=document.createElement('script');
-    s2.id='ma-dl-js';
-    s2.src='/patches/download-bubble-20261118.js?v=1';
-    s2.defer=true;
-    (document.head||document.documentElement).appendChild(s2);
-  }
+  // The smart Play offer owns non-Home adult browser discovery.
 })();
 
 /* Compact and force posters. */
