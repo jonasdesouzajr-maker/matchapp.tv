@@ -277,7 +277,7 @@
   }
   function renderWatchLinks() {
     const item=currentWatchItem;if(!item||!allowedForAge(item,currentAge()))return;
-    const link=document.getElementById('kids-watch-continue');link.href=watchUrl(item);link.textContent=tr(officialChannels[item.title]?'channel':link.href.includes('justwatch.com')?'watchGuide':'watchFallback');
+    const link=document.getElementById('kids-watch-continue');link.href=watchUrl(item);link.textContent=tr(officialChannels[item.title]?'channel':new URL(link.href).origin==='https://www.justwatch.com'?'watchGuide':'watchFallback');
     document.getElementById('kids-watch-fallback').href=watchFallback(item);
     document.getElementById('kids-watch-note').textContent=item.note?tr(item.note):'';
   }
