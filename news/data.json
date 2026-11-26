@@ -1,52 +1,52 @@
 {
-  "generated_at": "2026-11-26T08:04:29.345Z",
-  "feed_version": "e49359f6",
-  "sports_updated_at": "2026-11-24T15:11:11.435Z",
+  "generated_at": "2026-11-26T14:16:41.121Z",
+  "feed_version": "8e128624",
+  "sports_updated_at": "2026-11-26T14:16:15.556Z",
   "source_policy": "direct-trusted-publisher-rss+google-trends-keyword-signals",
   "seo_policy": "rebuilt per check; modification dates advance only with content + source citation + stable archive",
   "items": [
     {
-      "id": "a067c0da",
-      "title": "FedEx plane overshoots Miami runway, causing brief suspension of flights at airport",
-      "url": "https://www.bbc.co.uk/news/articles/ckm2mz3prq77o?at_medium=RSS&at_campaign=rss",
+      "id": "5a12d842",
+      "title": "Diesel tanker carrying up to 7,000 tonnes sinks near Ibiza, killing one",
+      "url": "https://www.bbc.co.uk/news/articles/c9gklryvj24do?at_medium=RSS&at_campaign=rss",
       "source": "BBC World",
       "source_domain": "bbc.co.uk",
       "source_home": "https://www.bbc.co.uk",
       "country": "GLOBAL",
       "language": "en",
-      "published_at": "2026-11-26T07:34:47.000Z",
-      "discovered_at": "2026-11-26T08:04:29.345Z",
+      "published_at": "2026-11-26T14:00:42.000Z",
+      "discovered_at": "2026-11-26T14:16:41.121Z",
       "event_type": "World",
       "category": "world",
       "person": "",
       "description": "World news reported by BBC World on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/a780/live/1db9c0f0-e959-11f1-99b6-a35a62fa4264.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/fedex-plane-overshoots-miami-runway-causing-brief-suspension-of-flights-at-airpo-a067c0/",
-      "landing_url": "https://matchapp.tv/?news=a067c0da#latest-news",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/3e73/live/33d0e9f0-e99e-11f1-b880-15b494ba858d.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/diesel-tanker-carrying-up-to-7-000-tonnes-sinks-near-ibiza-killing-one-5a12d8/",
+      "landing_url": "https://matchapp.tv/?news=5a12d842#latest-news",
       "seo": {
         "primary_keyword": "world news 2026-11-26",
         "short_tail": [
           "world news",
           "global headlines",
-          "fedex",
-          "plane",
-          "overshoots",
-          "miami",
-          "runway",
-          "causing"
+          "diesel",
+          "tanker",
+          "carrying",
+          "000",
+          "tonnes",
+          "sinks"
         ],
         "long_tail": [
-          "FedEx plane overshoots Miami runway, causing brief suspension of flights at airport 2026-11-26",
+          "Diesel tanker carrying up to 7,000 tonnes sinks near Ibiza, killing one 2026-11-26",
           "world news November 2026"
         ],
         "trend_keywords": [],
         "entity_keywords": [
-          "fedex",
-          "plane",
-          "overshoots",
-          "miami",
-          "runway",
-          "causing"
+          "diesel",
+          "tanker",
+          "carrying",
+          "000",
+          "tonnes",
+          "sinks"
         ],
         "freshness_keywords": [
           "2026-11-26"
@@ -54,24 +54,1736 @@
         "source_keywords": [
           "BBC World"
         ],
-        "meta_title": "FedEx plane overshoots Miami runway, causing brief…",
+        "meta_title": "Diesel tanker carrying up to 7,000 tonnes sinks near…",
         "meta_description": "World report published by BBC World on 2026-11-26. Open the original report for full context.",
         "keywords": [
           "world news 2026-11-26",
           "world news",
           "global headlines",
-          "fedex",
-          "plane",
-          "overshoots",
-          "miami",
-          "runway",
-          "causing",
-          "FedEx plane overshoots Miami runway, causing brief suspension of flights at airport 2026-11-26",
+          "diesel",
+          "tanker",
+          "carrying",
+          "000",
+          "tonnes",
+          "sinks",
+          "Diesel tanker carrying up to 7,000 tonnes sinks near Ibiza, killing one 2026-11-26",
           "world news November 2026",
           "2026-11-26",
           "BBC World"
         ],
-        "seo_generated_at": "2026-11-26T08:04:29.345Z"
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "b0abbf6a",
+      "title": "‘Roma’ Producer Nicolás Celis, Warwick Thornton Films Set for Rotterdam Market IFFR Pro",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/roma-producer-warwick-thornton-films-rotterdam-market-iffr-1236763960/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-11-26T14:00:00.000Z",
+      "discovered_at": "2026-11-26T14:16:41.121Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/11/Legitima-film-still-IFFR-H-2026.jpg?w=1406&h=791&crop=1",
+      "matchapp_url": "https://matchapp.tv/news/articles/roma-producer-nicolas-celis-warwick-thornton-films-set-for-rotterdam-market-iffr-b0abbf/",
+      "landing_url": "https://matchapp.tv/?news=b0abbf6a#latest-news",
+      "seo": {
+        "primary_keyword": "roma producer nicolas celis latest news",
+        "short_tail": [
+          "roma producer nicolas celis",
+          "roma producer nicolas celis news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "roma producer nicolas celis latest news November 2026",
+          "roma producer nicolas celis entertainment update 2026",
+          "roma producer nicolas celis news 2026-11-26",
+          "latest entertainment news about roma producer nicolas celis",
+          "roma producer nicolas celis warwick thornton latest update",
+          "The Hollywood Reporter roma producer nicolas celis entertainment",
+          "latest news about roma producer nicolas celis November 2026",
+          "roma producer nicolas celis entertainment news 2026-11-26",
+          "what happened with roma producer nicolas celis"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "roma",
+          "producer",
+          "nicolas",
+          "celis",
+          "warwick",
+          "thornton",
+          "films",
+          "set"
+        ],
+        "freshness_keywords": [
+          "November 2026",
+          "2026-11-26",
+          "roma producer nicolas celis 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter roma producer nicolas celis",
+          "hollywoodreporter.com roma producer nicolas celis",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "‘Roma’ Producer Nicolás Celis, Warwick Thornton Films Set…",
+        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-11-26. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "roma producer nicolas celis latest news",
+          "roma producer nicolas celis",
+          "roma producer nicolas celis news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "roma producer nicolas celis latest news November 2026",
+          "roma producer nicolas celis entertainment update 2026",
+          "roma producer nicolas celis news 2026-11-26",
+          "latest entertainment news about roma producer nicolas celis",
+          "roma producer nicolas celis warwick thornton latest update",
+          "The Hollywood Reporter roma producer nicolas celis entertainment",
+          "latest news about roma producer nicolas celis November 2026",
+          "roma producer nicolas celis entertainment news 2026-11-26",
+          "what happened with roma producer nicolas celis",
+          "roma",
+          "producer",
+          "nicolas",
+          "celis",
+          "warwick",
+          "thornton",
+          "films",
+          "set",
+          "November 2026",
+          "2026-11-26",
+          "roma producer nicolas celis 2026",
+          "The Hollywood Reporter roma producer nicolas celis",
+          "hollywoodreporter.com roma producer nicolas celis",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "5f9768ae",
+      "title": "Dois italianos morrem em ataque de drones iraniano no Kuwait, diz agência",
+      "url": "https://g1.globo.com/mundo/noticia/2026/11/26/dois-italianos-morrem-ataque-ira-kuwait-diz-agencia.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-11-26T13:53:40.000Z",
+      "discovered_at": "2026-11-26T14:16:41.121Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/0DF8JvbZYk2dFXopn_3FZQ5R65w=/1280x0/filters:format(jpeg)/https://thumbor.globoi.com/unsafe/fit-in/1280x720/s04.video.glbimg.com/deo/vi/55/20/992055",
+      "matchapp_url": "https://matchapp.tv/news/articles/dois-italianos-morrem-em-ataque-de-drones-iraniano-no-kuwait-diz-agencia-5f9768/",
+      "landing_url": "https://matchapp.tv/?news=5f9768ae#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-11-26",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "dois",
+          "italianos",
+          "morrem",
+          "ataque",
+          "drones",
+          "iraniano"
+        ],
+        "long_tail": [
+          "Dois italianos morrem em ataque de drones iraniano no Kuwait, diz agência 2026-11-26",
+          "notícias mundiais novembro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "dois",
+          "italianos",
+          "morrem",
+          "ataque",
+          "drones",
+          "iraniano"
+        ],
+        "freshness_keywords": [
+          "2026-11-26"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Dois italianos morrem em ataque de drones iraniano no…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-26. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-11-26",
+          "notícias do mundo",
+          "notícias internacionais",
+          "dois",
+          "italianos",
+          "morrem",
+          "ataque",
+          "drones",
+          "iraniano",
+          "Dois italianos morrem em ataque de drones iraniano no Kuwait, diz agência 2026-11-26",
+          "notícias mundiais novembro 2026",
+          "2026-11-26",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "3d1ed25e",
+      "title": "Milhares protestam no Paraguai contra violência contra mulher e prejuízos provocados por crise bancária",
+      "url": "https://g1.globo.com/mundo/noticia/2026/11/26/milhares-protestam-no-paraguai-contra-violencia-contra-a-mulher-e-crise-do-ueno-bank.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-11-26T13:48:36.000Z",
+      "discovered_at": "2026-11-26T14:16:41.121Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/kfSOuOUkwFcvxuiTZVwdRcLaSyo=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/t/X/IByBcnQ7G7vfVl90WtKw/afp-20261116-d7ly8nt-v1-highres-paraguaypoliticsbankingcrisisprotest.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/milhares-protestam-no-paraguai-contra-violencia-contra-mulher-e-prejuizos-provoc-3d1ed2/",
+      "landing_url": "https://matchapp.tv/?news=3d1ed25e#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-11-26",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "milhares",
+          "protestam",
+          "paraguai",
+          "contra",
+          "violencia",
+          "contra"
+        ],
+        "long_tail": [
+          "Milhares protestam no Paraguai contra violência contra mulher e prejuízos provocados por crise bancária 2026-11-26",
+          "notícias mundiais novembro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "milhares",
+          "protestam",
+          "paraguai",
+          "contra",
+          "violencia",
+          "contra"
+        ],
+        "freshness_keywords": [
+          "2026-11-26"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Milhares protestam no Paraguai contra violência contra…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-26. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-11-26",
+          "notícias do mundo",
+          "notícias internacionais",
+          "milhares",
+          "protestam",
+          "paraguai",
+          "contra",
+          "violencia",
+          "Milhares protestam no Paraguai contra violência contra mulher e prejuízos provocados por crise bancária 2026-11-26",
+          "notícias mundiais novembro 2026",
+          "2026-11-26",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "77edd94c",
+      "title": "NBC Uses Thanksgiving TV to Kickstart 2028 LA Olympics Marketing Push",
+      "url": "https://www.hollywoodreporter.com/business/business-news/nbc-new-2028-la-olympics-spot-thanksgiving-1236763173/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-11-26T13:46:17.000Z",
+      "discovered_at": "2026-11-26T14:16:41.121Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "NBC Uses Thanksgiving TV",
+      "description": "NBC Uses Thanksgiving TV: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/11/Rai-Benjamin-LA28.png?crop=618px%2C0px%2C4812px%2C2694px&resize=1440%2C810",
+      "matchapp_url": "https://matchapp.tv/news/articles/nbc-uses-thanksgiving-tv-to-kickstart-2028-la-olympics-marketing-push-77edd9/",
+      "landing_url": "https://matchapp.tv/?news=77edd94c#latest-news",
+      "seo": {
+        "primary_keyword": "NBC Uses Thanksgiving TV latest news",
+        "short_tail": [
+          "NBC Uses Thanksgiving TV",
+          "NBC Uses Thanksgiving TV news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "NBC Uses Thanksgiving TV latest news November 2026",
+          "NBC Uses Thanksgiving TV entertainment update 2026",
+          "NBC Uses Thanksgiving TV news 2026-11-26",
+          "latest entertainment news about NBC Uses Thanksgiving TV",
+          "nbc uses thanksgiving nbc uses thanksgiving latest update",
+          "The Hollywood Reporter NBC Uses Thanksgiving TV entertainment",
+          "latest news about NBC Uses Thanksgiving TV November 2026",
+          "NBC Uses Thanksgiving TV entertainment news 2026-11-26",
+          "what happened with NBC Uses Thanksgiving TV"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "NBC Uses Thanksgiving TV",
+          "nbc",
+          "uses",
+          "thanksgiving",
+          "kickstart",
+          "2028"
+        ],
+        "freshness_keywords": [
+          "November 2026",
+          "2026-11-26",
+          "NBC Uses Thanksgiving TV 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter NBC Uses Thanksgiving TV",
+          "hollywoodreporter.com NBC Uses Thanksgiving TV",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "NBC Uses Thanksgiving TV to Kickstart 2028 LA Olympics…",
+        "meta_description": "NBC Uses Thanksgiving TV: Entertainment update reported by The Hollywood Reporter on 2026-11-26. See verified context, publication time and the original…",
+        "keywords": [
+          "NBC Uses Thanksgiving TV latest news",
+          "NBC Uses Thanksgiving TV",
+          "NBC Uses Thanksgiving TV news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "NBC Uses Thanksgiving TV latest news November 2026",
+          "NBC Uses Thanksgiving TV entertainment update 2026",
+          "NBC Uses Thanksgiving TV news 2026-11-26",
+          "latest entertainment news about NBC Uses Thanksgiving TV",
+          "nbc uses thanksgiving nbc uses thanksgiving latest update",
+          "The Hollywood Reporter NBC Uses Thanksgiving TV entertainment",
+          "latest news about NBC Uses Thanksgiving TV November 2026",
+          "NBC Uses Thanksgiving TV entertainment news 2026-11-26",
+          "what happened with NBC Uses Thanksgiving TV",
+          "nbc",
+          "uses",
+          "thanksgiving",
+          "kickstart",
+          "2028",
+          "November 2026",
+          "2026-11-26",
+          "NBC Uses Thanksgiving TV 2026",
+          "The Hollywood Reporter NBC Uses Thanksgiving TV",
+          "hollywoodreporter.com NBC Uses Thanksgiving TV",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "442a0eac",
+      "title": "Woman whose 'real-life ghost story' inspired TV series reveals scariest encounter",
+      "url": "https://www.bbc.co.uk/news/articles/c8dx10y676eyo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-11-26T13:27:49.000Z",
+      "discovered_at": "2026-11-26T14:16:41.121Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "",
+      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/cfa8/live/843df6f0-e98d-11f1-9d1c-4dcc8fcde666.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/woman-whose-real-life-ghost-story-inspired-tv-series-reveals-scariest-encounter-442a0e/",
+      "landing_url": "https://matchapp.tv/?news=442a0eac#latest-news",
+      "seo": {
+        "primary_keyword": "woman whose real life latest news",
+        "short_tail": [
+          "woman whose real life",
+          "woman whose real life news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "woman whose real life latest news November 2026",
+          "woman whose real life entertainment update 2026",
+          "woman whose real life news 2026-11-26",
+          "latest entertainment news about woman whose real life",
+          "woman whose real life ghost story latest update",
+          "BBC woman whose real life entertainment",
+          "latest news about woman whose real life November 2026",
+          "woman whose real life entertainment news 2026-11-26",
+          "what happened with woman whose real life"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "woman",
+          "whose",
+          "real",
+          "life",
+          "ghost",
+          "story",
+          "inspired",
+          "series"
+        ],
+        "freshness_keywords": [
+          "November 2026",
+          "2026-11-26",
+          "woman whose real life 2026"
+        ],
+        "source_keywords": [
+          "BBC woman whose real life",
+          "bbc.co.uk woman whose real life",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Woman whose 'real-life ghost story' inspired TV series…",
+        "meta_description": "Entertainment update reported by BBC on 2026-11-26. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "woman whose real life latest news",
+          "woman whose real life",
+          "woman whose real life news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "woman whose real life latest news November 2026",
+          "woman whose real life entertainment update 2026",
+          "woman whose real life news 2026-11-26",
+          "latest entertainment news about woman whose real life",
+          "woman whose real life ghost story latest update",
+          "BBC woman whose real life entertainment",
+          "latest news about woman whose real life November 2026",
+          "woman whose real life entertainment news 2026-11-26",
+          "what happened with woman whose real life",
+          "woman",
+          "whose",
+          "real",
+          "life",
+          "ghost",
+          "story",
+          "inspired",
+          "series",
+          "November 2026",
+          "2026-11-26",
+          "woman whose real life 2026",
+          "BBC woman whose real life",
+          "bbc.co.uk woman whose real life",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "a067c0da",
+      "title": "Miami runway incident disrupts flights on Thanksgiving eve",
+      "url": "https://www.bbc.co.uk/news/articles/ckm2mz3prq77o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-11-26T13:09:15.000Z",
+      "discovered_at": "2026-11-26T08:04:29.345Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/a780/live/1db9c0f0-e959-11f1-99b6-a35a62fa4264.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/miami-runway-incident-disrupts-flights-on-thanksgiving-eve-a067c0/",
+      "landing_url": "https://matchapp.tv/?news=a067c0da#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-11-26",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "miami",
+          "runway",
+          "incident",
+          "disrupts",
+          "flights",
+          "thanksgiving"
+        ],
+        "long_tail": [
+          "Miami runway incident disrupts flights on Thanksgiving eve 2026-11-26",
+          "world news November 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "miami",
+          "runway",
+          "incident",
+          "disrupts",
+          "flights",
+          "thanksgiving"
+        ],
+        "freshness_keywords": [
+          "2026-11-26"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Miami runway incident disrupts flights on Thanksgiving eve…",
+        "meta_description": "World report published by BBC World on 2026-11-26. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-11-26",
+          "world news",
+          "global headlines",
+          "miami",
+          "runway",
+          "incident",
+          "disrupts",
+          "flights",
+          "thanksgiving",
+          "Miami runway incident disrupts flights on Thanksgiving eve 2026-11-26",
+          "world news November 2026",
+          "2026-11-26",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "3fc66729",
+      "title": "Navio com 7 mil toneladas de óleo afunda em Ibiza e deixa 1 morto; Espanha tenta evitar 'maré negra'",
+      "url": "https://g1.globo.com/mundo/noticia/2026/11/26/navio-com-oleo-afunda-perto-de-ibiza-na-espanha-e-deixa-morto-equipes-tenta-evitar-mare-negra.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-11-26T12:53:02.000Z",
+      "discovered_at": "2026-11-26T14:16:41.121Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/10nZJ2jSrmkHhAhUEwPeyEZWB1U=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/p/n/LjahjKRsueHP3sj9Q8QQ/2026-11-26t124752z-946294675-rc2ovoaq6wpj-rtrmadp-3-spain-accident.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/navio-com-7-mil-toneladas-de-oleo-afunda-em-ibiza-e-deixa-1-morto-espanha-tenta--3fc667/",
+      "landing_url": "https://matchapp.tv/?news=3fc66729#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-11-26",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "navio",
+          "mil",
+          "toneladas",
+          "oleo",
+          "afunda",
+          "ibiza"
+        ],
+        "long_tail": [
+          "Navio com 7 mil toneladas de óleo afunda em Ibiza e deixa 1 morto; Espanha tenta evitar 'maré negra' 2026-11-26",
+          "notícias mundiais novembro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "navio",
+          "mil",
+          "toneladas",
+          "oleo",
+          "afunda",
+          "ibiza"
+        ],
+        "freshness_keywords": [
+          "2026-11-26"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Navio com 7 mil toneladas de óleo afunda em Ibiza e deixa…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-26. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-11-26",
+          "notícias do mundo",
+          "notícias internacionais",
+          "navio",
+          "mil",
+          "toneladas",
+          "oleo",
+          "afunda",
+          "ibiza",
+          "Navio com 7 mil toneladas de óleo afunda em Ibiza e deixa 1 morto; Espanha tenta evitar 'maré negra' 2026-11-26",
+          "notícias mundiais novembro 2026",
+          "2026-11-26",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "79a17237",
+      "title": "Tributes for Duran Duran guitarist Andy Taylor after his death aged 65",
+      "url": "https://www.bbc.co.uk/news/articles/cmp3vk6vr44po?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-11-26T12:33:23.000Z",
+      "discovered_at": "2026-11-26T08:04:29.345Z",
+      "event_type": "Obituary",
+      "category": "entertainment",
+      "person": "",
+      "description": "obituary headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7c5d/live/e49fa530-e996-11f1-b880-15b494ba858d.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/tributes-for-duran-duran-guitarist-andy-taylor-after-his-death-aged-65-79a172/",
+      "landing_url": "https://matchapp.tv/?news=79a17237#latest-news",
+      "seo": {
+        "primary_keyword": "tributes duran duran guitarist latest news",
+        "short_tail": [
+          "tributes duran duran guitarist",
+          "tributes duran duran guitarist news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "tributes duran duran guitarist latest news November 2026",
+          "tributes duran duran guitarist obituary update 2026",
+          "tributes duran duran guitarist news 2026-11-26",
+          "latest obituary news about tributes duran duran guitarist",
+          "tributes duran duran guitarist andy taylor latest update",
+          "BBC tributes duran duran guitarist obituary",
+          "latest news about tributes duran duran guitarist November 2026",
+          "tributes duran duran guitarist entertainment news 2026-11-26",
+          "what happened with tributes duran duran guitarist"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "tributes",
+          "duran",
+          "guitarist",
+          "andy",
+          "taylor",
+          "after",
+          "his"
+        ],
+        "freshness_keywords": [
+          "November 2026",
+          "2026-11-26",
+          "tributes duran duran guitarist 2026"
+        ],
+        "source_keywords": [
+          "BBC tributes duran duran guitarist",
+          "bbc.co.uk tributes duran duran guitarist",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Tributes for Duran Duran guitarist Andy Taylor after his…",
+        "meta_description": "Obituary update reported by BBC on 2026-11-26. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "tributes duran duran guitarist latest news",
+          "tributes duran duran guitarist",
+          "tributes duran duran guitarist news",
+          "obituary",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "tributes duran duran guitarist latest news November 2026",
+          "tributes duran duran guitarist obituary update 2026",
+          "tributes duran duran guitarist news 2026-11-26",
+          "latest obituary news about tributes duran duran guitarist",
+          "tributes duran duran guitarist andy taylor latest update",
+          "BBC tributes duran duran guitarist obituary",
+          "latest news about tributes duran duran guitarist November 2026",
+          "tributes duran duran guitarist entertainment news 2026-11-26",
+          "what happened with tributes duran duran guitarist",
+          "tributes",
+          "duran",
+          "guitarist",
+          "andy",
+          "taylor",
+          "after",
+          "his",
+          "November 2026",
+          "2026-11-26",
+          "tributes duran duran guitarist 2026",
+          "BBC tributes duran duran guitarist",
+          "bbc.co.uk tributes duran duran guitarist",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "35d5de3f",
+      "title": "Ministro de Israel ameaça deslocar 1 milhão de palestinos em Gaza caso Hamas não entregue armas",
+      "url": "https://g1.globo.com/mundo/noticia/2026/11/26/ministro-de-israel-ameaca-deslocar-1-milhao-de-palestinos-em-gaza-caso-hamas-nao-entregue-armas.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-11-26T12:28:02.000Z",
+      "discovered_at": "2026-11-26T14:16:41.121Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/WL7CdMiOQ5DlRwnUX1mCdg2_qZ4=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/1/k/saK2iVQviYUBKMN1DgjQ/ee622546-90dd-4994-be78-ee73e8d790ec-1-.png",
+      "matchapp_url": "https://matchapp.tv/news/articles/ministro-de-israel-ameaca-deslocar-1-milhao-de-palestinos-em-gaza-caso-hamas-nao-35d5de/",
+      "landing_url": "https://matchapp.tv/?news=35d5de3f#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-11-26",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "ministro",
+          "israel",
+          "ameaca",
+          "deslocar",
+          "milhao",
+          "palestinos"
+        ],
+        "long_tail": [
+          "Ministro de Israel ameaça deslocar 1 milhão de palestinos em Gaza caso Hamas não entregue armas 2026-11-26",
+          "notícias mundiais novembro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "ministro",
+          "israel",
+          "ameaca",
+          "deslocar",
+          "milhao",
+          "palestinos"
+        ],
+        "freshness_keywords": [
+          "2026-11-26"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Ministro de Israel ameaça deslocar 1 milhão de palestinos…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-26. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-11-26",
+          "notícias do mundo",
+          "notícias internacionais",
+          "ministro",
+          "israel",
+          "ameaca",
+          "deslocar",
+          "milhao",
+          "palestinos",
+          "Ministro de Israel ameaça deslocar 1 milhão de palestinos em Gaza caso Hamas não entregue armas 2026-11-26",
+          "notícias mundiais novembro 2026",
+          "2026-11-26",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "83c13075",
+      "title": "720 mil mortos: o custo humano da guerra de Putin na Ucrânia ameaça o futuro da Rússia",
+      "url": "https://g1.globo.com/mundo/blog/sandra-cohen/post/2026/11/26/720-mil-mortos-o-custo-humano-da-guerra-de-putin-na-ucrania-ameaca-o-futuro-da-russia.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-11-26T11:31:00.000Z",
+      "discovered_at": "2026-11-26T14:16:41.121Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/7A0XqkoPGR--0X1b0uxP3Uk0eME=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/j/l/7nLRgkRKKKGyo3KeBwoQ/ap26118609512829-2-.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/720-mil-mortos-o-custo-humano-da-guerra-de-putin-na-ucrania-ameaca-o-futuro-da-r-83c130/",
+      "landing_url": "https://matchapp.tv/?news=83c13075#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-11-26",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "720",
+          "mil",
+          "mortos",
+          "custo",
+          "humano",
+          "guerra"
+        ],
+        "long_tail": [
+          "720 mil mortos: o custo humano da guerra de Putin na Ucrânia ameaça o futuro da Rússia 2026-11-26",
+          "notícias mundiais novembro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "720",
+          "mil",
+          "mortos",
+          "custo",
+          "humano",
+          "guerra"
+        ],
+        "freshness_keywords": [
+          "2026-11-26"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "720 mil mortos: o custo humano da guerra de Putin na…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-26. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-11-26",
+          "notícias do mundo",
+          "notícias internacionais",
+          "720",
+          "mil",
+          "mortos",
+          "custo",
+          "humano",
+          "guerra",
+          "720 mil mortos: o custo humano da guerra de Putin na Ucrânia ameaça o futuro da Rússia 2026-11-26",
+          "notícias mundiais novembro 2026",
+          "2026-11-26",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "8fb067a8",
+      "title": "Kim Jong-un visita instalação de enriquecimento de urânio e promete construir mais armas nucleares; FOTOS",
+      "url": "https://g1.globo.com/mundo/noticia/2026/11/26/kim-jong-un-visita-instalacao-enriquecimento-de-uranio-promete-construir-mais-armas-nucleares-fotos.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-11-26T11:18:27.000Z",
+      "discovered_at": "2026-11-26T14:16:41.121Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "Kim Jong-un",
+      "description": "World news reported by G1 Mundo on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/2II2unS6nqNZg_lVxLfejIr0sjw=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/h/0/IG5QfjTACIOXACHMg7Jg/2026-11-25t233625z-1320004856-rc2bvoa1e28i-rtrmadp-3-northkorea-nuclear.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/kim-jong-un-visita-instalacao-de-enriquecimento-de-uranio-e-promete-construir-ma-8fb067/",
+      "landing_url": "https://matchapp.tv/?news=8fb067a8#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-11-26",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "kim",
+          "jong",
+          "visita",
+          "instalacao",
+          "enriquecimento",
+          "uranio"
+        ],
+        "long_tail": [
+          "Kim Jong-un visita instalação de enriquecimento de urânio e promete construir mais armas nucleares; FOTOS 2026-11-26",
+          "notícias mundiais novembro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "kim",
+          "jong",
+          "visita",
+          "instalacao",
+          "enriquecimento",
+          "uranio"
+        ],
+        "freshness_keywords": [
+          "2026-11-26"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Kim Jong-un visita instalação de enriquecimento de urânio…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-26. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-11-26",
+          "notícias do mundo",
+          "notícias internacionais",
+          "kim",
+          "jong",
+          "visita",
+          "instalacao",
+          "enriquecimento",
+          "uranio",
+          "Kim Jong-un visita instalação de enriquecimento de urânio e promete construir mais armas nucleares; FOTOS 2026-11-26",
+          "notícias mundiais novembro 2026",
+          "2026-11-26",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "bcc745a2",
+      "title": "VÍDEO: Explosão em refinaria em Bangcoc, na Tailândia, cria enorme bola de fogo perto de prédios comerciais",
+      "url": "https://g1.globo.com/mundo/noticia/2026/11/26/explosao-em-refinaria-em-bangkok-na-tailandia-cria-enorme-bola-de-fogo-perto-de-predios-comerciais.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-11-26T11:17:40.000Z",
+      "discovered_at": "2026-11-26T14:16:41.121Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/co4dWHgWMC1aIb-FOFMVDyLphL4=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/J/D/K8hXghSTyVDMAEOwBLQQ/2026-11-26t103806z-47831387-rc2mvoa61og2-rtrmadp-3-thailand-refinery-fire.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/video-explosao-em-refinaria-em-bangcoc-na-tailandia-cria-enorme-bola-de-fogo-per-bcc745/",
+      "landing_url": "https://matchapp.tv/?news=bcc745a2#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-11-26",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "video",
+          "explosao",
+          "refinaria",
+          "bangcoc",
+          "tailandia",
+          "cria"
+        ],
+        "long_tail": [
+          "VÍDEO: Explosão em refinaria em Bangcoc, na Tailândia, cria enorme bola de fogo perto de prédios comerciais 2026-11-26",
+          "notícias mundiais novembro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "video",
+          "explosao",
+          "refinaria",
+          "bangcoc",
+          "tailandia",
+          "cria"
+        ],
+        "freshness_keywords": [
+          "2026-11-26"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "VÍDEO: Explosão em refinaria em Bangcoc, na Tailândia,…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-26. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-11-26",
+          "notícias do mundo",
+          "notícias internacionais",
+          "video",
+          "explosao",
+          "refinaria",
+          "bangcoc",
+          "tailandia",
+          "cria",
+          "VÍDEO: Explosão em refinaria em Bangcoc, na Tailândia, cria enorme bola de fogo perto de prédios comerciais 2026-11-26",
+          "notícias mundiais novembro 2026",
+          "2026-11-26",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "8cb48402",
+      "title": "Tarifaço: China, Brasil e União Europeia criticam nova rodada de tarifas proposta pelos EUA",
+      "url": "https://g1.globo.com/economia/noticia/2026/11/26/china-brasil-e-uniao-europeia-reagem-a-novas-tarifas-anunciadas-por-trump.ghtml",
+      "source": "G1 Mundo",
+      "source_domain": "g1.globo.com",
+      "source_home": "https://g1.globo.com",
+      "country": "GLOBAL",
+      "language": "pt",
+      "published_at": "2026-11-26T11:16:08.000Z",
+      "discovered_at": "2026-11-26T14:16:41.121Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by G1 Mundo on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://s2-g1.glbimg.com/zGumoDj3GZJBgnG8DQTJ9qo-7lg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/R/O/YZbzlUSbOPl7umPMCR0w/2026-11-25t153053z-1-lynxnpemao1es-rtroptp-4-usa-trump-tariffs.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/tarifaco-china-brasil-e-uniao-europeia-criticam-nova-rodada-de-tarifas-proposta--8cb484/",
+      "landing_url": "https://matchapp.tv/?news=8cb48402#latest-news",
+      "seo": {
+        "primary_keyword": "notícias do mundo 2026-11-26",
+        "short_tail": [
+          "notícias do mundo",
+          "notícias internacionais",
+          "tarifaco",
+          "china",
+          "brasil",
+          "uniao",
+          "europeia",
+          "criticam"
+        ],
+        "long_tail": [
+          "Tarifaço: China, Brasil e União Europeia criticam nova rodada de tarifas proposta pelos EUA 2026-11-26",
+          "notícias mundiais novembro 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "tarifaco",
+          "china",
+          "brasil",
+          "uniao",
+          "europeia",
+          "criticam"
+        ],
+        "freshness_keywords": [
+          "2026-11-26"
+        ],
+        "source_keywords": [
+          "G1 Mundo"
+        ],
+        "meta_title": "Tarifaço: China, Brasil e União Europeia criticam nova…",
+        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-26. Abra a fonte original para o contexto completo.",
+        "keywords": [
+          "notícias do mundo 2026-11-26",
+          "notícias do mundo",
+          "notícias internacionais",
+          "tarifaco",
+          "china",
+          "brasil",
+          "uniao",
+          "europeia",
+          "criticam",
+          "Tarifaço: China, Brasil e União Europeia criticam nova rodada de tarifas proposta pelos EUA 2026-11-26",
+          "notícias mundiais novembro 2026",
+          "2026-11-26",
+          "G1 Mundo"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "1ee02381",
+      "title": "Hope for millions as cheaper HIV prevention jab reaches Africa",
+      "url": "https://www.bbc.co.uk/news/articles/cmly7jve72r2o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-11-26T11:00:39.000Z",
+      "discovered_at": "2026-11-26T14:16:41.121Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7ec2/live/6c97c050-e986-11f1-b64a-3bc3040b00fe.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/hope-for-millions-as-cheaper-hiv-prevention-jab-reaches-africa-1ee023/",
+      "landing_url": "https://matchapp.tv/?news=1ee02381#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-11-26",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "hope",
+          "millions",
+          "cheaper",
+          "hiv",
+          "prevention",
+          "jab"
+        ],
+        "long_tail": [
+          "Hope for millions as cheaper HIV prevention jab reaches Africa 2026-11-26",
+          "world news November 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "hope",
+          "millions",
+          "cheaper",
+          "hiv",
+          "prevention",
+          "jab"
+        ],
+        "freshness_keywords": [
+          "2026-11-26"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Hope for millions as cheaper HIV prevention jab reaches…",
+        "meta_description": "World report published by BBC World on 2026-11-26. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-11-26",
+          "world news",
+          "global headlines",
+          "hope",
+          "millions",
+          "cheaper",
+          "hiv",
+          "prevention",
+          "jab",
+          "Hope for millions as cheaper HIV prevention jab reaches Africa 2026-11-26",
+          "world news November 2026",
+          "2026-11-26",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "b6100b41",
+      "title": "US Army says controlled blast of explosives in Iowa was 'huge success'",
+      "url": "https://www.bbc.co.uk/news/articles/cwg7l5ve251ko?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-11-26T10:38:35.000Z",
+      "discovered_at": "2026-11-26T14:16:41.121Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "US Army",
+      "description": "World news reported by BBC World on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9049/live/be474ac0-e8f9-11f1-b8b0-a95064d74c5f.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/us-army-says-controlled-blast-of-explosives-in-iowa-was-huge-success-b6100b/",
+      "landing_url": "https://matchapp.tv/?news=b6100b41#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-11-26",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "army",
+          "says",
+          "controlled",
+          "blast",
+          "explosives",
+          "iowa"
+        ],
+        "long_tail": [
+          "US Army says controlled blast of explosives in Iowa was 'huge success' 2026-11-26",
+          "world news November 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "army",
+          "says",
+          "controlled",
+          "blast",
+          "explosives",
+          "iowa"
+        ],
+        "freshness_keywords": [
+          "2026-11-26"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "US Army says controlled blast of explosives in Iowa was…",
+        "meta_description": "World report published by BBC World on 2026-11-26. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-11-26",
+          "world news",
+          "global headlines",
+          "army",
+          "says",
+          "controlled",
+          "blast",
+          "explosives",
+          "iowa",
+          "US Army says controlled blast of explosives in Iowa was 'huge success' 2026-11-26",
+          "world news November 2026",
+          "2026-11-26",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "740614d0",
+      "title": "Myanmar refuses to comply with parts of ICJ genocide ruling",
+      "url": "https://www.bbc.co.uk/news/articles/c61wr87wyg5wo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-11-26T10:25:51.000Z",
+      "discovered_at": "2026-11-26T14:16:41.121Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7152/live/395fc860-e975-11f1-acd8-af22a7ebb474.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/myanmar-refuses-to-comply-with-parts-of-icj-genocide-ruling-740614/",
+      "landing_url": "https://matchapp.tv/?news=740614d0#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-11-26",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "myanmar",
+          "refuses",
+          "comply",
+          "parts",
+          "icj",
+          "genocide"
+        ],
+        "long_tail": [
+          "Myanmar refuses to comply with parts of ICJ genocide ruling 2026-11-26",
+          "world news November 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "myanmar",
+          "refuses",
+          "comply",
+          "parts",
+          "icj",
+          "genocide"
+        ],
+        "freshness_keywords": [
+          "2026-11-26"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Myanmar refuses to comply with parts of ICJ genocide…",
+        "meta_description": "World report published by BBC World on 2026-11-26. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-11-26",
+          "world news",
+          "global headlines",
+          "myanmar",
+          "refuses",
+          "comply",
+          "parts",
+          "icj",
+          "genocide",
+          "Myanmar refuses to comply with parts of ICJ genocide ruling 2026-11-26",
+          "world news November 2026",
+          "2026-11-26",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "9c0f8170",
+      "title": "Director Cédric Klapisch to Receive César Lifetime Achievement Honor",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/french-cesar-honor-for-director-cedric-klapisch-1236763946/",
+      "source": "The Hollywood Reporter",
+      "source_domain": "hollywoodreporter.com",
+      "source_home": "https://www.hollywoodreporter.com",
+      "country": "US",
+      "language": "en",
+      "published_at": "2026-11-26T10:24:04.000Z",
+      "discovered_at": "2026-11-26T14:16:41.121Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "Director Cédric Klapisch",
+      "description": "Director Cédric Klapisch: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/11/Cedric-Klapisch-Canal.jpeg?crop=0px%2C54px%2C1000px%2C560px&resize=1440%2C810",
+      "matchapp_url": "https://matchapp.tv/news/articles/director-cedric-klapisch-to-receive-cesar-lifetime-achievement-honor-9c0f81/",
+      "landing_url": "https://matchapp.tv/?news=9c0f8170#latest-news",
+      "seo": {
+        "primary_keyword": "Director Cédric Klapisch latest news",
+        "short_tail": [
+          "Director Cédric Klapisch",
+          "Director Cédric Klapisch news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "Director Cédric Klapisch latest news November 2026",
+          "Director Cédric Klapisch entertainment update 2026",
+          "Director Cédric Klapisch news 2026-11-26",
+          "latest entertainment news about Director Cédric Klapisch",
+          "director cedric klapisch director cedric klapisch latest update",
+          "The Hollywood Reporter Director Cédric Klapisch entertainment",
+          "latest news about Director Cédric Klapisch November 2026",
+          "Director Cédric Klapisch entertainment news 2026-11-26",
+          "what happened with Director Cédric Klapisch"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "Director Cédric Klapisch",
+          "director",
+          "cedric",
+          "klapisch",
+          "receive",
+          "cesar"
+        ],
+        "freshness_keywords": [
+          "November 2026",
+          "2026-11-26",
+          "Director Cédric Klapisch 2026"
+        ],
+        "source_keywords": [
+          "The Hollywood Reporter Director Cédric Klapisch",
+          "hollywoodreporter.com Director Cédric Klapisch",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "meta_title": "Director Cédric Klapisch to Receive César Lifetime…",
+        "meta_description": "Director Cédric Klapisch: Entertainment update reported by The Hollywood Reporter on 2026-11-26. See verified context, publication time and the original…",
+        "keywords": [
+          "Director Cédric Klapisch latest news",
+          "Director Cédric Klapisch",
+          "Director Cédric Klapisch news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "Director Cédric Klapisch latest news November 2026",
+          "Director Cédric Klapisch entertainment update 2026",
+          "Director Cédric Klapisch news 2026-11-26",
+          "latest entertainment news about Director Cédric Klapisch",
+          "director cedric klapisch director cedric klapisch latest update",
+          "The Hollywood Reporter Director Cédric Klapisch entertainment",
+          "latest news about Director Cédric Klapisch November 2026",
+          "Director Cédric Klapisch entertainment news 2026-11-26",
+          "what happened with Director Cédric Klapisch",
+          "director",
+          "cedric",
+          "klapisch",
+          "receive",
+          "cesar",
+          "November 2026",
+          "2026-11-26",
+          "Director Cédric Klapisch 2026",
+          "The Hollywood Reporter Director Cédric Klapisch",
+          "hollywoodreporter.com Director Cédric Klapisch",
+          "The Hollywood Reporter entertainment news"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "dd4c603c",
+      "title": "Hamas political official and wife among eight Palestinians killed in Israeli strikes on Gaza",
+      "url": "https://www.bbc.co.uk/news/articles/cqvg2n4mzl1jo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-11-26T10:14:08.000Z",
+      "discovered_at": "2026-11-26T14:16:41.121Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b703/live/54fa7870-e981-11f1-99a1-253766e7ad8b.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/hamas-political-official-and-wife-among-eight-palestinians-killed-in-israeli-str-dd4c60/",
+      "landing_url": "https://matchapp.tv/?news=dd4c603c#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-11-26",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "hamas",
+          "political",
+          "official",
+          "wife",
+          "among",
+          "eight"
+        ],
+        "long_tail": [
+          "Hamas political official and wife among eight Palestinians killed in Israeli strikes on Gaza 2026-11-26",
+          "world news November 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "hamas",
+          "political",
+          "official",
+          "wife",
+          "among",
+          "eight"
+        ],
+        "freshness_keywords": [
+          "2026-11-26"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Hamas political official and wife among eight Palestinians…",
+        "meta_description": "World report published by BBC World on 2026-11-26. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-11-26",
+          "world news",
+          "global headlines",
+          "hamas",
+          "political",
+          "official",
+          "wife",
+          "among",
+          "eight",
+          "Hamas political official and wife among eight Palestinians killed in Israeli strikes on Gaza 2026-11-26",
+          "world news November 2026",
+          "2026-11-26",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "ab16224e",
+      "title": "New UK-EU treaty has 10-year termination clause",
+      "url": "https://www.bbc.co.uk/news/articles/c98r7p65edvgo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-11-26T09:59:14.000Z",
+      "discovered_at": "2026-11-26T14:16:41.121Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "New UK-EU",
+      "description": "World news reported by BBC World on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/65b5/live/0c44e020-e972-11f1-99b6-a35a62fa4264.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/new-uk-eu-treaty-has-10-year-termination-clause-ab1622/",
+      "landing_url": "https://matchapp.tv/?news=ab16224e#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-11-26",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "new",
+          "treaty",
+          "has",
+          "year",
+          "termination",
+          "clause"
+        ],
+        "long_tail": [
+          "New UK-EU treaty has 10-year termination clause 2026-11-26",
+          "world news November 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "new",
+          "treaty",
+          "has",
+          "year",
+          "termination",
+          "clause"
+        ],
+        "freshness_keywords": [
+          "2026-11-26"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "New UK-EU treaty has 10-year termination clause | World…",
+        "meta_description": "World report published by BBC World on 2026-11-26. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-11-26",
+          "world news",
+          "global headlines",
+          "new",
+          "treaty",
+          "has",
+          "year",
+          "termination",
+          "clause",
+          "New UK-EU treaty has 10-year termination clause 2026-11-26",
+          "world news November 2026",
+          "2026-11-26",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "29f2b2d8",
+      "title": "Musk's plan to send a million SpaceX data satellites into space approved",
+      "url": "https://www.bbc.co.uk/news/articles/cwp836l8n1jgo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GLOBAL",
+      "language": "en",
+      "published_at": "2026-11-26T09:27:44.000Z",
+      "discovered_at": "2026-11-26T14:16:41.121Z",
+      "event_type": "World",
+      "category": "world",
+      "person": "",
+      "description": "World news reported by BBC World on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/5383/live/4c315c90-e968-11f1-a094-5fdc692f3e33.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/musk-s-plan-to-send-a-million-spacex-data-satellites-into-space-approved-29f2b2/",
+      "landing_url": "https://matchapp.tv/?news=29f2b2d8#latest-news",
+      "seo": {
+        "primary_keyword": "world news 2026-11-26",
+        "short_tail": [
+          "world news",
+          "global headlines",
+          "musk",
+          "plan",
+          "send",
+          "million",
+          "spacex",
+          "data"
+        ],
+        "long_tail": [
+          "Musk's plan to send a million SpaceX data satellites into space approved 2026-11-26",
+          "world news November 2026"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "musk",
+          "plan",
+          "send",
+          "million",
+          "spacex",
+          "data"
+        ],
+        "freshness_keywords": [
+          "2026-11-26"
+        ],
+        "source_keywords": [
+          "BBC World"
+        ],
+        "meta_title": "Musk's plan to send a million SpaceX data satellites into…",
+        "meta_description": "World report published by BBC World on 2026-11-26. Open the original report for full context.",
+        "keywords": [
+          "world news 2026-11-26",
+          "world news",
+          "global headlines",
+          "musk",
+          "plan",
+          "send",
+          "million",
+          "spacex",
+          "data",
+          "Musk's plan to send a million SpaceX data satellites into space approved 2026-11-26",
+          "world news November 2026",
+          "2026-11-26",
+          "BBC World"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "7da8d719",
+      "title": "BBC Radio 1's Big Weekend 2027 heads to Brighton",
+      "url": "https://www.bbc.co.uk/news/articles/cr1ewjpgd2llo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-11-26T09:16:32.000Z",
+      "discovered_at": "2026-11-26T14:16:41.121Z",
+      "event_type": "Entertainment",
+      "category": "entertainment",
+      "person": "BBC Radio",
+      "description": "BBC Radio: entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/ef46/live/cb6196b0-e972-11f1-92c2-d7bfa08091ec.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/bbc-radio-1-s-big-weekend-2027-heads-to-brighton-7da8d7/",
+      "landing_url": "https://matchapp.tv/?news=7da8d719#latest-news",
+      "seo": {
+        "primary_keyword": "BBC Radio latest news",
+        "short_tail": [
+          "BBC Radio",
+          "BBC Radio news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "BBC Radio latest news November 2026",
+          "BBC Radio entertainment update 2026",
+          "BBC Radio news 2026-11-26",
+          "latest entertainment news about BBC Radio",
+          "bbc radio bbc radio big weekend latest update",
+          "BBC BBC Radio entertainment",
+          "latest news about BBC Radio November 2026",
+          "BBC Radio entertainment news 2026-11-26",
+          "what happened with BBC Radio"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "BBC Radio",
+          "bbc",
+          "radio",
+          "big",
+          "weekend",
+          "2027",
+          "heads"
+        ],
+        "freshness_keywords": [
+          "November 2026",
+          "2026-11-26",
+          "BBC Radio 2026"
+        ],
+        "source_keywords": [
+          "BBC BBC Radio",
+          "bbc.co.uk BBC Radio",
+          "BBC entertainment news"
+        ],
+        "meta_title": "BBC Radio 1's Big Weekend 2027 heads to Brighton |…",
+        "meta_description": "BBC Radio: Entertainment update reported by BBC on 2026-11-26. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "BBC Radio latest news",
+          "BBC Radio",
+          "BBC Radio news",
+          "entertainment",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "BBC Radio latest news November 2026",
+          "BBC Radio entertainment update 2026",
+          "BBC Radio news 2026-11-26",
+          "latest entertainment news about BBC Radio",
+          "bbc radio bbc radio big weekend latest update",
+          "BBC BBC Radio entertainment",
+          "latest news about BBC Radio November 2026",
+          "BBC Radio entertainment news 2026-11-26",
+          "what happened with BBC Radio",
+          "bbc",
+          "radio",
+          "big",
+          "weekend",
+          "2027",
+          "heads",
+          "November 2026",
+          "2026-11-26",
+          "BBC Radio 2026",
+          "BBC BBC Radio",
+          "bbc.co.uk BBC Radio",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
+      }
+    },
+    {
+      "id": "1dd5074d",
+      "title": "Two screenings of Pakistani TV show cancelled in India after backlash",
+      "url": "https://www.bbc.co.uk/news/articles/cky97x7delz9o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC",
+      "source_domain": "bbc.co.uk",
+      "source_home": "https://www.bbc.co.uk",
+      "country": "GB",
+      "language": "en",
+      "published_at": "2026-11-26T08:30:12.000Z",
+      "discovered_at": "2026-11-26T14:16:41.121Z",
+      "event_type": "Music",
+      "category": "entertainment",
+      "person": "",
+      "description": "music headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f5ab/live/48278a90-e95c-11f1-b8ee-3d27ee38d605.jpg",
+      "matchapp_url": "https://matchapp.tv/news/articles/two-screenings-of-pakistani-tv-show-cancelled-in-india-after-backlash-1dd507/",
+      "landing_url": "https://matchapp.tv/?news=1dd5074d#latest-news",
+      "seo": {
+        "primary_keyword": "two screenings pakistani show latest news",
+        "short_tail": [
+          "two screenings pakistani show",
+          "two screenings pakistani show news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates"
+        ],
+        "long_tail": [
+          "two screenings pakistani show latest news November 2026",
+          "two screenings pakistani show music update 2026",
+          "two screenings pakistani show news 2026-11-26",
+          "latest music news about two screenings pakistani show",
+          "two screenings pakistani show cancelled india latest update",
+          "BBC two screenings pakistani show music",
+          "latest news about two screenings pakistani show November 2026",
+          "two screenings pakistani show entertainment news 2026-11-26",
+          "what happened with two screenings pakistani show"
+        ],
+        "trend_keywords": [],
+        "entity_keywords": [
+          "two",
+          "screenings",
+          "pakistani",
+          "show",
+          "cancelled",
+          "india",
+          "after",
+          "backlash"
+        ],
+        "freshness_keywords": [
+          "November 2026",
+          "2026-11-26",
+          "two screenings pakistani show 2026"
+        ],
+        "source_keywords": [
+          "BBC two screenings pakistani show",
+          "bbc.co.uk two screenings pakistani show",
+          "BBC entertainment news"
+        ],
+        "meta_title": "Two screenings of Pakistani TV show cancelled in India…",
+        "meta_description": "Music update reported by BBC on 2026-11-26. See verified context, publication time and the original source via MatchApp Ai.",
+        "keywords": [
+          "two screenings pakistani show latest news",
+          "two screenings pakistani show",
+          "two screenings pakistani show news",
+          "music",
+          "latest entertainment news",
+          "entertainment news",
+          "celebrity news",
+          "entertainment updates",
+          "two screenings pakistani show latest news November 2026",
+          "two screenings pakistani show music update 2026",
+          "two screenings pakistani show news 2026-11-26",
+          "latest music news about two screenings pakistani show",
+          "two screenings pakistani show cancelled india latest update",
+          "BBC two screenings pakistani show music",
+          "latest news about two screenings pakistani show November 2026",
+          "two screenings pakistani show entertainment news 2026-11-26",
+          "what happened with two screenings pakistani show",
+          "two",
+          "screenings",
+          "pakistani",
+          "show",
+          "cancelled",
+          "india",
+          "after",
+          "backlash",
+          "November 2026",
+          "2026-11-26",
+          "two screenings pakistani show 2026",
+          "BBC two screenings pakistani show",
+          "bbc.co.uk two screenings pakistani show",
+          "BBC entertainment news"
+        ],
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
       }
     },
     {
@@ -479,514 +2191,6 @@
       }
     },
     {
-      "id": "7c5254fc",
-      "title": "Brasileiro tem prisão decretada no Paraguai por falsificar canetas emagrecedoras em condomínio de luxo",
-      "url": "https://g1.globo.com/mundo/noticia/2026/11/26/brasileiro-tem-prisao-decretada-no-paraguai-por-falsificar-canetas-emagrecedoras-em-condominio-de-luxo.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-11-26T07:00:01.000Z",
-      "discovered_at": "2026-11-26T08:04:29.345Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/cBXqQYHO4SOunH1GZLHJI4_1_k8=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/5/1/z3AilDTSycLjVaZcJo5A/meow-meow-meow-meow-91-.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/brasileiro-tem-prisao-decretada-no-paraguai-por-falsificar-canetas-emagrecedoras-7c5254/",
-      "landing_url": "https://matchapp.tv/?news=7c5254fc#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-11-26",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "brasileiro",
-          "tem",
-          "prisao",
-          "decretada",
-          "paraguai",
-          "falsificar"
-        ],
-        "long_tail": [
-          "Brasileiro tem prisão decretada no Paraguai por falsificar canetas emagrecedoras em condomínio de luxo 2026-11-26",
-          "notícias mundiais novembro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "brasileiro",
-          "tem",
-          "prisao",
-          "decretada",
-          "paraguai",
-          "falsificar"
-        ],
-        "freshness_keywords": [
-          "2026-11-26"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Brasileiro tem prisão decretada no Paraguai por falsificar…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-26. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-11-26",
-          "notícias do mundo",
-          "notícias internacionais",
-          "brasileiro",
-          "tem",
-          "prisao",
-          "decretada",
-          "paraguai",
-          "falsificar",
-          "Brasileiro tem prisão decretada no Paraguai por falsificar canetas emagrecedoras em condomínio de luxo 2026-11-26",
-          "notícias mundiais novembro 2026",
-          "2026-11-26",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-11-26T08:04:29.345Z"
-      }
-    },
-    {
-      "id": "4a361173",
-      "title": "Trump e chefe da Otan pedem que Rússia evite ações que ampliem guerra na Ucrânia",
-      "url": "https://g1.globo.com/mundo/noticia/2026/11/26/trump-e-chefe-da-otan-pedem-que-russia-evite-acoes-que-ampliem-guerra-na-ucrania.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-11-26T06:23:00.000Z",
-      "discovered_at": "2026-11-26T08:04:29.345Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/hdkywJtqydvESMHlPq7HTz3p_vM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/P/A/EacI4mQrAxYhLkRoLDiQ/2026-07-08t084012z-1479568968-rc2k9mabh2dg-rtrmadp-3-nato-summit.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/trump-e-chefe-da-otan-pedem-que-russia-evite-acoes-que-ampliem-guerra-na-ucrania-4a3611/",
-      "landing_url": "https://matchapp.tv/?news=4a361173#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-11-26",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "trump",
-          "chefe",
-          "otan",
-          "pedem",
-          "que",
-          "russia"
-        ],
-        "long_tail": [
-          "Trump e chefe da Otan pedem que Rússia evite ações que ampliem guerra na Ucrânia 2026-11-26",
-          "notícias mundiais novembro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "trump",
-          "chefe",
-          "otan",
-          "pedem",
-          "que",
-          "russia"
-        ],
-        "freshness_keywords": [
-          "2026-11-26"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Trump e chefe da Otan pedem que Rússia evite ações que…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-26. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-11-26",
-          "notícias do mundo",
-          "notícias internacionais",
-          "trump",
-          "chefe",
-          "otan",
-          "pedem",
-          "que",
-          "russia",
-          "Trump e chefe da Otan pedem que Rússia evite ações que ampliem guerra na Ucrânia 2026-11-26",
-          "notícias mundiais novembro 2026",
-          "2026-11-26",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-11-26T08:04:29.345Z"
-      }
-    },
-    {
-      "id": "333ff4c2",
-      "title": "Whitehouse calls on PM to help save lake fish",
-      "url": "https://www.bbc.co.uk/news/articles/c6808pxrzy5po?at_medium=RSS&at_campaign=rss",
-      "source": "BBC Science",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-11-26T06:05:36.000Z",
-      "discovered_at": "2026-11-26T08:04:29.345Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC Science on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/fa05/live/ebe76530-e8d3-11f1-a3b9-79c60ec9ab33.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/whitehouse-calls-on-pm-to-help-save-lake-fish-333ff4/",
-      "landing_url": "https://matchapp.tv/?news=333ff4c2#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-11-26",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "whitehouse",
-          "calls",
-          "help",
-          "save",
-          "lake",
-          "fish"
-        ],
-        "long_tail": [
-          "Whitehouse calls on PM to help save lake fish 2026-11-26",
-          "world news November 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "whitehouse",
-          "calls",
-          "help",
-          "save",
-          "lake",
-          "fish"
-        ],
-        "freshness_keywords": [
-          "2026-11-26"
-        ],
-        "source_keywords": [
-          "BBC Science"
-        ],
-        "meta_title": "Whitehouse calls on PM to help save lake fish | World News…",
-        "meta_description": "World report published by BBC Science on 2026-11-26. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-11-26",
-          "world news",
-          "global headlines",
-          "whitehouse",
-          "calls",
-          "help",
-          "save",
-          "lake",
-          "fish",
-          "Whitehouse calls on PM to help save lake fish 2026-11-26",
-          "world news November 2026",
-          "2026-11-26",
-          "BBC Science"
-        ],
-        "seo_generated_at": "2026-11-26T08:04:29.345Z"
-      }
-    },
-    {
-      "id": "96f2138a",
-      "title": "Surto de ebola na República Democrática do Congo supera 12 mil casos e deixa quase 6 mil mortos",
-      "url": "https://g1.globo.com/mundo/noticia/2026/11/26/surto-de-ebola-na-republica-democratica-do-congo-supera-12-mil-casos-e-deixa-quase-6-mil-mortos.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-11-26T05:50:04.000Z",
-      "discovered_at": "2026-11-26T08:04:29.345Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/IJiSWrUQ1uV_w8LUqa0fz25wV4E=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/u/k/YsaEETSTWKJKNNe7xu5w/ap26329472525576.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/surto-de-ebola-na-republica-democratica-do-congo-supera-12-mil-casos-e-deixa-qua-96f213/",
-      "landing_url": "https://matchapp.tv/?news=96f2138a#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-11-26",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "surto",
-          "ebola",
-          "republica",
-          "democratica",
-          "congo",
-          "supera"
-        ],
-        "long_tail": [
-          "Surto de ebola na República Democrática do Congo supera 12 mil casos e deixa quase 6 mil mortos 2026-11-26",
-          "notícias mundiais novembro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "surto",
-          "ebola",
-          "republica",
-          "democratica",
-          "congo",
-          "supera"
-        ],
-        "freshness_keywords": [
-          "2026-11-26"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Surto de ebola na República Democrática do Congo supera 12…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-26. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-11-26",
-          "notícias do mundo",
-          "notícias internacionais",
-          "surto",
-          "ebola",
-          "republica",
-          "democratica",
-          "congo",
-          "supera",
-          "Surto de ebola na República Democrática do Congo supera 12 mil casos e deixa quase 6 mil mortos 2026-11-26",
-          "notícias mundiais novembro 2026",
-          "2026-11-26",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-11-26T08:04:29.345Z"
-      }
-    },
-    {
-      "id": "79a17237",
-      "title": "Duran Duran guitarist Andy Taylor dies aged 65",
-      "url": "https://www.bbc.co.uk/news/articles/cmp3vk6vr44po?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-11-26T05:19:35.000Z",
-      "discovered_at": "2026-11-26T08:04:29.345Z",
-      "event_type": "Obituary",
-      "category": "entertainment",
-      "person": "Duran Duran",
-      "description": "Duran Duran: obituary headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/bcdc/live/8e8b2b50-e965-11f1-99b6-a35a62fa4264.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/duran-duran-guitarist-andy-taylor-dies-aged-65-79a172/",
-      "landing_url": "https://matchapp.tv/?news=79a17237#latest-news",
-      "seo": {
-        "primary_keyword": "Duran Duran latest news",
-        "short_tail": [
-          "Duran Duran",
-          "Duran Duran news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "Duran Duran latest news November 2026",
-          "Duran Duran obituary update 2026",
-          "Duran Duran news 2026-11-26",
-          "latest obituary news about Duran Duran",
-          "duran duran duran duran guitarist andy latest update",
-          "BBC Duran Duran obituary",
-          "latest news about Duran Duran November 2026",
-          "Duran Duran entertainment news 2026-11-26",
-          "what happened with Duran Duran"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Duran Duran",
-          "duran",
-          "guitarist",
-          "andy",
-          "taylor",
-          "dies"
-        ],
-        "freshness_keywords": [
-          "November 2026",
-          "2026-11-26",
-          "Duran Duran 2026"
-        ],
-        "source_keywords": [
-          "BBC Duran Duran",
-          "bbc.co.uk Duran Duran",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Duran Duran guitarist Andy Taylor dies aged 65 |…",
-        "meta_description": "Duran Duran: Obituary update reported by BBC on 2026-11-26. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "Duran Duran latest news",
-          "Duran Duran",
-          "Duran Duran news",
-          "obituary",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "Duran Duran latest news November 2026",
-          "Duran Duran obituary update 2026",
-          "Duran Duran news 2026-11-26",
-          "latest obituary news about Duran Duran",
-          "duran duran duran duran guitarist andy latest update",
-          "BBC Duran Duran obituary",
-          "latest news about Duran Duran November 2026",
-          "Duran Duran entertainment news 2026-11-26",
-          "what happened with Duran Duran",
-          "duran",
-          "guitarist",
-          "andy",
-          "taylor",
-          "dies",
-          "November 2026",
-          "2026-11-26",
-          "Duran Duran 2026",
-          "BBC Duran Duran",
-          "bbc.co.uk Duran Duran",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-11-26T08:04:29.345Z"
-      }
-    },
-    {
-      "id": "be54e905",
-      "title": "US announces new tariffs on host of countries including China",
-      "url": "https://www.bbc.co.uk/news/articles/c893r9ke5p97o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-11-26T04:10:58.000Z",
-      "discovered_at": "2026-11-26T08:04:29.345Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/cdd4/live/6fdb6db0-e946-11f1-8b2f-671485cea0be.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/us-announces-new-tariffs-on-host-of-countries-including-china-be54e9/",
-      "landing_url": "https://matchapp.tv/?news=be54e905#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-11-26",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "announces",
-          "new",
-          "tariffs",
-          "host",
-          "countries",
-          "including"
-        ],
-        "long_tail": [
-          "US announces new tariffs on host of countries including China 2026-11-26",
-          "world news November 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "announces",
-          "new",
-          "tariffs",
-          "host",
-          "countries",
-          "including"
-        ],
-        "freshness_keywords": [
-          "2026-11-26"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "US announces new tariffs on host of countries including…",
-        "meta_description": "World report published by BBC World on 2026-11-26. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-11-26",
-          "world news",
-          "global headlines",
-          "announces",
-          "new",
-          "tariffs",
-          "host",
-          "countries",
-          "including",
-          "US announces new tariffs on host of countries including China 2026-11-26",
-          "world news November 2026",
-          "2026-11-26",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-11-26T08:04:29.345Z"
-      }
-    },
-    {
-      "id": "fee99f70",
-      "title": "Macy's postpones Thanksgiving parade due to severe weather",
-      "url": "https://www.bbc.co.uk/news/articles/cwkgr38l2g9yo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-11-26T04:04:14.000Z",
-      "discovered_at": "2026-11-26T08:04:29.345Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/2d43/live/3a3ebde0-e94d-11f1-bfb6-fd0f1685abfb.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/macy-s-postpones-thanksgiving-parade-due-to-severe-weather-fee99f/",
-      "landing_url": "https://matchapp.tv/?news=fee99f70#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-11-26",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "macy",
-          "postpones",
-          "thanksgiving",
-          "parade",
-          "due",
-          "severe"
-        ],
-        "long_tail": [
-          "Macy's postpones Thanksgiving parade due to severe weather 2026-11-26",
-          "world news November 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "macy",
-          "postpones",
-          "thanksgiving",
-          "parade",
-          "due",
-          "severe"
-        ],
-        "freshness_keywords": [
-          "2026-11-26"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Macy's postpones Thanksgiving parade due to severe weather…",
-        "meta_description": "World report published by BBC World on 2026-11-26. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-11-26",
-          "world news",
-          "global headlines",
-          "macy",
-          "postpones",
-          "thanksgiving",
-          "parade",
-          "due",
-          "severe",
-          "Macy's postpones Thanksgiving parade due to severe weather 2026-11-26",
-          "world news November 2026",
-          "2026-11-26",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-11-26T08:04:29.345Z"
-      }
-    },
-    {
       "id": "17b8cfa1",
       "title": "Leo Tomassini convida à escuta de valsa com Guinga enquanto aguarda a edição do álbum 'Jaula de gorila' em 2027",
       "url": "https://g1.globo.com/pop-arte/musica/blog/mauro-ferreira/post/2026/11/26/leo-tomassini-convida-a-escuta-de-valsa-com-guinga-enquanto-aguarda-a-edicao-do-album-jaula-de-gorila-em-2027.ghtml",
@@ -1080,710 +2284,6 @@
           "G1 Leo Tomassini",
           "g1.globo.com Leo Tomassini",
           "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-11-26T08:04:29.345Z"
-      }
-    },
-    {
-      "id": "4ac7fc6b",
-      "title": "Uma semana após ganhar US$ 1 milhão na loteria, imigrante é preso pelo ICE nos EUA",
-      "url": "https://g1.globo.com/mundo/noticia/2026/11/26/uma-semana-apos-ganhar-us-1-milhao-na-loteria-imigrante-e-preso-pelo-ice-nos-eua.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-11-26T03:00:00.000Z",
-      "discovered_at": "2026-11-26T08:04:29.345Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/ET3k5uyY77bBaptib9BGq0zOpKg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/l/s/Q3hL9XS7yDWBpM5EcBvA/ariel-velasquez-morales-massachusetts-lottery-1-million-check.webp",
-      "matchapp_url": "https://matchapp.tv/news/articles/uma-semana-apos-ganhar-us-1-milhao-na-loteria-imigrante-e-preso-pelo-ice-nos-eua-4ac7fc/",
-      "landing_url": "https://matchapp.tv/?news=4ac7fc6b#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-11-26",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "semana",
-          "apos",
-          "ganhar",
-          "milhao",
-          "loteria",
-          "imigrante"
-        ],
-        "long_tail": [
-          "Uma semana após ganhar US$ 1 milhão na loteria, imigrante é preso pelo ICE nos EUA 2026-11-26",
-          "notícias mundiais novembro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "semana",
-          "apos",
-          "ganhar",
-          "milhao",
-          "loteria",
-          "imigrante"
-        ],
-        "freshness_keywords": [
-          "2026-11-26"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Uma semana após ganhar US$ 1 milhão na loteria, imigrante…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-26. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-11-26",
-          "notícias do mundo",
-          "notícias internacionais",
-          "semana",
-          "apos",
-          "ganhar",
-          "milhao",
-          "loteria",
-          "imigrante",
-          "Uma semana após ganhar US$ 1 milhão na loteria, imigrante é preso pelo ICE nos EUA 2026-11-26",
-          "notícias mundiais novembro 2026",
-          "2026-11-26",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-11-26T08:04:29.345Z"
-      }
-    },
-    {
-      "id": "0c89ab09",
-      "title": "As foreign troops withdraw from Somalia, could al-Shabab take over?",
-      "url": "https://www.bbc.co.uk/news/articles/ck62y23z58yeo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-11-26T02:06:10.000Z",
-      "discovered_at": "2026-11-26T08:04:29.345Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/96e8/live/f14b1490-dc2b-11f1-a5b1-adf9c8e8d692.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/as-foreign-troops-withdraw-from-somalia-could-al-shabab-take-over-0c89ab/",
-      "landing_url": "https://matchapp.tv/?news=0c89ab09#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-11-26",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "foreign",
-          "troops",
-          "withdraw",
-          "somalia",
-          "could",
-          "shabab"
-        ],
-        "long_tail": [
-          "As foreign troops withdraw from Somalia, could al-Shabab take over? 2026-11-26",
-          "world news November 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "foreign",
-          "troops",
-          "withdraw",
-          "somalia",
-          "could",
-          "shabab"
-        ],
-        "freshness_keywords": [
-          "2026-11-26"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "As foreign troops withdraw from Somalia, could al-Shabab…",
-        "meta_description": "World report published by BBC World on 2026-11-26. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-11-26",
-          "world news",
-          "global headlines",
-          "foreign",
-          "troops",
-          "withdraw",
-          "somalia",
-          "could",
-          "shabab",
-          "As foreign troops withdraw from Somalia, could al-Shabab take over? 2026-11-26",
-          "world news November 2026",
-          "2026-11-26",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-11-26T08:04:29.345Z"
-      }
-    },
-    {
-      "id": "a9c62cdd",
-      "title": "California warns of flooding as King Tides peak over Thanksgiving",
-      "url": "https://www.bbc.co.uk/news/articles/ckn806qq760po?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-11-26T01:22:55.000Z",
-      "discovered_at": "2026-11-26T08:04:29.345Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/6396/live/c71ce590-e919-11f1-8383-53f283141713.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/california-warns-of-flooding-as-king-tides-peak-over-thanksgiving-a9c62c/",
-      "landing_url": "https://matchapp.tv/?news=a9c62cdd#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-11-26",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "california",
-          "warns",
-          "flooding",
-          "king",
-          "tides",
-          "peak"
-        ],
-        "long_tail": [
-          "California warns of flooding as King Tides peak over Thanksgiving 2026-11-26",
-          "world news November 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "california",
-          "warns",
-          "flooding",
-          "king",
-          "tides",
-          "peak"
-        ],
-        "freshness_keywords": [
-          "2026-11-26"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "California warns of flooding as King Tides peak over…",
-        "meta_description": "World report published by BBC World on 2026-11-26. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-11-26",
-          "world news",
-          "global headlines",
-          "california",
-          "warns",
-          "flooding",
-          "king",
-          "tides",
-          "peak",
-          "California warns of flooding as King Tides peak over Thanksgiving 2026-11-26",
-          "world news November 2026",
-          "2026-11-26",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-11-26T08:04:29.345Z"
-      }
-    },
-    {
-      "id": "765c80d3",
-      "title": "FCC Bid Challenging ABC’s TV Licenses Halted in Major Win for Network",
-      "url": "https://www.hollywoodreporter.com/business/business-news/fcc-bid-challenging-abc-tv-licenses-halted-1236763790/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-11-26T00:55:25.000Z",
-      "discovered_at": "2026-11-26T08:04:29.345Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "FCC Bid Challenging ABC’s",
-      "description": "FCC Bid Challenging ABC’s: entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/01/GettyImages-2256267213.jpg?crop=0px%2C148px%2C4877px%2C2729px&resize=1440%2C810",
-      "matchapp_url": "https://matchapp.tv/news/articles/fcc-bid-challenging-abc-s-tv-licenses-halted-in-major-win-for-network-765c80/",
-      "landing_url": "https://matchapp.tv/?news=765c80d3#latest-news",
-      "seo": {
-        "primary_keyword": "FCC Bid Challenging ABC’s latest news",
-        "short_tail": [
-          "FCC Bid Challenging ABC’s",
-          "FCC Bid Challenging ABC’s news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "FCC Bid Challenging ABC’s latest news November 2026",
-          "FCC Bid Challenging ABC’s entertainment update 2026",
-          "FCC Bid Challenging ABC’s news 2026-11-26",
-          "latest entertainment news about FCC Bid Challenging ABC’s",
-          "fcc bid challenging abc fcc bid latest update",
-          "The Hollywood Reporter FCC Bid Challenging ABC’s entertainment",
-          "latest news about FCC Bid Challenging ABC’s November 2026",
-          "FCC Bid Challenging ABC’s entertainment news 2026-11-26",
-          "what happened with FCC Bid Challenging ABC’s"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "FCC Bid Challenging ABC’s",
-          "fcc",
-          "bid",
-          "challenging",
-          "abc"
-        ],
-        "freshness_keywords": [
-          "November 2026",
-          "2026-11-26",
-          "FCC Bid Challenging ABC’s 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter FCC Bid Challenging ABC’s",
-          "hollywoodreporter.com FCC Bid Challenging ABC’s",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "FCC Bid Challenging ABC’s TV Licenses Halted in Major Win…",
-        "meta_description": "FCC Bid Challenging ABC’s: Entertainment update reported by The Hollywood Reporter on 2026-11-26. See verified context, publication time and the original…",
-        "keywords": [
-          "FCC Bid Challenging ABC’s latest news",
-          "FCC Bid Challenging ABC’s",
-          "FCC Bid Challenging ABC’s news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "FCC Bid Challenging ABC’s latest news November 2026",
-          "FCC Bid Challenging ABC’s entertainment update 2026",
-          "FCC Bid Challenging ABC’s news 2026-11-26",
-          "latest entertainment news about FCC Bid Challenging ABC’s",
-          "fcc bid challenging abc fcc bid latest update",
-          "The Hollywood Reporter FCC Bid Challenging ABC’s entertainment",
-          "latest news about FCC Bid Challenging ABC’s November 2026",
-          "FCC Bid Challenging ABC’s entertainment news 2026-11-26",
-          "what happened with FCC Bid Challenging ABC’s",
-          "fcc",
-          "bid",
-          "challenging",
-          "abc",
-          "November 2026",
-          "2026-11-26",
-          "FCC Bid Challenging ABC’s 2026",
-          "The Hollywood Reporter FCC Bid Challenging ABC’s",
-          "hollywoodreporter.com FCC Bid Challenging ABC’s",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-11-26T08:04:29.345Z"
-      }
-    },
-    {
-      "id": "57a56000",
-      "title": "The US pastor who wants to see women's right to vote overturned",
-      "url": "https://www.bbc.co.uk/news/articles/cwe89jyz4012o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-11-26T00:24:25.000Z",
-      "discovered_at": "2026-11-26T08:04:29.345Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "The US",
-      "description": "World news reported by BBC World on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/35da/live/c364c320-e967-11f1-a094-5fdc692f3e33.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/the-us-pastor-who-wants-to-see-women-s-right-to-vote-overturned-57a560/",
-      "landing_url": "https://matchapp.tv/?news=57a56000#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-11-26",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "pastor",
-          "who",
-          "wants",
-          "see",
-          "women",
-          "right"
-        ],
-        "long_tail": [
-          "The US pastor who wants to see women's right to vote overturned 2026-11-26",
-          "world news November 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "pastor",
-          "who",
-          "wants",
-          "see",
-          "women",
-          "right"
-        ],
-        "freshness_keywords": [
-          "2026-11-26"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "The US pastor who wants to see women's right to vote…",
-        "meta_description": "World report published by BBC World on 2026-11-26. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-11-26",
-          "world news",
-          "global headlines",
-          "pastor",
-          "who",
-          "wants",
-          "see",
-          "women",
-          "right",
-          "The US pastor who wants to see women's right to vote overturned 2026-11-26",
-          "world news November 2026",
-          "2026-11-26",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-11-26T08:04:29.345Z"
-      }
-    },
-    {
-      "id": "9035963a",
-      "title": "Spanish elections: What you need to know and what's at stake",
-      "url": "https://www.bbc.co.uk/news/articles/c6wy4ejnyvdyo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GLOBAL",
-      "language": "en",
-      "published_at": "2026-11-26T00:23:49.000Z",
-      "discovered_at": "2026-11-26T08:04:29.345Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by BBC World on 2026-11-26. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/980a/live/67fb7f80-e910-11f1-8383-53f283141713.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/spanish-elections-what-you-need-to-know-and-what-s-at-stake-903596/",
-      "landing_url": "https://matchapp.tv/?news=9035963a#latest-news",
-      "seo": {
-        "primary_keyword": "world news 2026-11-26",
-        "short_tail": [
-          "world news",
-          "global headlines",
-          "spanish",
-          "elections",
-          "what",
-          "you",
-          "need",
-          "know"
-        ],
-        "long_tail": [
-          "Spanish elections: What you need to know and what's at stake 2026-11-26",
-          "world news November 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "spanish",
-          "elections",
-          "what",
-          "you",
-          "need",
-          "know"
-        ],
-        "freshness_keywords": [
-          "2026-11-26"
-        ],
-        "source_keywords": [
-          "BBC World"
-        ],
-        "meta_title": "Spanish elections: What you need to know and what's at…",
-        "meta_description": "World report published by BBC World on 2026-11-26. Open the original report for full context.",
-        "keywords": [
-          "world news 2026-11-26",
-          "world news",
-          "global headlines",
-          "spanish",
-          "elections",
-          "what",
-          "you",
-          "need",
-          "know",
-          "Spanish elections: What you need to know and what's at stake 2026-11-26",
-          "world news November 2026",
-          "2026-11-26",
-          "BBC World"
-        ],
-        "seo_generated_at": "2026-11-26T08:04:29.345Z"
-      }
-    },
-    {
-      "id": "f00d92af",
-      "title": "‘Twilight’ Director Reveals Robert Pattinson Inspired James Bond Line in 2008 Film: “We Were Seeing the Future”",
-      "url": "https://www.hollywoodreporter.com/movies/movie-news/twilight-director-robert-pattinson-inspired-james-bond-line-1236763521/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-11-25T23:33:26.000Z",
-      "discovered_at": "2026-11-26T08:04:29.345Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/11/GettyImages-89722434-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/twilight-director-reveals-robert-pattinson-inspired-james-bond-line-in-2008-film-f00d92/",
-      "landing_url": "https://matchapp.tv/?news=f00d92af#latest-news",
-      "seo": {
-        "primary_keyword": "twilight director reveals robert latest news",
-        "short_tail": [
-          "twilight director reveals robert",
-          "twilight director reveals robert news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "twilight director reveals robert latest news November 2026",
-          "twilight director reveals robert entertainment update 2026",
-          "twilight director reveals robert news 2026-11-25",
-          "latest entertainment news about twilight director reveals robert",
-          "twilight director reveals robert pattinson inspired latest update",
-          "The Hollywood Reporter twilight director reveals robert entertainment",
-          "latest news about twilight director reveals robert November 2026",
-          "twilight director reveals robert entertainment news 2026-11-25",
-          "what happened with twilight director reveals robert"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "twilight",
-          "director",
-          "reveals",
-          "robert",
-          "pattinson",
-          "inspired",
-          "james",
-          "bond"
-        ],
-        "freshness_keywords": [
-          "November 2026",
-          "2026-11-25",
-          "twilight director reveals robert 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter twilight director reveals robert",
-          "hollywoodreporter.com twilight director reveals robert",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "‘Twilight’ Director Reveals Robert Pattinson Inspired…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-11-25. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "twilight director reveals robert latest news",
-          "twilight director reveals robert",
-          "twilight director reveals robert news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "twilight director reveals robert latest news November 2026",
-          "twilight director reveals robert entertainment update 2026",
-          "twilight director reveals robert news 2026-11-25",
-          "latest entertainment news about twilight director reveals robert",
-          "twilight director reveals robert pattinson inspired latest update",
-          "The Hollywood Reporter twilight director reveals robert entertainment",
-          "latest news about twilight director reveals robert November 2026",
-          "twilight director reveals robert entertainment news 2026-11-25",
-          "what happened with twilight director reveals robert",
-          "twilight",
-          "director",
-          "reveals",
-          "robert",
-          "pattinson",
-          "inspired",
-          "james",
-          "bond",
-          "November 2026",
-          "2026-11-25",
-          "twilight director reveals robert 2026",
-          "The Hollywood Reporter twilight director reveals robert",
-          "hollywoodreporter.com twilight director reveals robert",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-11-26T08:04:29.345Z"
-      }
-    },
-    {
-      "id": "338c56df",
-      "title": "‘The Mosquito Bowl’ Producer Alex Gayner Thought He’d Solved Every Problem a Set Could Throw at Him. Then Came a Runaway Parrot.",
-      "url": "https://www.hollywoodreporter.com/movies/movie-features/the-mosquito-bowl-alex-gayner-1236763483/",
-      "source": "The Hollywood Reporter",
-      "source_domain": "hollywoodreporter.com",
-      "source_home": "https://www.hollywoodreporter.com",
-      "country": "US",
-      "language": "en",
-      "published_at": "2026-11-25T22:41:18.000Z",
-      "discovered_at": "2026-11-26T08:04:29.345Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by The Hollywood Reporter. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/11/GettyImages-2301584607-H-2026.jpg?w=1296&h=730&crop=1",
-      "matchapp_url": "https://matchapp.tv/news/articles/the-mosquito-bowl-producer-alex-gayner-thought-he-d-solved-every-problem-a-set-c-338c56/",
-      "landing_url": "https://matchapp.tv/?news=338c56df#latest-news",
-      "seo": {
-        "primary_keyword": "mosquito bowl producer alex latest news",
-        "short_tail": [
-          "mosquito bowl producer alex",
-          "mosquito bowl producer alex news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "mosquito bowl producer alex latest news November 2026",
-          "mosquito bowl producer alex entertainment update 2026",
-          "mosquito bowl producer alex news 2026-11-25",
-          "latest entertainment news about mosquito bowl producer alex",
-          "mosquito bowl producer alex gayner thought latest update",
-          "The Hollywood Reporter mosquito bowl producer alex entertainment",
-          "latest news about mosquito bowl producer alex November 2026",
-          "mosquito bowl producer alex entertainment news 2026-11-25",
-          "what happened with mosquito bowl producer alex"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "mosquito",
-          "bowl",
-          "producer",
-          "alex",
-          "gayner",
-          "thought",
-          "solved",
-          "every"
-        ],
-        "freshness_keywords": [
-          "November 2026",
-          "2026-11-25",
-          "mosquito bowl producer alex 2026"
-        ],
-        "source_keywords": [
-          "The Hollywood Reporter mosquito bowl producer alex",
-          "hollywoodreporter.com mosquito bowl producer alex",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "meta_title": "‘The Mosquito Bowl’ Producer Alex Gayner Thought He’d…",
-        "meta_description": "Entertainment update reported by The Hollywood Reporter on 2026-11-25. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "mosquito bowl producer alex latest news",
-          "mosquito bowl producer alex",
-          "mosquito bowl producer alex news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "mosquito bowl producer alex latest news November 2026",
-          "mosquito bowl producer alex entertainment update 2026",
-          "mosquito bowl producer alex news 2026-11-25",
-          "latest entertainment news about mosquito bowl producer alex",
-          "mosquito bowl producer alex gayner thought latest update",
-          "The Hollywood Reporter mosquito bowl producer alex entertainment",
-          "latest news about mosquito bowl producer alex November 2026",
-          "mosquito bowl producer alex entertainment news 2026-11-25",
-          "what happened with mosquito bowl producer alex",
-          "mosquito",
-          "bowl",
-          "producer",
-          "alex",
-          "gayner",
-          "thought",
-          "solved",
-          "every",
-          "November 2026",
-          "2026-11-25",
-          "mosquito bowl producer alex 2026",
-          "The Hollywood Reporter mosquito bowl producer alex",
-          "hollywoodreporter.com mosquito bowl producer alex",
-          "The Hollywood Reporter entertainment news"
-        ],
-        "seo_generated_at": "2026-11-26T08:04:29.345Z"
-      }
-    },
-    {
-      "id": "7cc2a8bc",
-      "title": "Kim Jong-un diz que status nuclear da Coreia do Norte é 'inviolável' e faz ameaça de guerra",
-      "url": "https://g1.globo.com/mundo/noticia/2026/11/25/kim-jong-un-diz-que-status-nuclear-da-coreia-do-norte-e-inviolavel-e-faz-ameaca-com-guerra.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-11-25T21:57:00.000Z",
-      "discovered_at": "2026-11-26T08:04:29.345Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "Kim Jong-un",
-      "description": "World news reported by G1 Mundo on 2026-11-25. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/RkEIhbvDU_IY6IlMTyCDUQvwjdg=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/c/3/BuCX48STqLltlblXTMrA/2026-11-19t045108z-1532546279-rc2208a9vrqw-rtrmadp-3-northkorea-ai.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/kim-jong-un-diz-que-status-nuclear-da-coreia-do-norte-e-inviolavel-e-faz-ameaca--7cc2a8/",
-      "landing_url": "https://matchapp.tv/?news=7cc2a8bc#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-11-25",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "kim",
-          "jong",
-          "diz",
-          "que",
-          "status",
-          "nuclear"
-        ],
-        "long_tail": [
-          "Kim Jong-un diz que status nuclear da Coreia do Norte é 'inviolável' e faz ameaça de guerra 2026-11-25",
-          "notícias mundiais novembro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "kim",
-          "jong",
-          "diz",
-          "que",
-          "status",
-          "nuclear"
-        ],
-        "freshness_keywords": [
-          "2026-11-25"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Kim Jong-un diz que status nuclear da Coreia do Norte é…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-25. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-11-25",
-          "notícias do mundo",
-          "notícias internacionais",
-          "kim",
-          "jong",
-          "diz",
-          "que",
-          "status",
-          "nuclear",
-          "Kim Jong-un diz que status nuclear da Coreia do Norte é 'inviolável' e faz ameaça de guerra 2026-11-25",
-          "notícias mundiais novembro 2026",
-          "2026-11-25",
-          "G1 Mundo"
         ],
         "seo_generated_at": "2026-11-26T08:04:29.345Z"
       }
@@ -1983,75 +2483,6 @@
       }
     },
     {
-      "id": "a6cfbeeb",
-      "title": "Secretária de Agricultura de Trump defende novas tarifas e acusa Brasil de 'práticas desleais' contra agricultores dos EUA",
-      "url": "https://g1.globo.com/economia/agronegocios/noticia/2026/11/25/secretaria-de-agricultura-de-trump-defende-novas-tarifas-e-acusa-brasil-de-praticas-desleais-contra-agricultores-dos-eua.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-11-25T21:35:55.000Z",
-      "discovered_at": "2026-11-26T08:04:29.345Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-11-25. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/u-VvmRGwQuf6Usydi8nf-qR8VUA=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/8/R/NgEvYWT7SRXpxzveRiaw/2026-11-24t164008z-353424949-rc2jcnanr8ak-rtrmadp-3-usa-farm-religion.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/secretaria-de-agricultura-de-trump-defende-novas-tarifas-e-acusa-brasil-de-prati-a6cfbe/",
-      "landing_url": "https://matchapp.tv/?news=a6cfbeeb#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-11-25",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "secretaria",
-          "agricultura",
-          "trump",
-          "defende",
-          "novas",
-          "tarifas"
-        ],
-        "long_tail": [
-          "Secretária de Agricultura de Trump defende novas tarifas e acusa Brasil de 'práticas desleais' contra agricultores dos EUA 2026-11-25",
-          "notícias mundiais novembro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "secretaria",
-          "agricultura",
-          "trump",
-          "defende",
-          "novas",
-          "tarifas"
-        ],
-        "freshness_keywords": [
-          "2026-11-25"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Secretária de Agricultura de Trump defende novas tarifas e…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-25. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-11-25",
-          "notícias do mundo",
-          "notícias internacionais",
-          "secretaria",
-          "agricultura",
-          "trump",
-          "defende",
-          "novas",
-          "tarifas",
-          "Secretária de Agricultura de Trump defende novas tarifas e acusa Brasil de 'práticas desleais' contra agricultores dos EUA 2026-11-25",
-          "notícias mundiais novembro 2026",
-          "2026-11-25",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-11-26T08:04:29.345Z"
-      }
-    },
-    {
       "id": "843f6800",
       "title": "Veruschka, a primeira supermodelo da Alemanha, morre aos 87 anos",
       "url": "https://g1.globo.com/pop-arte/noticia/2026/11/25/veruschka-a-primeira-supermodelo-da-alemanha-morre-aos-87-anos.ghtml",
@@ -2146,75 +2577,6 @@
           "G1 veruschka primeira supermodelo alemanha",
           "g1.globo.com veruschka primeira supermodelo alemanha",
           "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-11-26T08:04:29.345Z"
-      }
-    },
-    {
-      "id": "9b67844e",
-      "title": "Governo Lula diz estar indignado com nova proposta de tarifa dos EUA contra o Brasil e que não 'cederá a esse tipo de ameaça'",
-      "url": "https://g1.globo.com/economia/noticia/2026/11/25/governo-lula-diz-estar-indignado-com-nova-proposta-de-tarifa-dos-eua-contra-o-brasil-e-que-nao-cedera-a-esse-tipo-de-ameaca.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-11-25T21:10:49.000Z",
-      "discovered_at": "2026-11-26T08:04:29.345Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "Governo Lula",
-      "description": "World news reported by G1 Mundo on 2026-11-25. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/Y5OUBctDA60pvQ47Y6qiCNV63BI=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/e/C/yRvQeGSj6mhcurnHfH7g/78090845-1004.webp",
-      "matchapp_url": "https://matchapp.tv/news/articles/governo-lula-diz-estar-indignado-com-nova-proposta-de-tarifa-dos-eua-contra-o-br-9b6784/",
-      "landing_url": "https://matchapp.tv/?news=9b67844e#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-11-25",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "governo",
-          "lula",
-          "diz",
-          "estar",
-          "indignado",
-          "nova"
-        ],
-        "long_tail": [
-          "Governo Lula diz estar indignado com nova proposta de tarifa dos EUA contra o Brasil e que não 'cederá a esse tipo de ameaça' 2026-11-25",
-          "notícias mundiais novembro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "governo",
-          "lula",
-          "diz",
-          "estar",
-          "indignado",
-          "nova"
-        ],
-        "freshness_keywords": [
-          "2026-11-25"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Governo Lula diz estar indignado com nova proposta de…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-25. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-11-25",
-          "notícias do mundo",
-          "notícias internacionais",
-          "governo",
-          "lula",
-          "diz",
-          "estar",
-          "indignado",
-          "nova",
-          "Governo Lula diz estar indignado com nova proposta de tarifa dos EUA contra o Brasil e que não 'cederá a esse tipo de ameaça' 2026-11-25",
-          "notícias mundiais novembro 2026",
-          "2026-11-25",
-          "G1 Mundo"
         ],
         "seo_generated_at": "2026-11-26T08:04:29.345Z"
       }
@@ -2511,75 +2873,6 @@
       }
     },
     {
-      "id": "f15897ac",
-      "title": "Caminhão-tanque pega fogo e deixa ao menos 30 mortos no Egito; veja VÍDEO",
-      "url": "https://g1.globo.com/mundo/noticia/2026/11/25/caminhao-tanque-pega-fogo-e-deixa-ao-emnos-21-mortos-no-egito.ghtml",
-      "source": "G1 Mundo",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "GLOBAL",
-      "language": "pt",
-      "published_at": "2026-11-25T18:34:39.000Z",
-      "discovered_at": "2026-11-26T08:04:29.345Z",
-      "event_type": "World",
-      "category": "world",
-      "person": "",
-      "description": "World news reported by G1 Mundo on 2026-11-25. MatchApp links to the original report for its complete context and ongoing updates.",
-      "image": "https://s2-g1.glbimg.com/WLOgmhLj358VYDxN3wdpm-mjows=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/P/E/TJQC30S1KGqotS5i83Gw/ap26329710858344.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/caminhao-tanque-pega-fogo-e-deixa-ao-menos-30-mortos-no-egito-veja-video-f15897/",
-      "landing_url": "https://matchapp.tv/?news=f15897ac#latest-news",
-      "seo": {
-        "primary_keyword": "notícias do mundo 2026-11-25",
-        "short_tail": [
-          "notícias do mundo",
-          "notícias internacionais",
-          "caminhao",
-          "tanque",
-          "pega",
-          "fogo",
-          "deixa",
-          "menos"
-        ],
-        "long_tail": [
-          "Caminhão-tanque pega fogo e deixa ao menos 30 mortos no Egito; veja VÍDEO 2026-11-25",
-          "notícias mundiais novembro 2026"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "caminhao",
-          "tanque",
-          "pega",
-          "fogo",
-          "deixa",
-          "menos"
-        ],
-        "freshness_keywords": [
-          "2026-11-25"
-        ],
-        "source_keywords": [
-          "G1 Mundo"
-        ],
-        "meta_title": "Caminhão-tanque pega fogo e deixa ao menos 30 mortos no…",
-        "meta_description": "Notícia internacional publicada por G1 Mundo em 2026-11-25. Abra a fonte original para o contexto completo.",
-        "keywords": [
-          "notícias do mundo 2026-11-25",
-          "notícias do mundo",
-          "notícias internacionais",
-          "caminhao",
-          "tanque",
-          "pega",
-          "fogo",
-          "deixa",
-          "menos",
-          "Caminhão-tanque pega fogo e deixa ao menos 30 mortos no Egito; veja VÍDEO 2026-11-25",
-          "notícias mundiais novembro 2026",
-          "2026-11-25",
-          "G1 Mundo"
-        ],
-        "seo_generated_at": "2026-11-26T08:04:29.345Z"
-      }
-    },
-    {
       "id": "d7b5d9a4",
       "title": "Como John Turturro aprendeu a furtar carteiras para seu novo filme",
       "url": "https://g1.globo.com/pop-arte/cinema/noticia/2026/11/25/como-john-turturro-aprendeu-a-furtar-carteiras-para-seu-novo-filme.ghtml",
@@ -2694,7 +2987,7 @@
       "matchapp_url": "https://matchapp.tv/news/articles/atriz-hayden-panettiere-morreu-sem-testamento-e-deixou-patrimonio-de-r-35-milhoe-b4bffd/",
       "landing_url": "https://matchapp.tv/?news=b4bffd77#latest-news",
       "seo": {
-        "primary_keyword": "hayden panettiere cause of death",
+        "primary_keyword": "Atriz Hayden Panettiere últimas notícias",
         "short_tail": [
           "Atriz Hayden Panettiere",
           "Atriz Hayden Panettiere news",
@@ -2702,8 +2995,7 @@
           "latest entertainment news",
           "entertainment news",
           "notícias de entretenimento",
-          "notícias hoje",
-          "hayden panettiere cause of death"
+          "notícias hoje"
         ],
         "long_tail": [
           "Atriz Hayden Panettiere latest news November 2026",
@@ -2716,9 +3008,7 @@
           "Atriz Hayden Panettiere notícia de 2026-11-25",
           "o que aconteceu com Atriz Hayden Panettiere"
         ],
-        "trend_keywords": [
-          "hayden panettiere cause of death"
-        ],
+        "trend_keywords": [],
         "entity_keywords": [
           "Atriz Hayden Panettiere",
           "atriz",
@@ -2741,7 +3031,7 @@
         "meta_title": "Atriz Hayden Panettiere morreu sem testamento e deixou…",
         "meta_description": "Atriz Hayden Panettiere: Notícia publicada por G1 em 2026-11-25. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
         "keywords": [
-          "hayden panettiere cause of death",
+          "Atriz Hayden Panettiere últimas notícias",
           "Atriz Hayden Panettiere",
           "Atriz Hayden Panettiere news",
           "obituary",
@@ -2771,7 +3061,7 @@
           "g1.globo.com Atriz Hayden Panettiere",
           "G1 entertainment news"
         ],
-        "seo_generated_at": "2026-11-26T08:04:29.345Z"
+        "seo_generated_at": "2026-11-26T14:16:41.121Z"
       }
     },
     {
@@ -3172,302 +3462,6 @@
       }
     },
     {
-      "id": "ae2c12f3",
-      "title": "Brasileira Marcella Kozinski fica entre as 30 semifinalistas do Miss Universo 2026, mas não avança ao Top 12",
-      "url": "https://g1.globo.com/pr/parana/noticia/2026/11/25/brasileira-marcella-kozinski-fica-entre-as-30-semifinalistas-do-miss-universo-2026.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-11-25T12:15:52.000Z",
-      "discovered_at": "2026-11-25T14:50:52.422Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "Brasileira Marcella Kozinski",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/AQ0Fp5dlGbhluPfVGELd-VnJuFM=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/j/c/1ulbE9Szu4OD7CignQSA/novo-projeto-52-.png",
-      "matchapp_url": "https://matchapp.tv/news/articles/brasileira-marcella-kozinski-fica-entre-as-30-semifinalistas-do-miss-universo-20-ae2c12/",
-      "landing_url": "https://matchapp.tv/?news=ae2c12f3#latest-news",
-      "seo": {
-        "primary_keyword": "Brasileira Marcella Kozinski últimas notícias",
-        "short_tail": [
-          "Brasileira Marcella Kozinski",
-          "Brasileira Marcella Kozinski news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "Brasileira Marcella Kozinski latest news November 2026",
-          "Brasileira Marcella Kozinski entertainment update 2026",
-          "Brasileira Marcella Kozinski news 2026-11-25",
-          "latest entertainment news about Brasileira Marcella Kozinski",
-          "brasileira marcella kozinski brasileira marcella kozinski latest update",
-          "G1 Brasileira Marcella Kozinski entertainment",
-          "últimas notícias sobre Brasileira Marcella Kozinski novembro 2026",
-          "Brasileira Marcella Kozinski notícia de 2026-11-25",
-          "o que aconteceu com Brasileira Marcella Kozinski"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "Brasileira Marcella Kozinski",
-          "brasileira",
-          "marcella",
-          "kozinski",
-          "fica",
-          "entre"
-        ],
-        "freshness_keywords": [
-          "November 2026",
-          "2026-11-25",
-          "novembro 2026",
-          "Brasileira Marcella Kozinski 2026"
-        ],
-        "source_keywords": [
-          "G1 Brasileira Marcella Kozinski",
-          "g1.globo.com Brasileira Marcella Kozinski",
-          "G1 entertainment news"
-        ],
-        "meta_title": "Brasileira Marcella Kozinski fica entre as 30…",
-        "meta_description": "Brasileira Marcella Kozinski: Notícia publicada por G1 em 2026-11-25. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "Brasileira Marcella Kozinski últimas notícias",
-          "Brasileira Marcella Kozinski",
-          "Brasileira Marcella Kozinski news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "Brasileira Marcella Kozinski latest news November 2026",
-          "Brasileira Marcella Kozinski entertainment update 2026",
-          "Brasileira Marcella Kozinski news 2026-11-25",
-          "latest entertainment news about Brasileira Marcella Kozinski",
-          "brasileira marcella kozinski brasileira marcella kozinski latest update",
-          "G1 Brasileira Marcella Kozinski entertainment",
-          "últimas notícias sobre Brasileira Marcella Kozinski novembro 2026",
-          "Brasileira Marcella Kozinski notícia de 2026-11-25",
-          "o que aconteceu com Brasileira Marcella Kozinski",
-          "brasileira",
-          "marcella",
-          "kozinski",
-          "fica",
-          "entre",
-          "November 2026",
-          "2026-11-25",
-          "novembro 2026",
-          "Brasileira Marcella Kozinski 2026",
-          "G1 Brasileira Marcella Kozinski",
-          "g1.globo.com Brasileira Marcella Kozinski",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-11-25T14:50:52.422Z"
-      }
-    },
-    {
-      "id": "8caa087b",
-      "title": "Hundreds complain about I'm A Celebrity after Mariella Frostrup called AJ Odudu 'aggressive'",
-      "url": "https://www.bbc.co.uk/news/articles/c6ly5v11q194o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC",
-      "source_domain": "bbc.co.uk",
-      "source_home": "https://www.bbc.co.uk",
-      "country": "GB",
-      "language": "en",
-      "published_at": "2026-11-25T11:57:31.000Z",
-      "discovered_at": "2026-11-25T14:50:52.422Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "entertainment headline reported by BBC. MatchApp verifies the publisher link and publication time; open the original report for full context.",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f4af/live/82a22580-e8c2-11f1-99a1-253766e7ad8b.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/hundreds-complain-about-i-m-a-celebrity-after-mariella-frostrup-called-aj-odudu--8caa08/",
-      "landing_url": "https://matchapp.tv/?news=8caa087b#latest-news",
-      "seo": {
-        "primary_keyword": "hundreds complain about celebrity latest news",
-        "short_tail": [
-          "hundreds complain about celebrity",
-          "hundreds complain about celebrity news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates"
-        ],
-        "long_tail": [
-          "hundreds complain about celebrity latest news November 2026",
-          "hundreds complain about celebrity entertainment update 2026",
-          "hundreds complain about celebrity news 2026-11-25",
-          "latest entertainment news about hundreds complain about celebrity",
-          "hundreds complain about celebrity after mariella latest update",
-          "BBC hundreds complain about celebrity entertainment",
-          "latest news about hundreds complain about celebrity November 2026",
-          "hundreds complain about celebrity entertainment news 2026-11-25",
-          "what happened with hundreds complain about celebrity"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "hundreds",
-          "complain",
-          "about",
-          "celebrity",
-          "after",
-          "mariella",
-          "frostrup",
-          "called"
-        ],
-        "freshness_keywords": [
-          "November 2026",
-          "2026-11-25",
-          "hundreds complain about celebrity 2026"
-        ],
-        "source_keywords": [
-          "BBC hundreds complain about celebrity",
-          "bbc.co.uk hundreds complain about celebrity",
-          "BBC entertainment news"
-        ],
-        "meta_title": "Hundreds complain about I'm A Celebrity after Mariella…",
-        "meta_description": "Entertainment update reported by BBC on 2026-11-25. See verified context, publication time and the original source via MatchApp Ai.",
-        "keywords": [
-          "hundreds complain about celebrity latest news",
-          "hundreds complain about celebrity",
-          "hundreds complain about celebrity news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "celebrity news",
-          "entertainment updates",
-          "hundreds complain about celebrity latest news November 2026",
-          "hundreds complain about celebrity entertainment update 2026",
-          "hundreds complain about celebrity news 2026-11-25",
-          "latest entertainment news about hundreds complain about celebrity",
-          "hundreds complain about celebrity after mariella latest update",
-          "BBC hundreds complain about celebrity entertainment",
-          "latest news about hundreds complain about celebrity November 2026",
-          "hundreds complain about celebrity entertainment news 2026-11-25",
-          "what happened with hundreds complain about celebrity",
-          "hundreds",
-          "complain",
-          "about",
-          "celebrity",
-          "after",
-          "mariella",
-          "frostrup",
-          "called",
-          "November 2026",
-          "2026-11-25",
-          "hundreds complain about celebrity 2026",
-          "BBC hundreds complain about celebrity",
-          "bbc.co.uk hundreds complain about celebrity",
-          "BBC entertainment news"
-        ],
-        "seo_generated_at": "2026-11-25T14:50:52.422Z"
-      }
-    },
-    {
-      "id": "4d490ecf",
-      "title": "'O Brasil inteiro procurando Belchior e ele na sala da minha casa': como foram os últimos anos do cantor no Rio Grande do Sul",
-      "url": "https://g1.globo.com/pop-arte/noticia/2026/11/25/o-brasil-inteiro-procurando-belchior-e-ele-na-sala-da-minha-casa-como-foram-os-ultimos-anos-do-cantor-no-rio-grande-do-sul.ghtml",
-      "source": "G1",
-      "source_domain": "g1.globo.com",
-      "source_home": "https://g1.globo.com",
-      "country": "BR",
-      "language": "pt",
-      "published_at": "2026-11-25T11:34:24.000Z",
-      "discovered_at": "2026-11-25T14:50:52.422Z",
-      "event_type": "Entertainment",
-      "category": "entertainment",
-      "person": "",
-      "description": "Notícia de entretenimento publicada por G1. O MatchApp preserva a fonte e o horário de publicação; abra a reportagem original para o contexto completo.",
-      "image": "https://s2-g1.glbimg.com/ypfmY63QgMtKDuzbdq_-G3Z2lK0=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/6/B/J55ag3RrSRcmy5W6sCSA/fe9b19a0-e730-11f1-a094-5fdc692f3e33.jpg",
-      "matchapp_url": "https://matchapp.tv/news/articles/o-brasil-inteiro-procurando-belchior-e-ele-na-sala-da-minha-casa-como-foram-os-u-4d490e/",
-      "landing_url": "https://matchapp.tv/?news=4d490ecf#latest-news",
-      "seo": {
-        "primary_keyword": "brasil inteiro procurando belchior últimas notícias",
-        "short_tail": [
-          "brasil inteiro procurando belchior",
-          "brasil inteiro procurando belchior news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje"
-        ],
-        "long_tail": [
-          "brasil inteiro procurando belchior latest news November 2026",
-          "brasil inteiro procurando belchior entertainment update 2026",
-          "brasil inteiro procurando belchior news 2026-11-25",
-          "latest entertainment news about brasil inteiro procurando belchior",
-          "brasil inteiro procurando belchior ele sala latest update",
-          "G1 brasil inteiro procurando belchior entertainment",
-          "últimas notícias sobre brasil inteiro procurando belchior novembro 2026",
-          "brasil inteiro procurando belchior notícia de 2026-11-25",
-          "o que aconteceu com brasil inteiro procurando belchior"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "brasil",
-          "inteiro",
-          "procurando",
-          "belchior",
-          "ele",
-          "sala",
-          "minha",
-          "casa"
-        ],
-        "freshness_keywords": [
-          "November 2026",
-          "2026-11-25",
-          "novembro 2026",
-          "brasil inteiro procurando belchior 2026"
-        ],
-        "source_keywords": [
-          "G1 brasil inteiro procurando belchior",
-          "g1.globo.com brasil inteiro procurando belchior",
-          "G1 entertainment news"
-        ],
-        "meta_title": "'O Brasil inteiro procurando Belchior e ele na sala da…",
-        "meta_description": "Notícia publicada por G1 em 2026-11-25. Veja a fonte, o horário de publicação e o contexto original no MatchApp Ai.",
-        "keywords": [
-          "brasil inteiro procurando belchior últimas notícias",
-          "brasil inteiro procurando belchior",
-          "brasil inteiro procurando belchior news",
-          "entertainment",
-          "latest entertainment news",
-          "entertainment news",
-          "notícias de entretenimento",
-          "notícias hoje",
-          "brasil inteiro procurando belchior latest news November 2026",
-          "brasil inteiro procurando belchior entertainment update 2026",
-          "brasil inteiro procurando belchior news 2026-11-25",
-          "latest entertainment news about brasil inteiro procurando belchior",
-          "brasil inteiro procurando belchior ele sala latest update",
-          "G1 brasil inteiro procurando belchior entertainment",
-          "últimas notícias sobre brasil inteiro procurando belchior novembro 2026",
-          "brasil inteiro procurando belchior notícia de 2026-11-25",
-          "o que aconteceu com brasil inteiro procurando belchior",
-          "brasil",
-          "inteiro",
-          "procurando",
-          "belchior",
-          "ele",
-          "sala",
-          "minha",
-          "casa",
-          "November 2026",
-          "2026-11-25",
-          "novembro 2026",
-          "brasil inteiro procurando belchior 2026",
-          "G1 brasil inteiro procurando belchior",
-          "g1.globo.com brasil inteiro procurando belchior",
-          "G1 entertainment news"
-        ],
-        "seo_generated_at": "2026-11-25T14:50:52.422Z"
-      }
-    },
-    {
       "id": "e14eabc5",
       "title": "De champion olympique à présidentiable : Les habits – pas très neufs – du candidat Teddy Riner",
       "url": "https://theconversation.com/de-champion-olympique-a-presidentiable-les-habits-pas-tres-neufs-du-candidat-teddy-riner-297078",
@@ -3552,96 +3546,6 @@
           "Sports The Conversation",
           "The Conversation sports headlines",
           "2026-11-24",
-          "November 2026"
-        ],
-        "seo_generated_at": "2026-11-24T15:11:46.982Z"
-      }
-    },
-    {
-      "id": "3fcaf42e",
-      "title": "Why sportswomen are turning to OnlyFans – and what it says about inequality in sport",
-      "url": "https://theconversation.com/why-sportswomen-are-turning-to-onlyfans-and-what-it-says-about-inequality-in-sport-297131",
-      "source": "The Conversation",
-      "source_domain": "theconversation.com",
-      "source_home": "https://theconversation.com",
-      "country": "GLOBAL",
-      "category": "sports",
-      "sport": "Sports",
-      "event_type": "Sports",
-      "published_at": "2026-11-23T17:40:43.000Z",
-      "timestamp_kind": "published",
-      "discovery_source": "Authorized publisher RSS/Atom",
-      "image": null,
-      "language": "en",
-      "discovered_at": "2026-11-24T15:11:11.435Z",
-      "person": "",
-      "description": "Sports coverage linked to the original publisher The Conversation. MatchApp records when it was indexed; open the source for full context.",
-      "matchapp_url": "https://matchapp.tv/news/articles/why-sportswomen-are-turning-to-onlyfans-and-what-it-says-about-inequality-in-spo-3fcaf4/",
-      "landing_url": "https://matchapp.tv/?news=3fcaf42e#latest-news",
-      "seo": {
-        "primary_keyword": "why sportswomen turning onlyfans what sports news",
-        "short_tail": [
-          "Sports",
-          "sports news",
-          "latest sports news",
-          "today sports headlines",
-          "why",
-          "sportswomen",
-          "turning",
-          "onlyfans",
-          "what",
-          "says"
-        ],
-        "long_tail": [
-          "why sportswomen turning onlyfans what sports news 2026",
-          "why sportswomen turning onlyfans what latest update 2026-11-23",
-          "Sports latest news November 2026",
-          "The Conversation sports news indexed 2026-11-23",
-          "why sportswomen turning onlyfans what The Conversation original report"
-        ],
-        "trend_keywords": [],
-        "entity_keywords": [
-          "why",
-          "sportswomen",
-          "turning",
-          "onlyfans",
-          "what",
-          "says",
-          "about",
-          "inequality"
-        ],
-        "freshness_keywords": [
-          "2026-11-23",
-          "November 2026"
-        ],
-        "source_keywords": [
-          "The Conversation",
-          "Sports The Conversation",
-          "The Conversation sports headlines"
-        ],
-        "meta_title": "Why sportswomen are turning to OnlyFans – and what it says…",
-        "meta_description": "Sports reporting indexed 2026-11-23. Open the original publisher through MatchApp Latest News.",
-        "keywords": [
-          "why sportswomen turning onlyfans what sports news",
-          "Sports",
-          "sports news",
-          "latest sports news",
-          "today sports headlines",
-          "why",
-          "sportswomen",
-          "turning",
-          "onlyfans",
-          "what",
-          "says",
-          "why sportswomen turning onlyfans what sports news 2026",
-          "why sportswomen turning onlyfans what latest update 2026-11-23",
-          "Sports latest news November 2026",
-          "The Conversation sports news indexed 2026-11-23",
-          "why sportswomen turning onlyfans what The Conversation original report",
-          "The Conversation",
-          "Sports The Conversation",
-          "The Conversation sports headlines",
-          "2026-11-23",
           "November 2026"
         ],
         "seo_generated_at": "2026-11-24T15:11:46.982Z"

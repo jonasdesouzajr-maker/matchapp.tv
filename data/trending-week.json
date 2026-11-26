@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "weekOf": "2026-11-23",
-  "updated": "2026-11-26T08:03:46.495Z",
+  "updated": "2026-11-26T14:16:15.161Z",
   "label": "Latest titles trending right now",
   "sourceNote": "Movie and TV positions refresh from MatchApp’s current TMDB daily trend metadata; verified official music-video releases from monitored top-artist channels refresh daily with release dates, YouTube view counts, direct links, keywords and structured metadata. Availability can vary by country.",
   "titles": [
@@ -29,7 +29,7 @@
       ],
       "runtimeMinutes": null,
       "contentRating": "TV-14",
-      "voteAverage": 5.1,
+      "voteAverage": 5.2,
       "previewUrl": "https://www.youtube.com/watch?v=1d4x_eSdqNc",
       "availability": {
         "source": "tmdb-watch-providers",
@@ -77,8 +77,11 @@
       "year": 2026,
       "origin": "US",
       "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
+      "platform": "Netflix",
+      "platforms": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
       "tmdbId": "1458300",
       "poster": "https://image.tmdb.org/t/p/w780/uxYs0bNTF4XzM8LThJk2x3AJ0Iv.jpg",
       "description": "In the aftermath of Pearl Harbor, four college football stars enlist in the US Marines, discovering the strength of brotherhood and the cost of war.",
@@ -99,18 +102,43 @@
       "voteAverage": 7.17,
       "previewUrl": "https://www.youtube.com/watch?v=F6YDzPfjH4I",
       "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1458300-the-mosquito-bowl/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
         "GB": {
           "buy": [],
-          "link": null,
+          "link": "https://www.themoviedb.org/movie/1458300-the-mosquito-bowl/watch?locale=GB",
           "rent": [],
-          "stream": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
           "cinema_release_date": "2026-11-13"
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1458300-the-mosquito-bowl/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Netflix"
+          ],
+          "cinema_release_date": null
         },
         "US": {
           "buy": [],
-          "link": null,
+          "link": "https://www.themoviedb.org/movie/1458300-the-mosquito-bowl/watch?locale=US",
           "rent": [],
-          "stream": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
           "cinema_release_date": "2026-10-30"
         },
         "source": "tmdb-watch-providers",
@@ -125,6 +153,8 @@
         "War movie",
         "History movie",
         "Drama movie",
+        "Netflix trending movie",
+        "Netflix Standard with Ads trending movie",
         "Nicholas Galitzine",
         "Bill Skarsgård"
       ],
@@ -144,6 +174,8 @@
           "War movie",
           "History movie",
           "Drama movie",
+          "Netflix trending movie",
+          "Netflix Standard with Ads trending movie",
           "Nicholas Galitzine",
           "Bill Skarsgård",
           "where to watch The Mosquito Bowl 2026",
@@ -179,7 +211,7 @@
       ],
       "runtimeMinutes": 107,
       "contentRating": "PG-13",
-      "voteAverage": 7.5,
+      "voteAverage": 7.64,
       "previewUrl": "https://www.youtube.com/watch?v=R1ECMLrwDYQ",
       "availability": {
         "BR": {
@@ -258,63 +290,153 @@
       }
     },
     {
-      "title": "Bruno Mars — Dance With Me",
+      "title": "The Weeknd — Hong Kong (feat. 王菲季候風)",
       "kind": "music-video",
       "year": 2026,
       "origin": "",
       "platform": "YouTube",
       "tmdbId": null,
-      "poster": "/assets/music-videos/1l7wbZmdtys.jpg",
-      "url": "https://www.youtube.com/watch?v=1l7wbZmdtys",
-      "artist": "Bruno Mars",
-      "songTitle": "Dance With Me",
-      "publishedAt": "2026-10-01T16:00:04+00:00",
-      "viewCount": 12080630,
-      "viewCountCheckedAt": "2026-10-12",
-      "channel": "Bruno Mars",
-      "channelUrl": "https://www.youtube.com/@brunomars",
-      "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 12,080,630 verified views at the latest daily check.",
+      "poster": "/assets/music-videos/hX9S94XsySk.jpg",
+      "url": "https://www.youtube.com/watch?v=hX9S94XsySk",
+      "artist": "The Weeknd",
+      "songTitle": "Hong Kong (feat. 王菲季候風)",
+      "publishedAt": "2026-11-12T16:00:33+00:00",
+      "viewCount": 28747437,
+      "viewCountCheckedAt": "2026-11-26",
+      "channel": "The Weeknd",
+      "channelUrl": "https://www.youtube.com/@TheWeeknd",
+      "description": "Official The Weeknd music video for “Hong Kong (feat. 王菲季候風)”, released on YouTube 2026-11-12 with 28,747,437 verified views at the latest daily check.",
       "genre": [
         "Music video"
       ],
       "inLanguage": "en",
       "keywords": [
-        "Bruno Mars",
-        "Dance With Me",
+        "The Weeknd",
+        "Hong Kong (feat. 王菲季候風)",
         "official music video",
         "latest official music videos",
         "YouTube music video",
         "2026 music releases",
-        "Bruno Mars new music video",
-        "Bruno Mars Dance With Me official music video",
-        "Bruno Mars music videos",
+        "The Weeknd new music video",
+        "The Weeknd Hong Kong (feat. 王菲季候風) official music video",
+        "The Weeknd music videos",
         "2026 music video releases"
       ],
       "longTailKeywords": [
-        "Bruno Mars Dance With Me official music video YouTube",
-        "where to watch Bruno Mars Dance With Me music video",
-        "new Bruno Mars music video 2026",
-        "Bruno Mars Dance With Me release date",
-        "Bruno Mars Dance With Me YouTube views"
+        "The Weeknd Hong Kong (feat. 王菲季候風) official music video YouTube",
+        "where to watch The Weeknd Hong Kong (feat. 王菲季候風) music video",
+        "new The Weeknd music video 2026",
+        "The Weeknd Hong Kong (feat. 王菲季候風) release date",
+        "The Weeknd Hong Kong (feat. 王菲季候風) YouTube views"
       ],
       "seo": {
-        "title": "Bruno Mars — Dance With Me official music video | MatchApp Ai",
-        "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 12,080,630 verified views at the latest daily check.",
+        "title": "The Weeknd — Hong Kong (feat. 王菲季候風) official music video | MatchApp Ai",
+        "description": "Official The Weeknd music video for “Hong Kong (feat. 王菲季候風)”, released on YouTube 2026-11-12 with 28,747,437 verified views at the latest daily check.",
         "keywords": [
-          "Bruno Mars",
-          "Dance With Me",
+          "The Weeknd",
+          "Hong Kong (feat. 王菲季候風)",
           "official music video",
           "YouTube music video",
           "2026 music releases",
-          "Bruno Mars Dance With Me official music video",
-          "Bruno Mars music videos",
+          "The Weeknd Hong Kong (feat. 王菲季候風) official music video",
+          "The Weeknd music videos",
           "2026 music video releases",
           "latest official music videos"
         ],
-        "canonicalQuery": "Bruno Mars Dance With Me official music video"
+        "canonicalQuery": "The Weeknd Hong Kong (feat. 王菲季候風) official music video"
       },
       "source": "verified-official-music-video",
       "sourceRank": 1
+    },
+    {
+      "title": "Avengers: Doomsday",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1003596",
+      "poster": "https://image.tmdb.org/t/p/w780/1zqWkLwC1zLBBBtIWzmkmWeMWnT.jpg",
+      "description": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
+      "genre": [
+        "Science Fiction",
+        "Action",
+        "Adventure"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Robert Downey Jr.",
+        "Chris Evans",
+        "Chris Hemsworth",
+        "Pedro Pascal"
+      ],
+      "runtimeMinutes": 165,
+      "contentRating": "PG-13",
+      "voteAverage": 0,
+      "previewUrl": "https://www.youtube.com/watch?v=Wb8Tq_HD4E8",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-12-16"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-12-16"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-12-18"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1003596"
+      },
+      "sourceRank": 4,
+      "keywords": [
+        "Avengers: Doomsday",
+        "Avengers: Doomsday 2026",
+        "where to watch Avengers: Doomsday",
+        "Science Fiction movie",
+        "Action movie",
+        "Adventure movie",
+        "Robert Downey Jr.",
+        "Chris Evans"
+      ],
+      "longTailKeywords": [
+        "where to watch Avengers: Doomsday 2026",
+        "Avengers: Doomsday streaming in Brazil and United States",
+        "Avengers: Doomsday cast synopsis trailer and where to watch",
+        "what Science Fiction to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Avengers: Doomsday (2026) | MatchApp Ai",
+        "description": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
+        "keywords": [
+          "Avengers: Doomsday",
+          "Avengers: Doomsday 2026",
+          "where to watch Avengers: Doomsday",
+          "Science Fiction movie",
+          "Action movie",
+          "Adventure movie",
+          "Robert Downey Jr.",
+          "Chris Evans",
+          "where to watch Avengers: Doomsday 2026",
+          "Avengers: Doomsday streaming in Brazil and United States",
+          "Avengers: Doomsday cast synopsis trailer and where to watch",
+          "what Science Fiction to watch this week"
+        ],
+        "canonicalQuery": "Avengers: Doomsday"
+      }
     },
     {
       "title": "The Lord of the Rings: The Rings of Power",
@@ -393,7 +515,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/84773"
       },
-      "sourceRank": 4,
+      "sourceRank": 5,
       "keywords": [
         "The Lord of the Rings: The Rings of Power",
         "The Lord of the Rings: The Rings of Power 2022",
@@ -433,96 +555,6 @@
       }
     },
     {
-      "title": "Avengers: Doomsday",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1003596",
-      "poster": "https://image.tmdb.org/t/p/w780/1zqWkLwC1zLBBBtIWzmkmWeMWnT.jpg",
-      "description": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
-      "genre": [
-        "Science Fiction",
-        "Action",
-        "Adventure"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Robert Downey Jr.",
-        "Chris Evans",
-        "Chris Hemsworth",
-        "Pedro Pascal"
-      ],
-      "runtimeMinutes": 165,
-      "contentRating": "PG-13",
-      "voteAverage": 0,
-      "previewUrl": "https://www.youtube.com/watch?v=Wb8Tq_HD4E8",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-12-16"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-12-16"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-12-18"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1003596"
-      },
-      "sourceRank": 5,
-      "keywords": [
-        "Avengers: Doomsday",
-        "Avengers: Doomsday 2026",
-        "where to watch Avengers: Doomsday",
-        "Science Fiction movie",
-        "Action movie",
-        "Adventure movie",
-        "Robert Downey Jr.",
-        "Chris Evans"
-      ],
-      "longTailKeywords": [
-        "where to watch Avengers: Doomsday 2026",
-        "Avengers: Doomsday streaming in Brazil and United States",
-        "Avengers: Doomsday cast synopsis trailer and where to watch",
-        "what Science Fiction to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Avengers: Doomsday (2026) | MatchApp Ai",
-        "description": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
-        "keywords": [
-          "Avengers: Doomsday",
-          "Avengers: Doomsday 2026",
-          "where to watch Avengers: Doomsday",
-          "Science Fiction movie",
-          "Action movie",
-          "Adventure movie",
-          "Robert Downey Jr.",
-          "Chris Evans",
-          "where to watch Avengers: Doomsday 2026",
-          "Avengers: Doomsday streaming in Brazil and United States",
-          "Avengers: Doomsday cast synopsis trailer and where to watch",
-          "what Science Fiction to watch this week"
-        ],
-        "canonicalQuery": "Avengers: Doomsday"
-      }
-    },
-    {
       "title": "Hexed",
       "kind": "movie",
       "year": 2026,
@@ -549,7 +581,7 @@
       ],
       "runtimeMinutes": 103,
       "contentRating": "PG",
-      "voteAverage": 6.3,
+      "voteAverage": 5.71,
       "previewUrl": "https://www.youtube.com/watch?v=9ke5KSOUl-U",
       "availability": {
         "BR": {
@@ -622,158 +654,63 @@
       }
     },
     {
-      "title": "Taylor Swift — Patient Zero",
+      "title": "Olivia Rodrigo — expectations (feat. Chappell Roan)",
       "kind": "music-video",
       "year": 2026,
       "origin": "",
       "platform": "YouTube",
       "tmdbId": null,
-      "poster": "/assets/music-videos/mw3kSNIxjqo.jpg",
-      "url": "https://www.youtube.com/watch?v=mw3kSNIxjqo",
-      "artist": "Taylor Swift",
-      "songTitle": "Patient Zero",
-      "publishedAt": "2026-09-29T22:00:19+00:00",
-      "viewCount": 31757289,
-      "viewCountCheckedAt": "2026-11-24",
-      "channel": "Taylor Swift",
-      "channelUrl": "https://www.youtube.com/@TaylorSwift",
-      "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 31,757,289 verified views at the latest daily check.",
+      "poster": "/assets/music-videos/gsZauX8gwxo.jpg",
+      "url": "https://www.youtube.com/watch?v=gsZauX8gwxo",
+      "artist": "Olivia Rodrigo",
+      "songTitle": "expectations (feat. Chappell Roan)",
+      "publishedAt": "2026-10-16T00:00:10+00:00",
+      "viewCount": 29277239,
+      "viewCountCheckedAt": "2026-11-26",
+      "channel": "OliviaRodrigoVEVO",
+      "channelUrl": "https://www.youtube.com/@OliviaRodrigoVEVO",
+      "description": "Official Olivia Rodrigo music video for “expectations (feat. Chappell Roan)”, released on YouTube 2026-10-16 with 29,277,239 verified views at the latest daily check.",
       "genre": [
         "Music video"
       ],
       "inLanguage": "en",
       "keywords": [
-        "Taylor Swift",
-        "Patient Zero",
+        "Olivia Rodrigo",
+        "expectations (feat. Chappell Roan)",
         "official music video",
         "latest official music videos",
         "YouTube music video",
         "2026 music releases",
-        "Taylor Swift new music video",
-        "The Life of a Showgirl: The Encore",
-        "Taylor Swift Patient Zero official music video",
-        "Taylor Swift music videos",
+        "Olivia Rodrigo new music video",
+        "Olivia Rodrigo expectations (feat. Chappell Roan) official music video",
+        "Olivia Rodrigo music videos",
         "2026 music video releases"
       ],
       "longTailKeywords": [
-        "Taylor Swift Patient Zero official music video YouTube",
-        "where to watch Taylor Swift Patient Zero music video",
-        "new Taylor Swift music video 2026",
-        "Taylor Swift Patient Zero release date",
-        "Taylor Swift Patient Zero YouTube views"
+        "Olivia Rodrigo expectations (feat. Chappell Roan) official music video YouTube",
+        "where to watch Olivia Rodrigo expectations (feat. Chappell Roan) music video",
+        "new Olivia Rodrigo music video 2026",
+        "Olivia Rodrigo expectations (feat. Chappell Roan) release date",
+        "Olivia Rodrigo expectations (feat. Chappell Roan) YouTube views"
       ],
       "seo": {
-        "title": "Taylor Swift — Patient Zero official music video | MatchApp Ai",
-        "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 31,757,289 verified views at the latest daily check.",
+        "title": "Olivia Rodrigo — expectations (feat. Chappell Roan) official music video | MatchApp Ai",
+        "description": "Official Olivia Rodrigo music video for “expectations (feat. Chappell Roan)”, released on YouTube 2026-10-16 with 29,277,239 verified views at the latest daily check.",
         "keywords": [
-          "Taylor Swift",
-          "Patient Zero",
+          "Olivia Rodrigo",
+          "expectations (feat. Chappell Roan)",
           "official music video",
           "YouTube music video",
           "2026 music releases",
-          "The Life of a Showgirl: The Encore",
-          "Taylor Swift Patient Zero official music video",
-          "Taylor Swift music videos",
+          "Olivia Rodrigo expectations (feat. Chappell Roan) official music video",
+          "Olivia Rodrigo music videos",
           "2026 music video releases",
           "latest official music videos"
         ],
-        "canonicalQuery": "Taylor Swift Patient Zero official music video"
+        "canonicalQuery": "Olivia Rodrigo expectations (feat. Chappell Roan) official music video"
       },
       "source": "verified-official-music-video",
       "sourceRank": 2
-    },
-    {
-      "title": "Wicker",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "GB",
-      "originName": "United Kingdom",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1195803",
-      "poster": "https://image.tmdb.org/t/p/w780/6FcBZOKvyrLCKGCyBG0ySCR4okt.jpg",
-      "description": "On the outskirts of a village by the sea, lives a Fisherwoman; smelly, single and perpetually ridiculed. One day, fed up with her stuffy, small-minded neighbours, she commissions herself a husband to be made from wicker. In an otherwise conservative town, this unconventional romance sparks outrage, jealousy and chaos.",
-      "genre": [
-        "Romance",
-        "Fantasy",
-        "Comedy"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Olivia Colman",
-        "Alexander Skarsgård",
-        "Peter Dinklage",
-        "Elizabeth Debicki"
-      ],
-      "runtimeMinutes": 105,
-      "contentRating": "R",
-      "voteAverage": 7.46,
-      "previewUrl": "https://www.youtube.com/watch?v=kA9NfV4pM_Q",
-      "availability": {
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-30"
-        },
-        "US": {
-          "buy": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/1195803-wicker/watch?locale=US",
-          "rent": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Google Play Movies",
-            "YouTube",
-            "Fandango At Home"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-10-23"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1195803"
-      },
-      "sourceRank": 7,
-      "keywords": [
-        "Wicker",
-        "Wicker 2026",
-        "where to watch Wicker",
-        "Romance movie",
-        "Fantasy movie",
-        "Comedy movie",
-        "Olivia Colman",
-        "Alexander Skarsgård"
-      ],
-      "longTailKeywords": [
-        "where to watch Wicker 2026",
-        "Wicker streaming in Brazil and United States",
-        "Wicker cast synopsis trailer and where to watch",
-        "what Romance to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Wicker (2026) | MatchApp Ai",
-        "description": "On the outskirts of a village by the sea, lives a Fisherwoman; smelly, single and perpetually ridiculed. One day, fed up with her stuffy, small-minded neighbo",
-        "keywords": [
-          "Wicker",
-          "Wicker 2026",
-          "where to watch Wicker",
-          "Romance movie",
-          "Fantasy movie",
-          "Comedy movie",
-          "Olivia Colman",
-          "Alexander Skarsgård",
-          "where to watch Wicker 2026",
-          "Wicker streaming in Brazil and United States",
-          "Wicker cast synopsis trailer and where to watch",
-          "what Romance to watch this week"
-        ],
-        "canonicalQuery": "Wicker"
-      }
     },
     {
       "title": "The Hunger Games: Sunrise on the Reaping",
@@ -825,10 +762,8 @@
           "cinema_release_date": "2026-11-19"
         },
         "US": {
-          "buy": [
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/1300968-the-hunger-games-sunrise-on-the-reaping/watch?locale=US",
+          "buy": [],
+          "link": null,
           "rent": [],
           "stream": [],
           "cinema_release_date": "2026-11-20"
@@ -837,7 +772,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/1300968"
       },
-      "sourceRank": 8,
+      "sourceRank": 7,
       "keywords": [
         "The Hunger Games: Sunrise on the Reaping",
         "The Hunger Games: Sunrise on the Reaping 2026",
@@ -897,7 +832,7 @@
       ],
       "runtimeMinutes": 175,
       "contentRating": "R",
-      "voteAverage": 8.63,
+      "voteAverage": 8.6,
       "previewUrl": "https://www.youtube.com/watch?v=IEx8D1Wb__U",
       "availability": {
         "BR": {
@@ -940,7 +875,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/1765072"
       },
-      "sourceRank": 9,
+      "sourceRank": 8,
       "keywords": [
         "You Can See Everything",
         "You Can See Everything 2026",
@@ -974,60 +909,153 @@
       }
     },
     {
-      "title": "BTS — Merry Go Round",
+      "title": "Wicker",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "GB",
+      "originName": "United Kingdom",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1195803",
+      "poster": "https://image.tmdb.org/t/p/w780/6FcBZOKvyrLCKGCyBG0ySCR4okt.jpg",
+      "description": "On the outskirts of a village by the sea, lives a Fisherwoman; smelly, single and perpetually ridiculed. One day, fed up with her stuffy, small-minded neighbours, she commissions herself a husband to be made from wicker. In an otherwise conservative town, this unconventional romance sparks outrage, jealousy and chaos.",
+      "genre": [
+        "Romance",
+        "Fantasy",
+        "Comedy"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Olivia Colman",
+        "Alexander Skarsgård",
+        "Peter Dinklage",
+        "Elizabeth Debicki"
+      ],
+      "runtimeMinutes": 105,
+      "contentRating": "R",
+      "voteAverage": 7.49,
+      "previewUrl": "https://www.youtube.com/watch?v=kA9NfV4pM_Q",
+      "availability": {
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-30"
+        },
+        "US": {
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/1195803-wicker/watch?locale=US",
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "YouTube",
+            "Fandango At Home"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-10-23"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1195803"
+      },
+      "sourceRank": 9,
+      "keywords": [
+        "Wicker",
+        "Wicker 2026",
+        "where to watch Wicker",
+        "Romance movie",
+        "Fantasy movie",
+        "Comedy movie",
+        "Olivia Colman",
+        "Alexander Skarsgård"
+      ],
+      "longTailKeywords": [
+        "where to watch Wicker 2026",
+        "Wicker streaming in Brazil and United States",
+        "Wicker cast synopsis trailer and where to watch",
+        "what Romance to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Wicker (2026) | MatchApp Ai",
+        "description": "On the outskirts of a village by the sea, lives a Fisherwoman; smelly, single and perpetually ridiculed. One day, fed up with her stuffy, small-minded neighbo",
+        "keywords": [
+          "Wicker",
+          "Wicker 2026",
+          "where to watch Wicker",
+          "Romance movie",
+          "Fantasy movie",
+          "Comedy movie",
+          "Olivia Colman",
+          "Alexander Skarsgård",
+          "where to watch Wicker 2026",
+          "Wicker streaming in Brazil and United States",
+          "Wicker cast synopsis trailer and where to watch",
+          "what Romance to watch this week"
+        ],
+        "canonicalQuery": "Wicker"
+      }
+    },
+    {
+      "title": "Bruno Mars — Dance With Me",
       "kind": "music-video",
       "year": 2026,
       "origin": "",
       "platform": "YouTube",
       "tmdbId": null,
-      "poster": "/assets/music-videos/eJXL4-4m5nY.jpg",
-      "url": "https://www.youtube.com/watch?v=eJXL4-4m5nY",
-      "artist": "BTS",
-      "songTitle": "Merry Go Round",
-      "publishedAt": "2026-09-25T15:00:01+00:00",
-      "viewCount": 10394796,
-      "viewCountCheckedAt": "2026-10-12",
-      "channel": "BANGTANTV",
-      "channelUrl": "https://www.youtube.com/@BTS",
-      "description": "Official BTS music video for “Merry Go Round”, released on YouTube 2026-09-25 with 10,394,796 verified views at the latest daily check.",
+      "poster": "/assets/music-videos/1l7wbZmdtys.jpg",
+      "url": "https://www.youtube.com/watch?v=1l7wbZmdtys",
+      "artist": "Bruno Mars",
+      "songTitle": "Dance With Me",
+      "publishedAt": "2026-10-01T16:00:04+00:00",
+      "viewCount": 23357291,
+      "viewCountCheckedAt": "2026-11-26",
+      "channel": "Bruno Mars",
+      "channelUrl": "https://www.youtube.com/@brunomars",
+      "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 23,357,291 verified views at the latest daily check.",
       "genre": [
         "Music video"
       ],
       "inLanguage": "en",
       "keywords": [
-        "BTS",
-        "Merry Go Round",
+        "Bruno Mars",
+        "Dance With Me",
         "official music video",
         "latest official music videos",
         "YouTube music video",
         "2026 music releases",
-        "BTS new music video",
-        "BTS Merry Go Round official music video",
-        "BTS music videos",
+        "Bruno Mars new music video",
+        "Bruno Mars Dance With Me official music video",
+        "Bruno Mars music videos",
         "2026 music video releases"
       ],
       "longTailKeywords": [
-        "BTS Merry Go Round official music video YouTube",
-        "where to watch BTS Merry Go Round music video",
-        "new BTS music video 2026",
-        "BTS Merry Go Round release date",
-        "BTS Merry Go Round YouTube views"
+        "Bruno Mars Dance With Me official music video YouTube",
+        "where to watch Bruno Mars Dance With Me music video",
+        "new Bruno Mars music video 2026",
+        "Bruno Mars Dance With Me release date",
+        "Bruno Mars Dance With Me YouTube views"
       ],
       "seo": {
-        "title": "BTS — Merry Go Round official music video | MatchApp Ai",
-        "description": "Official BTS music video for “Merry Go Round”, released on YouTube 2026-09-25 with 10,394,796 verified views at the latest daily check.",
+        "title": "Bruno Mars — Dance With Me official music video | MatchApp Ai",
+        "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 23,357,291 verified views at the latest daily check.",
         "keywords": [
-          "BTS",
-          "Merry Go Round",
+          "Bruno Mars",
+          "Dance With Me",
           "official music video",
           "YouTube music video",
           "2026 music releases",
-          "BTS Merry Go Round official music video",
-          "BTS music videos",
+          "Bruno Mars Dance With Me official music video",
+          "Bruno Mars music videos",
           "2026 music video releases",
           "latest official music videos"
         ],
-        "canonicalQuery": "BTS Merry Go Round official music video"
+        "canonicalQuery": "Bruno Mars Dance With Me official music video"
       },
       "source": "verified-official-music-video",
       "sourceRank": 3
@@ -1056,7 +1084,7 @@
       ],
       "runtimeMinutes": 113,
       "contentRating": "R",
-      "voteAverage": 7,
+      "voteAverage": 7.03,
       "previewUrl": "https://www.youtube.com/watch?v=R8ANzYpaZaY",
       "availability": {
         "BR": {
@@ -1151,72 +1179,6 @@
       }
     },
     {
-      "title": "Nine to Six",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "KR",
-      "originName": "South Korea",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "310209",
-      "poster": "https://image.tmdb.org/t/p/w780/1iVlL2Prt9Q5BWMfeZQ6d1ZAZBy.jpg",
-      "description": "Falsely blamed for a car fire, Chronic Motors Senior Manager Kang Yi-ji faces demotion. Can she find love and happiness amid office politics?",
-      "genre": [
-        "Drama",
-        "Comedy"
-      ],
-      "inLanguage": "ko",
-      "cast": [
-        "Park Min-young",
-        "Yook Sung-jae",
-        "Go Soo",
-        "Joo Hyun-young"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-G",
-      "voteAverage": 0,
-      "previewUrl": "https://www.youtube.com/watch?v=Tp8EdzRITTw",
-      "availability": {
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/310209"
-      },
-      "sourceRank": 11,
-      "keywords": [
-        "Nine to Six",
-        "Nine to Six 2026",
-        "where to watch Nine to Six",
-        "Drama series",
-        "Comedy series",
-        "Park Min-young",
-        "Yook Sung-jae"
-      ],
-      "longTailKeywords": [
-        "where to watch Nine to Six 2026",
-        "Nine to Six streaming in Brazil and United States",
-        "Nine to Six cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Nine to Six (2026) | MatchApp Ai",
-        "description": "Falsely blamed for a car fire, Chronic Motors Senior Manager Kang Yi-ji faces demotion. Can she find love and happiness amid office politics?",
-        "keywords": [
-          "Nine to Six",
-          "Nine to Six 2026",
-          "where to watch Nine to Six",
-          "Drama series",
-          "Comedy series",
-          "Park Min-young",
-          "Yook Sung-jae",
-          "where to watch Nine to Six 2026",
-          "Nine to Six streaming in Brazil and United States",
-          "Nine to Six cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
-        ],
-        "canonicalQuery": "Nine to Six"
-      }
-    },
-    {
       "title": "The Odyssey",
       "kind": "movie",
       "year": 2026,
@@ -1243,7 +1205,7 @@
       ],
       "runtimeMinutes": 173,
       "contentRating": "R",
-      "voteAverage": 8.03,
+      "voteAverage": 8,
       "previewUrl": "https://www.youtube.com/watch?v=AyIZ9tiiN8I",
       "availability": {
         "BR": {
@@ -1298,7 +1260,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/1368337"
       },
-      "sourceRank": 12,
+      "sourceRank": 11,
       "keywords": [
         "The Odyssey",
         "The Odyssey 2026",
@@ -1338,64 +1300,128 @@
       }
     },
     {
-      "title": "ROSÉ — new trick",
+      "title": "Nine to Six",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "KR",
+      "originName": "South Korea",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "310209",
+      "poster": "https://image.tmdb.org/t/p/w780/1iVlL2Prt9Q5BWMfeZQ6d1ZAZBy.jpg",
+      "description": "Falsely blamed for a car fire, Chronic Motors Senior Manager Kang Yi-ji faces demotion. Can she find love and happiness amid office politics?",
+      "genre": [
+        "Drama",
+        "Comedy"
+      ],
+      "inLanguage": "ko",
+      "cast": [
+        "Park Min-young",
+        "Yook Sung-jae",
+        "Go Soo",
+        "Joo Hyun-young"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-G",
+      "voteAverage": 5,
+      "previewUrl": "https://www.youtube.com/watch?v=Tp8EdzRITTw",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/310209"
+      },
+      "sourceRank": 12,
+      "keywords": [
+        "Nine to Six",
+        "Nine to Six 2026",
+        "where to watch Nine to Six",
+        "Drama series",
+        "Comedy series",
+        "Park Min-young",
+        "Yook Sung-jae"
+      ],
+      "longTailKeywords": [
+        "where to watch Nine to Six 2026",
+        "Nine to Six streaming in Brazil and United States",
+        "Nine to Six cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Nine to Six (2026) | MatchApp Ai",
+        "description": "Falsely blamed for a car fire, Chronic Motors Senior Manager Kang Yi-ji faces demotion. Can she find love and happiness amid office politics?",
+        "keywords": [
+          "Nine to Six",
+          "Nine to Six 2026",
+          "where to watch Nine to Six",
+          "Drama series",
+          "Comedy series",
+          "Park Min-young",
+          "Yook Sung-jae",
+          "where to watch Nine to Six 2026",
+          "Nine to Six streaming in Brazil and United States",
+          "Nine to Six cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
+        ],
+        "canonicalQuery": "Nine to Six"
+      }
+    },
+    {
+      "title": "Taylor Swift — Patient Zero",
       "kind": "music-video",
       "year": 2026,
       "origin": "",
       "platform": "YouTube",
       "tmdbId": null,
-      "poster": "/assets/music-videos/Lufa9QAFFeY.jpg",
-      "url": "https://www.youtube.com/watch?v=Lufa9QAFFeY",
-      "artist": "ROSÉ",
-      "songTitle": "new trick",
-      "publishedAt": "2026-09-17T23:00:06Z",
-      "viewCount": 50148189,
-      "viewCountCheckedAt": "2026-10-04",
-      "channel": "ROSÉ",
-      "channelUrl": "https://www.youtube.com/@roses_are_rosie",
-      "description": "Official ROSÉ music video for “new trick”, released on YouTube 2026-09-17 with 50,148,189 verified views at the latest daily check.",
+      "poster": "/assets/music-videos/mw3kSNIxjqo.jpg",
+      "url": "https://www.youtube.com/watch?v=mw3kSNIxjqo",
+      "artist": "Taylor Swift",
+      "songTitle": "Patient Zero",
+      "publishedAt": "2026-09-29T22:00:19+00:00",
+      "viewCount": 32166639,
+      "viewCountCheckedAt": "2026-11-26",
+      "channel": "Taylor Swift",
+      "channelUrl": "https://www.youtube.com/@TaylorSwift",
+      "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 32,166,639 verified views at the latest daily check.",
       "genre": [
         "Music video"
       ],
       "inLanguage": "en",
       "keywords": [
-        "ROSÉ",
-        "new trick",
+        "Taylor Swift",
+        "Patient Zero",
         "official music video",
         "latest official music videos",
         "YouTube music video",
         "2026 music releases",
-        "ROSÉ new music video",
-        "Dave Meyers",
-        "Shot on iPhone 18 Pro",
-        "ROSÉ new trick official music video",
-        "ROSÉ music videos",
+        "Taylor Swift new music video",
+        "The Life of a Showgirl: The Encore",
+        "Taylor Swift Patient Zero official music video",
+        "Taylor Swift music videos",
         "2026 music video releases"
       ],
       "longTailKeywords": [
-        "ROSÉ new trick official music video YouTube",
-        "where to watch ROSÉ new trick music video",
-        "new ROSÉ music video 2026",
-        "ROSÉ new trick release date",
-        "ROSÉ new trick YouTube views"
+        "Taylor Swift Patient Zero official music video YouTube",
+        "where to watch Taylor Swift Patient Zero music video",
+        "new Taylor Swift music video 2026",
+        "Taylor Swift Patient Zero release date",
+        "Taylor Swift Patient Zero YouTube views"
       ],
       "seo": {
-        "title": "ROSÉ — new trick official music video | MatchApp Ai",
-        "description": "Official ROSÉ music video for “new trick”, released on YouTube 2026-09-17 with 50,148,189 verified views at the latest daily check.",
+        "title": "Taylor Swift — Patient Zero official music video | MatchApp Ai",
+        "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 32,166,639 verified views at the latest daily check.",
         "keywords": [
-          "ROSÉ",
-          "new trick",
+          "Taylor Swift",
+          "Patient Zero",
           "official music video",
           "YouTube music video",
           "2026 music releases",
-          "Dave Meyers",
-          "Shot on iPhone 18 Pro",
-          "ROSÉ new trick official music video",
-          "ROSÉ music videos",
+          "The Life of a Showgirl: The Encore",
+          "Taylor Swift Patient Zero official music video",
+          "Taylor Swift music videos",
           "2026 music video releases",
           "latest official music videos"
         ],
-        "canonicalQuery": "ROSÉ new trick official music video"
+        "canonicalQuery": "Taylor Swift Patient Zero official music video"
       },
       "source": "verified-official-music-video",
       "sourceRank": 4
@@ -1427,7 +1453,7 @@
       ],
       "runtimeMinutes": 145,
       "contentRating": "PG-13",
-      "voteAverage": 8.46,
+      "voteAverage": 8.5,
       "previewUrl": "https://www.youtube.com/watch?v=P3uI5sLosKU",
       "availability": {
         "BR": {
@@ -1465,8 +1491,7 @@
         "PT": {
           "buy": [
             "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video"
+            "Rakuten TV"
           ],
           "link": "https://www.themoviedb.org/movie/969681-spider-man-brand-new-day/watch?locale=PT",
           "rent": [
@@ -1540,6 +1565,198 @@
       }
     },
     {
+      "title": "Fool Night",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "JP",
+      "originName": "Japan",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "326247",
+      "poster": "https://image.tmdb.org/t/p/w780/7kHLQwQZKbQOZJGx1mIDYIKeBYv.jpg",
+      "description": "In a dark world full of despair, he chooses the path of transforming into a Spirit Flower — a plant into which humans transform. Should he continue living as a person, or discard his pain and start a new life as a plant? Which path would you choose in his situation?",
+      "genre": [
+        "Animation",
+        "Drama",
+        "Sci-Fi & Fantasy",
+        "Mystery"
+      ],
+      "inLanguage": "ja",
+      "cast": [
+        "Koki Uchiyama",
+        "Minako Kotobuki",
+        "Junya Enoki",
+        "Aya Endo"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "18",
+      "voteAverage": 0,
+      "previewUrl": "https://www.youtube.com/watch?v=2Qg_AfPF2sM",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/326247"
+      },
+      "sourceRank": 14,
+      "keywords": [
+        "Fool Night",
+        "Fool Night 2026",
+        "where to watch Fool Night",
+        "Animation series",
+        "Drama series",
+        "Sci-Fi & Fantasy series",
+        "Koki Uchiyama",
+        "Minako Kotobuki"
+      ],
+      "longTailKeywords": [
+        "where to watch Fool Night 2026",
+        "Fool Night streaming in Brazil and United States",
+        "Fool Night cast synopsis trailer and where to watch",
+        "what Animation to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Fool Night (2026) | MatchApp Ai",
+        "description": "In a dark world full of despair, he chooses the path of transforming into a Spirit Flower — a plant into which humans transform. Should he continue living as ",
+        "keywords": [
+          "Fool Night",
+          "Fool Night 2026",
+          "where to watch Fool Night",
+          "Animation series",
+          "Drama series",
+          "Sci-Fi & Fantasy series",
+          "Koki Uchiyama",
+          "Minako Kotobuki",
+          "where to watch Fool Night 2026",
+          "Fool Night streaming in Brazil and United States",
+          "Fool Night cast synopsis trailer and where to watch",
+          "what Animation to watch this week"
+        ],
+        "canonicalQuery": "Fool Night"
+      }
+    },
+    {
+      "title": "The Hunting Wives",
+      "kind": "tv",
+      "year": 2025,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Netflix",
+      "platforms": [
+        "Netflix",
+        "Netflix Standard with Ads",
+        "ITVX Premium",
+        "ITVX"
+      ],
+      "tmdbId": "244447",
+      "poster": "https://image.tmdb.org/t/p/w780/knR0tDKgFwsUMxe0MqZSWQYhwpL.jpg",
+      "description": "Sophie trades New England for East Texas and falls into a wealthy socialite's magnetic orbit — where a clique of housewives hide deadly secrets.",
+      "genre": [
+        "Drama",
+        "Mystery"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Brittany Snow",
+        "Malin Akerman",
+        "Dermot Mulroney",
+        "Jaime Ray Newman"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 7,
+      "previewUrl": "https://www.youtube.com/watch?v=uZvZfqiAhdQ",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/244447-the-hunting-wives/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [
+            "Apple TV Store",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/tv/244447-the-hunting-wives/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "ITVX Premium",
+            "ITVX"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/tv/244447-the-hunting-wives/watch?locale=PT",
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/tv/244447-the-hunting-wives/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/244447"
+      },
+      "sourceRank": 15,
+      "keywords": [
+        "The Hunting Wives",
+        "The Hunting Wives 2025",
+        "where to watch The Hunting Wives",
+        "Drama series",
+        "Mystery series",
+        "Netflix trending series",
+        "Netflix Standard with Ads trending series",
+        "Brittany Snow",
+        "Malin Akerman"
+      ],
+      "longTailKeywords": [
+        "where to watch The Hunting Wives 2025",
+        "The Hunting Wives streaming in Brazil and United States",
+        "The Hunting Wives cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch The Hunting Wives (2025) | MatchApp Ai",
+        "description": "Sophie trades New England for East Texas and falls into a wealthy socialite's magnetic orbit — where a clique of housewives hide deadly secrets.",
+        "keywords": [
+          "The Hunting Wives",
+          "The Hunting Wives 2025",
+          "where to watch The Hunting Wives",
+          "Drama series",
+          "Mystery series",
+          "Netflix trending series",
+          "Netflix Standard with Ads trending series",
+          "Brittany Snow",
+          "Malin Akerman",
+          "where to watch The Hunting Wives 2025",
+          "The Hunting Wives streaming in Brazil and United States",
+          "The Hunting Wives cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
+        ],
+        "canonicalQuery": "The Hunting Wives"
+      }
+    },
+    {
       "title": "The Remarried Empress",
       "kind": "tv",
       "year": 2026,
@@ -1566,7 +1783,7 @@
       ],
       "runtimeMinutes": null,
       "contentRating": "TV-14",
-      "voteAverage": 8.8,
+      "voteAverage": 8.77,
       "previewUrl": "https://www.youtube.com/watch?v=aScUjuKvHSo",
       "availability": {
         "BR": {
@@ -1610,7 +1827,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/279246"
       },
-      "sourceRank": 14,
+      "sourceRank": 16,
       "keywords": [
         "The Remarried Empress",
         "The Remarried Empress 2026",
@@ -1647,208 +1864,6 @@
           "what Drama to watch this week"
         ],
         "canonicalQuery": "The Remarried Empress"
-      }
-    },
-    {
-      "title": "Focker In-Law",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1400336",
-      "poster": "https://image.tmdb.org/t/p/w780/iHJhSfqFpDMOyeMc6h6BOeHxse2.jpg",
-      "description": "Henry, son of Greg and Pam Focker, aims to marry Olivia, a strong-willed former hostage negotiator who appears to be his complete mismatch. To Greg's shock, father-in-law Jack Byrnes takes a liking to Olivia, and her unprecedented rise into his Circle of Trust sparks chaos in the family before Jack's 80th birthday party.",
-      "genre": [
-        "Comedy",
-        "Romance"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Ben Stiller",
-        "Robert De Niro",
-        "Ariana Grande",
-        "Skyler Gisondo"
-      ],
-      "runtimeMinutes": 105,
-      "contentRating": "PG-13",
-      "voteAverage": 6.9,
-      "previewUrl": "https://www.youtube.com/watch?v=9CKu3WoMYCg",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-11-25"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-11-25"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-11-25"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1400336"
-      },
-      "sourceRank": 15,
-      "keywords": [
-        "Focker In-Law",
-        "Focker In-Law 2026",
-        "where to watch Focker In-Law",
-        "Comedy movie",
-        "Romance movie",
-        "Ben Stiller",
-        "Robert De Niro"
-      ],
-      "longTailKeywords": [
-        "where to watch Focker In-Law 2026",
-        "Focker In-Law streaming in Brazil and United States",
-        "Focker In-Law cast synopsis trailer and where to watch",
-        "what Comedy to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Focker In-Law (2026) | MatchApp Ai",
-        "description": "Henry, son of Greg and Pam Focker, aims to marry Olivia, a strong-willed former hostage negotiator who appears to be his complete mismatch. To Greg's shock, f",
-        "keywords": [
-          "Focker In-Law",
-          "Focker In-Law 2026",
-          "where to watch Focker In-Law",
-          "Comedy movie",
-          "Romance movie",
-          "Ben Stiller",
-          "Robert De Niro",
-          "where to watch Focker In-Law 2026",
-          "Focker In-Law streaming in Brazil and United States",
-          "Focker In-Law cast synopsis trailer and where to watch",
-          "what Comedy to watch this week"
-        ],
-        "canonicalQuery": "Focker In-Law"
-      }
-    },
-    {
-      "title": "Steps",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Netflix",
-      "platforms": [
-        "Netflix",
-        "Netflix Standard with Ads"
-      ],
-      "tmdbId": "1595124",
-      "poster": "https://image.tmdb.org/t/p/w780/jtfCcWZ3ZyKdgi0u7JVOxEOSSJP.jpg",
-      "description": "After being blamed for disrupting the Royal Ball with a stolen magic wand, a misunderstood stepsister accidentally turns her sister into a frog and must team up with Cinderella and an unlikely ally to save the kingdom and rewrite their fairytale ending.",
-      "genre": [
-        "Animation",
-        "Family",
-        "Comedy"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Ali Wong",
-        "Amanda Seyfried",
-        "Stephanie Hsu",
-        "Nikki Glaser"
-      ],
-      "runtimeMinutes": 107,
-      "contentRating": "PG",
-      "voteAverage": 7.2,
-      "previewUrl": "https://www.youtube.com/watch?v=tNV4i3BqUGY",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1595124-steps/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1595124-steps/watch?locale=GB",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": "2026-11-20"
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1595124-steps/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Netflix"
-          ],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1595124-steps/watch?locale=US",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": "2026-11-20"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1595124"
-      },
-      "sourceRank": 16,
-      "keywords": [
-        "Steps",
-        "Steps 2026",
-        "where to watch Steps",
-        "Animation movie",
-        "Family movie",
-        "Comedy movie",
-        "Netflix trending movie",
-        "Netflix Standard with Ads trending movie",
-        "Ali Wong",
-        "Amanda Seyfried"
-      ],
-      "longTailKeywords": [
-        "where to watch Steps 2026",
-        "Steps streaming in Brazil and United States",
-        "Steps cast synopsis trailer and where to watch",
-        "what Animation to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Steps (2026) | MatchApp Ai",
-        "description": "After being blamed for disrupting the Royal Ball with a stolen magic wand, a misunderstood stepsister accidentally turns her sister into a frog and must team ",
-        "keywords": [
-          "Steps",
-          "Steps 2026",
-          "where to watch Steps",
-          "Animation movie",
-          "Family movie",
-          "Comedy movie",
-          "Netflix trending movie",
-          "Netflix Standard with Ads trending movie",
-          "Ali Wong",
-          "Amanda Seyfried",
-          "where to watch Steps 2026",
-          "Steps streaming in Brazil and United States",
-          "Steps cast synopsis trailer and where to watch",
-          "what Animation to watch this week"
-        ],
-        "canonicalQuery": "Steps"
       }
     }
   ]

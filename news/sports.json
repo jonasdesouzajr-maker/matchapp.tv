@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-24T15:11:11.435Z",
+  "updated_at": "2026-11-26T14:16:15.556Z",
   "source_policy": "Authorized publisher RSS/Atom; directly linked canonical URLs, no article-body/image republication and no betting guides",
   "items": [
     {
@@ -14,22 +14,6 @@
       "sport": "Sports",
       "event_type": "Sports",
       "published_at": "2026-11-24T15:10:36.000Z",
-      "timestamp_kind": "published",
-      "discovery_source": "Authorized publisher RSS/Atom",
-      "image": null
-    },
-    {
-      "id": "3fcaf42e",
-      "title": "Why sportswomen are turning to OnlyFans – and what it says about inequality in sport",
-      "url": "https://theconversation.com/why-sportswomen-are-turning-to-onlyfans-and-what-it-says-about-inequality-in-sport-297131",
-      "source": "The Conversation",
-      "source_domain": "theconversation.com",
-      "source_home": "https://theconversation.com",
-      "country": "GLOBAL",
-      "category": "sports",
-      "sport": "Sports",
-      "event_type": "Sports",
-      "published_at": "2026-11-23T17:40:43.000Z",
       "timestamp_kind": "published",
       "discovery_source": "Authorized publisher RSS/Atom",
       "image": null
