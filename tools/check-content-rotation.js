@@ -59,6 +59,7 @@ if(current){
   requireCondition(!spotlight.includes('id="awareness-spotlight"'),'Expired awareness campaign remains in source homepage');
 }
 const sitemap=read('sitemap.xml');
-requireCondition(sitemap.includes('https://matchapp.tv/news/')&&sitemap.includes('https://matchapp.tv/events-archive.html'),
+const sitemapLocations=new Set(Array.from(sitemap.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/g),m=>m[1]));
+requireCondition(sitemapLocations.has('https://matchapp.tv/news/')&&sitemapLocations.has('https://matchapp.tv/events-archive.html'),
   'Sitemap missing existing news/events hubs');
 console.log(JSON.stringify({ok:true,topTitles:a.length,verifiedEvents:events.length,news:news.items.length,awareness:current?.id||null}));
