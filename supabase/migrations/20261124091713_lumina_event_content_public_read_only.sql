@@ -1,0 +1,1 @@
+insert into storage.buckets (id,name,public,file_size_limit,allowed_mime_types) values ('lumina-event-content','lumina-event-content',true,5242880,ARRAY['application/json','image/jpeg']) on conflict (id) do nothing;
