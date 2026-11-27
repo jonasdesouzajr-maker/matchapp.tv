@@ -18,10 +18,15 @@ const pages=[
   "awareness/world-mental-health-day-2026/index.html",
   "awareness/world-tourism-day-2026/index.html"
 ];
+const trendsPages=[
+  "trending/this-week/index.html",
+  "guides/thanksgiving-streaming-trends-2026/index.html",
+  "guides/filmes-series-em-alta-novembro-2026/index.html"
+];
 const read=rel=>fs.readFileSync(path.join(root,rel),'utf8');
 
-test('13 public editorial routes use one approved existing GTM loader and no-script fallback',()=>{
-  for(const file of pages){
+test('Public editorial routes use one approved existing GTM loader and no-script fallback',()=>{
+  for(const file of [...pages,...trendsPages]){
     const html=read(file);
     const head=html.match(/<head\b[^>]*>([\s\S]*?)<\/head>/i)?.[1]||'';
     const body=html.match(/<body\b[^>]*>([\s\S]*?)<\/body>/i)?.[1]||'';
@@ -40,4 +45,17 @@ test('editorial generators preserve GTM while Kids stays excluded',()=>{
     assert(src.includes('ns.html?id=GTM-M7J3NNBN'),file+' must preserve the matching no-script fallback');
   }
   assert(!read('kids/index.html').includes('GTM-M7J3NNBN'),'Kids must not gain marketing analytics');
+});
+
+test('Trend landing pages apply existing consent before GTM and the refresh keeps the tag',()=>{
+  for(const file of trendsPages){
+    const html=read(file);
+    const consent=html.indexOf('data-ma-consent-defaults');
+    const loader=html.indexOf('https://www.googletagmanager.com/gtm.js');
+    assert(consent>=0 && consent<loader,file+' must apply consent before loading GTM');
+  }
+  const generator=read('tools/refresh-trending.mjs');
+  assert.match(generator,/cinemaAssets\(`<!doctype html>/);
+  assert.match(generator,/googletagmanager\.com\/gtm\.js/);
+  assert.match(generator,/ns\.html\?id=GTM-M7J3NNBN/);
 });
