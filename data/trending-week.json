@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "weekOf": "2026-11-23",
-  "updated": "2026-11-26T14:16:15.161Z",
+  "updated": "2026-11-27T14:11:57.901Z",
   "label": "Latest titles trending right now",
   "sourceNote": "Movie and TV positions refresh from MatchApp’s current TMDB daily trend metadata; verified official music-video releases from monitored top-artist channels refresh daily with release dates, YouTube view counts, direct links, keywords and structured metadata. Availability can vary by country.",
   "titles": [
@@ -11,8 +11,13 @@
       "year": 2026,
       "origin": "US",
       "originName": "United States",
-      "platform": "",
-      "platforms": [],
+      "platform": "Amazon Prime Video",
+      "platforms": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "Amazon Prime Video Free with Ads",
+        "Amazon MX Player"
+      ],
       "tmdbId": "171802",
       "poster": "https://image.tmdb.org/t/p/w780/d8IKBDXQvj3d6clsjqydT4xcw14.jpg",
       "description": "Fifty years after the events of Blade Runner 2049, Los Angeles has been reborn, just not by humanity. Cora, a fugitive in a final bid to stop running, takes on one last identity: a Blade Runner. Forced to partner with Olwen, a Replicant days from dying, she hunts down a runaway hiding a truth that could collapse their fragile city.",
@@ -29,9 +34,50 @@
       ],
       "runtimeMinutes": null,
       "contentRating": "TV-14",
-      "voteAverage": 5.2,
+      "voteAverage": 5.3,
       "previewUrl": "https://www.youtube.com/watch?v=1d4x_eSdqNc",
       "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/171802-blade-runner-2099/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/171802-blade-runner-2099/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/171802-blade-runner-2099/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Amazon Prime Video"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/171802-blade-runner-2099/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads",
+            "Amazon Prime Video Free with Ads",
+            "Amazon MX Player"
+          ],
+          "cinema_release_date": null
+        },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/171802"
@@ -43,6 +89,8 @@
         "where to watch Blade Runner 2099",
         "Sci-Fi & Fantasy series",
         "Drama series",
+        "Amazon Prime Video trending series",
+        "Amazon Prime Video with Ads trending series",
         "Michelle Yeoh",
         "Hunter Schafer"
       ],
@@ -61,6 +109,8 @@
           "where to watch Blade Runner 2099",
           "Sci-Fi & Fantasy series",
           "Drama series",
+          "Amazon Prime Video trending series",
+          "Amazon Prime Video with Ads trending series",
           "Michelle Yeoh",
           "Hunter Schafer",
           "where to watch Blade Runner 2099 2026",
@@ -72,221 +122,187 @@
       }
     },
     {
-      "title": "The Mosquito Bowl",
+      "title": "Street Fighter",
       "kind": "movie",
       "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Netflix",
-      "platforms": [
-        "Netflix",
-        "Netflix Standard with Ads"
-      ],
-      "tmdbId": "1458300",
-      "poster": "https://image.tmdb.org/t/p/w780/uxYs0bNTF4XzM8LThJk2x3AJ0Iv.jpg",
-      "description": "In the aftermath of Pearl Harbor, four college football stars enlist in the US Marines, discovering the strength of brotherhood and the cost of war.",
+      "origin": "JP",
+      "originName": "Japan",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1153576",
+      "poster": "https://image.tmdb.org/t/p/w780/dJPT2Uf12X6aFg8i5N67NTpIZ9t.jpg",
+      "description": "In 1993, estranged Street Fighters Ryu and Ken Masters are thrown back into combat when the mysterious Chun-Li recruits them for the next World Warrior Tournament: a brutal clash of fists, fate, and fury. But behind this battle royale lies a deadly conspiracy that forces them to face off against each other and the demons of their past. And if they don't, it's GAME OVER!",
       "genre": [
-        "War",
-        "History",
-        "Drama"
+        "Action",
+        "Fantasy"
       ],
       "inLanguage": "en",
       "cast": [
-        "Nicholas Galitzine",
-        "Bill Skarsgård",
-        "Ray Nicholson",
-        "Tom Francis"
+        "Andrew Koji",
+        "Noah Centineo",
+        "Callina Liang",
+        "David Dastmalchian"
       ],
-      "runtimeMinutes": 128,
-      "contentRating": "R",
-      "voteAverage": 7.17,
-      "previewUrl": "https://www.youtube.com/watch?v=F6YDzPfjH4I",
+      "runtimeMinutes": 120,
+      "contentRating": "PG-13",
+      "voteAverage": 6.25,
+      "previewUrl": "https://www.youtube.com/watch?v=U6sbm1OaJb8",
       "availability": {
         "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1458300-the-mosquito-bowl/watch?locale=BR",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-10-15"
         },
         "GB": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1458300-the-mosquito-bowl/watch?locale=GB",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": "2026-11-13"
+          "stream": [],
+          "cinema_release_date": "2026-10-16"
         },
         "PT": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1458300-the-mosquito-bowl/watch?locale=PT",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Netflix"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-10-15"
         },
         "US": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1458300-the-mosquito-bowl/watch?locale=US",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": "2026-10-30"
+          "stream": [],
+          "cinema_release_date": "2026-10-16"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1458300"
+        "source_page_url": "https://www.themoviedb.org/movie/1153576"
       },
       "sourceRank": 2,
       "keywords": [
-        "The Mosquito Bowl",
-        "The Mosquito Bowl 2026",
-        "where to watch The Mosquito Bowl",
-        "War movie",
-        "History movie",
-        "Drama movie",
-        "Netflix trending movie",
-        "Netflix Standard with Ads trending movie",
-        "Nicholas Galitzine",
-        "Bill Skarsgård"
+        "Street Fighter",
+        "Street Fighter 2026",
+        "where to watch Street Fighter",
+        "Action movie",
+        "Fantasy movie",
+        "Andrew Koji",
+        "Noah Centineo"
       ],
       "longTailKeywords": [
-        "where to watch The Mosquito Bowl 2026",
-        "The Mosquito Bowl streaming in Brazil and United States",
-        "The Mosquito Bowl cast synopsis trailer and where to watch",
-        "what War to watch this week"
+        "where to watch Street Fighter 2026",
+        "Street Fighter streaming in Brazil and United States",
+        "Street Fighter cast synopsis trailer and where to watch",
+        "what Action to watch this week"
       ],
       "seo": {
-        "title": "Where to watch The Mosquito Bowl (2026) | MatchApp Ai",
-        "description": "In the aftermath of Pearl Harbor, four college football stars enlist in the US Marines, discovering the strength of brotherhood and the cost of war.",
+        "title": "Where to watch Street Fighter (2026) | MatchApp Ai",
+        "description": "In 1993, estranged Street Fighters Ryu and Ken Masters are thrown back into combat when the mysterious Chun-Li recruits them for the next World Warrior Tourna",
         "keywords": [
-          "The Mosquito Bowl",
-          "The Mosquito Bowl 2026",
-          "where to watch The Mosquito Bowl",
-          "War movie",
-          "History movie",
-          "Drama movie",
-          "Netflix trending movie",
-          "Netflix Standard with Ads trending movie",
-          "Nicholas Galitzine",
-          "Bill Skarsgård",
-          "where to watch The Mosquito Bowl 2026",
-          "The Mosquito Bowl streaming in Brazil and United States",
-          "The Mosquito Bowl cast synopsis trailer and where to watch",
-          "what War to watch this week"
+          "Street Fighter",
+          "Street Fighter 2026",
+          "where to watch Street Fighter",
+          "Action movie",
+          "Fantasy movie",
+          "Andrew Koji",
+          "Noah Centineo",
+          "where to watch Street Fighter 2026",
+          "Street Fighter streaming in Brazil and United States",
+          "Street Fighter cast synopsis trailer and where to watch",
+          "what Action to watch this week"
         ],
-        "canonicalQuery": "The Mosquito Bowl"
+        "canonicalQuery": "Street Fighter"
       }
     },
     {
-      "title": "Way of the Warrior Kid",
+      "title": "Avengers: Doomsday",
       "kind": "movie",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
-      "platform": "Apple TV",
-      "platforms": [
-        "Apple TV"
-      ],
-      "tmdbId": "1280115",
-      "poster": "https://image.tmdb.org/t/p/w780/atI81xXKNVah7PJFBo3aXqQKtnG.jpg",
-      "description": "Jake is an injured Navy SEAL who becomes a mentor for his shy, struggling nephew Marc. Using the principles of his military training, Jake teaches Marc how to be a Warrior Kid as he enters high school.",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1003596",
+      "poster": "https://image.tmdb.org/t/p/w780/1zqWkLwC1zLBBBtIWzmkmWeMWnT.jpg",
+      "description": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
       "genre": [
-        "Drama"
+        "Science Fiction",
+        "Action",
+        "Adventure"
       ],
       "inLanguage": "en",
       "cast": [
-        "Chris Pratt",
-        "Jude Hill",
-        "Linda Cardellini",
-        "Jocko Willink"
+        "Robert Downey Jr.",
+        "Chris Evans",
+        "Chris Hemsworth",
+        "Pedro Pascal"
       ],
-      "runtimeMinutes": 107,
+      "runtimeMinutes": 165,
       "contentRating": "PG-13",
-      "voteAverage": 7.64,
-      "previewUrl": "https://www.youtube.com/watch?v=R1ECMLrwDYQ",
+      "voteAverage": 0,
+      "previewUrl": "https://www.youtube.com/watch?v=Wb8Tq_HD4E8",
       "availability": {
         "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1280115-way-of-the-warrior-kid/watch?locale=BR",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Apple TV"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-12-16"
         },
         "GB": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1280115-way-of-the-warrior-kid/watch?locale=GB",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Apple TV"
-          ],
-          "cinema_release_date": null
-        },
-        "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/movie/1280115-way-of-the-warrior-kid/watch?locale=PT",
-          "rent": [],
-          "stream": [
-            "Apple TV"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-12-16"
         },
         "US": {
           "buy": [],
-          "link": "https://www.themoviedb.org/movie/1280115-way-of-the-warrior-kid/watch?locale=US",
+          "link": null,
           "rent": [],
-          "stream": [
-            "Apple TV"
-          ],
-          "cinema_release_date": null
+          "stream": [],
+          "cinema_release_date": "2026-12-18"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1280115"
+        "source_page_url": "https://www.themoviedb.org/movie/1003596"
       },
       "sourceRank": 3,
       "keywords": [
-        "Way of the Warrior Kid",
-        "Way of the Warrior Kid 2026",
-        "where to watch Way of the Warrior Kid",
-        "Drama movie",
-        "Apple TV trending movie",
-        "Chris Pratt",
-        "Jude Hill"
+        "Avengers: Doomsday",
+        "Avengers: Doomsday 2026",
+        "where to watch Avengers: Doomsday",
+        "Science Fiction movie",
+        "Action movie",
+        "Adventure movie",
+        "Robert Downey Jr.",
+        "Chris Evans"
       ],
       "longTailKeywords": [
-        "where to watch Way of the Warrior Kid 2026",
-        "Way of the Warrior Kid streaming in Brazil and United States",
-        "Way of the Warrior Kid cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
+        "where to watch Avengers: Doomsday 2026",
+        "Avengers: Doomsday streaming in Brazil and United States",
+        "Avengers: Doomsday cast synopsis trailer and where to watch",
+        "what Science Fiction to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Way of the Warrior Kid (2026) | MatchApp Ai",
-        "description": "Jake is an injured Navy SEAL who becomes a mentor for his shy, struggling nephew Marc. Using the principles of his military training, Jake teaches Marc how to",
+        "title": "Where to watch Avengers: Doomsday (2026) | MatchApp Ai",
+        "description": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
         "keywords": [
-          "Way of the Warrior Kid",
-          "Way of the Warrior Kid 2026",
-          "where to watch Way of the Warrior Kid",
-          "Drama movie",
-          "Apple TV trending movie",
-          "Chris Pratt",
-          "Jude Hill",
-          "where to watch Way of the Warrior Kid 2026",
-          "Way of the Warrior Kid streaming in Brazil and United States",
-          "Way of the Warrior Kid cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
+          "Avengers: Doomsday",
+          "Avengers: Doomsday 2026",
+          "where to watch Avengers: Doomsday",
+          "Science Fiction movie",
+          "Action movie",
+          "Adventure movie",
+          "Robert Downey Jr.",
+          "Chris Evans",
+          "where to watch Avengers: Doomsday 2026",
+          "Avengers: Doomsday streaming in Brazil and United States",
+          "Avengers: Doomsday cast synopsis trailer and where to watch",
+          "what Science Fiction to watch this week"
         ],
-        "canonicalQuery": "Way of the Warrior Kid"
+        "canonicalQuery": "Avengers: Doomsday"
       }
     },
     {
@@ -349,16 +365,711 @@
       "sourceRank": 1
     },
     {
-      "title": "Avengers: Doomsday",
+      "title": "Fool Night",
+      "kind": "tv",
+      "year": 2026,
+      "origin": "JP",
+      "originName": "Japan",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "326247",
+      "poster": "https://image.tmdb.org/t/p/w780/7kHLQwQZKbQOZJGx1mIDYIKeBYv.jpg",
+      "description": "In a sunless future where humans become plants to make oxygen, a desperate young man begins the transformation — and unearths a deep-rooted conspiracy.",
+      "genre": [
+        "Animation",
+        "Drama",
+        "Sci-Fi & Fantasy",
+        "Mystery"
+      ],
+      "inLanguage": "ja",
+      "cast": [
+        "Koki Uchiyama",
+        "Minako Kotobuki",
+        "Junya Enoki",
+        "Aya Endo"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 8.7,
+      "previewUrl": "https://www.youtube.com/watch?v=2Qg_AfPF2sM",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/326247"
+      },
+      "sourceRank": 4,
+      "keywords": [
+        "Fool Night",
+        "Fool Night 2026",
+        "where to watch Fool Night",
+        "Animation series",
+        "Drama series",
+        "Sci-Fi & Fantasy series",
+        "Koki Uchiyama",
+        "Minako Kotobuki"
+      ],
+      "longTailKeywords": [
+        "where to watch Fool Night 2026",
+        "Fool Night streaming in Brazil and United States",
+        "Fool Night cast synopsis trailer and where to watch",
+        "what Animation to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Fool Night (2026) | MatchApp Ai",
+        "description": "In a sunless future where humans become plants to make oxygen, a desperate young man begins the transformation — and unearths a deep-rooted conspiracy.",
+        "keywords": [
+          "Fool Night",
+          "Fool Night 2026",
+          "where to watch Fool Night",
+          "Animation series",
+          "Drama series",
+          "Sci-Fi & Fantasy series",
+          "Koki Uchiyama",
+          "Minako Kotobuki",
+          "where to watch Fool Night 2026",
+          "Fool Night streaming in Brazil and United States",
+          "Fool Night cast synopsis trailer and where to watch",
+          "what Animation to watch this week"
+        ],
+        "canonicalQuery": "Fool Night"
+      }
+    },
+    {
+      "title": "The Mosquito Bowl",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Netflix",
+      "platforms": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "tmdbId": "1458300",
+      "poster": "https://image.tmdb.org/t/p/w780/uxYs0bNTF4XzM8LThJk2x3AJ0Iv.jpg",
+      "description": "In the aftermath of Pearl Harbor, four college football stars enlist in the US Marines, discovering the strength of brotherhood and the cost of war.",
+      "genre": [
+        "War",
+        "Drama"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Nicholas Galitzine",
+        "Bill Skarsgård",
+        "Ray Nicholson",
+        "Tom Francis"
+      ],
+      "runtimeMinutes": 129,
+      "contentRating": "R",
+      "voteAverage": 7.7,
+      "previewUrl": "https://www.youtube.com/watch?v=F6YDzPfjH4I",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1458300-the-mosquito-bowl/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1458300-the-mosquito-bowl/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": "2026-11-13"
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1458300-the-mosquito-bowl/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Netflix"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1458300-the-mosquito-bowl/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": "2026-10-30"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1458300"
+      },
+      "sourceRank": 5,
+      "keywords": [
+        "The Mosquito Bowl",
+        "The Mosquito Bowl 2026",
+        "where to watch The Mosquito Bowl",
+        "War movie",
+        "Drama movie",
+        "Netflix trending movie",
+        "Netflix Standard with Ads trending movie",
+        "Nicholas Galitzine",
+        "Bill Skarsgård"
+      ],
+      "longTailKeywords": [
+        "where to watch The Mosquito Bowl 2026",
+        "The Mosquito Bowl streaming in Brazil and United States",
+        "The Mosquito Bowl cast synopsis trailer and where to watch",
+        "what War to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch The Mosquito Bowl (2026) | MatchApp Ai",
+        "description": "In the aftermath of Pearl Harbor, four college football stars enlist in the US Marines, discovering the strength of brotherhood and the cost of war.",
+        "keywords": [
+          "The Mosquito Bowl",
+          "The Mosquito Bowl 2026",
+          "where to watch The Mosquito Bowl",
+          "War movie",
+          "Drama movie",
+          "Netflix trending movie",
+          "Netflix Standard with Ads trending movie",
+          "Nicholas Galitzine",
+          "Bill Skarsgård",
+          "where to watch The Mosquito Bowl 2026",
+          "The Mosquito Bowl streaming in Brazil and United States",
+          "The Mosquito Bowl cast synopsis trailer and where to watch",
+          "what War to watch this week"
+        ],
+        "canonicalQuery": "The Mosquito Bowl"
+      }
+    },
+    {
+      "title": "The Hunchback, Soul of Paris",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "FR",
+      "originName": "France",
+      "platform": "",
+      "platforms": [],
+      "tmdbId": "1480665",
+      "poster": "https://image.tmdb.org/t/p/w780/3dHSDFEyUsjwRldplaRGygC5zkJ.jpg",
+      "description": "Paris, 1830. As cholera threatens to ravage the city, a hunchback hunted for medical experiments is caught between political turmoil and impossible love.",
+      "genre": [
+        "Drama",
+        "Romance"
+      ],
+      "inLanguage": "fr",
+      "cast": [
+        "Vincent Cassel",
+        "Karim Leklou",
+        "Daphné Patakia",
+        "Benjamin Voisin"
+      ],
+      "runtimeMinutes": 106,
+      "contentRating": "16",
+      "voteAverage": 0,
+      "previewUrl": "https://www.youtube.com/watch?v=eBfPTW1YaAQ",
+      "availability": {
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1480665"
+      },
+      "sourceRank": 6,
+      "keywords": [
+        "The Hunchback, Soul of Paris",
+        "The Hunchback, Soul of Paris 2026",
+        "where to watch The Hunchback, Soul of Paris",
+        "Drama movie",
+        "Romance movie",
+        "Vincent Cassel",
+        "Karim Leklou"
+      ],
+      "longTailKeywords": [
+        "where to watch The Hunchback, Soul of Paris 2026",
+        "The Hunchback, Soul of Paris streaming in Brazil and United States",
+        "The Hunchback, Soul of Paris cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch The Hunchback, Soul of Paris (2026) | MatchApp Ai",
+        "description": "Paris, 1830. As cholera threatens to ravage the city, a hunchback hunted for medical experiments is caught between political turmoil and impossible love.",
+        "keywords": [
+          "The Hunchback, Soul of Paris",
+          "The Hunchback, Soul of Paris 2026",
+          "where to watch The Hunchback, Soul of Paris",
+          "Drama movie",
+          "Romance movie",
+          "Vincent Cassel",
+          "Karim Leklou",
+          "where to watch The Hunchback, Soul of Paris 2026",
+          "The Hunchback, Soul of Paris streaming in Brazil and United States",
+          "The Hunchback, Soul of Paris cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
+        ],
+        "canonicalQuery": "The Hunchback, Soul of Paris"
+      }
+    },
+    {
+      "title": "Olivia Rodrigo — expectations (feat. Chappell Roan)",
+      "kind": "music-video",
+      "year": 2026,
+      "origin": "",
+      "platform": "YouTube",
+      "tmdbId": null,
+      "poster": "/assets/music-videos/gsZauX8gwxo.jpg",
+      "url": "https://www.youtube.com/watch?v=gsZauX8gwxo",
+      "artist": "Olivia Rodrigo",
+      "songTitle": "expectations (feat. Chappell Roan)",
+      "publishedAt": "2026-10-16T00:00:10+00:00",
+      "viewCount": 29277239,
+      "viewCountCheckedAt": "2026-11-26",
+      "channel": "OliviaRodrigoVEVO",
+      "channelUrl": "https://www.youtube.com/@OliviaRodrigoVEVO",
+      "description": "Official Olivia Rodrigo music video for “expectations (feat. Chappell Roan)”, released on YouTube 2026-10-16 with 29,277,239 verified views at the latest daily check.",
+      "genre": [
+        "Music video"
+      ],
+      "inLanguage": "en",
+      "keywords": [
+        "Olivia Rodrigo",
+        "expectations (feat. Chappell Roan)",
+        "official music video",
+        "latest official music videos",
+        "YouTube music video",
+        "2026 music releases",
+        "Olivia Rodrigo new music video",
+        "Olivia Rodrigo expectations (feat. Chappell Roan) official music video",
+        "Olivia Rodrigo music videos",
+        "2026 music video releases"
+      ],
+      "longTailKeywords": [
+        "Olivia Rodrigo expectations (feat. Chappell Roan) official music video YouTube",
+        "where to watch Olivia Rodrigo expectations (feat. Chappell Roan) music video",
+        "new Olivia Rodrigo music video 2026",
+        "Olivia Rodrigo expectations (feat. Chappell Roan) release date",
+        "Olivia Rodrigo expectations (feat. Chappell Roan) YouTube views"
+      ],
+      "seo": {
+        "title": "Olivia Rodrigo — expectations (feat. Chappell Roan) official music video | MatchApp Ai",
+        "description": "Official Olivia Rodrigo music video for “expectations (feat. Chappell Roan)”, released on YouTube 2026-10-16 with 29,277,239 verified views at the latest daily check.",
+        "keywords": [
+          "Olivia Rodrigo",
+          "expectations (feat. Chappell Roan)",
+          "official music video",
+          "YouTube music video",
+          "2026 music releases",
+          "Olivia Rodrigo expectations (feat. Chappell Roan) official music video",
+          "Olivia Rodrigo music videos",
+          "2026 music video releases",
+          "latest official music videos"
+        ],
+        "canonicalQuery": "Olivia Rodrigo expectations (feat. Chappell Roan) official music video"
+      },
+      "source": "verified-official-music-video",
+      "sourceRank": 2
+    },
+    {
+      "title": "The Hunting Wives",
+      "kind": "tv",
+      "year": 2025,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Netflix",
+      "platforms": [
+        "Netflix",
+        "Netflix Standard with Ads",
+        "ITVX Premium",
+        "ITVX"
+      ],
+      "tmdbId": "244447",
+      "poster": "https://image.tmdb.org/t/p/w780/iKL02GmejLCGBJr7XHU82vvqA1C.jpg",
+      "description": "Sophie trades New England for East Texas and falls into a wealthy socialite's magnetic orbit — where a clique of housewives hide deadly secrets.",
+      "genre": [
+        "Drama",
+        "Mystery"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Brittany Snow",
+        "Malin Akerman",
+        "Dermot Mulroney",
+        "Jaime Ray Newman"
+      ],
+      "runtimeMinutes": null,
+      "contentRating": "TV-MA",
+      "voteAverage": 6.97,
+      "previewUrl": "https://www.youtube.com/watch?v=uZvZfqiAhdQ",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/tv/244447-the-hunting-wives/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [
+            "Apple TV Store",
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/tv/244447-the-hunting-wives/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "ITVX Premium",
+            "ITVX"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/tv/244447-the-hunting-wives/watch?locale=PT",
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Google Play Movies",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/tv/244447-the-hunting-wives/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Netflix",
+            "Netflix Standard with Ads"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/tv/244447"
+      },
+      "sourceRank": 7,
+      "keywords": [
+        "The Hunting Wives",
+        "The Hunting Wives 2025",
+        "where to watch The Hunting Wives",
+        "Drama series",
+        "Mystery series",
+        "Netflix trending series",
+        "Netflix Standard with Ads trending series",
+        "Brittany Snow",
+        "Malin Akerman"
+      ],
+      "longTailKeywords": [
+        "where to watch The Hunting Wives 2025",
+        "The Hunting Wives streaming in Brazil and United States",
+        "The Hunting Wives cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch The Hunting Wives (2025) | MatchApp Ai",
+        "description": "Sophie trades New England for East Texas and falls into a wealthy socialite's magnetic orbit — where a clique of housewives hide deadly secrets.",
+        "keywords": [
+          "The Hunting Wives",
+          "The Hunting Wives 2025",
+          "where to watch The Hunting Wives",
+          "Drama series",
+          "Mystery series",
+          "Netflix trending series",
+          "Netflix Standard with Ads trending series",
+          "Brittany Snow",
+          "Malin Akerman",
+          "where to watch The Hunting Wives 2025",
+          "The Hunting Wives streaming in Brazil and United States",
+          "The Hunting Wives cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
+        ],
+        "canonicalQuery": "The Hunting Wives"
+      }
+    },
+    {
+      "title": "Hexed",
       "kind": "movie",
       "year": 2026,
       "origin": "US",
       "originName": "United States",
       "platform": "Cinemas",
       "platforms": [],
-      "tmdbId": "1003596",
-      "poster": "https://image.tmdb.org/t/p/w780/1zqWkLwC1zLBBBtIWzmkmWeMWnT.jpg",
-      "description": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
+      "tmdbId": "1538497",
+      "poster": "https://image.tmdb.org/t/p/w780/yykeYKbDBM9eUMJUucaaDo2mi1p.jpg",
+      "description": "An impulsive and unconventional teenage girl named Billie discovers secret magical abilities which, once unleashed, hurtle her into a spectacle-filled journey out of suburbia and into a vast witch realm called Hexe. Forced to team up with her cautious mother, Alice, they uncover family mysteries that could change the world of witches forever.",
+      "genre": [
+        "Animation",
+        "Fantasy",
+        "Family"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Hailee Steinfeld",
+        "Rashida Jones",
+        "Jodie Foster",
+        "Walton Goggins"
+      ],
+      "runtimeMinutes": 103,
+      "contentRating": "PG",
+      "voteAverage": 5.5,
+      "previewUrl": "https://www.youtube.com/watch?v=9ke5KSOUl-U",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-11-26"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-11-27"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-11-26"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-11-25"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1538497"
+      },
+      "sourceRank": 8,
+      "keywords": [
+        "Hexed",
+        "Hexed 2026",
+        "where to watch Hexed",
+        "Animation movie",
+        "Fantasy movie",
+        "Family movie",
+        "Hailee Steinfeld",
+        "Rashida Jones"
+      ],
+      "longTailKeywords": [
+        "where to watch Hexed 2026",
+        "Hexed streaming in Brazil and United States",
+        "Hexed cast synopsis trailer and where to watch",
+        "what Animation to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Hexed (2026) | MatchApp Ai",
+        "description": "An impulsive and unconventional teenage girl named Billie discovers secret magical abilities which, once unleashed, hurtle her into a spectacle-filled journey",
+        "keywords": [
+          "Hexed",
+          "Hexed 2026",
+          "where to watch Hexed",
+          "Animation movie",
+          "Fantasy movie",
+          "Family movie",
+          "Hailee Steinfeld",
+          "Rashida Jones",
+          "where to watch Hexed 2026",
+          "Hexed streaming in Brazil and United States",
+          "Hexed cast synopsis trailer and where to watch",
+          "what Animation to watch this week"
+        ],
+        "canonicalQuery": "Hexed"
+      }
+    },
+    {
+      "title": "Way of the Warrior Kid",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Apple TV",
+      "platforms": [
+        "Apple TV",
+        "Apple TV Amazon Channel"
+      ],
+      "tmdbId": "1280115",
+      "poster": "https://image.tmdb.org/t/p/w780/atI81xXKNVah7PJFBo3aXqQKtnG.jpg",
+      "description": "Jake is an injured Navy SEAL who becomes a mentor for his shy, struggling nephew Marc. Using the principles of his military training, Jake teaches Marc how to be a Warrior Kid as he enters high school.",
+      "genre": [
+        "Drama"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Chris Pratt",
+        "Jude Hill",
+        "Linda Cardellini",
+        "Jocko Willink"
+      ],
+      "runtimeMinutes": 107,
+      "contentRating": "PG-13",
+      "voteAverage": 7.6,
+      "previewUrl": "https://www.youtube.com/watch?v=R1ECMLrwDYQ",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1280115-way-of-the-warrior-kid/watch?locale=BR",
+          "rent": [],
+          "stream": [
+            "Apple TV",
+            "Apple TV Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1280115-way-of-the-warrior-kid/watch?locale=GB",
+          "rent": [],
+          "stream": [
+            "Apple TV",
+            "Apple TV Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1280115-way-of-the-warrior-kid/watch?locale=PT",
+          "rent": [],
+          "stream": [
+            "Apple TV",
+            "Apple TV Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "US": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1280115-way-of-the-warrior-kid/watch?locale=US",
+          "rent": [],
+          "stream": [
+            "Apple TV",
+            "Apple TV Amazon Channel"
+          ],
+          "cinema_release_date": null
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1280115"
+      },
+      "sourceRank": 9,
+      "keywords": [
+        "Way of the Warrior Kid",
+        "Way of the Warrior Kid 2026",
+        "where to watch Way of the Warrior Kid",
+        "Drama movie",
+        "Apple TV trending movie",
+        "Apple TV Amazon Channel trending movie",
+        "Chris Pratt",
+        "Jude Hill"
+      ],
+      "longTailKeywords": [
+        "where to watch Way of the Warrior Kid 2026",
+        "Way of the Warrior Kid streaming in Brazil and United States",
+        "Way of the Warrior Kid cast synopsis trailer and where to watch",
+        "what Drama to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch Way of the Warrior Kid (2026) | MatchApp Ai",
+        "description": "Jake is an injured Navy SEAL who becomes a mentor for his shy, struggling nephew Marc. Using the principles of his military training, Jake teaches Marc how to",
+        "keywords": [
+          "Way of the Warrior Kid",
+          "Way of the Warrior Kid 2026",
+          "where to watch Way of the Warrior Kid",
+          "Drama movie",
+          "Apple TV trending movie",
+          "Apple TV Amazon Channel trending movie",
+          "Chris Pratt",
+          "Jude Hill",
+          "where to watch Way of the Warrior Kid 2026",
+          "Way of the Warrior Kid streaming in Brazil and United States",
+          "Way of the Warrior Kid cast synopsis trailer and where to watch",
+          "what Drama to watch this week"
+        ],
+        "canonicalQuery": "Way of the Warrior Kid"
+      }
+    },
+    {
+      "title": "Bruno Mars — Dance With Me",
+      "kind": "music-video",
+      "year": 2026,
+      "origin": "",
+      "platform": "YouTube",
+      "tmdbId": null,
+      "poster": "/assets/music-videos/1l7wbZmdtys.jpg",
+      "url": "https://www.youtube.com/watch?v=1l7wbZmdtys",
+      "artist": "Bruno Mars",
+      "songTitle": "Dance With Me",
+      "publishedAt": "2026-10-01T16:00:04+00:00",
+      "viewCount": 23357291,
+      "viewCountCheckedAt": "2026-11-26",
+      "channel": "Bruno Mars",
+      "channelUrl": "https://www.youtube.com/@brunomars",
+      "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 23,357,291 verified views at the latest daily check.",
+      "genre": [
+        "Music video"
+      ],
+      "inLanguage": "en",
+      "keywords": [
+        "Bruno Mars",
+        "Dance With Me",
+        "official music video",
+        "latest official music videos",
+        "YouTube music video",
+        "2026 music releases",
+        "Bruno Mars new music video",
+        "Bruno Mars Dance With Me official music video",
+        "Bruno Mars music videos",
+        "2026 music video releases"
+      ],
+      "longTailKeywords": [
+        "Bruno Mars Dance With Me official music video YouTube",
+        "where to watch Bruno Mars Dance With Me music video",
+        "new Bruno Mars music video 2026",
+        "Bruno Mars Dance With Me release date",
+        "Bruno Mars Dance With Me YouTube views"
+      ],
+      "seo": {
+        "title": "Bruno Mars — Dance With Me official music video | MatchApp Ai",
+        "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 23,357,291 verified views at the latest daily check.",
+        "keywords": [
+          "Bruno Mars",
+          "Dance With Me",
+          "official music video",
+          "YouTube music video",
+          "2026 music releases",
+          "Bruno Mars Dance With Me official music video",
+          "Bruno Mars music videos",
+          "2026 music video releases",
+          "latest official music videos"
+        ],
+        "canonicalQuery": "Bruno Mars Dance With Me official music video"
+      },
+      "source": "verified-official-music-video",
+      "sourceRank": 3
+    },
+    {
+      "title": "The Hunger Games: Sunrise on the Reaping",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1300968",
+      "poster": "https://image.tmdb.org/t/p/w780/5ffVOGY3x3Sn3jovzvycJeizpks.jpg",
+      "description": "Return to the world of Panem 24 years before Katniss Everdeen volunteers in her sister's place, commencing on the morning of the reaping of the 50th Hunger Games, also known as the Second Quarter Quell.",
       "genre": [
         "Science Fiction",
         "Action",
@@ -366,76 +1077,83 @@
       ],
       "inLanguage": "en",
       "cast": [
-        "Robert Downey Jr.",
-        "Chris Evans",
-        "Chris Hemsworth",
-        "Pedro Pascal"
+        "Joseph Zada",
+        "Mckenna Grace",
+        "Jesse Plemons",
+        "Ralph Fiennes"
       ],
-      "runtimeMinutes": 165,
+      "runtimeMinutes": 159,
       "contentRating": "PG-13",
-      "voteAverage": 0,
-      "previewUrl": "https://www.youtube.com/watch?v=Wb8Tq_HD4E8",
+      "voteAverage": 7.8,
+      "previewUrl": "https://www.youtube.com/watch?v=Dr060OLTodE",
       "availability": {
         "BR": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-12-16"
+          "cinema_release_date": "2026-11-18"
         },
         "GB": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-12-16"
+          "cinema_release_date": "2026-11-18"
+        },
+        "PT": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-11-19"
         },
         "US": {
           "buy": [],
           "link": null,
           "rent": [],
           "stream": [],
-          "cinema_release_date": "2026-12-18"
+          "cinema_release_date": "2026-11-20"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1003596"
+        "source_page_url": "https://www.themoviedb.org/movie/1300968"
       },
-      "sourceRank": 4,
+      "sourceRank": 10,
       "keywords": [
-        "Avengers: Doomsday",
-        "Avengers: Doomsday 2026",
-        "where to watch Avengers: Doomsday",
+        "The Hunger Games: Sunrise on the Reaping",
+        "The Hunger Games: Sunrise on the Reaping 2026",
+        "where to watch The Hunger Games: Sunrise on the Reaping",
         "Science Fiction movie",
         "Action movie",
         "Adventure movie",
-        "Robert Downey Jr.",
-        "Chris Evans"
+        "Joseph Zada",
+        "Mckenna Grace"
       ],
       "longTailKeywords": [
-        "where to watch Avengers: Doomsday 2026",
-        "Avengers: Doomsday streaming in Brazil and United States",
-        "Avengers: Doomsday cast synopsis trailer and where to watch",
+        "where to watch The Hunger Games: Sunrise on the Reaping 2026",
+        "The Hunger Games: Sunrise on the Reaping streaming in Brazil and United States",
+        "The Hunger Games: Sunrise on the Reaping cast synopsis trailer and where to watch",
         "what Science Fiction to watch this week"
       ],
       "seo": {
-        "title": "Where to watch Avengers: Doomsday (2026) | MatchApp Ai",
-        "description": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
+        "title": "Where to watch The Hunger Games: Sunrise on the Reaping (2026) | MatchApp Ai",
+        "description": "Return to the world of Panem 24 years before Katniss Everdeen volunteers in her sister's place, commencing on the morning of the reaping of the 50th Hunger Ga",
         "keywords": [
-          "Avengers: Doomsday",
-          "Avengers: Doomsday 2026",
-          "where to watch Avengers: Doomsday",
+          "The Hunger Games: Sunrise on the Reaping",
+          "The Hunger Games: Sunrise on the Reaping 2026",
+          "where to watch The Hunger Games: Sunrise on the Reaping",
           "Science Fiction movie",
           "Action movie",
           "Adventure movie",
-          "Robert Downey Jr.",
-          "Chris Evans",
-          "where to watch Avengers: Doomsday 2026",
-          "Avengers: Doomsday streaming in Brazil and United States",
-          "Avengers: Doomsday cast synopsis trailer and where to watch",
+          "Joseph Zada",
+          "Mckenna Grace",
+          "where to watch The Hunger Games: Sunrise on the Reaping 2026",
+          "The Hunger Games: Sunrise on the Reaping streaming in Brazil and United States",
+          "The Hunger Games: Sunrise on the Reaping cast synopsis trailer and where to watch",
           "what Science Fiction to watch this week"
         ],
-        "canonicalQuery": "Avengers: Doomsday"
+        "canonicalQuery": "The Hunger Games: Sunrise on the Reaping"
       }
     },
     {
@@ -515,7 +1233,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/tv/84773"
       },
-      "sourceRank": 5,
+      "sourceRank": 11,
       "keywords": [
         "The Lord of the Rings: The Rings of Power",
         "The Lord of the Rings: The Rings of Power 2022",
@@ -553,878 +1271,6 @@
         ],
         "canonicalQuery": "The Lord of the Rings: The Rings of Power"
       }
-    },
-    {
-      "title": "Hexed",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1538497",
-      "poster": "https://image.tmdb.org/t/p/w780/yykeYKbDBM9eUMJUucaaDo2mi1p.jpg",
-      "description": "An impulsive and unconventional teenage girl named Billie discovers secret magical abilities which, once unleashed, hurtle her into a spectacle-filled journey out of suburbia and into a vast witch realm called Hexe. Forced to team up with her cautious mother, Alice, they uncover family mysteries that could change the world of witches forever.",
-      "genre": [
-        "Adventure",
-        "Animation",
-        "Family",
-        "Fantasy",
-        "Comedy"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Hailee Steinfeld",
-        "Rashida Jones",
-        "Jodie Foster",
-        "Walton Goggins"
-      ],
-      "runtimeMinutes": 103,
-      "contentRating": "PG",
-      "voteAverage": 5.71,
-      "previewUrl": "https://www.youtube.com/watch?v=9ke5KSOUl-U",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-11-26"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-11-27"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-11-26"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-11-25"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1538497"
-      },
-      "sourceRank": 6,
-      "keywords": [
-        "Hexed",
-        "Hexed 2026",
-        "where to watch Hexed",
-        "Adventure movie",
-        "Animation movie",
-        "Family movie",
-        "Hailee Steinfeld",
-        "Rashida Jones"
-      ],
-      "longTailKeywords": [
-        "where to watch Hexed 2026",
-        "Hexed streaming in Brazil and United States",
-        "Hexed cast synopsis trailer and where to watch",
-        "what Adventure to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Hexed (2026) | MatchApp Ai",
-        "description": "An impulsive and unconventional teenage girl named Billie discovers secret magical abilities which, once unleashed, hurtle her into a spectacle-filled journey",
-        "keywords": [
-          "Hexed",
-          "Hexed 2026",
-          "where to watch Hexed",
-          "Adventure movie",
-          "Animation movie",
-          "Family movie",
-          "Hailee Steinfeld",
-          "Rashida Jones",
-          "where to watch Hexed 2026",
-          "Hexed streaming in Brazil and United States",
-          "Hexed cast synopsis trailer and where to watch",
-          "what Adventure to watch this week"
-        ],
-        "canonicalQuery": "Hexed"
-      }
-    },
-    {
-      "title": "Olivia Rodrigo — expectations (feat. Chappell Roan)",
-      "kind": "music-video",
-      "year": 2026,
-      "origin": "",
-      "platform": "YouTube",
-      "tmdbId": null,
-      "poster": "/assets/music-videos/gsZauX8gwxo.jpg",
-      "url": "https://www.youtube.com/watch?v=gsZauX8gwxo",
-      "artist": "Olivia Rodrigo",
-      "songTitle": "expectations (feat. Chappell Roan)",
-      "publishedAt": "2026-10-16T00:00:10+00:00",
-      "viewCount": 29277239,
-      "viewCountCheckedAt": "2026-11-26",
-      "channel": "OliviaRodrigoVEVO",
-      "channelUrl": "https://www.youtube.com/@OliviaRodrigoVEVO",
-      "description": "Official Olivia Rodrigo music video for “expectations (feat. Chappell Roan)”, released on YouTube 2026-10-16 with 29,277,239 verified views at the latest daily check.",
-      "genre": [
-        "Music video"
-      ],
-      "inLanguage": "en",
-      "keywords": [
-        "Olivia Rodrigo",
-        "expectations (feat. Chappell Roan)",
-        "official music video",
-        "latest official music videos",
-        "YouTube music video",
-        "2026 music releases",
-        "Olivia Rodrigo new music video",
-        "Olivia Rodrigo expectations (feat. Chappell Roan) official music video",
-        "Olivia Rodrigo music videos",
-        "2026 music video releases"
-      ],
-      "longTailKeywords": [
-        "Olivia Rodrigo expectations (feat. Chappell Roan) official music video YouTube",
-        "where to watch Olivia Rodrigo expectations (feat. Chappell Roan) music video",
-        "new Olivia Rodrigo music video 2026",
-        "Olivia Rodrigo expectations (feat. Chappell Roan) release date",
-        "Olivia Rodrigo expectations (feat. Chappell Roan) YouTube views"
-      ],
-      "seo": {
-        "title": "Olivia Rodrigo — expectations (feat. Chappell Roan) official music video | MatchApp Ai",
-        "description": "Official Olivia Rodrigo music video for “expectations (feat. Chappell Roan)”, released on YouTube 2026-10-16 with 29,277,239 verified views at the latest daily check.",
-        "keywords": [
-          "Olivia Rodrigo",
-          "expectations (feat. Chappell Roan)",
-          "official music video",
-          "YouTube music video",
-          "2026 music releases",
-          "Olivia Rodrigo expectations (feat. Chappell Roan) official music video",
-          "Olivia Rodrigo music videos",
-          "2026 music video releases",
-          "latest official music videos"
-        ],
-        "canonicalQuery": "Olivia Rodrigo expectations (feat. Chappell Roan) official music video"
-      },
-      "source": "verified-official-music-video",
-      "sourceRank": 2
-    },
-    {
-      "title": "The Hunger Games: Sunrise on the Reaping",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1300968",
-      "poster": "https://image.tmdb.org/t/p/w780/5ffVOGY3x3Sn3jovzvycJeizpks.jpg",
-      "description": "Return to the world of Panem 24 years before Katniss Everdeen volunteers in her sister's place, commencing on the morning of the reaping of the 50th Hunger Games, also known as the Second Quarter Quell.",
-      "genre": [
-        "Science Fiction",
-        "Action",
-        "Adventure"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Joseph Zada",
-        "Mckenna Grace",
-        "Jesse Plemons",
-        "Ralph Fiennes"
-      ],
-      "runtimeMinutes": 159,
-      "contentRating": "PG-13",
-      "voteAverage": 7.8,
-      "previewUrl": "https://www.youtube.com/watch?v=Dr060OLTodE",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-11-18"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-11-18"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-11-19"
-        },
-        "US": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-11-20"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1300968"
-      },
-      "sourceRank": 7,
-      "keywords": [
-        "The Hunger Games: Sunrise on the Reaping",
-        "The Hunger Games: Sunrise on the Reaping 2026",
-        "where to watch The Hunger Games: Sunrise on the Reaping",
-        "Science Fiction movie",
-        "Action movie",
-        "Adventure movie",
-        "Joseph Zada",
-        "Mckenna Grace"
-      ],
-      "longTailKeywords": [
-        "where to watch The Hunger Games: Sunrise on the Reaping 2026",
-        "The Hunger Games: Sunrise on the Reaping streaming in Brazil and United States",
-        "The Hunger Games: Sunrise on the Reaping cast synopsis trailer and where to watch",
-        "what Science Fiction to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch The Hunger Games: Sunrise on the Reaping (2026) | MatchApp Ai",
-        "description": "Return to the world of Panem 24 years before Katniss Everdeen volunteers in her sister's place, commencing on the morning of the reaping of the 50th Hunger Ga",
-        "keywords": [
-          "The Hunger Games: Sunrise on the Reaping",
-          "The Hunger Games: Sunrise on the Reaping 2026",
-          "where to watch The Hunger Games: Sunrise on the Reaping",
-          "Science Fiction movie",
-          "Action movie",
-          "Adventure movie",
-          "Joseph Zada",
-          "Mckenna Grace",
-          "where to watch The Hunger Games: Sunrise on the Reaping 2026",
-          "The Hunger Games: Sunrise on the Reaping streaming in Brazil and United States",
-          "The Hunger Games: Sunrise on the Reaping cast synopsis trailer and where to watch",
-          "what Science Fiction to watch this week"
-        ],
-        "canonicalQuery": "The Hunger Games: Sunrise on the Reaping"
-      }
-    },
-    {
-      "title": "You Can See Everything",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1765072",
-      "poster": "https://image.tmdb.org/t/p/w780/mVh3qkw2NUFxWWyF0G1hg2Wh0K5.jpg",
-      "description": "Thirty-four days before she's sent to prison, notorious Silicon Valley founder Elizabeth Holmes invites a skeptical film crew to document her every move. What begins as an intimate portrait of an enigmatic felon becomes a mind-bending three-year journey into the abyss.",
-      "genre": [
-        "Documentary"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Elizabeth Holmes",
-        "Nathan Fielder",
-        "Billy Evans",
-        "Amanda Seyfried"
-      ],
-      "runtimeMinutes": 175,
-      "contentRating": "R",
-      "voteAverage": 8.6,
-      "previewUrl": "https://www.youtube.com/watch?v=IEx8D1Wb__U",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-11-26"
-        },
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-11-20"
-        },
-        "PT": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-11-12"
-        },
-        "US": {
-          "buy": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/1765072-you-can-see-everything/watch?locale=US",
-          "rent": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Fandango At Home"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-10-16"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1765072"
-      },
-      "sourceRank": 8,
-      "keywords": [
-        "You Can See Everything",
-        "You Can See Everything 2026",
-        "where to watch You Can See Everything",
-        "Documentary movie",
-        "Elizabeth Holmes",
-        "Nathan Fielder"
-      ],
-      "longTailKeywords": [
-        "where to watch You Can See Everything 2026",
-        "You Can See Everything streaming in Brazil and United States",
-        "You Can See Everything cast synopsis trailer and where to watch",
-        "what Documentary to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch You Can See Everything (2026) | MatchApp Ai",
-        "description": "Thirty-four days before she's sent to prison, notorious Silicon Valley founder Elizabeth Holmes invites a skeptical film crew to document her every move. What",
-        "keywords": [
-          "You Can See Everything",
-          "You Can See Everything 2026",
-          "where to watch You Can See Everything",
-          "Documentary movie",
-          "Elizabeth Holmes",
-          "Nathan Fielder",
-          "where to watch You Can See Everything 2026",
-          "You Can See Everything streaming in Brazil and United States",
-          "You Can See Everything cast synopsis trailer and where to watch",
-          "what Documentary to watch this week"
-        ],
-        "canonicalQuery": "You Can See Everything"
-      }
-    },
-    {
-      "title": "Wicker",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "GB",
-      "originName": "United Kingdom",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1195803",
-      "poster": "https://image.tmdb.org/t/p/w780/6FcBZOKvyrLCKGCyBG0ySCR4okt.jpg",
-      "description": "On the outskirts of a village by the sea, lives a Fisherwoman; smelly, single and perpetually ridiculed. One day, fed up with her stuffy, small-minded neighbours, she commissions herself a husband to be made from wicker. In an otherwise conservative town, this unconventional romance sparks outrage, jealousy and chaos.",
-      "genre": [
-        "Romance",
-        "Fantasy",
-        "Comedy"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Olivia Colman",
-        "Alexander Skarsgård",
-        "Peter Dinklage",
-        "Elizabeth Debicki"
-      ],
-      "runtimeMinutes": 105,
-      "contentRating": "R",
-      "voteAverage": 7.49,
-      "previewUrl": "https://www.youtube.com/watch?v=kA9NfV4pM_Q",
-      "availability": {
-        "GB": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-30"
-        },
-        "US": {
-          "buy": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/1195803-wicker/watch?locale=US",
-          "rent": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Google Play Movies",
-            "YouTube",
-            "Fandango At Home"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-10-23"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1195803"
-      },
-      "sourceRank": 9,
-      "keywords": [
-        "Wicker",
-        "Wicker 2026",
-        "where to watch Wicker",
-        "Romance movie",
-        "Fantasy movie",
-        "Comedy movie",
-        "Olivia Colman",
-        "Alexander Skarsgård"
-      ],
-      "longTailKeywords": [
-        "where to watch Wicker 2026",
-        "Wicker streaming in Brazil and United States",
-        "Wicker cast synopsis trailer and where to watch",
-        "what Romance to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Wicker (2026) | MatchApp Ai",
-        "description": "On the outskirts of a village by the sea, lives a Fisherwoman; smelly, single and perpetually ridiculed. One day, fed up with her stuffy, small-minded neighbo",
-        "keywords": [
-          "Wicker",
-          "Wicker 2026",
-          "where to watch Wicker",
-          "Romance movie",
-          "Fantasy movie",
-          "Comedy movie",
-          "Olivia Colman",
-          "Alexander Skarsgård",
-          "where to watch Wicker 2026",
-          "Wicker streaming in Brazil and United States",
-          "Wicker cast synopsis trailer and where to watch",
-          "what Romance to watch this week"
-        ],
-        "canonicalQuery": "Wicker"
-      }
-    },
-    {
-      "title": "Bruno Mars — Dance With Me",
-      "kind": "music-video",
-      "year": 2026,
-      "origin": "",
-      "platform": "YouTube",
-      "tmdbId": null,
-      "poster": "/assets/music-videos/1l7wbZmdtys.jpg",
-      "url": "https://www.youtube.com/watch?v=1l7wbZmdtys",
-      "artist": "Bruno Mars",
-      "songTitle": "Dance With Me",
-      "publishedAt": "2026-10-01T16:00:04+00:00",
-      "viewCount": 23357291,
-      "viewCountCheckedAt": "2026-11-26",
-      "channel": "Bruno Mars",
-      "channelUrl": "https://www.youtube.com/@brunomars",
-      "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 23,357,291 verified views at the latest daily check.",
-      "genre": [
-        "Music video"
-      ],
-      "inLanguage": "en",
-      "keywords": [
-        "Bruno Mars",
-        "Dance With Me",
-        "official music video",
-        "latest official music videos",
-        "YouTube music video",
-        "2026 music releases",
-        "Bruno Mars new music video",
-        "Bruno Mars Dance With Me official music video",
-        "Bruno Mars music videos",
-        "2026 music video releases"
-      ],
-      "longTailKeywords": [
-        "Bruno Mars Dance With Me official music video YouTube",
-        "where to watch Bruno Mars Dance With Me music video",
-        "new Bruno Mars music video 2026",
-        "Bruno Mars Dance With Me release date",
-        "Bruno Mars Dance With Me YouTube views"
-      ],
-      "seo": {
-        "title": "Bruno Mars — Dance With Me official music video | MatchApp Ai",
-        "description": "Official Bruno Mars music video for “Dance With Me”, released on YouTube 2026-10-01 with 23,357,291 verified views at the latest daily check.",
-        "keywords": [
-          "Bruno Mars",
-          "Dance With Me",
-          "official music video",
-          "YouTube music video",
-          "2026 music releases",
-          "Bruno Mars Dance With Me official music video",
-          "Bruno Mars music videos",
-          "2026 music video releases",
-          "latest official music videos"
-        ],
-        "canonicalQuery": "Bruno Mars Dance With Me official music video"
-      },
-      "source": "verified-official-music-video",
-      "sourceRank": 3
-    },
-    {
-      "title": "The Social Reckoning",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Cinemas",
-      "platforms": [],
-      "tmdbId": "1281331",
-      "poster": "https://image.tmdb.org/t/p/w780/vWbEuI3LuFOGYZIxESLAmwFwtvr.jpg",
-      "description": "Frances Haugen, a young Facebook engineer, enlists the help of Jeff Horwitz, a Wall Street Journal reporter, to go on a dangerous journey that ends up blowing the whistle on the social network's most guarded secrets.",
-      "genre": [
-        "Drama",
-        "Thriller"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Mikey Madison",
-        "Jeremy Allen White",
-        "Jeremy Strong",
-        "Wunmi Mosaku"
-      ],
-      "runtimeMinutes": 113,
-      "contentRating": "R",
-      "voteAverage": 7.03,
-      "previewUrl": "https://www.youtube.com/watch?v=R8ANzYpaZaY",
-      "availability": {
-        "BR": {
-          "buy": [],
-          "link": null,
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-10-22"
-        },
-        "GB": {
-          "buy": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video",
-            "Sky Store"
-          ],
-          "link": "https://www.themoviedb.org/movie/1281331-the-social-reckoning/watch?locale=GB",
-          "rent": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video",
-            "Sky Store"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-10-09"
-        },
-        "PT": {
-          "buy": [
-            "Rakuten TV",
-            "Amazon Video"
-          ],
-          "link": "https://www.themoviedb.org/movie/1281331-the-social-reckoning/watch?locale=PT",
-          "rent": [
-            "Rakuten TV",
-            "Amazon Video"
-          ],
-          "stream": [],
-          "cinema_release_date": null
-        },
-        "US": {
-          "buy": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/1281331-the-social-reckoning/watch?locale=US",
-          "rent": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Fandango At Home"
-          ],
-          "stream": [],
-          "cinema_release_date": "2026-10-09"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1281331"
-      },
-      "sourceRank": 10,
-      "keywords": [
-        "The Social Reckoning",
-        "The Social Reckoning 2026",
-        "where to watch The Social Reckoning",
-        "Drama movie",
-        "Thriller movie",
-        "Mikey Madison",
-        "Jeremy Allen White"
-      ],
-      "longTailKeywords": [
-        "where to watch The Social Reckoning 2026",
-        "The Social Reckoning streaming in Brazil and United States",
-        "The Social Reckoning cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch The Social Reckoning (2026) | MatchApp Ai",
-        "description": "Frances Haugen, a young Facebook engineer, enlists the help of Jeff Horwitz, a Wall Street Journal reporter, to go on a dangerous journey that ends up blowing",
-        "keywords": [
-          "The Social Reckoning",
-          "The Social Reckoning 2026",
-          "where to watch The Social Reckoning",
-          "Drama movie",
-          "Thriller movie",
-          "Mikey Madison",
-          "Jeremy Allen White",
-          "where to watch The Social Reckoning 2026",
-          "The Social Reckoning streaming in Brazil and United States",
-          "The Social Reckoning cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
-        ],
-        "canonicalQuery": "The Social Reckoning"
-      }
-    },
-    {
-      "title": "The Odyssey",
-      "kind": "movie",
-      "year": 2026,
-      "origin": "GB",
-      "originName": "United Kingdom",
-      "platform": "Claro tv+",
-      "platforms": [
-        "Claro tv+"
-      ],
-      "tmdbId": "1368337",
-      "poster": "https://image.tmdb.org/t/p/w780/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg",
-      "description": "Odysseus, the legendary King of Ithaca, embarks on a long and perilous journey home following the Trojan War. Throughout his voyage, he is forced to confront the whims of gods, mythological monsters, and trials that stretch both his cunning and his humanity to the breaking point.",
-      "genre": [
-        "Adventure",
-        "Action",
-        "Fantasy"
-      ],
-      "inLanguage": "en",
-      "cast": [
-        "Matt Damon",
-        "Tom Holland",
-        "Anne Hathaway",
-        "Robert Pattinson"
-      ],
-      "runtimeMinutes": 173,
-      "contentRating": "R",
-      "voteAverage": 8,
-      "previewUrl": "https://www.youtube.com/watch?v=AyIZ9tiiN8I",
-      "availability": {
-        "BR": {
-          "buy": [
-            "Apple TV Store",
-            "Amazon Video"
-          ],
-          "link": "https://www.themoviedb.org/movie/1368337-the-odyssey/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Claro tv+"
-          ],
-          "cinema_release_date": "2026-07-16"
-        },
-        "GB": {
-          "buy": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video",
-            "Sky Store"
-          ],
-          "link": "https://www.themoviedb.org/movie/1368337-the-odyssey/watch?locale=GB",
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-07-17"
-        },
-        "PT": {
-          "buy": [
-            "Apple TV Store",
-            "Rakuten TV",
-            "Amazon Video"
-          ],
-          "link": "https://www.themoviedb.org/movie/1368337-the-odyssey/watch?locale=PT",
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-07-16"
-        },
-        "US": {
-          "buy": [
-            "Amazon Video",
-            "Apple TV Store",
-            "Google Play Movies",
-            "YouTube",
-            "Fandango At Home"
-          ],
-          "link": "https://www.themoviedb.org/movie/1368337-the-odyssey/watch?locale=US",
-          "rent": [],
-          "stream": [],
-          "cinema_release_date": "2026-07-17"
-        },
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/movie/1368337"
-      },
-      "sourceRank": 11,
-      "keywords": [
-        "The Odyssey",
-        "The Odyssey 2026",
-        "where to watch The Odyssey",
-        "Adventure movie",
-        "Action movie",
-        "Fantasy movie",
-        "Claro tv+ trending movie",
-        "Matt Damon",
-        "Tom Holland"
-      ],
-      "longTailKeywords": [
-        "where to watch The Odyssey 2026",
-        "The Odyssey streaming in Brazil and United States",
-        "The Odyssey cast synopsis trailer and where to watch",
-        "what Adventure to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch The Odyssey (2026) | MatchApp Ai",
-        "description": "Odysseus, the legendary King of Ithaca, embarks on a long and perilous journey home following the Trojan War. Throughout his voyage, he is forced to confront ",
-        "keywords": [
-          "The Odyssey",
-          "The Odyssey 2026",
-          "where to watch The Odyssey",
-          "Adventure movie",
-          "Action movie",
-          "Fantasy movie",
-          "Claro tv+ trending movie",
-          "Matt Damon",
-          "Tom Holland",
-          "where to watch The Odyssey 2026",
-          "The Odyssey streaming in Brazil and United States",
-          "The Odyssey cast synopsis trailer and where to watch",
-          "what Adventure to watch this week"
-        ],
-        "canonicalQuery": "The Odyssey"
-      }
-    },
-    {
-      "title": "Nine to Six",
-      "kind": "tv",
-      "year": 2026,
-      "origin": "KR",
-      "originName": "South Korea",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "310209",
-      "poster": "https://image.tmdb.org/t/p/w780/1iVlL2Prt9Q5BWMfeZQ6d1ZAZBy.jpg",
-      "description": "Falsely blamed for a car fire, Chronic Motors Senior Manager Kang Yi-ji faces demotion. Can she find love and happiness amid office politics?",
-      "genre": [
-        "Drama",
-        "Comedy"
-      ],
-      "inLanguage": "ko",
-      "cast": [
-        "Park Min-young",
-        "Yook Sung-jae",
-        "Go Soo",
-        "Joo Hyun-young"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-G",
-      "voteAverage": 5,
-      "previewUrl": "https://www.youtube.com/watch?v=Tp8EdzRITTw",
-      "availability": {
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/310209"
-      },
-      "sourceRank": 12,
-      "keywords": [
-        "Nine to Six",
-        "Nine to Six 2026",
-        "where to watch Nine to Six",
-        "Drama series",
-        "Comedy series",
-        "Park Min-young",
-        "Yook Sung-jae"
-      ],
-      "longTailKeywords": [
-        "where to watch Nine to Six 2026",
-        "Nine to Six streaming in Brazil and United States",
-        "Nine to Six cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
-      ],
-      "seo": {
-        "title": "Where to watch Nine to Six (2026) | MatchApp Ai",
-        "description": "Falsely blamed for a car fire, Chronic Motors Senior Manager Kang Yi-ji faces demotion. Can she find love and happiness amid office politics?",
-        "keywords": [
-          "Nine to Six",
-          "Nine to Six 2026",
-          "where to watch Nine to Six",
-          "Drama series",
-          "Comedy series",
-          "Park Min-young",
-          "Yook Sung-jae",
-          "where to watch Nine to Six 2026",
-          "Nine to Six streaming in Brazil and United States",
-          "Nine to Six cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
-        ],
-        "canonicalQuery": "Nine to Six"
-      }
-    },
-    {
-      "title": "Taylor Swift — Patient Zero",
-      "kind": "music-video",
-      "year": 2026,
-      "origin": "",
-      "platform": "YouTube",
-      "tmdbId": null,
-      "poster": "/assets/music-videos/mw3kSNIxjqo.jpg",
-      "url": "https://www.youtube.com/watch?v=mw3kSNIxjqo",
-      "artist": "Taylor Swift",
-      "songTitle": "Patient Zero",
-      "publishedAt": "2026-09-29T22:00:19+00:00",
-      "viewCount": 32166639,
-      "viewCountCheckedAt": "2026-11-26",
-      "channel": "Taylor Swift",
-      "channelUrl": "https://www.youtube.com/@TaylorSwift",
-      "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 32,166,639 verified views at the latest daily check.",
-      "genre": [
-        "Music video"
-      ],
-      "inLanguage": "en",
-      "keywords": [
-        "Taylor Swift",
-        "Patient Zero",
-        "official music video",
-        "latest official music videos",
-        "YouTube music video",
-        "2026 music releases",
-        "Taylor Swift new music video",
-        "The Life of a Showgirl: The Encore",
-        "Taylor Swift Patient Zero official music video",
-        "Taylor Swift music videos",
-        "2026 music video releases"
-      ],
-      "longTailKeywords": [
-        "Taylor Swift Patient Zero official music video YouTube",
-        "where to watch Taylor Swift Patient Zero music video",
-        "new Taylor Swift music video 2026",
-        "Taylor Swift Patient Zero release date",
-        "Taylor Swift Patient Zero YouTube views"
-      ],
-      "seo": {
-        "title": "Taylor Swift — Patient Zero official music video | MatchApp Ai",
-        "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 32,166,639 verified views at the latest daily check.",
-        "keywords": [
-          "Taylor Swift",
-          "Patient Zero",
-          "official music video",
-          "YouTube music video",
-          "2026 music releases",
-          "The Life of a Showgirl: The Encore",
-          "Taylor Swift Patient Zero official music video",
-          "Taylor Swift music videos",
-          "2026 music video releases",
-          "latest official music videos"
-        ],
-        "canonicalQuery": "Taylor Swift Patient Zero official music video"
-      },
-      "source": "verified-official-music-video",
-      "sourceRank": 4
     },
     {
       "title": "Spider-Man: Brand New Day",
@@ -1525,7 +1371,7 @@
         "attribution": "JustWatch via TMDB",
         "source_page_url": "https://www.themoviedb.org/movie/969681"
       },
-      "sourceRank": 13,
+      "sourceRank": 12,
       "keywords": [
         "Spider-Man: Brand New Day",
         "Spider-Man: Brand New Day 2026",
@@ -1565,305 +1411,508 @@
       }
     },
     {
-      "title": "Fool Night",
-      "kind": "tv",
+      "title": "Taylor Swift — Patient Zero",
+      "kind": "music-video",
       "year": 2026,
-      "origin": "JP",
-      "originName": "Japan",
-      "platform": "",
-      "platforms": [],
-      "tmdbId": "326247",
-      "poster": "https://image.tmdb.org/t/p/w780/7kHLQwQZKbQOZJGx1mIDYIKeBYv.jpg",
-      "description": "In a dark world full of despair, he chooses the path of transforming into a Spirit Flower — a plant into which humans transform. Should he continue living as a person, or discard his pain and start a new life as a plant? Which path would you choose in his situation?",
+      "origin": "",
+      "platform": "YouTube",
+      "tmdbId": null,
+      "poster": "/assets/music-videos/mw3kSNIxjqo.jpg",
+      "url": "https://www.youtube.com/watch?v=mw3kSNIxjqo",
+      "artist": "Taylor Swift",
+      "songTitle": "Patient Zero",
+      "publishedAt": "2026-09-29T22:00:19+00:00",
+      "viewCount": 32166639,
+      "viewCountCheckedAt": "2026-11-26",
+      "channel": "Taylor Swift",
+      "channelUrl": "https://www.youtube.com/@TaylorSwift",
+      "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 32,166,639 verified views at the latest daily check.",
       "genre": [
-        "Animation",
-        "Drama",
-        "Sci-Fi & Fantasy",
-        "Mystery"
+        "Music video"
       ],
-      "inLanguage": "ja",
-      "cast": [
-        "Koki Uchiyama",
-        "Minako Kotobuki",
-        "Junya Enoki",
-        "Aya Endo"
-      ],
-      "runtimeMinutes": null,
-      "contentRating": "18",
-      "voteAverage": 0,
-      "previewUrl": "https://www.youtube.com/watch?v=2Qg_AfPF2sM",
-      "availability": {
-        "source": "tmdb-watch-providers",
-        "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/326247"
-      },
-      "sourceRank": 14,
+      "inLanguage": "en",
       "keywords": [
-        "Fool Night",
-        "Fool Night 2026",
-        "where to watch Fool Night",
-        "Animation series",
-        "Drama series",
-        "Sci-Fi & Fantasy series",
-        "Koki Uchiyama",
-        "Minako Kotobuki"
+        "Taylor Swift",
+        "Patient Zero",
+        "official music video",
+        "latest official music videos",
+        "YouTube music video",
+        "2026 music releases",
+        "Taylor Swift new music video",
+        "The Life of a Showgirl: The Encore",
+        "Taylor Swift Patient Zero official music video",
+        "Taylor Swift music videos",
+        "2026 music video releases"
       ],
       "longTailKeywords": [
-        "where to watch Fool Night 2026",
-        "Fool Night streaming in Brazil and United States",
-        "Fool Night cast synopsis trailer and where to watch",
-        "what Animation to watch this week"
+        "Taylor Swift Patient Zero official music video YouTube",
+        "where to watch Taylor Swift Patient Zero music video",
+        "new Taylor Swift music video 2026",
+        "Taylor Swift Patient Zero release date",
+        "Taylor Swift Patient Zero YouTube views"
       ],
       "seo": {
-        "title": "Where to watch Fool Night (2026) | MatchApp Ai",
-        "description": "In a dark world full of despair, he chooses the path of transforming into a Spirit Flower — a plant into which humans transform. Should he continue living as ",
+        "title": "Taylor Swift — Patient Zero official music video | MatchApp Ai",
+        "description": "Official Taylor Swift music video for “Patient Zero”, released on YouTube 2026-09-29 with 32,166,639 verified views at the latest daily check.",
         "keywords": [
-          "Fool Night",
-          "Fool Night 2026",
-          "where to watch Fool Night",
-          "Animation series",
-          "Drama series",
-          "Sci-Fi & Fantasy series",
-          "Koki Uchiyama",
-          "Minako Kotobuki",
-          "where to watch Fool Night 2026",
-          "Fool Night streaming in Brazil and United States",
-          "Fool Night cast synopsis trailer and where to watch",
-          "what Animation to watch this week"
+          "Taylor Swift",
+          "Patient Zero",
+          "official music video",
+          "YouTube music video",
+          "2026 music releases",
+          "The Life of a Showgirl: The Encore",
+          "Taylor Swift Patient Zero official music video",
+          "Taylor Swift music videos",
+          "2026 music video releases",
+          "latest official music videos"
         ],
-        "canonicalQuery": "Fool Night"
-      }
+        "canonicalQuery": "Taylor Swift Patient Zero official music video"
+      },
+      "source": "verified-official-music-video",
+      "sourceRank": 4
     },
     {
-      "title": "The Hunting Wives",
-      "kind": "tv",
-      "year": 2025,
-      "origin": "US",
-      "originName": "United States",
-      "platform": "Netflix",
+      "title": "The Odyssey",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "GB",
+      "originName": "United Kingdom",
+      "platform": "Claro tv+",
       "platforms": [
-        "Netflix",
-        "Netflix Standard with Ads",
-        "ITVX Premium",
-        "ITVX"
+        "Claro tv+"
       ],
-      "tmdbId": "244447",
-      "poster": "https://image.tmdb.org/t/p/w780/knR0tDKgFwsUMxe0MqZSWQYhwpL.jpg",
-      "description": "Sophie trades New England for East Texas and falls into a wealthy socialite's magnetic orbit — where a clique of housewives hide deadly secrets.",
+      "tmdbId": "1368337",
+      "poster": "https://image.tmdb.org/t/p/w780/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg",
+      "description": "Odysseus, the legendary King of Ithaca, embarks on a long and perilous journey home following the Trojan War. Throughout his voyage, he is forced to confront the whims of gods, mythological monsters, and trials that stretch both his cunning and his humanity to the breaking point.",
       "genre": [
-        "Drama",
-        "Mystery"
+        "Adventure",
+        "Action",
+        "Fantasy"
       ],
       "inLanguage": "en",
       "cast": [
-        "Brittany Snow",
-        "Malin Akerman",
-        "Dermot Mulroney",
-        "Jaime Ray Newman"
+        "Matt Damon",
+        "Tom Holland",
+        "Anne Hathaway",
+        "Robert Pattinson"
       ],
-      "runtimeMinutes": null,
-      "contentRating": "TV-MA",
-      "voteAverage": 7,
-      "previewUrl": "https://www.youtube.com/watch?v=uZvZfqiAhdQ",
+      "runtimeMinutes": 173,
+      "contentRating": "R",
+      "voteAverage": 8.03,
+      "previewUrl": "https://www.youtube.com/watch?v=AyIZ9tiiN8I",
       "availability": {
         "BR": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/244447-the-hunting-wives/watch?locale=BR",
-          "rent": [],
-          "stream": [
-            "Netflix",
-            "Netflix Standard with Ads"
-          ],
-          "cinema_release_date": null
-        },
-        "GB": {
           "buy": [
             "Apple TV Store",
             "Amazon Video"
           ],
-          "link": "https://www.themoviedb.org/tv/244447-the-hunting-wives/watch?locale=GB",
+          "link": "https://www.themoviedb.org/movie/1368337-the-odyssey/watch?locale=BR",
           "rent": [],
           "stream": [
-            "ITVX Premium",
-            "ITVX"
+            "Claro tv+"
           ],
-          "cinema_release_date": null
+          "cinema_release_date": "2026-07-16"
+        },
+        "GB": {
+          "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
+            "Amazon Video",
+            "Sky Store"
+          ],
+          "link": "https://www.themoviedb.org/movie/1368337-the-odyssey/watch?locale=GB",
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-07-17"
         },
         "PT": {
           "buy": [
+            "Apple TV Store",
+            "Rakuten TV",
             "Amazon Video"
           ],
-          "link": "https://www.themoviedb.org/tv/244447-the-hunting-wives/watch?locale=PT",
+          "link": "https://www.themoviedb.org/movie/1368337-the-odyssey/watch?locale=PT",
           "rent": [],
           "stream": [],
-          "cinema_release_date": null
+          "cinema_release_date": "2026-07-16"
         },
         "US": {
           "buy": [
             "Amazon Video",
             "Apple TV Store",
             "Google Play Movies",
+            "YouTube",
             "Fandango At Home"
           ],
-          "link": "https://www.themoviedb.org/tv/244447-the-hunting-wives/watch?locale=US",
+          "link": "https://www.themoviedb.org/movie/1368337-the-odyssey/watch?locale=US",
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-07-17"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1368337"
+      },
+      "sourceRank": 13,
+      "keywords": [
+        "The Odyssey",
+        "The Odyssey 2026",
+        "where to watch The Odyssey",
+        "Adventure movie",
+        "Action movie",
+        "Fantasy movie",
+        "Claro tv+ trending movie",
+        "Matt Damon",
+        "Tom Holland"
+      ],
+      "longTailKeywords": [
+        "where to watch The Odyssey 2026",
+        "The Odyssey streaming in Brazil and United States",
+        "The Odyssey cast synopsis trailer and where to watch",
+        "what Adventure to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch The Odyssey (2026) | MatchApp Ai",
+        "description": "Odysseus, the legendary King of Ithaca, embarks on a long and perilous journey home following the Trojan War. Throughout his voyage, he is forced to confront ",
+        "keywords": [
+          "The Odyssey",
+          "The Odyssey 2026",
+          "where to watch The Odyssey",
+          "Adventure movie",
+          "Action movie",
+          "Fantasy movie",
+          "Claro tv+ trending movie",
+          "Matt Damon",
+          "Tom Holland",
+          "where to watch The Odyssey 2026",
+          "The Odyssey streaming in Brazil and United States",
+          "The Odyssey cast synopsis trailer and where to watch",
+          "what Adventure to watch this week"
+        ],
+        "canonicalQuery": "The Odyssey"
+      }
+    },
+    {
+      "title": "You Can See Everything",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "US",
+      "originName": "United States",
+      "platform": "Cinemas",
+      "platforms": [],
+      "tmdbId": "1765072",
+      "poster": "https://image.tmdb.org/t/p/w780/mVh3qkw2NUFxWWyF0G1hg2Wh0K5.jpg",
+      "description": "Thirty-four days before she's sent to prison, notorious Silicon Valley founder Elizabeth Holmes invites a skeptical film crew to document her every move. What begins as an intimate portrait of an enigmatic felon becomes a mind-bending three-year journey into the abyss.",
+      "genre": [
+        "Documentary"
+      ],
+      "inLanguage": "en",
+      "cast": [
+        "Elizabeth Holmes",
+        "Nathan Fielder",
+        "Billy Evans",
+        "Amanda Seyfried"
+      ],
+      "runtimeMinutes": 175,
+      "contentRating": "R",
+      "voteAverage": 8.56,
+      "previewUrl": "https://www.youtube.com/watch?v=IEx8D1Wb__U",
+      "availability": {
+        "BR": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-11-26"
+        },
+        "GB": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-11-20"
+        },
+        "PT": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1765072-you-can-see-everything/watch?locale=PT",
+          "rent": [
+            "Rakuten TV"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-11-12"
+        },
+        "US": {
+          "buy": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home"
+          ],
+          "link": "https://www.themoviedb.org/movie/1765072-you-can-see-everything/watch?locale=US",
+          "rent": [
+            "Amazon Video",
+            "Apple TV Store",
+            "Fandango At Home",
+            "Plex"
+          ],
+          "stream": [],
+          "cinema_release_date": "2026-10-16"
+        },
+        "source": "tmdb-watch-providers",
+        "attribution": "JustWatch via TMDB",
+        "source_page_url": "https://www.themoviedb.org/movie/1765072"
+      },
+      "sourceRank": 14,
+      "keywords": [
+        "You Can See Everything",
+        "You Can See Everything 2026",
+        "where to watch You Can See Everything",
+        "Documentary movie",
+        "Elizabeth Holmes",
+        "Nathan Fielder"
+      ],
+      "longTailKeywords": [
+        "where to watch You Can See Everything 2026",
+        "You Can See Everything streaming in Brazil and United States",
+        "You Can See Everything cast synopsis trailer and where to watch",
+        "what Documentary to watch this week"
+      ],
+      "seo": {
+        "title": "Where to watch You Can See Everything (2026) | MatchApp Ai",
+        "description": "Thirty-four days before she's sent to prison, notorious Silicon Valley founder Elizabeth Holmes invites a skeptical film crew to document her every move. What",
+        "keywords": [
+          "You Can See Everything",
+          "You Can See Everything 2026",
+          "where to watch You Can See Everything",
+          "Documentary movie",
+          "Elizabeth Holmes",
+          "Nathan Fielder",
+          "where to watch You Can See Everything 2026",
+          "You Can See Everything streaming in Brazil and United States",
+          "You Can See Everything cast synopsis trailer and where to watch",
+          "what Documentary to watch this week"
+        ],
+        "canonicalQuery": "You Can See Everything"
+      }
+    },
+    {
+      "title": "Drishyam: The Conclusion",
+      "kind": "movie",
+      "year": 2026,
+      "origin": "IN",
+      "originName": "India",
+      "platform": "Netflix",
+      "platforms": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "tmdbId": "1269325",
+      "poster": "https://image.tmdb.org/t/p/w780/67FsF2kpgEZ1T5Qos4adgqm9dLf.jpg",
+      "description": "Years after outsmarting the police, Vijay Salgaonkar's past resurfaces when a new evidence threatens to expose his secret. As the investigation reopens, he must outwit the system once again to save his family.",
+      "genre": [
+        "Thriller",
+        "Drama",
+        "Mystery",
+        "Crime"
+      ],
+      "inLanguage": "hi",
+      "cast": [
+        "Ajay Devgn",
+        "Jaideep Ahlawat",
+        "Tabu",
+        "Shriya Saran"
+      ],
+      "runtimeMinutes": 148,
+      "contentRating": "NR",
+      "voteAverage": 7.7,
+      "previewUrl": "https://www.youtube.com/watch?v=MFQFxsDWbA8",
+      "availability": {
+        "GB": {
+          "buy": [],
+          "link": "https://www.themoviedb.org/movie/1269325-drsym-akhiri-hissa/watch?locale=GB",
           "rent": [],
           "stream": [
             "Netflix",
             "Netflix Standard with Ads"
           ],
-          "cinema_release_date": null
+          "cinema_release_date": "2026-10-02"
+        },
+        "US": {
+          "buy": [],
+          "link": null,
+          "rent": [],
+          "stream": [],
+          "cinema_release_date": "2026-10-02"
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/244447"
+        "source_page_url": "https://www.themoviedb.org/movie/1269325"
       },
       "sourceRank": 15,
       "keywords": [
-        "The Hunting Wives",
-        "The Hunting Wives 2025",
-        "where to watch The Hunting Wives",
-        "Drama series",
-        "Mystery series",
-        "Netflix trending series",
-        "Netflix Standard with Ads trending series",
-        "Brittany Snow",
-        "Malin Akerman"
+        "Drishyam: The Conclusion",
+        "Drishyam: The Conclusion 2026",
+        "where to watch Drishyam: The Conclusion",
+        "Thriller movie",
+        "Drama movie",
+        "Mystery movie",
+        "Netflix trending movie",
+        "Netflix Standard with Ads trending movie",
+        "Ajay Devgn",
+        "Jaideep Ahlawat"
       ],
       "longTailKeywords": [
-        "where to watch The Hunting Wives 2025",
-        "The Hunting Wives streaming in Brazil and United States",
-        "The Hunting Wives cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
+        "where to watch Drishyam: The Conclusion 2026",
+        "Drishyam: The Conclusion streaming in Brazil and United States",
+        "Drishyam: The Conclusion cast synopsis trailer and where to watch",
+        "what Thriller to watch this week"
       ],
       "seo": {
-        "title": "Where to watch The Hunting Wives (2025) | MatchApp Ai",
-        "description": "Sophie trades New England for East Texas and falls into a wealthy socialite's magnetic orbit — where a clique of housewives hide deadly secrets.",
+        "title": "Where to watch Drishyam: The Conclusion (2026) | MatchApp Ai",
+        "description": "Years after outsmarting the police, Vijay Salgaonkar's past resurfaces when a new evidence threatens to expose his secret. As the investigation reopens, he mu",
         "keywords": [
-          "The Hunting Wives",
-          "The Hunting Wives 2025",
-          "where to watch The Hunting Wives",
-          "Drama series",
-          "Mystery series",
-          "Netflix trending series",
-          "Netflix Standard with Ads trending series",
-          "Brittany Snow",
-          "Malin Akerman",
-          "where to watch The Hunting Wives 2025",
-          "The Hunting Wives streaming in Brazil and United States",
-          "The Hunting Wives cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
+          "Drishyam: The Conclusion",
+          "Drishyam: The Conclusion 2026",
+          "where to watch Drishyam: The Conclusion",
+          "Thriller movie",
+          "Drama movie",
+          "Mystery movie",
+          "Netflix trending movie",
+          "Netflix Standard with Ads trending movie",
+          "Ajay Devgn",
+          "Jaideep Ahlawat",
+          "where to watch Drishyam: The Conclusion 2026",
+          "Drishyam: The Conclusion streaming in Brazil and United States",
+          "Drishyam: The Conclusion cast synopsis trailer and where to watch",
+          "what Thriller to watch this week"
         ],
-        "canonicalQuery": "The Hunting Wives"
+        "canonicalQuery": "Drishyam: The Conclusion"
       }
     },
     {
-      "title": "The Remarried Empress",
+      "title": "Sweetpea",
       "kind": "tv",
-      "year": 2026,
-      "origin": "KR",
-      "originName": "South Korea",
-      "platform": "Disney Plus",
+      "year": 2024,
+      "origin": "GB",
+      "originName": "United Kingdom",
+      "platform": "Amazon Prime Video",
       "platforms": [
-        "Disney Plus",
-        "Hulu"
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "Philo",
+        "Starz Amazon Channel",
+        "Starz",
+        "Starz Roku Premium Channel",
+        "The Roku Channel",
+        "Sky Go",
+        "Now TV",
+        "SkyShowtime",
+        "Sky Showtime Amazon Channel"
       ],
-      "tmdbId": "279246",
-      "poster": "https://image.tmdb.org/t/p/w780/zn3IXZzGavH3qle3o3g1r32eXDy.jpg",
-      "description": "Beloved Empress Navier rules the Eastern Empire alongside Emperor Sovieshu. But when Sovieshu falls for a runaway slave and demands a divorce, Navier will agree on one condition: that she's given approval to remarry rival Prince Heinrey of the Western Kingdom.",
+      "tmdbId": "218347",
+      "poster": "https://image.tmdb.org/t/p/w780/A4A0juWk4ofqP6Q0TFY6CRhcCAa.jpg",
+      "description": "Rhiannon Lewis doesn't make much of an impression - people walk past her in the street without a second glance. That is until she is pushed over the edge and loses control. Rhiannon's life transforms, but can she keep her killer secret?",
       "genre": [
-        "Drama",
-        "Sci-Fi & Fantasy"
+        "Comedy",
+        "Drama"
       ],
-      "inLanguage": "ko",
+      "inLanguage": "en",
       "cast": [
-        "Shin Min-a",
-        "Ju Ji-hoon",
-        "Lee Jong-suk",
-        "Lee Se-young"
+        "Ella Purnell",
+        "Jon Pointing",
+        "Jeremy Swift",
+        "Leah Harvey"
       ],
       "runtimeMinutes": null,
-      "contentRating": "TV-14",
-      "voteAverage": 8.77,
-      "previewUrl": "https://www.youtube.com/watch?v=aScUjuKvHSo",
+      "contentRating": "TV-MA",
+      "voteAverage": 7.4,
+      "previewUrl": "https://www.youtube.com/watch?v=7-Zb6aYhAsk",
       "availability": {
         "BR": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/279246-jaehon-hwanghu/watch?locale=BR",
+          "link": "https://www.themoviedb.org/tv/218347-sweetpea/watch?locale=BR",
           "rent": [],
           "stream": [
-            "Disney Plus"
+            "Amazon Prime Video",
+            "Amazon Prime Video with Ads"
           ],
           "cinema_release_date": null
         },
         "GB": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/279246-jaehon-hwanghu/watch?locale=GB",
+          "link": "https://www.themoviedb.org/tv/218347-sweetpea/watch?locale=GB",
           "rent": [],
           "stream": [
-            "Disney Plus"
+            "Sky Go",
+            "Now TV"
           ],
           "cinema_release_date": null
         },
         "PT": {
-          "buy": [],
-          "link": "https://www.themoviedb.org/tv/279246-jaehon-hwanghu/watch?locale=PT",
+          "buy": [
+            "Amazon Video"
+          ],
+          "link": "https://www.themoviedb.org/tv/218347-sweetpea/watch?locale=PT",
           "rent": [],
           "stream": [
-            "Disney Plus"
+            "SkyShowtime",
+            "Sky Showtime Amazon Channel"
           ],
           "cinema_release_date": null
         },
         "US": {
           "buy": [],
-          "link": "https://www.themoviedb.org/tv/279246-jaehon-hwanghu/watch?locale=US",
+          "link": "https://www.themoviedb.org/tv/218347-sweetpea/watch?locale=US",
           "rent": [],
           "stream": [
-            "Disney Plus",
-            "Hulu"
+            "Philo",
+            "Starz Amazon Channel",
+            "Starz",
+            "Starz Roku Premium Channel",
+            "The Roku Channel"
           ],
           "cinema_release_date": null
         },
         "source": "tmdb-watch-providers",
         "attribution": "JustWatch via TMDB",
-        "source_page_url": "https://www.themoviedb.org/tv/279246"
+        "source_page_url": "https://www.themoviedb.org/tv/218347"
       },
       "sourceRank": 16,
       "keywords": [
-        "The Remarried Empress",
-        "The Remarried Empress 2026",
-        "where to watch The Remarried Empress",
+        "Sweetpea",
+        "Sweetpea 2024",
+        "where to watch Sweetpea",
+        "Comedy series",
         "Drama series",
-        "Sci-Fi & Fantasy series",
-        "Disney Plus trending series",
-        "Hulu trending series",
-        "Shin Min-a",
-        "Ju Ji-hoon"
+        "Amazon Prime Video trending series",
+        "Amazon Prime Video with Ads trending series",
+        "Ella Purnell",
+        "Jon Pointing"
       ],
       "longTailKeywords": [
-        "where to watch The Remarried Empress 2026",
-        "The Remarried Empress streaming in Brazil and United States",
-        "The Remarried Empress cast synopsis trailer and where to watch",
-        "what Drama to watch this week"
+        "where to watch Sweetpea 2024",
+        "Sweetpea streaming in Brazil and United States",
+        "Sweetpea cast synopsis trailer and where to watch",
+        "what Comedy to watch this week"
       ],
       "seo": {
-        "title": "Where to watch The Remarried Empress (2026) | MatchApp Ai",
-        "description": "Beloved Empress Navier rules the Eastern Empire alongside Emperor Sovieshu. But when Sovieshu falls for a runaway slave and demands a divorce, Navier will agr",
+        "title": "Where to watch Sweetpea (2024) | MatchApp Ai",
+        "description": "Rhiannon Lewis doesn't make much of an impression - people walk past her in the street without a second glance. That is until she is pushed over the edge and ",
         "keywords": [
-          "The Remarried Empress",
-          "The Remarried Empress 2026",
-          "where to watch The Remarried Empress",
+          "Sweetpea",
+          "Sweetpea 2024",
+          "where to watch Sweetpea",
+          "Comedy series",
           "Drama series",
-          "Sci-Fi & Fantasy series",
-          "Disney Plus trending series",
-          "Hulu trending series",
-          "Shin Min-a",
-          "Ju Ji-hoon",
-          "where to watch The Remarried Empress 2026",
-          "The Remarried Empress streaming in Brazil and United States",
-          "The Remarried Empress cast synopsis trailer and where to watch",
-          "what Drama to watch this week"
+          "Amazon Prime Video trending series",
+          "Amazon Prime Video with Ads trending series",
+          "Ella Purnell",
+          "Jon Pointing",
+          "where to watch Sweetpea 2024",
+          "Sweetpea streaming in Brazil and United States",
+          "Sweetpea cast synopsis trailer and where to watch",
+          "what Comedy to watch this week"
         ],
-        "canonicalQuery": "The Remarried Empress"
+        "canonicalQuery": "Sweetpea"
       }
     }
   ]
