@@ -46,8 +46,10 @@ function mount(opts={}){
  if(opts.session)w.sessionStorage.setItem('matchapp_play_bubble_session_v1',JSON.stringify(opts.session));
  Object.defineProperty(w.navigator,'userAgent',{value:opts.ua||UA.android,configurable:true});
  Object.defineProperty(w.navigator,'maxTouchPoints',{value:opts.touch||0,configurable:true});
+ Object.defineProperty(w.navigator,'platform',{value:opts.platform||'',configurable:true});
+ Object.defineProperty(w.navigator,'userAgentData',{value:opts.uaData,configurable:true});
  Object.defineProperty(w.navigator,'getInstalledRelatedApps',{value:opts.related?()=>Promise.resolve(opts.related):undefined,configurable:true});
- w.matchMedia=()=>({matches:!!opts.standalone,addListener(){},removeListener(){}});
+ w.matchMedia=q=>({matches:q==='(pointer: coarse)'?!!opts.coarse:!!opts.standalone,addListener(){},removeListener(){}});
  w.matchAppInstallState={isInstalled:()=>!!opts.installed};
  w.MatchNotifications={pushLocal:item=>{items.push(item);return true}};
  if(Number.isFinite(opts.visits))w.localStorage.setItem('matchapp_install_prompt_visits_v2',String(opts.visits));
@@ -116,9 +118,25 @@ test('iPhone and Mac prompts use the real Apple home-screen/app flow through the
  const mac=mount({ua:UA.mac});await fire(mac);assert.equal(mac.items.length,1);assert.match(mac.items[0].body,/Dock/i);assert.equal(mac.items[0].action,'install');mac.dom.window.close();
 });
 test('native/installed/Kids/associated installs are never prompted',async()=>{
- for(const opts of [{ua:UA.native},{standalone:true},{installed:true},{kids:true},{related:[{platform:'play',id:'com.jonas.papercup'}]}]){
+ for(const opts of [{ua:UA.native},{standalone:true},{kids:true},{related:[{platform:'play',id:'com.jonas.papercup'}]}]){
    const ctx=mount(opts);await fire(ctx);assert.equal(ctx.items.length,0,JSON.stringify(opts));assert.equal(bubble(ctx),null);ctx.dom.window.close();
  }
+});
+test('Android Edge and Chrome ignore stale browser-install hints but honor verified Play installation',async()=>{
+ for(const ua of [UA.android,UA.android+' EdgA/142.0']){
+   const ctx=mount({ua,installed:true});await fire(ctx);assert.ok(bubble(ctx));assert.equal(ctx.w.document.querySelectorAll('#ma-install-offer').length,1);ctx.dom.window.close();
+   const installed=mount({ua,related:[{platform:'play',id:'com.jonas.papercup'}]});await fire(installed);assert.equal(bubble(installed),null);installed.dom.window.close();
+ }
+ assert.doesNotMatch(read('patches/jonas-adult-page.js'),/play-prompt-fix-20261118/);
+ assert.doesNotMatch(read('patches/play-prompt-fix-20261118.js'),/createElement|setTimeout/);
+});
+test('physical ARM Android tablets with desktop Chromium UA still receive the Play invitation',async()=>{
+ const ua='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/158.0.0.0 Safari/537.36';
+ for(const browser of [ua,ua+' Edg/158.0.4370.33']){
+  const ctx=mount({ua:browser,platform:'Linux armv81',touch:5,coarse:true,uaData:{platform:'Linux'}});await fire(ctx);assert.ok(bubble(ctx));assert.equal(ctx.items.length,0);ctx.dom.window.close();
+ }
+ const desktop=mount({ua,platform:'Linux x86_64',touch:5,coarse:true});await fire(desktop);assert.equal(bubble(desktop),null);assert.equal(desktop.items.length,1);desktop.dom.window.close();
+ const hinted=mount({ua,uaData:{platform:'Android'}});await fire(hinted);assert.ok(bubble(hinted));hinted.dom.window.close();
 });
 test('notification center exposes local install notifications, branded arrival feedback and bulk delete',()=>{
  assert.match(notifications,/function pushLocal\(item\)/);

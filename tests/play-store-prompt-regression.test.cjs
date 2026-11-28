@@ -10,7 +10,7 @@ const script = fs.readFileSync(path.join(__dirname, '..', 'patches', 'android-do
 const android = 'Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 Chrome/130.0 Mobile Safari/537.36';
 
 function fixture({ userAgent = android, url = 'https://matchapp.tv/', dialog = false,
-  legacyHomeOwner = false } = {}) {
+  legacyHomeOwner = false, platform = '', touch = 0, coarse = false } = {}) {
   const html = '<!doctype html><html><head>' +
     (legacyHomeOwner ? '<script data-browser-install-offer="1"></script>' : '') +
     '</head><body><button id="content">Explore</button>' +
@@ -18,6 +18,9 @@ function fixture({ userAgent = android, url = 'https://matchapp.tv/', dialog = f
   const dom = new JSDOM(html, { url, runScripts: 'outside-only', pretendToBeVisual: true });
   const { window } = dom;
   Object.defineProperty(window.navigator, 'userAgent', { configurable: true, value: userAgent });
+  Object.defineProperty(window.navigator,'platform',{configurable:true,value:platform});
+  Object.defineProperty(window.navigator,'maxTouchPoints',{configurable:true,value:touch});
+  window.matchMedia=q=>({matches:q==='(pointer: coarse)'&&coarse});
   const tasks = new Map();
   let now = 1700000000000;
   let sequence = 0;
@@ -61,10 +64,12 @@ function fixture({ userAgent = android, url = 'https://matchapp.tv/', dialog = f
 test('home and explore cache-bust the corrected Android promotion loader', () => {
   const root = path.join(__dirname, '..');
   const loader = fs.readFileSync(path.join(root, 'patches', 'jonas-adult-page.js'), 'utf8');
-  assert.match(loader, /android-download-bubble-20261117\.js\?v=20261123-smart2/);
+  assert.match(loader, /android-download-bubble-20261117\.js\?v=20261125-single/);
+  assert.doesNotMatch(loader,/play-prompt-fix-20261118|download-bubble-20261118/);
+  for(const retired of ['play-prompt-fix-20261118.js','download-bubble-20261118.js'])assert.doesNotMatch(fs.readFileSync(path.join(root,'patches',retired),'utf8'),/createElement|setTimeout/);
   for (const page of ['index.html', 'explore.html']) {
     const html = fs.readFileSync(path.join(root, page), 'utf8');
-    assert.match(html, /jonas-adult-page\.js\?[^"\n]*play=20261123-smart2/,
+    assert.match(html, /jonas-adult-page\.js\?[^"\n]*play=20261125-single/,
       `${page} should load the corrected prompt without a stale parent script`);
   }
 });
@@ -94,6 +99,12 @@ test('Home yields to its existing localized Android Play offer instead of stacki
   assert.ok(other.prompt(), 'Explore retains the smart official-artwork invitation');
   other.close();
   other.dom.window.close();
+});
+
+test('Explore recognizes desktop-mode Android ARM touch tablets without misclassifying x86 desktops',()=>{
+ const userAgent='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/158.0.0.0 Safari/537.36 Edg/158.0.4370.33';
+ for(const [platform,expected] of [['Linux armv81',true],['Linux x86_64',false]]){
+ const f=fixture({url:'https://matchapp.tv/explore.html',userAgent,platform,touch:5,coarse:true});f.advance(11000);assert.equal(!!f.prompt(),expected);f.dom.window.close();}
 });
 
 test('Android engagement shows prompt, and dismissal respects cooldown and four-show cap', () => {
