@@ -10,18 +10,23 @@
   const MAX_VISITS=2;
   const PLAY='https://play.google.com/store/apps/details?id=com.jonas.papercup';
   const DELAY=1100;
-  let queued=false,completed=false;
+  let queued=false,completed=false,verifiedPlayInstalled=false;
 
   function nativeShell(){
     return /MatchAppTVAndroid|MatchAppAiAndroid|MatchAppAiKidsAndroid/i.test(navigator.userAgent||'') ||
-      document.documentElement.classList.contains('matchapp-android');
+      document.documentElement.classList.contains('matchapp-android') || document.documentElement.classList.contains('ma-native-shell');
   }
   function standalone(){
     return navigator.standalone===true ||
       !!(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches);
   }
   function android(){
-    return /Android/i.test(navigator.userAgent||'')&&!nativeShell();
+    if(nativeShell())return false;
+    const ua=navigator.userAgent||'', platform=navigator.platform||'';
+    if(/Android/i.test(ua)||navigator.userAgentData?.platform==='Android')return true;
+    // Android Chromium tablets in desktop-site mode report Linux/x86 in UA/CH
+    // while navigator.platform still exposes the ARM device and touch input.
+    return /Linux/i.test(ua)&&/Chrome\//i.test(ua)&&/^Linux (?:arm|aarch64)/i.test(platform)&&Number(navigator.maxTouchPoints||0)>1&&!!window.matchMedia?.('(pointer: coarse)').matches;
   }
   function apple(){
     const ua=navigator.userAgent||'';
@@ -34,8 +39,8 @@
     return document.body?.classList.contains('page-home')&&(location.pathname==='/'||location.pathname==='/index.html');
   }
   function installed(){
-    return standalone()||nativeShell()||
-      !!(window.matchAppInstallState&&window.matchAppInstallState.isInstalled&&window.matchAppInstallState.isInstalled());
+    return standalone()||nativeShell()||(android()?verifiedPlayInstalled:
+      !!(window.matchAppInstallState&&window.matchAppInstallState.isInstalled&&window.matchAppInstallState.isInstalled()));
   }
   async function relatedInstalled(){
     if(typeof navigator.getInstalledRelatedApps!=='function')return false;
@@ -44,6 +49,8 @@
         navigator.getInstalledRelatedApps(),
         new Promise(resolve=>setTimeout(()=>resolve([]),1400))
       ]);
+      verifiedPlayInstalled=Array.isArray(apps)&&apps.some(app=>app.platform==='play'&&app.id==='com.jonas.papercup');
+      if(android())return verifiedPlayInstalled;
       return Array.isArray(apps)&&apps.some(app=>
         (app.platform==='play'&&app.id==='com.jonas.papercup')||
         (app.platform==='webapp'&&(app.id==='https://matchapp.tv/'||/manifest(?:-pt-br)?\.json$/i.test(String(app.url||''))))
@@ -148,9 +155,9 @@
     // Keep both actions visible; a short invitation may omit its helper copy.
     if(!box.getBoundingClientRect().height)return true;
     const headerBottom=Math.max(0,...[...document.querySelectorAll('.app-header,#ma-reference-header')]
-      .map(node=>node.getBoundingClientRect()).filter(r=>r.height>0).map(r=>r.bottom));
+      .map(node=>node.getBoundingClientRect()).filter(r=>r.height>0&&r.top<innerHeight&&r.bottom>0&&r.top<=8).map(r=>r.bottom));
     const dockTop=Math.min(innerHeight,...[...document.querySelectorAll('.ma-cinema-dock,.ma-reference-dock')]
-      .map(node=>node.getBoundingClientRect()).filter(r=>r.height>0&&r.top>=0).map(r=>r.top));
+      .map(node=>node.getBoundingClientRect()).filter(r=>r.height>0&&r.top>=0&&r.top<innerHeight&&r.bottom>=innerHeight-100).map(r=>r.top));
     const available=Math.floor(dockTop-headerBottom-16),body=box.querySelector('p');
     box.style.bottom=Math.max(18,innerHeight-dockTop+8)+'px';
     box.style.maxHeight=Math.max(0,available)+'px';
@@ -209,6 +216,8 @@
     document.addEventListener('focusin',()=>{if(bubble&&busy())dismissBubble();});
     document.addEventListener('keydown',event=>{if(event.key==='Escape'&&bubble&&!busy())dismissBubble();});
     document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&!bubble)scheduleBubble();});
+    window.addEventListener('scroll',checkBubble,{passive:true});
+    window.visualViewport?.addEventListener('resize',checkBubble,{passive:true});
     window.addEventListener('resize',()=>{if(bubble&&(busy()||!fitBubble(bubble)))dismissBubble();else if(!bubble)scheduleBubble();});
     document.fonts?.addEventListener?.('loadingdone',()=>{if(bubble&&!fitBubble(bubble))dismissBubble();});
     // Decorative animation and poster hydration do not change the invitation's
@@ -239,6 +248,7 @@
         }
         for(const node of record.addedNodes){
           if(node.nodeType!==1)continue;
+          if(node.id==='ma-play-prompt'||node.id==='ma-dl-bubble'){node.remove();continue;}
           if(node.matches(chromeSelector)){chromeResize?.observe(node);checkBubble();}
           node.querySelectorAll(chromeSelector).forEach(el=>{chromeResize?.observe(el);checkBubble();});
           if(bubble && (node.matches(dialogSelector)||node.querySelector(dialogSelector)))dialogChanged();
@@ -313,6 +323,8 @@
     },visit,0);
   }
   function boot(){
+    document.getElementById('ma-play-prompt')?.remove();
+    document.getElementById('ma-dl-bubble')?.remove();
     document.getElementById('ma-install-offer')?.remove();
     document.getElementById('ma-install-chip')?.remove();
     document.getElementById('chrome-install-card')?.remove();

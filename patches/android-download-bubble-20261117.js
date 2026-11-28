@@ -29,7 +29,11 @@
 
   function save() { try { sessionStorage.setItem(KEY, JSON.stringify(state)); } catch (_) {} }
   function now() { return Date.now(); }
-  function isAndroid() { return /Android/i.test(navigator.userAgent || ''); }
+  function isAndroid() {
+    const ua=navigator.userAgent||'',platform=navigator.platform||'';
+    if(/Android/i.test(ua)||navigator.userAgentData?.platform==='Android')return true;
+    return /Linux/i.test(ua)&&/Chrome\//i.test(ua)&&/^Linux (?:arm|aarch64)/i.test(platform)&&Number(navigator.maxTouchPoints||0)>1&&!!window.matchMedia?.('(pointer: coarse)').matches;
+  }
   if (!isAndroid()) return; // Focus on Android web visitors
 
   let clicks = 0;

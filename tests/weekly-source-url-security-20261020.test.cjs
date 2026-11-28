@@ -16,11 +16,11 @@ function harness(){
   };
   const end=source.lastIndexOf('try{main();}');
   assert.ok(end>0,'load the actual publisher definitions without invoking it');
-  const definitions=source.slice(0,end).replace(/^import .*;\n/gm,'')
+  const definitions=source.slice(0,end).replace(/^import .*;\r?\n/gm,'')
     .replace("const ROOT=path.resolve(path.dirname(new URL(import.meta.url).pathname),'..');","const ROOT='/fixture';");
   assert.ok(!definitions.includes('import.meta'),'fixture isolates every filesystem write');
   const api=vm.runInNewContext(definitions+'\n;({page,buildPick,write,main,isoWeekKey});',{
-    fs:fakeFs,path,URL,httpsUrl,cinemaAssets,process:{env:{}},
+    fs:fakeFs,path:path.posix,URL,httpsUrl,cinemaAssets,process:{env:{}},
     console:{log:text=>logs.push(text),error:text=>logs.push(text)},
     fetch(){throw Error('Security fixture must never fetch or publish');}
   });
